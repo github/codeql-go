@@ -22,6 +22,8 @@ func usage() {
 
 func parseFlags(args []string) ([]string, []string) {
 	i := 0
+	mimic := false
+	var dumpDbscheme string
 	buildFlags := []string{}
 	for i < len(args) && strings.HasPrefix(args[i], "-") {
 		if args[i] == "--" {
@@ -29,9 +31,46 @@ func parseFlags(args []string) ([]string, []string) {
 			break
 		}
 
-		if args[i] == "--help" {
+		if !mimic && strings.HasPrefix(args[i], "--dbscheme=") {
+			dumpDbscheme = strings.TrimPrefix(args[i], "--dbscheme=")
+		} else if !mimic && args[i] == "--dbscheme" {
+			i++
+			dumpDbscheme = args[i]
+		} else if !mimic && args[i] == "--help" {
 			usage()
 			os.Exit(0)
+		} else if args[i] == "--mimic" {
+			mimic = true
+			if i+1 < len(args) {
+				i++
+				compiler := args[i]
+				log.Printf("Compiler: %s", compiler)
+				if i+1 < len(args) {
+					i++
+					command := args[i]
+					if command == "build" {
+						log.Printf("Intercepting build")
+						// skip `-o output` and `i`, if applicable
+						for i+1 < len(args) {
+							if args[i+1] == "-o" {
+								i++
+								if i+1 < len(args) {
+									i++
+								}
+							} else if args[i+1] == "-i" {
+								i++
+							} else {
+								break
+							}
+						}
+					} else {
+						log.Printf("Non-build command; skipping")
+						return []string{}, []string{}, ""
+					}
+				}
+			} else {
+				log.Fatalf("Invalid --mimic: no compiler specified")
+			}
 		} else {
 			buildFlags = append(buildFlags, args[i])
 		}
@@ -63,6 +102,7 @@ func main() {
 	if len(patterns) == 0 {
 		log.Println("Nothing to extract.")
 	} else {
+		log.Printf("Build flags: %s; patterns: %s\n", strings.Join(buildFlags, " "), strings.Join(patterns, " "))
 		err := extractor.ExtractWithFlags(buildFlags, patterns)
 		if err != nil {
 			log.Fatal(err)
