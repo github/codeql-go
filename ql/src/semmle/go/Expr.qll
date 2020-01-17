@@ -470,7 +470,7 @@ class CallExpr extends CallOrConversionExpr {
   }
 
   /** Gets the declared target of this call. */
-  Function getTarget() { this = result.getACallExpr() }
+  Function getTarget() { getCalleeExpr() = result.getAReference() }
 
   /**
    * Gets the definition of a possible target of this call.

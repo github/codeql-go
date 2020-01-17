@@ -259,7 +259,7 @@ class Field extends ValueEntity {
 /** A built-in or declared function. */
 class Function extends ValueEntity, @functionobject {
   /** Gets an expression representing a call to this function. */
-  CallExpr getACallExpr() { result.getCalleeExpr() = getAReference() }
+  CallExpr getACallExpr() { this = result.getTarget() }
 
   /** Gets a call to this function. */
   DataFlow::CallNode getACall() { result.getExpr() = getACallExpr() }
@@ -370,10 +370,18 @@ class Method extends Function {
 
 /** A declared function. */
 class DeclaredFunction extends Function, DeclaredEntity, @declfunctionobject {
-  /** Gets the declaration of this function. */
   override FuncDecl getDecl() { result.getNameExpr() = this.getDeclaration() }
 
-  override BlockStmt getBody() { result = getDecl().getBody() }
+  /** Gets the declaration of this function. */
+  FuncDecl getFuncDecl() { result.getNameExpr() = this.getDeclaration() }
+
+  override CallExpr getACallExpr() {
+    result = Function.super.getACallExpr()
+    or
+    result.getACallee() = getFuncDecl()
+  }
+
+  override BlockStmt getBody() { result = getFuncDecl().getBody() }
 
   override predicate mayHaveSideEffects() {
     not exists(getBody())
