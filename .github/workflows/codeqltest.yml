@@ -14,16 +14,22 @@ jobs:
       id: go
 
     - name: Set up CodeQL CLI
-      uses: Anthophila/codeql-action/setup-codeql@master
+      run: |
+        rm -rf /opt/codeql
+        mkdir -p /opt
+        cd /opt
+        wget https://github.com/github/codeql-cli-binaries/releases/download/v2.0.3/codeql.zip -q
+        unzip -q codeql.zip
+        rm -f codeql.zip
 
     - name: Check out code
       uses: actions/checkout@v2
 
     - name: Build
-      run: make
+      run: env PATH=$PATH:/opt/codeql make
 
     - name: Test
-      run: make test
+      run: env PATH=$PATH:/opt/codeql make test
 
   test-mac:
     name: Test MacOS
@@ -36,16 +42,16 @@ jobs:
       id: go
 
     - name: Set up CodeQL CLI
-      uses: Anthophila/codeql-action/setup-codeql@master
+      uses: Anthophila/codeql-action/codeql/init@master
 
     - name: Check out code
       uses: actions/checkout@v2
 
     - name: Build
-      run: make
+      run: env PATH=$PATH:/opt/codeql make
 
     - name: Test
-      run: make test
+      run: env PATH=$PATH:/opt/codeql make test
 
   test-win:
     name: Test Windows
@@ -58,13 +64,13 @@ jobs:
       id: go
 
     - name: Set up CodeQL CLI
-      uses: Anthophila/codeql-action/setup-codeql@master
+      uses: Anthophila/codeql-action/codeql/init@master
 
     - name: Check out code
       uses: actions/checkout@v2
 
     - name: Build
-      run: make
+      run: env PATH=$PATH:/opt/codeql make
 
     - name: Test
-      run: make test
+      run: env PATH=$PATH:/opt/codeql make test
