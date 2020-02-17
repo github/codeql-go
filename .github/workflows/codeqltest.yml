@@ -14,16 +14,27 @@ jobs:
       id: go
 
     - name: Set up CodeQL CLI
-      uses: Anthophila/codeql-action/setup-codeql@master
+      run: |
+        echo "Removing old CodeQL Directory..."
+        rm -rf /opt/codeql
+        mkdir -p /opt
+        echo "Done"
+        cd /opt
+        echo "Downloading CodeQL CLI..."
+        wget https://github.com/github/codeql-cli-binaries/releases/download/v2.0.3/codeql.zip -q
+        echo "Done"
+        echo "Unpacking CodeQL CLI..."
+        unzip -q codeql.zip
+        rm -f codeql.zip
 
     - name: Check out code
       uses: actions/checkout@v2
 
     - name: Build
-      run: make
+      run: env PATH=$PATH:/opt/codeql make
 
     - name: Test
-      run: make test
+      run: env PATH=$PATH:/opt/codeql make test
 
   test-mac:
     name: Test MacOS
@@ -36,16 +47,25 @@ jobs:
       id: go
 
     - name: Set up CodeQL CLI
-      uses: Anthophila/codeql-action/setup-codeql@master
+      run: |
+        echo "Removing old CodeQL Directory..."
+        rm -rf /usr/local/codeql
+        cd /usr/local
+        echo "Downloading CodeQL CLI..."
+        wget https://github.com/github/codeql-cli-binaries/releases/download/v2.0.3/codeql.zip -q
+        echo "Done"
+        echo "Unpacking CodeQL CLI..."
+        unzip -q codeql.zip
+        rm -f codeql.zip
 
     - name: Check out code
       uses: actions/checkout@v2
 
     - name: Build
-      run: make
+      run: env PATH=$PATH:/usr/local/codeql make
 
     - name: Test
-      run: make test
+      run: env PATH=$PATH:/usr/local/codeql make test
 
   test-win:
     name: Test Windows
@@ -58,13 +78,20 @@ jobs:
       id: go
 
     - name: Set up CodeQL CLI
-      uses: Anthophila/codeql-action/setup-codeql@master
+      run: |
+        echo "Removing old CodeQL Directory..."
+        rmdir %AppData%/codeql -Recurse -Force -ErrorAction SilentlyContinue
+        cd %AppData%
+        echo "Downloading CodeQL CLI..."
+        wget https://github.com/github/codeql-cli-binaries/releases/download/v2.0.3/codeql.zip -q
+        unzip -q codeql.zip
+        rm -f codeql.zip
 
     - name: Check out code
       uses: actions/checkout@v2
 
     - name: Build
-      run: make
+      run: env PATH=$PATH:/opt/codeql make
 
     - name: Test
-      run: make test
+      run: env PATH=$PATH:/opt/codeql make test
