@@ -718,9 +718,9 @@ class AddressExpr extends @addressexpr, UnaryExpr {
 }
 
 /**
- * A unary arrow expression using `<-`.
+ * A unary receive expression using `<-`.
  */
-class ArrowExpr extends @arrowexpr, UnaryExpr {
+class RecvExpr extends @arrowexpr, UnaryExpr {
   override predicate mayHaveOwnSideEffects() { any() }
 
   override string getOperator() { result = "<-" }
