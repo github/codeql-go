@@ -118,24 +118,15 @@ type_objects(unique int tp: @type ref, int object: @object ref);
 
 packages(unique int id: @package, string name: string ref, string path: string ref, int scope: @packagescope ref);
 
-#keyset[parent, idx]
-modexprs(unique int id: @modexpr, int kind: int ref, int parent: @modexprparent ref, int idx: int ref);
-
-#keyset[parent, idx]
-modtokens(string token: string ref, int parent: @modexpr ref, int idx: int ref);
-
 @container = @file | @folder;
 
 @locatable = @node | @localscope;
 
-@node = @documentable | @exprparent | @modexprparent | @fieldparent | @stmtparent | @declparent | @scopenode
-      | @comment_group | @comment;
+@node = @documentable | @exprparent | @fieldparent | @stmtparent | @declparent | @scopenode | @comment_group | @comment;
 
-@documentable = @file | @field | @spec | @gendecl | @funcdecl | @modexpr;
+@documentable = @file | @field | @spec | @gendecl | @funcdecl;
 
 @exprparent = @funcdef | @file | @expr | @field | @stmt | @decl | @spec;
-
-@modexprparent = @file | @modexpr;
 
 @fieldparent = @decl | @structtypeexpr | @functypeexpr | @interfacetypeexpr;
 
@@ -410,11 +401,4 @@ case @type.kind of
 @containertype = @arraytype | @slicetype | @maptype | @chantype;
 
 @chantype = @sendchantype | @recvchantype | @sendrcvchantype;
-
-case @modexpr.kind of
-  0 = @modcommentblock
-| 1 = @modline
-| 2 = @modlineblock
-| 3 = @modlparen
-| 4 = @modrparen;
 
