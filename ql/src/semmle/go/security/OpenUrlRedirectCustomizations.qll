@@ -35,7 +35,9 @@ module OpenUrlRedirect {
     SafeUrlMethod() {
       this instanceof StringMethod
       or
-      exists(string m | this.hasQualifiedName("net/url", "URL", m) | m = "Hostname" or m = "Port")
+      exists(string m | this.hasQualifiedName("net/url", "URL", m) |
+        m = "Hostname" or m = "Port" or m = "RequestURI"
+      )
     }
 
     override predicate hasTaintFlow(DataFlow::FunctionInput inp, DataFlow::FunctionOutput outp) {
