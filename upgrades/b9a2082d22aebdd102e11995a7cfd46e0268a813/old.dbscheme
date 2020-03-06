@@ -384,7 +384,7 @@ case @type.kind of
 | 36 = @sendrcvchantype
 | 37 = @namedtype;
 
-@basictype = @booltype | @numerictype | @stringtype | @literaltype | @invalidtype | @unsafepointertype;
+@basictype = @booltype | @numerictype | @stringtype | @literaltype | @invalidtype | @uintptrtype | @unsafepointertype;
 
 @booltype = @boolexprtype | @boolliteraltype;
 
@@ -394,7 +394,7 @@ case @type.kind of
 
 @signedintegertype = @inttype | @int8type | @int16type | @int32type | @int64type | @intliteraltype | @runeliteraltype;
 
-@unsignedintegertype = @uinttype | @uint8type | @uint16type | @uint32type | @uint64type | @uintptrtype;
+@unsignedintegertype = @uinttype | @uint8type | @uint16type | @uint32type | @uint64type;
 
 @floattype = @float32type | @float64type | @floatliteraltype;
 
