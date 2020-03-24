@@ -44,10 +44,10 @@ private class SystemCommandExecutors extends SystemCommandExecution::Range, Data
         functionName = "StartProcess" and
         cmdArgIndex = 0
       ) and
-      fn.hasQualifiedName(packagePath, functionName) and
-      argumentNode = this.getArgument(cmdArgIndex)
+      fn.hasQualifiedName(packagePath, functionName)
     |
-      this = fn.getACall()
+      this = fn.getACall() and
+      argumentNode = this.getArgument(cmdArgIndex)
     )
   }
 
@@ -73,20 +73,16 @@ private class GoShCommandExecution extends SystemCommandExecution::Range, DataFl
             method.hasQualifiedName(packagePath, "Session", "Call")
             or
             method.hasQualifiedName(packagePath, "Session", "Command")
-          ) and
-          argumentNode = this.getArgument(0)
+          )
         |
           this = call
         )
         or
         // Catch calls to the `Command` function:
-        exists(Function fn |
-          fn.hasQualifiedName(packagePath, "Command") and
-          argumentNode = this.getArgument(0)
-        |
-          this = fn.getACall()
-        )
+        exists(Function fn | fn.hasQualifiedName(packagePath, "Command") | this = fn.getACall())
       )
+    |
+      argumentNode = this.getArgument(0)
     )
   }
 
