@@ -139,8 +139,8 @@ private class ShellLike extends DataFlow::Node {
   ShellLike() {
     isSudoOrSimilar(this) or
     isShell(this) or
-    isProgrammingLanguageCLI(this) or
-    isSSH(this)
+    isProgrammingLanguageCli(this) or
+    isSsh(this)
   }
 }
 
