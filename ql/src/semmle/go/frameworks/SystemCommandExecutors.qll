@@ -133,7 +133,7 @@ private class ShellLike extends DataFlow::Node {
   }
 }
 
-string getASudoCommand() {
+private string getASudoCommand() {
   result = "sudo" or
   result = "su" or
   result = "doas" or
@@ -159,7 +159,7 @@ private predicate isSudoOrSimilar(DataFlow::Node node) {
   )
 }
 
-string getAShellCommand() {
+private string getAShellCommand() {
   result = "bash" or
   result = "sh" or
   result = "rbash" or
@@ -193,7 +193,7 @@ private predicate isShell(DataFlow::Node node) {
   )
 }
 
-string getAProgrammingLanguageCliCommand() {
+private string getAProgrammingLanguageCliCommand() {
   result = "python" or
   result = "php" or
   result = "ruby" or
@@ -212,7 +212,7 @@ private predicate isProgrammingLanguageCli(DataFlow::Node node) {
   )
 }
 
-string getASshCommand() { result = "ssh" }
+private string getASshCommand() { result = "ssh" }
 
 private predicate isSsh(DataFlow::Node node) {
   exists(string regex |
