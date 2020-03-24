@@ -108,10 +108,10 @@ private class GoShCommandExecution extends SystemCommandExecution::Range, DataFl
  * A call to a method on a `Session` object from the [ssh](golang.org/x/crypto/ssh)
  * package, viewed as a system-command execution.
  */
-private class SSHCommandExecution extends SystemCommandExecution::Range, DataFlow::CallNode {
+private class SshCommandExecution extends SystemCommandExecution::Range, DataFlow::CallNode {
   DataFlow::ExprNode argumentNode;
 
-  SSHCommandExecution() {
+  SshCommandExecution() {
     // Catch method calls on the `Session` object:
     exists(DataFlow::MethodCallNode call, Method method |
       call = method.getACall() and
