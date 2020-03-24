@@ -308,7 +308,7 @@ predicate isShell(DataFlow::Node node) {
   node.getStringValue() = "yash"
 }
 
-predicate isProgrammingLanguageCLI(DataFlow::Node node) {
+predicate isProgrammingLanguageCli(DataFlow::Node node) {
   node.getStringValue().matches("%/python%")
   or
   node.getStringValue() = "python"
