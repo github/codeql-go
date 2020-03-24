@@ -68,9 +68,9 @@ private class GoShCommandExecution extends SystemCommandExecution::Range, DataFl
         (
           // Either there is another argument to this call that is a sudo/shell ...
           exists(ShellLike shellOrSudoArg |
-            shellOrSudoArg = this.getAnArgument*().getAPredecessor*()
+            shellOrSudoArg = this.getAnArgument().getAPredecessor*()
           |
-            argumentNode = this.getAnArgument*()
+            argumentNode = this.getAnArgument()
           )
           or
           // ... or just use the first argument:
