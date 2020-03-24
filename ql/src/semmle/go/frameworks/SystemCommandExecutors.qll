@@ -322,7 +322,7 @@ predicate isProgrammingLanguageCLI(DataFlow::Node node) {
   node.getStringValue() = "ruby"
 }
 
-predicate isSSH(DataFlow::Node node) {
+predicate isSsh(DataFlow::Node node) {
   node.getStringValue().matches("%/ssh")
   or
   node.getStringValue() = "ssh"
