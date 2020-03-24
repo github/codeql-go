@@ -78,7 +78,7 @@ private class GoShCommandExecution extends SystemCommandExecution::Range, DataFl
         )
       |
         this = call and
-        argumentNode = call.getAnArgument+()
+        argumentNode = call.getAnArgument()
       )
       or
       // Catch calls to the `Command` function:
