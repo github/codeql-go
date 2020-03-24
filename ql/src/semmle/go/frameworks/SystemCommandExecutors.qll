@@ -29,9 +29,9 @@ private class SystemCommandExecutors extends SystemCommandExecution::Range, Data
       (
         // Either there is another argument to this call that is a sudo/shell ...
         exists(ShellLike shellOrSudoArg |
-          shellOrSudoArg = this.getAnArgument*().getAPredecessor*()
+          shellOrSudoArg = this.getAnArgument().getAPredecessor*()
         |
-          argumentNode = this.getAnArgument*()
+          argumentNode = this.getAnArgument()
         )
         or
         // ... or just use the default cmdArgIndex, which is different for each function:
