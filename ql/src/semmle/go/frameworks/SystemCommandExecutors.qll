@@ -5,6 +5,11 @@
 
 import go
 
+/**
+ * ShellOrSudoExecution extends system command execution sinks to include
+ * arguments passed to command interpreter binaries like shells, sudo,
+ * or programming language interpreters.
+ */
 private class ShellOrSudoExecution extends SystemCommandExecution::Range, DataFlow::CallNode {
   DataFlow::ExprNode argumentNode;
 
@@ -16,9 +21,6 @@ private class ShellOrSudoExecution extends SystemCommandExecution::Range, DataFl
       |
         argumentNode = exec.(DataFlow::CallNode).getAnArgument()
       )
-      or
-      // ... or just use the default getCommandName:
-      argumentNode = exec.getCommandName()
     |
       this = exec
     )
@@ -28,30 +30,20 @@ private class ShellOrSudoExecution extends SystemCommandExecution::Range, DataFl
 }
 
 private class SystemCommandExecutors extends SystemCommandExecution::Range, DataFlow::CallNode {
-  DataFlow::ExprNode argumentNode;
+  int cmdArg;
 
   SystemCommandExecutors() {
-    exists(Function fn, string packagePath, string functionName, int cmdArgIndex |
-      (
-        packagePath = "os/exec" and
-        (
-          functionName = "Command" and cmdArgIndex = 0
-          or
-          functionName = "CommandContext" and cmdArgIndex = 1
-        )
-        or
-        packagePath = "os" and
-        functionName = "StartProcess" and
-        cmdArgIndex = 0
-      ) and
-      fn.hasQualifiedName(packagePath, functionName)
-    |
-      this = fn.getACall() and
-      argumentNode = this.getArgument(cmdArgIndex)
+    exists(string pkg, string name | this.getTarget().hasQualifiedName(pkg, name) |
+      pkg = "os" and name = "StartProcess" and cmdArg = 0
+      or
+      // assume that if a `Cmd` is instantiated it will be run
+      pkg = "os/exec" and name = "Command" and cmdArg = 0
+      or
+      pkg = "os/exec" and name = "CommandContext" and cmdArg = 1
     )
   }
 
-  override DataFlow::Node getCommandName() { result = argumentNode }
+  override DataFlow::Node getCommandName() { result = this.getArgument(cmdArg) }
 }
 
 /**
@@ -60,8 +52,6 @@ private class SystemCommandExecutors extends SystemCommandExecution::Range, Data
  * system-command execution.
  */
 private class GoShCommandExecution extends SystemCommandExecution::Range, DataFlow::CallNode {
-  DataFlow::ExprNode argumentNode;
-
   GoShCommandExecution() {
     exists(string packagePath |
       packagePath = "github.com/codeskyblue/go-sh" and
@@ -78,12 +68,10 @@ private class GoShCommandExecution extends SystemCommandExecution::Range, DataFl
         // Catch calls to the `Command` function:
         getTarget().hasQualifiedName(packagePath, "Command")
       )
-    |
-      argumentNode = this.getArgument(0)
     )
   }
 
-  override DataFlow::Node getCommandName() { result = argumentNode }
+  override DataFlow::Node getCommandName() { result = this.getArgument(0) }
 }
 
 /**
@@ -91,32 +79,30 @@ private class GoShCommandExecution extends SystemCommandExecution::Range, DataFl
  * package, viewed as a system-command execution.
  */
 private class SshCommandExecution extends SystemCommandExecution::Range, DataFlow::CallNode {
-  DataFlow::ExprNode argumentNode;
-
   SshCommandExecution() {
     // Catch method calls on the `Session` object:
-    exists(DataFlow::MethodCallNode call, Method method |
-      call = method.getACall() and
-      exists(string methodName |
-        method.hasQualifiedName("golang.org/x/crypto/ssh", "Session", methodName)
-      |
-        methodName = "CombinedOutput"
-        or
-        methodName = "Output"
-        or
-        methodName = "Run"
-        or
-        methodName = "Start"
-      )
+    exists(Method method, string methodName |
+      method.hasQualifiedName("golang.org/x/crypto/ssh", "Session", methodName) and
+      methodName = "CombinedOutput"
+      or
+      methodName = "Output"
+      or
+      methodName = "Run"
+      or
+      methodName = "Start"
     |
-      this = call and
-      argumentNode = call.getArgument(0)
+      this = method.getACall()
     )
   }
 
-  override DataFlow::Node getCommandName() { result = argumentNode }
+  override DataFlow::Node getCommandName() { result = this.getArgument(0) }
 }
 
+/**
+ * ShellLike defines a string value node whose value is any binary
+ * (shells, sudo, programming language interpreters, ssh clients, etc.)
+ * which executes arguments passed to as commands.
+ */
 private class ShellLike extends DataFlow::Node {
   ShellLike() {
     isSudoOrSimilar(this) or
@@ -144,6 +130,11 @@ private string getASudoCommand() {
   result = "sudown"
 }
 
+/**
+ * isSudoOrSimilar defines a string value node whose value is any binary
+ * that work in a similar manner to `sudo`, whose arguments are
+ * interpreted as system commands.
+ */
 private predicate isSudoOrSimilar(DataFlow::Node node) {
   exists(string regex |
     regex = ".*(^|/)(" + concat(string cmd | cmd = getASudoCommand() | cmd, "|") + ")"
@@ -178,6 +169,10 @@ private string getAShellCommand() {
   result = "yash"
 }
 
+/**
+ * isShell defines a string value node whose value is any shell,
+ * whose arguments are interpreted as system commands.
+ */
 private predicate isShell(DataFlow::Node node) {
   exists(string regex |
     regex = ".*(^|/)(" + concat(string cmd | cmd = getAShellCommand() | cmd, "|") + ")"
@@ -186,27 +181,37 @@ private predicate isShell(DataFlow::Node node) {
   )
 }
 
-private string getAProgrammingLanguageCliCommand() {
+private string getAnInterpreterName() {
   result = "python" or
   result = "php" or
   result = "ruby" or
-  result = "perl"
+  result = "perl" or
+  result = "node" or
+  result = "nodejs"
 }
 
+/**
+ * isShell defines a string value node whose value is any CLI
+ * programming language interpreter, whose arguments are
+ * executed as code.
+ */
 private predicate isProgrammingLanguageCli(DataFlow::Node node) {
   // NOTE: we can enounter cases like /usr/bin/python3.1
   node.getStringValue().matches("%/python%")
   or
   exists(string regex |
-    regex =
-      ".*(^|/)(" + concat(string cmd | cmd = getAProgrammingLanguageCliCommand() | cmd, "|") + ")"
+    regex = ".*(^|/)(" + concat(string cmd | cmd = getAnInterpreterName() | cmd, "|") + ")"
   |
     node.getStringValue().regexpMatch(regex)
   )
 }
 
-private string getASshCommand() { result = "ssh" }
+private string getASshCommand() { result = "ssh" or result = "putty.exe" or result = "kitty.exe" }
 
+/**
+ * isSsh defines a string value node whose value is a ssh client or similar,
+ * whose arguments can be commands that will be executed on the remote host.
+ */
 private predicate isSsh(DataFlow::Node node) {
   exists(string regex |
     regex = ".*(^|/)(" + concat(string cmd | cmd = getASshCommand() | cmd, "|") + ")"
