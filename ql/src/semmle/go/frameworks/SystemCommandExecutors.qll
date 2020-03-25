@@ -67,15 +67,12 @@ private class GoShCommandExecution extends SystemCommandExecution::Range, DataFl
       packagePath = "github.com/codeskyblue/go-sh" and
       (
         // Catch method calls on the `Session` object:
-        exists(DataFlow::MethodCallNode call, Method method |
-          call = method.getACall() and
-          (
-            method.hasQualifiedName(packagePath, "Session", "Call")
-            or
-            method.hasQualifiedName(packagePath, "Session", "Command")
-          )
+        exists(Method method |
+          method.hasQualifiedName(packagePath, "Session", "Call")
+          or
+          method.hasQualifiedName(packagePath, "Session", "Command")
         |
-          this = call
+          this = method.getACall()
         )
         or
         // Catch calls to the `Command` function:
