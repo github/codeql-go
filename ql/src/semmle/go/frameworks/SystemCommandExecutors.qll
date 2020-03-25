@@ -79,7 +79,7 @@ private class GoShCommandExecution extends SystemCommandExecution::Range, DataFl
         )
         or
         // Catch calls to the `Command` function:
-        exists(Function fn | fn.hasQualifiedName(packagePath, "Command") | this = fn.getACall())
+        getTarget().hasQualifiedName(packagePath, "Command")
       )
     |
       argumentNode = this.getArgument(0)
