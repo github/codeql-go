@@ -197,10 +197,9 @@ private string getAnInterpreterName() {
  */
 private predicate isProgrammingLanguageCli(DataFlow::Node node) {
   // NOTE: we can enounter cases like /usr/bin/python3.1
-  node.getStringValue().matches("%/python%")
-  or
   exists(string regex |
-    regex = ".*(^|/)(" + concat(string cmd | cmd = getAnInterpreterName() | cmd, "|") + ")"
+    regex =
+      ".*(^|/)(" + concat(string cmd | cmd = getAnInterpreterName() | cmd + "[\\d.\\-v]*", "|") + ")"
   |
     node.getStringValue().regexpMatch(regex)
   )
