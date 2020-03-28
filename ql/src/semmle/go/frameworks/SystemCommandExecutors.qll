@@ -13,19 +13,11 @@ private class ShellOrSudoExecution extends SystemCommandExecution::Range, DataFl
   DataFlow::ExprNode argumentNode;
 
   ShellOrSudoExecution() {
-    exists(SystemCommandExecution exec |
-      // Either there is another argument to this call that is a sudo/shell ...
-      exists(ShellLike shellOrSudoArg |
-        shellOrSudoArg = exec.(DataFlow::CallNode).getAnArgument().getAPredecessor*()
-      |
-        argumentNode = exec.(DataFlow::CallNode).getAnArgument()
-      )
-    |
-      this = exec
-    )
+    this instanceof SystemCommandExecution and
+    this.getAnArgument().getAPredecessor*() instanceof ShellLike
   }
 
-  override DataFlow::Node getCommandName() { result = argumentNode }
+  override DataFlow::Node getCommandName() { result = getAnArgument() }
 }
 
 private class SystemCommandExecutors extends SystemCommandExecution::Range, DataFlow::CallNode {
@@ -52,21 +44,18 @@ private class SystemCommandExecutors extends SystemCommandExecution::Range, Data
  */
 private class GoShCommandExecution extends SystemCommandExecution::Range, DataFlow::CallNode {
   GoShCommandExecution() {
-    exists(string packagePath |
-      packagePath = "github.com/codeskyblue/go-sh" and
-      (
-        // Catch method calls on the `Session` object:
-        exists(Method method |
-          method.hasQualifiedName(packagePath, "Session", "Call")
-          or
-          method.hasQualifiedName(packagePath, "Session", "Command")
-        |
-          this = method.getACall()
-        )
+    exists(string packagePath | packagePath = "github.com/codeskyblue/go-sh" |
+      // Catch method calls on the `Session` object:
+      exists(Method method |
+        method.hasQualifiedName(packagePath, "Session", "Call")
         or
-        // Catch calls to the `Command` function:
-        getTarget().hasQualifiedName(packagePath, "Command")
+        method.hasQualifiedName(packagePath, "Session", "Command")
+      |
+        this = method.getACall()
       )
+      or
+      // Catch calls to the `Command` function:
+      getTarget().hasQualifiedName(packagePath, "Command")
     )
   }
 
@@ -81,7 +70,6 @@ private class SshCommandExecution extends SystemCommandExecution::Range, DataFlo
   SshCommandExecution() {
     // Catch method calls on the `Session` object:
     exists(Method method, string methodName |
-      method.hasQualifiedName("golang.org/x/crypto/ssh", "Session", methodName) and
       methodName = "CombinedOutput"
       or
       methodName = "Output"
@@ -90,6 +78,7 @@ private class SshCommandExecution extends SystemCommandExecution::Range, DataFlo
       or
       methodName = "Start"
     |
+      method.hasQualifiedName("golang.org/x/crypto/ssh", "Session", methodName) and
       this = method.getACall()
     )
   }
@@ -195,7 +184,8 @@ private predicate isProgrammingLanguageCli(DataFlow::Node node) {
   // NOTE: we can enounter cases like /usr/bin/python3.1
   exists(string regex |
     regex =
-      ".*(^|/)(" + concat(string cmd | cmd = getAnInterpreterName() | cmd + "[\\d.\\-v]*", "|") + ")"
+      ".*(^|/)(" + concat(string cmd | cmd = getAnInterpreterName() | cmd + "[\\d.\\-v]*", "|") +
+        ")"
   |
     node.getStringValue().regexpMatch(regex)
   )
