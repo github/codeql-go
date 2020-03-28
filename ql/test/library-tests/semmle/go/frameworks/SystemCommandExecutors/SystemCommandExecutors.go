@@ -92,21 +92,22 @@ func handler(w http.ResponseWriter, req *http.Request) {
 			exec.Command("/bin/sh", path.Join("scripts", source))
 		}
 	}
-	/* If this part is uncommented, the test produce no results at all:
-	// golang.org/x/crypto/ssh
-	{
-		session := &ssh.Session{}
-		session.CombinedOutput(source)
-		session.Output(source)
-		session.Run(source)
-		session.Start(source)
-	}
-	// github.com/codeskyblue/go-sh
-	{
-		sh.Command(shell, toInterfaceArray(append([]string{assumedNonShell}, source)...)...)
-		sh.InteractiveSession().Call(shell, toInterfaceArray(append([]string{assumedNonShell}, source)...)...)
-		sh.InteractiveSession().Command(shell, toInterfaceArray(append([]string{assumedNonShell}, source)...)...)
-	}
+	//If this part is uncommented, the test produce no results at all:
+	/*
+		// golang.org/x/crypto/ssh
+		{
+			session := &ssh.Session{}
+			session.CombinedOutput(source)
+			session.Output(source)
+			session.Run(source)
+			session.Start(source)
+		}
+		// github.com/codeskyblue/go-sh
+		{
+			sh.Command(shell, toInterfaceArray(append([]string{assumedNonShell}, source)...)...)
+			sh.InteractiveSession().Call(shell, toInterfaceArray(append([]string{assumedNonShell}, source)...)...)
+			sh.InteractiveSession().Command(shell, toInterfaceArray(append([]string{assumedNonShell}, source)...)...)
+		}
 	*/
 }
 func toInterfaceArray(str ...string) []interface{} {
