@@ -1,12 +1,5 @@
 /**
- * @name Command built from user-controlled sources
- * @description Building a system command from user-controlled sources is vulnerable to insertion of
- *              malicious code by the user.
  * @kind path-problem
- * @problem.severity error
- * @id go/command-injection
- * @tags security
- *       external/cwe/cwe-078
  */
 
 import go
