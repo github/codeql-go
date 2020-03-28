@@ -6,9 +6,8 @@
 import go
 
 /**
- * ShellOrSudoExecution extends system command execution sinks to include
- * arguments passed to command interpreter binaries like shells, sudo,
- * or programming language interpreters.
+ * An indirect system-command execution via an argument argument passed to a command interpreter
+ * such as a shell, `sudo`, or a programming-language interpreter.
  */
 private class ShellOrSudoExecution extends SystemCommandExecution::Range, DataFlow::CallNode {
   DataFlow::ExprNode argumentNode;
@@ -99,9 +98,10 @@ private class SshCommandExecution extends SystemCommandExecution::Range, DataFlo
 }
 
 /**
- * ShellLike defines a string value node whose value is any binary
- * (shells, sudo, programming language interpreters, ssh clients, etc.)
- * which executes arguments passed to as commands.
+ * A data-flow node whose string value might refer to a command that interprets (some of)
+ * its arguments as commands.
+ *
+ * Examples include shells, `sudo`, programming-language interpreters, and SSH clients.
  */
 private class ShellLike extends DataFlow::Node {
   ShellLike() {
@@ -131,9 +131,8 @@ private string getASudoCommand() {
 }
 
 /**
- * isSudoOrSimilar defines a string value node whose value is any binary
- * that work in a similar manner to `sudo`, whose arguments are
- * interpreted as system commands.
+ * A data-flow node whose string value might refer to a command that interprets (some of)
+ * its arguments as system commands in a similar manner to `sudo`.
  */
 private predicate isSudoOrSimilar(DataFlow::Node node) {
   exists(string regex |
@@ -170,8 +169,7 @@ private string getAShellCommand() {
 }
 
 /**
- * isShell defines a string value node whose value is any shell,
- * whose arguments are interpreted as system commands.
+ * A data-flow node whose string value might refer to a shell.
  */
 private predicate isShell(DataFlow::Node node) {
   exists(string regex |
@@ -191,9 +189,7 @@ private string getAnInterpreterName() {
 }
 
 /**
- * isShell defines a string value node whose value is any CLI
- * programming language interpreter, whose arguments are
- * executed as code.
+ * A data-flow node whose string value might refer to a programming-language interpreter.
  */
 private predicate isProgrammingLanguageCli(DataFlow::Node node) {
   // NOTE: we can enounter cases like /usr/bin/python3.1
@@ -208,8 +204,8 @@ private predicate isProgrammingLanguageCli(DataFlow::Node node) {
 private string getASshCommand() { result = "ssh" or result = "putty.exe" or result = "kitty.exe" }
 
 /**
- * isSsh defines a string value node whose value is a ssh client or similar,
- * whose arguments can be commands that will be executed on the remote host.
+ * A data-flow node whose string value might refer to an SSH client or similar, whose arguments can be
+ * commands that will be executed on the remote host.
  */
 private predicate isSsh(DataFlow::Node node) {
   exists(string regex |
