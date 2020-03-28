@@ -1,0 +1,55 @@
+edges
+| SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:24:19:24:24 | source |
+| SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:28:26:28:41 | composite literal |
+| SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:31:26:31:58 | call to append |
+| SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:34:26:34:55 | call to append |
+| SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:58:16:58:21 | source |
+| SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:61:35:61:40 | source |
+| SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:64:23:64:50 | composite literal |
+| SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:67:23:67:55 | call to append |
+| SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:70:23:70:52 | call to append |
+| SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:73:28:73:33 | source |
+| SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:74:36:74:41 | source |
+| SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:79:29:79:114 | ...+... |
+| SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:82:36:82:63 | call to Sprintf |
+| SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:85:29:85:88 | call to Join |
+| SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:86:29:86:100 | call to Join |
+| SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:89:46:89:100 | call to Join |
+| SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:92:28:92:55 | call to Join |
+nodes
+| SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | semmle.label | selection of URL : pointer type |
+| SystemCommandExecutors.go:24:19:24:24 | source | semmle.label | source |
+| SystemCommandExecutors.go:28:26:28:41 | composite literal | semmle.label | composite literal |
+| SystemCommandExecutors.go:31:26:31:58 | call to append | semmle.label | call to append |
+| SystemCommandExecutors.go:34:26:34:55 | call to append | semmle.label | call to append |
+| SystemCommandExecutors.go:58:16:58:21 | source | semmle.label | source |
+| SystemCommandExecutors.go:61:35:61:40 | source | semmle.label | source |
+| SystemCommandExecutors.go:64:23:64:50 | composite literal | semmle.label | composite literal |
+| SystemCommandExecutors.go:67:23:67:55 | call to append | semmle.label | call to append |
+| SystemCommandExecutors.go:70:23:70:52 | call to append | semmle.label | call to append |
+| SystemCommandExecutors.go:73:28:73:33 | source | semmle.label | source |
+| SystemCommandExecutors.go:74:36:74:41 | source | semmle.label | source |
+| SystemCommandExecutors.go:79:29:79:114 | ...+... | semmle.label | ...+... |
+| SystemCommandExecutors.go:82:36:82:63 | call to Sprintf | semmle.label | call to Sprintf |
+| SystemCommandExecutors.go:85:29:85:88 | call to Join | semmle.label | call to Join |
+| SystemCommandExecutors.go:86:29:86:100 | call to Join | semmle.label | call to Join |
+| SystemCommandExecutors.go:89:46:89:100 | call to Join | semmle.label | call to Join |
+| SystemCommandExecutors.go:92:28:92:55 | call to Join | semmle.label | call to Join |
+#select
+| SystemCommandExecutors.go:24:19:24:24 | source | SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:24:19:24:24 | source | This command depends on $@. | SystemCommandExecutors.go:19:12:19:18 | selection of URL | a user-provided value |
+| SystemCommandExecutors.go:28:26:28:41 | composite literal | SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:28:26:28:41 | composite literal | This command depends on $@. | SystemCommandExecutors.go:19:12:19:18 | selection of URL | a user-provided value |
+| SystemCommandExecutors.go:31:26:31:58 | call to append | SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:31:26:31:58 | call to append | This command depends on $@. | SystemCommandExecutors.go:19:12:19:18 | selection of URL | a user-provided value |
+| SystemCommandExecutors.go:34:26:34:55 | call to append | SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:34:26:34:55 | call to append | This command depends on $@. | SystemCommandExecutors.go:19:12:19:18 | selection of URL | a user-provided value |
+| SystemCommandExecutors.go:58:16:58:21 | source | SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:58:16:58:21 | source | This command depends on $@. | SystemCommandExecutors.go:19:12:19:18 | selection of URL | a user-provided value |
+| SystemCommandExecutors.go:61:35:61:40 | source | SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:61:35:61:40 | source | This command depends on $@. | SystemCommandExecutors.go:19:12:19:18 | selection of URL | a user-provided value |
+| SystemCommandExecutors.go:64:23:64:50 | composite literal | SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:64:23:64:50 | composite literal | This command depends on $@. | SystemCommandExecutors.go:19:12:19:18 | selection of URL | a user-provided value |
+| SystemCommandExecutors.go:67:23:67:55 | call to append | SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:67:23:67:55 | call to append | This command depends on $@. | SystemCommandExecutors.go:19:12:19:18 | selection of URL | a user-provided value |
+| SystemCommandExecutors.go:70:23:70:52 | call to append | SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:70:23:70:52 | call to append | This command depends on $@. | SystemCommandExecutors.go:19:12:19:18 | selection of URL | a user-provided value |
+| SystemCommandExecutors.go:73:28:73:33 | source | SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:73:28:73:33 | source | This command depends on $@. | SystemCommandExecutors.go:19:12:19:18 | selection of URL | a user-provided value |
+| SystemCommandExecutors.go:74:36:74:41 | source | SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:74:36:74:41 | source | This command depends on $@. | SystemCommandExecutors.go:19:12:19:18 | selection of URL | a user-provided value |
+| SystemCommandExecutors.go:79:29:79:114 | ...+... | SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:79:29:79:114 | ...+... | This command depends on $@. | SystemCommandExecutors.go:19:12:19:18 | selection of URL | a user-provided value |
+| SystemCommandExecutors.go:82:36:82:63 | call to Sprintf | SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:82:36:82:63 | call to Sprintf | This command depends on $@. | SystemCommandExecutors.go:19:12:19:18 | selection of URL | a user-provided value |
+| SystemCommandExecutors.go:85:29:85:88 | call to Join | SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:85:29:85:88 | call to Join | This command depends on $@. | SystemCommandExecutors.go:19:12:19:18 | selection of URL | a user-provided value |
+| SystemCommandExecutors.go:86:29:86:100 | call to Join | SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:86:29:86:100 | call to Join | This command depends on $@. | SystemCommandExecutors.go:19:12:19:18 | selection of URL | a user-provided value |
+| SystemCommandExecutors.go:89:46:89:100 | call to Join | SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:89:46:89:100 | call to Join | This command depends on $@. | SystemCommandExecutors.go:19:12:19:18 | selection of URL | a user-provided value |
+| SystemCommandExecutors.go:92:28:92:55 | call to Join | SystemCommandExecutors.go:19:12:19:18 | selection of URL : pointer type | SystemCommandExecutors.go:92:28:92:55 | call to Join | This command depends on $@. | SystemCommandExecutors.go:19:12:19:18 | selection of URL | a user-provided value |
