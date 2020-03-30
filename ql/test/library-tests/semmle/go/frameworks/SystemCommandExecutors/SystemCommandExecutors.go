@@ -7,7 +7,12 @@ import (
 	"os/exec"
 	"path"
 	"strings"
+
+	"github.com/codeskyblue/go-sh"
+	"golang.org/x/crypto/ssh"
 )
+
+func main() {}
 
 func handler(w http.ResponseWriter, req *http.Request) {
 	sudo := "sudo"
@@ -15,7 +20,6 @@ func handler(w http.ResponseWriter, req *http.Request) {
 	assumedNonShell := "ls"
 	args := []string{}
 
-	// source from a field read (NOTE: this example depends on ql/src/semmle/go/frameworks/HTTP.qll):
 	source := req.URL.Query()["cmd"][0]
 
 	// os.StartProcess: these MUST be caught.
@@ -92,23 +96,20 @@ func handler(w http.ResponseWriter, req *http.Request) {
 			exec.Command("/bin/sh", path.Join("scripts", source))
 		}
 	}
-	//If this part is uncommented, the test produce no results at all:
-	/*
-		// golang.org/x/crypto/ssh
-		{
-			session := &ssh.Session{}
-			session.CombinedOutput(source)
-			session.Output(source)
-			session.Run(source)
-			session.Start(source)
-		}
-		// github.com/codeskyblue/go-sh
-		{
-			sh.Command(shell, toInterfaceArray(append([]string{assumedNonShell}, source)...)...)
-			sh.InteractiveSession().Call(shell, toInterfaceArray(append([]string{assumedNonShell}, source)...)...)
-			sh.InteractiveSession().Command(shell, toInterfaceArray(append([]string{assumedNonShell}, source)...)...)
-		}
-	*/
+	// golang.org/x/crypto/ssh
+	{
+		session := &ssh.Session{}
+		session.CombinedOutput(source)
+		session.Output(source)
+		session.Run(source)
+		session.Start(source)
+	}
+	// github.com/codeskyblue/go-sh
+	{
+		sh.Command(shell, toInterfaceArray(append([]string{assumedNonShell}, source)...)...)
+		sh.InteractiveSession().Call(shell, toInterfaceArray(append([]string{assumedNonShell}, source)...)...)
+		sh.InteractiveSession().Command(shell, toInterfaceArray(append([]string{assumedNonShell}, source)...)...)
+	}
 }
 func toInterfaceArray(str ...string) []interface{} {
 	res := make([]interface{}, 0)
