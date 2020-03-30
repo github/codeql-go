@@ -10,8 +10,6 @@ import go
  * such as a shell, `sudo`, or a programming-language interpreter.
  */
 private class ShellOrSudoExecution extends SystemCommandExecution::Range, DataFlow::CallNode {
-  DataFlow::ExprNode argumentNode;
-
   ShellOrSudoExecution() {
     this instanceof SystemCommandExecution and
     this.getAnArgument().getAPredecessor*() instanceof ShellLike
