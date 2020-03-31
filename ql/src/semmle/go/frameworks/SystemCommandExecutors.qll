@@ -48,6 +48,8 @@ private class GoShCommandExecution extends SystemCommandExecution::Range, DataFl
         method.hasQualifiedName(packagePath, "Session", "Call")
         or
         method.hasQualifiedName(packagePath, "Session", "Command")
+        or
+        method.hasQualifiedName(packagePath, "Session", "Exec")
       |
         this = method.getACall()
       )
