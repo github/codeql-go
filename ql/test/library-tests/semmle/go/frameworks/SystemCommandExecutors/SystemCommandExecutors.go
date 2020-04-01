@@ -5,8 +5,6 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
-	"path"
-	"strings"
 
 	"github.com/codeskyblue/go-sh"
 	"golang.org/x/crypto/ssh"
@@ -36,13 +34,9 @@ func handler(w http.ResponseWriter, req *http.Request) {
 
 		// `source` flows into a composite literal as Nth argument to append:
 		os.StartProcess(shell, append([]string{sudo}, source), nil)
-
-		// TODO:
-		//shellToAssumedNonShell := append([]string{sudo}, shell, source)
-		//os.StartProcess(assumedNonShell, shellToAssumedNonShell, nil)
 	}
 
-	// os.StartProcess: these MUST NOT be caught because non-valid.
+	// os.StartProcess: `source` MUST NOT be caught here because the first argument is not a ShellOrSudoExecution.
 	{
 		// `source` is an argument to a non-shell command that does not execute
 		// the `source` as a command, i.e. the source is just an argument to a command
@@ -64,37 +58,19 @@ func handler(w http.ResponseWriter, req *http.Request) {
 		// source comes as nth arg to a shell:
 		exec.Command(shell, "a0", "a1", source)
 
-		// source flows into a composite literal used as args, and the command is a shell:
-		exec.Command(shell, []string{"a0", "a1", source}...)
-
-		// source flows into a composite literal as first argument to append:
-		exec.Command(shell, append([]string{source}, args...)...)
-
 		// source flows into a composite literal as Nth argument to append:
 		exec.Command(shell, append([]string{sudo}, source)...)
 
 		// other ways to compose a command:
-		exec.Command("sh", "-c", source)
+		exec.Command("sh", "-c", "GOOS=windows GOARCH=386 go build -ldflags \"-s -w -H=windowsgui\" -o \""+source+".go")
 		exec.Command("sudo", "sh", "-c", source)
 
-		// (this is a shell, so you can just create a pipe with `|` or a `$(command)` or a `&& command`):
-		{
-			// string concatenation:
-			exec.Command("sh", "-c", "GOOS=windows GOARCH=386 go build -ldflags \"-s -w -H=windowsgui\" -o \""+source+".go")
+		// programming-language interpreters:
+		exec.Command("ruby", "-e", fmt.Sprintf("system(\"ls %s\")", source))
+		exec.Command("perl", "-e", fmt.Sprintf("system(\"sh sudo cp %s dst\")", source))
 
-			// source is argument to fmt.Sprintf:
-			exec.Command("/bin/bash", "-c", fmt.Sprintf("ls %s", source))
-
-			// source passes through append and strings.Join:
-			exec.Command("sh", "-c", strings.Join(append([]string{assumedNonShell}, source), " "))
-			exec.Command("sh", "-c", strings.Join(append([]string{assumedNonShell}, "a0", "a1", source), " "))
-
-			// source passes through composite literal, append and strings.Join:
-			exec.Command("sh", "-c", assumedNonShell, strings.Join(append([]string{source}, "a0", "a1"), " "))
-
-			// source passes through path.Join:
-			exec.Command("/bin/sh", path.Join("scripts", source))
-		}
+		// ssh:
+		exec.Command("ssh", "-t", "user@host", "ping "+source)
 	}
 	// golang.org/x/crypto/ssh
 	{
