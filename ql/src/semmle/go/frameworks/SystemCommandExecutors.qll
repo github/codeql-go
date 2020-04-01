@@ -181,10 +181,10 @@ private string getAnInterpreterName() {
  * A data-flow node whose string value might refer to a programming-language interpreter.
  */
 private predicate isProgrammingLanguageCli(DataFlow::Node node) {
-  // NOTE: we can encounter cases like /usr/bin/python3.1
+  // NOTE: we can encounter cases like /usr/bin/python3.1 or python3.7m
   exists(string regex |
     regex =
-      ".*(^|/)(" + concat(string cmd | cmd = getAnInterpreterName() | cmd + "[\\d.\\-v]*", "|") +
+      ".*(^|/)(" + concat(string cmd | cmd = getAnInterpreterName() | cmd + "[\\d.\\-vm]*", "|") +
         ")"
   |
     node.getStringValue().regexpMatch(regex)
