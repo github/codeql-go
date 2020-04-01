@@ -25,23 +25,31 @@
 | SystemCommandExecutors.go:66:3:66:42 | call to Command | SystemCommandExecutors.go:66:24:66:27 | "sh" |
 | SystemCommandExecutors.go:66:3:66:42 | call to Command | SystemCommandExecutors.go:66:30:66:33 | "-c" |
 | SystemCommandExecutors.go:66:3:66:42 | call to Command | SystemCommandExecutors.go:66:36:66:41 | source |
-| SystemCommandExecutors.go:69:3:69:70 | call to Command | SystemCommandExecutors.go:69:16:69:21 | "ruby" |
-| SystemCommandExecutors.go:69:3:69:70 | call to Command | SystemCommandExecutors.go:69:24:69:27 | "-e" |
-| SystemCommandExecutors.go:69:3:69:70 | call to Command | SystemCommandExecutors.go:69:30:69:69 | call to Sprintf |
-| SystemCommandExecutors.go:70:3:70:82 | call to Command | SystemCommandExecutors.go:70:16:70:21 | "perl" |
-| SystemCommandExecutors.go:70:3:70:82 | call to Command | SystemCommandExecutors.go:70:24:70:27 | "-e" |
-| SystemCommandExecutors.go:70:3:70:82 | call to Command | SystemCommandExecutors.go:70:30:70:81 | call to Sprintf |
-| SystemCommandExecutors.go:73:3:73:56 | call to Command | SystemCommandExecutors.go:73:16:73:20 | "ssh" |
-| SystemCommandExecutors.go:73:3:73:56 | call to Command | SystemCommandExecutors.go:73:23:73:26 | "-t" |
-| SystemCommandExecutors.go:73:3:73:56 | call to Command | SystemCommandExecutors.go:73:29:73:39 | "user@host" |
-| SystemCommandExecutors.go:73:3:73:56 | call to Command | SystemCommandExecutors.go:73:42:73:55 | ...+... |
-| SystemCommandExecutors.go:78:3:78:32 | call to CombinedOutput | SystemCommandExecutors.go:78:26:78:31 | source |
-| SystemCommandExecutors.go:79:3:79:24 | call to Output | SystemCommandExecutors.go:79:18:79:23 | source |
-| SystemCommandExecutors.go:80:3:80:21 | call to Run | SystemCommandExecutors.go:80:15:80:20 | source |
-| SystemCommandExecutors.go:81:3:81:23 | call to Start | SystemCommandExecutors.go:81:17:81:22 | source |
-| SystemCommandExecutors.go:85:3:85:86 | call to Command | SystemCommandExecutors.go:85:14:85:18 | shell |
-| SystemCommandExecutors.go:85:3:85:86 | call to Command | SystemCommandExecutors.go:85:21:85:82 | call to toInterfaceArray |
-| SystemCommandExecutors.go:86:3:86:104 | call to Call | SystemCommandExecutors.go:86:32:86:36 | shell |
-| SystemCommandExecutors.go:86:3:86:104 | call to Call | SystemCommandExecutors.go:86:39:86:100 | call to toInterfaceArray |
-| SystemCommandExecutors.go:87:3:87:107 | call to Command | SystemCommandExecutors.go:87:35:87:39 | shell |
-| SystemCommandExecutors.go:87:3:87:107 | call to Command | SystemCommandExecutors.go:87:42:87:103 | call to toInterfaceArray |
+| SystemCommandExecutors.go:69:3:69:68 | call to Command | SystemCommandExecutors.go:69:16:69:21 | "ruby" |
+| SystemCommandExecutors.go:69:3:69:68 | call to Command | SystemCommandExecutors.go:69:24:69:27 | "-e" |
+| SystemCommandExecutors.go:69:3:69:68 | call to Command | SystemCommandExecutors.go:69:30:69:67 | call to Sprintf |
+| SystemCommandExecutors.go:70:3:70:80 | call to Command | SystemCommandExecutors.go:70:16:70:21 | "perl" |
+| SystemCommandExecutors.go:70:3:70:80 | call to Command | SystemCommandExecutors.go:70:24:70:27 | "-e" |
+| SystemCommandExecutors.go:70:3:70:80 | call to Command | SystemCommandExecutors.go:70:30:70:79 | call to Sprintf |
+| SystemCommandExecutors.go:71:3:71:86 | call to Command | SystemCommandExecutors.go:71:16:71:26 | "python2.7" |
+| SystemCommandExecutors.go:71:3:71:86 | call to Command | SystemCommandExecutors.go:71:29:71:32 | "-c" |
+| SystemCommandExecutors.go:71:3:71:86 | call to Command | SystemCommandExecutors.go:71:35:71:85 | call to Sprintf |
+| SystemCommandExecutors.go:72:3:72:87 | call to Command | SystemCommandExecutors.go:72:16:72:27 | "python3.6m" |
+| SystemCommandExecutors.go:72:3:72:87 | call to Command | SystemCommandExecutors.go:72:30:72:33 | "-c" |
+| SystemCommandExecutors.go:72:3:72:87 | call to Command | SystemCommandExecutors.go:72:36:72:86 | call to Sprintf |
+| SystemCommandExecutors.go:74:3:74:56 | call to Command | SystemCommandExecutors.go:74:16:74:33 | "python3.7-config" |
+| SystemCommandExecutors.go:75:3:75:44 | call to Command | SystemCommandExecutors.go:75:16:75:28 | "python3-pbr" |
+| SystemCommandExecutors.go:78:3:78:56 | call to Command | SystemCommandExecutors.go:78:16:78:20 | "ssh" |
+| SystemCommandExecutors.go:78:3:78:56 | call to Command | SystemCommandExecutors.go:78:23:78:26 | "-t" |
+| SystemCommandExecutors.go:78:3:78:56 | call to Command | SystemCommandExecutors.go:78:29:78:39 | "user@host" |
+| SystemCommandExecutors.go:78:3:78:56 | call to Command | SystemCommandExecutors.go:78:42:78:55 | ...+... |
+| SystemCommandExecutors.go:83:3:83:32 | call to CombinedOutput | SystemCommandExecutors.go:83:26:83:31 | source |
+| SystemCommandExecutors.go:84:3:84:24 | call to Output | SystemCommandExecutors.go:84:18:84:23 | source |
+| SystemCommandExecutors.go:85:3:85:21 | call to Run | SystemCommandExecutors.go:85:15:85:20 | source |
+| SystemCommandExecutors.go:86:3:86:23 | call to Start | SystemCommandExecutors.go:86:17:86:22 | source |
+| SystemCommandExecutors.go:90:3:90:86 | call to Command | SystemCommandExecutors.go:90:14:90:18 | shell |
+| SystemCommandExecutors.go:90:3:90:86 | call to Command | SystemCommandExecutors.go:90:21:90:82 | call to toInterfaceArray |
+| SystemCommandExecutors.go:91:3:91:104 | call to Call | SystemCommandExecutors.go:91:32:91:36 | shell |
+| SystemCommandExecutors.go:91:3:91:104 | call to Call | SystemCommandExecutors.go:91:39:91:100 | call to toInterfaceArray |
+| SystemCommandExecutors.go:92:3:92:107 | call to Command | SystemCommandExecutors.go:92:35:92:39 | shell |
+| SystemCommandExecutors.go:92:3:92:107 | call to Command | SystemCommandExecutors.go:92:42:92:103 | call to toInterfaceArray |

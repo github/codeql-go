@@ -66,8 +66,13 @@ func handler(w http.ResponseWriter, req *http.Request) {
 		exec.Command("sudo", "sh", "-c", source)
 
 		// programming-language interpreters:
-		exec.Command("ruby", "-e", fmt.Sprintf("system(\"ls %s\")", source))
-		exec.Command("perl", "-e", fmt.Sprintf("system(\"sh sudo cp %s dst\")", source))
+		exec.Command("ruby", "-e", fmt.Sprintf(`system("ls %s")`, source))
+		exec.Command("perl", "-e", fmt.Sprintf(`system("sh sudo cp %s dst")`, source))
+		exec.Command("python2.7", "-c", fmt.Sprintf(`import os;os.system("ls %s")`, source))
+		exec.Command("python3.6m", "-c", fmt.Sprintf(`import os;os.system("ls %s")`, source))
+		// negative examples (should not be caught):
+		exec.Command("python3.7-config", "--includes", source)
+		exec.Command("python3-pbr", "sha", source)
 
 		// ssh:
 		exec.Command("ssh", "-t", "user@host", "ping "+source)
