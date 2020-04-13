@@ -17,7 +17,10 @@ private module StdlibHttp {
         fieldName = "MultipartForm" or
         fieldName = "Header" or
         fieldName = "Trailer" or
-        fieldName = "URL"
+        fieldName = "URL" or
+        fieldName = "Host" or
+        fieldName = "Method" or
+        fieldName = "RequestURI"
       )
     }
   }
@@ -33,7 +36,8 @@ private module StdlibHttp {
         methName = "MultipartReader" or
         methName = "PostFormValue" or
         methName = "Referer" or
-        methName = "UserAgent"
+        methName = "UserAgent" or
+        methName = "BasicAuth"     
       )
     }
   }
