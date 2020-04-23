@@ -1,4 +1,5 @@
 | barriers.go:20:7:20:14 | call to source | barriers.go:23:8:23:8 | x |
+| barriers.go:39:7:39:14 | call to source | barriers.go:46:7:46:7 | x |
 | destructuring.go:6:13:6:21 | "tainted" | destructuring.go:20:11:20:12 | s1 |
 | destructuring.go:6:13:6:21 | "tainted" | destructuring.go:27:11:27:12 | s1 |
 | destructuring.go:11:13:11:26 | "also tainted" | destructuring.go:34:11:34:12 | s3 |

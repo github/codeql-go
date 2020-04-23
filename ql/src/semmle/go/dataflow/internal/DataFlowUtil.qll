@@ -930,6 +930,16 @@ abstract class BarrierGuard extends Node {
     )
   }
 
+  /** Holds if flow out from `node` is guarded by this guard. */
+  final predicate guardsFlowFrom(DataFlow::Node node) {
+    exists(SsaVariable input, SsaPhiNode phi, BasicBlock bb, ControlFlow::ConditionGuardNode cond |
+      node = ssaNode(input) and
+      input = phi.getInputFromBlock(bb) and
+      this.guards(cond, instructionNode(input.getAUse())) and
+      cond.dominates(bb)
+    )
+  }
+
   /**
    * Holds if `guard` markes a point in the control-flow graph where this node
    * is known to validate `nd`, which is represented by `ap`.
@@ -942,7 +952,7 @@ abstract class BarrierGuard extends Node {
   }
 
   /**
-   * Holds if `guard` markes a point in the control-flow graph where this node
+   * Holds if `guard` marks a point in the control-flow graph where this node
    * is known to validate `nd`.
    */
   private predicate guards(ControlFlow::ConditionGuardNode guard, Node nd) {
