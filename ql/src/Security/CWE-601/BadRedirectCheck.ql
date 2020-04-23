@@ -3,7 +3,7 @@
  * @description A redirect check that checks for a leading slash but not two
  *              leading slashes or a leading slash followed by a backslash is
  *              incomplete.
- * @kind problem
+ * @kind path-problem
  * @problem.severity warning
  * @id go/bad-redirect-check
  * @tags security
@@ -12,17 +12,21 @@
  */
 
 import go
+import semmle.go.security.OpenUrlRedirectCustomizations
+import DataFlow::PathGraph
 
-StringOps::HasPrefix checkForLeadingSlash(SsaWithFields v) {
+// holds if `checked` is checked for a leading slash
+StringOps::HasPrefix checkForLeadingSlash(DataFlow::Node checked) {
   exists(DataFlow::Node substr |
-    result.getBaseString() = v.getAUse() and result.getSubstring() = substr
+    result.getBaseString() = checked and result.getSubstring() = substr
   |
     substr.getStringValue() = "/"
   )
 }
 
-DataFlow::Node checkForSecondSlash(SsaWithFields v) {
-  exists(StringOps::HasPrefix hp | result = hp and hp.getBaseString() = v.getAUse() |
+// holds if `checked` is checked for a slash in its second position
+DataFlow::Node checkForSecondSlash(DataFlow::Node checked) {
+  exists(StringOps::HasPrefix hp | result = hp and hp.getBaseString() = checked |
     hp.getSubstring().getStringValue() = "//"
   )
   or
@@ -30,14 +34,15 @@ DataFlow::Node checkForSecondSlash(SsaWithFields v) {
     result = eq
   |
     slash.getStringValue() = "/" and
-    er.getBase() = v.getAUse() and
+    er.getBase() = checked and
     er.getIndex().getIntValue() = 1 and
     eq.eq(_, er, slash)
   )
 }
 
-DataFlow::Node checkForSecondBackslash(SsaWithFields v) {
-  exists(StringOps::HasPrefix hp | result = hp and hp.getBaseString() = v.getAUse() |
+// holds if `checked` is checked for a backslash in its second position
+DataFlow::Node checkForSecondBackslash(DataFlow::Node checked) {
+  exists(StringOps::HasPrefix hp | result = hp and hp.getBaseString() = checked |
     hp.getSubstring().getStringValue() = "/\\"
   )
   or
@@ -45,19 +50,74 @@ DataFlow::Node checkForSecondBackslash(SsaWithFields v) {
     result = eq
   |
     slash.getStringValue() = "\\" and
-    er.getBase() = v.getAUse() and
+    er.getBase() = checked and
     er.getIndex().getIntValue() = 1 and
     eq.eq(_, er, slash)
   )
 }
 
-from DataFlow::Node node, SsaWithFields v
+class Configuration extends TaintTracking::Configuration {
+  Configuration() { this = "BadRedirectCheck" }
+
+  override predicate isSource(DataFlow::Node source) { this.isSource(source, _) }
+
+  predicate isSource(DataFlow::Node source, BadRedirectCheckBarrier check) {
+    source = check.getAGuardedNode()
+    or
+    exists(DataFlow::Node pred | pred.getASuccessor() = source | check.guardsFlowFrom(pred))
+  }
+
+  override predicate isAdditionalTaintStep(DataFlow::Node pred, DataFlow::Node succ) {
+    // this is very over-approximate, because most filtering is done by the isSource predicate
+    exists(Write w | w.writesField(succ, _, pred))
+  }
+
+  override predicate isSanitizerOut(DataFlow::Node node) {
+    // assume this value is safe if something is prepended to it.
+    exists(StringOps::Concatenation conc, int i, int j | i < j |
+      node = conc.getOperand(j) and
+      exists(conc.getOperand(i))
+    )
+  }
+
+  override predicate isSink(DataFlow::Node sink) { sink instanceof OpenUrlRedirect::Sink }
+}
+
+// A barrier class that considers any URLs that come out of bad redirect check as "guarded"; this
+// will be a requirement of the source.
+class BadRedirectCheckBarrier extends DataFlow::BarrierGuard {
+  Expr checked;
+
+  BadRedirectCheckBarrier() {
+    exists(SsaWithFields v |
+      checked = v.getAUse().asExpr() and
+      // a check for a leading slash
+      this = checkForLeadingSlash(DataFlow::exprNode(checked)) and
+      // where there does not exist a check for both a second slash and a second backslash
+      not (
+        exists(checkForSecondSlash(v.getAUse())) and exists(checkForSecondBackslash(v.getAUse()))
+      )
+    )
+    or
+    exists(
+      DeclaredFunction f, FunctionInput inp, FunctionOutput outp,
+      ControlFlow::ConditionGuardNode guard, BadRedirectCheckBarrier check
+    |
+      check.checks(inp.getExitNode(f.getFuncDecl()).getASuccessor*().asExpr(), _) and
+      guard.ensures(outp.getEntryNode(f.getFuncDecl()), _) and
+      TaintTracking::localTaint(check, outp.getEntryNode(f.getFuncDecl())) and
+      this = f.getACall() and
+      checked = inp.getNode(this).asExpr()
+    )
+  }
+
+  override predicate checks(Expr e, boolean b) { e = checked and b = [false, true] }
+}
+
+from Configuration cfg, DataFlow::PathNode source, DataFlow::PathNode sink, DataFlow::Node check
 where
-  // there is a check for a leading slash
-  node = checkForLeadingSlash(v) and
-  // but not a check for both a second slash and a second backslash
-  not (exists(checkForSecondSlash(v)) and exists(checkForSecondBackslash(v))) and
-  v.getQualifiedName().regexpMatch("(?i).*url.*|.*redir.*|.*target.*")
-select node,
-  "This expression checks '$@' for a leading slash but checks do not exist for both '/' and '\\' in the second position.",
-  v, v.getQualifiedName()
+  cfg.isSource(source.getNode(), check) and
+  cfg.hasFlowPath(source, sink)
+select check, source, sink,
+  "This is a check that $@, which flows into a $@, has a leading slash, but not that does not have '/' or '\\' in its second position.",
+  source.getNode(), "this value", sink.getNode(), "redirect"
