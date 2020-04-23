@@ -2,6 +2,8 @@
 
 ## General improvements
 
+* The analysis of sanitizer guards has improved, leading to fewer false-positive results from the security queries.
+
 ## New queries
 
 | **Query**                                                                    | **Tags**                                                                                | **Purpose**                                                                                                                                                                         |

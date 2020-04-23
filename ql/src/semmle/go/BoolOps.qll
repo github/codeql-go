@@ -46,14 +46,6 @@ module BoolOps {
         or
         node = mid.(LorExpr).getAnOperand() and midVal = false and ensured = false
       )
-      or
-      exists(DataFlow::Node mid | node = mid.getASuccessor+().asExpr() |
-        this.ensuresIf(value, mid.asExpr(), ensured)
-      )
-      or
-      exists(DataFlow::Node mid | DataFlow::exprNode(node).getASuccessor+() = mid |
-        this.ensuresIf(value, mid.asExpr(), ensured)
-      )
     }
   }
 }
