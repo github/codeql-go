@@ -991,6 +991,13 @@ abstract class BarrierGuard extends Node {
       onlyPossibleReturnOfNonNil(fd, outp, ret) and
       p.isNonNil()
     )
+    or
+    exists(FuncDecl fd, boolean b, boolean fb |
+      fd.getFunction() = f and
+      checks(inp.getExitNode(fd).getASuccessor*().asExpr(), b) and
+      outp.getEntryNode(fd).asExpr().(BoolOps::BoolExpr).ensuresIf(fb, this.asExpr(), b) and
+      p.isBoolean(fb)
+    )
   }
 }
 
