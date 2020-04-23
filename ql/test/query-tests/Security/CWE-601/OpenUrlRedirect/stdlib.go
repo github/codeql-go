@@ -131,7 +131,7 @@ func serveStdlib() {
 		r.ParseForm()
 
 		target := r.Form.Get("target")
-		// GOOD, but we catch this anyway: a check is done on the URL
+		// GOOD: a check is done on the URL
 		if !isValidRedirect(target) {
 			target = "/"
 		}
