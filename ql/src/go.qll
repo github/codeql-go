@@ -4,6 +4,7 @@
 
 import Customizations
 import semmle.go.AST
+import semmle.go.BoolOps
 import semmle.go.Comments
 import semmle.go.Concepts
 import semmle.go.Decls
