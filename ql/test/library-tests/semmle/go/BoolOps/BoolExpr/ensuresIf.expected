@@ -1,0 +1,14 @@
+| If false is false then y is false |
+| If false is true then y is true |
+| If true is false then x is false |
+| If true is true then x is true |
+| If x is false then anded is false |
+| If x is false then tst1 is true |
+| If x is false then tst2 is false |
+| If x is true then ored is true |
+| If y is false then anded is false |
+| If y is true then ored is true |
+| If y is true then tst2 is false |
+| If z is false then anded is false |
+| If z is true then ored is true |
+| If z is true then tst2 is false |
