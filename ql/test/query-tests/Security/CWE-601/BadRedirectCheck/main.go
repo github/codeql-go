@@ -1,6 +1,9 @@
 package main
 
-import "strings"
+import (
+	"net/http"
+	"strings"
+)
 
 func isValidRedir(redirect string) bool {
 	switch {
@@ -12,6 +15,12 @@ func isValidRedir(redirect string) bool {
 	}
 }
 
+func alsoABadRedirect1(url string, rw http.ResponseWriter, req *http.Request) {
+	if isValidRedir(url) {
+		http.Redirect(rw, req, url, 302)
+	}
+}
+
 func isValidRedir1(redirect string) bool {
 	switch {
 	// OK
@@ -19,5 +28,11 @@ func isValidRedir1(redirect string) bool {
 		return true
 	default:
 		return false
+	}
+}
+
+func goodRedirect2(url string, rw http.ResponseWriter, req *http.Request) {
+	if isValidRedirectGood(url) {
+		http.Redirect(rw, req, url, 302)
 	}
 }

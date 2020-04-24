@@ -321,6 +321,7 @@ private IR::Instruction accessPathAux(TSsaWithFields base, Field f) {
   )
 }
 
+
 /** An SSA variable with zero or more fields read from it. */
 class SsaWithFields extends TSsaWithFields {
   /**
@@ -370,5 +371,13 @@ class SsaWithFields extends TSsaWithFields {
     string filepath, int startline, int startcolumn, int endline, int endcolumn
   ) {
     this.getBaseVariable().hasLocationInfo(filepath, startline, startcolumn, endline, endcolumn)
+  }
+}
+
+/** Provides helper predicates for working with SSA variables with fields. */
+module SsaWithFields {
+  /** Gets an SSA variable with no fields that corresponds to `v`. */
+  SsaWithFields fromSsa(SsaVariable v) {
+    result = TRoot(v)
   }
 }
