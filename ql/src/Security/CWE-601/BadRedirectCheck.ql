@@ -62,7 +62,7 @@ class Configuration extends TaintTracking::Configuration {
     exists(SsaWithFields v |
       DataFlow::localFlow(source, v.getAUse()) and
       not exists(source.getAPredecessor()) and
-      isBadRedirectCheck(check, v)
+      isBadRedirectCheckOrWrapper(check, v)
     )
   }
 
@@ -82,17 +82,21 @@ class Configuration extends TaintTracking::Configuration {
   override predicate isSink(DataFlow::Node sink) { sink instanceof OpenUrlRedirect::Sink }
 }
 
-predicate isBadRedirectCheck(DataFlow::Node check, SsaWithFields v) {
-  // a check for a leading slash
-  check = checkForLeadingSlash(v) and
-  // where there does not exist a check for both a second slash and a second backslash
-  not (exists(checkForSecondSlash(v)) and exists(checkForSecondBackslash(v)))
+predicate isBadRedirectCheckOrWrapper(DataFlow::Node check, SsaWithFields v) {
+  isBadRedirectCheck(check, v)
   or
   exists(FuncDef f, FunctionInput input |
     check = f.getACall() and
     input.getEntryNode(check) = v.getAUse() and
     isBadRedirectCheckWrapper(f, input)
   )
+}
+
+predicate isBadRedirectCheck(DataFlow::Node check, SsaWithFields v) {
+  // a check for a leading slash
+  check = checkForLeadingSlash(v) and
+  // where there does not exist a check for both a second slash and a second backslash
+  not (exists(checkForSecondSlash(v)) and exists(checkForSecondBackslash(v)))
 }
 
 predicate isBadRedirectCheckWrapper(FuncDef f, FunctionInput input) {
