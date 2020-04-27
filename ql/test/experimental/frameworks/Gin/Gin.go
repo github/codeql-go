@@ -15,7 +15,7 @@ type Person struct {
 func use(val string) {}
 
 // gin
-func ginHandleruse(ctx *gin.Context) {
+func ginHandler(ctx *gin.Context) {
 	{
 		val := ctx.GetHeader("key")
 		use(val)
