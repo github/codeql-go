@@ -99,16 +99,24 @@ class Configuration extends TaintTracking::Configuration {
   override predicate isSink(DataFlow::Node sink) { sink instanceof OpenUrlRedirect::Sink }
 }
 
+/**
+ * Holds there is a check `check` that is a bad redirect check, and `v` is either
+ * checked directly by `check` or checked by a function that contains `check`.
+ */
 predicate isBadRedirectCheckOrWrapper(DataFlow::Node check, SsaWithFields v) {
   isBadRedirectCheck(check, v)
   or
-  exists(FuncDef f, FunctionInput input |
-    check = f.getACall() and
-    input.getEntryNode(check) = v.getAUse() and
-    isBadRedirectCheckWrapper(f, input)
+  exists(DataFlow::CallNode call, FuncDef f, FunctionInput input |
+    call = f.getACall() and
+    input.getEntryNode(call) = v.getAUse() and
+    isBadRedirectCheckWrapper(check, f, input)
   )
 }
 
+/**
+ * Holds if `check` checks that `v` has a leading slash, but not whether it has another slash or a
+ * backslash in its second position.
+ */
 predicate isBadRedirectCheck(DataFlow::Node check, SsaWithFields v) {
   // a check for a leading slash
   check = checkForLeadingSlash(v) and
@@ -116,8 +124,11 @@ predicate isBadRedirectCheck(DataFlow::Node check, SsaWithFields v) {
   not (exists(checkForSecondSlash(v)) and exists(checkForSecondBackslash(v)))
 }
 
-predicate isBadRedirectCheckWrapper(FuncDef f, FunctionInput input) {
-  exists(DataFlow::Node check, SsaVariable ssa |
+/**
+ * Holds if `f` contains a bad redirect check `check`, that checks the parameter `input`.
+ */
+predicate isBadRedirectCheckWrapper(DataFlow::Node check, FuncDef f, FunctionInput input) {
+  exists(SsaVariable ssa |
     input.getExitNode(f) = DataFlow::ssaNode(ssa) and
     isBadRedirectCheck(check, SsaWithFields::fromSsa(ssa))
   )
