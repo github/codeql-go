@@ -36,6 +36,11 @@ DataFlow::Node checkForSecondSlash(SsaWithFields v) {
     er.getIndex().getIntValue() = 1 and
     eq.eq(_, er, slash)
   )
+  or
+  // a call to path.Clean will strip away multiple leading slashes
+  exists(DataFlow::CallNode call | call.getTarget().hasQualifiedName("path", "Clean") |
+    call.getArgument(0) = v.getAUse()
+  )
 }
 
 DataFlow::Node checkForSecondBackslash(SsaWithFields v) {
@@ -50,6 +55,14 @@ DataFlow::Node checkForSecondBackslash(SsaWithFields v) {
     er.getBase() = v.getAUse() and
     er.getIndex().getIntValue() = 1 and
     eq.eq(_, er, slash)
+  )
+  or
+  // if this variable comes from or is a net/url.URL.Path, backslashes are most likely sanitized,
+  // as the parse functions turn them into "%5C"
+  exists(DataFlow::FieldReadNode frn |
+    frn.getField().getName() = "Path" and frn.getBase().getType().hasQualifiedName("net/url", "URL")
+  |
+    frn.getASuccessor*() = v.getAUse()
   )
 }
 
@@ -76,6 +89,10 @@ class Configuration extends TaintTracking::Configuration {
     exists(StringOps::Concatenation conc, int i, int j | i < j |
       node = conc.getOperand(j) and
       exists(conc.getOperand(i))
+    )
+    or
+    exists(DataFlow::CallNode call, int i | call.getTarget().hasQualifiedName("path", "Join") |
+      i > 0 and node = call.getArgument(i)
     )
   }
 
