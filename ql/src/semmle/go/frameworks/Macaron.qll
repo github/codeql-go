@@ -7,10 +7,9 @@ import go
 private module Macaron {
   private class Context extends HTTP::ResponseWriter::Range {
     Context() {
-      this
-          .getType()
-          .getMethod("Redirect")
-          .hasQualifiedName("gopkg.in/macaron.v1", "Context", "Redirect")
+      exists(Method m | m.hasQualifiedName("gopkg.in/macaron.v1", "Context", "Redirect") |
+        m = this.getType().getMethod("Redirect")
+      )
     }
   }
 
