@@ -84,9 +84,6 @@ class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, Data
             (
               ///:out i:0 kind:slice type:[]uint8
               resultIndex = 0
-                or
-              ///:out i:1 kind:interface type:error
-              resultIndex = 1
             )
           or
           methodName = "ClientIP"
@@ -283,9 +280,6 @@ class GithubComGinGonicGinParamsSource extends UntrustedFlowSource::Range, DataF
             (
               ///:out i:0 kind:string type:string
               resultIndex = 0
-                or
-              ///:out i:1 kind:bool type:bool
-              resultIndex = 1
             )
         )
       |
