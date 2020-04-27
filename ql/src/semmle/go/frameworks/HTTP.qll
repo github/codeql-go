@@ -19,7 +19,6 @@ private module StdlibHttp {
         fieldName = "Trailer" or
         fieldName = "URL" or
         fieldName = "Host" or
-        fieldName = "Method" or
         fieldName = "RequestURI"
       )
     }
