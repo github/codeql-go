@@ -321,7 +321,6 @@ private IR::Instruction accessPathAux(TSsaWithFields base, Field f) {
   )
 }
 
-
 /** An SSA variable with zero or more fields read from it. */
 class SsaWithFields extends TSsaWithFields {
   /**
@@ -377,7 +376,5 @@ class SsaWithFields extends TSsaWithFields {
 /** Provides helper predicates for working with SSA variables with fields. */
 module SsaWithFields {
   /** Gets an SSA variable with no fields that corresponds to `v`. */
-  SsaWithFields fromSsa(SsaVariable v) {
-    result = TRoot(v)
-  }
+  SsaWithFields fromSsa(SsaVariable v) { result = TRoot(v) }
 }
