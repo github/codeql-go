@@ -39,7 +39,8 @@ DataFlow::Node checkForSecondSlash(SsaWithFields v) {
   or
   // a call to path.Clean will strip away multiple leading slashes
   exists(DataFlow::CallNode call | call.getTarget().hasQualifiedName("path", "Clean") |
-    call.getArgument(0) = v.getAUse()
+    call.getArgument(0) = v.getAUse() or
+    call.getASuccessor*() = v.getAUse()
   )
 }
 
