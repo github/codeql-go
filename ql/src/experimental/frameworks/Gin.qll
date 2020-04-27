@@ -6,7 +6,7 @@ import go
 
 private module Gin {
   // "github.com/gin-gonic/gin".Context sources:
-  ///: kind:struct
+  // kind:struct
   private class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, DataFlow::Node {
     GithubComGinGonicGinContextSource() {
       exists(string packagePath, string typeName |
@@ -87,7 +87,7 @@ private module Gin {
   }
 
   // "github.com/gin-gonic/gin".Params sources:
-  ///: kind:slice
+  // kind:slice
   private class GithubComGinGonicGinParamsSource extends UntrustedFlowSource::Range, DataFlow::Node {
     GithubComGinGonicGinParamsSource() {
       exists(string packagePath, string typeName |
@@ -119,7 +119,7 @@ private module Gin {
   }
 
   // "github.com/gin-gonic/gin".Param sources:
-  ///: kind:struct
+  // kind:struct
   private class GithubComGinGonicGinParamSource extends UntrustedFlowSource::Range, DataFlow::Node {
     GithubComGinGonicGinParamSource() {
       exists(string packagePath, string typeName |
@@ -146,7 +146,7 @@ private module Gin {
     }
   }
 
-  // Various binding functions that unmarshal data (body, URI, etc.) into the first argument:
+  // Various binding functions that unmarshal data (body, URI, query, header, etc.) into the first argument:
   private class GithubComGinGonicGinContextBindSource extends UntrustedFlowSource::Range,
     DataFlow::Node {
     GithubComGinGonicGinContextBindSource() {
