@@ -8,7 +8,3 @@ func sanitizeUrlGood(redir string) string {
 	}
 	return "/"
 }
-
-func goodRedirect(redirect string, rw http.ResponseWriter, req *http.Request) {
-	http.Redirect(rw, req, sanitizeUrlGood(redirect), 302)
-}
