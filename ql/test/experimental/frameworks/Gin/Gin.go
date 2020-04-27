@@ -1,8 +1,6 @@
 package main
 
 import (
-	"os/exec"
-
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 )
@@ -14,9 +12,7 @@ type Person struct {
 	Address string `form:"address"`
 }
 
-func use(val string) {
-	exec.Command(val)
-}
+func use(val string) {}
 
 // gin
 func ginHandleruse(ctx *gin.Context) {
@@ -93,10 +89,6 @@ func ginHandleruse(ctx *gin.Context) {
 		use(val)
 	}
 	{
-		val, _ := ctx.Get("key")
-		use(val.(string))
-	}
-	{
 		val, _ := ctx.GetPostFormMap("key")
 		use(val["a"])
 	}
@@ -115,10 +107,6 @@ func ginHandleruse(ctx *gin.Context) {
 	{
 		val := ctx.GetStringMapStringSlice("key")
 		use(val["a"][0])
-	}
-	{
-		val := ctx.MustGet("key")
-		use(val.(string))
 	}
 	{
 		val := ctx.PostFormMap("key")
@@ -167,7 +155,7 @@ func ginHandleruse(ctx *gin.Context) {
 	{
 		var person Person
 		ctx.BindYAML(&person)
-		_ = person
+		use(person.Name)
 	}
 	{
 		var person Person

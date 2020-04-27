@@ -1,62 +1,59 @@
-| Gin.go:24:10:24:29 | call to GetHeader | untrusted source |
-| Gin.go:28:10:28:30 | call to QueryArray | untrusted source |
-| Gin.go:32:10:32:25 | call to Query | untrusted source |
-| Gin.go:36:10:36:33 | call to PostFormArray | untrusted source |
-| Gin.go:40:10:40:28 | call to PostForm | untrusted source |
-| Gin.go:44:10:44:25 | call to Param | untrusted source |
-| Gin.go:48:10:48:34 | call to GetStringSlice | untrusted source |
-| Gin.go:52:10:52:29 | call to GetString | untrusted source |
-| Gin.go:56:3:56:28 | ... := ...[0] | untrusted source |
-| Gin.go:60:10:60:23 | call to ClientIP | untrusted source |
-| Gin.go:64:10:64:26 | call to ContentType | untrusted source |
-| Gin.go:68:3:68:29 | ... := ...[0] | untrusted source |
-| Gin.go:72:3:72:36 | ... := ...[0] | untrusted source |
-| Gin.go:76:3:76:31 | ... := ...[0] | untrusted source |
-| Gin.go:80:3:80:39 | ... := ...[0] | untrusted source |
-| Gin.go:84:3:84:34 | ... := ...[0] | untrusted source |
-| Gin.go:88:10:88:52 | call to DefaultPostForm | untrusted source |
-| Gin.go:92:10:92:49 | call to DefaultQuery | untrusted source |
-| Gin.go:96:3:96:26 | ... := ...[0] | untrusted source |
-| Gin.go:100:3:100:37 | ... := ...[0] | untrusted source |
-| Gin.go:104:3:104:34 | ... := ...[0] | untrusted source |
-| Gin.go:108:10:108:32 | call to GetStringMap | untrusted source |
-| Gin.go:112:10:112:38 | call to GetStringMapString | untrusted source |
-| Gin.go:116:10:116:43 | call to GetStringMapStringSlice | untrusted source |
-| Gin.go:120:10:120:27 | call to MustGet | untrusted source |
-| Gin.go:124:10:124:31 | call to PostFormMap | untrusted source |
-| Gin.go:128:10:128:28 | call to QueryMap | untrusted source |
-| Gin.go:135:10:135:21 | selection of Accepted | untrusted source |
-| Gin.go:139:10:139:19 | selection of Params | untrusted source |
-| Gin.go:140:7:140:9 | val | untrusted source |
-| Gin.go:140:7:140:12 | index expression | untrusted source |
-| Gin.go:140:7:140:18 | selection of Value | untrusted source |
-| Gin.go:145:10:145:19 | selection of Params | untrusted source |
-| Gin.go:145:10:145:22 | index expression | untrusted source |
-| Gin.go:146:7:146:9 | val | untrusted source |
-| Gin.go:146:7:146:15 | selection of Value | untrusted source |
-| Gin.go:149:10:149:19 | selection of Params | untrusted source |
-| Gin.go:149:10:149:34 | call to ByName | untrusted source |
-| Gin.go:153:3:153:34 | ... := ...[0] | untrusted source |
-| Gin.go:153:13:153:22 | selection of Params | untrusted source |
-| Gin.go:159:12:159:21 | selection of Params | untrusted source |
-| Gin.go:159:12:159:24 | index expression | untrusted source |
-| Gin.go:160:10:160:14 | param | untrusted source |
-| Gin.go:160:10:160:18 | selection of Key | untrusted source |
-| Gin.go:161:10:161:14 | param | untrusted source |
-| Gin.go:161:10:161:20 | selection of Value | untrusted source |
-| Gin.go:169:16:169:22 | &... | untrusted source |
-| Gin.go:174:15:174:21 | &... | untrusted source |
-| Gin.go:179:16:179:22 | &... | untrusted source |
-| Gin.go:184:15:184:21 | &... | untrusted source |
-| Gin.go:189:17:189:23 | &... | untrusted source |
-| Gin.go:194:20:194:26 | &... | untrusted source |
-| Gin.go:199:16:199:22 | &... | untrusted source |
-| Gin.go:204:12:204:18 | &... | untrusted source |
-| Gin.go:209:18:209:24 | &... | untrusted source |
-| Gin.go:214:26:214:32 | &... | untrusted source |
-| Gin.go:219:22:219:28 | &... | untrusted source |
-| Gin.go:224:23:224:29 | &... | untrusted source |
-| Gin.go:229:21:229:27 | &... | untrusted source |
-| Gin.go:234:22:234:28 | &... | untrusted source |
-| Gin.go:239:21:239:27 | &... | untrusted source |
-| Gin.go:244:22:244:28 | &... | untrusted source |
+| Gin.go:20:10:20:29 | call to GetHeader |
+| Gin.go:24:10:24:30 | call to QueryArray |
+| Gin.go:28:10:28:25 | call to Query |
+| Gin.go:32:10:32:33 | call to PostFormArray |
+| Gin.go:36:10:36:28 | call to PostForm |
+| Gin.go:40:10:40:25 | call to Param |
+| Gin.go:44:10:44:34 | call to GetStringSlice |
+| Gin.go:48:10:48:29 | call to GetString |
+| Gin.go:52:3:52:28 | ... := ...[0] |
+| Gin.go:56:10:56:23 | call to ClientIP |
+| Gin.go:60:10:60:26 | call to ContentType |
+| Gin.go:64:3:64:29 | ... := ...[0] |
+| Gin.go:68:3:68:36 | ... := ...[0] |
+| Gin.go:72:3:72:31 | ... := ...[0] |
+| Gin.go:76:3:76:39 | ... := ...[0] |
+| Gin.go:80:3:80:34 | ... := ...[0] |
+| Gin.go:84:10:84:52 | call to DefaultPostForm |
+| Gin.go:88:10:88:49 | call to DefaultQuery |
+| Gin.go:92:3:92:37 | ... := ...[0] |
+| Gin.go:96:3:96:34 | ... := ...[0] |
+| Gin.go:100:10:100:32 | call to GetStringMap |
+| Gin.go:104:10:104:38 | call to GetStringMapString |
+| Gin.go:108:10:108:43 | call to GetStringMapStringSlice |
+| Gin.go:112:10:112:31 | call to PostFormMap |
+| Gin.go:116:10:116:28 | call to QueryMap |
+| Gin.go:123:10:123:21 | selection of Accepted |
+| Gin.go:127:10:127:19 | selection of Params |
+| Gin.go:128:7:128:9 | val |
+| Gin.go:128:7:128:12 | index expression |
+| Gin.go:128:7:128:18 | selection of Value |
+| Gin.go:133:10:133:19 | selection of Params |
+| Gin.go:133:10:133:22 | index expression |
+| Gin.go:134:7:134:9 | val |
+| Gin.go:134:7:134:15 | selection of Value |
+| Gin.go:137:10:137:19 | selection of Params |
+| Gin.go:137:10:137:34 | call to ByName |
+| Gin.go:141:13:141:22 | selection of Params |
+| Gin.go:147:12:147:21 | selection of Params |
+| Gin.go:147:12:147:24 | index expression |
+| Gin.go:148:10:148:14 | param |
+| Gin.go:148:10:148:18 | selection of Key |
+| Gin.go:149:10:149:14 | param |
+| Gin.go:149:10:149:20 | selection of Value |
+| Gin.go:157:16:157:22 | &... |
+| Gin.go:162:15:162:21 | &... |
+| Gin.go:167:16:167:22 | &... |
+| Gin.go:172:15:172:21 | &... |
+| Gin.go:177:17:177:23 | &... |
+| Gin.go:182:20:182:26 | &... |
+| Gin.go:187:16:187:22 | &... |
+| Gin.go:192:12:192:18 | &... |
+| Gin.go:197:18:197:24 | &... |
+| Gin.go:202:26:202:32 | &... |
+| Gin.go:207:22:207:28 | &... |
+| Gin.go:212:23:212:29 | &... |
+| Gin.go:217:21:217:27 | &... |
+| Gin.go:222:22:222:28 | &... |
+| Gin.go:227:21:227:27 | &... |
+| Gin.go:232:22:232:28 | &... |
