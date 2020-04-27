@@ -4,7 +4,7 @@
  *              leading slashes or a leading slash followed by a backslash is
  *              incomplete.
  * @kind path-problem
- * @problem.severity warning
+ * @problem.severity error
  * @id go/bad-redirect-check
  * @tags security
  *       external/cwe/cwe-601
