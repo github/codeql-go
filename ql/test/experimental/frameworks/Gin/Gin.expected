@@ -23,37 +23,41 @@
 | Gin.go:108:10:108:43 | call to GetStringMapStringSlice |
 | Gin.go:112:10:112:31 | call to PostFormMap |
 | Gin.go:116:10:116:28 | call to QueryMap |
-| Gin.go:123:10:123:21 | selection of Accepted |
-| Gin.go:127:10:127:19 | selection of Params |
-| Gin.go:128:7:128:9 | val |
-| Gin.go:128:7:128:12 | index expression |
-| Gin.go:128:7:128:18 | selection of Value |
-| Gin.go:133:10:133:19 | selection of Params |
-| Gin.go:133:10:133:22 | index expression |
-| Gin.go:134:7:134:9 | val |
-| Gin.go:134:7:134:15 | selection of Value |
-| Gin.go:137:10:137:19 | selection of Params |
-| Gin.go:137:10:137:34 | call to ByName |
-| Gin.go:141:13:141:22 | selection of Params |
-| Gin.go:147:12:147:21 | selection of Params |
-| Gin.go:147:12:147:24 | index expression |
-| Gin.go:148:10:148:14 | param |
-| Gin.go:148:10:148:18 | selection of Key |
-| Gin.go:149:10:149:14 | param |
-| Gin.go:149:10:149:20 | selection of Value |
-| Gin.go:157:16:157:22 | &... |
-| Gin.go:162:15:162:21 | &... |
-| Gin.go:167:16:167:22 | &... |
-| Gin.go:172:15:172:21 | &... |
-| Gin.go:177:17:177:23 | &... |
-| Gin.go:182:20:182:26 | &... |
-| Gin.go:187:16:187:22 | &... |
-| Gin.go:192:12:192:18 | &... |
-| Gin.go:197:18:197:24 | &... |
-| Gin.go:202:26:202:32 | &... |
-| Gin.go:207:22:207:28 | &... |
-| Gin.go:212:23:212:29 | &... |
-| Gin.go:217:21:217:27 | &... |
-| Gin.go:222:22:222:28 | &... |
-| Gin.go:227:21:227:27 | &... |
-| Gin.go:232:22:232:28 | &... |
+| Gin.go:120:10:120:23 | call to FullPath |
+| Gin.go:126:10:126:21 | selection of Accepted |
+| Gin.go:130:10:130:19 | selection of Params |
+| Gin.go:131:7:131:9 | val |
+| Gin.go:131:7:131:12 | index expression |
+| Gin.go:131:7:131:18 | selection of Value |
+| Gin.go:136:10:136:19 | selection of Params |
+| Gin.go:136:10:136:22 | index expression |
+| Gin.go:137:7:137:9 | val |
+| Gin.go:137:7:137:15 | selection of Value |
+| Gin.go:140:10:140:19 | selection of Params |
+| Gin.go:140:10:140:34 | call to ByName |
+| Gin.go:144:3:144:34 | ... := ...[0] |
+| Gin.go:144:13:144:22 | selection of Params |
+| Gin.go:150:12:150:21 | selection of Params |
+| Gin.go:150:12:150:24 | index expression |
+| Gin.go:151:10:151:14 | param |
+| Gin.go:151:10:151:18 | selection of Key |
+| Gin.go:152:10:152:14 | param |
+| Gin.go:152:10:152:20 | selection of Value |
+| Gin.go:160:16:160:22 | &... |
+| Gin.go:165:15:165:21 | &... |
+| Gin.go:170:16:170:22 | &... |
+| Gin.go:175:15:175:21 | &... |
+| Gin.go:180:17:180:23 | &... |
+| Gin.go:185:20:185:26 | &... |
+| Gin.go:190:16:190:22 | &... |
+| Gin.go:195:12:195:18 | &... |
+| Gin.go:200:18:200:24 | &... |
+| Gin.go:205:26:205:32 | &... |
+| Gin.go:210:22:210:28 | &... |
+| Gin.go:215:23:215:29 | &... |
+| Gin.go:220:21:220:27 | &... |
+| Gin.go:225:22:225:28 | &... |
+| Gin.go:230:21:230:27 | &... |
+| Gin.go:235:22:235:28 | &... |
+| Gin.go:240:18:240:24 | &... |
+| Gin.go:245:24:245:30 | &... |

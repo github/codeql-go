@@ -9,6 +9,9 @@ type Context struct {
 	Accepted []string
 }
 
+func (c *Context) FullPath() string {
+	return ""
+}
 func (c *Context) GetHeader(key string) string {
 	return ""
 }
@@ -159,5 +162,11 @@ func (c *Context) ShouldBindXML(obj interface{}) error {
 	return nil
 }
 func (c *Context) ShouldBindYAML(obj interface{}) error {
+	return nil
+}
+func (c *Context) BindHeader(obj interface{}) error {
+	return nil
+}
+func (c *Context) ShouldBindHeader(obj interface{}) error {
 	return nil
 }

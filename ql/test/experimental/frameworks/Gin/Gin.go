@@ -116,9 +116,12 @@ func ginHandleruse(ctx *gin.Context) {
 		val := ctx.QueryMap("key")
 		use(val["a"])
 	}
+	{
+		val := ctx.FullPath()
+		use(val)
+	}
 
 	// fields:
-
 	{
 		val := ctx.Accepted
 		use(val[0])
@@ -230,6 +233,16 @@ func ginHandleruse(ctx *gin.Context) {
 	{
 		var person Person
 		ctx.ShouldBindYAML(&person)
+		use(person.Name)
+	}
+	{
+		var person Person
+		ctx.BindHeader(&person)
+		use(person.Name)
+	}
+	{
+		var person Person
+		ctx.ShouldBindHeader(&person)
 		use(person.Name)
 	}
 }

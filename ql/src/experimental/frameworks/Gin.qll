@@ -17,6 +17,8 @@ private module Gin {
         exists(DataFlow::MethodCallNode call, string methodName |
           call.getTarget().hasQualifiedName(packagePath, typeName, methodName) and
           (
+            methodName = "FullPath"
+            or
             methodName = "GetHeader"
             or
             methodName = "QueryArray"
@@ -106,6 +108,10 @@ private module Gin {
             methodName = "Get"
           )
         |
+          // NOTE: getResult(0) will not work on calls with only one result.
+          this = call.getResult(0)
+          or
+          // ... For calls with only one result, use getResult()
           this = call.getResult()
         )
       )
@@ -140,6 +146,7 @@ private module Gin {
     }
   }
 
+  // Various binding functions that unmarshal data (body, URI, etc.) into the first argument:
   private class GithubComGinGonicGinContextBindSource extends UntrustedFlowSource::Range,
     DataFlow::Node {
     GithubComGinGonicGinContextBindSource() {
@@ -150,19 +157,21 @@ private module Gin {
         exists(DataFlow::MethodCallNode call, string methodName |
           call.getTarget().hasQualifiedName(packagePath, typeName, methodName) and
           (
+            methodName = "BindJSON" or
             methodName = "BindYAML" or
             methodName = "BindXML" or
-            methodName = "BindWith" or
             methodName = "BindUri" or
             methodName = "BindQuery" or
+            methodName = "BindWith" or
+            methodName = "BindHeader" or
             methodName = "MustBindWith" or
-            methodName = "BindJSON" or
             methodName = "Bind" or
             methodName = "ShouldBind" or
             methodName = "ShouldBindBodyWith" or
             methodName = "ShouldBindJSON" or
             methodName = "ShouldBindQuery" or
             methodName = "ShouldBindUri" or
+            methodName = "ShouldBindHeader" or
             methodName = "ShouldBindWith" or
             methodName = "ShouldBindXML" or
             methodName = "ShouldBindYAML"
