@@ -4,12 +4,6 @@
 
 import go
 
-///::: "github.com/gin-gonic/gin".Context
-///: type:{"github.com/gin-gonic/gin".Context}
-///: type:{"github.com/gin-gonic/gin".Context}/methods/Copy/out/0/type:{"github.com/gin-gonic/gin".Context}
-///: type:{"github.com/gin-gonic/gin".Context}/methods/Handler/out/0/type:{"github.com/gin-gonic/gin".HandlerFunc}/methods/HandlerFunc/in/0/type:{"github.com/gin-gonic/gin".Context}
-
-// ------------------------------------------------------------
 // "github.com/gin-gonic/gin".Context sources:
 ///: kind:struct
 class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, DataFlow::Node {
@@ -71,27 +65,6 @@ class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, Data
               resultIndex = 0
             )
           or
-          methodName = "NegotiateFormat"
-            and
-            (
-              ///:out i:0 kind:string type:string
-              resultIndex = 0
-            )
-          or
-          methodName = "HandlerNames"
-            and
-            (
-              ///:out i:0 kind:slice type:[]string
-              resultIndex = 0
-            )
-          or
-          methodName = "HandlerName"
-            and
-            (
-              ///:out i:0 kind:string type:string
-              resultIndex = 0
-            )
-          or
           methodName = "GetStringSlice"
             and
             (
@@ -135,9 +108,6 @@ class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, Data
             (
               ///:out i:0 kind:string type:string
               resultIndex = 0
-                or
-              ///:out i:1 kind:interface type:error
-              resultIndex = 1
             )
           or
           methodName = "GetQueryArray"
@@ -145,9 +115,6 @@ class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, Data
             (
               ///:out i:0 kind:slice type:[]string
               resultIndex = 0
-                or
-              ///:out i:1 kind:bool type:bool
-              resultIndex = 1
             )
           or
           methodName = "GetQuery"
@@ -155,9 +122,6 @@ class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, Data
             (
               ///:out i:0 kind:string type:string
               resultIndex = 0
-                or
-              ///:out i:1 kind:bool type:bool
-              resultIndex = 1
             )
           or
           methodName = "GetPostFormArray"
@@ -165,9 +129,6 @@ class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, Data
             (
               ///:out i:0 kind:slice type:[]string
               resultIndex = 0
-                or
-              ///:out i:1 kind:bool type:bool
-              resultIndex = 1
             )
           or
           methodName = "GetPostForm"
@@ -175,9 +136,6 @@ class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, Data
             (
               ///:out i:0 kind:string type:string
               resultIndex = 0
-                or
-              ///:out i:1 kind:bool type:bool
-              resultIndex = 1
             )
           or
           methodName = "DefaultPostForm"
@@ -194,28 +152,11 @@ class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, Data
               resultIndex = 0
             )
           or
-          methodName = "Err"
-            and
-            (
-              ///:out i:0 kind:interface type:error
-              resultIndex = 0
-            )
-          or
-          methodName = "Error"
-            and
-            (
-              ///:out i:0 kind:ptr type:"github.com/gin-gonic/gin".Error
-              resultIndex = 0
-            )
-          or
           methodName = "FormFile"
             and
             (
               ///:out i:0 kind:ptr type:"mime/multipart".FileHeader
               resultIndex = 0
-                or
-              ///:out i:1 kind:interface type:error
-              resultIndex = 1
             )
           or
           methodName = "Get"
@@ -223,61 +164,6 @@ class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, Data
             (
               ///:out i:0 kind:interface type:interface {}
               resultIndex = 0
-                or
-              ///:out i:1 kind:bool type:bool
-              resultIndex = 1
-            )
-          or
-          methodName = "GetBool"
-            and
-            (
-              ///:out i:0 kind:bool type:bool
-              resultIndex = 0
-            )
-          or
-          methodName = "GetDuration"
-            and
-            (
-              ///:out i:0 kind:int64 type:"time".Duration
-              resultIndex = 0
-            )
-          or
-          methodName = "GetFloat64"
-            and
-            (
-              ///:out i:0 kind:float64 type:float64
-              resultIndex = 0
-            )
-          or
-          methodName = "Done"
-            and
-            (
-              ///:out i:0 kind:chan type:<-chan struct {}
-              resultIndex = 0
-            )
-          or
-          methodName = "GetInt"
-            and
-            (
-              ///:out i:0 kind:int type:int
-              resultIndex = 0
-            )
-          or
-          methodName = "GetInt64"
-            and
-            (
-              ///:out i:0 kind:int64 type:int64
-              resultIndex = 0
-            )
-          or
-          methodName = "Deadline"
-            and
-            (
-              ///:out i:0 kind:struct type:"time".Time
-              resultIndex = 0
-                or
-              ///:out i:1 kind:bool type:bool
-              resultIndex = 1
             )
           or
           methodName = "GetPostFormMap"
@@ -285,39 +171,12 @@ class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, Data
             (
               ///:out i:0 kind:map type:map[string]string
               resultIndex = 0
-                or
-              ///:out i:1 kind:bool type:bool
-              resultIndex = 1
-            )
-          or
-          methodName = "Copy"
-            and
-            (
-              ///:out i:0 kind:ptr type:"github.com/gin-gonic/gin".Context
-              resultIndex = 0
             )
           or
           methodName = "GetQueryMap"
             and
             (
               ///:out i:0 kind:map type:map[string]string
-              resultIndex = 0
-                or
-              ///:out i:1 kind:bool type:bool
-              resultIndex = 1
-            )
-          or
-          methodName = "BindYAML"
-            and
-            (
-              ///:out i:0 kind:interface type:error
-              resultIndex = 0
-            )
-          or
-          methodName = "BindXML"
-            and
-            (
-              ///:out i:0 kind:interface type:error
               resultIndex = 0
             )
           or
@@ -342,69 +201,10 @@ class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, Data
               resultIndex = 0
             )
           or
-          methodName = "BindWith"
-            and
-            (
-              ///:out i:0 kind:interface type:error
-              resultIndex = 0
-            )
-          or
-          methodName = "GetTime"
-            and
-            (
-              ///:out i:0 kind:struct type:"time".Time
-              resultIndex = 0
-            )
-          or
-          methodName = "Handler"
-            and
-            (
-              ///:out i:0 kind:func type:"github.com/gin-gonic/gin".HandlerFunc
-              resultIndex = 0
-            )
-          or
-          methodName = "BindUri"
-            and
-            (
-              ///:out i:0 kind:interface type:error
-              resultIndex = 0
-            )
-          or
-          methodName = "BindQuery"
-            and
-            (
-              ///:out i:0 kind:interface type:error
-              resultIndex = 0
-            )
-          or
-          methodName = "IsAborted"
-            and
-            (
-              ///:out i:0 kind:bool type:bool
-              resultIndex = 0
-            )
-          or
-          methodName = "IsWebsocket"
-            and
-            (
-              ///:out i:0 kind:bool type:bool
-              resultIndex = 0
-            )
-          or
           methodName = "MultipartForm"
             and
             (
               ///:out i:0 kind:ptr type:"mime/multipart".Form
-              resultIndex = 0
-                or
-              ///:out i:1 kind:interface type:error
-              resultIndex = 1
-            )
-          or
-          methodName = "MustBindWith"
-            and
-            (
-              ///:out i:0 kind:interface type:error
               resultIndex = 0
             )
           or
@@ -415,20 +215,6 @@ class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, Data
               resultIndex = 0
             )
           or
-          methodName = "BindJSON"
-            and
-            (
-              ///:out i:0 kind:interface type:error
-              resultIndex = 0
-            )
-          or
-          methodName = "Bind"
-            and
-            (
-              ///:out i:0 kind:interface type:error
-              resultIndex = 0
-            )
-          or
           methodName = "PostFormMap"
             and
             (
@@ -436,94 +222,10 @@ class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, Data
               resultIndex = 0
             )
           or
-          methodName = "AbortWithError"
-            and
-            (
-              ///:out i:0 kind:ptr type:"github.com/gin-gonic/gin".Error
-              resultIndex = 0
-            )
-          or
           methodName = "QueryMap"
             and
             (
               ///:out i:0 kind:map type:map[string]string
-              resultIndex = 0
-            )
-          or
-          methodName = "SaveUploadedFile"
-            and
-            (
-              ///:out i:0 kind:interface type:error
-              resultIndex = 0
-            )
-          or
-          methodName = "ShouldBind"
-            and
-            (
-              ///:out i:0 kind:interface type:error
-              resultIndex = 0
-            )
-          or
-          methodName = "ShouldBindBodyWith"
-            and
-            (
-              ///:out i:0 kind:interface type:error
-              resultIndex = 0
-            )
-          or
-          methodName = "ShouldBindJSON"
-            and
-            (
-              ///:out i:0 kind:interface type:error
-              resultIndex = 0
-            )
-          or
-          methodName = "ShouldBindQuery"
-            and
-            (
-              ///:out i:0 kind:interface type:error
-              resultIndex = 0
-            )
-          or
-          methodName = "ShouldBindUri"
-            and
-            (
-              ///:out i:0 kind:interface type:error
-              resultIndex = 0
-            )
-          or
-          methodName = "ShouldBindWith"
-            and
-            (
-              ///:out i:0 kind:interface type:error
-              resultIndex = 0
-            )
-          or
-          methodName = "ShouldBindXML"
-            and
-            (
-              ///:out i:0 kind:interface type:error
-              resultIndex = 0
-            )
-          or
-          methodName = "ShouldBindYAML"
-            and
-            (
-              ///:out i:0 kind:interface type:error
-              resultIndex = 0
-            )
-          or
-          methodName = "Stream"
-            and
-            (
-              ///:out i:0 kind:bool type:bool
-              resultIndex = 0
-            )
-          or
-          methodName = "Value"
-            and
-            (
-              ///:out i:0 kind:interface type:interface {}
               resultIndex = 0
             )
         )
@@ -539,20 +241,8 @@ class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, Data
           ///: kind:slice type:[]string
           fieldName = "Accepted"
             or
-          ///: kind:ptr type:"net/http".Request
-          fieldName = "Request"
-            or
           ///: kind:slice type:"github.com/gin-gonic/gin".Params
           fieldName = "Params"
-            or
-          ///: kind:interface type:"github.com/gin-gonic/gin".ResponseWriter
-          fieldName = "Writer"
-            or
-          ///: kind:slice type:"github.com/gin-gonic/gin".errorMsgs
-          fieldName = "Errors"
-            or
-          ///: kind:map type:map[string]interface {}
-          fieldName = "Keys"
         )
       |
         fld.hasQualifiedName(packagePath, typeName, fieldName) and 
@@ -562,10 +252,6 @@ class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, Data
   }
 }
 
-///::: "github.com/gin-gonic/gin".Params
-///: type:{"github.com/gin-gonic/gin".Context}/fields/Params/type:{"github.com/gin-gonic/gin".Params}
-
-// ------------------------------------------------------------
 // "github.com/gin-gonic/gin".Params sources:
 ///: kind:slice
 class GithubComGinGonicGinParamsSource extends UntrustedFlowSource::Range, DataFlow::Node {
