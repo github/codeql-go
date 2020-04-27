@@ -1,0 +1,62 @@
+| Gin.go:24:10:24:29 | call to GetHeader | untrusted source |
+| Gin.go:28:10:28:30 | call to QueryArray | untrusted source |
+| Gin.go:32:10:32:25 | call to Query | untrusted source |
+| Gin.go:36:10:36:33 | call to PostFormArray | untrusted source |
+| Gin.go:40:10:40:28 | call to PostForm | untrusted source |
+| Gin.go:44:10:44:25 | call to Param | untrusted source |
+| Gin.go:48:10:48:34 | call to GetStringSlice | untrusted source |
+| Gin.go:52:10:52:29 | call to GetString | untrusted source |
+| Gin.go:56:3:56:28 | ... := ...[0] | untrusted source |
+| Gin.go:60:10:60:23 | call to ClientIP | untrusted source |
+| Gin.go:64:10:64:26 | call to ContentType | untrusted source |
+| Gin.go:68:3:68:29 | ... := ...[0] | untrusted source |
+| Gin.go:72:3:72:36 | ... := ...[0] | untrusted source |
+| Gin.go:76:3:76:31 | ... := ...[0] | untrusted source |
+| Gin.go:80:3:80:39 | ... := ...[0] | untrusted source |
+| Gin.go:84:3:84:34 | ... := ...[0] | untrusted source |
+| Gin.go:88:10:88:52 | call to DefaultPostForm | untrusted source |
+| Gin.go:92:10:92:49 | call to DefaultQuery | untrusted source |
+| Gin.go:96:3:96:26 | ... := ...[0] | untrusted source |
+| Gin.go:100:3:100:37 | ... := ...[0] | untrusted source |
+| Gin.go:104:3:104:34 | ... := ...[0] | untrusted source |
+| Gin.go:108:10:108:32 | call to GetStringMap | untrusted source |
+| Gin.go:112:10:112:38 | call to GetStringMapString | untrusted source |
+| Gin.go:116:10:116:43 | call to GetStringMapStringSlice | untrusted source |
+| Gin.go:120:10:120:27 | call to MustGet | untrusted source |
+| Gin.go:124:10:124:31 | call to PostFormMap | untrusted source |
+| Gin.go:128:10:128:28 | call to QueryMap | untrusted source |
+| Gin.go:135:10:135:21 | selection of Accepted | untrusted source |
+| Gin.go:139:10:139:19 | selection of Params | untrusted source |
+| Gin.go:140:7:140:9 | val | untrusted source |
+| Gin.go:140:7:140:12 | index expression | untrusted source |
+| Gin.go:140:7:140:18 | selection of Value | untrusted source |
+| Gin.go:145:10:145:19 | selection of Params | untrusted source |
+| Gin.go:145:10:145:22 | index expression | untrusted source |
+| Gin.go:146:7:146:9 | val | untrusted source |
+| Gin.go:146:7:146:15 | selection of Value | untrusted source |
+| Gin.go:149:10:149:19 | selection of Params | untrusted source |
+| Gin.go:149:10:149:34 | call to ByName | untrusted source |
+| Gin.go:153:3:153:34 | ... := ...[0] | untrusted source |
+| Gin.go:153:13:153:22 | selection of Params | untrusted source |
+| Gin.go:159:12:159:21 | selection of Params | untrusted source |
+| Gin.go:159:12:159:24 | index expression | untrusted source |
+| Gin.go:160:10:160:14 | param | untrusted source |
+| Gin.go:160:10:160:18 | selection of Key | untrusted source |
+| Gin.go:161:10:161:14 | param | untrusted source |
+| Gin.go:161:10:161:20 | selection of Value | untrusted source |
+| Gin.go:169:16:169:22 | &... | untrusted source |
+| Gin.go:174:15:174:21 | &... | untrusted source |
+| Gin.go:179:16:179:22 | &... | untrusted source |
+| Gin.go:184:15:184:21 | &... | untrusted source |
+| Gin.go:189:17:189:23 | &... | untrusted source |
+| Gin.go:194:20:194:26 | &... | untrusted source |
+| Gin.go:199:16:199:22 | &... | untrusted source |
+| Gin.go:204:12:204:18 | &... | untrusted source |
+| Gin.go:209:18:209:24 | &... | untrusted source |
+| Gin.go:214:26:214:32 | &... | untrusted source |
+| Gin.go:219:22:219:28 | &... | untrusted source |
+| Gin.go:224:23:224:29 | &... | untrusted source |
+| Gin.go:229:21:229:27 | &... | untrusted source |
+| Gin.go:234:22:234:28 | &... | untrusted source |
+| Gin.go:239:21:239:27 | &... | untrusted source |
+| Gin.go:244:22:244:28 | &... | untrusted source |

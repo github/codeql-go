@@ -1,5 +1,0 @@
-import go
-import experimental.Gin
-
-from UntrustedFlowSource exec
-select exec, ""

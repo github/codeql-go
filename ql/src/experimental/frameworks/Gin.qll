@@ -1,24 +1,18 @@
 /**
- * Provides classes for working with untrusted flow sources from the `github.com/gin-gonic/gin` package.
+ * Provides classes for working with HTTP-related concepts such as requests and responses from the `github.com/gin-gonic/gin` package.
  */
 
 import go
 
+private module Gin {
 // "github.com/gin-gonic/gin".Context sources:
 ///: kind:struct
-class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, DataFlow::Node {
+private class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, DataFlow::Node {
   GithubComGinGonicGinContextSource() {
     exists(string packagePath, string typeName |
       packagePath = "github.com/gin-gonic/gin" and
       typeName = "Context"
     |
-      // Any read of a variable of this type:
-      exists(DataFlow::ReadNode read |
-        read.getType().hasQualifiedName(packagePath, typeName)
-      |
-        this = read
-      )
-      or
       // Method calls:
       exists(DataFlow::MethodCallNode call, string methodName, int resultIndex |
         call.getTarget().hasQualifiedName(packagePath, typeName, methodName) and
@@ -149,13 +143,6 @@ class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, Data
               resultIndex = 0
             )
           or
-          methodName = "FormFile"
-            and
-            (
-              ///:out i:0 kind:ptr type:"mime/multipart".FileHeader
-              resultIndex = 0
-            )
-          or
           methodName = "Get"
             and
             (
@@ -198,13 +185,6 @@ class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, Data
               resultIndex = 0
             )
           or
-          methodName = "MultipartForm"
-            and
-            (
-              ///:out i:0 kind:ptr type:"mime/multipart".Form
-              resultIndex = 0
-            )
-          or
           methodName = "MustGet"
             and
             (
@@ -237,9 +217,6 @@ class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, Data
         (
           ///: kind:slice type:[]string
           fieldName = "Accepted"
-            or
-          ///: kind:slice type:"github.com/gin-gonic/gin".Params
-          fieldName = "Params"
         )
       |
         fld.hasQualifiedName(packagePath, typeName, fieldName) and 
@@ -251,7 +228,7 @@ class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, Data
 
 // "github.com/gin-gonic/gin".Params sources:
 ///: kind:slice
-class GithubComGinGonicGinParamsSource extends UntrustedFlowSource::Range, DataFlow::Node {
+private class GithubComGinGonicGinParamsSource extends UntrustedFlowSource::Range, DataFlow::Node {
   GithubComGinGonicGinParamsSource() {
     exists(string packagePath, string typeName |
       packagePath = "github.com/gin-gonic/gin" and
@@ -297,7 +274,7 @@ class GithubComGinGonicGinParamsSource extends UntrustedFlowSource::Range, DataF
 // ------------------------------------------------------------
 // "github.com/gin-gonic/gin".Param sources:
 ///: kind:struct
-class GithubComGinGonicGinParamSource extends UntrustedFlowSource::Range, DataFlow::Node {
+private class GithubComGinGonicGinParamSource extends UntrustedFlowSource::Range, DataFlow::Node {
   GithubComGinGonicGinParamSource() {
     exists(string packagePath, string typeName |
       packagePath = "github.com/gin-gonic/gin" and
@@ -327,7 +304,7 @@ class GithubComGinGonicGinParamSource extends UntrustedFlowSource::Range, DataFl
   }
 }
 
-class GithubComGinGonicGinContextBindSource extends UntrustedFlowSource::Range, DataFlow::Node {
+private class GithubComGinGonicGinContextBindSource extends UntrustedFlowSource::Range, DataFlow::Node {
   GithubComGinGonicGinContextBindSource() {
     exists(string packagePath, string typeName |
       packagePath = "github.com/gin-gonic/gin" and
@@ -358,4 +335,5 @@ class GithubComGinGonicGinContextBindSource extends UntrustedFlowSource::Range, 
       )
     )
   }
+}
 }
