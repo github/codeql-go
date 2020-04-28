@@ -23,14 +23,12 @@ StringOps::HasPrefix checkForLeadingSlash(SsaWithFields v) {
   )
 }
 
-DataFlow::Node checkForSecondSlash(SsaWithFields v) {
-  exists(StringOps::HasPrefix hp | result = hp and hp.getBaseString() = v.getAUse() |
+predicate isCheckedForSecondSlash(SsaWithFields v) {
+  exists(StringOps::HasPrefix hp | hp.getBaseString() = v.getAUse() |
     hp.getSubstring().getStringValue() = "//"
   )
   or
   exists(DataFlow::EqualityTestNode eq, DataFlow::Node slash, DataFlow::ElementReadNode er |
-    result = eq
-  |
     slash.getStringValue() = "/" and
     er.getBase() = v.getAUse() and
     er.getIndex().getIntValue() = 1 and
@@ -38,20 +36,33 @@ DataFlow::Node checkForSecondSlash(SsaWithFields v) {
   )
   or
   // a call to path.Clean will strip away multiple leading slashes
-  exists(DataFlow::CallNode call | call.getTarget().hasQualifiedName("path", "Clean") |
-    call.getArgument(0) = v.getAUse() or
-    call.getASuccessor*() = v.getAUse()
+  isCleaned(v.getAUse())
+}
+
+/**
+ * Holds if `nd` is the result of a call to `path.Clean`, or flows into the first argument
+ * of such a call, possibly inter-procedurally.
+ */
+predicate isCleaned(DataFlow::Node nd) {
+  exists(Function clean | clean.hasQualifiedName("path", "Clean") |
+    nd = clean.getACall()
+    or
+    nd = clean.getACall().getArgument(0)
+  )
+  or
+  isCleaned(nd.getAPredecessor())
+  or
+  exists(FuncDef f, FunctionInput inp | nd = inp.getExitNode(f) |
+    forex(DataFlow::CallNode call | call.getACallee() = f | isCleaned(inp.getEntryNode(call)))
   )
 }
 
-DataFlow::Node checkForSecondBackslash(SsaWithFields v) {
-  exists(StringOps::HasPrefix hp | result = hp and hp.getBaseString() = v.getAUse() |
+predicate isCheckedForSecondBackslash(SsaWithFields v) {
+  exists(StringOps::HasPrefix hp | hp.getBaseString() = v.getAUse() |
     hp.getSubstring().getStringValue() = "/\\"
   )
   or
   exists(DataFlow::EqualityTestNode eq, DataFlow::Node slash, DataFlow::ElementReadNode er |
-    result = eq
-  |
     slash.getStringValue() = "\\" and
     er.getBase() = v.getAUse() and
     er.getIndex().getIntValue() = 1 and
@@ -60,10 +71,22 @@ DataFlow::Node checkForSecondBackslash(SsaWithFields v) {
   or
   // if this variable comes from or is a net/url.URL.Path, backslashes are most likely sanitized,
   // as the parse functions turn them into "%5C"
-  exists(DataFlow::FieldReadNode frn |
-    frn.getField().getName() = "Path" and frn.getBase().getType().hasQualifiedName("net/url", "URL")
-  |
-    frn.getASuccessor*() = v.getAUse()
+  urlPath(v.getAUse())
+}
+
+/**
+ * Holds if `nd` derives its value from the field `url.URL.Path`, possibly inter-procedurally.
+ */
+predicate urlPath(DataFlow::Node nd) {
+  exists(Field f |
+    f.hasQualifiedName("net/url", "URL", "Path") and
+    nd = f.getARead()
+  )
+  or
+  urlPath(nd.getAPredecessor())
+  or
+  exists(FuncDef f, FunctionInput inp | nd = inp.getExitNode(f) |
+    forex(DataFlow::CallNode call | call.getACallee() = f | urlPath(inp.getEntryNode(call)))
   )
 }
 
@@ -115,6 +138,15 @@ predicate isBadRedirectCheckOrWrapper(DataFlow::Node check, SsaWithFields v) {
 }
 
 /**
+ * Gets an SSA-with-fields variable that is similar to `v` in the sense that it has the same
+ * root variable and the same sequence of field accesses.
+ */
+SsaWithFields similar(SsaWithFields v) {
+  result.getBaseVariable().getSourceVariable() = v.getBaseVariable().getSourceVariable() and
+  result.getQualifiedName() = v.getQualifiedName()
+}
+
+/**
  * Holds if `check` checks that `v` has a leading slash, but not whether it has another slash or a
  * backslash in its second position.
  */
@@ -122,16 +154,21 @@ predicate isBadRedirectCheck(DataFlow::Node check, SsaWithFields v) {
   // a check for a leading slash
   check = checkForLeadingSlash(v) and
   // where there does not exist a check for both a second slash and a second backslash
-  not (exists(checkForSecondSlash(v)) and exists(checkForSecondBackslash(v)))
+  // (we allow those checks to be on variables that are most likely equivalent to `v`
+  // to rule out false positives due to minor variations in data flow)
+  not (
+    isCheckedForSecondSlash(similar(v)) and
+    isCheckedForSecondBackslash(similar(v))
+  )
 }
 
 /**
  * Holds if `f` contains a bad redirect check `check`, that checks the parameter `input`.
  */
 predicate isBadRedirectCheckWrapper(DataFlow::Node check, FuncDef f, FunctionInput input) {
-  exists(SsaVariable ssa |
-    input.getExitNode(f) = DataFlow::ssaNode(ssa) and
-    isBadRedirectCheck(check, SsaWithFields::fromSsa(ssa))
+  exists(SsaWithFields v |
+    v.getAUse().getAPredecessor*() = input.getExitNode(f) and
+    isBadRedirectCheck(check, v)
   )
 }
 
