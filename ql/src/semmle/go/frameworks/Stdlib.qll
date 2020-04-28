@@ -293,6 +293,15 @@ module Strings {
       inp.isParameter(0) and outp.isResult()
     }
   }
+
+  /** The `NewReader` function. */
+  class NewReader extends TaintTracking::FunctionModel {
+    NewReader() { exists(Function fn | fn.hasQualifiedName("strings", "NewReader") | this = fn) }
+
+    override predicate hasTaintFlow(DataFlow::FunctionInput inp, DataFlow::FunctionOutput outp) {
+      inp.isParameter(_) and outp.isResult()
+    }
+  }
 }
 
 /** Provides models of commonly used functions in the `text/template` package. */
@@ -597,6 +606,419 @@ module CryptoCipher {
     override predicate hasTaintFlow(DataFlow::FunctionInput inp, DataFlow::FunctionOutput outp) {
       inp.isParameter(2) and
       outp.isResult(0)
+    }
+  }
+}
+
+class EncodingNewDecoder extends TaintTracking::FunctionModel {
+  EncodingNewDecoder() {
+    exists(Function fn |
+      fn
+          .hasQualifiedName(["encoding/json", "encoding/gob", "encoding/xml", "gopkg.in/yaml.v1",
+                "gopkg.in/yaml.v2", "gopkg.in/yaml.v3", "github.com/ghodss/yaml"], "NewDecoder")
+    |
+      this = fn
+    )
+  }
+
+  override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    inp.isParameter(0) and outp.isResult()
+  }
+}
+
+class EncodingDecoderDecode extends TaintTracking::FunctionModel, Method {
+  EncodingDecoderDecode() {
+    this
+        .(Method)
+        .hasQualifiedName(["encoding/json", "encoding/gob", "encoding/xml", "gopkg.in/yaml.v1",
+              "gopkg.in/yaml.v2", "gopkg.in/yaml.v3", "github.com/ghodss/yaml"], "Decoder", "Decode")
+  }
+
+  override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    inp.isReceiver() and outp.isParameter(0)
+  }
+}
+
+class YAMLUnmarshalFunction extends TaintTracking::FunctionModel, UnmarshalingFunction::Range {
+  YAMLUnmarshalFunction() {
+    this
+        .hasQualifiedName(["gopkg.in/yaml.v1", "gopkg.in/yaml.v2", "gopkg.in/yaml.v3",
+              "github.com/goccy/go-yaml", "github.com/ghodss/yaml"], "Unmarshal")
+  }
+
+  override predicate hasTaintFlow(DataFlow::FunctionInput inp, DataFlow::FunctionOutput outp) {
+    inp = getAnInput() and outp = getOutput()
+  }
+
+  override DataFlow::FunctionInput getAnInput() { result.isParameter(0) }
+
+  override DataFlow::FunctionOutput getOutput() { result.isParameter(1) }
+
+  override string getFormat() { result = "YAML" }
+}
+
+class XMLUnmarshalFunction extends TaintTracking::FunctionModel, UnmarshalingFunction::Range {
+  XMLUnmarshalFunction() { this.hasQualifiedName("encoding/xml", "Unmarshal") }
+
+  override predicate hasTaintFlow(DataFlow::FunctionInput inp, DataFlow::FunctionOutput outp) {
+    inp = getAnInput() and outp = getOutput()
+  }
+
+  override DataFlow::FunctionInput getAnInput() { result.isParameter(0) }
+
+  override DataFlow::FunctionOutput getOutput() { result.isParameter(1) }
+
+  override string getFormat() { result = "XML" }
+}
+
+class ReadFull extends TaintTracking::FunctionModel {
+  ReadFull() { hasQualifiedName("io", "ReadFull") }
+
+  override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    inp.isParameter(0) and outp.isParameter(1)
+  }
+}
+
+module Bufio {
+  // Scanner:
+  class BufioNewScanner extends TaintTracking::FunctionModel {
+    BufioNewScanner() {
+      exists(Function fn | fn.hasQualifiedName("bufio", "NewScanner") | this = fn)
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  class BufioScannerText extends TaintTracking::FunctionModel, Method {
+    BufioScannerText() { this.(Method).hasQualifiedName("bufio", "Scanner", "Text") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isResult()
+    }
+  }
+
+  class BufioScannerBytes extends TaintTracking::FunctionModel, Method {
+    BufioScannerBytes() { this.(Method).hasQualifiedName("bufio", "Scanner", "Bytes") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isResult()
+    }
+  }
+
+  // Reader:
+  class BufioNewReader extends TaintTracking::FunctionModel {
+    BufioNewReader() {
+      exists(Function fn |
+        fn.hasQualifiedName("bufio", ["NewReader", "NewReaderSize", "NewReadWriter"])
+      |
+        this = fn
+      )
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  class BufioReader extends TaintTracking::FunctionModel, Method {
+    BufioReader() {
+      this
+          .(Method)
+          .hasQualifiedName("bufio", ["Reader", "ReadWriter"],
+            ["Peek", "ReadByte", "ReadBytes", "ReadLine", "ReadRune", "ReadSlice", "ReadString"])
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isResult(0)
+    }
+  }
+}
+
+class IoCopy extends TaintTracking::FunctionModel {
+  IoCopy() {
+    exists(Function fn | fn.hasQualifiedName("io", ["Copy", "CopyN", "CopyBuffer"]) | this = fn)
+  }
+
+  override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    inp.isParameter(1) and outp.isParameter(0)
+  }
+}
+
+class IoLimitReader extends TaintTracking::FunctionModel {
+  IoLimitReader() { exists(Function fn | fn.hasQualifiedName("io", "LimitReader") | this = fn) }
+
+  override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    inp.isParameter(0) and outp.isResult()
+  }
+}
+
+class IoMultiReader extends TaintTracking::FunctionModel {
+  IoMultiReader() { exists(Function fn | fn.hasQualifiedName("io", "MultiReader") | this = fn) }
+
+  override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    inp.isParameter(_) and outp.isResult()
+  }
+}
+
+class IoNewSectionReader extends TaintTracking::FunctionModel {
+  IoNewSectionReader() {
+    exists(Function fn | fn.hasQualifiedName("io", "NewSectionReader") | this = fn)
+  }
+
+  override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    inp.isParameter(0) and outp.isResult()
+  }
+}
+
+private class ReaderAtReadAt extends TaintTracking::FunctionModel, Method {
+  ReaderAtReadAt() {
+    exists(Method im | im.hasQualifiedName("io", "ReaderAt", "ReadAt") | this.implements(im))
+  }
+
+  override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    inp.isReceiver() and outp.isParameter(0)
+  }
+}
+
+private class ByteReaderReadByte extends TaintTracking::FunctionModel, Method {
+  ByteReaderReadByte() {
+    exists(Method im | im.hasQualifiedName("io", "ByteReader", "ReadByte") | this.implements(im))
+  }
+
+  override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    inp.isReceiver() and outp.isResult(0)
+  }
+}
+
+private class RuneReaderReadRune extends TaintTracking::FunctionModel, Method {
+  RuneReaderReadRune() {
+    exists(Method im | im.hasQualifiedName("io", "RuneReader", "ReadRune") | this.implements(im))
+  }
+
+  override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    inp.isReceiver() and outp.isResult(0)
+  }
+}
+
+class IoReaderAt extends TaintTracking::FunctionModel, Method {
+  IoReaderAt() { this.(Method).hasQualifiedName("io", "ReaderAt", "ReadAt") }
+
+  override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    inp.isReceiver() and outp.isParameter(0)
+  }
+}
+
+class IoTeeReader extends TaintTracking::FunctionModel {
+  IoTeeReader() { exists(Function fn | fn.hasQualifiedName("io", "TeeReader") | this = fn) }
+
+  override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    inp.isParameter(0) and
+    (outp.isResult() or outp.isParameter(1))
+  }
+}
+
+class IoReadAtLeast extends TaintTracking::FunctionModel {
+  IoReadAtLeast() { exists(Function fn | fn.hasQualifiedName("io", "ReadAtLeast") | this = fn) }
+
+  override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    inp.isParameter(0) and outp.isParameter(1)
+  }
+}
+
+class IoWriteString extends TaintTracking::FunctionModel {
+  IoWriteString() { exists(Function fn | fn.hasQualifiedName("io", "WriteString") | this = fn) }
+
+  override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    inp.isParameter(1) and outp.isParameter(0)
+  }
+}
+
+module Bytes {
+  class NewBuffer extends TaintTracking::FunctionModel {
+    NewBuffer() {
+      exists(Function fn | fn.hasQualifiedName("bytes", ["NewBuffer", "NewBufferString"]) |
+        this = fn
+      )
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  class BytesReadFrom extends TaintTracking::FunctionModel, Method {
+    BytesReadFrom() { this.(Method).hasQualifiedName("bytes", "Buffer", "ReadFrom") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      // NOTE: this does not work. The aim is to taint a struct through a method call on it.
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+
+  class BufferBytes extends TaintTracking::FunctionModel, Method {
+    BufferBytes() { this.(Method).hasQualifiedName("bytes", "Buffer", ["Bytes", "String"]) }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isResult()
+    }
+  }
+
+  class NewReader extends TaintTracking::FunctionModel {
+    NewReader() { exists(Function fn | fn.hasQualifiedName("bytes", "NewReader") | this = fn) }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  class BytesReading extends TaintTracking::FunctionModel, Method {
+    BytesReading() {
+      this
+          .(Method)
+          .hasQualifiedName("bytes", ["Buffer", "Reader"],
+            ["Bytes", "Next", "ReadByte", "ReadBytes", "ReadRune", "ReadString", "String"])
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and
+      (outp.isResult() or outp.isResult(0))
+    }
+  }
+
+  class BytesWriteTo extends TaintTracking::FunctionModel, Method {
+    BytesWriteTo() { this.(Method).hasQualifiedName("bytes", "Buffer", "WriteTo") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isParameter(0)
+    }
+  }
+
+  class BytesWriting extends TaintTracking::FunctionModel, Method {
+    BytesWriting() {
+      this
+          .(Method)
+          .hasQualifiedName("bytes", "Buffer", ["Write", "WriteByte", "WriteRune", "WriteString"])
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+}
+
+// TODO: figure out why this does not work:
+module TextScanner {
+  class InitFunc extends TaintTracking::FunctionModel, Method {
+    InitFunc() { this.(Method).hasQualifiedName("text/scanner", "Scanner", "Init") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      // NOTE: this does not work. The aim is to taint a struct through a method call on it.
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+
+  class Reading extends TaintTracking::FunctionModel, Method {
+    Reading() {
+      this
+          .(Method)
+          .hasQualifiedName("text/scanner", "Scanner",
+            ["Next", "Peek", "Scan", "String", "TokenText"])
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isResult()
+    }
+  }
+}
+
+module EncodingCsv {
+  class NewReader extends TaintTracking::FunctionModel {
+    NewReader() {
+      exists(Function fn | fn.hasQualifiedName("encoding/csv", "NewReader") | this = fn)
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  class ReaderRead extends TaintTracking::FunctionModel, Method {
+    ReaderRead() { this.(Method).hasQualifiedName("encoding/csv", "Reader", "Read") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isResult(0)
+    }
+  }
+
+  class ReadAll extends TaintTracking::FunctionModel, Method {
+    ReadAll() { this.(Method).hasQualifiedName("encoding/csv", "Reader", "ReadAll") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isResult(0)
+    }
+  }
+}
+
+module Gzip {
+  class NewReader extends TaintTracking::FunctionModel {
+    NewReader() {
+      exists(Function fn | fn.hasQualifiedName("compress/gzip", "NewReader") | this = fn)
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult(0)
+    }
+  }
+}
+
+module Bzip2 {
+  class NewReader extends TaintTracking::FunctionModel {
+    NewReader() {
+      exists(Function fn | fn.hasQualifiedName("compress/bzip2", "NewReader") | this = fn)
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+}
+
+module Flate {
+  class NewReader extends TaintTracking::FunctionModel {
+    NewReader() {
+      exists(Function fn | fn.hasQualifiedName("compress/flate", ["NewReader", "NewReaderDict"]) |
+        this = fn
+      )
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+}
+
+module Lzw {
+  class NewReader extends TaintTracking::FunctionModel {
+    NewReader() {
+      exists(Function fn | fn.hasQualifiedName("compress/lzw", "NewReader") | this = fn)
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+}
+
+module Zlib {
+  class NewReader extends TaintTracking::FunctionModel {
+    NewReader() {
+      exists(Function fn | fn.hasQualifiedName("compress/zlib", "NewReader") | this = fn)
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult(0)
     }
   }
 }
