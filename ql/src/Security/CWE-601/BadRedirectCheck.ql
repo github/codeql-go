@@ -177,5 +177,5 @@ where
   cfg.isSource(source.getNode(), check) and
   cfg.hasFlowPath(source, sink)
 select check, source, sink,
-  "This is a check that $@, which flows into a $@, has a leading slash, but not that does not have '/' or '\\' in its second position.",
+  "This is a check that $@, which flows into a $@, has a leading slash, but not that it does not have '/' or '\\' in its second position.",
   source.getNode(), "this value", sink.getNode(), "redirect"
