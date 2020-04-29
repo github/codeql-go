@@ -372,9 +372,3 @@ class SsaWithFields extends TSsaWithFields {
     this.getBaseVariable().hasLocationInfo(filepath, startline, startcolumn, endline, endcolumn)
   }
 }
-
-/** Provides helper predicates for working with SSA variables with fields. */
-module SsaWithFields {
-  /** Gets an SSA variable with no fields that corresponds to `v`. */
-  SsaWithFields fromSsa(SsaVariable v) { result = TRoot(v) }
-}
