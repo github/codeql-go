@@ -95,6 +95,10 @@ class Configuration extends TaintTracking::Configuration {
 
   override predicate isSource(DataFlow::Node source) { this.isSource(source, _) }
 
+  /**
+   * Holds if `source` is the first node that flows into a use of a variable that is checked by a
+   * bad redirect check `check`..
+   */
   predicate isSource(DataFlow::Node source, DataFlow::Node check) {
     exists(SsaWithFields v |
       DataFlow::localFlow(source, v.getAUse()) and
