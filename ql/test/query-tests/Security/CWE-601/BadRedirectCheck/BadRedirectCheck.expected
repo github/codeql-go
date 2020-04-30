@@ -1,6 +1,6 @@
 edges
-| BadRedirectCheck.go:5:18:5:22 | argument corresponding to redir : string | BadRedirectCheck.go:7:10:7:14 | redir : string |
-| BadRedirectCheck.go:7:10:7:14 | redir : string | main.go:11:25:11:45 | call to sanitizeUrl |
+| BadRedirectCheck.go:3:18:3:22 | argument corresponding to redir : string | BadRedirectCheck.go:5:10:5:14 | redir : string |
+| BadRedirectCheck.go:5:10:5:14 | redir : string | main.go:11:25:11:45 | call to sanitizeUrl |
 | cves.go:14:23:14:25 | argument corresponding to url : string | cves.go:16:26:16:28 | url |
 | cves.go:33:14:33:34 | call to Get : string | cves.go:37:25:37:32 | redirect |
 | cves.go:41:14:41:34 | call to Get : string | cves.go:45:25:45:32 | redirect |
@@ -13,8 +13,8 @@ edges
 | main.go:77:36:77:38 | url : string | main.go:77:25:77:39 | call to getTarget1 |
 | main.go:87:9:87:14 | selection of Path : string | main.go:91:25:91:39 | call to getTarget2 |
 nodes
-| BadRedirectCheck.go:5:18:5:22 | argument corresponding to redir : string | semmle.label | argument corresponding to redir : string |
-| BadRedirectCheck.go:7:10:7:14 | redir : string | semmle.label | redir : string |
+| BadRedirectCheck.go:3:18:3:22 | argument corresponding to redir : string | semmle.label | argument corresponding to redir : string |
+| BadRedirectCheck.go:5:10:5:14 | redir : string | semmle.label | redir : string |
 | cves.go:14:23:14:25 | argument corresponding to url : string | semmle.label | argument corresponding to url : string |
 | cves.go:16:26:16:28 | url | semmle.label | url |
 | cves.go:33:14:33:34 | call to Get : string | semmle.label | call to Get : string |
@@ -34,8 +34,8 @@ nodes
 | main.go:87:9:87:14 | selection of Path : string | semmle.label | selection of Path : string |
 | main.go:91:25:91:39 | call to getTarget2 | semmle.label | call to getTarget2 |
 #select
-| BadRedirectCheck.go:6:23:6:37 | ...==... | BadRedirectCheck.go:5:18:5:22 | argument corresponding to redir : string | main.go:11:25:11:45 | call to sanitizeUrl | This is a check that $@, which flows into a $@, has a leading slash, but not that it does not have '/' or '\\' in its second position. | BadRedirectCheck.go:5:18:5:22 | argument corresponding to redir | this value | main.go:11:25:11:45 | call to sanitizeUrl | redirect |
-| BadRedirectCheck.go:6:23:6:37 | ...==... | main.go:10:18:10:25 | argument corresponding to redirect : string | main.go:11:25:11:45 | call to sanitizeUrl | This is a check that $@, which flows into a $@, has a leading slash, but not that it does not have '/' or '\\' in its second position. | main.go:10:18:10:25 | argument corresponding to redirect | this value | main.go:11:25:11:45 | call to sanitizeUrl | redirect |
+| BadRedirectCheck.go:4:23:4:37 | ...==... | BadRedirectCheck.go:3:18:3:22 | argument corresponding to redir : string | main.go:11:25:11:45 | call to sanitizeUrl | This is a check that $@, which flows into a $@, has a leading slash, but not that it does not have '/' or '\\' in its second position. | BadRedirectCheck.go:3:18:3:22 | argument corresponding to redir | this value | main.go:11:25:11:45 | call to sanitizeUrl | redirect |
+| BadRedirectCheck.go:4:23:4:37 | ...==... | main.go:10:18:10:25 | argument corresponding to redirect : string | main.go:11:25:11:45 | call to sanitizeUrl | This is a check that $@, which flows into a $@, has a leading slash, but not that it does not have '/' or '\\' in its second position. | main.go:10:18:10:25 | argument corresponding to redirect | this value | main.go:11:25:11:45 | call to sanitizeUrl | redirect |
 | cves.go:11:26:11:38 | ...==... | cves.go:14:23:14:25 | argument corresponding to url : string | cves.go:16:26:16:28 | url | This is a check that $@, which flows into a $@, has a leading slash, but not that it does not have '/' or '\\' in its second position. | cves.go:14:23:14:25 | argument corresponding to url | this value | cves.go:16:26:16:28 | url | redirect |
 | cves.go:34:6:34:37 | call to HasPrefix | cves.go:33:14:33:34 | call to Get : string | cves.go:37:25:37:32 | redirect | This is a check that $@, which flows into a $@, has a leading slash, but not that it does not have '/' or '\\' in its second position. | cves.go:33:14:33:34 | call to Get | this value | cves.go:37:25:37:32 | redirect | redirect |
 | cves.go:42:6:42:37 | call to HasPrefix | cves.go:41:14:41:34 | call to Get : string | cves.go:45:25:45:32 | redirect | This is a check that $@, which flows into a $@, has a leading slash, but not that it does not have '/' or '\\' in its second position. | cves.go:41:14:41:34 | call to Get | this value | cves.go:45:25:45:32 | redirect | redirect |
