@@ -1,5 +1,7 @@
 package main
 
+//go:generate depstubber -vendor github.com/sendgrid/sendgrid-go/helpers/mail "" NewEmail,NewSingleEmail,NewContent,NewV3Mail,NewV3MailInit
+
 import (
 	"io"
 	"net/smtp"
