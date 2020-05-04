@@ -5,9 +5,8 @@
 import go
 
 private module Gin {
-  // "github.com/gin-gonic/gin".Context sources:
-  // kind:struct
-  private class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range, DataFlow::Node {
+  // Extends UntrustedFlowSource with fields and methods from the "github.com/gin-gonic/gin".Context struct.
+  private class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range {
     GithubComGinGonicGinContextSource() {
       exists(string packagePath, string typeName |
         packagePath = "github.com/gin-gonic/gin" and
@@ -70,10 +69,8 @@ private module Gin {
             methodName = "QueryMap"
           )
         |
-          // NOTE: getResult(0) will not work on calls with only one result.
           this = call.getResult(0)
           or
-          // ... For calls with only one result, use getResult()
           this = call.getResult()
         )
         or
@@ -86,9 +83,8 @@ private module Gin {
     }
   }
 
-  // "github.com/gin-gonic/gin".Params sources:
-  // kind:slice
-  private class GithubComGinGonicGinParamsSource extends UntrustedFlowSource::Range, DataFlow::Node {
+  // Extends UntrustedFlowSource with methods from the "github.com/gin-gonic/gin".Params slice:
+  private class GithubComGinGonicGinParamsSource extends UntrustedFlowSource::Range {
     GithubComGinGonicGinParamsSource() {
       exists(string packagePath, string typeName |
         packagePath = "github.com/gin-gonic/gin" and
@@ -100,27 +96,19 @@ private module Gin {
         )
         or
         // Method calls:
-        exists(DataFlow::MethodCallNode call, string methodName |
-          call.getTarget().hasQualifiedName(packagePath, typeName, methodName) and
-          (
-            methodName = "ByName"
-            or
-            methodName = "Get"
-          )
+        exists(DataFlow::MethodCallNode call |
+          call.getTarget().hasQualifiedName(packagePath, typeName, ["ByName", "Get"])
         |
-          // NOTE: getResult(0) will not work on calls with only one result.
           this = call.getResult(0)
           or
-          // ... For calls with only one result, use getResult()
           this = call.getResult()
         )
       )
     }
   }
 
-  // "github.com/gin-gonic/gin".Param sources:
-  // kind:struct
-  private class GithubComGinGonicGinParamSource extends UntrustedFlowSource::Range, DataFlow::Node {
+  // Extends UntrustedFlowSource with fields and methods from the "github.com/gin-gonic/gin".Param struct.
+  private class GithubComGinGonicGinParamSource extends UntrustedFlowSource::Range {
     GithubComGinGonicGinParamSource() {
       exists(string packagePath, string typeName |
         packagePath = "github.com/gin-gonic/gin" and
@@ -132,21 +120,14 @@ private module Gin {
         )
         or
         // Field reads:
-        exists(DataFlow::Field fld, string fieldName |
-          (
-            fieldName = "Key"
-            or
-            fieldName = "Value"
-          )
-        |
-          fld.hasQualifiedName(packagePath, typeName, fieldName) and
+        exists(DataFlow::Field fld | fld.hasQualifiedName(packagePath, typeName, ["Key", "Value"]) |
           this = fld.getARead()
         )
       )
     }
   }
 
-  // Various binding functions that unmarshal data (body, URI, query, header, etc.) into the first argument:
+  // A call to a function that unmarshals data (body, URI, query, header, etc.) into the first argument:
   private class GithubComGinGonicGinContextBindSource extends UntrustedFlowSource::Range,
     DataFlow::Node {
     GithubComGinGonicGinContextBindSource() {
