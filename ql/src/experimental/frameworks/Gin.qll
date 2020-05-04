@@ -127,7 +127,8 @@ private module Gin {
     }
   }
 
-  // A call to a function that unmarshals data (body, URI, query, header, etc.) into the first argument:
+  // A call to a method on "github.com/gin-gonic/gin".Context struct that unmarshals
+  // data (body, URI, query, header, etc.) into the first argument:
   private class GithubComGinGonicGinContextBindSource extends UntrustedFlowSource::Range {
     GithubComGinGonicGinContextBindSource() {
       exists(string packagePath, string typeName |
