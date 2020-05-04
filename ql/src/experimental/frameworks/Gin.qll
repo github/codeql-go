@@ -128,8 +128,7 @@ private module Gin {
   }
 
   // A call to a function that unmarshals data (body, URI, query, header, etc.) into the first argument:
-  private class GithubComGinGonicGinContextBindSource extends UntrustedFlowSource::Range,
-    DataFlow::Node {
+  private class GithubComGinGonicGinContextBindSource extends UntrustedFlowSource::Range {
     GithubComGinGonicGinContextBindSource() {
       exists(string packagePath, string typeName |
         packagePath = "github.com/gin-gonic/gin" and
