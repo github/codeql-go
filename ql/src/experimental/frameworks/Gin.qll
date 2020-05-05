@@ -5,7 +5,9 @@
 import go
 
 private module Gin {
-  // Extends UntrustedFlowSource with fields and methods from the "github.com/gin-gonic/gin".Context struct.
+  /**
+   * Data from a `Context` struct, considered as a source of untrusted flow.
+   */
   private class GithubComGinGonicGinContextSource extends UntrustedFlowSource::Range {
     GithubComGinGonicGinContextSource() {
       exists(string packagePath, string typeName |
