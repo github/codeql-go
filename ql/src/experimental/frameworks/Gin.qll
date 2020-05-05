@@ -85,7 +85,9 @@ private module Gin {
     }
   }
 
-  // Extends UntrustedFlowSource with methods from the "github.com/gin-gonic/gin".Params slice:
+  /**
+   * Data from a `Params` slice, considered as a source of untrusted flow.
+   */
   private class GithubComGinGonicGinParamsSource extends UntrustedFlowSource::Range {
     GithubComGinGonicGinParamsSource() {
       exists(string packagePath, string typeName |
@@ -109,7 +111,9 @@ private module Gin {
     }
   }
 
-  // Extends UntrustedFlowSource with fields and methods from the "github.com/gin-gonic/gin".Param struct.
+  /**
+   * Data from a `Param` struct, considered as a source of untrusted flow.
+   */
   private class GithubComGinGonicGinParamSource extends UntrustedFlowSource::Range {
     GithubComGinGonicGinParamSource() {
       exists(string packagePath, string typeName |
@@ -129,8 +133,9 @@ private module Gin {
     }
   }
 
-  // A call to a method on "github.com/gin-gonic/gin".Context struct that unmarshals
-  // data (body, URI, query, header, etc.) into the first argument:
+  /**
+   * A call to a method on `Context` struct that unmarshals data into a target.
+   */
   private class GithubComGinGonicGinContextBindSource extends UntrustedFlowSource::Range {
     GithubComGinGonicGinContextBindSource() {
       exists(string packagePath, string typeName |
