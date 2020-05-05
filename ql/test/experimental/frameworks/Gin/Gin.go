@@ -1,5 +1,8 @@
 package main
 
+// depstubber -vendor github.com/gin-gonic/gin Context
+// depstubber -vendor github.com/gin-gonic/gin/binding "" YAML
+
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
