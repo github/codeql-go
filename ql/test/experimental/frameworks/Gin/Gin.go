@@ -1,7 +1,7 @@
 package main
 
-// depstubber -vendor github.com/gin-gonic/gin Context
-// depstubber -vendor github.com/gin-gonic/gin/binding "" YAML
+//go:generate depstubber -vendor github.com/gin-gonic/gin Context
+//go:generate depstubber -vendor github.com/gin-gonic/gin/binding "" YAML
 
 import (
 	"github.com/gin-gonic/gin"
