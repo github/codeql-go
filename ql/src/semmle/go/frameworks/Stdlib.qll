@@ -69,14 +69,6 @@ module PathFilePath {
 
 /** Provides models of commonly used functions in the `bytes` package. */
 private module Bytes {
-  private class BufferBytes extends TaintTracking::FunctionModel, Method {
-    BufferBytes() { this.hasQualifiedName("bytes", "Buffer", ["Bytes", "String"]) }
-
-    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
-      input.isReceiver() and output.isResult()
-    }
-  }
-
   class Fields extends TaintTracking::FunctionModel {
     Fields() { hasQualifiedName("bytes", ["Fields", "FieldsFunc"]) }
 
@@ -84,6 +76,7 @@ private module Bytes {
       inp.isParameter(0) and outp.isResult()
     }
   }
+
   class Join extends TaintTracking::FunctionModel {
     Join() { hasQualifiedName("bytes", "Join") }
 
@@ -91,6 +84,7 @@ private module Bytes {
       inp.isParameter(_) and outp.isResult()
     }
   }
+
   class Map extends TaintTracking::FunctionModel {
     Map() { hasQualifiedName("bytes", "Map") }
 
@@ -98,6 +92,73 @@ private module Bytes {
       inp.isParameter(1) and outp.isResult()
     }
   }
+
+  class Repeat extends TaintTracking::FunctionModel {
+    Repeat() { hasQualifiedName("bytes", "Repeat") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  class Replace extends TaintTracking::FunctionModel {
+    Replace() { hasQualifiedName("bytes", ["Replace", "ReplaceAll"]) }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter([0, 2]) and outp.isResult()
+    }
+  }
+
+  class Runes extends TaintTracking::FunctionModel {
+    Runes() { hasQualifiedName("bytes", "Runes") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  class Split extends TaintTracking::FunctionModel {
+    Split() { hasQualifiedName("bytes", ["Split", "SplitAfter", "SplitAfterN", "SplitN"]) }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  class AlterCase extends TaintTracking::FunctionModel {
+    AlterCase() { hasQualifiedName("bytes", ["Title", "ToLower", "ToTitle", "ToUpper"]) }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  class AlterCaseSpecial extends TaintTracking::FunctionModel {
+    AlterCaseSpecial() {
+      hasQualifiedName("bytes", ["ToLowerSpecial", "ToTitleSpecial", "ToUpperSpecial"])
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(1) and outp.isResult()
+    }
+  }
+
+  class ToValidUTF8 extends TaintTracking::FunctionModel {
+    ToValidUTF8() { hasQualifiedName("bytes", "ToValidUTF8") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter([0, 1]) and outp.isResult()
+    }
+  }
+
+  class Trimmers extends TaintTracking::FunctionModel {
+    Trimmers() { exists(string split | split.matches("Trim%") | hasQualifiedName("bytes", split)) }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
   class NewBuffer extends TaintTracking::FunctionModel {
     NewBuffer() { hasQualifiedName("bytes", ["NewBuffer", "NewBufferString"]) }
 
@@ -106,29 +167,29 @@ private module Bytes {
     }
   }
 
+  private class BufferBytes extends TaintTracking::FunctionModel, Method {
+    BufferBytes() { this.hasQualifiedName("bytes", "Buffer", ["Bytes", "String"]) }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input.isReceiver() and output.isResult()
+    }
+  }
+
   class BufferReadFrom extends TaintTracking::FunctionModel, Method {
     BufferReadFrom() { this.(Method).hasQualifiedName("bytes", "Buffer", "ReadFrom") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      // NOTE: this does not work. The aim is to taint a struct through a method call on it.
       inp.isParameter(0) and outp.isReceiver()
     }
   }
 
-  class NewReader extends TaintTracking::FunctionModel {
-    NewReader() { exists(Function fn | fn.hasQualifiedName("bytes", "NewReader") | this = fn) }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
-    }
+  private string getAReadMethod() {
+    result = ["Bytes", "Next", "ReadByte", "ReadBytes", "ReadRune", "ReadString", "String"]
   }
 
-  class BytesReading extends TaintTracking::FunctionModel, Method {
-    BytesReading() {
-      this
-          .(Method)
-          .hasQualifiedName("bytes", ["Buffer", "Reader"],
-            ["Bytes", "Next", "ReadByte", "ReadBytes", "ReadRune", "ReadString", "String"])
+  class ReadMethods extends TaintTracking::FunctionModel, Method {
+    ReadMethods() {
+      this.(Method).hasQualifiedName("bytes", ["Buffer", "Reader"], getAReadMethod())
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
@@ -137,20 +198,42 @@ private module Bytes {
     }
   }
 
-  class BufferWriteTo extends TaintTracking::FunctionModel, Method {
-    BufferWriteTo() { this.(Method).hasQualifiedName("bytes", "Buffer", "WriteTo") }
+  class WriteTo extends TaintTracking::FunctionModel, Method {
+    WriteTo() { this.(Method).hasQualifiedName("bytes", ["Buffer", "Reader"], "WriteTo") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
       inp.isReceiver() and outp.isParameter(0)
     }
   }
 
-  class BufferWrite extends TaintTracking::FunctionModel, Method {
-    BufferWrite() {
-      this
-          .(Method)
-          .hasQualifiedName("bytes", "Buffer", ["Write", "WriteByte", "WriteRune", "WriteString"])
+  class NewReader extends TaintTracking::FunctionModel {
+    NewReader() { hasQualifiedName("bytes", "NewReader") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
     }
+  }
+
+  class ReaderRead extends TaintTracking::FunctionModel, Method {
+    ReaderRead() { this.(Method).hasQualifiedName("bytes", "Reader", ["Read", "ReadAt"]) }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isParameter(0)
+    }
+  }
+
+  class ReaderReset extends TaintTracking::FunctionModel, Method {
+    ReaderReset() { this.(Method).hasQualifiedName("bytes", "Reader", "Reset") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+
+  private string getAWriteMethod() { result = ["Write", "WriteByte", "WriteRune", "WriteString"] }
+
+  class WriteMethods extends TaintTracking::FunctionModel, Method {
+    WriteMethods() { this.(Method).hasQualifiedName("bytes", "Buffer", getAWriteMethod()) }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
       inp.isParameter(0) and outp.isReceiver()
@@ -424,7 +507,7 @@ module Io {
 /** Provides models of commonly used functions in the `bufio` package. */
 module Bufio {
   class NewScanner extends TaintTracking::FunctionModel {
-    NewScanner() { exists(Function fn | fn.hasQualifiedName("bufio", "NewScanner") | this = fn) }
+    NewScanner() { hasQualifiedName("bufio", "NewScanner") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
       inp.isParameter(0) and outp.isResult()
@@ -725,7 +808,7 @@ module Strings {
 
   // func NewReader(s string) *strings.Reader
   class NewReader extends TaintTracking::FunctionModel {
-    NewReader() { exists(Function fn | fn.hasQualifiedName("strings", "NewReader") | this = fn) }
+    NewReader() { hasQualifiedName("strings", "NewReader") }
 
     override predicate hasTaintFlow(DataFlow::FunctionInput inp, DataFlow::FunctionOutput outp) {
       inp.isParameter(_) and outp.isResult()
