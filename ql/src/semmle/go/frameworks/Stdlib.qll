@@ -1511,3 +1511,213 @@ module CryptoCipher {
     }
   }
 }
+
+module TextScanner {
+  class InitFunc extends TaintTracking::FunctionModel, Method {
+    InitFunc() { this.(Method).hasQualifiedName("text/scanner", "Scanner", "Init") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+
+  private string getAReadMethod() { result = ["Next", "Peek", "Scan", "String", "TokenText"] }
+
+  class ScannerReadMethods extends TaintTracking::FunctionModel, Method {
+    ScannerReadMethods() {
+      this.(Method).hasQualifiedName("text/scanner", "Scanner", getAReadMethod())
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isResult()
+    }
+  }
+}
+
+module EncodingCsv {
+  class NewReader extends TaintTracking::FunctionModel {
+    NewReader() { hasQualifiedName("encoding/csv", "NewReader") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  class ReaderRead extends TaintTracking::FunctionModel, Method {
+    ReaderRead() { this.(Method).hasQualifiedName("encoding/csv", "Reader", ["Read", "ReadAll"]) }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isResult(0)
+    }
+  }
+}
+
+module CompressGzip {
+  class NewReader extends TaintTracking::FunctionModel {
+    NewReader() { hasQualifiedName("compress/gzip", "NewReader") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult(0)
+    }
+  }
+
+  class ReaderReset extends TaintTracking::FunctionModel, Method {
+    ReaderReset() { this.(Method).hasQualifiedName("compress/gzip", "Reader", "Reset") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+
+  private class NewWriter extends TaintTracking::FunctionModel {
+    NewWriter() { this.hasQualifiedName("compress/gzip", ["NewWriter", "NewWriterLevel"]) }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      (input.isResult() or input.isResult(0)) and
+      output.isParameter(0)
+    }
+  }
+
+  class WriterReset extends TaintTracking::FunctionModel, Method {
+    WriterReset() { this.(Method).hasQualifiedName("compress/gzip", "Writer", "Reset") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isParameter(0)
+    }
+  }
+
+  class WriterWrite extends TaintTracking::FunctionModel, Method {
+    WriterWrite() { this.(Method).hasQualifiedName("compress/gzip", "Writer", "Write") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+}
+
+module CompressBzip2 {
+  class NewReader extends TaintTracking::FunctionModel {
+    NewReader() { hasQualifiedName("compress/bzip2", "NewReader") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  class WriterWrite extends TaintTracking::FunctionModel, Method {
+    WriterWrite() { this.(Method).hasQualifiedName("compress/bzip2", "Writer", "Write") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+}
+
+module CompressFlate {
+  class NewReader extends TaintTracking::FunctionModel {
+    NewReader() { hasQualifiedName("compress/flate", ["NewReader", "NewReaderDict"]) }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  private class NewWriter extends TaintTracking::FunctionModel {
+    NewWriter() { this.hasQualifiedName("compress/flate", ["NewWriter", "NewWriterDict"]) }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input.isResult(0) and output.isParameter(0)
+    }
+  }
+
+  class WriterReset extends TaintTracking::FunctionModel, Method {
+    WriterReset() { this.(Method).hasQualifiedName("compress/flate", "Writer", "Reset") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isParameter(0)
+    }
+  }
+
+  class WriterWrite extends TaintTracking::FunctionModel, Method {
+    WriterWrite() { this.(Method).hasQualifiedName("compress/flate", "Writer", "Write") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+}
+
+module CompressLzw {
+  class NewReader extends TaintTracking::FunctionModel {
+    NewReader() { hasQualifiedName("compress/lzw", "NewReader") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  private class NewWriter extends TaintTracking::FunctionModel {
+    NewWriter() { this.hasQualifiedName("compress/lzw", "NewWriter") }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input.isResult() and output.isParameter(0)
+    }
+  }
+
+  class WriterWrite extends TaintTracking::FunctionModel, Method {
+    WriterWrite() { this.(Method).hasQualifiedName("compress/lzw", "Writer", "Write") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+}
+
+module CompressZlib {
+  class NewReader extends TaintTracking::FunctionModel {
+    NewReader() { hasQualifiedName("compress/zlib", ["NewReader", "NewReaderDict"]) }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult(0)
+    }
+  }
+
+  private class NewWriter extends TaintTracking::FunctionModel {
+    NewWriter() {
+      hasQualifiedName("compress/zlib", ["NewWriter", "NewWriterLevel", "NewWriterLevelDict"])
+    }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      (input.isResult() or input.isResult(0)) and
+      output.isParameter(0)
+    }
+  }
+
+  class WriterReset extends TaintTracking::FunctionModel, Method {
+    WriterReset() { this.(Method).hasQualifiedName("compress/zlib", "Writer", "Reset") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isParameter(0)
+    }
+  }
+
+  class WriterWrite extends TaintTracking::FunctionModel, Method {
+    WriterWrite() { this.(Method).hasQualifiedName("compress/zlib", "Writer", "Write") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+}
+
+module Net {
+  class Pipe extends TaintTracking::FunctionModel {
+    Pipe() { exists(Function fn | fn.hasQualifiedName("net", "Pipe") | this = fn) }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isResult(0) and outp.isResult(1)
+      or
+      inp.isResult(1) and outp.isResult(0)
+    }
+  }
+}
