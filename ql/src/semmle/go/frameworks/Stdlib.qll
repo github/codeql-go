@@ -76,6 +76,86 @@ private module Bytes {
       input.isReceiver() and output.isResult()
     }
   }
+
+  class Fields extends TaintTracking::FunctionModel {
+    Fields() { hasQualifiedName("bytes", ["Fields", "FieldsFunc"]) }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+  class Join extends TaintTracking::FunctionModel {
+    Join() { hasQualifiedName("bytes", "Join") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(_) and outp.isResult()
+    }
+  }
+  class Map extends TaintTracking::FunctionModel {
+    Map() { hasQualifiedName("bytes", "Map") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(1) and outp.isResult()
+    }
+  }
+  class NewBuffer extends TaintTracking::FunctionModel {
+    NewBuffer() { hasQualifiedName("bytes", ["NewBuffer", "NewBufferString"]) }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  class BufferReadFrom extends TaintTracking::FunctionModel, Method {
+    BufferReadFrom() { this.(Method).hasQualifiedName("bytes", "Buffer", "ReadFrom") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      // NOTE: this does not work. The aim is to taint a struct through a method call on it.
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+
+  class NewReader extends TaintTracking::FunctionModel {
+    NewReader() { exists(Function fn | fn.hasQualifiedName("bytes", "NewReader") | this = fn) }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  class BytesReading extends TaintTracking::FunctionModel, Method {
+    BytesReading() {
+      this
+          .(Method)
+          .hasQualifiedName("bytes", ["Buffer", "Reader"],
+            ["Bytes", "Next", "ReadByte", "ReadBytes", "ReadRune", "ReadString", "String"])
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and
+      (outp.isResult() or outp.isResult(0))
+    }
+  }
+
+  class BufferWriteTo extends TaintTracking::FunctionModel, Method {
+    BufferWriteTo() { this.(Method).hasQualifiedName("bytes", "Buffer", "WriteTo") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isParameter(0)
+    }
+  }
+
+  class BufferWrite extends TaintTracking::FunctionModel, Method {
+    BufferWrite() {
+      this
+          .(Method)
+          .hasQualifiedName("bytes", "Buffer", ["Write", "WriteByte", "WriteRune", "WriteString"])
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
 }
 
 /** Provides models of commonly used functions in the `fmt` package. */
@@ -343,11 +423,114 @@ module Io {
 
 /** Provides models of commonly used functions in the `bufio` package. */
 module Bufio {
+  class NewScanner extends TaintTracking::FunctionModel {
+    NewScanner() { exists(Function fn | fn.hasQualifiedName("bufio", "NewScanner") | this = fn) }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  class ScannerText extends TaintTracking::FunctionModel, Method {
+    ScannerText() { this.(Method).hasQualifiedName("bufio", "Scanner", "Text") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isResult()
+    }
+  }
+
+  class ScannerBytes extends TaintTracking::FunctionModel, Method {
+    ScannerBytes() { this.(Method).hasQualifiedName("bufio", "Scanner", "Bytes") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isResult()
+    }
+  }
+
+  class ScannerBuffer extends TaintTracking::FunctionModel, Method {
+    ScannerBuffer() { this.(Method).hasQualifiedName("bufio", "Scanner", "Buffer") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isParameter(0)
+    }
+  }
+
+  class SplitFunctions extends TaintTracking::FunctionModel {
+    SplitFunctions() {
+      hasQualifiedName("bufio", ["ScanBytes", "ScanLines", "ScanRunes", "ScanWords"])
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult(1)
+    }
+  }
+
+  // Reader:
+  class NewReader extends TaintTracking::FunctionModel {
+    NewReader() { hasQualifiedName("bufio", ["NewReader", "NewReaderSize", "NewReadWriter"]) }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  private string getAReadMethod() {
+    result = ["Peek", "ReadByte", "ReadBytes", "ReadLine", "ReadRune", "ReadSlice", "ReadString"]
+  }
+
+  class ReadMethods extends TaintTracking::FunctionModel, Method {
+    ReadMethods() {
+      this.(Method).hasQualifiedName("bufio", ["Reader", "ReadWriter"], getAReadMethod())
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isResult(0)
+    }
+  }
+
+  class ReaderReset extends TaintTracking::FunctionModel, Method {
+    ReaderReset() { this.(Method).hasQualifiedName("bufio", ["Reader", "ReadWriter"], "Reset") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+
   private class NewWriter extends TaintTracking::FunctionModel {
     NewWriter() { this.hasQualifiedName("bufio", "NewWriter") }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
       input.isResult() and output.isParameter(0)
+    }
+  }
+
+  private string getAWriteMethod() { result = ["Write", "WriteByte", "WriteRune", "WriteString"] }
+
+  class WriteMethods extends TaintTracking::FunctionModel, Method {
+    WriteMethods() {
+      this.(Method).hasQualifiedName("bufio", ["Writer", "ReadWriter"], getAWriteMethod())
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+
+  class WriterReadFrom extends TaintTracking::FunctionModel, Method {
+    WriterReadFrom() {
+      this.(Method).hasQualifiedName("bufio", ["Writer", "ReadWriter"], "ReadFrom")
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+
+  class WriterReset extends TaintTracking::FunctionModel, Method {
+    WriterReset() { this.(Method).hasQualifiedName("bufio", ["Writer", "ReadWriter"], "Reset") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isParameter(0)
     }
   }
 }
@@ -537,6 +720,15 @@ module Strings {
 
     override predicate hasTaintFlow(DataFlow::FunctionInput inp, DataFlow::FunctionOutput outp) {
       inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  // func NewReader(s string) *strings.Reader
+  class NewReader extends TaintTracking::FunctionModel {
+    NewReader() { exists(Function fn | fn.hasQualifiedName("strings", "NewReader") | this = fn) }
+
+    override predicate hasTaintFlow(DataFlow::FunctionInput inp, DataFlow::FunctionOutput outp) {
+      inp.isParameter(_) and outp.isResult()
     }
   }
 }
@@ -822,6 +1014,62 @@ module EncodingJson {
 
     override string getFormat() { result = "JSON" }
   }
+
+  class NewDecoder extends TaintTracking::FunctionModel {
+    NewDecoder() { hasQualifiedName("encoding/json", "NewDecoder") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  class DecoderDecode extends TaintTracking::FunctionModel, Method {
+    DecoderDecode() { this.(Method).hasQualifiedName("encoding/json", "Decoder", "Decode") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isParameter(0)
+    }
+  }
+
+  class NewEncoder extends TaintTracking::FunctionModel {
+    NewEncoder() { hasQualifiedName("encoding/json", "NewEncoder") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isResult() and outp.isParameter(0)
+    }
+  }
+
+  class EncoderEncode extends TaintTracking::FunctionModel, Method {
+    EncoderEncode() { this.(Method).hasQualifiedName("encoding/json", "Encoder", "Encode") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+
+  class Compact extends TaintTracking::FunctionModel {
+    Compact() { hasQualifiedName("encoding/json", "Compact") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(1) and outp.isParameter(0)
+    }
+  }
+
+  class HTMLEscape extends TaintTracking::FunctionModel {
+    HTMLEscape() { hasQualifiedName("encoding/json", "HTMLEscape") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(1) and outp.isParameter(0)
+    }
+  }
+
+  class Indent extends TaintTracking::FunctionModel {
+    Indent() { hasQualifiedName("encoding/json", "Indent") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(1) and outp.isParameter(0)
+    }
+  }
 }
 
 /** Provides models of some functions in the `encoding/hex` package. */
@@ -832,6 +1080,339 @@ module EncodingHex {
     override predicate hasTaintFlow(DataFlow::FunctionInput inp, DataFlow::FunctionOutput outp) {
       inp.isParameter(0) and
       outp.isResult(0)
+    }
+  }
+}
+
+/** Provides models of some functions in the `encoding/gob` package. */
+module EncodingGob {
+  class NewDecoder extends TaintTracking::FunctionModel {
+    NewDecoder() { hasQualifiedName("encoding/gob", "NewDecoder") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  class DecoderDecode extends TaintTracking::FunctionModel, Method {
+    DecoderDecode() { this.(Method).hasQualifiedName("encoding/gob", "Decoder", "Decode") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isParameter(0)
+    }
+  }
+
+  class NewEncoder extends TaintTracking::FunctionModel {
+    NewEncoder() { hasQualifiedName("encoding/gob", "NewEncoder") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isResult() and outp.isParameter(0)
+    }
+  }
+
+  class EncoderEncode extends TaintTracking::FunctionModel, Method {
+    EncoderEncode() { this.(Method).hasQualifiedName("encoding/gob", "Encoder", "Encode") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+}
+
+/** Provides models of some functions in the `encoding/xml` package. */
+module EncodingXml {
+  private class MarshalFunction extends TaintTracking::FunctionModel, MarshalingFunction::Range {
+    MarshalFunction() {
+      this.hasQualifiedName("encoding/xml", "Marshal") or
+      this.hasQualifiedName("encoding/xml", "MarshalIndent")
+    }
+
+    override predicate hasTaintFlow(DataFlow::FunctionInput inp, DataFlow::FunctionOutput outp) {
+      inp = getAnInput() and outp = getOutput()
+    }
+
+    override DataFlow::FunctionInput getAnInput() { result.isParameter(0) }
+
+    override DataFlow::FunctionOutput getOutput() { result.isResult(0) }
+
+    override string getFormat() { result = "XML" }
+  }
+
+  private class UnmarshalFunction extends TaintTracking::FunctionModel, UnmarshalingFunction::Range {
+    UnmarshalFunction() { this.hasQualifiedName("encoding/xml", "Unmarshal") }
+
+    override predicate hasTaintFlow(DataFlow::FunctionInput inp, DataFlow::FunctionOutput outp) {
+      inp = getAnInput() and outp = getOutput()
+    }
+
+    override DataFlow::FunctionInput getAnInput() { result.isParameter(0) }
+
+    override DataFlow::FunctionOutput getOutput() { result.isParameter(1) }
+
+    override string getFormat() { result = "XML" }
+  }
+
+  class NewDecoder extends TaintTracking::FunctionModel {
+    NewDecoder() { hasQualifiedName("encoding/xml", "NewDecoder") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  class DecoderDecode extends TaintTracking::FunctionModel, Method {
+    DecoderDecode() { this.(Method).hasQualifiedName("encoding/xml", "Decoder", "Decode") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isParameter(0)
+    }
+  }
+
+  class DecoderDecodeElement extends TaintTracking::FunctionModel, Method {
+    DecoderDecodeElement() {
+      this.(Method).hasQualifiedName("encoding/xml", "Decoder", "DecodeElement")
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isParameter(0)
+    }
+  }
+
+  class DecoderToken extends TaintTracking::FunctionModel, Method {
+    DecoderToken() {
+      this.(Method).hasQualifiedName("encoding/xml", "Decoder", ["Token", "RawToken"])
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isResult(0)
+    }
+  }
+
+  class NewEncoder extends TaintTracking::FunctionModel {
+    NewEncoder() { hasQualifiedName("encoding/xml", "NewEncoder") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isResult() and outp.isParameter(0)
+    }
+  }
+
+  class EncoderEncode extends TaintTracking::FunctionModel, Method {
+    EncoderEncode() { this.(Method).hasQualifiedName("encoding/xml", "Encoder", "Encode") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+
+  class CopyToken extends TaintTracking::FunctionModel {
+    CopyToken() { hasQualifiedName("encoding/xml", "CopyToken") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  class EscapeText extends TaintTracking::FunctionModel {
+    EscapeText() { hasQualifiedName("encoding/xml", "EscapeText") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(1) and outp.isParameter(0)
+    }
+  }
+
+  class NewTokenDecoder extends TaintTracking::FunctionModel {
+    NewTokenDecoder() { hasQualifiedName("encoding/xml", "NewTokenDecoder") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+}
+
+module GoPkgYaml {
+  private string getAPkgVersion() {
+    result = ["gopkg.in/yaml.v1", "gopkg.in/yaml.v2", "gopkg.in/yaml.v3"]
+  }
+
+  private class MarshalFunction extends TaintTracking::FunctionModel, MarshalingFunction::Range {
+    MarshalFunction() { hasQualifiedName(getAPkgVersion(), "Marshal") }
+
+    override predicate hasTaintFlow(DataFlow::FunctionInput inp, DataFlow::FunctionOutput outp) {
+      inp = getAnInput() and outp = getOutput()
+    }
+
+    override DataFlow::FunctionInput getAnInput() { result.isParameter(0) }
+
+    override DataFlow::FunctionOutput getOutput() { result.isResult(0) }
+
+    override string getFormat() { result = "YAML" }
+  }
+
+  private class UnmarshalFunction extends TaintTracking::FunctionModel, UnmarshalingFunction::Range {
+    UnmarshalFunction() {
+      this.hasQualifiedName(getAPkgVersion(), ["Unmarshal", "UnmarshalStrict"])
+    }
+
+    override predicate hasTaintFlow(DataFlow::FunctionInput inp, DataFlow::FunctionOutput outp) {
+      inp = getAnInput() and outp = getOutput()
+    }
+
+    override DataFlow::FunctionInput getAnInput() { result.isParameter(0) }
+
+    override DataFlow::FunctionOutput getOutput() { result.isParameter(1) }
+
+    override string getFormat() { result = "YAML" }
+  }
+
+  class NewDecoder extends TaintTracking::FunctionModel {
+    NewDecoder() { hasQualifiedName(getAPkgVersion(), "NewDecoder") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  class DecoderDecode extends TaintTracking::FunctionModel, Method {
+    DecoderDecode() { this.(Method).hasQualifiedName(getAPkgVersion(), "Decoder", "Decode") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isParameter(0)
+    }
+  }
+
+  class NewEncoder extends TaintTracking::FunctionModel {
+    NewEncoder() { hasQualifiedName(getAPkgVersion(), "NewEncoder") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isResult() and outp.isParameter(0)
+    }
+  }
+
+  class EncoderEncode extends TaintTracking::FunctionModel, Method {
+    EncoderEncode() { this.(Method).hasQualifiedName(getAPkgVersion(), "Encoder", "Encode") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+}
+
+module GhodssYaml {
+  private string getPkg() { result = "github.com/ghodss/yaml" }
+
+  private class MarshalFunction extends TaintTracking::FunctionModel, MarshalingFunction::Range {
+    MarshalFunction() { hasQualifiedName(getPkg(), "Marshal") }
+
+    override predicate hasTaintFlow(DataFlow::FunctionInput inp, DataFlow::FunctionOutput outp) {
+      inp = getAnInput() and outp = getOutput()
+    }
+
+    override DataFlow::FunctionInput getAnInput() { result.isParameter(0) }
+
+    override DataFlow::FunctionOutput getOutput() { result.isResult(0) }
+
+    override string getFormat() { result = "YAML" }
+  }
+
+  private class UnmarshalFunction extends TaintTracking::FunctionModel, UnmarshalingFunction::Range {
+    UnmarshalFunction() { this.hasQualifiedName(getPkg(), ["Unmarshal", "UnmarshalStrict"]) }
+
+    override predicate hasTaintFlow(DataFlow::FunctionInput inp, DataFlow::FunctionOutput outp) {
+      inp = getAnInput() and outp = getOutput()
+    }
+
+    override DataFlow::FunctionInput getAnInput() { result.isParameter(0) }
+
+    override DataFlow::FunctionOutput getOutput() { result.isParameter(1) }
+
+    override string getFormat() { result = "YAML" }
+  }
+
+  class DisallowUnknownFields extends TaintTracking::FunctionModel {
+    DisallowUnknownFields() { hasQualifiedName(getPkg(), "DisallowUnknownFields") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  class JSONToYAML extends TaintTracking::FunctionModel {
+    JSONToYAML() { hasQualifiedName(getPkg(), "JSONToYAML") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult(0)
+    }
+  }
+
+  class YAMLToJSON extends TaintTracking::FunctionModel {
+    YAMLToJSON() { hasQualifiedName(getPkg(), ["YAMLToJSON", "YAMLToJSONStrict"]) }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult(0)
+    }
+  }
+}
+
+module GoccyYaml {
+  private string getPkg() { result = "github.com/goccy/go-yaml" }
+
+  private class MarshalFunction extends TaintTracking::FunctionModel, MarshalingFunction::Range {
+    MarshalFunction() { hasQualifiedName(getPkg(), "Marshal") }
+
+    override predicate hasTaintFlow(DataFlow::FunctionInput inp, DataFlow::FunctionOutput outp) {
+      inp = getAnInput() and outp = getOutput()
+    }
+
+    override DataFlow::FunctionInput getAnInput() { result.isParameter(0) }
+
+    override DataFlow::FunctionOutput getOutput() { result.isResult(0) }
+
+    override string getFormat() { result = "YAML" }
+  }
+
+  private class UnmarshalFunction extends TaintTracking::FunctionModel, UnmarshalingFunction::Range {
+    UnmarshalFunction() { this.hasQualifiedName(getPkg(), "Unmarshal") }
+
+    override predicate hasTaintFlow(DataFlow::FunctionInput inp, DataFlow::FunctionOutput outp) {
+      inp = getAnInput() and outp = getOutput()
+    }
+
+    override DataFlow::FunctionInput getAnInput() { result.isParameter(0) }
+
+    override DataFlow::FunctionOutput getOutput() { result.isParameter(1) }
+
+    override string getFormat() { result = "YAML" }
+  }
+
+  class NewDecoder extends TaintTracking::FunctionModel {
+    NewDecoder() { hasQualifiedName(getPkg(), "NewDecoder") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isResult()
+    }
+  }
+
+  class DecoderDecode extends TaintTracking::FunctionModel, Method {
+    DecoderDecode() { this.(Method).hasQualifiedName(getPkg(), "Decoder", "Decode") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isParameter(0)
+    }
+  }
+
+  class NewEncoder extends TaintTracking::FunctionModel {
+    NewEncoder() { hasQualifiedName(getPkg(), "NewEncoder") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isResult() and outp.isParameter(0)
+    }
+  }
+
+  class EncoderEncode extends TaintTracking::FunctionModel, Method {
+    EncoderEncode() { this.(Method).hasQualifiedName(getPkg(), "Encoder", "Encode") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
     }
   }
 }
