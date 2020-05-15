@@ -1711,13 +1711,212 @@ module CompressZlib {
 }
 
 module Net {
-  class Pipe extends TaintTracking::FunctionModel {
-    Pipe() { exists(Function fn | fn.hasQualifiedName("net", "Pipe") | this = fn) }
+  private class Pipe extends TaintTracking::FunctionModel {
+    Pipe() { hasQualifiedName("net", "Pipe") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
       inp.isResult(0) and outp.isResult(1)
       or
       inp.isResult(1) and outp.isResult(0)
+    }
+  }
+
+  class UnixConnRead extends TaintTracking::FunctionModel, Method {
+    UnixConnRead() {
+      this.(Method).hasQualifiedName("net", "UnixConn", ["Read", "ReadFrom", "ReadFromUnix"])
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isParameter(0)
+    }
+  }
+
+  class UnixConnReadMsg extends TaintTracking::FunctionModel, Method {
+    UnixConnReadMsg() { this.(Method).hasQualifiedName("net", "UnixConn", "ReadMsgUnix") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isParameter([0, 1])
+    }
+  }
+
+  class UnixConnWrite extends TaintTracking::FunctionModel, Method {
+    UnixConnWrite() {
+      this.(Method).hasQualifiedName("net", "UnixConn", ["Write", "WriteTo", "WriteToUnix"])
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+
+  class UnixConnWriteMsg extends TaintTracking::FunctionModel, Method {
+    UnixConnWriteMsg() { this.(Method).hasQualifiedName("net", "UnixConn", "WriteMsgUnix") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter([0, 1]) and outp.isReceiver()
+    }
+  }
+
+  class UnixConnFile extends TaintTracking::FunctionModel, Method {
+    UnixConnFile() { this.(Method).hasQualifiedName("net", "UnixConn", "File") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isResult(0)
+    }
+  }
+
+  class UnixConnSyscallConn extends TaintTracking::FunctionModel, Method {
+    UnixConnSyscallConn() { this.(Method).hasQualifiedName("net", "UnixConn", "SyscallConn") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isResult(0)
+    }
+  }
+
+  /////////////
+  class IPConnRead extends TaintTracking::FunctionModel, Method {
+    IPConnRead() {
+      this.(Method).hasQualifiedName("net", "IPConn", ["Read", "ReadFrom", "ReadFromIP"])
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isParameter(0)
+    }
+  }
+
+  class IPConnReadMsg extends TaintTracking::FunctionModel, Method {
+    IPConnReadMsg() { this.(Method).hasQualifiedName("net", "IPConn", "ReadMsgIP") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isParameter([0, 1])
+    }
+  }
+
+  class IPConnWrite extends TaintTracking::FunctionModel, Method {
+    IPConnWrite() {
+      this.(Method).hasQualifiedName("net", "IPConn", ["Write", "WriteTo", "WriteToIP"])
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+
+  class IPConnWriteMsg extends TaintTracking::FunctionModel, Method {
+    IPConnWriteMsg() { this.(Method).hasQualifiedName("net", "IPConn", "WriteMsgIP") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter([0, 1]) and outp.isReceiver()
+    }
+  }
+
+  class IPConnFile extends TaintTracking::FunctionModel, Method {
+    IPConnFile() { this.(Method).hasQualifiedName("net", "IPConn", "File") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isResult(0)
+    }
+  }
+
+  class IPConnSyscallConn extends TaintTracking::FunctionModel, Method {
+    IPConnSyscallConn() { this.(Method).hasQualifiedName("net", "IPConn", "SyscallConn") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isResult(0)
+    }
+  }
+
+  ///////////////
+  class TCPConnRead extends TaintTracking::FunctionModel, Method {
+    TCPConnRead() { this.(Method).hasQualifiedName("net", "TCPConn", "Read") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isParameter(0)
+    }
+  }
+
+  class TCPConnReadFrom extends TaintTracking::FunctionModel, Method {
+    TCPConnReadFrom() { this.(Method).hasQualifiedName("net", "TCPConn", "ReadFrom") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+
+  class TCPConnWrite extends TaintTracking::FunctionModel, Method {
+    TCPConnWrite() { this.(Method).hasQualifiedName("net", "TCPConn", "Write") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+
+  class TCPConnFile extends TaintTracking::FunctionModel, Method {
+    TCPConnFile() { this.(Method).hasQualifiedName("net", "TCPConn", "File") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isResult(0)
+    }
+  }
+
+  class TCPConnSyscallConn extends TaintTracking::FunctionModel, Method {
+    TCPConnSyscallConn() { this.(Method).hasQualifiedName("net", "TCPConn", "SyscallConn") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isResult(0)
+    }
+  }
+
+  /////////////
+  class UDPConnRead extends TaintTracking::FunctionModel, Method {
+    UDPConnRead() {
+      this.(Method).hasQualifiedName("net", "UDPConn", ["Read", "ReadFrom", "ReadFromUDP"])
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isParameter(0)
+    }
+  }
+
+  class UDPConnReadMsg extends TaintTracking::FunctionModel, Method {
+    UDPConnReadMsg() { this.(Method).hasQualifiedName("net", "UDPConn", "ReadMsgUDP") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isParameter([0, 1])
+    }
+  }
+
+  class UDPConnWrite extends TaintTracking::FunctionModel, Method {
+    UDPConnWrite() {
+      this.(Method).hasQualifiedName("net", "UDPConn", ["Write", "WriteTo", "WriteToUDP"])
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
+
+  class UDPConnWriteMsg extends TaintTracking::FunctionModel, Method {
+    UDPConnWriteMsg() { this.(Method).hasQualifiedName("net", "UDPConn", "WriteMsgUDP") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter([0, 1]) and outp.isReceiver()
+    }
+  }
+
+  class UDPConnFile extends TaintTracking::FunctionModel, Method {
+    UDPConnFile() { this.(Method).hasQualifiedName("net", "UDPConn", "File") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isResult(0)
+    }
+  }
+
+  class UDPConnSyscallConn extends TaintTracking::FunctionModel, Method {
+    UDPConnSyscallConn() { this.(Method).hasQualifiedName("net", "UDPConn", "SyscallConn") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isResult(0)
     }
   }
 }
