@@ -1919,4 +1919,21 @@ module Net {
       inp.isReceiver() and outp.isResult(0)
     }
   }
+
+  ///
+  private class ConnRead extends TaintTracking::FunctionModel, Method {
+    ConnRead() { implements("net", "Conn", "Read") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isParameter(0)
+    }
+  }
+
+  private class ConnWrite extends TaintTracking::FunctionModel, Method {
+    ConnWrite() { implements("net", "Conn", "Write") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isParameter(0) and outp.isReceiver()
+    }
+  }
 }
