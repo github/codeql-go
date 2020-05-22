@@ -20,62 +20,70 @@ func usage() {
 	fmt.Fprintf(os.Stderr, "--help                Print this help.\n")
 }
 
-func parseFlags(args []string) ([]string, []string) {
+func parseFlags(args []string, mimic bool) ([]string, []string) {
 	i := 0
-	mimic := false
-	var dumpDbscheme string
 	buildFlags := []string{}
-	for i < len(args) && strings.HasPrefix(args[i], "-") {
+	for ; i < len(args) && strings.HasPrefix(args[i], "-"); i++ {
 		if args[i] == "--" {
 			i++
 			break
 		}
 
-		if !mimic && strings.HasPrefix(args[i], "--dbscheme=") {
-			dumpDbscheme = strings.TrimPrefix(args[i], "--dbscheme=")
-		} else if !mimic && args[i] == "--dbscheme" {
-			i++
-			dumpDbscheme = args[i]
-		} else if !mimic && args[i] == "--help" {
-			usage()
-			os.Exit(0)
-		} else if args[i] == "--mimic" {
-			mimic = true
-			if i+1 < len(args) {
-				i++
-				compiler := args[i]
-				log.Printf("Compiler: %s", compiler)
+		if !mimic {
+			// we're not in mimic mode, try to parse our arguments
+			switch args[i] {
+			case "--help":
+				usage()
+				os.Exit(0)
+			case "--mimic":
 				if i+1 < len(args) {
 					i++
-					command := args[i]
-					if command == "build" {
-						log.Printf("Intercepting build")
-						// skip `-o output` and `i`, if applicable
-						for i+1 < len(args) {
-							if args[i+1] == "-o" {
-								i++
-								if i+1 < len(args) {
-									i++
-								}
-							} else if args[i+1] == "-i" {
-								i++
-							} else {
-								break
-							}
+					compiler := args[i]
+					log.Printf("Compiler: %s", compiler)
+					if i+1 < len(args) {
+						i++
+						command := args[i]
+						if command == "build" || command == "install" || command == "run" {
+							log.Printf("Intercepting build")
+							return parseFlags(args[i+1:], true)
+						} else {
+							log.Printf("Non-build command; skipping")
+							os.Exit(0)
 						}
 					} else {
 						log.Printf("Non-build command; skipping")
-						return []string{}, []string{}, ""
+						os.Exit(0)
 					}
+				} else {
+					log.Fatalf("Invalid --mimic: no compiler specified")
 				}
-			} else {
-				log.Fatalf("Invalid --mimic: no compiler specified")
 			}
-		} else {
-			buildFlags = append(buildFlags, args[i])
 		}
 
-		i++
+		// parse go build flags
+		switch args[i] {
+		// skip `-o output` and `-i`, if applicable
+		case "-o":
+			if i+1 < len(args) {
+				i++
+			}
+		case "-i":
+		case "-p", "-asmflags", "-buildmode", "-compiler", "-gccgoflags", "-gcflags", "-installsuffix",
+			"-ldflags", "-mod", "-modfile", "-pkgdir", "-tags", "-toolexec":
+			if i+1 < len(args) {
+				buildFlags = append(buildFlags, args[i], args[i+1])
+				i++
+			} else {
+				buildFlags = append(buildFlags, args[i])
+			}
+		default:
+			if strings.HasPrefix(args[i], "-") {
+				buildFlags = append(buildFlags, args[i])
+			} else {
+				// stop parsing if the argument is not a flag (and so is positional)
+				break
+			}
+		}
 	}
 
 	cpuprofile = os.Getenv("CODEQL_EXTRACTOR_GO_CPU_PROFILE")
@@ -85,7 +93,7 @@ func parseFlags(args []string) ([]string, []string) {
 }
 
 func main() {
-	buildFlags, patterns := parseFlags(os.Args[1:])
+	buildFlags, patterns := parseFlags(os.Args[1:], false)
 
 	if cpuprofile != "" {
 		f, err := os.Create(cpuprofile)
