@@ -65,6 +65,7 @@ func main() {
 		dbscheme.PrintDbScheme(f)
 		f.Close()
 		log.Printf("Dbscheme written to file %s.", dumpDbscheme)
+		os.Exit(0)
 	}
 
 	if cpuprofile != "" {
