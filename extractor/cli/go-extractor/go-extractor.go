@@ -105,7 +105,7 @@ func main() {
 		log.Printf("Build flags: %s; patterns: %s\n", strings.Join(buildFlags, " "), strings.Join(patterns, " "))
 		err := extractor.ExtractWithFlags(buildFlags, patterns)
 		if err != nil {
-			log.Fatal(err)
+			log.Fatalf("Error running go tooling: %s\n", err.Error())
 		}
 	}
 
