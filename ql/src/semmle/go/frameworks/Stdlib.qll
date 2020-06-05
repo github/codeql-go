@@ -52,6 +52,7 @@ class ReadMethod extends TaintTracking::FunctionModel, Method {
     inp.isReceiver() and outp.isParameter(0)
   }
 }
+
 /** A `ReadAt(p []byte, off int64) (n int, err error)` method. */
 class ReadAtMethod extends TaintTracking::FunctionModel, Method {
   ReadAtMethod() {
@@ -76,6 +77,23 @@ class WriteMethod extends TaintTracking::FunctionModel, Method {
     getNumParameter() = 1 and
     getNumResult() = 2 and
     getParameterType(0) instanceof ByteSliceType and
+    getResultType(0) instanceof IntegerType and
+    getResultType(1) = Builtin::error().getType()
+  }
+
+  override predicate hasTaintFlow(DataFlow::FunctionInput inp, DataFlow::FunctionOutput outp) {
+    inp.isParameter(0) and outp.isReceiver()
+  }
+}
+
+/** A `WriteAt(p []byte, off int64) (n int, err error)` method. */
+class WriteAtMethod extends TaintTracking::FunctionModel, Method {
+  WriteAtMethod() {
+    getName() = "WriteAt" and
+    getNumParameter() = 2 and
+    getNumResult() = 2 and
+    getParameterType(0) instanceof ByteSliceType and
+    getParameterType(1) instanceof Int64Type and
     getResultType(0) instanceof IntegerType and
     getResultType(1) = Builtin::error().getType()
   }
