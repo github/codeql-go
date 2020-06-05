@@ -37,6 +37,54 @@ private class CopyFunction extends TaintTracking::FunctionModel {
   }
 }
 
+/** A `Read([]byte) (int, error)` method. */
+class ReadMethod extends TaintTracking::FunctionModel, Method {
+  ReadMethod() {
+    getName() = "Read" and
+    getNumParameter() = 1 and
+    getNumResult() = 2 and
+    getParameterType(0) instanceof ByteSliceType and
+    getResultType(0) instanceof IntegerType and
+    getResultType(1) = Builtin::error().getType()
+  }
+
+  override predicate hasTaintFlow(DataFlow::FunctionInput inp, DataFlow::FunctionOutput outp) {
+    inp.isReceiver() and outp.isParameter(0)
+  }
+}
+/** A `ReadAt(p []byte, off int64) (n int, err error)` method. */
+class ReadAtMethod extends TaintTracking::FunctionModel, Method {
+  ReadAtMethod() {
+    getName() = "ReadAt" and
+    getNumParameter() = 2 and
+    getNumResult() = 2 and
+    getParameterType(0) instanceof ByteSliceType and
+    getParameterType(1) instanceof Int64Type and
+    getResultType(0) instanceof IntegerType and
+    getResultType(1) = Builtin::error().getType()
+  }
+
+  override predicate hasTaintFlow(DataFlow::FunctionInput inp, DataFlow::FunctionOutput outp) {
+    inp.isReceiver() and outp.isParameter(0)
+  }
+}
+
+/** A `Write([]byte) (int, error)` method. */
+class WriteMethod extends TaintTracking::FunctionModel, Method {
+  WriteMethod() {
+    getName() = "Write" and
+    getNumParameter() = 1 and
+    getNumResult() = 2 and
+    getParameterType(0) instanceof ByteSliceType and
+    getResultType(0) instanceof IntegerType and
+    getResultType(1) = Builtin::error().getType()
+  }
+
+  override predicate hasTaintFlow(DataFlow::FunctionInput inp, DataFlow::FunctionOutput outp) {
+    inp.isParameter(0) and outp.isReceiver()
+  }
+}
+
 /** Provides models of commonly used functions in the `path/filepath` package. */
 module PathFilePath {
   /** A path-manipulating function in the `path/filepath` package. */
