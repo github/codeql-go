@@ -155,8 +155,12 @@ edges
 | Bufio.go:276:42:276:50 | definition of sourceCQL : interface type | Bufio.go:280:2:280:8 | definition of from658 : interface type |
 | Bufio.go:276:42:276:50 | definition of sourceCQL : interface type | Bufio.go:288:7:288:13 | into387 |
 | Bufio.go:280:2:280:8 | definition of from658 : interface type | Bufio.go:288:7:288:13 | into387 |
+| Bufio.go:291:37:291:45 | definition of sourceCQL : interface type | Bufio.go:295:2:295:2 | definition of r : Reader |
 | Bufio.go:291:37:291:45 | definition of sourceCQL : interface type | Bufio.go:295:2:295:2 | definition of r : interface type |
 | Bufio.go:291:37:291:45 | definition of sourceCQL : interface type | Bufio.go:306:7:306:13 | into570 |
+| Bufio.go:295:2:295:2 | definition of r : Reader | Bufio.go:295:2:295:2 | definition of r : Reader |
+| Bufio.go:295:2:295:2 | definition of r : Reader | Bufio.go:306:7:306:13 | into570 |
+| Bufio.go:295:2:295:2 | definition of r : interface type | Bufio.go:295:2:295:2 | definition of r : Reader |
 | Bufio.go:295:2:295:2 | definition of r : interface type | Bufio.go:306:7:306:13 | into570 |
 | Bufio.go:309:39:309:47 | definition of sourceCQL : interface type | Bufio.go:313:2:313:8 | definition of from803 : interface type |
 | Bufio.go:309:39:309:47 | definition of sourceCQL : interface type | Bufio.go:324:7:324:7 | w |
@@ -170,8 +174,12 @@ edges
 | Bufio.go:357:40:357:48 | definition of sourceCQL : interface type | Bufio.go:361:2:361:2 | definition of r : interface type |
 | Bufio.go:357:40:357:48 | definition of sourceCQL : interface type | Bufio.go:372:7:372:13 | into221 |
 | Bufio.go:361:2:361:2 | definition of r : interface type | Bufio.go:372:7:372:13 | into221 |
+| Bufio.go:375:37:375:45 | definition of sourceCQL : interface type | Bufio.go:379:2:379:8 | definition of from998 : Writer |
 | Bufio.go:375:37:375:45 | definition of sourceCQL : interface type | Bufio.go:379:2:379:8 | definition of from998 : interface type |
 | Bufio.go:375:37:375:45 | definition of sourceCQL : interface type | Bufio.go:390:7:390:7 | w |
+| Bufio.go:379:2:379:8 | definition of from998 : Writer | Bufio.go:379:2:379:8 | definition of from998 : Writer |
+| Bufio.go:379:2:379:8 | definition of from998 : Writer | Bufio.go:390:7:390:7 | w |
+| Bufio.go:379:2:379:8 | definition of from998 : interface type | Bufio.go:379:2:379:8 | definition of from998 : Writer |
 | Bufio.go:379:2:379:8 | definition of from998 : interface type | Bufio.go:390:7:390:7 | w |
 | Bufio.go:393:37:393:45 | definition of sourceCQL : interface type | Bufio.go:397:2:397:2 | definition of p : interface type |
 | Bufio.go:393:37:393:45 | definition of sourceCQL : interface type | Bufio.go:408:7:408:13 | into406 |
@@ -3487,6 +3495,7 @@ nodes
 | Bufio.go:280:2:280:8 | definition of from658 : interface type | semmle.label | definition of from658 : interface type |
 | Bufio.go:288:7:288:13 | into387 | semmle.label | into387 |
 | Bufio.go:291:37:291:45 | definition of sourceCQL : interface type | semmle.label | definition of sourceCQL : interface type |
+| Bufio.go:295:2:295:2 | definition of r : Reader | semmle.label | definition of r : Reader |
 | Bufio.go:295:2:295:2 | definition of r : interface type | semmle.label | definition of r : interface type |
 | Bufio.go:306:7:306:13 | into570 | semmle.label | into570 |
 | Bufio.go:309:39:309:47 | definition of sourceCQL : interface type | semmle.label | definition of sourceCQL : interface type |
@@ -3502,6 +3511,7 @@ nodes
 | Bufio.go:361:2:361:2 | definition of r : interface type | semmle.label | definition of r : interface type |
 | Bufio.go:372:7:372:13 | into221 | semmle.label | into221 |
 | Bufio.go:375:37:375:45 | definition of sourceCQL : interface type | semmle.label | definition of sourceCQL : interface type |
+| Bufio.go:379:2:379:8 | definition of from998 : Writer | semmle.label | definition of from998 : Writer |
 | Bufio.go:379:2:379:8 | definition of from998 : interface type | semmle.label | definition of from998 : interface type |
 | Bufio.go:390:7:390:7 | w | semmle.label | w |
 | Bufio.go:393:37:393:45 | definition of sourceCQL : interface type | semmle.label | definition of sourceCQL : interface type |
