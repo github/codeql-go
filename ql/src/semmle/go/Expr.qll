@@ -697,7 +697,7 @@ class ComplementExpr extends @complementexpr, BitwiseUnaryExpr {
 }
 
 /**
- * A unary pointer-dereference expression using `*`.
+ * A unary pointer-dereference expression. Never actually emitted by the go compiler - StarExpr is used instead.
  */
 class DerefExpr extends @derefexpr, UnaryExpr {
   override predicate mayHaveOwnSideEffects() { any() }
