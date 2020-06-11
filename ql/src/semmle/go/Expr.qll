@@ -223,7 +223,7 @@ class Ellipsis extends @ellipsis, Expr {
  * map[string]int{"A": 1, "B": 2}
  * ```
  */
-class Literal extends @expr, Expr {
+class Literal extends Expr {
   Literal() {
     this instanceof @basiclit or this instanceof @funclit or this instanceof @compositelit
   }
