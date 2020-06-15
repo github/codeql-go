@@ -11,7 +11,7 @@ module CompressLzwTaintTracking {
     NewReader() { hasQualifiedName("compress/lzw", "NewReader") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -20,7 +20,7 @@ module CompressLzwTaintTracking {
     NewWriter() { hasQualifiedName("compress/lzw", "NewWriter") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult() and outp.isParameter(0)
+      (inp.isResult() and outp.isParameter(0))
     }
   }
 }

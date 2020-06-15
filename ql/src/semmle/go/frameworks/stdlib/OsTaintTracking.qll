@@ -11,7 +11,7 @@ module OsTaintTracking {
     Expand() { hasQualifiedName("os", "Expand") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -20,7 +20,7 @@ module OsTaintTracking {
     ExpandEnv() { hasQualifiedName("os", "ExpandEnv") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -29,7 +29,7 @@ module OsTaintTracking {
     NewFile() { hasQualifiedName("os", "NewFile") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -38,7 +38,7 @@ module OsTaintTracking {
     Pipe() { hasQualifiedName("os", "Pipe") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult(1) and outp.isResult(0)
+      (inp.isResult(1) and outp.isResult(0))
     }
   }
 
@@ -47,7 +47,25 @@ module OsTaintTracking {
     FileFd() { this.(Method).hasQualifiedName("os", "File", "Fd") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
+    }
+  }
+
+  private class FileRead extends TaintTracking::FunctionModel, Method {
+    // signature: func (*File).Read(b []byte) (n int, err error)
+    FileRead() { this.(Method).hasQualifiedName("os", "File", "Read") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isReceiver() and outp.isParameter(0))
+    }
+  }
+
+  private class FileReadAt extends TaintTracking::FunctionModel, Method {
+    // signature: func (*File).ReadAt(b []byte, off int64) (n int, err error)
+    FileReadAt() { this.(Method).hasQualifiedName("os", "File", "ReadAt") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -57,6 +75,17 @@ module OsTaintTracking {
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
       inp.isReceiver() and outp.isResult(0)
+      or
+      inp.isResult(0) and outp.isReceiver()
+    }
+  }
+
+  private class FileWrite extends TaintTracking::FunctionModel, Method {
+    // signature: func (*File).Write(b []byte) (n int, err error)
+    FileWrite() { this.(Method).hasQualifiedName("os", "File", "Write") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -65,7 +94,7 @@ module OsTaintTracking {
     FileWriteAt() { this.(Method).hasQualifiedName("os", "File", "WriteAt") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -74,7 +103,7 @@ module OsTaintTracking {
     FileWriteString() { this.(Method).hasQualifiedName("os", "File", "WriteString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 }

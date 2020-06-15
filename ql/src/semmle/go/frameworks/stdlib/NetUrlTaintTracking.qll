@@ -11,7 +11,7 @@ module NetUrlTaintTracking {
     Parse() { hasQualifiedName("net/url", "Parse") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -20,7 +20,7 @@ module NetUrlTaintTracking {
     ParseQuery() { hasQualifiedName("net/url", "ParseQuery") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -29,7 +29,7 @@ module NetUrlTaintTracking {
     ParseRequestURI() { hasQualifiedName("net/url", "ParseRequestURI") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -38,7 +38,7 @@ module NetUrlTaintTracking {
     PathEscape() { hasQualifiedName("net/url", "PathEscape") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -47,7 +47,7 @@ module NetUrlTaintTracking {
     PathUnescape() { hasQualifiedName("net/url", "PathUnescape") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -56,7 +56,7 @@ module NetUrlTaintTracking {
     QueryEscape() { hasQualifiedName("net/url", "QueryEscape") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -65,7 +65,7 @@ module NetUrlTaintTracking {
     QueryUnescape() { hasQualifiedName("net/url", "QueryUnescape") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -74,7 +74,7 @@ module NetUrlTaintTracking {
     User() { hasQualifiedName("net/url", "User") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -83,7 +83,7 @@ module NetUrlTaintTracking {
     UserPassword() { hasQualifiedName("net/url", "UserPassword") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -92,7 +92,7 @@ module NetUrlTaintTracking {
     URLEscapedPath() { this.(Method).hasQualifiedName("net/url", "URL", "EscapedPath") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -101,7 +101,7 @@ module NetUrlTaintTracking {
     URLHostname() { this.(Method).hasQualifiedName("net/url", "URL", "Hostname") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -110,7 +110,7 @@ module NetUrlTaintTracking {
     URLMarshalBinary() { this.(Method).hasQualifiedName("net/url", "URL", "MarshalBinary") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -119,8 +119,10 @@ module NetUrlTaintTracking {
     URLParse() { this.(Method).hasQualifiedName("net/url", "URL", "Parse") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isParameter(0) or inp.isReceiver()) and
-      outp.isResult(0)
+      (
+        (inp.isReceiver() or inp.isParameter(0)) and
+        outp.isResult(0)
+      )
     }
   }
 
@@ -129,7 +131,7 @@ module NetUrlTaintTracking {
     URLPort() { this.(Method).hasQualifiedName("net/url", "URL", "Port") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -138,7 +140,7 @@ module NetUrlTaintTracking {
     URLQuery() { this.(Method).hasQualifiedName("net/url", "URL", "Query") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -147,7 +149,7 @@ module NetUrlTaintTracking {
     URLRequestURI() { this.(Method).hasQualifiedName("net/url", "URL", "RequestURI") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -156,8 +158,10 @@ module NetUrlTaintTracking {
     URLResolveReference() { this.(Method).hasQualifiedName("net/url", "URL", "ResolveReference") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isParameter(0) or inp.isReceiver()) and
-      outp.isResult()
+      (
+        (inp.isReceiver() or inp.isParameter(0)) and
+        outp.isResult()
+      )
     }
   }
 
@@ -166,7 +170,7 @@ module NetUrlTaintTracking {
     URLString() { this.(Method).hasQualifiedName("net/url", "URL", "String") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -175,7 +179,7 @@ module NetUrlTaintTracking {
     URLUnmarshalBinary() { this.(Method).hasQualifiedName("net/url", "URL", "UnmarshalBinary") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -184,7 +188,7 @@ module NetUrlTaintTracking {
     UserinfoPassword() { this.(Method).hasQualifiedName("net/url", "Userinfo", "Password") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -193,7 +197,7 @@ module NetUrlTaintTracking {
     UserinfoString() { this.(Method).hasQualifiedName("net/url", "Userinfo", "String") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -202,7 +206,7 @@ module NetUrlTaintTracking {
     UserinfoUsername() { this.(Method).hasQualifiedName("net/url", "Userinfo", "Username") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -211,7 +215,7 @@ module NetUrlTaintTracking {
     ValuesAdd() { this.(Method).hasQualifiedName("net/url", "Values", "Add") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isReceiver()
+      (inp.isParameter(_) and outp.isReceiver())
     }
   }
 
@@ -220,7 +224,7 @@ module NetUrlTaintTracking {
     ValuesEncode() { this.(Method).hasQualifiedName("net/url", "Values", "Encode") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -229,7 +233,7 @@ module NetUrlTaintTracking {
     ValuesGet() { this.(Method).hasQualifiedName("net/url", "Values", "Get") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -238,7 +242,7 @@ module NetUrlTaintTracking {
     ValuesSet() { this.(Method).hasQualifiedName("net/url", "Values", "Set") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isReceiver()
+      (inp.isParameter(_) and outp.isReceiver())
     }
   }
 }

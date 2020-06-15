@@ -11,7 +11,7 @@ module SyscallTaintTracking {
     BytePtrFromString() { hasQualifiedName("syscall", "BytePtrFromString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -20,7 +20,7 @@ module SyscallTaintTracking {
     ByteSliceFromString() { hasQualifiedName("syscall", "ByteSliceFromString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -29,34 +29,7 @@ module SyscallTaintTracking {
     Pread() { hasQualifiedName("syscall", "Pread") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isParameter(1)
-    }
-  }
-
-  private class Pwrite extends TaintTracking::FunctionModel {
-    // signature: func Pwrite(fd int, p []byte, offset int64) (n int, err error)
-    Pwrite() { hasQualifiedName("syscall", "Pwrite") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
-    }
-  }
-
-  private class SyscallRead extends TaintTracking::FunctionModel {
-    // signature: func Read(fd int, p []byte) (n int, err error)
-    SyscallRead() { hasQualifiedName("syscall", "Read") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isParameter(1)
-    }
-  }
-
-  private class ReadDirent extends TaintTracking::FunctionModel {
-    // signature: func ReadDirent(fd int, buf []byte) (n int, err error)
-    ReadDirent() { hasQualifiedName("syscall", "ReadDirent") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isParameter(1)
+      (inp.isParameter(0) and outp.isParameter(1))
     }
   }
 
@@ -65,7 +38,7 @@ module SyscallTaintTracking {
     SlicePtrFromStrings() { hasQualifiedName("syscall", "SlicePtrFromStrings") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -74,7 +47,7 @@ module SyscallTaintTracking {
     StringBytePtr() { hasQualifiedName("syscall", "StringBytePtr") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -83,7 +56,7 @@ module SyscallTaintTracking {
     StringByteSlice() { hasQualifiedName("syscall", "StringByteSlice") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -92,16 +65,7 @@ module SyscallTaintTracking {
     StringSlicePtr() { hasQualifiedName("syscall", "StringSlicePtr") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
-    }
-  }
-
-  private class Tee extends TaintTracking::FunctionModel {
-    // signature: func Tee(rfd int, wfd int, len int, flags int) (n int64, err error)
-    Tee() { hasQualifiedName("syscall", "Tee") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -110,25 +74,7 @@ module SyscallTaintTracking {
     UnixCredentials() { hasQualifiedName("syscall", "UnixCredentials") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
-    }
-  }
-
-  private class UnixRights extends TaintTracking::FunctionModel {
-    // signature: func UnixRights(fds ...int) []byte
-    UnixRights() { hasQualifiedName("syscall", "UnixRights") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
-    }
-  }
-
-  private class SyscallWrite extends TaintTracking::FunctionModel {
-    // signature: func Write(fd int, p []byte) (n int, err error)
-    SyscallWrite() { hasQualifiedName("syscall", "Write") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -137,7 +83,18 @@ module SyscallTaintTracking {
     RawConnRead() { this.implements("syscall", "RawConn", "Read") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
+      (inp.isReceiver() and outp.isParameter(0))
+    }
+  }
+
+  private class ConnSyscallConn extends TaintTracking::FunctionModel, Method {
+    // signature: func (Conn).SyscallConn() (RawConn, error)
+    ConnSyscallConn() { this.implements("syscall", "Conn", "SyscallConn") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isReceiver() and outp.isResult(0)
+      or
+      inp.isResult(0) and outp.isReceiver()
     }
   }
 
@@ -146,7 +103,7 @@ module SyscallTaintTracking {
     RawConnWrite() { this.implements("syscall", "RawConn", "Write") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 }

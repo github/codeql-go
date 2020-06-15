@@ -22,7 +22,7 @@ module BufioTaintTracking {
     NewReader() { hasQualifiedName("bufio", "NewReader") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -31,7 +31,7 @@ module BufioTaintTracking {
     NewReaderSize() { hasQualifiedName("bufio", "NewReaderSize") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -40,7 +40,7 @@ module BufioTaintTracking {
     NewScanner() { hasQualifiedName("bufio", "NewScanner") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -49,7 +49,7 @@ module BufioTaintTracking {
     NewWriter() { hasQualifiedName("bufio", "NewWriter") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult() and outp.isParameter(0)
+      (inp.isResult() and outp.isParameter(0))
     }
   }
 
@@ -58,7 +58,7 @@ module BufioTaintTracking {
     NewWriterSize() { hasQualifiedName("bufio", "NewWriterSize") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult() and outp.isParameter(0)
+      (inp.isResult() and outp.isParameter(0))
     }
   }
 
@@ -67,7 +67,7 @@ module BufioTaintTracking {
     ScanBytes() { hasQualifiedName("bufio", "ScanBytes") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(1)
+      (inp.isParameter(0) and outp.isResult(1))
     }
   }
 
@@ -76,7 +76,7 @@ module BufioTaintTracking {
     ScanLines() { hasQualifiedName("bufio", "ScanLines") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(1)
+      (inp.isParameter(0) and outp.isResult(1))
     }
   }
 
@@ -85,7 +85,7 @@ module BufioTaintTracking {
     ScanRunes() { hasQualifiedName("bufio", "ScanRunes") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(1)
+      (inp.isParameter(0) and outp.isResult(1))
     }
   }
 
@@ -94,7 +94,7 @@ module BufioTaintTracking {
     ScanWords() { hasQualifiedName("bufio", "ScanWords") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(1)
+      (inp.isParameter(0) and outp.isResult(1))
     }
   }
 
@@ -103,7 +103,16 @@ module BufioTaintTracking {
     ReaderPeek() { this.(Method).hasQualifiedName("bufio", "Reader", "Peek") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
+    }
+  }
+
+  private class ReaderRead extends TaintTracking::FunctionModel, Method {
+    // signature: func (*Reader).Read(p []byte) (n int, err error)
+    ReaderRead() { this.(Method).hasQualifiedName("bufio", "Reader", "Read") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -112,7 +121,7 @@ module BufioTaintTracking {
     ReaderReadByte() { this.(Method).hasQualifiedName("bufio", "Reader", "ReadByte") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -121,7 +130,7 @@ module BufioTaintTracking {
     ReaderReadBytes() { this.(Method).hasQualifiedName("bufio", "Reader", "ReadBytes") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -130,7 +139,7 @@ module BufioTaintTracking {
     ReaderReadLine() { this.(Method).hasQualifiedName("bufio", "Reader", "ReadLine") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -139,7 +148,7 @@ module BufioTaintTracking {
     ReaderReadRune() { this.(Method).hasQualifiedName("bufio", "Reader", "ReadRune") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -148,7 +157,7 @@ module BufioTaintTracking {
     ReaderReadSlice() { this.(Method).hasQualifiedName("bufio", "Reader", "ReadSlice") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -157,7 +166,7 @@ module BufioTaintTracking {
     ReaderReadString() { this.(Method).hasQualifiedName("bufio", "Reader", "ReadString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -166,7 +175,7 @@ module BufioTaintTracking {
     ReaderReset() { this.(Method).hasQualifiedName("bufio", "Reader", "Reset") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -175,7 +184,7 @@ module BufioTaintTracking {
     ReaderWriteTo() { this.(Method).hasQualifiedName("bufio", "Reader", "WriteTo") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -184,7 +193,7 @@ module BufioTaintTracking {
     ScannerBytes() { this.(Method).hasQualifiedName("bufio", "Scanner", "Bytes") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -193,7 +202,7 @@ module BufioTaintTracking {
     ScannerText() { this.(Method).hasQualifiedName("bufio", "Scanner", "Text") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -202,7 +211,7 @@ module BufioTaintTracking {
     WriterReadFrom() { this.(Method).hasQualifiedName("bufio", "Writer", "ReadFrom") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -211,7 +220,16 @@ module BufioTaintTracking {
     WriterReset() { this.(Method).hasQualifiedName("bufio", "Writer", "Reset") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
+      (inp.isReceiver() and outp.isParameter(0))
+    }
+  }
+
+  private class WriterWrite extends TaintTracking::FunctionModel, Method {
+    // signature: func (*Writer).Write(p []byte) (nn int, err error)
+    WriterWrite() { this.(Method).hasQualifiedName("bufio", "Writer", "Write") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -220,7 +238,7 @@ module BufioTaintTracking {
     WriterWriteByte() { this.(Method).hasQualifiedName("bufio", "Writer", "WriteByte") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -229,7 +247,7 @@ module BufioTaintTracking {
     WriterWriteRune() { this.(Method).hasQualifiedName("bufio", "Writer", "WriteRune") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -238,7 +256,7 @@ module BufioTaintTracking {
     WriterWriteString() { this.(Method).hasQualifiedName("bufio", "Writer", "WriteString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 }

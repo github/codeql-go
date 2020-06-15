@@ -11,7 +11,7 @@ module CryptoX509TaintTracking {
     DecryptPEMBlock() { hasQualifiedName("crypto/x509", "DecryptPEMBlock") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -20,7 +20,27 @@ module CryptoX509TaintTracking {
     EncryptPEMBlock() { hasQualifiedName("crypto/x509", "EncryptPEMBlock") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(2) and outp.isResult(0)
+      (inp.isParameter(2) and outp.isResult(0))
+    }
+  }
+
+  private class CertPoolAddCert extends TaintTracking::FunctionModel, Method {
+    // signature: func (*CertPool).AddCert(cert *Certificate)
+    CertPoolAddCert() { this.(Method).hasQualifiedName("crypto/x509", "CertPool", "AddCert") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(0) and outp.isReceiver())
+    }
+  }
+
+  private class CertPoolAppendCertsFromPEM extends TaintTracking::FunctionModel, Method {
+    // signature: func (*CertPool).AppendCertsFromPEM(pemCerts []byte) (ok bool)
+    CertPoolAppendCertsFromPEM() {
+      this.(Method).hasQualifiedName("crypto/x509", "CertPool", "AppendCertsFromPEM")
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 }

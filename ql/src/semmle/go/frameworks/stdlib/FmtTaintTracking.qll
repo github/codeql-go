@@ -11,7 +11,7 @@ module FmtTaintTracking {
     Errorf() { hasQualifiedName("fmt", "Errorf") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -20,7 +20,7 @@ module FmtTaintTracking {
     Fprint() { hasQualifiedName("fmt", "Fprint") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(any(int i | i >= 1)) and outp.isParameter(0)
+      (inp.isParameter(any(int i | i >= 1)) and outp.isParameter(0))
     }
   }
 
@@ -29,7 +29,7 @@ module FmtTaintTracking {
     Fprintf() { hasQualifiedName("fmt", "Fprintf") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(any(int i | i >= 1)) and outp.isParameter(0)
+      (inp.isParameter([1, any(int i | i >= 2)]) and outp.isParameter(0))
     }
   }
 
@@ -38,7 +38,7 @@ module FmtTaintTracking {
     Fprintln() { hasQualifiedName("fmt", "Fprintln") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(any(int i | i >= 1)) and outp.isParameter(0)
+      (inp.isParameter(any(int i | i >= 1)) and outp.isParameter(0))
     }
   }
 
@@ -47,7 +47,7 @@ module FmtTaintTracking {
     Fscan() { hasQualifiedName("fmt", "Fscan") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isParameter(any(int i | i >= 1))
+      (inp.isParameter(0) and outp.isParameter(any(int i | i >= 1)))
     }
   }
 
@@ -56,7 +56,7 @@ module FmtTaintTracking {
     Fscanf() { hasQualifiedName("fmt", "Fscanf") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isParameter(any(int i | i >= 2))
+      (inp.isParameter([0, 1]) and outp.isParameter(any(int i | i >= 2)))
     }
   }
 
@@ -65,7 +65,7 @@ module FmtTaintTracking {
     Fscanln() { hasQualifiedName("fmt", "Fscanln") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isParameter(any(int i | i >= 1))
+      (inp.isParameter(0) and outp.isParameter(any(int i | i >= 1)))
     }
   }
 
@@ -74,7 +74,7 @@ module FmtTaintTracking {
     Sprint() { hasQualifiedName("fmt", "Sprint") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -83,7 +83,7 @@ module FmtTaintTracking {
     Sprintf() { hasQualifiedName("fmt", "Sprintf") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -92,7 +92,7 @@ module FmtTaintTracking {
     Sprintln() { hasQualifiedName("fmt", "Sprintln") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -101,7 +101,7 @@ module FmtTaintTracking {
     Sscan() { hasQualifiedName("fmt", "Sscan") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isParameter(any(int i | i >= 1))
+      (inp.isParameter(0) and outp.isParameter(any(int i | i >= 1)))
     }
   }
 
@@ -110,7 +110,7 @@ module FmtTaintTracking {
     Sscanf() { hasQualifiedName("fmt", "Sscanf") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isParameter(any(int i | i >= 2))
+      (inp.isParameter([0, 1]) and outp.isParameter(any(int i | i >= 2)))
     }
   }
 
@@ -119,7 +119,7 @@ module FmtTaintTracking {
     Sscanln() { hasQualifiedName("fmt", "Sscanln") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isParameter(any(int i | i >= 1))
+      (inp.isParameter(0) and outp.isParameter(any(int i | i >= 1)))
     }
   }
 
@@ -128,7 +128,16 @@ module FmtTaintTracking {
     GoStringerGoString() { this.implements("fmt", "GoStringer", "GoString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
+    }
+  }
+
+  private class ScanStateRead extends TaintTracking::FunctionModel, Method {
+    // signature: func (ScanState).Read(buf []byte) (n int, err error)
+    ScanStateRead() { this.implements("fmt", "ScanState", "Read") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -137,16 +146,7 @@ module FmtTaintTracking {
     ScanStateReadRune() { this.implements("fmt", "ScanState", "ReadRune") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
-    }
-  }
-
-  private class ScanStateToken extends TaintTracking::FunctionModel, Method {
-    // signature: func (ScanState).Token(skipSpace bool, f func(rune) bool) (token []byte, err error)
-    ScanStateToken() { this.implements("fmt", "ScanState", "Token") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -155,7 +155,25 @@ module FmtTaintTracking {
     StringerString() { this.implements("fmt", "Stringer", "String") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
+    }
+  }
+
+  private class ScanStateToken extends TaintTracking::FunctionModel, Method {
+    // signature: func (ScanState).Token(skipSpace bool, f func(rune) bool) (token []byte, err error)
+    ScanStateToken() { this.implements("fmt", "ScanState", "Token") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isReceiver() and outp.isResult(0))
+    }
+  }
+
+  private class StateWrite extends TaintTracking::FunctionModel, Method {
+    // signature: func (State).Write(b []byte) (n int, err error)
+    StateWrite() { this.implements("fmt", "State", "Write") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 }

@@ -11,7 +11,7 @@ module EncodingHexTaintTracking {
     Decode() { hasQualifiedName("encoding/hex", "Decode") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 
@@ -20,7 +20,7 @@ module EncodingHexTaintTracking {
     DecodeString() { hasQualifiedName("encoding/hex", "DecodeString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -29,7 +29,7 @@ module EncodingHexTaintTracking {
     Dump() { hasQualifiedName("encoding/hex", "Dump") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -38,7 +38,7 @@ module EncodingHexTaintTracking {
     Dumper() { hasQualifiedName("encoding/hex", "Dumper") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult() and outp.isParameter(0)
+      (inp.isResult() and outp.isParameter(0))
     }
   }
 
@@ -47,7 +47,7 @@ module EncodingHexTaintTracking {
     Encode() { hasQualifiedName("encoding/hex", "Encode") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 
@@ -56,7 +56,7 @@ module EncodingHexTaintTracking {
     EncodeToString() { hasQualifiedName("encoding/hex", "EncodeToString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -65,7 +65,7 @@ module EncodingHexTaintTracking {
     NewDecoder() { hasQualifiedName("encoding/hex", "NewDecoder") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -74,7 +74,7 @@ module EncodingHexTaintTracking {
     NewEncoder() { hasQualifiedName("encoding/hex", "NewEncoder") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult() and outp.isParameter(0)
+      (inp.isResult() and outp.isParameter(0))
     }
   }
 }

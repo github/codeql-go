@@ -11,7 +11,7 @@ module MimeMultipartTaintTracking {
     NewReader() { hasQualifiedName("mime/multipart", "NewReader") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -20,7 +20,7 @@ module MimeMultipartTaintTracking {
     NewWriter() { hasQualifiedName("mime/multipart", "NewWriter") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult() and outp.isParameter(0)
+      (inp.isResult() and outp.isParameter(0))
     }
   }
 
@@ -29,7 +29,16 @@ module MimeMultipartTaintTracking {
     FileHeaderOpen() { this.(Method).hasQualifiedName("mime/multipart", "FileHeader", "Open") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
+    }
+  }
+
+  private class PartRead extends TaintTracking::FunctionModel, Method {
+    // signature: func (*Part).Read(d []byte) (n int, err error)
+    PartRead() { this.(Method).hasQualifiedName("mime/multipart", "Part", "Read") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -38,7 +47,7 @@ module MimeMultipartTaintTracking {
     ReaderNextPart() { this.(Method).hasQualifiedName("mime/multipart", "Reader", "NextPart") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -49,7 +58,7 @@ module MimeMultipartTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -58,7 +67,7 @@ module MimeMultipartTaintTracking {
     ReaderReadForm() { this.(Method).hasQualifiedName("mime/multipart", "Reader", "ReadForm") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -69,7 +78,7 @@ module MimeMultipartTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult(0) and outp.isReceiver()
+      (inp.isResult(0) and outp.isReceiver())
     }
   }
 
@@ -80,7 +89,7 @@ module MimeMultipartTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult(0) and outp.isReceiver()
+      (inp.isResult(0) and outp.isReceiver())
     }
   }
 
@@ -89,7 +98,7 @@ module MimeMultipartTaintTracking {
     WriterCreatePart() { this.(Method).hasQualifiedName("mime/multipart", "Writer", "CreatePart") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult(0) and outp.isReceiver()
+      (inp.isResult(0) and outp.isReceiver())
     }
   }
 
@@ -98,7 +107,7 @@ module MimeMultipartTaintTracking {
     WriterWriteField() { this.(Method).hasQualifiedName("mime/multipart", "Writer", "WriteField") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isReceiver()
+      (inp.isParameter(_) and outp.isReceiver())
     }
   }
 }

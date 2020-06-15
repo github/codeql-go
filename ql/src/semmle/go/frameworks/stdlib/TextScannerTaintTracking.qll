@@ -11,7 +11,7 @@ module TextScannerTaintTracking {
     TokenString() { hasQualifiedName("text/scanner", "TokenString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -20,8 +20,10 @@ module TextScannerTaintTracking {
     ScannerInit() { this.(Method).hasQualifiedName("text/scanner", "Scanner", "Init") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and
-      (outp.isReceiver() or outp.isResult())
+      (
+        inp.isParameter(0) and
+        (outp.isReceiver() or outp.isResult())
+      )
     }
   }
 
@@ -30,7 +32,7 @@ module TextScannerTaintTracking {
     ScannerNext() { this.(Method).hasQualifiedName("text/scanner", "Scanner", "Next") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -39,7 +41,7 @@ module TextScannerTaintTracking {
     ScannerPeek() { this.(Method).hasQualifiedName("text/scanner", "Scanner", "Peek") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -48,7 +50,7 @@ module TextScannerTaintTracking {
     ScannerScan() { this.(Method).hasQualifiedName("text/scanner", "Scanner", "Scan") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -57,7 +59,7 @@ module TextScannerTaintTracking {
     ScannerTokenText() { this.(Method).hasQualifiedName("text/scanner", "Scanner", "TokenText") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 }

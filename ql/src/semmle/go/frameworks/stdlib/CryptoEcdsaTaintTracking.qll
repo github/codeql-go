@@ -11,7 +11,7 @@ module CryptoEcdsaTaintTracking {
     PrivateKeySign() { this.(Method).hasQualifiedName("crypto/ecdsa", "PrivateKey", "Sign") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult(0)
+      (inp.isParameter(1) and outp.isResult(0))
     }
   }
 }

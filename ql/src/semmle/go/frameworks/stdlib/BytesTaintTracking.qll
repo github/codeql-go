@@ -11,7 +11,7 @@ module BytesTaintTracking {
     Fields() { hasQualifiedName("bytes", "Fields") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -20,7 +20,7 @@ module BytesTaintTracking {
     FieldsFunc() { hasQualifiedName("bytes", "FieldsFunc") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -29,7 +29,7 @@ module BytesTaintTracking {
     Join() { hasQualifiedName("bytes", "Join") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isParameter([0, 1]) and outp.isResult())
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -38,7 +38,7 @@ module BytesTaintTracking {
     Map() { hasQualifiedName("bytes", "Map") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult()
+      (inp.isParameter(1) and outp.isResult())
     }
   }
 
@@ -47,7 +47,7 @@ module BytesTaintTracking {
     NewBuffer() { hasQualifiedName("bytes", "NewBuffer") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -56,7 +56,7 @@ module BytesTaintTracking {
     NewBufferString() { hasQualifiedName("bytes", "NewBufferString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -65,7 +65,7 @@ module BytesTaintTracking {
     NewReader() { hasQualifiedName("bytes", "NewReader") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -74,7 +74,7 @@ module BytesTaintTracking {
     Repeat() { hasQualifiedName("bytes", "Repeat") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -83,7 +83,7 @@ module BytesTaintTracking {
     Replace() { hasQualifiedName("bytes", "Replace") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter([0, 2]) and outp.isResult()
+      (inp.isParameter([0, 2]) and outp.isResult())
     }
   }
 
@@ -92,7 +92,7 @@ module BytesTaintTracking {
     ReplaceAll() { hasQualifiedName("bytes", "ReplaceAll") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter([0, 2]) and outp.isResult()
+      (inp.isParameter([0, 2]) and outp.isResult())
     }
   }
 
@@ -101,7 +101,7 @@ module BytesTaintTracking {
     Runes() { hasQualifiedName("bytes", "Runes") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -110,7 +110,7 @@ module BytesTaintTracking {
     Split() { hasQualifiedName("bytes", "Split") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -119,7 +119,7 @@ module BytesTaintTracking {
     SplitAfter() { hasQualifiedName("bytes", "SplitAfter") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -128,7 +128,7 @@ module BytesTaintTracking {
     SplitAfterN() { hasQualifiedName("bytes", "SplitAfterN") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -137,7 +137,7 @@ module BytesTaintTracking {
     SplitN() { hasQualifiedName("bytes", "SplitN") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -146,7 +146,7 @@ module BytesTaintTracking {
     Title() { hasQualifiedName("bytes", "Title") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -155,7 +155,7 @@ module BytesTaintTracking {
     ToLower() { hasQualifiedName("bytes", "ToLower") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -164,7 +164,7 @@ module BytesTaintTracking {
     ToLowerSpecial() { hasQualifiedName("bytes", "ToLowerSpecial") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult()
+      (inp.isParameter(1) and outp.isResult())
     }
   }
 
@@ -173,7 +173,7 @@ module BytesTaintTracking {
     ToTitle() { hasQualifiedName("bytes", "ToTitle") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -182,7 +182,7 @@ module BytesTaintTracking {
     ToTitleSpecial() { hasQualifiedName("bytes", "ToTitleSpecial") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult()
+      (inp.isParameter(1) and outp.isResult())
     }
   }
 
@@ -191,7 +191,7 @@ module BytesTaintTracking {
     ToUpper() { hasQualifiedName("bytes", "ToUpper") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -200,7 +200,7 @@ module BytesTaintTracking {
     ToUpperSpecial() { hasQualifiedName("bytes", "ToUpperSpecial") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult()
+      (inp.isParameter(1) and outp.isResult())
     }
   }
 
@@ -209,7 +209,7 @@ module BytesTaintTracking {
     ToValidUTF8() { hasQualifiedName("bytes", "ToValidUTF8") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter([0, 1]) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -218,7 +218,7 @@ module BytesTaintTracking {
     Trim() { hasQualifiedName("bytes", "Trim") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -227,7 +227,7 @@ module BytesTaintTracking {
     TrimFunc() { hasQualifiedName("bytes", "TrimFunc") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -236,7 +236,7 @@ module BytesTaintTracking {
     TrimLeft() { hasQualifiedName("bytes", "TrimLeft") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -245,7 +245,7 @@ module BytesTaintTracking {
     TrimLeftFunc() { hasQualifiedName("bytes", "TrimLeftFunc") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -254,7 +254,7 @@ module BytesTaintTracking {
     TrimPrefix() { hasQualifiedName("bytes", "TrimPrefix") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -263,7 +263,7 @@ module BytesTaintTracking {
     TrimRight() { hasQualifiedName("bytes", "TrimRight") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -272,7 +272,7 @@ module BytesTaintTracking {
     TrimRightFunc() { hasQualifiedName("bytes", "TrimRightFunc") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -281,7 +281,7 @@ module BytesTaintTracking {
     TrimSpace() { hasQualifiedName("bytes", "TrimSpace") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -290,7 +290,7 @@ module BytesTaintTracking {
     TrimSuffix() { hasQualifiedName("bytes", "TrimSuffix") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -299,7 +299,7 @@ module BytesTaintTracking {
     BufferBytes() { this.(Method).hasQualifiedName("bytes", "Buffer", "Bytes") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -308,7 +308,16 @@ module BytesTaintTracking {
     BufferNext() { this.(Method).hasQualifiedName("bytes", "Buffer", "Next") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
+    }
+  }
+
+  private class BufferRead extends TaintTracking::FunctionModel, Method {
+    // signature: func (*Buffer).Read(p []byte) (n int, err error)
+    BufferRead() { this.(Method).hasQualifiedName("bytes", "Buffer", "Read") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -317,7 +326,7 @@ module BytesTaintTracking {
     BufferReadByte() { this.(Method).hasQualifiedName("bytes", "Buffer", "ReadByte") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -326,7 +335,7 @@ module BytesTaintTracking {
     BufferReadBytes() { this.(Method).hasQualifiedName("bytes", "Buffer", "ReadBytes") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -335,7 +344,7 @@ module BytesTaintTracking {
     BufferReadFrom() { this.(Method).hasQualifiedName("bytes", "Buffer", "ReadFrom") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -344,7 +353,7 @@ module BytesTaintTracking {
     BufferReadRune() { this.(Method).hasQualifiedName("bytes", "Buffer", "ReadRune") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -353,7 +362,7 @@ module BytesTaintTracking {
     BufferReadString() { this.(Method).hasQualifiedName("bytes", "Buffer", "ReadString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -362,7 +371,16 @@ module BytesTaintTracking {
     BufferString() { this.(Method).hasQualifiedName("bytes", "Buffer", "String") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
+    }
+  }
+
+  private class BufferWrite extends TaintTracking::FunctionModel, Method {
+    // signature: func (*Buffer).Write(p []byte) (n int, err error)
+    BufferWrite() { this.(Method).hasQualifiedName("bytes", "Buffer", "Write") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -371,7 +389,7 @@ module BytesTaintTracking {
     BufferWriteByte() { this.(Method).hasQualifiedName("bytes", "Buffer", "WriteByte") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -380,7 +398,7 @@ module BytesTaintTracking {
     BufferWriteRune() { this.(Method).hasQualifiedName("bytes", "Buffer", "WriteRune") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -389,7 +407,7 @@ module BytesTaintTracking {
     BufferWriteString() { this.(Method).hasQualifiedName("bytes", "Buffer", "WriteString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -398,7 +416,25 @@ module BytesTaintTracking {
     BufferWriteTo() { this.(Method).hasQualifiedName("bytes", "Buffer", "WriteTo") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
+      (inp.isReceiver() and outp.isParameter(0))
+    }
+  }
+
+  private class ReaderRead extends TaintTracking::FunctionModel, Method {
+    // signature: func (*Reader).Read(b []byte) (n int, err error)
+    ReaderRead() { this.(Method).hasQualifiedName("bytes", "Reader", "Read") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isReceiver() and outp.isParameter(0))
+    }
+  }
+
+  private class ReaderReadAt extends TaintTracking::FunctionModel, Method {
+    // signature: func (*Reader).ReadAt(b []byte, off int64) (n int, err error)
+    ReaderReadAt() { this.(Method).hasQualifiedName("bytes", "Reader", "ReadAt") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -407,7 +443,7 @@ module BytesTaintTracking {
     ReaderReadByte() { this.(Method).hasQualifiedName("bytes", "Reader", "ReadByte") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -416,7 +452,7 @@ module BytesTaintTracking {
     ReaderReadRune() { this.(Method).hasQualifiedName("bytes", "Reader", "ReadRune") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -425,7 +461,7 @@ module BytesTaintTracking {
     ReaderReset() { this.(Method).hasQualifiedName("bytes", "Reader", "Reset") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -434,7 +470,7 @@ module BytesTaintTracking {
     ReaderWriteTo() { this.(Method).hasQualifiedName("bytes", "Reader", "WriteTo") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 }

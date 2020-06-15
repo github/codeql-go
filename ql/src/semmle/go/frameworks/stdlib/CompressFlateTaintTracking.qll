@@ -11,7 +11,7 @@ module CompressFlateTaintTracking {
     NewReader() { hasQualifiedName("compress/flate", "NewReader") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -20,7 +20,7 @@ module CompressFlateTaintTracking {
     NewReaderDict() { hasQualifiedName("compress/flate", "NewReaderDict") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -29,7 +29,7 @@ module CompressFlateTaintTracking {
     NewWriter() { hasQualifiedName("compress/flate", "NewWriter") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult(0) and outp.isParameter(0)
+      (inp.isResult(0) and outp.isParameter(0))
     }
   }
 
@@ -38,7 +38,7 @@ module CompressFlateTaintTracking {
     NewWriterDict() { hasQualifiedName("compress/flate", "NewWriterDict") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult(0) and outp.isParameter(0)
+      (inp.isResult(0) and outp.isParameter(0))
     }
   }
 
@@ -47,7 +47,7 @@ module CompressFlateTaintTracking {
     WriterReset() { this.(Method).hasQualifiedName("compress/flate", "Writer", "Reset") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -56,7 +56,7 @@ module CompressFlateTaintTracking {
     WriterWrite() { this.(Method).hasQualifiedName("compress/flate", "Writer", "Write") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -65,7 +65,7 @@ module CompressFlateTaintTracking {
     ResetterReset() { this.implements("compress/flate", "Resetter", "Reset") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 }

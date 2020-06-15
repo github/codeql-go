@@ -11,7 +11,7 @@ module EncodingAsn1TaintTracking {
     Marshal() { hasQualifiedName("encoding/asn1", "Marshal") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -20,7 +20,7 @@ module EncodingAsn1TaintTracking {
     MarshalWithParams() { hasQualifiedName("encoding/asn1", "MarshalWithParams") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(_) and outp.isResult(0))
     }
   }
 
@@ -29,7 +29,10 @@ module EncodingAsn1TaintTracking {
     Unmarshal() { hasQualifiedName("encoding/asn1", "Unmarshal") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isParameter(1)
+      (
+        inp.isParameter(0) and
+        (outp.isParameter(1) or outp.isResult(0))
+      )
     }
   }
 
@@ -38,7 +41,10 @@ module EncodingAsn1TaintTracking {
     UnmarshalWithParams() { hasQualifiedName("encoding/asn1", "UnmarshalWithParams") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isParameter(1)
+      (
+        inp.isParameter([0, 2]) and
+        (outp.isParameter(1) or outp.isResult(0))
+      )
     }
   }
 
@@ -49,7 +55,7 @@ module EncodingAsn1TaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 }

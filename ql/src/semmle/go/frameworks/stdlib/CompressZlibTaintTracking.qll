@@ -11,7 +11,7 @@ module CompressZlibTaintTracking {
     NewReader() { hasQualifiedName("compress/zlib", "NewReader") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -20,7 +20,7 @@ module CompressZlibTaintTracking {
     NewReaderDict() { hasQualifiedName("compress/zlib", "NewReaderDict") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -29,7 +29,7 @@ module CompressZlibTaintTracking {
     NewWriter() { hasQualifiedName("compress/zlib", "NewWriter") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult() and outp.isParameter(0)
+      (inp.isResult() and outp.isParameter(0))
     }
   }
 
@@ -38,7 +38,7 @@ module CompressZlibTaintTracking {
     NewWriterLevel() { hasQualifiedName("compress/zlib", "NewWriterLevel") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult(0) and outp.isParameter(0)
+      (inp.isResult(0) and outp.isParameter(0))
     }
   }
 
@@ -47,7 +47,7 @@ module CompressZlibTaintTracking {
     NewWriterLevelDict() { hasQualifiedName("compress/zlib", "NewWriterLevelDict") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult(0) and outp.isParameter(0)
+      (inp.isResult(0) and outp.isParameter(0))
     }
   }
 
@@ -56,7 +56,7 @@ module CompressZlibTaintTracking {
     WriterReset() { this.(Method).hasQualifiedName("compress/zlib", "Writer", "Reset") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -65,7 +65,7 @@ module CompressZlibTaintTracking {
     WriterWrite() { this.(Method).hasQualifiedName("compress/zlib", "Writer", "Write") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -74,7 +74,7 @@ module CompressZlibTaintTracking {
     ResetterReset() { this.implements("compress/zlib", "Resetter", "Reset") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 }

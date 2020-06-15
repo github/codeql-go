@@ -11,7 +11,7 @@ module ArchiveTarTaintTracking {
     FileInfoHeader() { hasQualifiedName("archive/tar", "FileInfoHeader") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -20,7 +20,7 @@ module ArchiveTarTaintTracking {
     NewReader() { hasQualifiedName("archive/tar", "NewReader") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -29,16 +29,7 @@ module ArchiveTarTaintTracking {
     NewWriter() { hasQualifiedName("archive/tar", "NewWriter") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult() and outp.isParameter(0)
-    }
-  }
-
-  private class FormatString extends TaintTracking::FunctionModel, Method {
-    // signature: func (Format).String() string
-    FormatString() { this.(Method).hasQualifiedName("archive/tar", "Format", "String") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isResult() and outp.isParameter(0))
     }
   }
 
@@ -47,7 +38,7 @@ module ArchiveTarTaintTracking {
     HeaderFileInfo() { this.(Method).hasQualifiedName("archive/tar", "Header", "FileInfo") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -56,7 +47,25 @@ module ArchiveTarTaintTracking {
     ReaderNext() { this.(Method).hasQualifiedName("archive/tar", "Reader", "Next") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
+    }
+  }
+
+  private class ReaderRead extends TaintTracking::FunctionModel, Method {
+    // signature: func (*Reader).Read(b []byte) (int, error)
+    ReaderRead() { this.(Method).hasQualifiedName("archive/tar", "Reader", "Read") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isReceiver() and outp.isParameter(0))
+    }
+  }
+
+  private class WriterWrite extends TaintTracking::FunctionModel, Method {
+    // signature: func (*Writer).Write(b []byte) (int, error)
+    WriterWrite() { this.(Method).hasQualifiedName("archive/tar", "Writer", "Write") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -65,7 +74,7 @@ module ArchiveTarTaintTracking {
     WriterWriteHeader() { this.(Method).hasQualifiedName("archive/tar", "Writer", "WriteHeader") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 }

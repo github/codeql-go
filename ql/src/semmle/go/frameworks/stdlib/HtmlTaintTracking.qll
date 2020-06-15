@@ -11,7 +11,7 @@ module HtmlTaintTracking {
     EscapeString() { hasQualifiedName("html", "EscapeString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -20,7 +20,7 @@ module HtmlTaintTracking {
     UnescapeString() { hasQualifiedName("html", "UnescapeString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 }

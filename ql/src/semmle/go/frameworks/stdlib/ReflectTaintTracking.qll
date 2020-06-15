@@ -11,7 +11,7 @@ module ReflectTaintTracking {
     Append() { hasQualifiedName("reflect", "Append") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -20,7 +20,7 @@ module ReflectTaintTracking {
     AppendSlice() { hasQualifiedName("reflect", "AppendSlice") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -29,7 +29,7 @@ module ReflectTaintTracking {
     Copy() { hasQualifiedName("reflect", "Copy") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 
@@ -38,7 +38,7 @@ module ReflectTaintTracking {
     Indirect() { hasQualifiedName("reflect", "Indirect") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -47,7 +47,7 @@ module ReflectTaintTracking {
     ValueOf() { hasQualifiedName("reflect", "ValueOf") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -56,7 +56,7 @@ module ReflectTaintTracking {
     MapIterKey() { this.(Method).hasQualifiedName("reflect", "MapIter", "Key") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -65,7 +65,7 @@ module ReflectTaintTracking {
     MapIterValue() { this.(Method).hasQualifiedName("reflect", "MapIter", "Value") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -74,7 +74,7 @@ module ReflectTaintTracking {
     StructTagGet() { this.(Method).hasQualifiedName("reflect", "StructTag", "Get") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -83,7 +83,7 @@ module ReflectTaintTracking {
     StructTagLookup() { this.(Method).hasQualifiedName("reflect", "StructTag", "Lookup") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -92,7 +92,7 @@ module ReflectTaintTracking {
     ValueAddr() { this.(Method).hasQualifiedName("reflect", "Value", "Addr") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -101,7 +101,7 @@ module ReflectTaintTracking {
     ValueBool() { this.(Method).hasQualifiedName("reflect", "Value", "Bool") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -110,7 +110,7 @@ module ReflectTaintTracking {
     ValueBytes() { this.(Method).hasQualifiedName("reflect", "Value", "Bytes") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -119,7 +119,7 @@ module ReflectTaintTracking {
     ValueComplex() { this.(Method).hasQualifiedName("reflect", "Value", "Complex") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -128,7 +128,7 @@ module ReflectTaintTracking {
     ValueConvert() { this.(Method).hasQualifiedName("reflect", "Value", "Convert") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -137,7 +137,7 @@ module ReflectTaintTracking {
     ValueElem() { this.(Method).hasQualifiedName("reflect", "Value", "Elem") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -146,7 +146,7 @@ module ReflectTaintTracking {
     ValueField() { this.(Method).hasQualifiedName("reflect", "Value", "Field") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -155,7 +155,7 @@ module ReflectTaintTracking {
     ValueFieldByIndex() { this.(Method).hasQualifiedName("reflect", "Value", "FieldByIndex") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -164,7 +164,7 @@ module ReflectTaintTracking {
     ValueFieldByName() { this.(Method).hasQualifiedName("reflect", "Value", "FieldByName") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -173,7 +173,7 @@ module ReflectTaintTracking {
     ValueFieldByNameFunc() { this.(Method).hasQualifiedName("reflect", "Value", "FieldByNameFunc") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -182,7 +182,7 @@ module ReflectTaintTracking {
     ValueFloat() { this.(Method).hasQualifiedName("reflect", "Value", "Float") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -191,7 +191,7 @@ module ReflectTaintTracking {
     ValueIndex() { this.(Method).hasQualifiedName("reflect", "Value", "Index") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -200,7 +200,7 @@ module ReflectTaintTracking {
     ValueInt() { this.(Method).hasQualifiedName("reflect", "Value", "Int") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -209,7 +209,7 @@ module ReflectTaintTracking {
     ValueInterface() { this.(Method).hasQualifiedName("reflect", "Value", "Interface") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -218,7 +218,7 @@ module ReflectTaintTracking {
     ValueInterfaceData() { this.(Method).hasQualifiedName("reflect", "Value", "InterfaceData") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -227,7 +227,7 @@ module ReflectTaintTracking {
     ValueMapIndex() { this.(Method).hasQualifiedName("reflect", "Value", "MapIndex") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -236,7 +236,7 @@ module ReflectTaintTracking {
     ValueMapKeys() { this.(Method).hasQualifiedName("reflect", "Value", "MapKeys") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -245,7 +245,7 @@ module ReflectTaintTracking {
     ValueMapRange() { this.(Method).hasQualifiedName("reflect", "Value", "MapRange") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -254,7 +254,7 @@ module ReflectTaintTracking {
     ValueMethod() { this.(Method).hasQualifiedName("reflect", "Value", "Method") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -263,7 +263,7 @@ module ReflectTaintTracking {
     ValueMethodByName() { this.(Method).hasQualifiedName("reflect", "Value", "MethodByName") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -272,7 +272,7 @@ module ReflectTaintTracking {
     ValuePointer() { this.(Method).hasQualifiedName("reflect", "Value", "Pointer") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -281,7 +281,7 @@ module ReflectTaintTracking {
     ValueRecv() { this.(Method).hasQualifiedName("reflect", "Value", "Recv") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -290,7 +290,7 @@ module ReflectTaintTracking {
     ValueSend() { this.(Method).hasQualifiedName("reflect", "Value", "Send") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -299,7 +299,7 @@ module ReflectTaintTracking {
     ValueSet() { this.(Method).hasQualifiedName("reflect", "Value", "Set") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -308,7 +308,7 @@ module ReflectTaintTracking {
     ValueSetBool() { this.(Method).hasQualifiedName("reflect", "Value", "SetBool") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -317,7 +317,7 @@ module ReflectTaintTracking {
     ValueSetBytes() { this.(Method).hasQualifiedName("reflect", "Value", "SetBytes") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -326,7 +326,7 @@ module ReflectTaintTracking {
     ValueSetComplex() { this.(Method).hasQualifiedName("reflect", "Value", "SetComplex") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -335,7 +335,7 @@ module ReflectTaintTracking {
     ValueSetFloat() { this.(Method).hasQualifiedName("reflect", "Value", "SetFloat") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -344,7 +344,7 @@ module ReflectTaintTracking {
     ValueSetInt() { this.(Method).hasQualifiedName("reflect", "Value", "SetInt") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -353,7 +353,7 @@ module ReflectTaintTracking {
     ValueSetMapIndex() { this.(Method).hasQualifiedName("reflect", "Value", "SetMapIndex") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isReceiver()
+      (inp.isParameter(_) and outp.isReceiver())
     }
   }
 
@@ -362,7 +362,7 @@ module ReflectTaintTracking {
     ValueSetPointer() { this.(Method).hasQualifiedName("reflect", "Value", "SetPointer") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -371,7 +371,7 @@ module ReflectTaintTracking {
     ValueSetString() { this.(Method).hasQualifiedName("reflect", "Value", "SetString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -380,7 +380,7 @@ module ReflectTaintTracking {
     ValueSetUint() { this.(Method).hasQualifiedName("reflect", "Value", "SetUint") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -389,7 +389,7 @@ module ReflectTaintTracking {
     ValueSlice() { this.(Method).hasQualifiedName("reflect", "Value", "Slice") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -398,7 +398,7 @@ module ReflectTaintTracking {
     ValueSlice3() { this.(Method).hasQualifiedName("reflect", "Value", "Slice3") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -407,7 +407,7 @@ module ReflectTaintTracking {
     ValueString() { this.(Method).hasQualifiedName("reflect", "Value", "String") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -416,7 +416,7 @@ module ReflectTaintTracking {
     ValueTryRecv() { this.(Method).hasQualifiedName("reflect", "Value", "TryRecv") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -425,7 +425,7 @@ module ReflectTaintTracking {
     ValueTrySend() { this.(Method).hasQualifiedName("reflect", "Value", "TrySend") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -434,7 +434,7 @@ module ReflectTaintTracking {
     ValueUint() { this.(Method).hasQualifiedName("reflect", "Value", "Uint") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -443,7 +443,7 @@ module ReflectTaintTracking {
     ValueUnsafeAddr() { this.(Method).hasQualifiedName("reflect", "Value", "UnsafeAddr") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 }

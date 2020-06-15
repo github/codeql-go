@@ -11,7 +11,7 @@ module EncodingBase32TaintTracking {
     NewDecoder() { hasQualifiedName("encoding/base32", "NewDecoder") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult()
+      (inp.isParameter(1) and outp.isResult())
     }
   }
 
@@ -20,7 +20,7 @@ module EncodingBase32TaintTracking {
     NewEncoder() { hasQualifiedName("encoding/base32", "NewEncoder") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult() and outp.isParameter(1)
+      (inp.isResult() and outp.isParameter(1))
     }
   }
 
@@ -29,7 +29,7 @@ module EncodingBase32TaintTracking {
     EncodingDecode() { this.(Method).hasQualifiedName("encoding/base32", "Encoding", "Decode") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 
@@ -40,7 +40,7 @@ module EncodingBase32TaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -49,7 +49,7 @@ module EncodingBase32TaintTracking {
     EncodingEncode() { this.(Method).hasQualifiedName("encoding/base32", "Encoding", "Encode") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 
@@ -60,7 +60,7 @@ module EncodingBase32TaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 }

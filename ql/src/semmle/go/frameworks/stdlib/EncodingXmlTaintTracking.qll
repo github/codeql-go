@@ -11,7 +11,7 @@ module EncodingXmlTaintTracking {
     CopyToken() { hasQualifiedName("encoding/xml", "CopyToken") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -20,7 +20,7 @@ module EncodingXmlTaintTracking {
     Escape() { hasQualifiedName("encoding/xml", "Escape") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 
@@ -29,7 +29,7 @@ module EncodingXmlTaintTracking {
     EscapeText() { hasQualifiedName("encoding/xml", "EscapeText") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 
@@ -38,7 +38,7 @@ module EncodingXmlTaintTracking {
     Marshal() { hasQualifiedName("encoding/xml", "Marshal") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -47,7 +47,7 @@ module EncodingXmlTaintTracking {
     MarshalIndent() { hasQualifiedName("encoding/xml", "MarshalIndent") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(_) and outp.isResult(0))
     }
   }
 
@@ -56,7 +56,7 @@ module EncodingXmlTaintTracking {
     NewDecoder() { hasQualifiedName("encoding/xml", "NewDecoder") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -65,7 +65,7 @@ module EncodingXmlTaintTracking {
     NewEncoder() { hasQualifiedName("encoding/xml", "NewEncoder") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult() and outp.isParameter(0)
+      (inp.isResult() and outp.isParameter(0))
     }
   }
 
@@ -74,7 +74,7 @@ module EncodingXmlTaintTracking {
     NewTokenDecoder() { hasQualifiedName("encoding/xml", "NewTokenDecoder") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -83,7 +83,7 @@ module EncodingXmlTaintTracking {
     Unmarshal() { hasQualifiedName("encoding/xml", "Unmarshal") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isParameter(1)
+      (inp.isParameter(0) and outp.isParameter(1))
     }
   }
 
@@ -92,7 +92,7 @@ module EncodingXmlTaintTracking {
     CharDataCopy() { this.(Method).hasQualifiedName("encoding/xml", "CharData", "Copy") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -101,7 +101,7 @@ module EncodingXmlTaintTracking {
     CommentCopy() { this.(Method).hasQualifiedName("encoding/xml", "Comment", "Copy") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -110,7 +110,7 @@ module EncodingXmlTaintTracking {
     DecoderDecode() { this.(Method).hasQualifiedName("encoding/xml", "Decoder", "Decode") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -121,7 +121,7 @@ module EncodingXmlTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -130,7 +130,7 @@ module EncodingXmlTaintTracking {
     DecoderRawToken() { this.(Method).hasQualifiedName("encoding/xml", "Decoder", "RawToken") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -139,7 +139,7 @@ module EncodingXmlTaintTracking {
     DecoderToken() { this.(Method).hasQualifiedName("encoding/xml", "Decoder", "Token") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -148,7 +148,7 @@ module EncodingXmlTaintTracking {
     DirectiveCopy() { this.(Method).hasQualifiedName("encoding/xml", "Directive", "Copy") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -157,7 +157,7 @@ module EncodingXmlTaintTracking {
     EncoderEncode() { this.(Method).hasQualifiedName("encoding/xml", "Encoder", "Encode") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -168,7 +168,7 @@ module EncodingXmlTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -179,7 +179,16 @@ module EncodingXmlTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
+    }
+  }
+
+  private class EncoderIndent extends TaintTracking::FunctionModel, Method {
+    // signature: func (*Encoder).Indent(prefix string, indent string)
+    EncoderIndent() { this.(Method).hasQualifiedName("encoding/xml", "Encoder", "Indent") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(_) and outp.isReceiver())
     }
   }
 
@@ -188,7 +197,7 @@ module EncodingXmlTaintTracking {
     ProcInstCopy() { this.(Method).hasQualifiedName("encoding/xml", "ProcInst", "Copy") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -197,7 +206,7 @@ module EncodingXmlTaintTracking {
     StartElementCopy() { this.(Method).hasQualifiedName("encoding/xml", "StartElement", "Copy") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -206,7 +215,7 @@ module EncodingXmlTaintTracking {
     MarshalerMarshalXML() { this.implements("encoding/xml", "Marshaler", "MarshalXML") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -215,7 +224,7 @@ module EncodingXmlTaintTracking {
     TokenReaderToken() { this.implements("encoding/xml", "TokenReader", "Token") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -224,7 +233,7 @@ module EncodingXmlTaintTracking {
     UnmarshalerUnmarshalXML() { this.implements("encoding/xml", "Unmarshaler", "UnmarshalXML") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 }

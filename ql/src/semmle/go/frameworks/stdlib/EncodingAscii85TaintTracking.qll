@@ -11,7 +11,7 @@ module EncodingAscii85TaintTracking {
     Decode() { hasQualifiedName("encoding/ascii85", "Decode") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 
@@ -20,7 +20,7 @@ module EncodingAscii85TaintTracking {
     Encode() { hasQualifiedName("encoding/ascii85", "Encode") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 
@@ -29,7 +29,7 @@ module EncodingAscii85TaintTracking {
     NewDecoder() { hasQualifiedName("encoding/ascii85", "NewDecoder") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -38,7 +38,7 @@ module EncodingAscii85TaintTracking {
     NewEncoder() { hasQualifiedName("encoding/ascii85", "NewEncoder") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult() and outp.isParameter(0)
+      (inp.isResult() and outp.isParameter(0))
     }
   }
 }

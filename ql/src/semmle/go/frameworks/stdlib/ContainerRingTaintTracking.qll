@@ -11,7 +11,7 @@ module ContainerRingTaintTracking {
     RingLink() { this.(Method).hasQualifiedName("container/ring", "Ring", "Link") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -20,7 +20,7 @@ module ContainerRingTaintTracking {
     RingMove() { this.(Method).hasQualifiedName("container/ring", "Ring", "Move") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -29,7 +29,7 @@ module ContainerRingTaintTracking {
     RingNext() { this.(Method).hasQualifiedName("container/ring", "Ring", "Next") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -38,7 +38,7 @@ module ContainerRingTaintTracking {
     RingPrev() { this.(Method).hasQualifiedName("container/ring", "Ring", "Prev") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -47,7 +47,7 @@ module ContainerRingTaintTracking {
     RingUnlink() { this.(Method).hasQualifiedName("container/ring", "Ring", "Unlink") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 }

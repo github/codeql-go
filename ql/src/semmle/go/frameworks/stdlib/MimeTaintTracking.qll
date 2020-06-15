@@ -11,7 +11,7 @@ module MimeTaintTracking {
     FormatMediaType() { hasQualifiedName("mime", "FormatMediaType") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -20,7 +20,7 @@ module MimeTaintTracking {
     ParseMediaType() { hasQualifiedName("mime", "ParseMediaType") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult([0, 1])
+      (inp.isParameter(0) and outp.isResult([0, 1]))
     }
   }
 
@@ -29,7 +29,7 @@ module MimeTaintTracking {
     WordDecoderDecode() { this.(Method).hasQualifiedName("mime", "WordDecoder", "Decode") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -40,7 +40,16 @@ module MimeTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
+    }
+  }
+
+  private class WordEncoderEncode extends TaintTracking::FunctionModel, Method {
+    // signature: func (WordEncoder).Encode(charset string, s string) string
+    WordEncoderEncode() { this.(Method).hasQualifiedName("mime", "WordEncoder", "Encode") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(1) and outp.isResult())
     }
   }
 }

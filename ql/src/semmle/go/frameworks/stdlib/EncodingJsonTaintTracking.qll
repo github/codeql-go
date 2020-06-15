@@ -11,7 +11,7 @@ module EncodingJsonTaintTracking {
     Compact() { hasQualifiedName("encoding/json", "Compact") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 
@@ -20,7 +20,7 @@ module EncodingJsonTaintTracking {
     HTMLEscape() { hasQualifiedName("encoding/json", "HTMLEscape") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 
@@ -29,7 +29,7 @@ module EncodingJsonTaintTracking {
     Indent() { hasQualifiedName("encoding/json", "Indent") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter([1, 2, 3]) and outp.isParameter(0))
     }
   }
 
@@ -38,7 +38,7 @@ module EncodingJsonTaintTracking {
     Marshal() { hasQualifiedName("encoding/json", "Marshal") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -47,7 +47,7 @@ module EncodingJsonTaintTracking {
     MarshalIndent() { hasQualifiedName("encoding/json", "MarshalIndent") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(_) and outp.isResult(0))
     }
   }
 
@@ -56,7 +56,7 @@ module EncodingJsonTaintTracking {
     NewDecoder() { hasQualifiedName("encoding/json", "NewDecoder") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -65,7 +65,7 @@ module EncodingJsonTaintTracking {
     NewEncoder() { hasQualifiedName("encoding/json", "NewEncoder") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult() and outp.isParameter(0)
+      (inp.isResult() and outp.isParameter(0))
     }
   }
 
@@ -74,7 +74,7 @@ module EncodingJsonTaintTracking {
     Unmarshal() { hasQualifiedName("encoding/json", "Unmarshal") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isParameter(1)
+      (inp.isParameter(0) and outp.isParameter(1))
     }
   }
 
@@ -83,7 +83,7 @@ module EncodingJsonTaintTracking {
     DecoderBuffered() { this.(Method).hasQualifiedName("encoding/json", "Decoder", "Buffered") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -92,7 +92,7 @@ module EncodingJsonTaintTracking {
     DecoderDecode() { this.(Method).hasQualifiedName("encoding/json", "Decoder", "Decode") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -101,7 +101,7 @@ module EncodingJsonTaintTracking {
     DecoderToken() { this.(Method).hasQualifiedName("encoding/json", "Decoder", "Token") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -110,7 +110,16 @@ module EncodingJsonTaintTracking {
     EncoderEncode() { this.(Method).hasQualifiedName("encoding/json", "Encoder", "Encode") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
+    }
+  }
+
+  private class EncoderSetIndent extends TaintTracking::FunctionModel, Method {
+    // signature: func (*Encoder).SetIndent(prefix string, indent string)
+    EncoderSetIndent() { this.(Method).hasQualifiedName("encoding/json", "Encoder", "SetIndent") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(_) and outp.isReceiver())
     }
   }
 
@@ -121,7 +130,7 @@ module EncodingJsonTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -132,7 +141,7 @@ module EncodingJsonTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -141,7 +150,7 @@ module EncodingJsonTaintTracking {
     MarshalerMarshalJSON() { this.implements("encoding/json", "Marshaler", "MarshalJSON") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -150,7 +159,7 @@ module EncodingJsonTaintTracking {
     UnmarshalerUnmarshalJSON() { this.implements("encoding/json", "Unmarshaler", "UnmarshalJSON") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 }

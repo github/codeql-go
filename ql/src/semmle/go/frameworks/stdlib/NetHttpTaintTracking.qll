@@ -11,7 +11,7 @@ module NetHttpTaintTracking {
     CanonicalHeaderKey() { hasQualifiedName("net/http", "CanonicalHeaderKey") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -20,7 +20,7 @@ module NetHttpTaintTracking {
     DetectContentType() { hasQualifiedName("net/http", "DetectContentType") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -29,7 +29,7 @@ module NetHttpTaintTracking {
     NetHttpError() { hasQualifiedName("net/http", "Error") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 
@@ -38,7 +38,7 @@ module NetHttpTaintTracking {
     MaxBytesReader() { hasQualifiedName("net/http", "MaxBytesReader") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult()
+      (inp.isParameter(1) and outp.isResult())
     }
   }
 
@@ -47,7 +47,7 @@ module NetHttpTaintTracking {
     NewRequest() { hasQualifiedName("net/http", "NewRequest") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(2) and outp.isResult(0)
+      (inp.isParameter(_) and outp.isResult(0))
     }
   }
 
@@ -56,7 +56,7 @@ module NetHttpTaintTracking {
     NewRequestWithContext() { hasQualifiedName("net/http", "NewRequestWithContext") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(3) and outp.isResult(0)
+      (inp.isParameter(_) and outp.isResult(0))
     }
   }
 
@@ -65,7 +65,7 @@ module NetHttpTaintTracking {
     ReadRequest() { hasQualifiedName("net/http", "ReadRequest") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -74,7 +74,7 @@ module NetHttpTaintTracking {
     ReadResponse() { hasQualifiedName("net/http", "ReadResponse") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -83,7 +83,7 @@ module NetHttpTaintTracking {
     SetCookie() { hasQualifiedName("net/http", "SetCookie") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 
@@ -92,7 +92,7 @@ module NetHttpTaintTracking {
     HeaderAdd() { this.(Method).hasQualifiedName("net/http", "Header", "Add") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isReceiver()
+      (inp.isParameter(_) and outp.isReceiver())
     }
   }
 
@@ -101,7 +101,7 @@ module NetHttpTaintTracking {
     HeaderClone() { this.(Method).hasQualifiedName("net/http", "Header", "Clone") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -110,7 +110,7 @@ module NetHttpTaintTracking {
     HeaderGet() { this.(Method).hasQualifiedName("net/http", "Header", "Get") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -119,7 +119,7 @@ module NetHttpTaintTracking {
     HeaderSet() { this.(Method).hasQualifiedName("net/http", "Header", "Set") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isReceiver()
+      (inp.isParameter(_) and outp.isReceiver())
     }
   }
 
@@ -128,7 +128,7 @@ module NetHttpTaintTracking {
     HeaderValues() { this.(Method).hasQualifiedName("net/http", "Header", "Values") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -137,7 +137,7 @@ module NetHttpTaintTracking {
     HeaderWrite() { this.(Method).hasQualifiedName("net/http", "Header", "Write") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -146,7 +146,7 @@ module NetHttpTaintTracking {
     HeaderWriteSubset() { this.(Method).hasQualifiedName("net/http", "Header", "WriteSubset") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -155,7 +155,7 @@ module NetHttpTaintTracking {
     RequestAddCookie() { this.(Method).hasQualifiedName("net/http", "Request", "AddCookie") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -164,7 +164,7 @@ module NetHttpTaintTracking {
     RequestClone() { this.(Method).hasQualifiedName("net/http", "Request", "Clone") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -173,7 +173,7 @@ module NetHttpTaintTracking {
     RequestWrite() { this.(Method).hasQualifiedName("net/http", "Request", "Write") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -182,7 +182,7 @@ module NetHttpTaintTracking {
     RequestWriteProxy() { this.(Method).hasQualifiedName("net/http", "Request", "WriteProxy") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -191,7 +191,16 @@ module NetHttpTaintTracking {
     ResponseWrite() { this.(Method).hasQualifiedName("net/http", "Response", "Write") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
+      (inp.isReceiver() and outp.isParameter(0))
+    }
+  }
+
+  private class HijackerHijack extends TaintTracking::FunctionModel, Method {
+    // signature: func (Hijacker).Hijack() (net.Conn, *bufio.ReadWriter, error)
+    HijackerHijack() { this.implements("net/http", "Hijacker", "Hijack") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isReceiver() and outp.isResult([0, 1]))
     }
   }
 
@@ -200,7 +209,7 @@ module NetHttpTaintTracking {
     ResponseWriterWrite() { this.implements("net/http", "ResponseWriter", "Write") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 }

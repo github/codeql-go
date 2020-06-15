@@ -11,7 +11,7 @@ module EncodingGobTaintTracking {
     NewDecoder() { hasQualifiedName("encoding/gob", "NewDecoder") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -20,7 +20,7 @@ module EncodingGobTaintTracking {
     NewEncoder() { hasQualifiedName("encoding/gob", "NewEncoder") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult() and outp.isParameter(0)
+      (inp.isResult() and outp.isParameter(0))
     }
   }
 
@@ -29,7 +29,7 @@ module EncodingGobTaintTracking {
     DecoderDecode() { this.(Method).hasQualifiedName("encoding/gob", "Decoder", "Decode") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -40,7 +40,7 @@ module EncodingGobTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -49,7 +49,7 @@ module EncodingGobTaintTracking {
     EncoderEncode() { this.(Method).hasQualifiedName("encoding/gob", "Encoder", "Encode") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -60,7 +60,7 @@ module EncodingGobTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -69,7 +69,7 @@ module EncodingGobTaintTracking {
     GobDecoderGobDecode() { this.implements("encoding/gob", "GobDecoder", "GobDecode") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -78,7 +78,7 @@ module EncodingGobTaintTracking {
     GobEncoderGobEncode() { this.implements("encoding/gob", "GobEncoder", "GobEncode") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 }

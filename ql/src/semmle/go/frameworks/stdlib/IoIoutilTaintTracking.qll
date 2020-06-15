@@ -11,7 +11,7 @@ module IoIoutilTaintTracking {
     NopCloser() { hasQualifiedName("io/ioutil", "NopCloser") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -20,7 +20,7 @@ module IoIoutilTaintTracking {
     ReadAll() { hasQualifiedName("io/ioutil", "ReadAll") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -29,7 +29,7 @@ module IoIoutilTaintTracking {
     WriterWrite() { this.implements("io", "Writer", "Write") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 }

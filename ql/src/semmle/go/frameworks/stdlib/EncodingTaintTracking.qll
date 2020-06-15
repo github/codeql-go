@@ -13,7 +13,16 @@ module EncodingTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
+    }
+  }
+
+  private class TextMarshalerMarshalText extends TaintTracking::FunctionModel, Method {
+    // signature: func (TextMarshaler).MarshalText() (text []byte, err error)
+    TextMarshalerMarshalText() { this.implements("encoding", "TextMarshaler", "MarshalText") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -24,16 +33,7 @@ module EncodingTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
-    }
-  }
-
-  private class TextMarshalerMarshalText extends TaintTracking::FunctionModel, Method {
-    // signature: func (TextMarshaler).MarshalText() (text []byte, err error)
-    TextMarshalerMarshalText() { this.implements("encoding", "TextMarshaler", "MarshalText") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -44,7 +44,7 @@ module EncodingTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 }

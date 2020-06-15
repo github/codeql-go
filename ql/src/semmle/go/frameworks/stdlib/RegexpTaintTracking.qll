@@ -6,12 +6,81 @@ import go
 
 /** Provides models of commonly used functions in the `regexp` package. */
 module RegexpTaintTracking {
+  private class Compile extends TaintTracking::FunctionModel {
+    // signature: func Compile(expr string) (*Regexp, error)
+    Compile() { hasQualifiedName("regexp", "Compile") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(0) and outp.isResult(0))
+    }
+  }
+
+  private class CompilePOSIX extends TaintTracking::FunctionModel {
+    // signature: func CompilePOSIX(expr string) (*Regexp, error)
+    CompilePOSIX() { hasQualifiedName("regexp", "CompilePOSIX") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(0) and outp.isResult(0))
+    }
+  }
+
+  private class MustCompile extends TaintTracking::FunctionModel {
+    // signature: func MustCompile(str string) *Regexp
+    MustCompile() { hasQualifiedName("regexp", "MustCompile") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(0) and outp.isResult())
+    }
+  }
+
+  private class MustCompilePOSIX extends TaintTracking::FunctionModel {
+    // signature: func MustCompilePOSIX(str string) *Regexp
+    MustCompilePOSIX() { hasQualifiedName("regexp", "MustCompilePOSIX") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(0) and outp.isResult())
+    }
+  }
+
   private class QuoteMeta extends TaintTracking::FunctionModel {
     // signature: func QuoteMeta(s string) string
     QuoteMeta() { hasQualifiedName("regexp", "QuoteMeta") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
+    }
+  }
+
+  private class RegexpCopy extends TaintTracking::FunctionModel, Method {
+    // signature: func (*Regexp).Copy() *Regexp
+    RegexpCopy() { this.(Method).hasQualifiedName("regexp", "Regexp", "Copy") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isReceiver() and outp.isResult())
+    }
+  }
+
+  private class RegexpExpand extends TaintTracking::FunctionModel, Method {
+    // signature: func (*Regexp).Expand(dst []byte, template []byte, src []byte, match []int) []byte
+    RegexpExpand() { this.(Method).hasQualifiedName("regexp", "Regexp", "Expand") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (
+        inp.isParameter([1, 2]) and
+        (outp.isParameter(0) or outp.isResult())
+      )
+    }
+  }
+
+  private class RegexpExpandString extends TaintTracking::FunctionModel, Method {
+    // signature: func (*Regexp).ExpandString(dst []byte, template string, src string, match []int) []byte
+    RegexpExpandString() { this.(Method).hasQualifiedName("regexp", "Regexp", "ExpandString") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (
+        inp.isParameter([1, 2]) and
+        (outp.isParameter(0) or outp.isResult())
+      )
     }
   }
 
@@ -20,7 +89,7 @@ module RegexpTaintTracking {
     RegexpFind() { this.(Method).hasQualifiedName("regexp", "Regexp", "Find") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -29,7 +98,7 @@ module RegexpTaintTracking {
     RegexpFindAll() { this.(Method).hasQualifiedName("regexp", "Regexp", "FindAll") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -38,7 +107,7 @@ module RegexpTaintTracking {
     RegexpFindAllIndex() { this.(Method).hasQualifiedName("regexp", "Regexp", "FindAllIndex") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -47,7 +116,7 @@ module RegexpTaintTracking {
     RegexpFindAllString() { this.(Method).hasQualifiedName("regexp", "Regexp", "FindAllString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -58,7 +127,7 @@ module RegexpTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -69,7 +138,7 @@ module RegexpTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -80,7 +149,7 @@ module RegexpTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -91,7 +160,7 @@ module RegexpTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -102,7 +171,7 @@ module RegexpTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -111,7 +180,7 @@ module RegexpTaintTracking {
     RegexpFindIndex() { this.(Method).hasQualifiedName("regexp", "Regexp", "FindIndex") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -122,7 +191,7 @@ module RegexpTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -133,7 +202,7 @@ module RegexpTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -142,7 +211,7 @@ module RegexpTaintTracking {
     RegexpFindString() { this.(Method).hasQualifiedName("regexp", "Regexp", "FindString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -153,7 +222,7 @@ module RegexpTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -164,7 +233,7 @@ module RegexpTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -175,7 +244,7 @@ module RegexpTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -184,7 +253,7 @@ module RegexpTaintTracking {
     RegexpFindSubmatch() { this.(Method).hasQualifiedName("regexp", "Regexp", "FindSubmatch") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -195,7 +264,7 @@ module RegexpTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -204,7 +273,7 @@ module RegexpTaintTracking {
     RegexpReplaceAll() { this.(Method).hasQualifiedName("regexp", "Regexp", "ReplaceAll") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -213,7 +282,7 @@ module RegexpTaintTracking {
     RegexpReplaceAllFunc() { this.(Method).hasQualifiedName("regexp", "Regexp", "ReplaceAllFunc") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -224,7 +293,7 @@ module RegexpTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -235,7 +304,7 @@ module RegexpTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -246,7 +315,7 @@ module RegexpTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -257,7 +326,7 @@ module RegexpTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -266,7 +335,7 @@ module RegexpTaintTracking {
     RegexpSplit() { this.(Method).hasQualifiedName("regexp", "Regexp", "Split") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 }

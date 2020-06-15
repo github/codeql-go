@@ -13,7 +13,7 @@ module DatabaseSqlDriverTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -24,27 +24,7 @@ module DatabaseSqlDriverTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
-    }
-  }
-
-  private class ConnPrepare extends TaintTracking::FunctionModel, Method {
-    // signature: func (Conn).Prepare(query string) (Stmt, error)
-    ConnPrepare() { this.implements("database/sql/driver", "Conn", "Prepare") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
-    }
-  }
-
-  private class ConnPrepareContextPrepareContext extends TaintTracking::FunctionModel, Method {
-    // signature: func (ConnPrepareContext).PrepareContext(ctx context.Context, query string) (Stmt, error)
-    ConnPrepareContextPrepareContext() {
-      this.implements("database/sql/driver", "ConnPrepareContext", "PrepareContext")
-    }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -55,7 +35,27 @@ module DatabaseSqlDriverTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
+    }
+  }
+
+  private class ConnPrepare extends TaintTracking::FunctionModel, Method {
+    // signature: func (Conn).Prepare(query string) (Stmt, error)
+    ConnPrepare() { this.implements("database/sql/driver", "Conn", "Prepare") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(0) and outp.isResult(0))
+    }
+  }
+
+  private class ConnPrepareContextPrepareContext extends TaintTracking::FunctionModel, Method {
+    // signature: func (ConnPrepareContext).PrepareContext(ctx context.Context, query string) (Stmt, error)
+    ConnPrepareContextPrepareContext() {
+      this.implements("database/sql/driver", "ConnPrepareContext", "PrepareContext")
+    }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(1) and outp.isResult(0))
     }
   }
 
@@ -64,7 +64,7 @@ module DatabaseSqlDriverTaintTracking {
     ValuerValue() { this.implements("database/sql/driver", "Valuer", "Value") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 }

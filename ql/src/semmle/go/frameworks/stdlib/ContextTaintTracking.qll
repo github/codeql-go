@@ -11,7 +11,7 @@ module ContextTaintTracking {
     WithCancel() { hasQualifiedName("context", "WithCancel") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -20,7 +20,7 @@ module ContextTaintTracking {
     WithDeadline() { hasQualifiedName("context", "WithDeadline") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -29,7 +29,7 @@ module ContextTaintTracking {
     WithTimeout() { hasQualifiedName("context", "WithTimeout") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -38,7 +38,7 @@ module ContextTaintTracking {
     WithValue() { hasQualifiedName("context", "WithValue") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -47,7 +47,7 @@ module ContextTaintTracking {
     ContextValue() { this.implements("context", "Context", "Value") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 }

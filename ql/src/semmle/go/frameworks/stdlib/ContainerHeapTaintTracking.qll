@@ -11,7 +11,7 @@ module ContainerHeapTaintTracking {
     Pop() { hasQualifiedName("container/heap", "Pop") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -20,7 +20,7 @@ module ContainerHeapTaintTracking {
     Push() { hasQualifiedName("container/heap", "Push") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 
@@ -29,7 +29,7 @@ module ContainerHeapTaintTracking {
     Remove() { hasQualifiedName("container/heap", "Remove") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -38,7 +38,7 @@ module ContainerHeapTaintTracking {
     InterfacePop() { this.implements("container/heap", "Interface", "Pop") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -47,7 +47,7 @@ module ContainerHeapTaintTracking {
     InterfacePush() { this.implements("container/heap", "Interface", "Push") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 }

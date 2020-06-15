@@ -11,7 +11,7 @@ module CompressGzipTaintTracking {
     NewReader() { hasQualifiedName("compress/gzip", "NewReader") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -20,7 +20,7 @@ module CompressGzipTaintTracking {
     NewWriter() { hasQualifiedName("compress/gzip", "NewWriter") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult() and outp.isParameter(0)
+      (inp.isResult() and outp.isParameter(0))
     }
   }
 
@@ -29,7 +29,16 @@ module CompressGzipTaintTracking {
     NewWriterLevel() { hasQualifiedName("compress/gzip", "NewWriterLevel") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult(0) and outp.isParameter(0)
+      (inp.isResult(0) and outp.isParameter(0))
+    }
+  }
+
+  private class ReaderRead extends TaintTracking::FunctionModel, Method {
+    // signature: func (*Reader).Read(p []byte) (n int, err error)
+    ReaderRead() { this.(Method).hasQualifiedName("compress/gzip", "Reader", "Read") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -38,7 +47,7 @@ module CompressGzipTaintTracking {
     ReaderReset() { this.(Method).hasQualifiedName("compress/gzip", "Reader", "Reset") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -47,7 +56,16 @@ module CompressGzipTaintTracking {
     WriterReset() { this.(Method).hasQualifiedName("compress/gzip", "Writer", "Reset") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
+      (inp.isReceiver() and outp.isParameter(0))
+    }
+  }
+
+  private class WriterWrite extends TaintTracking::FunctionModel, Method {
+    // signature: func (*Writer).Write(p []byte) (int, error)
+    WriterWrite() { this.(Method).hasQualifiedName("compress/gzip", "Writer", "Write") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 }

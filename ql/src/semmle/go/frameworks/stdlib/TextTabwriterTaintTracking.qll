@@ -11,7 +11,7 @@ module TextTabwriterTaintTracking {
     NewWriter() { hasQualifiedName("text/tabwriter", "NewWriter") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult() and outp.isParameter(0)
+      (inp.isResult() and outp.isParameter(0))
     }
   }
 
@@ -20,8 +20,10 @@ module TextTabwriterTaintTracking {
     WriterInit() { this.(Method).hasQualifiedName("text/tabwriter", "Writer", "Init") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult() and
-      (outp.isParameter(0) or outp.isReceiver())
+      (
+        (inp.isReceiver() or inp.isResult()) and
+        outp.isParameter(0)
+      )
     }
   }
 
@@ -30,7 +32,7 @@ module TextTabwriterTaintTracking {
     WriterWrite() { this.(Method).hasQualifiedName("text/tabwriter", "Writer", "Write") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 }

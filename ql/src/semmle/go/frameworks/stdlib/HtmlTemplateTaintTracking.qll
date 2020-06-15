@@ -11,7 +11,7 @@ module HtmlTemplateTaintTracking {
     HTMLEscape() { hasQualifiedName("html/template", "HTMLEscape") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 
@@ -20,7 +20,7 @@ module HtmlTemplateTaintTracking {
     HTMLEscapeString() { hasQualifiedName("html/template", "HTMLEscapeString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -29,7 +29,7 @@ module HtmlTemplateTaintTracking {
     HTMLEscaper() { hasQualifiedName("html/template", "HTMLEscaper") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -38,7 +38,7 @@ module HtmlTemplateTaintTracking {
     JSEscape() { hasQualifiedName("html/template", "JSEscape") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 
@@ -47,7 +47,7 @@ module HtmlTemplateTaintTracking {
     JSEscapeString() { hasQualifiedName("html/template", "JSEscapeString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -56,7 +56,7 @@ module HtmlTemplateTaintTracking {
     JSEscaper() { hasQualifiedName("html/template", "JSEscaper") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -65,7 +65,7 @@ module HtmlTemplateTaintTracking {
     Must() { hasQualifiedName("html/template", "Must") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -74,7 +74,7 @@ module HtmlTemplateTaintTracking {
     ParseFiles() { hasQualifiedName("html/template", "ParseFiles") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult(0)
+      (inp.isParameter(_) and outp.isResult(0))
     }
   }
 
@@ -83,7 +83,7 @@ module HtmlTemplateTaintTracking {
     ParseGlob() { hasQualifiedName("html/template", "ParseGlob") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -92,7 +92,7 @@ module HtmlTemplateTaintTracking {
     URLQueryEscaper() { hasQualifiedName("html/template", "URLQueryEscaper") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -101,7 +101,7 @@ module HtmlTemplateTaintTracking {
     TemplateClone() { this.(Method).hasQualifiedName("html/template", "Template", "Clone") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -112,7 +112,7 @@ module HtmlTemplateTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -121,7 +121,10 @@ module HtmlTemplateTaintTracking {
     TemplateDelims() { this.(Method).hasQualifiedName("html/template", "Template", "Delims") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (
+        (inp.isReceiver() or inp.isParameter(_)) and
+        outp.isResult()
+      )
     }
   }
 
@@ -130,7 +133,10 @@ module HtmlTemplateTaintTracking {
     TemplateExecute() { this.(Method).hasQualifiedName("html/template", "Template", "Execute") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (
+        (inp.isReceiver() or inp.isParameter(1)) and
+        outp.isParameter(0)
+      )
     }
   }
 
@@ -141,7 +147,10 @@ module HtmlTemplateTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(2) and outp.isParameter(0)
+      (
+        (inp.isReceiver() or inp.isParameter(2)) and
+        outp.isParameter(0)
+      )
     }
   }
 
@@ -150,7 +159,7 @@ module HtmlTemplateTaintTracking {
     TemplateLookup() { this.(Method).hasQualifiedName("html/template", "Template", "Lookup") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -159,7 +168,7 @@ module HtmlTemplateTaintTracking {
     TemplateNew() { this.(Method).hasQualifiedName("html/template", "Template", "New") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -168,7 +177,7 @@ module HtmlTemplateTaintTracking {
     TemplateOption() { this.(Method).hasQualifiedName("html/template", "Template", "Option") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -177,7 +186,7 @@ module HtmlTemplateTaintTracking {
     TemplateParse() { this.(Method).hasQualifiedName("html/template", "Template", "Parse") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -188,7 +197,10 @@ module HtmlTemplateTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (
+        (inp.isReceiver() or inp.isParameter(_)) and
+        outp.isResult(0)
+      )
     }
   }
 
@@ -197,7 +209,10 @@ module HtmlTemplateTaintTracking {
     TemplateParseGlob() { this.(Method).hasQualifiedName("html/template", "Template", "ParseGlob") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (
+        (inp.isReceiver() or inp.isParameter(0)) and
+        outp.isResult(0)
+      )
     }
   }
 
@@ -206,7 +221,7 @@ module HtmlTemplateTaintTracking {
     TemplateTemplates() { this.(Method).hasQualifiedName("html/template", "Template", "Templates") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 }

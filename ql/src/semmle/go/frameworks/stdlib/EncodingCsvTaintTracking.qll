@@ -11,7 +11,7 @@ module EncodingCsvTaintTracking {
     NewReader() { hasQualifiedName("encoding/csv", "NewReader") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -20,7 +20,16 @@ module EncodingCsvTaintTracking {
     NewWriter() { hasQualifiedName("encoding/csv", "NewWriter") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult() and outp.isParameter(0)
+      (inp.isResult() and outp.isParameter(0))
+    }
+  }
+
+  private class ReaderRead extends TaintTracking::FunctionModel, Method {
+    // signature: func (*Reader).Read() (record []string, err error)
+    ReaderRead() { this.(Method).hasQualifiedName("encoding/csv", "Reader", "Read") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -29,7 +38,7 @@ module EncodingCsvTaintTracking {
     ReaderReadAll() { this.(Method).hasQualifiedName("encoding/csv", "Reader", "ReadAll") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -38,7 +47,7 @@ module EncodingCsvTaintTracking {
     WriterWrite() { this.(Method).hasQualifiedName("encoding/csv", "Writer", "Write") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -47,7 +56,7 @@ module EncodingCsvTaintTracking {
     WriterWriteAll() { this.(Method).hasQualifiedName("encoding/csv", "Writer", "WriteAll") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 }

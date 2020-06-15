@@ -11,7 +11,7 @@ module CryptoRsaTaintTracking {
     DecryptOAEP() { hasQualifiedName("crypto/rsa", "DecryptOAEP") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(3) and outp.isResult(0)
+      (inp.isParameter(3) and outp.isResult(0))
     }
   }
 
@@ -20,16 +20,7 @@ module CryptoRsaTaintTracking {
     DecryptPKCS1V15() { hasQualifiedName("crypto/rsa", "DecryptPKCS1v15") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(2) and outp.isResult(0)
-    }
-  }
-
-  private class DecryptPKCS1V15SessionKey extends TaintTracking::FunctionModel {
-    // signature: func DecryptPKCS1v15SessionKey(rand io.Reader, priv *PrivateKey, ciphertext []byte, key []byte) error
-    DecryptPKCS1V15SessionKey() { hasQualifiedName("crypto/rsa", "DecryptPKCS1v15SessionKey") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(2) and outp.isParameter(3)
+      (inp.isParameter(2) and outp.isResult(0))
     }
   }
 
@@ -38,7 +29,7 @@ module CryptoRsaTaintTracking {
     EncryptOAEP() { hasQualifiedName("crypto/rsa", "EncryptOAEP") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(3) and outp.isResult(0)
+      (inp.isParameter(3) and outp.isResult(0))
     }
   }
 
@@ -47,7 +38,7 @@ module CryptoRsaTaintTracking {
     EncryptPKCS1V15() { hasQualifiedName("crypto/rsa", "EncryptPKCS1v15") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(2) and outp.isResult(0)
+      (inp.isParameter(2) and outp.isResult(0))
     }
   }
 
@@ -56,7 +47,16 @@ module CryptoRsaTaintTracking {
     SignPKCS1V15() { hasQualifiedName("crypto/rsa", "SignPKCS1v15") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(3) and outp.isResult(0)
+      (inp.isParameter(3) and outp.isResult(0))
+    }
+  }
+
+  private class SignPSS extends TaintTracking::FunctionModel {
+    // signature: func SignPSS(rand io.Reader, priv *PrivateKey, hash crypto.Hash, hashed []byte, opts *PSSOptions) ([]byte, error)
+    SignPSS() { hasQualifiedName("crypto/rsa", "SignPSS") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(3) and outp.isResult(0))
     }
   }
 
@@ -65,7 +65,7 @@ module CryptoRsaTaintTracking {
     PrivateKeyDecrypt() { this.(Method).hasQualifiedName("crypto/rsa", "PrivateKey", "Decrypt") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult(0)
+      (inp.isParameter(1) and outp.isResult(0))
     }
   }
 
@@ -74,7 +74,7 @@ module CryptoRsaTaintTracking {
     PrivateKeySign() { this.(Method).hasQualifiedName("crypto/rsa", "PrivateKey", "Sign") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult(0)
+      (inp.isParameter(1) and outp.isResult(0))
     }
   }
 }

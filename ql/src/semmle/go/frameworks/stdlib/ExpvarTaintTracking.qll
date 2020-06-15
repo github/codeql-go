@@ -11,25 +11,7 @@ module ExpvarTaintTracking {
     Get() { hasQualifiedName("expvar", "Get") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
-    }
-  }
-
-  private class FloatAdd extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Float).Add(delta float64)
-    FloatAdd() { this.(Method).hasQualifiedName("expvar", "Float", "Add") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
-    }
-  }
-
-  private class FloatSet extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Float).Set(value float64)
-    FloatSet() { this.(Method).hasQualifiedName("expvar", "Float", "Set") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -38,16 +20,7 @@ module ExpvarTaintTracking {
     FloatString() { this.(Method).hasQualifiedName("expvar", "Float", "String") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
-    }
-  }
-
-  private class FloatValue extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Float).Value() float64
-    FloatValue() { this.(Method).hasQualifiedName("expvar", "Float", "Value") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -56,7 +29,7 @@ module ExpvarTaintTracking {
     FuncString() { this.(Method).hasQualifiedName("expvar", "Func", "String") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -65,25 +38,7 @@ module ExpvarTaintTracking {
     FuncValue() { this.(Method).hasQualifiedName("expvar", "Func", "Value") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
-    }
-  }
-
-  private class IntAdd extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Int).Add(delta int64)
-    IntAdd() { this.(Method).hasQualifiedName("expvar", "Int", "Add") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
-    }
-  }
-
-  private class IntSet extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Int).Set(value int64)
-    IntSet() { this.(Method).hasQualifiedName("expvar", "Int", "Set") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -92,34 +47,7 @@ module ExpvarTaintTracking {
     IntString() { this.(Method).hasQualifiedName("expvar", "Int", "String") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
-    }
-  }
-
-  private class IntValue extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Int).Value() int64
-    IntValue() { this.(Method).hasQualifiedName("expvar", "Int", "Value") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
-    }
-  }
-
-  private class MapAdd extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Map).Add(key string, delta int64)
-    MapAdd() { this.(Method).hasQualifiedName("expvar", "Map", "Add") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isReceiver()
-    }
-  }
-
-  private class MapAddFloat extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Map).AddFloat(key string, delta float64)
-    MapAddFloat() { this.(Method).hasQualifiedName("expvar", "Map", "AddFloat") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isReceiver()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -128,7 +56,7 @@ module ExpvarTaintTracking {
     MapDo() { this.(Method).hasQualifiedName("expvar", "Map", "Do") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -137,7 +65,7 @@ module ExpvarTaintTracking {
     MapGet() { this.(Method).hasQualifiedName("expvar", "Map", "Get") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -146,7 +74,7 @@ module ExpvarTaintTracking {
     MapSet() { this.(Method).hasQualifiedName("expvar", "Map", "Set") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isReceiver()
+      (inp.isParameter(_) and outp.isReceiver())
     }
   }
 
@@ -155,7 +83,7 @@ module ExpvarTaintTracking {
     MapString() { this.(Method).hasQualifiedName("expvar", "Map", "String") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -164,7 +92,7 @@ module ExpvarTaintTracking {
     StringSet() { this.(Method).hasQualifiedName("expvar", "String", "Set") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -173,7 +101,7 @@ module ExpvarTaintTracking {
     StringString() { this.(Method).hasQualifiedName("expvar", "String", "String") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -182,7 +110,7 @@ module ExpvarTaintTracking {
     StringValue() { this.(Method).hasQualifiedName("expvar", "String", "Value") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -191,7 +119,7 @@ module ExpvarTaintTracking {
     VarString() { this.implements("expvar", "Var", "String") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 }

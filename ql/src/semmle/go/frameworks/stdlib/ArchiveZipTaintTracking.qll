@@ -11,7 +11,7 @@ module ArchiveZipTaintTracking {
     FileInfoHeader() { hasQualifiedName("archive/zip", "FileInfoHeader") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -20,7 +20,7 @@ module ArchiveZipTaintTracking {
     NewReader() { hasQualifiedName("archive/zip", "NewReader") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -29,7 +29,7 @@ module ArchiveZipTaintTracking {
     NewWriter() { hasQualifiedName("archive/zip", "NewWriter") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult() and outp.isParameter(0)
+      (inp.isResult() and outp.isParameter(0))
     }
   }
 
@@ -38,7 +38,7 @@ module ArchiveZipTaintTracking {
     OpenReader() { hasQualifiedName("archive/zip", "OpenReader") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -47,7 +47,7 @@ module ArchiveZipTaintTracking {
     FileOpen() { this.(Method).hasQualifiedName("archive/zip", "File", "Open") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -56,7 +56,7 @@ module ArchiveZipTaintTracking {
     FileHeaderFileInfo() { this.(Method).hasQualifiedName("archive/zip", "FileHeader", "FileInfo") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -65,7 +65,7 @@ module ArchiveZipTaintTracking {
     FileHeaderMode() { this.(Method).hasQualifiedName("archive/zip", "FileHeader", "Mode") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -74,7 +74,7 @@ module ArchiveZipTaintTracking {
     FileHeaderSetMode() { this.(Method).hasQualifiedName("archive/zip", "FileHeader", "SetMode") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -85,7 +85,7 @@ module ArchiveZipTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isReceiver()
+      (inp.isParameter(1) and outp.isReceiver())
     }
   }
 
@@ -94,7 +94,7 @@ module ArchiveZipTaintTracking {
     WriterCreate() { this.(Method).hasQualifiedName("archive/zip", "Writer", "Create") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult(0) and outp.isReceiver()
+      (inp.isResult(0) and outp.isReceiver())
     }
   }
 
@@ -103,7 +103,10 @@ module ArchiveZipTaintTracking {
     WriterCreateHeader() { this.(Method).hasQualifiedName("archive/zip", "Writer", "CreateHeader") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult(0) and outp.isReceiver()
+      (
+        (inp.isParameter(0) or inp.isResult(0)) and
+        outp.isReceiver()
+      )
     }
   }
 
@@ -114,7 +117,7 @@ module ArchiveZipTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isReceiver()
+      (inp.isParameter(1) and outp.isReceiver())
     }
   }
 
@@ -123,7 +126,7 @@ module ArchiveZipTaintTracking {
     WriterSetComment() { this.(Method).hasQualifiedName("archive/zip", "Writer", "SetComment") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 }

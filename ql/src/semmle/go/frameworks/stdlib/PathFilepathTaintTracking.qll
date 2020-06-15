@@ -11,7 +11,7 @@ module PathFilepathTaintTracking {
     Abs() { hasQualifiedName("path/filepath", "Abs") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -20,7 +20,7 @@ module PathFilepathTaintTracking {
     Base() { hasQualifiedName("path/filepath", "Base") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -29,7 +29,7 @@ module PathFilepathTaintTracking {
     Clean() { hasQualifiedName("path/filepath", "Clean") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -38,7 +38,7 @@ module PathFilepathTaintTracking {
     Dir() { hasQualifiedName("path/filepath", "Dir") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -47,7 +47,7 @@ module PathFilepathTaintTracking {
     EvalSymlinks() { hasQualifiedName("path/filepath", "EvalSymlinks") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -56,7 +56,7 @@ module PathFilepathTaintTracking {
     Ext() { hasQualifiedName("path/filepath", "Ext") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -65,7 +65,7 @@ module PathFilepathTaintTracking {
     FromSlash() { hasQualifiedName("path/filepath", "FromSlash") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -74,7 +74,7 @@ module PathFilepathTaintTracking {
     Join() { hasQualifiedName("path/filepath", "Join") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -83,7 +83,7 @@ module PathFilepathTaintTracking {
     Rel() { hasQualifiedName("path/filepath", "Rel") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult(0)
+      (inp.isParameter(_) and outp.isResult(0))
     }
   }
 
@@ -92,7 +92,7 @@ module PathFilepathTaintTracking {
     Split() { hasQualifiedName("path/filepath", "Split") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(_)
+      (inp.isParameter(0) and outp.isResult(_))
     }
   }
 
@@ -101,7 +101,7 @@ module PathFilepathTaintTracking {
     SplitList() { hasQualifiedName("path/filepath", "SplitList") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -110,7 +110,7 @@ module PathFilepathTaintTracking {
     ToSlash() { hasQualifiedName("path/filepath", "ToSlash") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 }

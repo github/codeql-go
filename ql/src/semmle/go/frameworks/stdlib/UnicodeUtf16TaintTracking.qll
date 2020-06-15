@@ -11,7 +11,7 @@ module UnicodeUtf16TaintTracking {
     Decode() { hasQualifiedName("unicode/utf16", "Decode") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -20,7 +20,7 @@ module UnicodeUtf16TaintTracking {
     DecodeRune() { hasQualifiedName("unicode/utf16", "DecodeRune") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -29,7 +29,7 @@ module UnicodeUtf16TaintTracking {
     Encode() { hasQualifiedName("unicode/utf16", "Encode") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -38,7 +38,7 @@ module UnicodeUtf16TaintTracking {
     EncodeRune() { hasQualifiedName("unicode/utf16", "EncodeRune") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(_)
+      (inp.isParameter(0) and outp.isResult(_))
     }
   }
 }

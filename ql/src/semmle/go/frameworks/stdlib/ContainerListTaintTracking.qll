@@ -11,7 +11,7 @@ module ContainerListTaintTracking {
     ListBack() { this.(Method).hasQualifiedName("container/list", "List", "Back") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -20,7 +20,7 @@ module ContainerListTaintTracking {
     ListFront() { this.(Method).hasQualifiedName("container/list", "List", "Front") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -29,7 +29,7 @@ module ContainerListTaintTracking {
     ListInit() { this.(Method).hasQualifiedName("container/list", "List", "Init") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -38,8 +38,10 @@ module ContainerListTaintTracking {
     ListInsertAfter() { this.(Method).hasQualifiedName("container/list", "List", "InsertAfter") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and
-      (outp.isReceiver() or outp.isResult())
+      (
+        inp.isParameter(0) and
+        (outp.isReceiver() or outp.isResult())
+      )
     }
   }
 
@@ -48,8 +50,10 @@ module ContainerListTaintTracking {
     ListInsertBefore() { this.(Method).hasQualifiedName("container/list", "List", "InsertBefore") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and
-      (outp.isReceiver() or outp.isResult())
+      (
+        inp.isParameter(0) and
+        (outp.isReceiver() or outp.isResult())
+      )
     }
   }
 
@@ -58,7 +62,7 @@ module ContainerListTaintTracking {
     ListMoveAfter() { this.(Method).hasQualifiedName("container/list", "List", "MoveAfter") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -67,7 +71,7 @@ module ContainerListTaintTracking {
     ListMoveBefore() { this.(Method).hasQualifiedName("container/list", "List", "MoveBefore") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -76,7 +80,7 @@ module ContainerListTaintTracking {
     ListMoveToBack() { this.(Method).hasQualifiedName("container/list", "List", "MoveToBack") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -85,7 +89,7 @@ module ContainerListTaintTracking {
     ListMoveToFront() { this.(Method).hasQualifiedName("container/list", "List", "MoveToFront") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -94,8 +98,10 @@ module ContainerListTaintTracking {
     ListPushBack() { this.(Method).hasQualifiedName("container/list", "List", "PushBack") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and
-      (outp.isReceiver() or outp.isResult())
+      (
+        inp.isParameter(0) and
+        (outp.isReceiver() or outp.isResult())
+      )
     }
   }
 
@@ -104,7 +110,7 @@ module ContainerListTaintTracking {
     ListPushBackList() { this.(Method).hasQualifiedName("container/list", "List", "PushBackList") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -113,8 +119,10 @@ module ContainerListTaintTracking {
     ListPushFront() { this.(Method).hasQualifiedName("container/list", "List", "PushFront") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and
-      (outp.isReceiver() or outp.isResult())
+      (
+        inp.isParameter(0) and
+        (outp.isReceiver() or outp.isResult())
+      )
     }
   }
 
@@ -125,7 +133,7 @@ module ContainerListTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -134,7 +142,7 @@ module ContainerListTaintTracking {
     ListRemove() { this.(Method).hasQualifiedName("container/list", "List", "Remove") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 }

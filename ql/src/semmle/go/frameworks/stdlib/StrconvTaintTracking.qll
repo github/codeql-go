@@ -11,9 +11,7 @@ module StrconvTaintTracking {
     AppendQuote() { hasQualifiedName("strconv", "AppendQuote") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
-      or
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -22,9 +20,7 @@ module StrconvTaintTracking {
     AppendQuoteRune() { hasQualifiedName("strconv", "AppendQuoteRune") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
-      or
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -33,9 +29,7 @@ module StrconvTaintTracking {
     AppendQuoteRuneToASCII() { hasQualifiedName("strconv", "AppendQuoteRuneToASCII") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
-      or
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -44,9 +38,7 @@ module StrconvTaintTracking {
     AppendQuoteRuneToGraphic() { hasQualifiedName("strconv", "AppendQuoteRuneToGraphic") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
-      or
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -55,9 +47,7 @@ module StrconvTaintTracking {
     AppendQuoteToASCII() { hasQualifiedName("strconv", "AppendQuoteToASCII") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
-      or
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -66,9 +56,7 @@ module StrconvTaintTracking {
     AppendQuoteToGraphic() { hasQualifiedName("strconv", "AppendQuoteToGraphic") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
-      or
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -77,7 +65,7 @@ module StrconvTaintTracking {
     Quote() { hasQualifiedName("strconv", "Quote") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -86,7 +74,7 @@ module StrconvTaintTracking {
     QuoteRune() { hasQualifiedName("strconv", "QuoteRune") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -95,7 +83,7 @@ module StrconvTaintTracking {
     QuoteRuneToASCII() { hasQualifiedName("strconv", "QuoteRuneToASCII") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -104,7 +92,7 @@ module StrconvTaintTracking {
     QuoteRuneToGraphic() { hasQualifiedName("strconv", "QuoteRuneToGraphic") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -113,7 +101,7 @@ module StrconvTaintTracking {
     QuoteToASCII() { hasQualifiedName("strconv", "QuoteToASCII") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -122,7 +110,7 @@ module StrconvTaintTracking {
     QuoteToGraphic() { hasQualifiedName("strconv", "QuoteToGraphic") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -131,7 +119,7 @@ module StrconvTaintTracking {
     Unquote() { hasQualifiedName("strconv", "Unquote") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -140,7 +128,7 @@ module StrconvTaintTracking {
     UnquoteChar() { hasQualifiedName("strconv", "UnquoteChar") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult([0, 2])
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 }

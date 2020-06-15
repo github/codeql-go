@@ -11,7 +11,7 @@ module EncodingPemTaintTracking {
     Decode() { hasQualifiedName("encoding/pem", "Decode") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(_))
     }
   }
 
@@ -20,7 +20,7 @@ module EncodingPemTaintTracking {
     Encode() { hasQualifiedName("encoding/pem", "Encode") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 
@@ -29,7 +29,7 @@ module EncodingPemTaintTracking {
     EncodeToMemory() { hasQualifiedName("encoding/pem", "EncodeToMemory") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 }

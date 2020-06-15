@@ -11,7 +11,7 @@ module UnicodeUtf8TaintTracking {
     DecodeLastRune() { hasQualifiedName("unicode/utf8", "DecodeLastRune") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -20,7 +20,7 @@ module UnicodeUtf8TaintTracking {
     DecodeLastRuneInString() { hasQualifiedName("unicode/utf8", "DecodeLastRuneInString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -29,7 +29,7 @@ module UnicodeUtf8TaintTracking {
     DecodeRune() { hasQualifiedName("unicode/utf8", "DecodeRune") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -38,7 +38,7 @@ module UnicodeUtf8TaintTracking {
     DecodeRuneInString() { hasQualifiedName("unicode/utf8", "DecodeRuneInString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -47,7 +47,7 @@ module UnicodeUtf8TaintTracking {
     EncodeRune() { hasQualifiedName("unicode/utf8", "EncodeRune") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 }

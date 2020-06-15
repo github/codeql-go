@@ -11,7 +11,7 @@ module StringsTaintTracking {
     Fields() { hasQualifiedName("strings", "Fields") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -20,7 +20,7 @@ module StringsTaintTracking {
     FieldsFunc() { hasQualifiedName("strings", "FieldsFunc") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -29,7 +29,7 @@ module StringsTaintTracking {
     Join() { hasQualifiedName("strings", "Join") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -38,7 +38,7 @@ module StringsTaintTracking {
     Map() { hasQualifiedName("strings", "Map") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult()
+      (inp.isParameter(1) and outp.isResult())
     }
   }
 
@@ -47,7 +47,7 @@ module StringsTaintTracking {
     NewReader() { hasQualifiedName("strings", "NewReader") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -56,7 +56,7 @@ module StringsTaintTracking {
     NewReplacer() { hasQualifiedName("strings", "NewReplacer") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -65,7 +65,7 @@ module StringsTaintTracking {
     Repeat() { hasQualifiedName("strings", "Repeat") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -74,7 +74,7 @@ module StringsTaintTracking {
     Replace() { hasQualifiedName("strings", "Replace") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter([0, 2]) and outp.isResult()
+      (inp.isParameter([0, 2]) and outp.isResult())
     }
   }
 
@@ -83,7 +83,7 @@ module StringsTaintTracking {
     ReplaceAll() { hasQualifiedName("strings", "ReplaceAll") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter([0, 2]) and outp.isResult()
+      (inp.isParameter([0, 2]) and outp.isResult())
     }
   }
 
@@ -92,7 +92,7 @@ module StringsTaintTracking {
     Split() { hasQualifiedName("strings", "Split") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -101,7 +101,7 @@ module StringsTaintTracking {
     SplitAfter() { hasQualifiedName("strings", "SplitAfter") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -110,7 +110,7 @@ module StringsTaintTracking {
     SplitAfterN() { hasQualifiedName("strings", "SplitAfterN") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -119,7 +119,7 @@ module StringsTaintTracking {
     SplitN() { hasQualifiedName("strings", "SplitN") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -128,7 +128,7 @@ module StringsTaintTracking {
     Title() { hasQualifiedName("strings", "Title") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -137,7 +137,7 @@ module StringsTaintTracking {
     ToLower() { hasQualifiedName("strings", "ToLower") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -146,7 +146,7 @@ module StringsTaintTracking {
     ToLowerSpecial() { hasQualifiedName("strings", "ToLowerSpecial") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult()
+      (inp.isParameter(1) and outp.isResult())
     }
   }
 
@@ -155,7 +155,7 @@ module StringsTaintTracking {
     ToTitle() { hasQualifiedName("strings", "ToTitle") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -164,7 +164,7 @@ module StringsTaintTracking {
     ToTitleSpecial() { hasQualifiedName("strings", "ToTitleSpecial") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult()
+      (inp.isParameter(1) and outp.isResult())
     }
   }
 
@@ -173,7 +173,7 @@ module StringsTaintTracking {
     ToUpper() { hasQualifiedName("strings", "ToUpper") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -182,7 +182,7 @@ module StringsTaintTracking {
     ToUpperSpecial() { hasQualifiedName("strings", "ToUpperSpecial") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult()
+      (inp.isParameter(1) and outp.isResult())
     }
   }
 
@@ -191,7 +191,7 @@ module StringsTaintTracking {
     ToValidUTF8() { hasQualifiedName("strings", "ToValidUTF8") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -200,7 +200,7 @@ module StringsTaintTracking {
     Trim() { hasQualifiedName("strings", "Trim") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -209,7 +209,7 @@ module StringsTaintTracking {
     TrimFunc() { hasQualifiedName("strings", "TrimFunc") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -218,7 +218,7 @@ module StringsTaintTracking {
     TrimLeft() { hasQualifiedName("strings", "TrimLeft") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -227,7 +227,7 @@ module StringsTaintTracking {
     TrimLeftFunc() { hasQualifiedName("strings", "TrimLeftFunc") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -236,7 +236,7 @@ module StringsTaintTracking {
     TrimPrefix() { hasQualifiedName("strings", "TrimPrefix") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -245,7 +245,7 @@ module StringsTaintTracking {
     TrimRight() { hasQualifiedName("strings", "TrimRight") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -254,7 +254,7 @@ module StringsTaintTracking {
     TrimRightFunc() { hasQualifiedName("strings", "TrimRightFunc") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -263,7 +263,7 @@ module StringsTaintTracking {
     TrimSpace() { hasQualifiedName("strings", "TrimSpace") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -272,7 +272,7 @@ module StringsTaintTracking {
     TrimSuffix() { hasQualifiedName("strings", "TrimSuffix") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -281,7 +281,16 @@ module StringsTaintTracking {
     BuilderString() { this.(Method).hasQualifiedName("strings", "Builder", "String") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
+    }
+  }
+
+  private class BuilderWrite extends TaintTracking::FunctionModel, Method {
+    // signature: func (*Builder).Write(p []byte) (int, error)
+    BuilderWrite() { this.(Method).hasQualifiedName("strings", "Builder", "Write") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -290,7 +299,7 @@ module StringsTaintTracking {
     BuilderWriteByte() { this.(Method).hasQualifiedName("strings", "Builder", "WriteByte") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -299,7 +308,7 @@ module StringsTaintTracking {
     BuilderWriteRune() { this.(Method).hasQualifiedName("strings", "Builder", "WriteRune") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -308,7 +317,25 @@ module StringsTaintTracking {
     BuilderWriteString() { this.(Method).hasQualifiedName("strings", "Builder", "WriteString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
+    }
+  }
+
+  private class ReaderRead extends TaintTracking::FunctionModel, Method {
+    // signature: func (*Reader).Read(b []byte) (n int, err error)
+    ReaderRead() { this.(Method).hasQualifiedName("strings", "Reader", "Read") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isReceiver() and outp.isParameter(0))
+    }
+  }
+
+  private class ReaderReadAt extends TaintTracking::FunctionModel, Method {
+    // signature: func (*Reader).ReadAt(b []byte, off int64) (n int, err error)
+    ReaderReadAt() { this.(Method).hasQualifiedName("strings", "Reader", "ReadAt") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -317,7 +344,7 @@ module StringsTaintTracking {
     ReaderReadByte() { this.(Method).hasQualifiedName("strings", "Reader", "ReadByte") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -326,7 +353,7 @@ module StringsTaintTracking {
     ReaderReadRune() { this.(Method).hasQualifiedName("strings", "Reader", "ReadRune") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -335,7 +362,7 @@ module StringsTaintTracking {
     ReaderReset() { this.(Method).hasQualifiedName("strings", "Reader", "Reset") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -344,7 +371,7 @@ module StringsTaintTracking {
     ReaderWriteTo() { this.(Method).hasQualifiedName("strings", "Reader", "WriteTo") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -353,7 +380,7 @@ module StringsTaintTracking {
     ReplacerReplace() { this.(Method).hasQualifiedName("strings", "Replacer", "Replace") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -362,7 +389,7 @@ module StringsTaintTracking {
     ReplacerWriteString() { this.(Method).hasQualifiedName("strings", "Replacer", "WriteString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 }

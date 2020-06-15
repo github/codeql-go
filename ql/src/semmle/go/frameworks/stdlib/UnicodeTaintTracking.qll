@@ -11,7 +11,7 @@ module UnicodeTaintTracking {
     SimpleFold() { hasQualifiedName("unicode", "SimpleFold") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -20,7 +20,7 @@ module UnicodeTaintTracking {
     To() { hasQualifiedName("unicode", "To") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult()
+      (inp.isParameter(1) and outp.isResult())
     }
   }
 
@@ -29,7 +29,7 @@ module UnicodeTaintTracking {
     ToLower() { hasQualifiedName("unicode", "ToLower") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -38,7 +38,7 @@ module UnicodeTaintTracking {
     ToTitle() { hasQualifiedName("unicode", "ToTitle") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -47,7 +47,7 @@ module UnicodeTaintTracking {
     ToUpper() { hasQualifiedName("unicode", "ToUpper") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -56,7 +56,7 @@ module UnicodeTaintTracking {
     SpecialCaseToLower() { this.(Method).hasQualifiedName("unicode", "SpecialCase", "ToLower") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -65,7 +65,7 @@ module UnicodeTaintTracking {
     SpecialCaseToTitle() { this.(Method).hasQualifiedName("unicode", "SpecialCase", "ToTitle") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -74,7 +74,7 @@ module UnicodeTaintTracking {
     SpecialCaseToUpper() { this.(Method).hasQualifiedName("unicode", "SpecialCase", "ToUpper") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 }

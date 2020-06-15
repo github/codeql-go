@@ -11,7 +11,18 @@ module NetTextprotoTaintTracking {
     CanonicalMIMEHeaderKey() { hasQualifiedName("net/textproto", "CanonicalMIMEHeaderKey") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(0) and outp.isResult())
+    }
+  }
+
+  private class NewConn extends TaintTracking::FunctionModel {
+    // signature: func NewConn(conn io.ReadWriteCloser) *Conn
+    NewConn() { hasQualifiedName("net/textproto", "NewConn") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
       inp.isParameter(0) and outp.isResult()
+      or
+      inp.isResult() and outp.isParameter(0)
     }
   }
 
@@ -20,7 +31,7 @@ module NetTextprotoTaintTracking {
     NewReader() { hasQualifiedName("net/textproto", "NewReader") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -29,7 +40,7 @@ module NetTextprotoTaintTracking {
     NewWriter() { hasQualifiedName("net/textproto", "NewWriter") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult() and outp.isParameter(0)
+      (inp.isResult() and outp.isParameter(0))
     }
   }
 
@@ -38,7 +49,7 @@ module NetTextprotoTaintTracking {
     TrimBytes() { hasQualifiedName("net/textproto", "TrimBytes") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -47,7 +58,7 @@ module NetTextprotoTaintTracking {
     TrimString() { hasQualifiedName("net/textproto", "TrimString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -56,7 +67,7 @@ module NetTextprotoTaintTracking {
     MIMEHeaderAdd() { this.(Method).hasQualifiedName("net/textproto", "MIMEHeader", "Add") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isReceiver()
+      (inp.isParameter(_) and outp.isReceiver())
     }
   }
 
@@ -65,7 +76,7 @@ module NetTextprotoTaintTracking {
     MIMEHeaderGet() { this.(Method).hasQualifiedName("net/textproto", "MIMEHeader", "Get") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -74,7 +85,7 @@ module NetTextprotoTaintTracking {
     MIMEHeaderSet() { this.(Method).hasQualifiedName("net/textproto", "MIMEHeader", "Set") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isReceiver()
+      (inp.isParameter(_) and outp.isReceiver())
     }
   }
 
@@ -83,7 +94,7 @@ module NetTextprotoTaintTracking {
     MIMEHeaderValues() { this.(Method).hasQualifiedName("net/textproto", "MIMEHeader", "Values") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -92,7 +103,7 @@ module NetTextprotoTaintTracking {
     ReaderDotReader() { this.(Method).hasQualifiedName("net/textproto", "Reader", "DotReader") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -103,7 +114,7 @@ module NetTextprotoTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(1)
+      (inp.isReceiver() and outp.isResult(1))
     }
   }
 
@@ -114,7 +125,7 @@ module NetTextprotoTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -125,7 +136,7 @@ module NetTextprotoTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -136,7 +147,7 @@ module NetTextprotoTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -147,7 +158,7 @@ module NetTextprotoTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -156,7 +167,7 @@ module NetTextprotoTaintTracking {
     ReaderReadLine() { this.(Method).hasQualifiedName("net/textproto", "Reader", "ReadLine") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -167,7 +178,7 @@ module NetTextprotoTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -178,7 +189,7 @@ module NetTextprotoTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -189,7 +200,7 @@ module NetTextprotoTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(1)
+      (inp.isReceiver() and outp.isResult(1))
     }
   }
 
@@ -198,7 +209,7 @@ module NetTextprotoTaintTracking {
     WriterDotWriter() { this.(Method).hasQualifiedName("net/textproto", "Writer", "DotWriter") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult() and outp.isReceiver()
+      (inp.isResult() and outp.isReceiver())
     }
   }
 
@@ -207,7 +218,7 @@ module NetTextprotoTaintTracking {
     WriterPrintfLine() { this.(Method).hasQualifiedName("net/textproto", "Writer", "PrintfLine") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isReceiver()
+      (inp.isParameter(_) and outp.isReceiver())
     }
   }
 }

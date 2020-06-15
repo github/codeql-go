@@ -11,7 +11,7 @@ module TextTemplateTaintTracking {
     HTMLEscape() { hasQualifiedName("text/template", "HTMLEscape") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 
@@ -20,7 +20,7 @@ module TextTemplateTaintTracking {
     HTMLEscapeString() { hasQualifiedName("text/template", "HTMLEscapeString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -29,7 +29,7 @@ module TextTemplateTaintTracking {
     HTMLEscaper() { hasQualifiedName("text/template", "HTMLEscaper") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -38,7 +38,7 @@ module TextTemplateTaintTracking {
     JSEscape() { hasQualifiedName("text/template", "JSEscape") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 
@@ -47,7 +47,7 @@ module TextTemplateTaintTracking {
     JSEscapeString() { hasQualifiedName("text/template", "JSEscapeString") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -56,7 +56,34 @@ module TextTemplateTaintTracking {
     JSEscaper() { hasQualifiedName("text/template", "JSEscaper") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
+    }
+  }
+
+  private class New extends TaintTracking::FunctionModel {
+    // signature: func New(name string) *Template
+    New() { hasQualifiedName("text/template", "New") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(0) and outp.isResult())
+    }
+  }
+
+  private class ParseFiles extends TaintTracking::FunctionModel {
+    // signature: func ParseFiles(filenames ...string) (*Template, error)
+    ParseFiles() { hasQualifiedName("text/template", "ParseFiles") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(_) and outp.isResult(0))
+    }
+  }
+
+  private class ParseGlob extends TaintTracking::FunctionModel {
+    // signature: func ParseGlob(pattern string) (*Template, error)
+    ParseGlob() { hasQualifiedName("text/template", "ParseGlob") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -65,7 +92,7 @@ module TextTemplateTaintTracking {
     URLQueryEscaper() { hasQualifiedName("text/template", "URLQueryEscaper") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -74,7 +101,10 @@ module TextTemplateTaintTracking {
     TemplateExecute() { this.(Method).hasQualifiedName("text/template", "Template", "Execute") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (
+        (inp.isReceiver() or inp.isParameter(1)) and
+        outp.isParameter(0)
+      )
     }
   }
 
@@ -85,7 +115,10 @@ module TextTemplateTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(2) and outp.isParameter(0)
+      (
+        (inp.isReceiver() or inp.isParameter(2)) and
+        outp.isParameter(0)
+      )
     }
   }
 }

@@ -11,9 +11,10 @@ module SyncAtomicTaintTracking {
     AddUintptr() { hasQualifiedName("sync/atomic", "AddUintptr") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
-      or
-      inp.isParameter(_) and outp.isResult(0)
+      (
+        inp.isParameter(1) and
+        (outp.isParameter(0) or outp.isResult())
+      )
     }
   }
 
@@ -22,7 +23,7 @@ module SyncAtomicTaintTracking {
     CompareAndSwapPointer() { hasQualifiedName("sync/atomic", "CompareAndSwapPointer") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(2) and outp.isParameter(0)
+      (inp.isParameter(2) and outp.isParameter(0))
     }
   }
 
@@ -31,7 +32,7 @@ module SyncAtomicTaintTracking {
     CompareAndSwapUintptr() { hasQualifiedName("sync/atomic", "CompareAndSwapUintptr") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(2) and outp.isParameter(0)
+      (inp.isParameter(2) and outp.isParameter(0))
     }
   }
 
@@ -40,7 +41,7 @@ module SyncAtomicTaintTracking {
     LoadPointer() { hasQualifiedName("sync/atomic", "LoadPointer") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -49,7 +50,7 @@ module SyncAtomicTaintTracking {
     LoadUintptr() { hasQualifiedName("sync/atomic", "LoadUintptr") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -58,7 +59,7 @@ module SyncAtomicTaintTracking {
     StorePointer() { hasQualifiedName("sync/atomic", "StorePointer") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 
@@ -67,7 +68,7 @@ module SyncAtomicTaintTracking {
     StoreUintptr() { hasQualifiedName("sync/atomic", "StoreUintptr") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      (inp.isParameter(1) and outp.isParameter(0))
     }
   }
 
@@ -98,7 +99,7 @@ module SyncAtomicTaintTracking {
     ValueLoad() { this.(Method).hasQualifiedName("sync/atomic", "Value", "Load") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -107,7 +108,7 @@ module SyncAtomicTaintTracking {
     ValueStore() { this.(Method).hasQualifiedName("sync/atomic", "Value", "Store") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 }

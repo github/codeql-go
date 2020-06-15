@@ -11,7 +11,7 @@ module CryptoEd25519TaintTracking {
     Sign() { hasQualifiedName("crypto/ed25519", "Sign") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult()
+      (inp.isParameter(1) and outp.isResult())
     }
   }
 
@@ -20,7 +20,7 @@ module CryptoEd25519TaintTracking {
     PrivateKeySign() { this.(Method).hasQualifiedName("crypto/ed25519", "PrivateKey", "Sign") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult(0)
+      (inp.isParameter(1) and outp.isResult(0))
     }
   }
 }

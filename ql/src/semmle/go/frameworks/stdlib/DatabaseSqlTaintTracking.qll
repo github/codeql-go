@@ -11,7 +11,7 @@ module DatabaseSqlTaintTracking {
     Named() { hasQualifiedName("database/sql", "Named") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult()
+      (inp.isParameter(_) and outp.isResult())
     }
   }
 
@@ -22,7 +22,7 @@ module DatabaseSqlTaintTracking {
     }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult(0)
+      (inp.isParameter(1) and outp.isResult(0))
     }
   }
 
@@ -31,7 +31,7 @@ module DatabaseSqlTaintTracking {
     DBPrepare() { this.(Method).hasQualifiedName("database/sql", "DB", "Prepare") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -40,7 +40,7 @@ module DatabaseSqlTaintTracking {
     DBPrepareContext() { this.(Method).hasQualifiedName("database/sql", "DB", "PrepareContext") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult(0)
+      (inp.isParameter(1) and outp.isResult(0))
     }
   }
 
@@ -49,7 +49,7 @@ module DatabaseSqlTaintTracking {
     TxPrepare() { this.(Method).hasQualifiedName("database/sql", "Tx", "Prepare") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult(0)
+      (inp.isParameter(0) and outp.isResult(0))
     }
   }
 
@@ -58,7 +58,7 @@ module DatabaseSqlTaintTracking {
     TxPrepareContext() { this.(Method).hasQualifiedName("database/sql", "Tx", "PrepareContext") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult(0)
+      (inp.isParameter(1) and outp.isResult(0))
     }
   }
 
@@ -67,7 +67,7 @@ module DatabaseSqlTaintTracking {
     TxStmt() { this.(Method).hasQualifiedName("database/sql", "Tx", "Stmt") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -76,7 +76,7 @@ module DatabaseSqlTaintTracking {
     TxStmtContext() { this.(Method).hasQualifiedName("database/sql", "Tx", "StmtContext") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult()
+      (inp.isParameter(1) and outp.isResult())
     }
   }
 }

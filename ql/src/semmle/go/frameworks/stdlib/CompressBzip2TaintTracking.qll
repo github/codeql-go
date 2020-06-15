@@ -11,7 +11,7 @@ module CompressBzip2TaintTracking {
     NewReader() { hasQualifiedName("compress/bzip2", "NewReader") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 }

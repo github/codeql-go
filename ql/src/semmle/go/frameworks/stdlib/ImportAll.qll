@@ -19,8 +19,8 @@ import semmle.go.frameworks.stdlib.ContextTaintTracking
 import semmle.go.frameworks.stdlib.CryptoCipherTaintTracking
 import semmle.go.frameworks.stdlib.CryptoEcdsaTaintTracking
 import semmle.go.frameworks.stdlib.CryptoEd25519TaintTracking
-import semmle.go.frameworks.stdlib.CryptoTaintTracking
 import semmle.go.frameworks.stdlib.CryptoRsaTaintTracking
+import semmle.go.frameworks.stdlib.CryptoTaintTracking
 import semmle.go.frameworks.stdlib.CryptoTlsTaintTracking
 import semmle.go.frameworks.stdlib.CryptoX509TaintTracking
 import semmle.go.frameworks.stdlib.DatabaseSqlDriverTaintTracking
@@ -46,11 +46,12 @@ import semmle.go.frameworks.stdlib.IoIoutilTaintTracking
 import semmle.go.frameworks.stdlib.IoTaintTracking
 import semmle.go.frameworks.stdlib.LogTaintTracking
 import semmle.go.frameworks.stdlib.MimeMultipartTaintTracking
-import semmle.go.frameworks.stdlib.MimeTaintTracking
 import semmle.go.frameworks.stdlib.MimeQuotedprintableTaintTracking
+import semmle.go.frameworks.stdlib.MimeTaintTracking
 import semmle.go.frameworks.stdlib.NetHttpHttputilTaintTracking
 import semmle.go.frameworks.stdlib.NetHttpTaintTracking
 import semmle.go.frameworks.stdlib.NetMailTaintTracking
+import semmle.go.frameworks.stdlib.NetTaintTracking
 import semmle.go.frameworks.stdlib.NetTextprotoTaintTracking
 import semmle.go.frameworks.stdlib.NetUrlTaintTracking
 import semmle.go.frameworks.stdlib.OsTaintTracking

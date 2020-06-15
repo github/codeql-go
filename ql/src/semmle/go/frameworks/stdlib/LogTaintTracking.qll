@@ -11,7 +11,7 @@ module LogTaintTracking {
     New() { hasQualifiedName("log", "New") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isResult() and outp.isParameter(0)
+      (inp.isResult() and outp.isParameter(0))
     }
   }
 
@@ -20,7 +20,7 @@ module LogTaintTracking {
     LoggerFatal() { this.(Method).hasQualifiedName("log", "Logger", "Fatal") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isReceiver()
+      (inp.isParameter(_) and outp.isReceiver())
     }
   }
 
@@ -29,7 +29,7 @@ module LogTaintTracking {
     LoggerFatalf() { this.(Method).hasQualifiedName("log", "Logger", "Fatalf") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isReceiver()
+      (inp.isParameter(_) and outp.isReceiver())
     }
   }
 
@@ -38,7 +38,7 @@ module LogTaintTracking {
     LoggerFatalln() { this.(Method).hasQualifiedName("log", "Logger", "Fatalln") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isReceiver()
+      (inp.isParameter(_) and outp.isReceiver())
     }
   }
 
@@ -47,7 +47,7 @@ module LogTaintTracking {
     LoggerPanic() { this.(Method).hasQualifiedName("log", "Logger", "Panic") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isReceiver()
+      (inp.isParameter(_) and outp.isReceiver())
     }
   }
 
@@ -56,7 +56,7 @@ module LogTaintTracking {
     LoggerPanicf() { this.(Method).hasQualifiedName("log", "Logger", "Panicf") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isReceiver()
+      (inp.isParameter(_) and outp.isReceiver())
     }
   }
 
@@ -65,7 +65,7 @@ module LogTaintTracking {
     LoggerPanicln() { this.(Method).hasQualifiedName("log", "Logger", "Panicln") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isReceiver()
+      (inp.isParameter(_) and outp.isReceiver())
     }
   }
 
@@ -74,7 +74,7 @@ module LogTaintTracking {
     LoggerPrint() { this.(Method).hasQualifiedName("log", "Logger", "Print") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isReceiver()
+      (inp.isParameter(_) and outp.isReceiver())
     }
   }
 
@@ -83,7 +83,7 @@ module LogTaintTracking {
     LoggerPrintf() { this.(Method).hasQualifiedName("log", "Logger", "Printf") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isReceiver()
+      (inp.isParameter(_) and outp.isReceiver())
     }
   }
 
@@ -92,7 +92,7 @@ module LogTaintTracking {
     LoggerPrintln() { this.(Method).hasQualifiedName("log", "Logger", "Println") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isReceiver()
+      (inp.isParameter(_) and outp.isReceiver())
     }
   }
 
@@ -101,7 +101,7 @@ module LogTaintTracking {
     LoggerSetOutput() { this.(Method).hasQualifiedName("log", "Logger", "SetOutput") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -110,7 +110,7 @@ module LogTaintTracking {
     LoggerSetPrefix() { this.(Method).hasQualifiedName("log", "Logger", "SetPrefix") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 
@@ -119,6 +119,8 @@ module LogTaintTracking {
     LoggerWriter() { this.(Method).hasQualifiedName("log", "Logger", "Writer") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      inp.isResult() and outp.isReceiver()
+      or
       inp.isReceiver() and outp.isResult()
     }
   }

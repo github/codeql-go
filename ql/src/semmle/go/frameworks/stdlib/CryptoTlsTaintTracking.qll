@@ -17,32 +17,12 @@ module CryptoTlsTaintTracking {
     }
   }
 
-  private class Dial extends TaintTracking::FunctionModel {
-    // signature: func Dial(network string, addr string, config *Config) (*Conn, error)
-    Dial() { hasQualifiedName("crypto/tls", "Dial") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isResult(0)
-    }
-  }
-
-  private class DialWithDialer extends TaintTracking::FunctionModel {
-    // signature: func DialWithDialer(dialer *net.Dialer, network string, addr string, config *Config) (*Conn, error)
-    DialWithDialer() { hasQualifiedName("crypto/tls", "DialWithDialer") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(2) and outp.isResult(0)
-    }
-  }
-
   private class NewListener extends TaintTracking::FunctionModel {
     // signature: func NewListener(inner net.Listener, config *Config) net.Listener
     NewListener() { hasQualifiedName("crypto/tls", "NewListener") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
-      or
-      inp.isResult() and outp.isParameter(0)
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -54,6 +34,24 @@ module CryptoTlsTaintTracking {
       inp.isParameter(0) and outp.isResult()
       or
       inp.isResult() and outp.isParameter(0)
+    }
+  }
+
+  private class ConnRead extends TaintTracking::FunctionModel, Method {
+    // signature: func (*Conn).Read(b []byte) (int, error)
+    ConnRead() { this.(Method).hasQualifiedName("crypto/tls", "Conn", "Read") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isReceiver() and outp.isParameter(0))
+    }
+  }
+
+  private class ConnWrite extends TaintTracking::FunctionModel, Method {
+    // signature: func (*Conn).Write(b []byte) (int, error)
+    ConnWrite() { this.(Method).hasQualifiedName("crypto/tls", "Conn", "Write") }
+
+    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 }

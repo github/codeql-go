@@ -11,7 +11,7 @@ module ErrorsTaintTracking {
     As() { hasQualifiedName("errors", "As") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isParameter(1)
+      (inp.isParameter(0) and outp.isParameter(1))
     }
   }
 
@@ -20,7 +20,7 @@ module ErrorsTaintTracking {
     New() { hasQualifiedName("errors", "New") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 
@@ -29,7 +29,7 @@ module ErrorsTaintTracking {
     Unwrap() { hasQualifiedName("errors", "Unwrap") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      (inp.isParameter(0) and outp.isResult())
     }
   }
 }

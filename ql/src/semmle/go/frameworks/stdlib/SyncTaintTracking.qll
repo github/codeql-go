@@ -11,7 +11,7 @@ module SyncTaintTracking {
     MapLoad() { this.(Method).hasQualifiedName("sync", "Map", "Load") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      (inp.isReceiver() and outp.isResult(0))
     }
   }
 
@@ -22,7 +22,8 @@ module SyncTaintTracking {
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
       inp.isReceiver() and outp.isResult(0)
       or
-      inp.isParameter(_) and outp.isReceiver()
+      inp.isParameter(1) and
+      (outp.isReceiver() or outp.isResult(0))
     }
   }
 
@@ -31,7 +32,7 @@ module SyncTaintTracking {
     MapRange() { this.(Method).hasQualifiedName("sync", "Map", "Range") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
+      (inp.isReceiver() and outp.isParameter(0))
     }
   }
 
@@ -40,7 +41,7 @@ module SyncTaintTracking {
     MapStore() { this.(Method).hasQualifiedName("sync", "Map", "Store") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isReceiver()
+      (inp.isParameter(_) and outp.isReceiver())
     }
   }
 
@@ -49,7 +50,7 @@ module SyncTaintTracking {
     PoolGet() { this.(Method).hasQualifiedName("sync", "Pool", "Get") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
+      (inp.isReceiver() and outp.isResult())
     }
   }
 
@@ -58,7 +59,7 @@ module SyncTaintTracking {
     PoolPut() { this.(Method).hasQualifiedName("sync", "Pool", "Put") }
 
     override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
+      (inp.isParameter(0) and outp.isReceiver())
     }
   }
 }
