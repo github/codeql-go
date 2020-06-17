@@ -23,13 +23,4 @@ module IoIoutilTaintTracking {
       (inp.isParameter(0) and outp.isResult(0))
     }
   }
-
-  private class WriterWrite extends TaintTracking::FunctionModel, Method {
-    // signature: func (Writer).Write(p []byte) (n int, err error)
-    WriterWrite() { this.implements("io", "Writer", "Write") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isParameter(0) and outp.isReceiver())
-    }
-  }
 }
