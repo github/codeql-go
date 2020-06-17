@@ -2651,39 +2651,30 @@ edges
 | SyncTaintTracking.go:227:13:227:23 | call to newSource : interface type | SyncTaintTracking.go:229:43:229:48 | source : interface type |
 | SyncTaintTracking.go:229:10:229:49 | call to TaintStepTest_SyncPoolPut_B0I0O0 : Pool | SyncTaintTracking.go:231:8:231:10 | out |
 | SyncTaintTracking.go:229:43:229:48 | source : interface type | SyncTaintTracking.go:229:10:229:49 | call to TaintStepTest_SyncPoolPut_B0I0O0 : Pool |
-| SyscallTaintTracking.go:189:13:189:23 | call to newSource : interface type | SyscallTaintTracking.go:191:56:191:61 | source : interface type |
-| SyscallTaintTracking.go:191:10:191:62 | call to TaintStepTest_SyscallBytePtrFromString_B0I0O0 : pointer type | SyscallTaintTracking.go:193:8:193:10 | out |
-| SyscallTaintTracking.go:191:56:191:61 | source : interface type | SyscallTaintTracking.go:191:10:191:62 | call to TaintStepTest_SyscallBytePtrFromString_B0I0O0 : pointer type |
-| SyscallTaintTracking.go:197:13:197:23 | call to newSource : interface type | SyscallTaintTracking.go:199:58:199:63 | source : interface type |
-| SyscallTaintTracking.go:199:10:199:64 | call to TaintStepTest_SyscallByteSliceFromString_B0I0O0 : slice type | SyscallTaintTracking.go:201:8:201:10 | out |
-| SyscallTaintTracking.go:199:58:199:63 | source : interface type | SyscallTaintTracking.go:199:10:199:64 | call to TaintStepTest_SyscallByteSliceFromString_B0I0O0 : slice type |
-| SyscallTaintTracking.go:205:13:205:23 | call to newSource : interface type | SyscallTaintTracking.go:207:44:207:49 | source : interface type |
-| SyscallTaintTracking.go:207:10:207:50 | call to TaintStepTest_SyscallPread_B0I0O0 : slice type | SyscallTaintTracking.go:209:8:209:10 | out |
-| SyscallTaintTracking.go:207:44:207:49 | source : interface type | SyscallTaintTracking.go:207:10:207:50 | call to TaintStepTest_SyscallPread_B0I0O0 : slice type |
-| SyscallTaintTracking.go:213:13:213:23 | call to newSource : interface type | SyscallTaintTracking.go:215:58:215:63 | source : interface type |
-| SyscallTaintTracking.go:215:10:215:64 | call to TaintStepTest_SyscallSlicePtrFromStrings_B0I0O0 : slice type | SyscallTaintTracking.go:217:8:217:10 | out |
-| SyscallTaintTracking.go:215:58:215:63 | source : interface type | SyscallTaintTracking.go:215:10:215:64 | call to TaintStepTest_SyscallSlicePtrFromStrings_B0I0O0 : slice type |
-| SyscallTaintTracking.go:221:13:221:23 | call to newSource : interface type | SyscallTaintTracking.go:223:52:223:57 | source : interface type |
-| SyscallTaintTracking.go:223:10:223:58 | call to TaintStepTest_SyscallStringBytePtr_B0I0O0 : pointer type | SyscallTaintTracking.go:225:8:225:10 | out |
-| SyscallTaintTracking.go:223:52:223:57 | source : interface type | SyscallTaintTracking.go:223:10:223:58 | call to TaintStepTest_SyscallStringBytePtr_B0I0O0 : pointer type |
-| SyscallTaintTracking.go:229:13:229:23 | call to newSource : interface type | SyscallTaintTracking.go:231:54:231:59 | source : interface type |
-| SyscallTaintTracking.go:231:10:231:60 | call to TaintStepTest_SyscallStringByteSlice_B0I0O0 : slice type | SyscallTaintTracking.go:233:8:233:10 | out |
-| SyscallTaintTracking.go:231:54:231:59 | source : interface type | SyscallTaintTracking.go:231:10:231:60 | call to TaintStepTest_SyscallStringByteSlice_B0I0O0 : slice type |
-| SyscallTaintTracking.go:237:13:237:23 | call to newSource : interface type | SyscallTaintTracking.go:239:53:239:58 | source : interface type |
-| SyscallTaintTracking.go:239:10:239:59 | call to TaintStepTest_SyscallStringSlicePtr_B0I0O0 : slice type | SyscallTaintTracking.go:241:8:241:10 | out |
-| SyscallTaintTracking.go:239:53:239:58 | source : interface type | SyscallTaintTracking.go:239:10:239:59 | call to TaintStepTest_SyscallStringSlicePtr_B0I0O0 : slice type |
-| SyscallTaintTracking.go:245:13:245:23 | call to newSource : interface type | SyscallTaintTracking.go:247:50:247:55 | source : interface type |
-| SyscallTaintTracking.go:247:10:247:56 | call to TaintStepTest_SyscallRawConnRead_B0I0O0 : signature type | SyscallTaintTracking.go:249:8:249:10 | out |
-| SyscallTaintTracking.go:247:50:247:55 | source : interface type | SyscallTaintTracking.go:247:10:247:56 | call to TaintStepTest_SyscallRawConnRead_B0I0O0 : signature type |
-| SyscallTaintTracking.go:253:13:253:23 | call to newSource : interface type | SyscallTaintTracking.go:255:54:255:59 | source : interface type |
-| SyscallTaintTracking.go:255:10:255:60 | call to TaintStepTest_SyscallConnSyscallConn_B0I0O0 : RawConn | SyscallTaintTracking.go:257:8:257:10 | out |
-| SyscallTaintTracking.go:255:54:255:59 | source : interface type | SyscallTaintTracking.go:255:10:255:60 | call to TaintStepTest_SyscallConnSyscallConn_B0I0O0 : RawConn |
-| SyscallTaintTracking.go:261:13:261:23 | call to newSource : interface type | SyscallTaintTracking.go:263:54:263:59 | source : interface type |
-| SyscallTaintTracking.go:263:10:263:60 | call to TaintStepTest_SyscallConnSyscallConn_B1I0O0 : Conn | SyscallTaintTracking.go:265:8:265:10 | out |
-| SyscallTaintTracking.go:263:54:263:59 | source : interface type | SyscallTaintTracking.go:263:10:263:60 | call to TaintStepTest_SyscallConnSyscallConn_B1I0O0 : Conn |
-| SyscallTaintTracking.go:269:13:269:23 | call to newSource : interface type | SyscallTaintTracking.go:271:51:271:56 | source : interface type |
-| SyscallTaintTracking.go:271:10:271:57 | call to TaintStepTest_SyscallRawConnWrite_B0I0O0 : RawConn | SyscallTaintTracking.go:273:8:273:10 | out |
-| SyscallTaintTracking.go:271:51:271:56 | source : interface type | SyscallTaintTracking.go:271:10:271:57 | call to TaintStepTest_SyscallRawConnWrite_B0I0O0 : RawConn |
+| SyscallTaintTracking.go:141:13:141:23 | call to newSource : interface type | SyscallTaintTracking.go:143:56:143:61 | source : interface type |
+| SyscallTaintTracking.go:143:10:143:62 | call to TaintStepTest_SyscallBytePtrFromString_B0I0O0 : pointer type | SyscallTaintTracking.go:145:8:145:10 | out |
+| SyscallTaintTracking.go:143:56:143:61 | source : interface type | SyscallTaintTracking.go:143:10:143:62 | call to TaintStepTest_SyscallBytePtrFromString_B0I0O0 : pointer type |
+| SyscallTaintTracking.go:149:13:149:23 | call to newSource : interface type | SyscallTaintTracking.go:151:58:151:63 | source : interface type |
+| SyscallTaintTracking.go:151:10:151:64 | call to TaintStepTest_SyscallByteSliceFromString_B0I0O0 : slice type | SyscallTaintTracking.go:153:8:153:10 | out |
+| SyscallTaintTracking.go:151:58:151:63 | source : interface type | SyscallTaintTracking.go:151:10:151:64 | call to TaintStepTest_SyscallByteSliceFromString_B0I0O0 : slice type |
+| SyscallTaintTracking.go:157:13:157:23 | call to newSource : interface type | SyscallTaintTracking.go:159:52:159:57 | source : interface type |
+| SyscallTaintTracking.go:159:10:159:58 | call to TaintStepTest_SyscallStringBytePtr_B0I0O0 : pointer type | SyscallTaintTracking.go:161:8:161:10 | out |
+| SyscallTaintTracking.go:159:52:159:57 | source : interface type | SyscallTaintTracking.go:159:10:159:58 | call to TaintStepTest_SyscallStringBytePtr_B0I0O0 : pointer type |
+| SyscallTaintTracking.go:165:13:165:23 | call to newSource : interface type | SyscallTaintTracking.go:167:54:167:59 | source : interface type |
+| SyscallTaintTracking.go:167:10:167:60 | call to TaintStepTest_SyscallStringByteSlice_B0I0O0 : slice type | SyscallTaintTracking.go:169:8:169:10 | out |
+| SyscallTaintTracking.go:167:54:167:59 | source : interface type | SyscallTaintTracking.go:167:10:167:60 | call to TaintStepTest_SyscallStringByteSlice_B0I0O0 : slice type |
+| SyscallTaintTracking.go:173:13:173:23 | call to newSource : interface type | SyscallTaintTracking.go:175:50:175:55 | source : interface type |
+| SyscallTaintTracking.go:175:10:175:56 | call to TaintStepTest_SyscallRawConnRead_B0I0O0 : signature type | SyscallTaintTracking.go:177:8:177:10 | out |
+| SyscallTaintTracking.go:175:50:175:55 | source : interface type | SyscallTaintTracking.go:175:10:175:56 | call to TaintStepTest_SyscallRawConnRead_B0I0O0 : signature type |
+| SyscallTaintTracking.go:181:13:181:23 | call to newSource : interface type | SyscallTaintTracking.go:183:54:183:59 | source : interface type |
+| SyscallTaintTracking.go:183:10:183:60 | call to TaintStepTest_SyscallConnSyscallConn_B0I0O0 : RawConn | SyscallTaintTracking.go:185:8:185:10 | out |
+| SyscallTaintTracking.go:183:54:183:59 | source : interface type | SyscallTaintTracking.go:183:10:183:60 | call to TaintStepTest_SyscallConnSyscallConn_B0I0O0 : RawConn |
+| SyscallTaintTracking.go:189:13:189:23 | call to newSource : interface type | SyscallTaintTracking.go:191:54:191:59 | source : interface type |
+| SyscallTaintTracking.go:191:10:191:60 | call to TaintStepTest_SyscallConnSyscallConn_B1I0O0 : Conn | SyscallTaintTracking.go:193:8:193:10 | out |
+| SyscallTaintTracking.go:191:54:191:59 | source : interface type | SyscallTaintTracking.go:191:10:191:60 | call to TaintStepTest_SyscallConnSyscallConn_B1I0O0 : Conn |
+| SyscallTaintTracking.go:197:13:197:23 | call to newSource : interface type | SyscallTaintTracking.go:199:51:199:56 | source : interface type |
+| SyscallTaintTracking.go:199:10:199:57 | call to TaintStepTest_SyscallRawConnWrite_B0I0O0 : RawConn | SyscallTaintTracking.go:201:8:201:10 | out |
+| SyscallTaintTracking.go:199:51:199:56 | source : interface type | SyscallTaintTracking.go:199:10:199:57 | call to TaintStepTest_SyscallRawConnWrite_B0I0O0 : RawConn |
 | TextScannerTaintTracking.go:124:13:124:23 | call to newSource : interface type | TextScannerTaintTracking.go:126:54:126:59 | source : interface type |
 | TextScannerTaintTracking.go:126:10:126:60 | call to TaintStepTest_TextScannerTokenString_B0I0O0 : string | TextScannerTaintTracking.go:128:8:128:10 | out |
 | TextScannerTaintTracking.go:126:54:126:59 | source : interface type | TextScannerTaintTracking.go:126:10:126:60 | call to TaintStepTest_TextScannerTokenString_B0I0O0 : string |
@@ -6353,50 +6344,38 @@ nodes
 | SyncTaintTracking.go:229:10:229:49 | call to TaintStepTest_SyncPoolPut_B0I0O0 : Pool | semmle.label | call to TaintStepTest_SyncPoolPut_B0I0O0 : Pool |
 | SyncTaintTracking.go:229:43:229:48 | source : interface type | semmle.label | source : interface type |
 | SyncTaintTracking.go:231:8:231:10 | out | semmle.label | out |
+| SyscallTaintTracking.go:141:13:141:23 | call to newSource : interface type | semmle.label | call to newSource : interface type |
+| SyscallTaintTracking.go:143:10:143:62 | call to TaintStepTest_SyscallBytePtrFromString_B0I0O0 : pointer type | semmle.label | call to TaintStepTest_SyscallBytePtrFromString_B0I0O0 : pointer type |
+| SyscallTaintTracking.go:143:56:143:61 | source : interface type | semmle.label | source : interface type |
+| SyscallTaintTracking.go:145:8:145:10 | out | semmle.label | out |
+| SyscallTaintTracking.go:149:13:149:23 | call to newSource : interface type | semmle.label | call to newSource : interface type |
+| SyscallTaintTracking.go:151:10:151:64 | call to TaintStepTest_SyscallByteSliceFromString_B0I0O0 : slice type | semmle.label | call to TaintStepTest_SyscallByteSliceFromString_B0I0O0 : slice type |
+| SyscallTaintTracking.go:151:58:151:63 | source : interface type | semmle.label | source : interface type |
+| SyscallTaintTracking.go:153:8:153:10 | out | semmle.label | out |
+| SyscallTaintTracking.go:157:13:157:23 | call to newSource : interface type | semmle.label | call to newSource : interface type |
+| SyscallTaintTracking.go:159:10:159:58 | call to TaintStepTest_SyscallStringBytePtr_B0I0O0 : pointer type | semmle.label | call to TaintStepTest_SyscallStringBytePtr_B0I0O0 : pointer type |
+| SyscallTaintTracking.go:159:52:159:57 | source : interface type | semmle.label | source : interface type |
+| SyscallTaintTracking.go:161:8:161:10 | out | semmle.label | out |
+| SyscallTaintTracking.go:165:13:165:23 | call to newSource : interface type | semmle.label | call to newSource : interface type |
+| SyscallTaintTracking.go:167:10:167:60 | call to TaintStepTest_SyscallStringByteSlice_B0I0O0 : slice type | semmle.label | call to TaintStepTest_SyscallStringByteSlice_B0I0O0 : slice type |
+| SyscallTaintTracking.go:167:54:167:59 | source : interface type | semmle.label | source : interface type |
+| SyscallTaintTracking.go:169:8:169:10 | out | semmle.label | out |
+| SyscallTaintTracking.go:173:13:173:23 | call to newSource : interface type | semmle.label | call to newSource : interface type |
+| SyscallTaintTracking.go:175:10:175:56 | call to TaintStepTest_SyscallRawConnRead_B0I0O0 : signature type | semmle.label | call to TaintStepTest_SyscallRawConnRead_B0I0O0 : signature type |
+| SyscallTaintTracking.go:175:50:175:55 | source : interface type | semmle.label | source : interface type |
+| SyscallTaintTracking.go:177:8:177:10 | out | semmle.label | out |
+| SyscallTaintTracking.go:181:13:181:23 | call to newSource : interface type | semmle.label | call to newSource : interface type |
+| SyscallTaintTracking.go:183:10:183:60 | call to TaintStepTest_SyscallConnSyscallConn_B0I0O0 : RawConn | semmle.label | call to TaintStepTest_SyscallConnSyscallConn_B0I0O0 : RawConn |
+| SyscallTaintTracking.go:183:54:183:59 | source : interface type | semmle.label | source : interface type |
+| SyscallTaintTracking.go:185:8:185:10 | out | semmle.label | out |
 | SyscallTaintTracking.go:189:13:189:23 | call to newSource : interface type | semmle.label | call to newSource : interface type |
-| SyscallTaintTracking.go:191:10:191:62 | call to TaintStepTest_SyscallBytePtrFromString_B0I0O0 : pointer type | semmle.label | call to TaintStepTest_SyscallBytePtrFromString_B0I0O0 : pointer type |
-| SyscallTaintTracking.go:191:56:191:61 | source : interface type | semmle.label | source : interface type |
+| SyscallTaintTracking.go:191:10:191:60 | call to TaintStepTest_SyscallConnSyscallConn_B1I0O0 : Conn | semmle.label | call to TaintStepTest_SyscallConnSyscallConn_B1I0O0 : Conn |
+| SyscallTaintTracking.go:191:54:191:59 | source : interface type | semmle.label | source : interface type |
 | SyscallTaintTracking.go:193:8:193:10 | out | semmle.label | out |
 | SyscallTaintTracking.go:197:13:197:23 | call to newSource : interface type | semmle.label | call to newSource : interface type |
-| SyscallTaintTracking.go:199:10:199:64 | call to TaintStepTest_SyscallByteSliceFromString_B0I0O0 : slice type | semmle.label | call to TaintStepTest_SyscallByteSliceFromString_B0I0O0 : slice type |
-| SyscallTaintTracking.go:199:58:199:63 | source : interface type | semmle.label | source : interface type |
+| SyscallTaintTracking.go:199:10:199:57 | call to TaintStepTest_SyscallRawConnWrite_B0I0O0 : RawConn | semmle.label | call to TaintStepTest_SyscallRawConnWrite_B0I0O0 : RawConn |
+| SyscallTaintTracking.go:199:51:199:56 | source : interface type | semmle.label | source : interface type |
 | SyscallTaintTracking.go:201:8:201:10 | out | semmle.label | out |
-| SyscallTaintTracking.go:205:13:205:23 | call to newSource : interface type | semmle.label | call to newSource : interface type |
-| SyscallTaintTracking.go:207:10:207:50 | call to TaintStepTest_SyscallPread_B0I0O0 : slice type | semmle.label | call to TaintStepTest_SyscallPread_B0I0O0 : slice type |
-| SyscallTaintTracking.go:207:44:207:49 | source : interface type | semmle.label | source : interface type |
-| SyscallTaintTracking.go:209:8:209:10 | out | semmle.label | out |
-| SyscallTaintTracking.go:213:13:213:23 | call to newSource : interface type | semmle.label | call to newSource : interface type |
-| SyscallTaintTracking.go:215:10:215:64 | call to TaintStepTest_SyscallSlicePtrFromStrings_B0I0O0 : slice type | semmle.label | call to TaintStepTest_SyscallSlicePtrFromStrings_B0I0O0 : slice type |
-| SyscallTaintTracking.go:215:58:215:63 | source : interface type | semmle.label | source : interface type |
-| SyscallTaintTracking.go:217:8:217:10 | out | semmle.label | out |
-| SyscallTaintTracking.go:221:13:221:23 | call to newSource : interface type | semmle.label | call to newSource : interface type |
-| SyscallTaintTracking.go:223:10:223:58 | call to TaintStepTest_SyscallStringBytePtr_B0I0O0 : pointer type | semmle.label | call to TaintStepTest_SyscallStringBytePtr_B0I0O0 : pointer type |
-| SyscallTaintTracking.go:223:52:223:57 | source : interface type | semmle.label | source : interface type |
-| SyscallTaintTracking.go:225:8:225:10 | out | semmle.label | out |
-| SyscallTaintTracking.go:229:13:229:23 | call to newSource : interface type | semmle.label | call to newSource : interface type |
-| SyscallTaintTracking.go:231:10:231:60 | call to TaintStepTest_SyscallStringByteSlice_B0I0O0 : slice type | semmle.label | call to TaintStepTest_SyscallStringByteSlice_B0I0O0 : slice type |
-| SyscallTaintTracking.go:231:54:231:59 | source : interface type | semmle.label | source : interface type |
-| SyscallTaintTracking.go:233:8:233:10 | out | semmle.label | out |
-| SyscallTaintTracking.go:237:13:237:23 | call to newSource : interface type | semmle.label | call to newSource : interface type |
-| SyscallTaintTracking.go:239:10:239:59 | call to TaintStepTest_SyscallStringSlicePtr_B0I0O0 : slice type | semmle.label | call to TaintStepTest_SyscallStringSlicePtr_B0I0O0 : slice type |
-| SyscallTaintTracking.go:239:53:239:58 | source : interface type | semmle.label | source : interface type |
-| SyscallTaintTracking.go:241:8:241:10 | out | semmle.label | out |
-| SyscallTaintTracking.go:245:13:245:23 | call to newSource : interface type | semmle.label | call to newSource : interface type |
-| SyscallTaintTracking.go:247:10:247:56 | call to TaintStepTest_SyscallRawConnRead_B0I0O0 : signature type | semmle.label | call to TaintStepTest_SyscallRawConnRead_B0I0O0 : signature type |
-| SyscallTaintTracking.go:247:50:247:55 | source : interface type | semmle.label | source : interface type |
-| SyscallTaintTracking.go:249:8:249:10 | out | semmle.label | out |
-| SyscallTaintTracking.go:253:13:253:23 | call to newSource : interface type | semmle.label | call to newSource : interface type |
-| SyscallTaintTracking.go:255:10:255:60 | call to TaintStepTest_SyscallConnSyscallConn_B0I0O0 : RawConn | semmle.label | call to TaintStepTest_SyscallConnSyscallConn_B0I0O0 : RawConn |
-| SyscallTaintTracking.go:255:54:255:59 | source : interface type | semmle.label | source : interface type |
-| SyscallTaintTracking.go:257:8:257:10 | out | semmle.label | out |
-| SyscallTaintTracking.go:261:13:261:23 | call to newSource : interface type | semmle.label | call to newSource : interface type |
-| SyscallTaintTracking.go:263:10:263:60 | call to TaintStepTest_SyscallConnSyscallConn_B1I0O0 : Conn | semmle.label | call to TaintStepTest_SyscallConnSyscallConn_B1I0O0 : Conn |
-| SyscallTaintTracking.go:263:54:263:59 | source : interface type | semmle.label | source : interface type |
-| SyscallTaintTracking.go:265:8:265:10 | out | semmle.label | out |
-| SyscallTaintTracking.go:269:13:269:23 | call to newSource : interface type | semmle.label | call to newSource : interface type |
-| SyscallTaintTracking.go:271:10:271:57 | call to TaintStepTest_SyscallRawConnWrite_B0I0O0 : RawConn | semmle.label | call to TaintStepTest_SyscallRawConnWrite_B0I0O0 : RawConn |
-| SyscallTaintTracking.go:271:51:271:56 | source : interface type | semmle.label | source : interface type |
-| SyscallTaintTracking.go:273:8:273:10 | out | semmle.label | out |
 | TextScannerTaintTracking.go:124:13:124:23 | call to newSource : interface type | semmle.label | call to newSource : interface type |
 | TextScannerTaintTracking.go:126:10:126:60 | call to TaintStepTest_TextScannerTokenString_B0I0O0 : string | semmle.label | call to TaintStepTest_TextScannerTokenString_B0I0O0 : string |
 | TextScannerTaintTracking.go:126:54:126:59 | source : interface type | semmle.label | source : interface type |
@@ -7458,17 +7437,14 @@ nodes
 | SyncTaintTracking.go:215:8:215:10 | out | SyncTaintTracking.go:211:13:211:23 | call to newSource : interface type | SyncTaintTracking.go:215:8:215:10 | out | Flow from $@. | SyncTaintTracking.go:211:13:211:23 | call to newSource | source |
 | SyncTaintTracking.go:223:8:223:10 | out | SyncTaintTracking.go:219:13:219:23 | call to newSource : interface type | SyncTaintTracking.go:223:8:223:10 | out | Flow from $@. | SyncTaintTracking.go:219:13:219:23 | call to newSource | source |
 | SyncTaintTracking.go:231:8:231:10 | out | SyncTaintTracking.go:227:13:227:23 | call to newSource : interface type | SyncTaintTracking.go:231:8:231:10 | out | Flow from $@. | SyncTaintTracking.go:227:13:227:23 | call to newSource | source |
+| SyscallTaintTracking.go:145:8:145:10 | out | SyscallTaintTracking.go:141:13:141:23 | call to newSource : interface type | SyscallTaintTracking.go:145:8:145:10 | out | Flow from $@. | SyscallTaintTracking.go:141:13:141:23 | call to newSource | source |
+| SyscallTaintTracking.go:153:8:153:10 | out | SyscallTaintTracking.go:149:13:149:23 | call to newSource : interface type | SyscallTaintTracking.go:153:8:153:10 | out | Flow from $@. | SyscallTaintTracking.go:149:13:149:23 | call to newSource | source |
+| SyscallTaintTracking.go:161:8:161:10 | out | SyscallTaintTracking.go:157:13:157:23 | call to newSource : interface type | SyscallTaintTracking.go:161:8:161:10 | out | Flow from $@. | SyscallTaintTracking.go:157:13:157:23 | call to newSource | source |
+| SyscallTaintTracking.go:169:8:169:10 | out | SyscallTaintTracking.go:165:13:165:23 | call to newSource : interface type | SyscallTaintTracking.go:169:8:169:10 | out | Flow from $@. | SyscallTaintTracking.go:165:13:165:23 | call to newSource | source |
+| SyscallTaintTracking.go:177:8:177:10 | out | SyscallTaintTracking.go:173:13:173:23 | call to newSource : interface type | SyscallTaintTracking.go:177:8:177:10 | out | Flow from $@. | SyscallTaintTracking.go:173:13:173:23 | call to newSource | source |
+| SyscallTaintTracking.go:185:8:185:10 | out | SyscallTaintTracking.go:181:13:181:23 | call to newSource : interface type | SyscallTaintTracking.go:185:8:185:10 | out | Flow from $@. | SyscallTaintTracking.go:181:13:181:23 | call to newSource | source |
 | SyscallTaintTracking.go:193:8:193:10 | out | SyscallTaintTracking.go:189:13:189:23 | call to newSource : interface type | SyscallTaintTracking.go:193:8:193:10 | out | Flow from $@. | SyscallTaintTracking.go:189:13:189:23 | call to newSource | source |
 | SyscallTaintTracking.go:201:8:201:10 | out | SyscallTaintTracking.go:197:13:197:23 | call to newSource : interface type | SyscallTaintTracking.go:201:8:201:10 | out | Flow from $@. | SyscallTaintTracking.go:197:13:197:23 | call to newSource | source |
-| SyscallTaintTracking.go:209:8:209:10 | out | SyscallTaintTracking.go:205:13:205:23 | call to newSource : interface type | SyscallTaintTracking.go:209:8:209:10 | out | Flow from $@. | SyscallTaintTracking.go:205:13:205:23 | call to newSource | source |
-| SyscallTaintTracking.go:217:8:217:10 | out | SyscallTaintTracking.go:213:13:213:23 | call to newSource : interface type | SyscallTaintTracking.go:217:8:217:10 | out | Flow from $@. | SyscallTaintTracking.go:213:13:213:23 | call to newSource | source |
-| SyscallTaintTracking.go:225:8:225:10 | out | SyscallTaintTracking.go:221:13:221:23 | call to newSource : interface type | SyscallTaintTracking.go:225:8:225:10 | out | Flow from $@. | SyscallTaintTracking.go:221:13:221:23 | call to newSource | source |
-| SyscallTaintTracking.go:233:8:233:10 | out | SyscallTaintTracking.go:229:13:229:23 | call to newSource : interface type | SyscallTaintTracking.go:233:8:233:10 | out | Flow from $@. | SyscallTaintTracking.go:229:13:229:23 | call to newSource | source |
-| SyscallTaintTracking.go:241:8:241:10 | out | SyscallTaintTracking.go:237:13:237:23 | call to newSource : interface type | SyscallTaintTracking.go:241:8:241:10 | out | Flow from $@. | SyscallTaintTracking.go:237:13:237:23 | call to newSource | source |
-| SyscallTaintTracking.go:249:8:249:10 | out | SyscallTaintTracking.go:245:13:245:23 | call to newSource : interface type | SyscallTaintTracking.go:249:8:249:10 | out | Flow from $@. | SyscallTaintTracking.go:245:13:245:23 | call to newSource | source |
-| SyscallTaintTracking.go:257:8:257:10 | out | SyscallTaintTracking.go:253:13:253:23 | call to newSource : interface type | SyscallTaintTracking.go:257:8:257:10 | out | Flow from $@. | SyscallTaintTracking.go:253:13:253:23 | call to newSource | source |
-| SyscallTaintTracking.go:265:8:265:10 | out | SyscallTaintTracking.go:261:13:261:23 | call to newSource : interface type | SyscallTaintTracking.go:265:8:265:10 | out | Flow from $@. | SyscallTaintTracking.go:261:13:261:23 | call to newSource | source |
-| SyscallTaintTracking.go:273:8:273:10 | out | SyscallTaintTracking.go:269:13:269:23 | call to newSource : interface type | SyscallTaintTracking.go:273:8:273:10 | out | Flow from $@. | SyscallTaintTracking.go:269:13:269:23 | call to newSource | source |
 | TextScannerTaintTracking.go:128:8:128:10 | out | TextScannerTaintTracking.go:124:13:124:23 | call to newSource : interface type | TextScannerTaintTracking.go:128:8:128:10 | out | Flow from $@. | TextScannerTaintTracking.go:124:13:124:23 | call to newSource | source |
 | TextScannerTaintTracking.go:136:8:136:10 | out | TextScannerTaintTracking.go:132:13:132:23 | call to newSource : interface type | TextScannerTaintTracking.go:136:8:136:10 | out | Flow from $@. | TextScannerTaintTracking.go:132:13:132:23 | call to newSource | source |
 | TextScannerTaintTracking.go:144:8:144:10 | out | TextScannerTaintTracking.go:140:13:140:23 | call to newSource : interface type | TextScannerTaintTracking.go:144:8:144:10 | out | Flow from $@. | TextScannerTaintTracking.go:140:13:140:23 | call to newSource | source |
