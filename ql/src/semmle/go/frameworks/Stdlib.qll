@@ -1566,15 +1566,3 @@ module GoccyYaml {
     }
   }
 }
-
-/** Provides models of some functions in the `crypto/cipher` package. */
-module CryptoCipher {
-  private class AeadOpenFunction extends TaintTracking::FunctionModel, Method {
-    AeadOpenFunction() { this.hasQualifiedName("crypto/cipher", "AEAD", "Open") }
-
-    override predicate hasTaintFlow(DataFlow::FunctionInput inp, DataFlow::FunctionOutput outp) {
-      inp.isParameter(2) and
-      outp.isResult(0)
-    }
-  }
-}
