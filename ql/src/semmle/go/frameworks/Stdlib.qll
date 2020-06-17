@@ -1600,21 +1600,3 @@ module TextScanner {
     }
   }
 }
-
-module EncodingCsv {
-  class NewReader extends TaintTracking::FunctionModel {
-    NewReader() { hasQualifiedName("encoding/csv", "NewReader") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
-    }
-  }
-
-  class ReaderRead extends TaintTracking::FunctionModel, Method {
-    ReaderRead() { this.(Method).hasQualifiedName("encoding/csv", "Reader", ["Read", "ReadAll"]) }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
-    }
-  }
-}
