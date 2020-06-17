@@ -1578,25 +1578,3 @@ module CryptoCipher {
     }
   }
 }
-
-module TextScanner {
-  class InitFunc extends TaintTracking::FunctionModel, Method {
-    InitFunc() { this.(Method).hasQualifiedName("text/scanner", "Scanner", "Init") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
-    }
-  }
-
-  private string getAReadMethod() { result = ["Next", "Peek", "Scan", "String", "TokenText"] }
-
-  class ScannerReadMethods extends TaintTracking::FunctionModel, Method {
-    ScannerReadMethods() {
-      this.(Method).hasQualifiedName("text/scanner", "Scanner", getAReadMethod())
-    }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult()
-    }
-  }
-}
