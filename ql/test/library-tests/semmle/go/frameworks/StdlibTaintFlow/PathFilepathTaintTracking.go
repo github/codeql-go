@@ -2,271 +2,327 @@ package main
 
 import "path/filepath"
 
-func TaintStepTest_PathFilepathAbs_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString637` into `intoString625`.
+func TaintStepTest_PathFilepathAbs_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString626` into `intoString562`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString637`:
-	fromString637 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString626`:
+	fromString626 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString637` to result `intoString625`
-	// (`intoString625` is now tainted).
-	intoString625, _ := filepath.Abs(fromString637)
+	// from the parameter `fromString626` to result `intoString562`
+	// (`intoString562` is now tainted).
+	intoString562, _ := filepath.Abs(fromString626)
 
-	// Sink the tainted `intoString625`:
-	sink(intoString625)
+	// Return the tainted `intoString562`:
+	return intoString562
 }
 
-func TaintStepTest_PathFilepathBase_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString270` into `intoString935`.
+func TaintStepTest_PathFilepathBase_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString317` into `intoString295`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString270`:
-	fromString270 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString317`:
+	fromString317 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString270` to result `intoString935`
-	// (`intoString935` is now tainted).
-	intoString935 := filepath.Base(fromString270)
+	// from the parameter `fromString317` to result `intoString295`
+	// (`intoString295` is now tainted).
+	intoString295 := filepath.Base(fromString317)
 
-	// Sink the tainted `intoString935`:
-	sink(intoString935)
+	// Return the tainted `intoString295`:
+	return intoString295
 }
 
-func TaintStepTest_PathFilepathClean_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString963` into `intoString487`.
+func TaintStepTest_PathFilepathClean_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString349` into `intoString663`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString963`:
-	fromString963 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString349`:
+	fromString349 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString963` to result `intoString487`
-	// (`intoString487` is now tainted).
-	intoString487 := filepath.Clean(fromString963)
+	// from the parameter `fromString349` to result `intoString663`
+	// (`intoString663` is now tainted).
+	intoString663 := filepath.Clean(fromString349)
 
-	// Sink the tainted `intoString487`:
-	sink(intoString487)
+	// Return the tainted `intoString663`:
+	return intoString663
 }
 
-func TaintStepTest_PathFilepathDir_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString730` into `intoString889`.
+func TaintStepTest_PathFilepathDir_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString523` into `intoString315`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString730`:
-	fromString730 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString523`:
+	fromString523 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString730` to result `intoString889`
-	// (`intoString889` is now tainted).
-	intoString889 := filepath.Dir(fromString730)
+	// from the parameter `fromString523` to result `intoString315`
+	// (`intoString315` is now tainted).
+	intoString315 := filepath.Dir(fromString523)
 
-	// Sink the tainted `intoString889`:
-	sink(intoString889)
+	// Return the tainted `intoString315`:
+	return intoString315
 }
 
-func TaintStepTest_PathFilepathEvalSymlinks_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString205` into `intoString574`.
+func TaintStepTest_PathFilepathEvalSymlinks_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString179` into `intoString827`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString205`:
-	fromString205 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString179`:
+	fromString179 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString205` to result `intoString574`
-	// (`intoString574` is now tainted).
-	intoString574, _ := filepath.EvalSymlinks(fromString205)
+	// from the parameter `fromString179` to result `intoString827`
+	// (`intoString827` is now tainted).
+	intoString827, _ := filepath.EvalSymlinks(fromString179)
 
-	// Sink the tainted `intoString574`:
-	sink(intoString574)
+	// Return the tainted `intoString827`:
+	return intoString827
 }
 
-func TaintStepTest_PathFilepathExt_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString161` into `intoString141`.
+func TaintStepTest_PathFilepathExt_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString263` into `intoString356`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString161`:
-	fromString161 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString263`:
+	fromString263 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString161` to result `intoString141`
-	// (`intoString141` is now tainted).
-	intoString141 := filepath.Ext(fromString161)
+	// from the parameter `fromString263` to result `intoString356`
+	// (`intoString356` is now tainted).
+	intoString356 := filepath.Ext(fromString263)
 
-	// Sink the tainted `intoString141`:
-	sink(intoString141)
+	// Return the tainted `intoString356`:
+	return intoString356
 }
 
-func TaintStepTest_PathFilepathFromSlash_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString690` into `intoString880`.
+func TaintStepTest_PathFilepathFromSlash_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString156` into `intoString235`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString690`:
-	fromString690 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString156`:
+	fromString156 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString690` to result `intoString880`
-	// (`intoString880` is now tainted).
-	intoString880 := filepath.FromSlash(fromString690)
+	// from the parameter `fromString156` to result `intoString235`
+	// (`intoString235` is now tainted).
+	intoString235 := filepath.FromSlash(fromString156)
 
-	// Sink the tainted `intoString880`:
-	sink(intoString880)
+	// Return the tainted `intoString235`:
+	return intoString235
 }
 
-func TaintStepTest_PathFilepathJoin_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString649` into `intoString995`.
+func TaintStepTest_PathFilepathJoin_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString531` into `intoString243`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString649`:
-	fromString649 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString531`:
+	fromString531 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString649` to result `intoString995`
-	// (`intoString995` is now tainted).
-	intoString995 := filepath.Join(fromString649)
+	// from the parameter `fromString531` to result `intoString243`
+	// (`intoString243` is now tainted).
+	intoString243 := filepath.Join(fromString531)
 
-	// Sink the tainted `intoString995`:
-	sink(intoString995)
+	// Return the tainted `intoString243`:
+	return intoString243
 }
 
-func TaintStepTest_PathFilepathRel_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString397` into `intoString599`.
+func TaintStepTest_PathFilepathRel_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString727` into `intoString640`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString397`:
-	fromString397 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString727`:
+	fromString727 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString397` to result `intoString599`
-	// (`intoString599` is now tainted).
-	intoString599, _ := filepath.Rel(fromString397, "")
+	// from the parameter `fromString727` to result `intoString640`
+	// (`intoString640` is now tainted).
+	intoString640, _ := filepath.Rel(fromString727, "")
 
-	// Sink the tainted `intoString599`:
-	sink(intoString599)
+	// Return the tainted `intoString640`:
+	return intoString640
 }
 
-func TaintStepTest_PathFilepathRel_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromString589` into `intoString840`.
+func TaintStepTest_PathFilepathRel_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString528` into `intoString985`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString589`:
-	fromString589 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString528`:
+	fromString528 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString589` to result `intoString840`
-	// (`intoString840` is now tainted).
-	intoString840, _ := filepath.Rel("", fromString589)
+	// from the parameter `fromString528` to result `intoString985`
+	// (`intoString985` is now tainted).
+	intoString985, _ := filepath.Rel("", fromString528)
 
-	// Sink the tainted `intoString840`:
-	sink(intoString840)
+	// Return the tainted `intoString985`:
+	return intoString985
 }
 
-func TaintStepTest_PathFilepathSplit_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString963` into `intoString282`.
+func TaintStepTest_PathFilepathSplit_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString189` into `intoString838`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString963`:
-	fromString963 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString189`:
+	fromString189 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString963` to result `intoString282`
-	// (`intoString282` is now tainted).
-	intoString282, _ := filepath.Split(fromString963)
+	// from the parameter `fromString189` to result `intoString838`
+	// (`intoString838` is now tainted).
+	intoString838, _ := filepath.Split(fromString189)
 
-	// Sink the tainted `intoString282`:
-	sink(intoString282)
+	// Return the tainted `intoString838`:
+	return intoString838
 }
 
-func TaintStepTest_PathFilepathSplit_B0I0O1(sourceCQL interface{}) {
-	// The flow is from `fromString688` into `intoString336`.
+func TaintStepTest_PathFilepathSplit_B0I0O1(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString992` into `intoString742`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString688`:
-	fromString688 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString992`:
+	fromString992 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString688` to result `intoString336`
-	// (`intoString336` is now tainted).
-	_, intoString336 := filepath.Split(fromString688)
+	// from the parameter `fromString992` to result `intoString742`
+	// (`intoString742` is now tainted).
+	_, intoString742 := filepath.Split(fromString992)
 
-	// Sink the tainted `intoString336`:
-	sink(intoString336)
+	// Return the tainted `intoString742`:
+	return intoString742
 }
 
-func TaintStepTest_PathFilepathSplitList_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString969` into `intoString147`.
+func TaintStepTest_PathFilepathSplitList_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString789` into `intoString904`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString969`:
-	fromString969 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString789`:
+	fromString789 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString969` to result `intoString147`
-	// (`intoString147` is now tainted).
-	intoString147 := filepath.SplitList(fromString969)
+	// from the parameter `fromString789` to result `intoString904`
+	// (`intoString904` is now tainted).
+	intoString904 := filepath.SplitList(fromString789)
 
-	// Sink the tainted `intoString147`:
-	sink(intoString147)
+	// Return the tainted `intoString904`:
+	return intoString904
 }
 
-func TaintStepTest_PathFilepathToSlash_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString594` into `intoString993`.
+func TaintStepTest_PathFilepathToSlash_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString782` into `intoString196`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString594`:
-	fromString594 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString782`:
+	fromString782 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString594` to result `intoString993`
-	// (`intoString993` is now tainted).
-	intoString993 := filepath.ToSlash(fromString594)
+	// from the parameter `fromString782` to result `intoString196`
+	// (`intoString196` is now tainted).
+	intoString196 := filepath.ToSlash(fromString782)
 
-	// Sink the tainted `intoString993`:
-	sink(intoString993)
+	// Return the tainted `intoString196`:
+	return intoString196
 }
 
 func RunAllTaints_PathFilepath() {
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_PathFilepathAbs_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_PathFilepathAbs_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_PathFilepathBase_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_PathFilepathBase_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_PathFilepathClean_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_PathFilepathClean_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_PathFilepathDir_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_PathFilepathDir_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_PathFilepathEvalSymlinks_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_PathFilepathEvalSymlinks_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_PathFilepathExt_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_PathFilepathExt_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_PathFilepathFromSlash_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_PathFilepathFromSlash_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_PathFilepathJoin_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_PathFilepathJoin_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_PathFilepathRel_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_PathFilepathRel_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_PathFilepathRel_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_PathFilepathRel_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_PathFilepathSplit_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_PathFilepathSplit_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_PathFilepathSplit_B0I0O1(source)
+		// Run the taint scenario:
+		out := TaintStepTest_PathFilepathSplit_B0I0O1(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_PathFilepathSplitList_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_PathFilepathSplitList_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_PathFilepathToSlash_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_PathFilepathToSlash_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 }

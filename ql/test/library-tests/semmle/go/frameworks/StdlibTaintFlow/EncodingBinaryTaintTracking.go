@@ -5,109 +5,129 @@ import (
 	"io"
 )
 
-func TaintStepTest_EncodingBinaryPutUvarint_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromUint64946` into `intoByte695`.
+func TaintStepTest_EncodingBinaryPutUvarint_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromUint64898` into `intoByte709`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUint64946`:
-	fromUint64946 := sourceCQL.(uint64)
+	// Assume that `sourceCQL` has the underlying type of `fromUint64898`:
+	fromUint64898 := sourceCQL.(uint64)
 
-	// Declare `intoByte695` variable:
-	var intoByte695 []byte
-
-	// Call the function that transfers the taint
-	// from the parameter `fromUint64946` to parameter `intoByte695`;
-	// `intoByte695` is now tainted.
-	binary.PutUvarint(intoByte695, fromUint64946)
-
-	// Sink the tainted `intoByte695`:
-	sink(intoByte695)
-}
-
-func TaintStepTest_EncodingBinaryRead_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromReader454` into `intoInterface584`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromReader454`:
-	fromReader454 := sourceCQL.(io.Reader)
-
-	// Declare `intoInterface584` variable:
-	var intoInterface584 interface{}
+	// Declare `intoByte709` variable:
+	var intoByte709 []byte
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader454` to parameter `intoInterface584`;
-	// `intoInterface584` is now tainted.
-	binary.Read(fromReader454, nil, intoInterface584)
+	// from the parameter `fromUint64898` to parameter `intoByte709`;
+	// `intoByte709` is now tainted.
+	binary.PutUvarint(intoByte709, fromUint64898)
 
-	// Sink the tainted `intoInterface584`:
-	sink(intoInterface584)
+	// Return the tainted `intoByte709`:
+	return intoByte709
 }
 
-func TaintStepTest_EncodingBinaryReadUvarint_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByteReader841` into `intoUint64739`.
+func TaintStepTest_EncodingBinaryRead_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader816` into `intoInterface817`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByteReader841`:
-	fromByteReader841 := sourceCQL.(io.ByteReader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader816`:
+	fromReader816 := sourceCQL.(io.Reader)
+
+	// Declare `intoInterface817` variable:
+	var intoInterface817 interface{}
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByteReader841` to result `intoUint64739`
-	// (`intoUint64739` is now tainted).
-	intoUint64739, _ := binary.ReadUvarint(fromByteReader841)
+	// from the parameter `fromReader816` to parameter `intoInterface817`;
+	// `intoInterface817` is now tainted.
+	binary.Read(fromReader816, nil, intoInterface817)
 
-	// Sink the tainted `intoUint64739`:
-	sink(intoUint64739)
+	// Return the tainted `intoInterface817`:
+	return intoInterface817
 }
 
-func TaintStepTest_EncodingBinaryWrite_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromInterface278` into `intoWriter868`.
+func TaintStepTest_EncodingBinaryReadUvarint_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByteReader542` into `intoUint64566`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface278`:
-	fromInterface278 := sourceCQL.(interface{})
-
-	// Declare `intoWriter868` variable:
-	var intoWriter868 io.Writer
+	// Assume that `sourceCQL` has the underlying type of `fromByteReader542`:
+	fromByteReader542 := sourceCQL.(io.ByteReader)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface278` to parameter `intoWriter868`;
-	// `intoWriter868` is now tainted.
-	binary.Write(intoWriter868, nil, fromInterface278)
+	// from the parameter `fromByteReader542` to result `intoUint64566`
+	// (`intoUint64566` is now tainted).
+	intoUint64566, _ := binary.ReadUvarint(fromByteReader542)
 
-	// Sink the tainted `intoWriter868`:
-	sink(intoWriter868)
+	// Return the tainted `intoUint64566`:
+	return intoUint64566
 }
 
-func TaintStepTest_EncodingBinaryByteOrderString_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByteOrder822` into `intoString816`.
+func TaintStepTest_EncodingBinaryWrite_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromInterface243` into `intoWriter828`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByteOrder822`:
-	fromByteOrder822 := sourceCQL.(binary.ByteOrder)
+	// Assume that `sourceCQL` has the underlying type of `fromInterface243`:
+	fromInterface243 := sourceCQL.(interface{})
+
+	// Declare `intoWriter828` variable:
+	var intoWriter828 io.Writer
+
+	// Call the function that transfers the taint
+	// from the parameter `fromInterface243` to parameter `intoWriter828`;
+	// `intoWriter828` is now tainted.
+	binary.Write(intoWriter828, nil, fromInterface243)
+
+	// Return the tainted `intoWriter828`:
+	return intoWriter828
+}
+
+func TaintStepTest_EncodingBinaryByteOrderString_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByteOrder704` into `intoString742`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByteOrder704`:
+	fromByteOrder704 := sourceCQL.(binary.ByteOrder)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromByteOrder822` to the result `intoString816`
-	// (`intoString816` is now tainted).
-	intoString816 := fromByteOrder822.String()
+	// from the receiver `fromByteOrder704` to the result `intoString742`
+	// (`intoString742` is now tainted).
+	intoString742 := fromByteOrder704.String()
 
-	// Sink the tainted `intoString816`:
-	sink(intoString816)
+	// Return the tainted `intoString742`:
+	return intoString742
 }
 
 func RunAllTaints_EncodingBinary() {
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingBinaryPutUvarint_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingBinaryPutUvarint_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingBinaryRead_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingBinaryRead_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingBinaryReadUvarint_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingBinaryReadUvarint_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingBinaryWrite_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingBinaryWrite_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingBinaryByteOrderString_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingBinaryByteOrderString_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 }

@@ -5,130 +5,154 @@ import (
 	"io"
 )
 
-func TaintStepTest_EncodingCsvNewReader_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromReader211` into `intoReader232`.
+func TaintStepTest_EncodingCsvNewReader_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader134` into `intoReader222`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader211`:
-	fromReader211 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader134`:
+	fromReader134 := sourceCQL.(io.Reader)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader211` to result `intoReader232`
-	// (`intoReader232` is now tainted).
-	intoReader232 := csv.NewReader(fromReader211)
+	// from the parameter `fromReader134` to result `intoReader222`
+	// (`intoReader222` is now tainted).
+	intoReader222 := csv.NewReader(fromReader134)
 
-	// Sink the tainted `intoReader232`:
-	sink(intoReader232)
+	// Return the tainted `intoReader222`:
+	return intoReader222
 }
 
-func TaintStepTest_EncodingCsvNewWriter_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromWriter724` into `intoWriter514`.
+func TaintStepTest_EncodingCsvNewWriter_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromWriter794` into `intoWriter666`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriter724`:
-	fromWriter724 := sourceCQL.(*csv.Writer)
+	// Assume that `sourceCQL` has the underlying type of `fromWriter794`:
+	fromWriter794 := sourceCQL.(*csv.Writer)
 
-	// Declare `intoWriter514` variable:
-	var intoWriter514 io.Writer
+	// Declare `intoWriter666` variable:
+	var intoWriter666 io.Writer
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoWriter514`:
-	intermediateCQL := csv.NewWriter(intoWriter514)
+	// from the result `intermediateCQL` to parameter `intoWriter666`:
+	intermediateCQL := csv.NewWriter(intoWriter666)
 
-	// Extra step (`fromWriter724` taints `intermediateCQL`, which taints `intoWriter514`:
-	link(fromWriter724, intermediateCQL)
+	// Extra step (`fromWriter794` taints `intermediateCQL`, which taints `intoWriter666`:
+	link(fromWriter794, intermediateCQL)
 
-	// Sink the tainted `intoWriter514`:
-	sink(intoWriter514)
+	// Return the tainted `intoWriter666`:
+	return intoWriter666
 }
 
-func TaintStepTest_EncodingCsvReaderRead_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromReader326` into `intoString190`.
+func TaintStepTest_EncodingCsvReaderRead_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader603` into `intoString867`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader326`:
-	fromReader326 := sourceCQL.(csv.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader603`:
+	fromReader603 := sourceCQL.(csv.Reader)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromReader326` to the result `intoString190`
-	// (`intoString190` is now tainted).
-	intoString190, _ := fromReader326.Read()
+	// from the receiver `fromReader603` to the result `intoString867`
+	// (`intoString867` is now tainted).
+	intoString867, _ := fromReader603.Read()
 
-	// Sink the tainted `intoString190`:
-	sink(intoString190)
+	// Return the tainted `intoString867`:
+	return intoString867
 }
 
-func TaintStepTest_EncodingCsvReaderReadAll_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromReader758` into `intoString842`.
+func TaintStepTest_EncodingCsvReaderReadAll_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader545` into `intoString614`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader758`:
-	fromReader758 := sourceCQL.(csv.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader545`:
+	fromReader545 := sourceCQL.(csv.Reader)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromReader758` to the result `intoString842`
-	// (`intoString842` is now tainted).
-	intoString842, _ := fromReader758.ReadAll()
+	// from the receiver `fromReader545` to the result `intoString614`
+	// (`intoString614` is now tainted).
+	intoString614, _ := fromReader545.ReadAll()
 
-	// Sink the tainted `intoString842`:
-	sink(intoString842)
+	// Return the tainted `intoString614`:
+	return intoString614
 }
 
-func TaintStepTest_EncodingCsvWriterWrite_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString476` into `intoWriter695`.
+func TaintStepTest_EncodingCsvWriterWrite_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString712` into `intoWriter772`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString476`:
-	fromString476 := sourceCQL.([]string)
+	// Assume that `sourceCQL` has the underlying type of `fromString712`:
+	fromString712 := sourceCQL.([]string)
 
-	// Declare `intoWriter695` variable:
-	var intoWriter695 csv.Writer
+	// Declare `intoWriter772` variable:
+	var intoWriter772 csv.Writer
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString476` to the receiver `intoWriter695`
-	// (`intoWriter695` is now tainted).
-	intoWriter695.Write(fromString476)
+	// from the parameter `fromString712` to the receiver `intoWriter772`
+	// (`intoWriter772` is now tainted).
+	intoWriter772.Write(fromString712)
 
-	// Sink the tainted `intoWriter695`:
-	sink(intoWriter695)
+	// Return the tainted `intoWriter772`:
+	return intoWriter772
 }
 
-func TaintStepTest_EncodingCsvWriterWriteAll_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString268` into `intoWriter939`.
+func TaintStepTest_EncodingCsvWriterWriteAll_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString917` into `intoWriter489`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString268`:
-	fromString268 := sourceCQL.([][]string)
+	// Assume that `sourceCQL` has the underlying type of `fromString917`:
+	fromString917 := sourceCQL.([][]string)
 
-	// Declare `intoWriter939` variable:
-	var intoWriter939 csv.Writer
+	// Declare `intoWriter489` variable:
+	var intoWriter489 csv.Writer
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString268` to the receiver `intoWriter939`
-	// (`intoWriter939` is now tainted).
-	intoWriter939.WriteAll(fromString268)
+	// from the parameter `fromString917` to the receiver `intoWriter489`
+	// (`intoWriter489` is now tainted).
+	intoWriter489.WriteAll(fromString917)
 
-	// Sink the tainted `intoWriter939`:
-	sink(intoWriter939)
+	// Return the tainted `intoWriter489`:
+	return intoWriter489
 }
 
 func RunAllTaints_EncodingCsv() {
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingCsvNewReader_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingCsvNewReader_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingCsvNewWriter_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingCsvNewWriter_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingCsvReaderRead_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingCsvReaderRead_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingCsvReaderReadAll_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingCsvReaderReadAll_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingCsvWriterWrite_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingCsvWriterWrite_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingCsvWriterWriteAll_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingCsvWriterWriteAll_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 }

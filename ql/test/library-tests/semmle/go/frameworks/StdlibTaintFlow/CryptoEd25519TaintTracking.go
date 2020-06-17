@@ -2,46 +2,54 @@ package main
 
 import "crypto/ed25519"
 
-func TaintStepTest_CryptoEd25519Sign_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte906` into `intoByte735`.
+func TaintStepTest_CryptoEd25519Sign_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte136` into `intoByte588`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte906`:
-	fromByte906 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte136`:
+	fromByte136 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte906` to result `intoByte735`
-	// (`intoByte735` is now tainted).
-	intoByte735 := ed25519.Sign(nil, fromByte906)
+	// from the parameter `fromByte136` to result `intoByte588`
+	// (`intoByte588` is now tainted).
+	intoByte588 := ed25519.Sign(nil, fromByte136)
 
-	// Sink the tainted `intoByte735`:
-	sink(intoByte735)
+	// Return the tainted `intoByte588`:
+	return intoByte588
 }
 
-func TaintStepTest_CryptoEd25519PrivateKeySign_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte312` into `intoByte301`.
+func TaintStepTest_CryptoEd25519PrivateKeySign_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte350` into `intoByte459`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte312`:
-	fromByte312 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte350`:
+	fromByte350 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL ed25519.PrivateKey
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte312` to the result `intoByte301`
-	// (`intoByte301` is now tainted).
-	intoByte301, _ := mediumObjCQL.Sign(nil, fromByte312, nil)
+	// from the parameter `fromByte350` to the result `intoByte459`
+	// (`intoByte459` is now tainted).
+	intoByte459, _ := mediumObjCQL.Sign(nil, fromByte350, nil)
 
-	// Sink the tainted `intoByte301`:
-	sink(intoByte301)
+	// Return the tainted `intoByte459`:
+	return intoByte459
 }
 
 func RunAllTaints_CryptoEd25519() {
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_CryptoEd25519Sign_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_CryptoEd25519Sign_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_CryptoEd25519PrivateKeySign_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_CryptoEd25519PrivateKeySign_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 }

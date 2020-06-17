@@ -2,385 +2,465 @@ package main
 
 import "strconv"
 
-func TaintStepTest_StrconvAppendQuote_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte526` into `intoByte436`.
+func TaintStepTest_StrconvAppendQuote_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte277` into `intoByte472`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte526`:
-	fromByte526 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte277`:
+	fromByte277 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte526` to result `intoByte436`
-	// (`intoByte436` is now tainted).
-	intoByte436 := strconv.AppendQuote(fromByte526, "")
+	// from the parameter `fromByte277` to result `intoByte472`
+	// (`intoByte472` is now tainted).
+	intoByte472 := strconv.AppendQuote(fromByte277, "")
 
-	// Sink the tainted `intoByte436`:
-	sink(intoByte436)
+	// Return the tainted `intoByte472`:
+	return intoByte472
 }
 
-func TaintStepTest_StrconvAppendQuote_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromString889` into `intoByte131`.
+func TaintStepTest_StrconvAppendQuote_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString664` into `intoByte959`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString889`:
-	fromString889 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString664`:
+	fromString664 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString889` to result `intoByte131`
-	// (`intoByte131` is now tainted).
-	intoByte131 := strconv.AppendQuote(nil, fromString889)
+	// from the parameter `fromString664` to result `intoByte959`
+	// (`intoByte959` is now tainted).
+	intoByte959 := strconv.AppendQuote(nil, fromString664)
 
-	// Sink the tainted `intoByte131`:
-	sink(intoByte131)
+	// Return the tainted `intoByte959`:
+	return intoByte959
 }
 
-func TaintStepTest_StrconvAppendQuoteRune_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte230` into `intoByte347`.
+func TaintStepTest_StrconvAppendQuoteRune_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte719` into `intoByte497`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte230`:
-	fromByte230 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte719`:
+	fromByte719 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte230` to result `intoByte347`
-	// (`intoByte347` is now tainted).
-	intoByte347 := strconv.AppendQuoteRune(fromByte230, 0)
+	// from the parameter `fromByte719` to result `intoByte497`
+	// (`intoByte497` is now tainted).
+	intoByte497 := strconv.AppendQuoteRune(fromByte719, 0)
 
-	// Sink the tainted `intoByte347`:
-	sink(intoByte347)
+	// Return the tainted `intoByte497`:
+	return intoByte497
 }
 
-func TaintStepTest_StrconvAppendQuoteRune_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromRune926` into `intoByte812`.
+func TaintStepTest_StrconvAppendQuoteRune_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRune990` into `intoByte236`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRune926`:
-	fromRune926 := sourceCQL.(rune)
+	// Assume that `sourceCQL` has the underlying type of `fromRune990`:
+	fromRune990 := sourceCQL.(rune)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromRune926` to result `intoByte812`
-	// (`intoByte812` is now tainted).
-	intoByte812 := strconv.AppendQuoteRune(nil, fromRune926)
+	// from the parameter `fromRune990` to result `intoByte236`
+	// (`intoByte236` is now tainted).
+	intoByte236 := strconv.AppendQuoteRune(nil, fromRune990)
 
-	// Sink the tainted `intoByte812`:
-	sink(intoByte812)
+	// Return the tainted `intoByte236`:
+	return intoByte236
 }
 
-func TaintStepTest_StrconvAppendQuoteRuneToASCII_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte366` into `intoByte435`.
+func TaintStepTest_StrconvAppendQuoteRuneToASCII_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte290` into `intoByte921`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte366`:
-	fromByte366 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte290`:
+	fromByte290 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte366` to result `intoByte435`
-	// (`intoByte435` is now tainted).
-	intoByte435 := strconv.AppendQuoteRuneToASCII(fromByte366, 0)
+	// from the parameter `fromByte290` to result `intoByte921`
+	// (`intoByte921` is now tainted).
+	intoByte921 := strconv.AppendQuoteRuneToASCII(fromByte290, 0)
 
-	// Sink the tainted `intoByte435`:
-	sink(intoByte435)
+	// Return the tainted `intoByte921`:
+	return intoByte921
 }
 
-func TaintStepTest_StrconvAppendQuoteRuneToASCII_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromRune297` into `intoByte268`.
+func TaintStepTest_StrconvAppendQuoteRuneToASCII_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRune230` into `intoByte437`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRune297`:
-	fromRune297 := sourceCQL.(rune)
+	// Assume that `sourceCQL` has the underlying type of `fromRune230`:
+	fromRune230 := sourceCQL.(rune)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromRune297` to result `intoByte268`
-	// (`intoByte268` is now tainted).
-	intoByte268 := strconv.AppendQuoteRuneToASCII(nil, fromRune297)
+	// from the parameter `fromRune230` to result `intoByte437`
+	// (`intoByte437` is now tainted).
+	intoByte437 := strconv.AppendQuoteRuneToASCII(nil, fromRune230)
 
-	// Sink the tainted `intoByte268`:
-	sink(intoByte268)
+	// Return the tainted `intoByte437`:
+	return intoByte437
 }
 
-func TaintStepTest_StrconvAppendQuoteRuneToGraphic_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte750` into `intoByte338`.
+func TaintStepTest_StrconvAppendQuoteRuneToGraphic_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte447` into `intoByte433`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte750`:
-	fromByte750 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte447`:
+	fromByte447 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte750` to result `intoByte338`
-	// (`intoByte338` is now tainted).
-	intoByte338 := strconv.AppendQuoteRuneToGraphic(fromByte750, 0)
+	// from the parameter `fromByte447` to result `intoByte433`
+	// (`intoByte433` is now tainted).
+	intoByte433 := strconv.AppendQuoteRuneToGraphic(fromByte447, 0)
 
-	// Sink the tainted `intoByte338`:
-	sink(intoByte338)
+	// Return the tainted `intoByte433`:
+	return intoByte433
 }
 
-func TaintStepTest_StrconvAppendQuoteRuneToGraphic_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromRune346` into `intoByte296`.
+func TaintStepTest_StrconvAppendQuoteRuneToGraphic_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRune465` into `intoByte773`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRune346`:
-	fromRune346 := sourceCQL.(rune)
+	// Assume that `sourceCQL` has the underlying type of `fromRune465`:
+	fromRune465 := sourceCQL.(rune)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromRune346` to result `intoByte296`
-	// (`intoByte296` is now tainted).
-	intoByte296 := strconv.AppendQuoteRuneToGraphic(nil, fromRune346)
+	// from the parameter `fromRune465` to result `intoByte773`
+	// (`intoByte773` is now tainted).
+	intoByte773 := strconv.AppendQuoteRuneToGraphic(nil, fromRune465)
 
-	// Sink the tainted `intoByte296`:
-	sink(intoByte296)
+	// Return the tainted `intoByte773`:
+	return intoByte773
 }
 
-func TaintStepTest_StrconvAppendQuoteToASCII_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte477` into `intoByte192`.
+func TaintStepTest_StrconvAppendQuoteToASCII_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte692` into `intoByte825`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte477`:
-	fromByte477 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte692`:
+	fromByte692 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte477` to result `intoByte192`
-	// (`intoByte192` is now tainted).
-	intoByte192 := strconv.AppendQuoteToASCII(fromByte477, "")
+	// from the parameter `fromByte692` to result `intoByte825`
+	// (`intoByte825` is now tainted).
+	intoByte825 := strconv.AppendQuoteToASCII(fromByte692, "")
 
-	// Sink the tainted `intoByte192`:
-	sink(intoByte192)
+	// Return the tainted `intoByte825`:
+	return intoByte825
 }
 
-func TaintStepTest_StrconvAppendQuoteToASCII_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromString927` into `intoByte801`.
+func TaintStepTest_StrconvAppendQuoteToASCII_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString963` into `intoByte542`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString927`:
-	fromString927 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString963`:
+	fromString963 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString927` to result `intoByte801`
-	// (`intoByte801` is now tainted).
-	intoByte801 := strconv.AppendQuoteToASCII(nil, fromString927)
+	// from the parameter `fromString963` to result `intoByte542`
+	// (`intoByte542` is now tainted).
+	intoByte542 := strconv.AppendQuoteToASCII(nil, fromString963)
 
-	// Sink the tainted `intoByte801`:
-	sink(intoByte801)
+	// Return the tainted `intoByte542`:
+	return intoByte542
 }
 
-func TaintStepTest_StrconvAppendQuoteToGraphic_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte868` into `intoByte235`.
+func TaintStepTest_StrconvAppendQuoteToGraphic_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte450` into `intoByte902`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte868`:
-	fromByte868 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte450`:
+	fromByte450 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte868` to result `intoByte235`
-	// (`intoByte235` is now tainted).
-	intoByte235 := strconv.AppendQuoteToGraphic(fromByte868, "")
+	// from the parameter `fromByte450` to result `intoByte902`
+	// (`intoByte902` is now tainted).
+	intoByte902 := strconv.AppendQuoteToGraphic(fromByte450, "")
 
-	// Sink the tainted `intoByte235`:
-	sink(intoByte235)
+	// Return the tainted `intoByte902`:
+	return intoByte902
 }
 
-func TaintStepTest_StrconvAppendQuoteToGraphic_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromString919` into `intoByte677`.
+func TaintStepTest_StrconvAppendQuoteToGraphic_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString969` into `intoByte845`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString919`:
-	fromString919 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString969`:
+	fromString969 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString919` to result `intoByte677`
-	// (`intoByte677` is now tainted).
-	intoByte677 := strconv.AppendQuoteToGraphic(nil, fromString919)
+	// from the parameter `fromString969` to result `intoByte845`
+	// (`intoByte845` is now tainted).
+	intoByte845 := strconv.AppendQuoteToGraphic(nil, fromString969)
 
-	// Sink the tainted `intoByte677`:
-	sink(intoByte677)
+	// Return the tainted `intoByte845`:
+	return intoByte845
 }
 
-func TaintStepTest_StrconvQuote_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString515` into `intoString470`.
+func TaintStepTest_StrconvQuote_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString336` into `intoString827`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString515`:
-	fromString515 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString336`:
+	fromString336 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString515` to result `intoString470`
-	// (`intoString470` is now tainted).
-	intoString470 := strconv.Quote(fromString515)
+	// from the parameter `fromString336` to result `intoString827`
+	// (`intoString827` is now tainted).
+	intoString827 := strconv.Quote(fromString336)
 
-	// Sink the tainted `intoString470`:
-	sink(intoString470)
+	// Return the tainted `intoString827`:
+	return intoString827
 }
 
-func TaintStepTest_StrconvQuoteRune_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromRune210` into `intoString950`.
+func TaintStepTest_StrconvQuoteRune_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRune289` into `intoString693`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRune210`:
-	fromRune210 := sourceCQL.(rune)
+	// Assume that `sourceCQL` has the underlying type of `fromRune289`:
+	fromRune289 := sourceCQL.(rune)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromRune210` to result `intoString950`
-	// (`intoString950` is now tainted).
-	intoString950 := strconv.QuoteRune(fromRune210)
+	// from the parameter `fromRune289` to result `intoString693`
+	// (`intoString693` is now tainted).
+	intoString693 := strconv.QuoteRune(fromRune289)
 
-	// Sink the tainted `intoString950`:
-	sink(intoString950)
+	// Return the tainted `intoString693`:
+	return intoString693
 }
 
-func TaintStepTest_StrconvQuoteRuneToASCII_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromRune267` into `intoString285`.
+func TaintStepTest_StrconvQuoteRuneToASCII_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRune505` into `intoString373`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRune267`:
-	fromRune267 := sourceCQL.(rune)
+	// Assume that `sourceCQL` has the underlying type of `fromRune505`:
+	fromRune505 := sourceCQL.(rune)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromRune267` to result `intoString285`
-	// (`intoString285` is now tainted).
-	intoString285 := strconv.QuoteRuneToASCII(fromRune267)
+	// from the parameter `fromRune505` to result `intoString373`
+	// (`intoString373` is now tainted).
+	intoString373 := strconv.QuoteRuneToASCII(fromRune505)
 
-	// Sink the tainted `intoString285`:
-	sink(intoString285)
+	// Return the tainted `intoString373`:
+	return intoString373
 }
 
-func TaintStepTest_StrconvQuoteRuneToGraphic_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromRune458` into `intoString911`.
+func TaintStepTest_StrconvQuoteRuneToGraphic_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRune399` into `intoString802`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRune458`:
-	fromRune458 := sourceCQL.(rune)
+	// Assume that `sourceCQL` has the underlying type of `fromRune399`:
+	fromRune399 := sourceCQL.(rune)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromRune458` to result `intoString911`
-	// (`intoString911` is now tainted).
-	intoString911 := strconv.QuoteRuneToGraphic(fromRune458)
+	// from the parameter `fromRune399` to result `intoString802`
+	// (`intoString802` is now tainted).
+	intoString802 := strconv.QuoteRuneToGraphic(fromRune399)
 
-	// Sink the tainted `intoString911`:
-	sink(intoString911)
+	// Return the tainted `intoString802`:
+	return intoString802
 }
 
-func TaintStepTest_StrconvQuoteToASCII_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString981` into `intoString859`.
+func TaintStepTest_StrconvQuoteToASCII_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString283` into `intoString909`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString981`:
-	fromString981 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString283`:
+	fromString283 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString981` to result `intoString859`
-	// (`intoString859` is now tainted).
-	intoString859 := strconv.QuoteToASCII(fromString981)
+	// from the parameter `fromString283` to result `intoString909`
+	// (`intoString909` is now tainted).
+	intoString909 := strconv.QuoteToASCII(fromString283)
 
-	// Sink the tainted `intoString859`:
-	sink(intoString859)
+	// Return the tainted `intoString909`:
+	return intoString909
 }
 
-func TaintStepTest_StrconvQuoteToGraphic_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString854` into `intoString896`.
+func TaintStepTest_StrconvQuoteToGraphic_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString388` into `intoString406`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString854`:
-	fromString854 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString388`:
+	fromString388 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString854` to result `intoString896`
-	// (`intoString896` is now tainted).
-	intoString896 := strconv.QuoteToGraphic(fromString854)
+	// from the parameter `fromString388` to result `intoString406`
+	// (`intoString406` is now tainted).
+	intoString406 := strconv.QuoteToGraphic(fromString388)
 
-	// Sink the tainted `intoString896`:
-	sink(intoString896)
+	// Return the tainted `intoString406`:
+	return intoString406
 }
 
-func TaintStepTest_StrconvUnquote_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString710` into `intoString951`.
+func TaintStepTest_StrconvUnquote_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString541` into `intoString165`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString710`:
-	fromString710 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString541`:
+	fromString541 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString710` to result `intoString951`
-	// (`intoString951` is now tainted).
-	intoString951, _ := strconv.Unquote(fromString710)
+	// from the parameter `fromString541` to result `intoString165`
+	// (`intoString165` is now tainted).
+	intoString165, _ := strconv.Unquote(fromString541)
 
-	// Sink the tainted `intoString951`:
-	sink(intoString951)
+	// Return the tainted `intoString165`:
+	return intoString165
 }
 
-func TaintStepTest_StrconvUnquoteChar_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString163` into `intoRune609`.
+func TaintStepTest_StrconvUnquoteChar_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString911` into `intoRune561`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString163`:
-	fromString163 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString911`:
+	fromString911 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString163` to result `intoRune609`
-	// (`intoRune609` is now tainted).
-	intoRune609, _, _, _ := strconv.UnquoteChar(fromString163, 0)
+	// from the parameter `fromString911` to result `intoRune561`
+	// (`intoRune561` is now tainted).
+	intoRune561, _, _, _ := strconv.UnquoteChar(fromString911, 0)
 
-	// Sink the tainted `intoRune609`:
-	sink(intoRune609)
+	// Return the tainted `intoRune561`:
+	return intoRune561
 }
 
 func RunAllTaints_Strconv() {
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_StrconvAppendQuote_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_StrconvAppendQuote_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_StrconvAppendQuote_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_StrconvAppendQuote_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_StrconvAppendQuoteRune_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_StrconvAppendQuoteRune_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_StrconvAppendQuoteRune_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_StrconvAppendQuoteRune_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_StrconvAppendQuoteRuneToASCII_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_StrconvAppendQuoteRuneToASCII_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_StrconvAppendQuoteRuneToASCII_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_StrconvAppendQuoteRuneToASCII_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_StrconvAppendQuoteRuneToGraphic_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_StrconvAppendQuoteRuneToGraphic_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_StrconvAppendQuoteRuneToGraphic_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_StrconvAppendQuoteRuneToGraphic_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_StrconvAppendQuoteToASCII_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_StrconvAppendQuoteToASCII_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_StrconvAppendQuoteToASCII_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_StrconvAppendQuoteToASCII_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_StrconvAppendQuoteToGraphic_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_StrconvAppendQuoteToGraphic_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_StrconvAppendQuoteToGraphic_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_StrconvAppendQuoteToGraphic_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_StrconvQuote_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_StrconvQuote_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_StrconvQuoteRune_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_StrconvQuoteRune_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_StrconvQuoteRuneToASCII_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_StrconvQuoteRuneToASCII_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_StrconvQuoteRuneToGraphic_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_StrconvQuoteRuneToGraphic_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_StrconvQuoteToASCII_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_StrconvQuoteToASCII_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_StrconvQuoteToGraphic_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_StrconvQuoteToGraphic_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_StrconvUnquote_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_StrconvUnquote_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_StrconvUnquoteChar_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_StrconvUnquoteChar_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 }

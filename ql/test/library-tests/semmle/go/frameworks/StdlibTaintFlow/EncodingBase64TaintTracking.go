@@ -5,142 +5,166 @@ import (
 	"io"
 )
 
-func TaintStepTest_EncodingBase64NewDecoder_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromReader156` into `intoReader953`.
+func TaintStepTest_EncodingBase64NewDecoder_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader915` into `intoReader338`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader156`:
-	fromReader156 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader915`:
+	fromReader915 := sourceCQL.(io.Reader)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader156` to result `intoReader953`
-	// (`intoReader953` is now tainted).
-	intoReader953 := base64.NewDecoder(nil, fromReader156)
+	// from the parameter `fromReader915` to result `intoReader338`
+	// (`intoReader338` is now tainted).
+	intoReader338 := base64.NewDecoder(nil, fromReader915)
 
-	// Sink the tainted `intoReader953`:
-	sink(intoReader953)
+	// Return the tainted `intoReader338`:
+	return intoReader338
 }
 
-func TaintStepTest_EncodingBase64NewEncoder_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromWriteCloser199` into `intoWriter209`.
+func TaintStepTest_EncodingBase64NewEncoder_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromWriteCloser370` into `intoWriter568`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriteCloser199`:
-	fromWriteCloser199 := sourceCQL.(io.WriteCloser)
+	// Assume that `sourceCQL` has the underlying type of `fromWriteCloser370`:
+	fromWriteCloser370 := sourceCQL.(io.WriteCloser)
 
-	// Declare `intoWriter209` variable:
-	var intoWriter209 io.Writer
+	// Declare `intoWriter568` variable:
+	var intoWriter568 io.Writer
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoWriter209`:
-	intermediateCQL := base64.NewEncoder(nil, intoWriter209)
+	// from the result `intermediateCQL` to parameter `intoWriter568`:
+	intermediateCQL := base64.NewEncoder(nil, intoWriter568)
 
-	// Extra step (`fromWriteCloser199` taints `intermediateCQL`, which taints `intoWriter209`:
-	link(fromWriteCloser199, intermediateCQL)
+	// Extra step (`fromWriteCloser370` taints `intermediateCQL`, which taints `intoWriter568`:
+	link(fromWriteCloser370, intermediateCQL)
 
-	// Sink the tainted `intoWriter209`:
-	sink(intoWriter209)
+	// Return the tainted `intoWriter568`:
+	return intoWriter568
 }
 
-func TaintStepTest_EncodingBase64EncodingDecode_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte713` into `intoByte380`.
+func TaintStepTest_EncodingBase64EncodingDecode_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte237` into `intoByte952`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte713`:
-	fromByte713 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte237`:
+	fromByte237 := sourceCQL.([]byte)
 
-	// Declare `intoByte380` variable:
-	var intoByte380 []byte
+	// Declare `intoByte952` variable:
+	var intoByte952 []byte
 
 	// Declare medium object/interface:
 	var mediumObjCQL base64.Encoding
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte713` to the parameter `intoByte380`
-	// (`intoByte380` is now tainted).
-	mediumObjCQL.Decode(intoByte380, fromByte713)
+	// from the parameter `fromByte237` to the parameter `intoByte952`
+	// (`intoByte952` is now tainted).
+	mediumObjCQL.Decode(intoByte952, fromByte237)
 
-	// Sink the tainted `intoByte380`:
-	sink(intoByte380)
+	// Return the tainted `intoByte952`:
+	return intoByte952
 }
 
-func TaintStepTest_EncodingBase64EncodingDecodeString_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString344` into `intoByte619`.
+func TaintStepTest_EncodingBase64EncodingDecodeString_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString772` into `intoByte303`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString344`:
-	fromString344 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString772`:
+	fromString772 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL base64.Encoding
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString344` to the result `intoByte619`
-	// (`intoByte619` is now tainted).
-	intoByte619, _ := mediumObjCQL.DecodeString(fromString344)
+	// from the parameter `fromString772` to the result `intoByte303`
+	// (`intoByte303` is now tainted).
+	intoByte303, _ := mediumObjCQL.DecodeString(fromString772)
 
-	// Sink the tainted `intoByte619`:
-	sink(intoByte619)
+	// Return the tainted `intoByte303`:
+	return intoByte303
 }
 
-func TaintStepTest_EncodingBase64EncodingEncode_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte899` into `intoByte678`.
+func TaintStepTest_EncodingBase64EncodingEncode_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte246` into `intoByte899`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte899`:
-	fromByte899 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte246`:
+	fromByte246 := sourceCQL.([]byte)
 
-	// Declare `intoByte678` variable:
-	var intoByte678 []byte
+	// Declare `intoByte899` variable:
+	var intoByte899 []byte
 
 	// Declare medium object/interface:
 	var mediumObjCQL base64.Encoding
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte899` to the parameter `intoByte678`
-	// (`intoByte678` is now tainted).
-	mediumObjCQL.Encode(intoByte678, fromByte899)
+	// from the parameter `fromByte246` to the parameter `intoByte899`
+	// (`intoByte899` is now tainted).
+	mediumObjCQL.Encode(intoByte899, fromByte246)
 
-	// Sink the tainted `intoByte678`:
-	sink(intoByte678)
+	// Return the tainted `intoByte899`:
+	return intoByte899
 }
 
-func TaintStepTest_EncodingBase64EncodingEncodeToString_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte398` into `intoString982`.
+func TaintStepTest_EncodingBase64EncodingEncodeToString_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte709` into `intoString155`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte398`:
-	fromByte398 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte709`:
+	fromByte709 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL base64.Encoding
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte398` to the result `intoString982`
-	// (`intoString982` is now tainted).
-	intoString982 := mediumObjCQL.EncodeToString(fromByte398)
+	// from the parameter `fromByte709` to the result `intoString155`
+	// (`intoString155` is now tainted).
+	intoString155 := mediumObjCQL.EncodeToString(fromByte709)
 
-	// Sink the tainted `intoString982`:
-	sink(intoString982)
+	// Return the tainted `intoString155`:
+	return intoString155
 }
 
 func RunAllTaints_EncodingBase64() {
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingBase64NewDecoder_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingBase64NewDecoder_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingBase64NewEncoder_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingBase64NewEncoder_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingBase64EncodingDecode_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingBase64EncodingDecode_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingBase64EncodingDecodeString_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingBase64EncodingDecodeString_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingBase64EncodingEncode_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingBase64EncodingEncode_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingBase64EncodingEncodeToString_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingBase64EncodingEncodeToString_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 }

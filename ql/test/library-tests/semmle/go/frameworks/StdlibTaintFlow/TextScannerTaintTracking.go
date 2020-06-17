@@ -5,144 +5,172 @@ import (
 	"text/scanner"
 )
 
-func TaintStepTest_TextScannerTokenString_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromRune591` into `intoString844`.
+func TaintStepTest_TextScannerTokenString_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRune820` into `intoString981`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRune591`:
-	fromRune591 := sourceCQL.(rune)
+	// Assume that `sourceCQL` has the underlying type of `fromRune820`:
+	fromRune820 := sourceCQL.(rune)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromRune591` to result `intoString844`
-	// (`intoString844` is now tainted).
-	intoString844 := scanner.TokenString(fromRune591)
+	// from the parameter `fromRune820` to result `intoString981`
+	// (`intoString981` is now tainted).
+	intoString981 := scanner.TokenString(fromRune820)
 
-	// Sink the tainted `intoString844`:
-	sink(intoString844)
+	// Return the tainted `intoString981`:
+	return intoString981
 }
 
-func TaintStepTest_TextScannerScannerInit_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromReader179` into `intoScanner990`.
+func TaintStepTest_TextScannerScannerInit_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader385` into `intoScanner417`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader179`:
-	fromReader179 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader385`:
+	fromReader385 := sourceCQL.(io.Reader)
 
-	// Declare `intoScanner990` variable:
-	var intoScanner990 scanner.Scanner
+	// Declare `intoScanner417` variable:
+	var intoScanner417 scanner.Scanner
 
 	// Call the method that transfers the taint
-	// from the parameter `fromReader179` to the receiver `intoScanner990`
-	// (`intoScanner990` is now tainted).
-	intoScanner990.Init(fromReader179)
+	// from the parameter `fromReader385` to the receiver `intoScanner417`
+	// (`intoScanner417` is now tainted).
+	intoScanner417.Init(fromReader385)
 
-	// Sink the tainted `intoScanner990`:
-	sink(intoScanner990)
+	// Return the tainted `intoScanner417`:
+	return intoScanner417
 }
 
-func TaintStepTest_TextScannerScannerInit_B0I0O1(sourceCQL interface{}) {
-	// The flow is from `fromReader493` into `intoScanner818`.
+func TaintStepTest_TextScannerScannerInit_B0I0O1(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader475` into `intoScanner466`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader493`:
-	fromReader493 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader475`:
+	fromReader475 := sourceCQL.(io.Reader)
 
 	// Declare medium object/interface:
 	var mediumObjCQL scanner.Scanner
 
 	// Call the method that transfers the taint
-	// from the parameter `fromReader493` to the result `intoScanner818`
-	// (`intoScanner818` is now tainted).
-	intoScanner818 := mediumObjCQL.Init(fromReader493)
+	// from the parameter `fromReader475` to the result `intoScanner466`
+	// (`intoScanner466` is now tainted).
+	intoScanner466 := mediumObjCQL.Init(fromReader475)
 
-	// Sink the tainted `intoScanner818`:
-	sink(intoScanner818)
+	// Return the tainted `intoScanner466`:
+	return intoScanner466
 }
 
-func TaintStepTest_TextScannerScannerNext_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromScanner962` into `intoRune672`.
+func TaintStepTest_TextScannerScannerNext_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromScanner304` into `intoRune640`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromScanner962`:
-	fromScanner962 := sourceCQL.(scanner.Scanner)
+	// Assume that `sourceCQL` has the underlying type of `fromScanner304`:
+	fromScanner304 := sourceCQL.(scanner.Scanner)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromScanner962` to the result `intoRune672`
-	// (`intoRune672` is now tainted).
-	intoRune672 := fromScanner962.Next()
+	// from the receiver `fromScanner304` to the result `intoRune640`
+	// (`intoRune640` is now tainted).
+	intoRune640 := fromScanner304.Next()
 
-	// Sink the tainted `intoRune672`:
-	sink(intoRune672)
+	// Return the tainted `intoRune640`:
+	return intoRune640
 }
 
-func TaintStepTest_TextScannerScannerPeek_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromScanner818` into `intoRune182`.
+func TaintStepTest_TextScannerScannerPeek_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromScanner570` into `intoRune652`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromScanner818`:
-	fromScanner818 := sourceCQL.(scanner.Scanner)
+	// Assume that `sourceCQL` has the underlying type of `fromScanner570`:
+	fromScanner570 := sourceCQL.(scanner.Scanner)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromScanner818` to the result `intoRune182`
-	// (`intoRune182` is now tainted).
-	intoRune182 := fromScanner818.Peek()
+	// from the receiver `fromScanner570` to the result `intoRune652`
+	// (`intoRune652` is now tainted).
+	intoRune652 := fromScanner570.Peek()
 
-	// Sink the tainted `intoRune182`:
-	sink(intoRune182)
+	// Return the tainted `intoRune652`:
+	return intoRune652
 }
 
-func TaintStepTest_TextScannerScannerScan_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromScanner211` into `intoRune255`.
+func TaintStepTest_TextScannerScannerScan_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromScanner711` into `intoRune935`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromScanner211`:
-	fromScanner211 := sourceCQL.(scanner.Scanner)
+	// Assume that `sourceCQL` has the underlying type of `fromScanner711`:
+	fromScanner711 := sourceCQL.(scanner.Scanner)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromScanner211` to the result `intoRune255`
-	// (`intoRune255` is now tainted).
-	intoRune255 := fromScanner211.Scan()
+	// from the receiver `fromScanner711` to the result `intoRune935`
+	// (`intoRune935` is now tainted).
+	intoRune935 := fromScanner711.Scan()
 
-	// Sink the tainted `intoRune255`:
-	sink(intoRune255)
+	// Return the tainted `intoRune935`:
+	return intoRune935
 }
 
-func TaintStepTest_TextScannerScannerTokenText_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromScanner171` into `intoString659`.
+func TaintStepTest_TextScannerScannerTokenText_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromScanner791` into `intoString804`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromScanner171`:
-	fromScanner171 := sourceCQL.(scanner.Scanner)
+	// Assume that `sourceCQL` has the underlying type of `fromScanner791`:
+	fromScanner791 := sourceCQL.(scanner.Scanner)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromScanner171` to the result `intoString659`
-	// (`intoString659` is now tainted).
-	intoString659 := fromScanner171.TokenText()
+	// from the receiver `fromScanner791` to the result `intoString804`
+	// (`intoString804` is now tainted).
+	intoString804 := fromScanner791.TokenText()
 
-	// Sink the tainted `intoString659`:
-	sink(intoString659)
+	// Return the tainted `intoString804`:
+	return intoString804
 }
 
 func RunAllTaints_TextScanner() {
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_TextScannerTokenString_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_TextScannerTokenString_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_TextScannerScannerInit_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_TextScannerScannerInit_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_TextScannerScannerInit_B0I0O1(source)
+		// Run the taint scenario:
+		out := TaintStepTest_TextScannerScannerInit_B0I0O1(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_TextScannerScannerNext_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_TextScannerScannerNext_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_TextScannerScannerPeek_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_TextScannerScannerPeek_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_TextScannerScannerScan_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_TextScannerScannerScan_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_TextScannerScannerTokenText_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_TextScannerScannerTokenText_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 }

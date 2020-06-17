@@ -5,84 +5,100 @@ import (
 	"io"
 )
 
-func TaintStepTest_EncodingPemDecode_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte346` into `intoBlock285`.
+func TaintStepTest_EncodingPemDecode_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte141` into `intoBlock691`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte346`:
-	fromByte346 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte141`:
+	fromByte141 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte346` to result `intoBlock285`
-	// (`intoBlock285` is now tainted).
-	intoBlock285, _ := pem.Decode(fromByte346)
+	// from the parameter `fromByte141` to result `intoBlock691`
+	// (`intoBlock691` is now tainted).
+	intoBlock691, _ := pem.Decode(fromByte141)
 
-	// Sink the tainted `intoBlock285`:
-	sink(intoBlock285)
+	// Return the tainted `intoBlock691`:
+	return intoBlock691
 }
 
-func TaintStepTest_EncodingPemDecode_B0I0O1(sourceCQL interface{}) {
-	// The flow is from `fromByte936` into `intoByte589`.
+func TaintStepTest_EncodingPemDecode_B0I0O1(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte985` into `intoByte555`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte936`:
-	fromByte936 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte985`:
+	fromByte985 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte936` to result `intoByte589`
-	// (`intoByte589` is now tainted).
-	_, intoByte589 := pem.Decode(fromByte936)
+	// from the parameter `fromByte985` to result `intoByte555`
+	// (`intoByte555` is now tainted).
+	_, intoByte555 := pem.Decode(fromByte985)
 
-	// Sink the tainted `intoByte589`:
-	sink(intoByte589)
+	// Return the tainted `intoByte555`:
+	return intoByte555
 }
 
-func TaintStepTest_EncodingPemEncode_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromBlock417` into `intoWriter197`.
+func TaintStepTest_EncodingPemEncode_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromBlock613` into `intoWriter517`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromBlock417`:
-	fromBlock417 := sourceCQL.(*pem.Block)
+	// Assume that `sourceCQL` has the underlying type of `fromBlock613`:
+	fromBlock613 := sourceCQL.(*pem.Block)
 
-	// Declare `intoWriter197` variable:
-	var intoWriter197 io.Writer
+	// Declare `intoWriter517` variable:
+	var intoWriter517 io.Writer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromBlock417` to parameter `intoWriter197`;
-	// `intoWriter197` is now tainted.
-	pem.Encode(intoWriter197, fromBlock417)
+	// from the parameter `fromBlock613` to parameter `intoWriter517`;
+	// `intoWriter517` is now tainted.
+	pem.Encode(intoWriter517, fromBlock613)
 
-	// Sink the tainted `intoWriter197`:
-	sink(intoWriter197)
+	// Return the tainted `intoWriter517`:
+	return intoWriter517
 }
 
-func TaintStepTest_EncodingPemEncodeToMemory_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromBlock477` into `intoByte232`.
+func TaintStepTest_EncodingPemEncodeToMemory_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromBlock623` into `intoByte871`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromBlock477`:
-	fromBlock477 := sourceCQL.(*pem.Block)
+	// Assume that `sourceCQL` has the underlying type of `fromBlock623`:
+	fromBlock623 := sourceCQL.(*pem.Block)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromBlock477` to result `intoByte232`
-	// (`intoByte232` is now tainted).
-	intoByte232 := pem.EncodeToMemory(fromBlock477)
+	// from the parameter `fromBlock623` to result `intoByte871`
+	// (`intoByte871` is now tainted).
+	intoByte871 := pem.EncodeToMemory(fromBlock623)
 
-	// Sink the tainted `intoByte232`:
-	sink(intoByte232)
+	// Return the tainted `intoByte871`:
+	return intoByte871
 }
 
 func RunAllTaints_EncodingPem() {
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingPemDecode_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingPemDecode_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingPemDecode_B0I0O1(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingPemDecode_B0I0O1(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingPemEncode_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingPemEncode_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingPemEncodeToMemory_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingPemEncodeToMemory_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 }

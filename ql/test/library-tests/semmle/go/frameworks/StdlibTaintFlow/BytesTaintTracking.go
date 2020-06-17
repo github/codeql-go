@@ -5,1102 +5,1326 @@ import (
 	"io"
 )
 
-func TaintStepTest_BytesFields_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte705` into `intoByte280`.
+func TaintStepTest_BytesFields_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte665` into `intoByte543`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte705`:
-	fromByte705 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte665`:
+	fromByte665 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte705` to result `intoByte280`
-	// (`intoByte280` is now tainted).
-	intoByte280 := bytes.Fields(fromByte705)
+	// from the parameter `fromByte665` to result `intoByte543`
+	// (`intoByte543` is now tainted).
+	intoByte543 := bytes.Fields(fromByte665)
 
-	// Sink the tainted `intoByte280`:
-	sink(intoByte280)
+	// Return the tainted `intoByte543`:
+	return intoByte543
 }
 
-func TaintStepTest_BytesFieldsFunc_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte857` into `intoByte358`.
+func TaintStepTest_BytesFieldsFunc_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte985` into `intoByte455`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte857`:
-	fromByte857 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte985`:
+	fromByte985 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte857` to result `intoByte358`
-	// (`intoByte358` is now tainted).
-	intoByte358 := bytes.FieldsFunc(fromByte857, nil)
+	// from the parameter `fromByte985` to result `intoByte455`
+	// (`intoByte455` is now tainted).
+	intoByte455 := bytes.FieldsFunc(fromByte985, nil)
 
-	// Sink the tainted `intoByte358`:
-	sink(intoByte358)
+	// Return the tainted `intoByte455`:
+	return intoByte455
 }
 
-func TaintStepTest_BytesJoin_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte737` into `intoByte394`.
+func TaintStepTest_BytesJoin_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte504` into `intoByte349`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte737`:
-	fromByte737 := sourceCQL.([][]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte504`:
+	fromByte504 := sourceCQL.([][]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte737` to result `intoByte394`
-	// (`intoByte394` is now tainted).
-	intoByte394 := bytes.Join(fromByte737, nil)
+	// from the parameter `fromByte504` to result `intoByte349`
+	// (`intoByte349` is now tainted).
+	intoByte349 := bytes.Join(fromByte504, nil)
 
-	// Sink the tainted `intoByte394`:
-	sink(intoByte394)
+	// Return the tainted `intoByte349`:
+	return intoByte349
 }
 
-func TaintStepTest_BytesJoin_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromByte230` into `intoByte226`.
+func TaintStepTest_BytesJoin_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte324` into `intoByte901`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte230`:
-	fromByte230 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte324`:
+	fromByte324 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte230` to result `intoByte226`
-	// (`intoByte226` is now tainted).
-	intoByte226 := bytes.Join(nil, fromByte230)
+	// from the parameter `fromByte324` to result `intoByte901`
+	// (`intoByte901` is now tainted).
+	intoByte901 := bytes.Join(nil, fromByte324)
 
-	// Sink the tainted `intoByte226`:
-	sink(intoByte226)
+	// Return the tainted `intoByte901`:
+	return intoByte901
 }
 
-func TaintStepTest_BytesMap_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte210` into `intoByte877`.
+func TaintStepTest_BytesMap_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte605` into `intoByte338`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte210`:
-	fromByte210 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte210` to result `intoByte877`
-	// (`intoByte877` is now tainted).
-	intoByte877 := bytes.Map(nil, fromByte210)
-
-	// Sink the tainted `intoByte877`:
-	sink(intoByte877)
-}
-
-func TaintStepTest_BytesNewBuffer_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte385` into `intoBuffer742`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte385`:
-	fromByte385 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte605`:
+	fromByte605 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte385` to result `intoBuffer742`
-	// (`intoBuffer742` is now tainted).
-	intoBuffer742 := bytes.NewBuffer(fromByte385)
-
-	// Sink the tainted `intoBuffer742`:
-	sink(intoBuffer742)
-}
-
-func TaintStepTest_BytesNewBufferString_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString907` into `intoBuffer764`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString907`:
-	fromString907 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString907` to result `intoBuffer764`
-	// (`intoBuffer764` is now tainted).
-	intoBuffer764 := bytes.NewBufferString(fromString907)
-
-	// Sink the tainted `intoBuffer764`:
-	sink(intoBuffer764)
-}
-
-func TaintStepTest_BytesNewReader_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte905` into `intoReader532`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte905`:
-	fromByte905 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte905` to result `intoReader532`
-	// (`intoReader532` is now tainted).
-	intoReader532 := bytes.NewReader(fromByte905)
-
-	// Sink the tainted `intoReader532`:
-	sink(intoReader532)
-}
-
-func TaintStepTest_BytesRepeat_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte394` into `intoByte973`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte394`:
-	fromByte394 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte394` to result `intoByte973`
-	// (`intoByte973` is now tainted).
-	intoByte973 := bytes.Repeat(fromByte394, 0)
-
-	// Sink the tainted `intoByte973`:
-	sink(intoByte973)
-}
-
-func TaintStepTest_BytesReplace_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte783` into `intoByte223`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte783`:
-	fromByte783 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte783` to result `intoByte223`
-	// (`intoByte223` is now tainted).
-	intoByte223 := bytes.Replace(fromByte783, nil, nil, 0)
-
-	// Sink the tainted `intoByte223`:
-	sink(intoByte223)
-}
-
-func TaintStepTest_BytesReplace_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromByte366` into `intoByte481`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte366`:
-	fromByte366 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte366` to result `intoByte481`
-	// (`intoByte481` is now tainted).
-	intoByte481 := bytes.Replace(nil, nil, fromByte366, 0)
-
-	// Sink the tainted `intoByte481`:
-	sink(intoByte481)
-}
-
-func TaintStepTest_BytesReplaceAll_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte529` into `intoByte696`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte529`:
-	fromByte529 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte529` to result `intoByte696`
-	// (`intoByte696` is now tainted).
-	intoByte696 := bytes.ReplaceAll(fromByte529, nil, nil)
-
-	// Sink the tainted `intoByte696`:
-	sink(intoByte696)
-}
-
-func TaintStepTest_BytesReplaceAll_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromByte780` into `intoByte457`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte780`:
-	fromByte780 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte780` to result `intoByte457`
-	// (`intoByte457` is now tainted).
-	intoByte457 := bytes.ReplaceAll(nil, nil, fromByte780)
-
-	// Sink the tainted `intoByte457`:
-	sink(intoByte457)
-}
-
-func TaintStepTest_BytesRunes_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte158` into `intoRune995`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte158`:
-	fromByte158 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte158` to result `intoRune995`
-	// (`intoRune995` is now tainted).
-	intoRune995 := bytes.Runes(fromByte158)
-
-	// Sink the tainted `intoRune995`:
-	sink(intoRune995)
-}
-
-func TaintStepTest_BytesSplit_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte816` into `intoByte773`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte816`:
-	fromByte816 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte816` to result `intoByte773`
-	// (`intoByte773` is now tainted).
-	intoByte773 := bytes.Split(fromByte816, nil)
-
-	// Sink the tainted `intoByte773`:
-	sink(intoByte773)
-}
-
-func TaintStepTest_BytesSplitAfter_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte789` into `intoByte187`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte789`:
-	fromByte789 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte789` to result `intoByte187`
-	// (`intoByte187` is now tainted).
-	intoByte187 := bytes.SplitAfter(fromByte789, nil)
-
-	// Sink the tainted `intoByte187`:
-	sink(intoByte187)
-}
-
-func TaintStepTest_BytesSplitAfterN_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte997` into `intoByte148`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte997`:
-	fromByte997 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte997` to result `intoByte148`
-	// (`intoByte148` is now tainted).
-	intoByte148 := bytes.SplitAfterN(fromByte997, nil, 0)
-
-	// Sink the tainted `intoByte148`:
-	sink(intoByte148)
-}
-
-func TaintStepTest_BytesSplitN_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte426` into `intoByte643`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte426`:
-	fromByte426 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte426` to result `intoByte643`
-	// (`intoByte643` is now tainted).
-	intoByte643 := bytes.SplitN(fromByte426, nil, 0)
-
-	// Sink the tainted `intoByte643`:
-	sink(intoByte643)
-}
-
-func TaintStepTest_BytesTitle_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte910` into `intoByte186`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte910`:
-	fromByte910 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte910` to result `intoByte186`
-	// (`intoByte186` is now tainted).
-	intoByte186 := bytes.Title(fromByte910)
-
-	// Sink the tainted `intoByte186`:
-	sink(intoByte186)
-}
-
-func TaintStepTest_BytesToLower_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte621` into `intoByte524`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte621`:
-	fromByte621 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte621` to result `intoByte524`
-	// (`intoByte524` is now tainted).
-	intoByte524 := bytes.ToLower(fromByte621)
-
-	// Sink the tainted `intoByte524`:
-	sink(intoByte524)
-}
-
-func TaintStepTest_BytesToLowerSpecial_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte339` into `intoByte659`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte339`:
-	fromByte339 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte339` to result `intoByte659`
-	// (`intoByte659` is now tainted).
-	intoByte659 := bytes.ToLowerSpecial(nil, fromByte339)
-
-	// Sink the tainted `intoByte659`:
-	sink(intoByte659)
-}
-
-func TaintStepTest_BytesToTitle_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte204` into `intoByte929`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte204`:
-	fromByte204 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte204` to result `intoByte929`
-	// (`intoByte929` is now tainted).
-	intoByte929 := bytes.ToTitle(fromByte204)
-
-	// Sink the tainted `intoByte929`:
-	sink(intoByte929)
-}
-
-func TaintStepTest_BytesToTitleSpecial_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte477` into `intoByte961`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte477`:
-	fromByte477 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte477` to result `intoByte961`
-	// (`intoByte961` is now tainted).
-	intoByte961 := bytes.ToTitleSpecial(nil, fromByte477)
-
-	// Sink the tainted `intoByte961`:
-	sink(intoByte961)
-}
-
-func TaintStepTest_BytesToUpper_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte416` into `intoByte387`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte416`:
-	fromByte416 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte416` to result `intoByte387`
-	// (`intoByte387` is now tainted).
-	intoByte387 := bytes.ToUpper(fromByte416)
-
-	// Sink the tainted `intoByte387`:
-	sink(intoByte387)
-}
-
-func TaintStepTest_BytesToUpperSpecial_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte716` into `intoByte373`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte716`:
-	fromByte716 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte716` to result `intoByte373`
-	// (`intoByte373` is now tainted).
-	intoByte373 := bytes.ToUpperSpecial(nil, fromByte716)
-
-	// Sink the tainted `intoByte373`:
-	sink(intoByte373)
-}
-
-func TaintStepTest_BytesToValidUTF8_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte366` into `intoByte518`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte366`:
-	fromByte366 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte366` to result `intoByte518`
-	// (`intoByte518` is now tainted).
-	intoByte518 := bytes.ToValidUTF8(fromByte366, nil)
-
-	// Sink the tainted `intoByte518`:
-	sink(intoByte518)
-}
-
-func TaintStepTest_BytesToValidUTF8_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromByte297` into `intoByte253`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte297`:
-	fromByte297 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte297` to result `intoByte253`
-	// (`intoByte253` is now tainted).
-	intoByte253 := bytes.ToValidUTF8(nil, fromByte297)
-
-	// Sink the tainted `intoByte253`:
-	sink(intoByte253)
-}
-
-func TaintStepTest_BytesTrim_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte520` into `intoByte132`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte520`:
-	fromByte520 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte520` to result `intoByte132`
-	// (`intoByte132` is now tainted).
-	intoByte132 := bytes.Trim(fromByte520, "")
-
-	// Sink the tainted `intoByte132`:
-	sink(intoByte132)
-}
-
-func TaintStepTest_BytesTrimFunc_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte297` into `intoByte774`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte297`:
-	fromByte297 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte297` to result `intoByte774`
-	// (`intoByte774` is now tainted).
-	intoByte774 := bytes.TrimFunc(fromByte297, nil)
-
-	// Sink the tainted `intoByte774`:
-	sink(intoByte774)
-}
-
-func TaintStepTest_BytesTrimLeft_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte662` into `intoByte333`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte662`:
-	fromByte662 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte662` to result `intoByte333`
-	// (`intoByte333` is now tainted).
-	intoByte333 := bytes.TrimLeft(fromByte662, "")
-
-	// Sink the tainted `intoByte333`:
-	sink(intoByte333)
-}
-
-func TaintStepTest_BytesTrimLeftFunc_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte682` into `intoByte548`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte682`:
-	fromByte682 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte682` to result `intoByte548`
-	// (`intoByte548` is now tainted).
-	intoByte548 := bytes.TrimLeftFunc(fromByte682, nil)
-
-	// Sink the tainted `intoByte548`:
-	sink(intoByte548)
-}
-
-func TaintStepTest_BytesTrimPrefix_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte240` into `intoByte696`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte240`:
-	fromByte240 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte240` to result `intoByte696`
-	// (`intoByte696` is now tainted).
-	intoByte696 := bytes.TrimPrefix(fromByte240, nil)
-
-	// Sink the tainted `intoByte696`:
-	sink(intoByte696)
-}
-
-func TaintStepTest_BytesTrimRight_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte762` into `intoByte338`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte762`:
-	fromByte762 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte762` to result `intoByte338`
+	// from the parameter `fromByte605` to result `intoByte338`
 	// (`intoByte338` is now tainted).
-	intoByte338 := bytes.TrimRight(fromByte762, "")
+	intoByte338 := bytes.Map(nil, fromByte605)
 
-	// Sink the tainted `intoByte338`:
-	sink(intoByte338)
+	// Return the tainted `intoByte338`:
+	return intoByte338
 }
 
-func TaintStepTest_BytesTrimRightFunc_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte291` into `intoByte281`.
+func TaintStepTest_BytesNewBuffer_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte375` into `intoBuffer507`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte291`:
-	fromByte291 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte375`:
+	fromByte375 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte291` to result `intoByte281`
-	// (`intoByte281` is now tainted).
-	intoByte281 := bytes.TrimRightFunc(fromByte291, nil)
+	// from the parameter `fromByte375` to result `intoBuffer507`
+	// (`intoBuffer507` is now tainted).
+	intoBuffer507 := bytes.NewBuffer(fromByte375)
 
-	// Sink the tainted `intoByte281`:
-	sink(intoByte281)
+	// Return the tainted `intoBuffer507`:
+	return intoBuffer507
 }
 
-func TaintStepTest_BytesTrimSpace_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte595` into `intoByte327`.
+func TaintStepTest_BytesNewBufferString_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString168` into `intoBuffer818`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte595`:
-	fromByte595 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromString168`:
+	fromString168 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte595` to result `intoByte327`
-	// (`intoByte327` is now tainted).
-	intoByte327 := bytes.TrimSpace(fromByte595)
+	// from the parameter `fromString168` to result `intoBuffer818`
+	// (`intoBuffer818` is now tainted).
+	intoBuffer818 := bytes.NewBufferString(fromString168)
 
-	// Sink the tainted `intoByte327`:
-	sink(intoByte327)
+	// Return the tainted `intoBuffer818`:
+	return intoBuffer818
 }
 
-func TaintStepTest_BytesTrimSuffix_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte646` into `intoByte252`.
+func TaintStepTest_BytesNewReader_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte768` into `intoReader294`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte646`:
-	fromByte646 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte768`:
+	fromByte768 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte646` to result `intoByte252`
-	// (`intoByte252` is now tainted).
-	intoByte252 := bytes.TrimSuffix(fromByte646, nil)
+	// from the parameter `fromByte768` to result `intoReader294`
+	// (`intoReader294` is now tainted).
+	intoReader294 := bytes.NewReader(fromByte768)
 
-	// Sink the tainted `intoByte252`:
-	sink(intoByte252)
+	// Return the tainted `intoReader294`:
+	return intoReader294
 }
 
-func TaintStepTest_BytesBufferBytes_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromBuffer807` into `intoByte872`.
+func TaintStepTest_BytesRepeat_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte808` into `intoByte904`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromBuffer807`:
-	fromBuffer807 := sourceCQL.(bytes.Buffer)
+	// Assume that `sourceCQL` has the underlying type of `fromByte808`:
+	fromByte808 := sourceCQL.([]byte)
 
-	// Call the method that transfers the taint
-	// from the receiver `fromBuffer807` to the result `intoByte872`
-	// (`intoByte872` is now tainted).
-	intoByte872 := fromBuffer807.Bytes()
+	// Call the function that transfers the taint
+	// from the parameter `fromByte808` to result `intoByte904`
+	// (`intoByte904` is now tainted).
+	intoByte904 := bytes.Repeat(fromByte808, 0)
 
-	// Sink the tainted `intoByte872`:
-	sink(intoByte872)
+	// Return the tainted `intoByte904`:
+	return intoByte904
 }
 
-func TaintStepTest_BytesBufferNext_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromBuffer671` into `intoByte978`.
+func TaintStepTest_BytesReplace_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte259` into `intoByte279`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromBuffer671`:
-	fromBuffer671 := sourceCQL.(bytes.Buffer)
+	// Assume that `sourceCQL` has the underlying type of `fromByte259`:
+	fromByte259 := sourceCQL.([]byte)
 
-	// Call the method that transfers the taint
-	// from the receiver `fromBuffer671` to the result `intoByte978`
-	// (`intoByte978` is now tainted).
-	intoByte978 := fromBuffer671.Next(0)
+	// Call the function that transfers the taint
+	// from the parameter `fromByte259` to result `intoByte279`
+	// (`intoByte279` is now tainted).
+	intoByte279 := bytes.Replace(fromByte259, nil, nil, 0)
 
-	// Sink the tainted `intoByte978`:
-	sink(intoByte978)
+	// Return the tainted `intoByte279`:
+	return intoByte279
 }
 
-func TaintStepTest_BytesBufferRead_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromBuffer565` into `intoByte753`.
+func TaintStepTest_BytesReplace_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte345` into `intoByte861`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromBuffer565`:
-	fromBuffer565 := sourceCQL.(bytes.Buffer)
+	// Assume that `sourceCQL` has the underlying type of `fromByte345`:
+	fromByte345 := sourceCQL.([]byte)
 
-	// Declare `intoByte753` variable:
-	var intoByte753 []byte
+	// Call the function that transfers the taint
+	// from the parameter `fromByte345` to result `intoByte861`
+	// (`intoByte861` is now tainted).
+	intoByte861 := bytes.Replace(nil, nil, fromByte345, 0)
 
-	// Call the method that transfers the taint
-	// from the receiver `fromBuffer565` to the argument `intoByte753`
-	// (`intoByte753` is now tainted).
-	fromBuffer565.Read(intoByte753)
-
-	// Sink the tainted `intoByte753`:
-	sink(intoByte753)
+	// Return the tainted `intoByte861`:
+	return intoByte861
 }
 
-func TaintStepTest_BytesBufferReadByte_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromBuffer740` into `intoByte153`.
+func TaintStepTest_BytesReplaceAll_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte410` into `intoByte223`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromBuffer740`:
-	fromBuffer740 := sourceCQL.(bytes.Buffer)
+	// Assume that `sourceCQL` has the underlying type of `fromByte410`:
+	fromByte410 := sourceCQL.([]byte)
 
-	// Call the method that transfers the taint
-	// from the receiver `fromBuffer740` to the result `intoByte153`
-	// (`intoByte153` is now tainted).
-	intoByte153, _ := fromBuffer740.ReadByte()
+	// Call the function that transfers the taint
+	// from the parameter `fromByte410` to result `intoByte223`
+	// (`intoByte223` is now tainted).
+	intoByte223 := bytes.ReplaceAll(fromByte410, nil, nil)
 
-	// Sink the tainted `intoByte153`:
-	sink(intoByte153)
+	// Return the tainted `intoByte223`:
+	return intoByte223
 }
 
-func TaintStepTest_BytesBufferReadBytes_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromBuffer978` into `intoByte532`.
+func TaintStepTest_BytesReplaceAll_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte261` into `intoByte846`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromBuffer978`:
-	fromBuffer978 := sourceCQL.(bytes.Buffer)
+	// Assume that `sourceCQL` has the underlying type of `fromByte261`:
+	fromByte261 := sourceCQL.([]byte)
 
-	// Call the method that transfers the taint
-	// from the receiver `fromBuffer978` to the result `intoByte532`
-	// (`intoByte532` is now tainted).
-	intoByte532, _ := fromBuffer978.ReadBytes(0)
+	// Call the function that transfers the taint
+	// from the parameter `fromByte261` to result `intoByte846`
+	// (`intoByte846` is now tainted).
+	intoByte846 := bytes.ReplaceAll(nil, nil, fromByte261)
 
-	// Sink the tainted `intoByte532`:
-	sink(intoByte532)
+	// Return the tainted `intoByte846`:
+	return intoByte846
 }
 
-func TaintStepTest_BytesBufferReadFrom_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromReader602` into `intoBuffer314`.
+func TaintStepTest_BytesRunes_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte749` into `intoRune560`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader602`:
-	fromReader602 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromByte749`:
+	fromByte749 := sourceCQL.([]byte)
 
-	// Declare `intoBuffer314` variable:
-	var intoBuffer314 bytes.Buffer
+	// Call the function that transfers the taint
+	// from the parameter `fromByte749` to result `intoRune560`
+	// (`intoRune560` is now tainted).
+	intoRune560 := bytes.Runes(fromByte749)
 
-	// Call the method that transfers the taint
-	// from the parameter `fromReader602` to the receiver `intoBuffer314`
-	// (`intoBuffer314` is now tainted).
-	intoBuffer314.ReadFrom(fromReader602)
-
-	// Sink the tainted `intoBuffer314`:
-	sink(intoBuffer314)
+	// Return the tainted `intoRune560`:
+	return intoRune560
 }
 
-func TaintStepTest_BytesBufferReadRune_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromBuffer829` into `intoRune979`.
+func TaintStepTest_BytesSplit_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte274` into `intoByte768`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromBuffer829`:
-	fromBuffer829 := sourceCQL.(bytes.Buffer)
+	// Assume that `sourceCQL` has the underlying type of `fromByte274`:
+	fromByte274 := sourceCQL.([]byte)
 
-	// Call the method that transfers the taint
-	// from the receiver `fromBuffer829` to the result `intoRune979`
-	// (`intoRune979` is now tainted).
-	intoRune979, _, _ := fromBuffer829.ReadRune()
+	// Call the function that transfers the taint
+	// from the parameter `fromByte274` to result `intoByte768`
+	// (`intoByte768` is now tainted).
+	intoByte768 := bytes.Split(fromByte274, nil)
 
-	// Sink the tainted `intoRune979`:
-	sink(intoRune979)
+	// Return the tainted `intoByte768`:
+	return intoByte768
 }
 
-func TaintStepTest_BytesBufferReadString_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromBuffer709` into `intoString985`.
+func TaintStepTest_BytesSplitAfter_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte899` into `intoByte856`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromBuffer709`:
-	fromBuffer709 := sourceCQL.(bytes.Buffer)
+	// Assume that `sourceCQL` has the underlying type of `fromByte899`:
+	fromByte899 := sourceCQL.([]byte)
 
-	// Call the method that transfers the taint
-	// from the receiver `fromBuffer709` to the result `intoString985`
-	// (`intoString985` is now tainted).
-	intoString985, _ := fromBuffer709.ReadString(0)
+	// Call the function that transfers the taint
+	// from the parameter `fromByte899` to result `intoByte856`
+	// (`intoByte856` is now tainted).
+	intoByte856 := bytes.SplitAfter(fromByte899, nil)
 
-	// Sink the tainted `intoString985`:
-	sink(intoString985)
+	// Return the tainted `intoByte856`:
+	return intoByte856
 }
 
-func TaintStepTest_BytesBufferString_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromBuffer809` into `intoString177`.
+func TaintStepTest_BytesSplitAfterN_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte833` into `intoByte763`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromBuffer809`:
-	fromBuffer809 := sourceCQL.(bytes.Buffer)
+	// Assume that `sourceCQL` has the underlying type of `fromByte833`:
+	fromByte833 := sourceCQL.([]byte)
 
-	// Call the method that transfers the taint
-	// from the receiver `fromBuffer809` to the result `intoString177`
-	// (`intoString177` is now tainted).
-	intoString177 := fromBuffer809.String()
+	// Call the function that transfers the taint
+	// from the parameter `fromByte833` to result `intoByte763`
+	// (`intoByte763` is now tainted).
+	intoByte763 := bytes.SplitAfterN(fromByte833, nil, 0)
 
-	// Sink the tainted `intoString177`:
-	sink(intoString177)
+	// Return the tainted `intoByte763`:
+	return intoByte763
 }
 
-func TaintStepTest_BytesBufferWrite_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte407` into `intoBuffer300`.
+func TaintStepTest_BytesSplitN_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte124` into `intoByte538`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte124`:
+	fromByte124 := sourceCQL.([]byte)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromByte124` to result `intoByte538`
+	// (`intoByte538` is now tainted).
+	intoByte538 := bytes.SplitN(fromByte124, nil, 0)
+
+	// Return the tainted `intoByte538`:
+	return intoByte538
+}
+
+func TaintStepTest_BytesTitle_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte805` into `intoByte580`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte805`:
+	fromByte805 := sourceCQL.([]byte)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromByte805` to result `intoByte580`
+	// (`intoByte580` is now tainted).
+	intoByte580 := bytes.Title(fromByte805)
+
+	// Return the tainted `intoByte580`:
+	return intoByte580
+}
+
+func TaintStepTest_BytesToLower_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte223` into `intoByte778`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte223`:
+	fromByte223 := sourceCQL.([]byte)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromByte223` to result `intoByte778`
+	// (`intoByte778` is now tainted).
+	intoByte778 := bytes.ToLower(fromByte223)
+
+	// Return the tainted `intoByte778`:
+	return intoByte778
+}
+
+func TaintStepTest_BytesToLowerSpecial_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte763` into `intoByte703`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte763`:
+	fromByte763 := sourceCQL.([]byte)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromByte763` to result `intoByte703`
+	// (`intoByte703` is now tainted).
+	intoByte703 := bytes.ToLowerSpecial(nil, fromByte763)
+
+	// Return the tainted `intoByte703`:
+	return intoByte703
+}
+
+func TaintStepTest_BytesToTitle_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte644` into `intoByte500`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte644`:
+	fromByte644 := sourceCQL.([]byte)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromByte644` to result `intoByte500`
+	// (`intoByte500` is now tainted).
+	intoByte500 := bytes.ToTitle(fromByte644)
+
+	// Return the tainted `intoByte500`:
+	return intoByte500
+}
+
+func TaintStepTest_BytesToTitleSpecial_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte708` into `intoByte428`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte708`:
+	fromByte708 := sourceCQL.([]byte)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromByte708` to result `intoByte428`
+	// (`intoByte428` is now tainted).
+	intoByte428 := bytes.ToTitleSpecial(nil, fromByte708)
+
+	// Return the tainted `intoByte428`:
+	return intoByte428
+}
+
+func TaintStepTest_BytesToUpper_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte154` into `intoByte861`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte154`:
+	fromByte154 := sourceCQL.([]byte)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromByte154` to result `intoByte861`
+	// (`intoByte861` is now tainted).
+	intoByte861 := bytes.ToUpper(fromByte154)
+
+	// Return the tainted `intoByte861`:
+	return intoByte861
+}
+
+func TaintStepTest_BytesToUpperSpecial_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte496` into `intoByte769`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte496`:
+	fromByte496 := sourceCQL.([]byte)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromByte496` to result `intoByte769`
+	// (`intoByte769` is now tainted).
+	intoByte769 := bytes.ToUpperSpecial(nil, fromByte496)
+
+	// Return the tainted `intoByte769`:
+	return intoByte769
+}
+
+func TaintStepTest_BytesToValidUTF8_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte219` into `intoByte232`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte219`:
+	fromByte219 := sourceCQL.([]byte)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromByte219` to result `intoByte232`
+	// (`intoByte232` is now tainted).
+	intoByte232 := bytes.ToValidUTF8(fromByte219, nil)
+
+	// Return the tainted `intoByte232`:
+	return intoByte232
+}
+
+func TaintStepTest_BytesToValidUTF8_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte733` into `intoByte556`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte733`:
+	fromByte733 := sourceCQL.([]byte)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromByte733` to result `intoByte556`
+	// (`intoByte556` is now tainted).
+	intoByte556 := bytes.ToValidUTF8(nil, fromByte733)
+
+	// Return the tainted `intoByte556`:
+	return intoByte556
+}
+
+func TaintStepTest_BytesTrim_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte430` into `intoByte822`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte430`:
+	fromByte430 := sourceCQL.([]byte)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromByte430` to result `intoByte822`
+	// (`intoByte822` is now tainted).
+	intoByte822 := bytes.Trim(fromByte430, "")
+
+	// Return the tainted `intoByte822`:
+	return intoByte822
+}
+
+func TaintStepTest_BytesTrimFunc_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte856` into `intoByte683`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte856`:
+	fromByte856 := sourceCQL.([]byte)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromByte856` to result `intoByte683`
+	// (`intoByte683` is now tainted).
+	intoByte683 := bytes.TrimFunc(fromByte856, nil)
+
+	// Return the tainted `intoByte683`:
+	return intoByte683
+}
+
+func TaintStepTest_BytesTrimLeft_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte212` into `intoByte868`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte212`:
+	fromByte212 := sourceCQL.([]byte)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromByte212` to result `intoByte868`
+	// (`intoByte868` is now tainted).
+	intoByte868 := bytes.TrimLeft(fromByte212, "")
+
+	// Return the tainted `intoByte868`:
+	return intoByte868
+}
+
+func TaintStepTest_BytesTrimLeftFunc_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte249` into `intoByte658`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte249`:
+	fromByte249 := sourceCQL.([]byte)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromByte249` to result `intoByte658`
+	// (`intoByte658` is now tainted).
+	intoByte658 := bytes.TrimLeftFunc(fromByte249, nil)
+
+	// Return the tainted `intoByte658`:
+	return intoByte658
+}
+
+func TaintStepTest_BytesTrimPrefix_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte407` into `intoByte329`.
 
 	// Assume that `sourceCQL` has the underlying type of `fromByte407`:
 	fromByte407 := sourceCQL.([]byte)
 
-	// Declare `intoBuffer300` variable:
-	var intoBuffer300 bytes.Buffer
+	// Call the function that transfers the taint
+	// from the parameter `fromByte407` to result `intoByte329`
+	// (`intoByte329` is now tainted).
+	intoByte329 := bytes.TrimPrefix(fromByte407, nil)
 
-	// Call the method that transfers the taint
-	// from the parameter `fromByte407` to the receiver `intoBuffer300`
-	// (`intoBuffer300` is now tainted).
-	intoBuffer300.Write(fromByte407)
-
-	// Sink the tainted `intoBuffer300`:
-	sink(intoBuffer300)
+	// Return the tainted `intoByte329`:
+	return intoByte329
 }
 
-func TaintStepTest_BytesBufferWriteByte_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte847` into `intoBuffer798`.
+func TaintStepTest_BytesTrimRight_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte236` into `intoByte710`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte847`:
-	fromByte847 := sourceCQL.(byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte236`:
+	fromByte236 := sourceCQL.([]byte)
 
-	// Declare `intoBuffer798` variable:
-	var intoBuffer798 bytes.Buffer
+	// Call the function that transfers the taint
+	// from the parameter `fromByte236` to result `intoByte710`
+	// (`intoByte710` is now tainted).
+	intoByte710 := bytes.TrimRight(fromByte236, "")
 
-	// Call the method that transfers the taint
-	// from the parameter `fromByte847` to the receiver `intoBuffer798`
-	// (`intoBuffer798` is now tainted).
-	intoBuffer798.WriteByte(fromByte847)
-
-	// Sink the tainted `intoBuffer798`:
-	sink(intoBuffer798)
+	// Return the tainted `intoByte710`:
+	return intoByte710
 }
 
-func TaintStepTest_BytesBufferWriteRune_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromRune352` into `intoBuffer385`.
+func TaintStepTest_BytesTrimRightFunc_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte454` into `intoByte967`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRune352`:
-	fromRune352 := sourceCQL.(rune)
+	// Assume that `sourceCQL` has the underlying type of `fromByte454`:
+	fromByte454 := sourceCQL.([]byte)
 
-	// Declare `intoBuffer385` variable:
-	var intoBuffer385 bytes.Buffer
+	// Call the function that transfers the taint
+	// from the parameter `fromByte454` to result `intoByte967`
+	// (`intoByte967` is now tainted).
+	intoByte967 := bytes.TrimRightFunc(fromByte454, nil)
 
-	// Call the method that transfers the taint
-	// from the parameter `fromRune352` to the receiver `intoBuffer385`
-	// (`intoBuffer385` is now tainted).
-	intoBuffer385.WriteRune(fromRune352)
-
-	// Sink the tainted `intoBuffer385`:
-	sink(intoBuffer385)
+	// Return the tainted `intoByte967`:
+	return intoByte967
 }
 
-func TaintStepTest_BytesBufferWriteString_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString386` into `intoBuffer760`.
+func TaintStepTest_BytesTrimSpace_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte713` into `intoByte235`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString386`:
-	fromString386 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromByte713`:
+	fromByte713 := sourceCQL.([]byte)
 
-	// Declare `intoBuffer760` variable:
-	var intoBuffer760 bytes.Buffer
+	// Call the function that transfers the taint
+	// from the parameter `fromByte713` to result `intoByte235`
+	// (`intoByte235` is now tainted).
+	intoByte235 := bytes.TrimSpace(fromByte713)
 
-	// Call the method that transfers the taint
-	// from the parameter `fromString386` to the receiver `intoBuffer760`
-	// (`intoBuffer760` is now tainted).
-	intoBuffer760.WriteString(fromString386)
-
-	// Sink the tainted `intoBuffer760`:
-	sink(intoBuffer760)
+	// Return the tainted `intoByte235`:
+	return intoByte235
 }
 
-func TaintStepTest_BytesBufferWriteTo_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromBuffer380` into `intoWriter290`.
+func TaintStepTest_BytesTrimSuffix_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte428` into `intoByte928`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromBuffer380`:
-	fromBuffer380 := sourceCQL.(bytes.Buffer)
+	// Assume that `sourceCQL` has the underlying type of `fromByte428`:
+	fromByte428 := sourceCQL.([]byte)
 
-	// Declare `intoWriter290` variable:
-	var intoWriter290 io.Writer
+	// Call the function that transfers the taint
+	// from the parameter `fromByte428` to result `intoByte928`
+	// (`intoByte928` is now tainted).
+	intoByte928 := bytes.TrimSuffix(fromByte428, nil)
 
-	// Call the method that transfers the taint
-	// from the receiver `fromBuffer380` to the argument `intoWriter290`
-	// (`intoWriter290` is now tainted).
-	fromBuffer380.WriteTo(intoWriter290)
-
-	// Sink the tainted `intoWriter290`:
-	sink(intoWriter290)
+	// Return the tainted `intoByte928`:
+	return intoByte928
 }
 
-func TaintStepTest_BytesReaderRead_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromReader256` into `intoByte207`.
+func TaintStepTest_BytesBufferBytes_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromBuffer856` into `intoByte626`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader256`:
-	fromReader256 := sourceCQL.(bytes.Reader)
-
-	// Declare `intoByte207` variable:
-	var intoByte207 []byte
+	// Assume that `sourceCQL` has the underlying type of `fromBuffer856`:
+	fromBuffer856 := sourceCQL.(bytes.Buffer)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromReader256` to the argument `intoByte207`
-	// (`intoByte207` is now tainted).
-	fromReader256.Read(intoByte207)
+	// from the receiver `fromBuffer856` to the result `intoByte626`
+	// (`intoByte626` is now tainted).
+	intoByte626 := fromBuffer856.Bytes()
 
-	// Sink the tainted `intoByte207`:
-	sink(intoByte207)
+	// Return the tainted `intoByte626`:
+	return intoByte626
 }
 
-func TaintStepTest_BytesReaderReadAt_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromReader770` into `intoByte175`.
+func TaintStepTest_BytesBufferNext_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromBuffer154` into `intoByte878`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader770`:
-	fromReader770 := sourceCQL.(bytes.Reader)
-
-	// Declare `intoByte175` variable:
-	var intoByte175 []byte
+	// Assume that `sourceCQL` has the underlying type of `fromBuffer154`:
+	fromBuffer154 := sourceCQL.(bytes.Buffer)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromReader770` to the argument `intoByte175`
-	// (`intoByte175` is now tainted).
-	fromReader770.ReadAt(intoByte175, 0)
+	// from the receiver `fromBuffer154` to the result `intoByte878`
+	// (`intoByte878` is now tainted).
+	intoByte878 := fromBuffer154.Next(0)
 
-	// Sink the tainted `intoByte175`:
-	sink(intoByte175)
+	// Return the tainted `intoByte878`:
+	return intoByte878
 }
 
-func TaintStepTest_BytesReaderReadByte_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromReader474` into `intoByte696`.
+func TaintStepTest_BytesBufferRead_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromBuffer447` into `intoByte520`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader474`:
-	fromReader474 := sourceCQL.(bytes.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromBuffer447`:
+	fromBuffer447 := sourceCQL.(bytes.Buffer)
+
+	// Declare `intoByte520` variable:
+	var intoByte520 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromReader474` to the result `intoByte696`
-	// (`intoByte696` is now tainted).
-	intoByte696, _ := fromReader474.ReadByte()
+	// from the receiver `fromBuffer447` to the argument `intoByte520`
+	// (`intoByte520` is now tainted).
+	fromBuffer447.Read(intoByte520)
 
-	// Sink the tainted `intoByte696`:
-	sink(intoByte696)
+	// Return the tainted `intoByte520`:
+	return intoByte520
 }
 
-func TaintStepTest_BytesReaderReadRune_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromReader662` into `intoRune395`.
+func TaintStepTest_BytesBufferReadByte_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromBuffer522` into `intoByte913`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader662`:
-	fromReader662 := sourceCQL.(bytes.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromBuffer522`:
+	fromBuffer522 := sourceCQL.(bytes.Buffer)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromReader662` to the result `intoRune395`
-	// (`intoRune395` is now tainted).
-	intoRune395, _, _ := fromReader662.ReadRune()
+	// from the receiver `fromBuffer522` to the result `intoByte913`
+	// (`intoByte913` is now tainted).
+	intoByte913, _ := fromBuffer522.ReadByte()
 
-	// Sink the tainted `intoRune395`:
-	sink(intoRune395)
+	// Return the tainted `intoByte913`:
+	return intoByte913
 }
 
-func TaintStepTest_BytesReaderReset_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte522` into `intoReader483`.
+func TaintStepTest_BytesBufferReadBytes_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromBuffer634` into `intoByte881`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte522`:
-	fromByte522 := sourceCQL.([]byte)
-
-	// Declare `intoReader483` variable:
-	var intoReader483 bytes.Reader
+	// Assume that `sourceCQL` has the underlying type of `fromBuffer634`:
+	fromBuffer634 := sourceCQL.(bytes.Buffer)
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte522` to the receiver `intoReader483`
-	// (`intoReader483` is now tainted).
-	intoReader483.Reset(fromByte522)
+	// from the receiver `fromBuffer634` to the result `intoByte881`
+	// (`intoByte881` is now tainted).
+	intoByte881, _ := fromBuffer634.ReadBytes(0)
 
-	// Sink the tainted `intoReader483`:
-	sink(intoReader483)
+	// Return the tainted `intoByte881`:
+	return intoByte881
 }
 
-func TaintStepTest_BytesReaderWriteTo_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromReader884` into `intoWriter616`.
+func TaintStepTest_BytesBufferReadFrom_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader976` into `intoBuffer954`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader884`:
-	fromReader884 := sourceCQL.(bytes.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader976`:
+	fromReader976 := sourceCQL.(io.Reader)
 
-	// Declare `intoWriter616` variable:
-	var intoWriter616 io.Writer
+	// Declare `intoBuffer954` variable:
+	var intoBuffer954 bytes.Buffer
 
 	// Call the method that transfers the taint
-	// from the receiver `fromReader884` to the argument `intoWriter616`
-	// (`intoWriter616` is now tainted).
-	fromReader884.WriteTo(intoWriter616)
+	// from the parameter `fromReader976` to the receiver `intoBuffer954`
+	// (`intoBuffer954` is now tainted).
+	intoBuffer954.ReadFrom(fromReader976)
 
-	// Sink the tainted `intoWriter616`:
-	sink(intoWriter616)
+	// Return the tainted `intoBuffer954`:
+	return intoBuffer954
+}
+
+func TaintStepTest_BytesBufferReadRune_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromBuffer353` into `intoRune748`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromBuffer353`:
+	fromBuffer353 := sourceCQL.(bytes.Buffer)
+
+	// Call the method that transfers the taint
+	// from the receiver `fromBuffer353` to the result `intoRune748`
+	// (`intoRune748` is now tainted).
+	intoRune748, _, _ := fromBuffer353.ReadRune()
+
+	// Return the tainted `intoRune748`:
+	return intoRune748
+}
+
+func TaintStepTest_BytesBufferReadString_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromBuffer983` into `intoString812`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromBuffer983`:
+	fromBuffer983 := sourceCQL.(bytes.Buffer)
+
+	// Call the method that transfers the taint
+	// from the receiver `fromBuffer983` to the result `intoString812`
+	// (`intoString812` is now tainted).
+	intoString812, _ := fromBuffer983.ReadString(0)
+
+	// Return the tainted `intoString812`:
+	return intoString812
+}
+
+func TaintStepTest_BytesBufferString_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromBuffer235` into `intoString580`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromBuffer235`:
+	fromBuffer235 := sourceCQL.(bytes.Buffer)
+
+	// Call the method that transfers the taint
+	// from the receiver `fromBuffer235` to the result `intoString580`
+	// (`intoString580` is now tainted).
+	intoString580 := fromBuffer235.String()
+
+	// Return the tainted `intoString580`:
+	return intoString580
+}
+
+func TaintStepTest_BytesBufferWrite_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte473` into `intoBuffer668`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte473`:
+	fromByte473 := sourceCQL.([]byte)
+
+	// Declare `intoBuffer668` variable:
+	var intoBuffer668 bytes.Buffer
+
+	// Call the method that transfers the taint
+	// from the parameter `fromByte473` to the receiver `intoBuffer668`
+	// (`intoBuffer668` is now tainted).
+	intoBuffer668.Write(fromByte473)
+
+	// Return the tainted `intoBuffer668`:
+	return intoBuffer668
+}
+
+func TaintStepTest_BytesBufferWriteByte_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte648` into `intoBuffer725`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte648`:
+	fromByte648 := sourceCQL.(byte)
+
+	// Declare `intoBuffer725` variable:
+	var intoBuffer725 bytes.Buffer
+
+	// Call the method that transfers the taint
+	// from the parameter `fromByte648` to the receiver `intoBuffer725`
+	// (`intoBuffer725` is now tainted).
+	intoBuffer725.WriteByte(fromByte648)
+
+	// Return the tainted `intoBuffer725`:
+	return intoBuffer725
+}
+
+func TaintStepTest_BytesBufferWriteRune_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRune994` into `intoBuffer667`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromRune994`:
+	fromRune994 := sourceCQL.(rune)
+
+	// Declare `intoBuffer667` variable:
+	var intoBuffer667 bytes.Buffer
+
+	// Call the method that transfers the taint
+	// from the parameter `fromRune994` to the receiver `intoBuffer667`
+	// (`intoBuffer667` is now tainted).
+	intoBuffer667.WriteRune(fromRune994)
+
+	// Return the tainted `intoBuffer667`:
+	return intoBuffer667
+}
+
+func TaintStepTest_BytesBufferWriteString_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString903` into `intoBuffer399`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString903`:
+	fromString903 := sourceCQL.(string)
+
+	// Declare `intoBuffer399` variable:
+	var intoBuffer399 bytes.Buffer
+
+	// Call the method that transfers the taint
+	// from the parameter `fromString903` to the receiver `intoBuffer399`
+	// (`intoBuffer399` is now tainted).
+	intoBuffer399.WriteString(fromString903)
+
+	// Return the tainted `intoBuffer399`:
+	return intoBuffer399
+}
+
+func TaintStepTest_BytesBufferWriteTo_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromBuffer932` into `intoWriter362`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromBuffer932`:
+	fromBuffer932 := sourceCQL.(bytes.Buffer)
+
+	// Declare `intoWriter362` variable:
+	var intoWriter362 io.Writer
+
+	// Call the method that transfers the taint
+	// from the receiver `fromBuffer932` to the argument `intoWriter362`
+	// (`intoWriter362` is now tainted).
+	fromBuffer932.WriteTo(intoWriter362)
+
+	// Return the tainted `intoWriter362`:
+	return intoWriter362
+}
+
+func TaintStepTest_BytesReaderRead_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader620` into `intoByte530`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromReader620`:
+	fromReader620 := sourceCQL.(bytes.Reader)
+
+	// Declare `intoByte530` variable:
+	var intoByte530 []byte
+
+	// Call the method that transfers the taint
+	// from the receiver `fromReader620` to the argument `intoByte530`
+	// (`intoByte530` is now tainted).
+	fromReader620.Read(intoByte530)
+
+	// Return the tainted `intoByte530`:
+	return intoByte530
+}
+
+func TaintStepTest_BytesReaderReadAt_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader202` into `intoByte735`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromReader202`:
+	fromReader202 := sourceCQL.(bytes.Reader)
+
+	// Declare `intoByte735` variable:
+	var intoByte735 []byte
+
+	// Call the method that transfers the taint
+	// from the receiver `fromReader202` to the argument `intoByte735`
+	// (`intoByte735` is now tainted).
+	fromReader202.ReadAt(intoByte735, 0)
+
+	// Return the tainted `intoByte735`:
+	return intoByte735
+}
+
+func TaintStepTest_BytesReaderReadByte_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader920` into `intoByte215`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromReader920`:
+	fromReader920 := sourceCQL.(bytes.Reader)
+
+	// Call the method that transfers the taint
+	// from the receiver `fromReader920` to the result `intoByte215`
+	// (`intoByte215` is now tainted).
+	intoByte215, _ := fromReader920.ReadByte()
+
+	// Return the tainted `intoByte215`:
+	return intoByte215
+}
+
+func TaintStepTest_BytesReaderReadRune_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader530` into `intoRune985`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromReader530`:
+	fromReader530 := sourceCQL.(bytes.Reader)
+
+	// Call the method that transfers the taint
+	// from the receiver `fromReader530` to the result `intoRune985`
+	// (`intoRune985` is now tainted).
+	intoRune985, _, _ := fromReader530.ReadRune()
+
+	// Return the tainted `intoRune985`:
+	return intoRune985
+}
+
+func TaintStepTest_BytesReaderReset_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte299` into `intoReader777`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte299`:
+	fromByte299 := sourceCQL.([]byte)
+
+	// Declare `intoReader777` variable:
+	var intoReader777 bytes.Reader
+
+	// Call the method that transfers the taint
+	// from the parameter `fromByte299` to the receiver `intoReader777`
+	// (`intoReader777` is now tainted).
+	intoReader777.Reset(fromByte299)
+
+	// Return the tainted `intoReader777`:
+	return intoReader777
+}
+
+func TaintStepTest_BytesReaderWriteTo_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader159` into `intoWriter474`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromReader159`:
+	fromReader159 := sourceCQL.(bytes.Reader)
+
+	// Declare `intoWriter474` variable:
+	var intoWriter474 io.Writer
+
+	// Call the method that transfers the taint
+	// from the receiver `fromReader159` to the argument `intoWriter474`
+	// (`intoWriter474` is now tainted).
+	fromReader159.WriteTo(intoWriter474)
+
+	// Return the tainted `intoWriter474`:
+	return intoWriter474
 }
 
 func RunAllTaints_Bytes() {
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesFields_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesFields_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesFieldsFunc_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesFieldsFunc_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesJoin_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesJoin_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesJoin_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesJoin_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesMap_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesMap_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesNewBuffer_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesNewBuffer_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesNewBufferString_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesNewBufferString_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesNewReader_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesNewReader_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesRepeat_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesRepeat_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesReplace_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesReplace_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesReplace_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesReplace_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesReplaceAll_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesReplaceAll_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesReplaceAll_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesReplaceAll_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesRunes_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesRunes_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesSplit_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesSplit_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesSplitAfter_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesSplitAfter_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesSplitAfterN_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesSplitAfterN_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesSplitN_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesSplitN_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesTitle_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesTitle_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesToLower_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesToLower_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesToLowerSpecial_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesToLowerSpecial_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesToTitle_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesToTitle_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesToTitleSpecial_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesToTitleSpecial_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesToUpper_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesToUpper_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesToUpperSpecial_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesToUpperSpecial_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesToValidUTF8_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesToValidUTF8_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesToValidUTF8_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesToValidUTF8_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesTrim_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesTrim_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesTrimFunc_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesTrimFunc_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesTrimLeft_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesTrimLeft_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesTrimLeftFunc_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesTrimLeftFunc_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesTrimPrefix_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesTrimPrefix_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesTrimRight_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesTrimRight_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesTrimRightFunc_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesTrimRightFunc_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesTrimSpace_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesTrimSpace_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesTrimSuffix_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesTrimSuffix_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesBufferBytes_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesBufferBytes_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesBufferNext_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesBufferNext_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesBufferRead_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesBufferRead_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesBufferReadByte_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesBufferReadByte_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesBufferReadBytes_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesBufferReadBytes_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesBufferReadFrom_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesBufferReadFrom_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesBufferReadRune_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesBufferReadRune_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesBufferReadString_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesBufferReadString_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesBufferString_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesBufferString_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesBufferWrite_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesBufferWrite_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesBufferWriteByte_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesBufferWriteByte_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesBufferWriteRune_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesBufferWriteRune_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesBufferWriteString_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesBufferWriteString_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesBufferWriteTo_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesBufferWriteTo_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesReaderRead_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesReaderRead_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesReaderReadAt_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesReaderReadAt_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesReaderReadByte_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesReaderReadByte_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesReaderReadRune_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesReaderReadRune_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesReaderReset_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesReaderReset_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_BytesReaderWriteTo_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_BytesReaderWriteTo_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 }

@@ -6,464 +6,552 @@ import (
 	"io"
 )
 
-func TaintStepTest_EncodingJsonCompact_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte984` into `intoBuffer386`.
+func TaintStepTest_EncodingJsonCompact_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte672` into `intoBuffer898`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte984`:
-	fromByte984 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte672`:
+	fromByte672 := sourceCQL.([]byte)
 
-	// Declare `intoBuffer386` variable:
-	var intoBuffer386 *bytes.Buffer
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte984` to parameter `intoBuffer386`;
-	// `intoBuffer386` is now tainted.
-	json.Compact(intoBuffer386, fromByte984)
-
-	// Sink the tainted `intoBuffer386`:
-	sink(intoBuffer386)
-}
-
-func TaintStepTest_EncodingJsonHTMLEscape_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte952` into `intoBuffer780`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte952`:
-	fromByte952 := sourceCQL.([]byte)
-
-	// Declare `intoBuffer780` variable:
-	var intoBuffer780 *bytes.Buffer
+	// Declare `intoBuffer898` variable:
+	var intoBuffer898 *bytes.Buffer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte952` to parameter `intoBuffer780`;
-	// `intoBuffer780` is now tainted.
-	json.HTMLEscape(intoBuffer780, fromByte952)
+	// from the parameter `fromByte672` to parameter `intoBuffer898`;
+	// `intoBuffer898` is now tainted.
+	json.Compact(intoBuffer898, fromByte672)
 
-	// Sink the tainted `intoBuffer780`:
-	sink(intoBuffer780)
+	// Return the tainted `intoBuffer898`:
+	return intoBuffer898
 }
 
-func TaintStepTest_EncodingJsonIndent_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte175` into `intoBuffer356`.
+func TaintStepTest_EncodingJsonHTMLEscape_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte578` into `intoBuffer908`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte175`:
-	fromByte175 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte578`:
+	fromByte578 := sourceCQL.([]byte)
 
-	// Declare `intoBuffer356` variable:
-	var intoBuffer356 *bytes.Buffer
+	// Declare `intoBuffer908` variable:
+	var intoBuffer908 *bytes.Buffer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte175` to parameter `intoBuffer356`;
-	// `intoBuffer356` is now tainted.
-	json.Indent(intoBuffer356, fromByte175, "", "")
+	// from the parameter `fromByte578` to parameter `intoBuffer908`;
+	// `intoBuffer908` is now tainted.
+	json.HTMLEscape(intoBuffer908, fromByte578)
 
-	// Sink the tainted `intoBuffer356`:
-	sink(intoBuffer356)
+	// Return the tainted `intoBuffer908`:
+	return intoBuffer908
 }
 
-func TaintStepTest_EncodingJsonIndent_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromString223` into `intoBuffer988`.
+func TaintStepTest_EncodingJsonIndent_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte636` into `intoBuffer575`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString223`:
-	fromString223 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromByte636`:
+	fromByte636 := sourceCQL.([]byte)
 
-	// Declare `intoBuffer988` variable:
-	var intoBuffer988 *bytes.Buffer
+	// Declare `intoBuffer575` variable:
+	var intoBuffer575 *bytes.Buffer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString223` to parameter `intoBuffer988`;
-	// `intoBuffer988` is now tainted.
-	json.Indent(intoBuffer988, nil, fromString223, "")
+	// from the parameter `fromByte636` to parameter `intoBuffer575`;
+	// `intoBuffer575` is now tainted.
+	json.Indent(intoBuffer575, fromByte636, "", "")
 
-	// Sink the tainted `intoBuffer988`:
-	sink(intoBuffer988)
+	// Return the tainted `intoBuffer575`:
+	return intoBuffer575
 }
 
-func TaintStepTest_EncodingJsonIndent_B0I2O0(sourceCQL interface{}) {
-	// The flow is from `fromString303` into `intoBuffer285`.
+func TaintStepTest_EncodingJsonIndent_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString985` into `intoBuffer156`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString303`:
-	fromString303 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString985`:
+	fromString985 := sourceCQL.(string)
 
-	// Declare `intoBuffer285` variable:
-	var intoBuffer285 *bytes.Buffer
+	// Declare `intoBuffer156` variable:
+	var intoBuffer156 *bytes.Buffer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString303` to parameter `intoBuffer285`;
-	// `intoBuffer285` is now tainted.
-	json.Indent(intoBuffer285, nil, "", fromString303)
+	// from the parameter `fromString985` to parameter `intoBuffer156`;
+	// `intoBuffer156` is now tainted.
+	json.Indent(intoBuffer156, nil, fromString985, "")
 
-	// Sink the tainted `intoBuffer285`:
-	sink(intoBuffer285)
+	// Return the tainted `intoBuffer156`:
+	return intoBuffer156
 }
 
-func TaintStepTest_EncodingJsonMarshal_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromInterface443` into `intoByte658`.
+func TaintStepTest_EncodingJsonIndent_B0I2O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString366` into `intoBuffer664`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface443`:
-	fromInterface443 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromString366`:
+	fromString366 := sourceCQL.(string)
+
+	// Declare `intoBuffer664` variable:
+	var intoBuffer664 *bytes.Buffer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface443` to result `intoByte658`
-	// (`intoByte658` is now tainted).
-	intoByte658, _ := json.Marshal(fromInterface443)
+	// from the parameter `fromString366` to parameter `intoBuffer664`;
+	// `intoBuffer664` is now tainted.
+	json.Indent(intoBuffer664, nil, "", fromString366)
 
-	// Sink the tainted `intoByte658`:
-	sink(intoByte658)
+	// Return the tainted `intoBuffer664`:
+	return intoBuffer664
 }
 
-func TaintStepTest_EncodingJsonMarshalIndent_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromInterface704` into `intoByte418`.
+func TaintStepTest_EncodingJsonMarshal_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromInterface231` into `intoByte844`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface704`:
-	fromInterface704 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface231`:
+	fromInterface231 := sourceCQL.(interface{})
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface704` to result `intoByte418`
-	// (`intoByte418` is now tainted).
-	intoByte418, _ := json.MarshalIndent(fromInterface704, "", "")
+	// from the parameter `fromInterface231` to result `intoByte844`
+	// (`intoByte844` is now tainted).
+	intoByte844, _ := json.Marshal(fromInterface231)
 
-	// Sink the tainted `intoByte418`:
-	sink(intoByte418)
+	// Return the tainted `intoByte844`:
+	return intoByte844
 }
 
-func TaintStepTest_EncodingJsonMarshalIndent_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromString457` into `intoByte902`.
+func TaintStepTest_EncodingJsonMarshalIndent_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromInterface402` into `intoByte602`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString457`:
-	fromString457 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromInterface402`:
+	fromInterface402 := sourceCQL.(interface{})
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString457` to result `intoByte902`
-	// (`intoByte902` is now tainted).
-	intoByte902, _ := json.MarshalIndent(nil, fromString457, "")
+	// from the parameter `fromInterface402` to result `intoByte602`
+	// (`intoByte602` is now tainted).
+	intoByte602, _ := json.MarshalIndent(fromInterface402, "", "")
 
-	// Sink the tainted `intoByte902`:
-	sink(intoByte902)
+	// Return the tainted `intoByte602`:
+	return intoByte602
 }
 
-func TaintStepTest_EncodingJsonMarshalIndent_B0I2O0(sourceCQL interface{}) {
-	// The flow is from `fromString507` into `intoByte192`.
+func TaintStepTest_EncodingJsonMarshalIndent_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString646` into `intoByte338`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString507`:
-	fromString507 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString646`:
+	fromString646 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString507` to result `intoByte192`
-	// (`intoByte192` is now tainted).
-	intoByte192, _ := json.MarshalIndent(nil, "", fromString507)
+	// from the parameter `fromString646` to result `intoByte338`
+	// (`intoByte338` is now tainted).
+	intoByte338, _ := json.MarshalIndent(nil, fromString646, "")
 
-	// Sink the tainted `intoByte192`:
-	sink(intoByte192)
+	// Return the tainted `intoByte338`:
+	return intoByte338
 }
 
-func TaintStepTest_EncodingJsonNewDecoder_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromReader114` into `intoDecoder207`.
+func TaintStepTest_EncodingJsonMarshalIndent_B0I2O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString726` into `intoByte260`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader114`:
-	fromReader114 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromString726`:
+	fromString726 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader114` to result `intoDecoder207`
-	// (`intoDecoder207` is now tainted).
-	intoDecoder207 := json.NewDecoder(fromReader114)
+	// from the parameter `fromString726` to result `intoByte260`
+	// (`intoByte260` is now tainted).
+	intoByte260, _ := json.MarshalIndent(nil, "", fromString726)
 
-	// Sink the tainted `intoDecoder207`:
-	sink(intoDecoder207)
+	// Return the tainted `intoByte260`:
+	return intoByte260
 }
 
-func TaintStepTest_EncodingJsonNewEncoder_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromEncoder428` into `intoWriter717`.
+func TaintStepTest_EncodingJsonNewDecoder_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader476` into `intoDecoder695`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromEncoder428`:
-	fromEncoder428 := sourceCQL.(*json.Encoder)
+	// Assume that `sourceCQL` has the underlying type of `fromReader476`:
+	fromReader476 := sourceCQL.(io.Reader)
 
-	// Declare `intoWriter717` variable:
-	var intoWriter717 io.Writer
+	// Call the function that transfers the taint
+	// from the parameter `fromReader476` to result `intoDecoder695`
+	// (`intoDecoder695` is now tainted).
+	intoDecoder695 := json.NewDecoder(fromReader476)
+
+	// Return the tainted `intoDecoder695`:
+	return intoDecoder695
+}
+
+func TaintStepTest_EncodingJsonNewEncoder_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromEncoder549` into `intoWriter940`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromEncoder549`:
+	fromEncoder549 := sourceCQL.(*json.Encoder)
+
+	// Declare `intoWriter940` variable:
+	var intoWriter940 io.Writer
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoWriter717`:
-	intermediateCQL := json.NewEncoder(intoWriter717)
+	// from the result `intermediateCQL` to parameter `intoWriter940`:
+	intermediateCQL := json.NewEncoder(intoWriter940)
 
-	// Extra step (`fromEncoder428` taints `intermediateCQL`, which taints `intoWriter717`:
-	link(fromEncoder428, intermediateCQL)
+	// Extra step (`fromEncoder549` taints `intermediateCQL`, which taints `intoWriter940`:
+	link(fromEncoder549, intermediateCQL)
 
-	// Sink the tainted `intoWriter717`:
-	sink(intoWriter717)
+	// Return the tainted `intoWriter940`:
+	return intoWriter940
 }
 
-func TaintStepTest_EncodingJsonUnmarshal_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte872` into `intoInterface827`.
+func TaintStepTest_EncodingJsonUnmarshal_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte644` into `intoInterface787`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte872`:
-	fromByte872 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte644`:
+	fromByte644 := sourceCQL.([]byte)
 
-	// Declare `intoInterface827` variable:
-	var intoInterface827 interface{}
+	// Declare `intoInterface787` variable:
+	var intoInterface787 interface{}
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte872` to parameter `intoInterface827`;
-	// `intoInterface827` is now tainted.
-	json.Unmarshal(fromByte872, intoInterface827)
+	// from the parameter `fromByte644` to parameter `intoInterface787`;
+	// `intoInterface787` is now tainted.
+	json.Unmarshal(fromByte644, intoInterface787)
 
-	// Sink the tainted `intoInterface827`:
-	sink(intoInterface827)
+	// Return the tainted `intoInterface787`:
+	return intoInterface787
 }
 
-func TaintStepTest_EncodingJsonDecoderBuffered_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromDecoder346` into `intoReader131`.
+func TaintStepTest_EncodingJsonDecoderBuffered_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromDecoder907` into `intoReader260`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromDecoder346`:
-	fromDecoder346 := sourceCQL.(json.Decoder)
+	// Assume that `sourceCQL` has the underlying type of `fromDecoder907`:
+	fromDecoder907 := sourceCQL.(json.Decoder)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromDecoder346` to the result `intoReader131`
-	// (`intoReader131` is now tainted).
-	intoReader131 := fromDecoder346.Buffered()
+	// from the receiver `fromDecoder907` to the result `intoReader260`
+	// (`intoReader260` is now tainted).
+	intoReader260 := fromDecoder907.Buffered()
 
-	// Sink the tainted `intoReader131`:
-	sink(intoReader131)
+	// Return the tainted `intoReader260`:
+	return intoReader260
 }
 
-func TaintStepTest_EncodingJsonDecoderDecode_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromDecoder492` into `intoInterface678`.
+func TaintStepTest_EncodingJsonDecoderDecode_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromDecoder540` into `intoInterface365`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromDecoder492`:
-	fromDecoder492 := sourceCQL.(json.Decoder)
+	// Assume that `sourceCQL` has the underlying type of `fromDecoder540`:
+	fromDecoder540 := sourceCQL.(json.Decoder)
 
-	// Declare `intoInterface678` variable:
-	var intoInterface678 interface{}
+	// Declare `intoInterface365` variable:
+	var intoInterface365 interface{}
 
 	// Call the method that transfers the taint
-	// from the receiver `fromDecoder492` to the argument `intoInterface678`
-	// (`intoInterface678` is now tainted).
-	fromDecoder492.Decode(intoInterface678)
+	// from the receiver `fromDecoder540` to the argument `intoInterface365`
+	// (`intoInterface365` is now tainted).
+	fromDecoder540.Decode(intoInterface365)
 
-	// Sink the tainted `intoInterface678`:
-	sink(intoInterface678)
+	// Return the tainted `intoInterface365`:
+	return intoInterface365
 }
 
-func TaintStepTest_EncodingJsonDecoderToken_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromDecoder545` into `intoToken197`.
+func TaintStepTest_EncodingJsonDecoderToken_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromDecoder369` into `intoToken392`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromDecoder545`:
-	fromDecoder545 := sourceCQL.(json.Decoder)
+	// Assume that `sourceCQL` has the underlying type of `fromDecoder369`:
+	fromDecoder369 := sourceCQL.(json.Decoder)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromDecoder545` to the result `intoToken197`
-	// (`intoToken197` is now tainted).
-	intoToken197, _ := fromDecoder545.Token()
+	// from the receiver `fromDecoder369` to the result `intoToken392`
+	// (`intoToken392` is now tainted).
+	intoToken392, _ := fromDecoder369.Token()
 
-	// Sink the tainted `intoToken197`:
-	sink(intoToken197)
+	// Return the tainted `intoToken392`:
+	return intoToken392
 }
 
-func TaintStepTest_EncodingJsonEncoderEncode_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromInterface283` into `intoEncoder585`.
+func TaintStepTest_EncodingJsonEncoderEncode_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromInterface279` into `intoEncoder927`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface283`:
-	fromInterface283 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface279`:
+	fromInterface279 := sourceCQL.(interface{})
 
-	// Declare `intoEncoder585` variable:
-	var intoEncoder585 json.Encoder
+	// Declare `intoEncoder927` variable:
+	var intoEncoder927 json.Encoder
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface283` to the receiver `intoEncoder585`
-	// (`intoEncoder585` is now tainted).
-	intoEncoder585.Encode(fromInterface283)
+	// from the parameter `fromInterface279` to the receiver `intoEncoder927`
+	// (`intoEncoder927` is now tainted).
+	intoEncoder927.Encode(fromInterface279)
 
-	// Sink the tainted `intoEncoder585`:
-	sink(intoEncoder585)
+	// Return the tainted `intoEncoder927`:
+	return intoEncoder927
 }
 
-func TaintStepTest_EncodingJsonEncoderSetIndent_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString915` into `intoEncoder272`.
+func TaintStepTest_EncodingJsonEncoderSetIndent_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString911` into `intoEncoder816`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString915`:
-	fromString915 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString911`:
+	fromString911 := sourceCQL.(string)
 
-	// Declare `intoEncoder272` variable:
-	var intoEncoder272 json.Encoder
+	// Declare `intoEncoder816` variable:
+	var intoEncoder816 json.Encoder
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString915` to the receiver `intoEncoder272`
-	// (`intoEncoder272` is now tainted).
-	intoEncoder272.SetIndent(fromString915, "")
+	// from the parameter `fromString911` to the receiver `intoEncoder816`
+	// (`intoEncoder816` is now tainted).
+	intoEncoder816.SetIndent(fromString911, "")
 
-	// Sink the tainted `intoEncoder272`:
-	sink(intoEncoder272)
+	// Return the tainted `intoEncoder816`:
+	return intoEncoder816
 }
 
-func TaintStepTest_EncodingJsonEncoderSetIndent_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromString149` into `intoEncoder776`.
+func TaintStepTest_EncodingJsonEncoderSetIndent_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString305` into `intoEncoder298`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString149`:
-	fromString149 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString305`:
+	fromString305 := sourceCQL.(string)
 
-	// Declare `intoEncoder776` variable:
-	var intoEncoder776 json.Encoder
+	// Declare `intoEncoder298` variable:
+	var intoEncoder298 json.Encoder
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString149` to the receiver `intoEncoder776`
-	// (`intoEncoder776` is now tainted).
-	intoEncoder776.SetIndent("", fromString149)
+	// from the parameter `fromString305` to the receiver `intoEncoder298`
+	// (`intoEncoder298` is now tainted).
+	intoEncoder298.SetIndent("", fromString305)
 
-	// Sink the tainted `intoEncoder776`:
-	sink(intoEncoder776)
+	// Return the tainted `intoEncoder298`:
+	return intoEncoder298
 }
 
-func TaintStepTest_EncodingJsonRawMessageMarshalJSON_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromRawMessage522` into `intoByte644`.
+func TaintStepTest_EncodingJsonRawMessageMarshalJSON_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRawMessage132` into `intoByte503`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRawMessage522`:
-	fromRawMessage522 := sourceCQL.(json.RawMessage)
+	// Assume that `sourceCQL` has the underlying type of `fromRawMessage132`:
+	fromRawMessage132 := sourceCQL.(json.RawMessage)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromRawMessage522` to the result `intoByte644`
-	// (`intoByte644` is now tainted).
-	intoByte644, _ := fromRawMessage522.MarshalJSON()
+	// from the receiver `fromRawMessage132` to the result `intoByte503`
+	// (`intoByte503` is now tainted).
+	intoByte503, _ := fromRawMessage132.MarshalJSON()
 
-	// Sink the tainted `intoByte644`:
-	sink(intoByte644)
+	// Return the tainted `intoByte503`:
+	return intoByte503
 }
 
-func TaintStepTest_EncodingJsonRawMessageUnmarshalJSON_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte630` into `intoRawMessage331`.
+func TaintStepTest_EncodingJsonRawMessageUnmarshalJSON_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte489` into `intoRawMessage933`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte630`:
-	fromByte630 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte489`:
+	fromByte489 := sourceCQL.([]byte)
 
-	// Declare `intoRawMessage331` variable:
-	var intoRawMessage331 json.RawMessage
+	// Declare `intoRawMessage933` variable:
+	var intoRawMessage933 json.RawMessage
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte630` to the receiver `intoRawMessage331`
-	// (`intoRawMessage331` is now tainted).
-	intoRawMessage331.UnmarshalJSON(fromByte630)
+	// from the parameter `fromByte489` to the receiver `intoRawMessage933`
+	// (`intoRawMessage933` is now tainted).
+	intoRawMessage933.UnmarshalJSON(fromByte489)
 
-	// Sink the tainted `intoRawMessage331`:
-	sink(intoRawMessage331)
+	// Return the tainted `intoRawMessage933`:
+	return intoRawMessage933
 }
 
-func TaintStepTest_EncodingJsonMarshalerMarshalJSON_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromMarshaler224` into `intoByte577`.
+func TaintStepTest_EncodingJsonMarshalerMarshalJSON_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromMarshaler805` into `intoByte752`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromMarshaler224`:
-	fromMarshaler224 := sourceCQL.(json.Marshaler)
+	// Assume that `sourceCQL` has the underlying type of `fromMarshaler805`:
+	fromMarshaler805 := sourceCQL.(json.Marshaler)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromMarshaler224` to the result `intoByte577`
-	// (`intoByte577` is now tainted).
-	intoByte577, _ := fromMarshaler224.MarshalJSON()
+	// from the receiver `fromMarshaler805` to the result `intoByte752`
+	// (`intoByte752` is now tainted).
+	intoByte752, _ := fromMarshaler805.MarshalJSON()
 
-	// Sink the tainted `intoByte577`:
-	sink(intoByte577)
+	// Return the tainted `intoByte752`:
+	return intoByte752
 }
 
-func TaintStepTest_EncodingJsonUnmarshalerUnmarshalJSON_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte913` into `intoUnmarshaler199`.
+func TaintStepTest_EncodingJsonUnmarshalerUnmarshalJSON_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte694` into `intoUnmarshaler572`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte913`:
-	fromByte913 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte694`:
+	fromByte694 := sourceCQL.([]byte)
 
-	// Declare `intoUnmarshaler199` variable:
-	var intoUnmarshaler199 json.Unmarshaler
+	// Declare `intoUnmarshaler572` variable:
+	var intoUnmarshaler572 json.Unmarshaler
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte913` to the receiver `intoUnmarshaler199`
-	// (`intoUnmarshaler199` is now tainted).
-	intoUnmarshaler199.UnmarshalJSON(fromByte913)
+	// from the parameter `fromByte694` to the receiver `intoUnmarshaler572`
+	// (`intoUnmarshaler572` is now tainted).
+	intoUnmarshaler572.UnmarshalJSON(fromByte694)
 
-	// Sink the tainted `intoUnmarshaler199`:
-	sink(intoUnmarshaler199)
+	// Return the tainted `intoUnmarshaler572`:
+	return intoUnmarshaler572
 }
 
 func RunAllTaints_EncodingJson() {
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingJsonCompact_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingJsonCompact_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingJsonHTMLEscape_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingJsonHTMLEscape_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingJsonIndent_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingJsonIndent_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingJsonIndent_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingJsonIndent_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingJsonIndent_B0I2O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingJsonIndent_B0I2O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingJsonMarshal_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingJsonMarshal_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingJsonMarshalIndent_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingJsonMarshalIndent_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingJsonMarshalIndent_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingJsonMarshalIndent_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingJsonMarshalIndent_B0I2O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingJsonMarshalIndent_B0I2O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingJsonNewDecoder_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingJsonNewDecoder_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingJsonNewEncoder_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingJsonNewEncoder_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingJsonUnmarshal_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingJsonUnmarshal_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingJsonDecoderBuffered_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingJsonDecoderBuffered_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingJsonDecoderDecode_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingJsonDecoderDecode_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingJsonDecoderToken_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingJsonDecoderToken_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingJsonEncoderEncode_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingJsonEncoderEncode_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingJsonEncoderSetIndent_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingJsonEncoderSetIndent_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingJsonEncoderSetIndent_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingJsonEncoderSetIndent_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingJsonRawMessageMarshalJSON_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingJsonRawMessageMarshalJSON_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingJsonRawMessageUnmarshalJSON_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingJsonRawMessageUnmarshalJSON_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingJsonMarshalerMarshalJSON_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingJsonMarshalerMarshalJSON_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_EncodingJsonUnmarshalerUnmarshalJSON_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_EncodingJsonUnmarshalerUnmarshalJSON_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 }

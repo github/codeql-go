@@ -5,576 +5,688 @@ import (
 	"io"
 )
 
-func TaintStepTest_HtmlTemplateHTMLEscape_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte183` into `intoWriter358`.
+func TaintStepTest_HtmlTemplateHTMLEscape_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte727` into `intoWriter261`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte183`:
-	fromByte183 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte727`:
+	fromByte727 := sourceCQL.([]byte)
 
-	// Declare `intoWriter358` variable:
-	var intoWriter358 io.Writer
+	// Declare `intoWriter261` variable:
+	var intoWriter261 io.Writer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte183` to parameter `intoWriter358`;
-	// `intoWriter358` is now tainted.
-	template.HTMLEscape(intoWriter358, fromByte183)
+	// from the parameter `fromByte727` to parameter `intoWriter261`;
+	// `intoWriter261` is now tainted.
+	template.HTMLEscape(intoWriter261, fromByte727)
 
-	// Sink the tainted `intoWriter358`:
-	sink(intoWriter358)
+	// Return the tainted `intoWriter261`:
+	return intoWriter261
 }
 
-func TaintStepTest_HtmlTemplateHTMLEscapeString_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString467` into `intoString282`.
+func TaintStepTest_HtmlTemplateHTMLEscapeString_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString213` into `intoString420`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString467`:
-	fromString467 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString213`:
+	fromString213 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString467` to result `intoString282`
+	// from the parameter `fromString213` to result `intoString420`
+	// (`intoString420` is now tainted).
+	intoString420 := template.HTMLEscapeString(fromString213)
+
+	// Return the tainted `intoString420`:
+	return intoString420
+}
+
+func TaintStepTest_HtmlTemplateHTMLEscaper_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromInterface916` into `intoString204`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromInterface916`:
+	fromInterface916 := sourceCQL.(interface{})
+
+	// Call the function that transfers the taint
+	// from the parameter `fromInterface916` to result `intoString204`
+	// (`intoString204` is now tainted).
+	intoString204 := template.HTMLEscaper(fromInterface916)
+
+	// Return the tainted `intoString204`:
+	return intoString204
+}
+
+func TaintStepTest_HtmlTemplateJSEscape_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte671` into `intoWriter406`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte671`:
+	fromByte671 := sourceCQL.([]byte)
+
+	// Declare `intoWriter406` variable:
+	var intoWriter406 io.Writer
+
+	// Call the function that transfers the taint
+	// from the parameter `fromByte671` to parameter `intoWriter406`;
+	// `intoWriter406` is now tainted.
+	template.JSEscape(intoWriter406, fromByte671)
+
+	// Return the tainted `intoWriter406`:
+	return intoWriter406
+}
+
+func TaintStepTest_HtmlTemplateJSEscapeString_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString705` into `intoString880`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString705`:
+	fromString705 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString705` to result `intoString880`
+	// (`intoString880` is now tainted).
+	intoString880 := template.JSEscapeString(fromString705)
+
+	// Return the tainted `intoString880`:
+	return intoString880
+}
+
+func TaintStepTest_HtmlTemplateJSEscaper_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromInterface513` into `intoString282`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromInterface513`:
+	fromInterface513 := sourceCQL.(interface{})
+
+	// Call the function that transfers the taint
+	// from the parameter `fromInterface513` to result `intoString282`
 	// (`intoString282` is now tainted).
-	intoString282 := template.HTMLEscapeString(fromString467)
+	intoString282 := template.JSEscaper(fromInterface513)
 
-	// Sink the tainted `intoString282`:
-	sink(intoString282)
+	// Return the tainted `intoString282`:
+	return intoString282
 }
 
-func TaintStepTest_HtmlTemplateHTMLEscaper_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromInterface316` into `intoString357`.
+func TaintStepTest_HtmlTemplateMust_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromTemplate916` into `intoTemplate518`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface316`:
-	fromInterface316 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromTemplate916`:
+	fromTemplate916 := sourceCQL.(*template.Template)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface316` to result `intoString357`
-	// (`intoString357` is now tainted).
-	intoString357 := template.HTMLEscaper(fromInterface316)
+	// from the parameter `fromTemplate916` to result `intoTemplate518`
+	// (`intoTemplate518` is now tainted).
+	intoTemplate518 := template.Must(fromTemplate916, nil)
 
-	// Sink the tainted `intoString357`:
-	sink(intoString357)
+	// Return the tainted `intoTemplate518`:
+	return intoTemplate518
 }
 
-func TaintStepTest_HtmlTemplateJSEscape_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte939` into `intoWriter653`.
+func TaintStepTest_HtmlTemplateParseFiles_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString851` into `intoTemplate504`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte939`:
-	fromByte939 := sourceCQL.([]byte)
-
-	// Declare `intoWriter653` variable:
-	var intoWriter653 io.Writer
+	// Assume that `sourceCQL` has the underlying type of `fromString851`:
+	fromString851 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte939` to parameter `intoWriter653`;
-	// `intoWriter653` is now tainted.
-	template.JSEscape(intoWriter653, fromByte939)
+	// from the parameter `fromString851` to result `intoTemplate504`
+	// (`intoTemplate504` is now tainted).
+	intoTemplate504, _ := template.ParseFiles(fromString851)
 
-	// Sink the tainted `intoWriter653`:
-	sink(intoWriter653)
+	// Return the tainted `intoTemplate504`:
+	return intoTemplate504
 }
 
-func TaintStepTest_HtmlTemplateJSEscapeString_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString181` into `intoString570`.
+func TaintStepTest_HtmlTemplateParseGlob_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString961` into `intoTemplate333`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString181`:
-	fromString181 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString961`:
+	fromString961 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString181` to result `intoString570`
-	// (`intoString570` is now tainted).
-	intoString570 := template.JSEscapeString(fromString181)
+	// from the parameter `fromString961` to result `intoTemplate333`
+	// (`intoTemplate333` is now tainted).
+	intoTemplate333, _ := template.ParseGlob(fromString961)
 
-	// Sink the tainted `intoString570`:
-	sink(intoString570)
+	// Return the tainted `intoTemplate333`:
+	return intoTemplate333
 }
 
-func TaintStepTest_HtmlTemplateJSEscaper_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromInterface982` into `intoString493`.
+func TaintStepTest_HtmlTemplateURLQueryEscaper_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromInterface684` into `intoString272`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface982`:
-	fromInterface982 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface684`:
+	fromInterface684 := sourceCQL.(interface{})
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface982` to result `intoString493`
-	// (`intoString493` is now tainted).
-	intoString493 := template.JSEscaper(fromInterface982)
+	// from the parameter `fromInterface684` to result `intoString272`
+	// (`intoString272` is now tainted).
+	intoString272 := template.URLQueryEscaper(fromInterface684)
 
-	// Sink the tainted `intoString493`:
-	sink(intoString493)
+	// Return the tainted `intoString272`:
+	return intoString272
 }
 
-func TaintStepTest_HtmlTemplateMust_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromTemplate969` into `intoTemplate120`.
+func TaintStepTest_HtmlTemplateTemplateClone_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromTemplate961` into `intoTemplate508`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromTemplate969`:
-	fromTemplate969 := sourceCQL.(*template.Template)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromTemplate969` to result `intoTemplate120`
-	// (`intoTemplate120` is now tainted).
-	intoTemplate120 := template.Must(fromTemplate969, nil)
-
-	// Sink the tainted `intoTemplate120`:
-	sink(intoTemplate120)
-}
-
-func TaintStepTest_HtmlTemplateParseFiles_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString403` into `intoTemplate890`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString403`:
-	fromString403 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString403` to result `intoTemplate890`
-	// (`intoTemplate890` is now tainted).
-	intoTemplate890, _ := template.ParseFiles(fromString403)
-
-	// Sink the tainted `intoTemplate890`:
-	sink(intoTemplate890)
-}
-
-func TaintStepTest_HtmlTemplateParseGlob_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString352` into `intoTemplate415`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString352`:
-	fromString352 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString352` to result `intoTemplate415`
-	// (`intoTemplate415` is now tainted).
-	intoTemplate415, _ := template.ParseGlob(fromString352)
-
-	// Sink the tainted `intoTemplate415`:
-	sink(intoTemplate415)
-}
-
-func TaintStepTest_HtmlTemplateURLQueryEscaper_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromInterface750` into `intoString959`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromInterface750`:
-	fromInterface750 := sourceCQL.(interface{})
-
-	// Call the function that transfers the taint
-	// from the parameter `fromInterface750` to result `intoString959`
-	// (`intoString959` is now tainted).
-	intoString959 := template.URLQueryEscaper(fromInterface750)
-
-	// Sink the tainted `intoString959`:
-	sink(intoString959)
-}
-
-func TaintStepTest_HtmlTemplateTemplateClone_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromTemplate652` into `intoTemplate714`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromTemplate652`:
-	fromTemplate652 := sourceCQL.(template.Template)
+	// Assume that `sourceCQL` has the underlying type of `fromTemplate961`:
+	fromTemplate961 := sourceCQL.(template.Template)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromTemplate652` to the result `intoTemplate714`
-	// (`intoTemplate714` is now tainted).
-	intoTemplate714, _ := fromTemplate652.Clone()
+	// from the receiver `fromTemplate961` to the result `intoTemplate508`
+	// (`intoTemplate508` is now tainted).
+	intoTemplate508, _ := fromTemplate961.Clone()
 
-	// Sink the tainted `intoTemplate714`:
-	sink(intoTemplate714)
+	// Return the tainted `intoTemplate508`:
+	return intoTemplate508
 }
 
-func TaintStepTest_HtmlTemplateTemplateDefinedTemplates_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromTemplate953` into `intoString479`.
+func TaintStepTest_HtmlTemplateTemplateDefinedTemplates_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromTemplate147` into `intoString775`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromTemplate953`:
-	fromTemplate953 := sourceCQL.(template.Template)
+	// Assume that `sourceCQL` has the underlying type of `fromTemplate147`:
+	fromTemplate147 := sourceCQL.(template.Template)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromTemplate953` to the result `intoString479`
-	// (`intoString479` is now tainted).
-	intoString479 := fromTemplate953.DefinedTemplates()
+	// from the receiver `fromTemplate147` to the result `intoString775`
+	// (`intoString775` is now tainted).
+	intoString775 := fromTemplate147.DefinedTemplates()
 
-	// Sink the tainted `intoString479`:
-	sink(intoString479)
+	// Return the tainted `intoString775`:
+	return intoString775
 }
 
-func TaintStepTest_HtmlTemplateTemplateDelims_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromTemplate675` into `intoTemplate971`.
+func TaintStepTest_HtmlTemplateTemplateDelims_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromTemplate412` into `intoTemplate404`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromTemplate675`:
-	fromTemplate675 := sourceCQL.(template.Template)
+	// Assume that `sourceCQL` has the underlying type of `fromTemplate412`:
+	fromTemplate412 := sourceCQL.(template.Template)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromTemplate675` to the result `intoTemplate971`
-	// (`intoTemplate971` is now tainted).
-	intoTemplate971 := fromTemplate675.Delims("", "")
+	// from the receiver `fromTemplate412` to the result `intoTemplate404`
+	// (`intoTemplate404` is now tainted).
+	intoTemplate404 := fromTemplate412.Delims("", "")
 
-	// Sink the tainted `intoTemplate971`:
-	sink(intoTemplate971)
+	// Return the tainted `intoTemplate404`:
+	return intoTemplate404
 }
 
-func TaintStepTest_HtmlTemplateTemplateDelims_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromString710` into `intoTemplate750`.
+func TaintStepTest_HtmlTemplateTemplateDelims_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString322` into `intoTemplate574`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString710`:
-	fromString710 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString322`:
+	fromString322 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL template.Template
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString710` to the result `intoTemplate750`
-	// (`intoTemplate750` is now tainted).
-	intoTemplate750 := mediumObjCQL.Delims(fromString710, "")
+	// from the parameter `fromString322` to the result `intoTemplate574`
+	// (`intoTemplate574` is now tainted).
+	intoTemplate574 := mediumObjCQL.Delims(fromString322, "")
 
-	// Sink the tainted `intoTemplate750`:
-	sink(intoTemplate750)
+	// Return the tainted `intoTemplate574`:
+	return intoTemplate574
 }
 
-func TaintStepTest_HtmlTemplateTemplateDelims_B0I2O0(sourceCQL interface{}) {
-	// The flow is from `fromString267` into `intoTemplate560`.
+func TaintStepTest_HtmlTemplateTemplateDelims_B0I2O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString648` into `intoTemplate845`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString267`:
-	fromString267 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString648`:
+	fromString648 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL template.Template
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString267` to the result `intoTemplate560`
-	// (`intoTemplate560` is now tainted).
-	intoTemplate560 := mediumObjCQL.Delims("", fromString267)
+	// from the parameter `fromString648` to the result `intoTemplate845`
+	// (`intoTemplate845` is now tainted).
+	intoTemplate845 := mediumObjCQL.Delims("", fromString648)
 
-	// Sink the tainted `intoTemplate560`:
-	sink(intoTemplate560)
+	// Return the tainted `intoTemplate845`:
+	return intoTemplate845
 }
 
-func TaintStepTest_HtmlTemplateTemplateExecute_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromTemplate417` into `intoWriter150`.
+func TaintStepTest_HtmlTemplateTemplateExecute_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromTemplate922` into `intoWriter486`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromTemplate417`:
-	fromTemplate417 := sourceCQL.(template.Template)
+	// Assume that `sourceCQL` has the underlying type of `fromTemplate922`:
+	fromTemplate922 := sourceCQL.(template.Template)
 
-	// Declare `intoWriter150` variable:
-	var intoWriter150 io.Writer
+	// Declare `intoWriter486` variable:
+	var intoWriter486 io.Writer
 
 	// Call the method that transfers the taint
-	// from the receiver `fromTemplate417` to the argument `intoWriter150`
-	// (`intoWriter150` is now tainted).
-	fromTemplate417.Execute(intoWriter150, nil)
+	// from the receiver `fromTemplate922` to the argument `intoWriter486`
+	// (`intoWriter486` is now tainted).
+	fromTemplate922.Execute(intoWriter486, nil)
 
-	// Sink the tainted `intoWriter150`:
-	sink(intoWriter150)
+	// Return the tainted `intoWriter486`:
+	return intoWriter486
 }
 
-func TaintStepTest_HtmlTemplateTemplateExecute_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromInterface954` into `intoWriter244`.
+func TaintStepTest_HtmlTemplateTemplateExecute_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromInterface150` into `intoWriter396`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface954`:
-	fromInterface954 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface150`:
+	fromInterface150 := sourceCQL.(interface{})
 
-	// Declare `intoWriter244` variable:
-	var intoWriter244 io.Writer
+	// Declare `intoWriter396` variable:
+	var intoWriter396 io.Writer
 
 	// Declare medium object/interface:
 	var mediumObjCQL template.Template
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface954` to the parameter `intoWriter244`
-	// (`intoWriter244` is now tainted).
-	mediumObjCQL.Execute(intoWriter244, fromInterface954)
+	// from the parameter `fromInterface150` to the parameter `intoWriter396`
+	// (`intoWriter396` is now tainted).
+	mediumObjCQL.Execute(intoWriter396, fromInterface150)
 
-	// Sink the tainted `intoWriter244`:
-	sink(intoWriter244)
+	// Return the tainted `intoWriter396`:
+	return intoWriter396
 }
 
-func TaintStepTest_HtmlTemplateTemplateExecuteTemplate_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromTemplate556` into `intoWriter855`.
+func TaintStepTest_HtmlTemplateTemplateExecuteTemplate_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromTemplate252` into `intoWriter289`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromTemplate556`:
-	fromTemplate556 := sourceCQL.(template.Template)
+	// Assume that `sourceCQL` has the underlying type of `fromTemplate252`:
+	fromTemplate252 := sourceCQL.(template.Template)
 
-	// Declare `intoWriter855` variable:
-	var intoWriter855 io.Writer
+	// Declare `intoWriter289` variable:
+	var intoWriter289 io.Writer
 
 	// Call the method that transfers the taint
-	// from the receiver `fromTemplate556` to the argument `intoWriter855`
-	// (`intoWriter855` is now tainted).
-	fromTemplate556.ExecuteTemplate(intoWriter855, "", nil)
+	// from the receiver `fromTemplate252` to the argument `intoWriter289`
+	// (`intoWriter289` is now tainted).
+	fromTemplate252.ExecuteTemplate(intoWriter289, "", nil)
 
-	// Sink the tainted `intoWriter855`:
-	sink(intoWriter855)
+	// Return the tainted `intoWriter289`:
+	return intoWriter289
 }
 
-func TaintStepTest_HtmlTemplateTemplateExecuteTemplate_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromInterface737` into `intoWriter598`.
+func TaintStepTest_HtmlTemplateTemplateExecuteTemplate_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromInterface970` into `intoWriter360`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface737`:
-	fromInterface737 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface970`:
+	fromInterface970 := sourceCQL.(interface{})
 
-	// Declare `intoWriter598` variable:
-	var intoWriter598 io.Writer
+	// Declare `intoWriter360` variable:
+	var intoWriter360 io.Writer
 
 	// Declare medium object/interface:
 	var mediumObjCQL template.Template
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface737` to the parameter `intoWriter598`
-	// (`intoWriter598` is now tainted).
-	mediumObjCQL.ExecuteTemplate(intoWriter598, "", fromInterface737)
+	// from the parameter `fromInterface970` to the parameter `intoWriter360`
+	// (`intoWriter360` is now tainted).
+	mediumObjCQL.ExecuteTemplate(intoWriter360, "", fromInterface970)
 
-	// Sink the tainted `intoWriter598`:
-	sink(intoWriter598)
+	// Return the tainted `intoWriter360`:
+	return intoWriter360
 }
 
-func TaintStepTest_HtmlTemplateTemplateLookup_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromTemplate623` into `intoTemplate464`.
+func TaintStepTest_HtmlTemplateTemplateLookup_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromTemplate277` into `intoTemplate962`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromTemplate623`:
-	fromTemplate623 := sourceCQL.(template.Template)
+	// Assume that `sourceCQL` has the underlying type of `fromTemplate277`:
+	fromTemplate277 := sourceCQL.(template.Template)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromTemplate623` to the result `intoTemplate464`
-	// (`intoTemplate464` is now tainted).
-	intoTemplate464 := fromTemplate623.Lookup("")
+	// from the receiver `fromTemplate277` to the result `intoTemplate962`
+	// (`intoTemplate962` is now tainted).
+	intoTemplate962 := fromTemplate277.Lookup("")
 
-	// Sink the tainted `intoTemplate464`:
-	sink(intoTemplate464)
+	// Return the tainted `intoTemplate962`:
+	return intoTemplate962
 }
 
-func TaintStepTest_HtmlTemplateTemplateNew_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromTemplate713` into `intoTemplate386`.
+func TaintStepTest_HtmlTemplateTemplateNew_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromTemplate221` into `intoTemplate653`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromTemplate713`:
-	fromTemplate713 := sourceCQL.(template.Template)
+	// Assume that `sourceCQL` has the underlying type of `fromTemplate221`:
+	fromTemplate221 := sourceCQL.(template.Template)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromTemplate713` to the result `intoTemplate386`
-	// (`intoTemplate386` is now tainted).
-	intoTemplate386 := fromTemplate713.New("")
+	// from the receiver `fromTemplate221` to the result `intoTemplate653`
+	// (`intoTemplate653` is now tainted).
+	intoTemplate653 := fromTemplate221.New("")
 
-	// Sink the tainted `intoTemplate386`:
-	sink(intoTemplate386)
+	// Return the tainted `intoTemplate653`:
+	return intoTemplate653
 }
 
-func TaintStepTest_HtmlTemplateTemplateOption_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromTemplate832` into `intoTemplate158`.
+func TaintStepTest_HtmlTemplateTemplateOption_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromTemplate279` into `intoTemplate748`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromTemplate832`:
-	fromTemplate832 := sourceCQL.(template.Template)
+	// Assume that `sourceCQL` has the underlying type of `fromTemplate279`:
+	fromTemplate279 := sourceCQL.(template.Template)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromTemplate832` to the result `intoTemplate158`
-	// (`intoTemplate158` is now tainted).
-	intoTemplate158 := fromTemplate832.Option("")
+	// from the receiver `fromTemplate279` to the result `intoTemplate748`
+	// (`intoTemplate748` is now tainted).
+	intoTemplate748 := fromTemplate279.Option("")
 
-	// Sink the tainted `intoTemplate158`:
-	sink(intoTemplate158)
+	// Return the tainted `intoTemplate748`:
+	return intoTemplate748
 }
 
-func TaintStepTest_HtmlTemplateTemplateParse_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString741` into `intoTemplate444`.
+func TaintStepTest_HtmlTemplateTemplateParse_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString540` into `intoTemplate775`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString741`:
-	fromString741 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString540`:
+	fromString540 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL template.Template
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString741` to the result `intoTemplate444`
-	// (`intoTemplate444` is now tainted).
-	intoTemplate444, _ := mediumObjCQL.Parse(fromString741)
+	// from the parameter `fromString540` to the result `intoTemplate775`
+	// (`intoTemplate775` is now tainted).
+	intoTemplate775, _ := mediumObjCQL.Parse(fromString540)
 
-	// Sink the tainted `intoTemplate444`:
-	sink(intoTemplate444)
+	// Return the tainted `intoTemplate775`:
+	return intoTemplate775
 }
 
-func TaintStepTest_HtmlTemplateTemplateParseFiles_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromTemplate393` into `intoTemplate595`.
+func TaintStepTest_HtmlTemplateTemplateParseFiles_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromTemplate577` into `intoTemplate589`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromTemplate393`:
-	fromTemplate393 := sourceCQL.(template.Template)
+	// Assume that `sourceCQL` has the underlying type of `fromTemplate577`:
+	fromTemplate577 := sourceCQL.(template.Template)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromTemplate393` to the result `intoTemplate595`
-	// (`intoTemplate595` is now tainted).
-	intoTemplate595, _ := fromTemplate393.ParseFiles("")
+	// from the receiver `fromTemplate577` to the result `intoTemplate589`
+	// (`intoTemplate589` is now tainted).
+	intoTemplate589, _ := fromTemplate577.ParseFiles("")
 
-	// Sink the tainted `intoTemplate595`:
-	sink(intoTemplate595)
+	// Return the tainted `intoTemplate589`:
+	return intoTemplate589
 }
 
-func TaintStepTest_HtmlTemplateTemplateParseFiles_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromString294` into `intoTemplate779`.
+func TaintStepTest_HtmlTemplateTemplateParseFiles_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString378` into `intoTemplate394`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString294`:
-	fromString294 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString378`:
+	fromString378 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL template.Template
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString294` to the result `intoTemplate779`
-	// (`intoTemplate779` is now tainted).
-	intoTemplate779, _ := mediumObjCQL.ParseFiles(fromString294)
+	// from the parameter `fromString378` to the result `intoTemplate394`
+	// (`intoTemplate394` is now tainted).
+	intoTemplate394, _ := mediumObjCQL.ParseFiles(fromString378)
 
-	// Sink the tainted `intoTemplate779`:
-	sink(intoTemplate779)
+	// Return the tainted `intoTemplate394`:
+	return intoTemplate394
 }
 
-func TaintStepTest_HtmlTemplateTemplateParseGlob_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromTemplate836` into `intoTemplate466`.
+func TaintStepTest_HtmlTemplateTemplateParseGlob_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromTemplate624` into `intoTemplate211`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromTemplate836`:
-	fromTemplate836 := sourceCQL.(template.Template)
+	// Assume that `sourceCQL` has the underlying type of `fromTemplate624`:
+	fromTemplate624 := sourceCQL.(template.Template)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromTemplate836` to the result `intoTemplate466`
-	// (`intoTemplate466` is now tainted).
-	intoTemplate466, _ := fromTemplate836.ParseGlob("")
+	// from the receiver `fromTemplate624` to the result `intoTemplate211`
+	// (`intoTemplate211` is now tainted).
+	intoTemplate211, _ := fromTemplate624.ParseGlob("")
 
-	// Sink the tainted `intoTemplate466`:
-	sink(intoTemplate466)
+	// Return the tainted `intoTemplate211`:
+	return intoTemplate211
 }
 
-func TaintStepTest_HtmlTemplateTemplateParseGlob_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromString689` into `intoTemplate744`.
+func TaintStepTest_HtmlTemplateTemplateParseGlob_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString806` into `intoTemplate540`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString689`:
-	fromString689 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString806`:
+	fromString806 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL template.Template
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString689` to the result `intoTemplate744`
-	// (`intoTemplate744` is now tainted).
-	intoTemplate744, _ := mediumObjCQL.ParseGlob(fromString689)
+	// from the parameter `fromString806` to the result `intoTemplate540`
+	// (`intoTemplate540` is now tainted).
+	intoTemplate540, _ := mediumObjCQL.ParseGlob(fromString806)
 
-	// Sink the tainted `intoTemplate744`:
-	sink(intoTemplate744)
+	// Return the tainted `intoTemplate540`:
+	return intoTemplate540
 }
 
-func TaintStepTest_HtmlTemplateTemplateTemplates_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromTemplate399` into `intoTemplate963`.
+func TaintStepTest_HtmlTemplateTemplateTemplates_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromTemplate665` into `intoTemplate228`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromTemplate399`:
-	fromTemplate399 := sourceCQL.(template.Template)
+	// Assume that `sourceCQL` has the underlying type of `fromTemplate665`:
+	fromTemplate665 := sourceCQL.(template.Template)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromTemplate399` to the result `intoTemplate963`
-	// (`intoTemplate963` is now tainted).
-	intoTemplate963 := fromTemplate399.Templates()
+	// from the receiver `fromTemplate665` to the result `intoTemplate228`
+	// (`intoTemplate228` is now tainted).
+	intoTemplate228 := fromTemplate665.Templates()
 
-	// Sink the tainted `intoTemplate963`:
-	sink(intoTemplate963)
+	// Return the tainted `intoTemplate228`:
+	return intoTemplate228
 }
 
 func RunAllTaints_HtmlTemplate() {
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateHTMLEscape_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateHTMLEscape_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateHTMLEscapeString_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateHTMLEscapeString_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateHTMLEscaper_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateHTMLEscaper_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateJSEscape_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateJSEscape_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateJSEscapeString_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateJSEscapeString_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateJSEscaper_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateJSEscaper_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateMust_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateMust_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateParseFiles_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateParseFiles_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateParseGlob_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateParseGlob_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateURLQueryEscaper_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateURLQueryEscaper_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateTemplateClone_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateTemplateClone_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateTemplateDefinedTemplates_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateTemplateDefinedTemplates_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateTemplateDelims_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateTemplateDelims_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateTemplateDelims_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateTemplateDelims_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateTemplateDelims_B0I2O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateTemplateDelims_B0I2O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateTemplateExecute_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateTemplateExecute_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateTemplateExecute_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateTemplateExecute_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateTemplateExecuteTemplate_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateTemplateExecuteTemplate_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateTemplateExecuteTemplate_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateTemplateExecuteTemplate_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateTemplateLookup_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateTemplateLookup_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateTemplateNew_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateTemplateNew_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateTemplateOption_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateTemplateOption_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateTemplateParse_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateTemplateParse_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateTemplateParseFiles_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateTemplateParseFiles_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateTemplateParseFiles_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateTemplateParseFiles_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateTemplateParseGlob_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateTemplateParseGlob_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateTemplateParseGlob_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateTemplateParseGlob_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_HtmlTemplateTemplateTemplates_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_HtmlTemplateTemplateTemplates_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 }

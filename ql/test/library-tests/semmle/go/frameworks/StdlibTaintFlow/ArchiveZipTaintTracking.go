@@ -6,301 +6,357 @@ import (
 	"os"
 )
 
-func TaintStepTest_ArchiveZipFileInfoHeader_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromFileInfo824` into `intoFileHeader455`.
+func TaintStepTest_ArchiveZipFileInfoHeader_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromFileInfo645` into `intoFileHeader452`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromFileInfo824`:
-	fromFileInfo824 := sourceCQL.(os.FileInfo)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromFileInfo824` to result `intoFileHeader455`
-	// (`intoFileHeader455` is now tainted).
-	intoFileHeader455, _ := zip.FileInfoHeader(fromFileInfo824)
-
-	// Sink the tainted `intoFileHeader455`:
-	sink(intoFileHeader455)
-}
-
-func TaintStepTest_ArchiveZipNewReader_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromReaderAt577` into `intoReader861`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromReaderAt577`:
-	fromReaderAt577 := sourceCQL.(io.ReaderAt)
+	// Assume that `sourceCQL` has the underlying type of `fromFileInfo645`:
+	fromFileInfo645 := sourceCQL.(os.FileInfo)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReaderAt577` to result `intoReader861`
-	// (`intoReader861` is now tainted).
-	intoReader861, _ := zip.NewReader(fromReaderAt577, 0)
+	// from the parameter `fromFileInfo645` to result `intoFileHeader452`
+	// (`intoFileHeader452` is now tainted).
+	intoFileHeader452, _ := zip.FileInfoHeader(fromFileInfo645)
 
-	// Sink the tainted `intoReader861`:
-	sink(intoReader861)
+	// Return the tainted `intoFileHeader452`:
+	return intoFileHeader452
 }
 
-func TaintStepTest_ArchiveZipNewWriter_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromWriter643` into `intoWriter482`.
+func TaintStepTest_ArchiveZipNewReader_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReaderAt535` into `intoReader974`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriter643`:
-	fromWriter643 := sourceCQL.(*zip.Writer)
+	// Assume that `sourceCQL` has the underlying type of `fromReaderAt535`:
+	fromReaderAt535 := sourceCQL.(io.ReaderAt)
 
-	// Declare `intoWriter482` variable:
-	var intoWriter482 io.Writer
+	// Call the function that transfers the taint
+	// from the parameter `fromReaderAt535` to result `intoReader974`
+	// (`intoReader974` is now tainted).
+	intoReader974, _ := zip.NewReader(fromReaderAt535, 0)
+
+	// Return the tainted `intoReader974`:
+	return intoReader974
+}
+
+func TaintStepTest_ArchiveZipNewWriter_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromWriter374` into `intoWriter769`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromWriter374`:
+	fromWriter374 := sourceCQL.(*zip.Writer)
+
+	// Declare `intoWriter769` variable:
+	var intoWriter769 io.Writer
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoWriter482`:
-	intermediateCQL := zip.NewWriter(intoWriter482)
+	// from the result `intermediateCQL` to parameter `intoWriter769`:
+	intermediateCQL := zip.NewWriter(intoWriter769)
 
-	// Extra step (`fromWriter643` taints `intermediateCQL`, which taints `intoWriter482`:
-	link(fromWriter643, intermediateCQL)
+	// Extra step (`fromWriter374` taints `intermediateCQL`, which taints `intoWriter769`:
+	link(fromWriter374, intermediateCQL)
 
-	// Sink the tainted `intoWriter482`:
-	sink(intoWriter482)
+	// Return the tainted `intoWriter769`:
+	return intoWriter769
 }
 
-func TaintStepTest_ArchiveZipOpenReader_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString137` into `intoReadCloser205`.
+func TaintStepTest_ArchiveZipOpenReader_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString418` into `intoReadCloser901`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString137`:
-	fromString137 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString418`:
+	fromString418 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString137` to result `intoReadCloser205`
-	// (`intoReadCloser205` is now tainted).
-	intoReadCloser205, _ := zip.OpenReader(fromString137)
+	// from the parameter `fromString418` to result `intoReadCloser901`
+	// (`intoReadCloser901` is now tainted).
+	intoReadCloser901, _ := zip.OpenReader(fromString418)
 
-	// Sink the tainted `intoReadCloser205`:
-	sink(intoReadCloser205)
+	// Return the tainted `intoReadCloser901`:
+	return intoReadCloser901
 }
 
-func TaintStepTest_ArchiveZipFileOpen_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromFile432` into `intoReadCloser406`.
+func TaintStepTest_ArchiveZipFileOpen_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromFile554` into `intoReadCloser623`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromFile432`:
-	fromFile432 := sourceCQL.(zip.File)
+	// Assume that `sourceCQL` has the underlying type of `fromFile554`:
+	fromFile554 := sourceCQL.(zip.File)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromFile432` to the result `intoReadCloser406`
-	// (`intoReadCloser406` is now tainted).
-	intoReadCloser406, _ := fromFile432.Open()
+	// from the receiver `fromFile554` to the result `intoReadCloser623`
+	// (`intoReadCloser623` is now tainted).
+	intoReadCloser623, _ := fromFile554.Open()
 
-	// Sink the tainted `intoReadCloser406`:
-	sink(intoReadCloser406)
+	// Return the tainted `intoReadCloser623`:
+	return intoReadCloser623
 }
 
-func TaintStepTest_ArchiveZipFileHeaderFileInfo_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromFileHeader614` into `intoFileInfo617`.
+func TaintStepTest_ArchiveZipFileHeaderFileInfo_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromFileHeader260` into `intoFileInfo977`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromFileHeader614`:
-	fromFileHeader614 := sourceCQL.(zip.FileHeader)
+	// Assume that `sourceCQL` has the underlying type of `fromFileHeader260`:
+	fromFileHeader260 := sourceCQL.(zip.FileHeader)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromFileHeader614` to the result `intoFileInfo617`
-	// (`intoFileInfo617` is now tainted).
-	intoFileInfo617 := fromFileHeader614.FileInfo()
+	// from the receiver `fromFileHeader260` to the result `intoFileInfo977`
+	// (`intoFileInfo977` is now tainted).
+	intoFileInfo977 := fromFileHeader260.FileInfo()
 
-	// Sink the tainted `intoFileInfo617`:
-	sink(intoFileInfo617)
+	// Return the tainted `intoFileInfo977`:
+	return intoFileInfo977
 }
 
-func TaintStepTest_ArchiveZipFileHeaderMode_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromFileHeader428` into `intoFileMode138`.
+func TaintStepTest_ArchiveZipFileHeaderMode_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromFileHeader341` into `intoFileMode534`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromFileHeader428`:
-	fromFileHeader428 := sourceCQL.(zip.FileHeader)
+	// Assume that `sourceCQL` has the underlying type of `fromFileHeader341`:
+	fromFileHeader341 := sourceCQL.(zip.FileHeader)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromFileHeader428` to the result `intoFileMode138`
-	// (`intoFileMode138` is now tainted).
-	intoFileMode138 := fromFileHeader428.Mode()
+	// from the receiver `fromFileHeader341` to the result `intoFileMode534`
+	// (`intoFileMode534` is now tainted).
+	intoFileMode534 := fromFileHeader341.Mode()
 
-	// Sink the tainted `intoFileMode138`:
-	sink(intoFileMode138)
+	// Return the tainted `intoFileMode534`:
+	return intoFileMode534
 }
 
-func TaintStepTest_ArchiveZipFileHeaderSetMode_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromFileMode871` into `intoFileHeader415`.
+func TaintStepTest_ArchiveZipFileHeaderSetMode_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromFileMode854` into `intoFileHeader764`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromFileMode871`:
-	fromFileMode871 := sourceCQL.(os.FileMode)
+	// Assume that `sourceCQL` has the underlying type of `fromFileMode854`:
+	fromFileMode854 := sourceCQL.(os.FileMode)
 
-	// Declare `intoFileHeader415` variable:
-	var intoFileHeader415 zip.FileHeader
+	// Declare `intoFileHeader764` variable:
+	var intoFileHeader764 zip.FileHeader
 
 	// Call the method that transfers the taint
-	// from the parameter `fromFileMode871` to the receiver `intoFileHeader415`
-	// (`intoFileHeader415` is now tainted).
-	intoFileHeader415.SetMode(fromFileMode871)
+	// from the parameter `fromFileMode854` to the receiver `intoFileHeader764`
+	// (`intoFileHeader764` is now tainted).
+	intoFileHeader764.SetMode(fromFileMode854)
 
-	// Sink the tainted `intoFileHeader415`:
-	sink(intoFileHeader415)
+	// Return the tainted `intoFileHeader764`:
+	return intoFileHeader764
 }
 
-func TaintStepTest_ArchiveZipReaderRegisterDecompressor_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromDecompressor868` into `intoReader151`.
+func TaintStepTest_ArchiveZipReaderRegisterDecompressor_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromDecompressor946` into `intoReader679`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromDecompressor868`:
-	fromDecompressor868 := sourceCQL.(zip.Decompressor)
+	// Assume that `sourceCQL` has the underlying type of `fromDecompressor946`:
+	fromDecompressor946 := sourceCQL.(zip.Decompressor)
 
-	// Declare `intoReader151` variable:
-	var intoReader151 zip.Reader
+	// Declare `intoReader679` variable:
+	var intoReader679 zip.Reader
 
 	// Call the method that transfers the taint
-	// from the parameter `fromDecompressor868` to the receiver `intoReader151`
-	// (`intoReader151` is now tainted).
-	intoReader151.RegisterDecompressor(0, fromDecompressor868)
+	// from the parameter `fromDecompressor946` to the receiver `intoReader679`
+	// (`intoReader679` is now tainted).
+	intoReader679.RegisterDecompressor(0, fromDecompressor946)
 
-	// Sink the tainted `intoReader151`:
-	sink(intoReader151)
+	// Return the tainted `intoReader679`:
+	return intoReader679
 }
 
-func TaintStepTest_ArchiveZipWriterCreate_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromWriter379` into `intoWriter536`.
+func TaintStepTest_ArchiveZipWriterCreate_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromWriter262` into `intoWriter934`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriter379`:
-	fromWriter379 := sourceCQL.(io.Writer)
+	// Assume that `sourceCQL` has the underlying type of `fromWriter262`:
+	fromWriter262 := sourceCQL.(io.Writer)
 
-	// Declare `intoWriter536` variable:
-	var intoWriter536 zip.Writer
+	// Declare `intoWriter934` variable:
+	var intoWriter934 zip.Writer
 
 	// Call the method that will transfer the taint
-	// from the result `intermediateCQL` to receiver `intoWriter536`:
-	intermediateCQL, _ := intoWriter536.Create("")
+	// from the result `intermediateCQL` to receiver `intoWriter934`:
+	intermediateCQL, _ := intoWriter934.Create("")
 
-	// Extra step (`fromWriter379` taints `intermediateCQL`, which taints `intoWriter536`:
-	link(fromWriter379, intermediateCQL)
+	// Extra step (`fromWriter262` taints `intermediateCQL`, which taints `intoWriter934`:
+	link(fromWriter262, intermediateCQL)
 
-	// Sink the tainted `intoWriter536`:
-	sink(intoWriter536)
+	// Return the tainted `intoWriter934`:
+	return intoWriter934
 }
 
-func TaintStepTest_ArchiveZipWriterCreateHeader_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromFileHeader759` into `intoWriter313`.
+func TaintStepTest_ArchiveZipWriterCreateHeader_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromFileHeader995` into `intoWriter561`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromFileHeader759`:
-	fromFileHeader759 := sourceCQL.(*zip.FileHeader)
+	// Assume that `sourceCQL` has the underlying type of `fromFileHeader995`:
+	fromFileHeader995 := sourceCQL.(*zip.FileHeader)
 
-	// Declare `intoWriter313` variable:
-	var intoWriter313 zip.Writer
+	// Declare `intoWriter561` variable:
+	var intoWriter561 zip.Writer
 
 	// Call the method that transfers the taint
-	// from the parameter `fromFileHeader759` to the receiver `intoWriter313`
-	// (`intoWriter313` is now tainted).
-	intoWriter313.CreateHeader(fromFileHeader759)
+	// from the parameter `fromFileHeader995` to the receiver `intoWriter561`
+	// (`intoWriter561` is now tainted).
+	intoWriter561.CreateHeader(fromFileHeader995)
 
-	// Sink the tainted `intoWriter313`:
-	sink(intoWriter313)
+	// Return the tainted `intoWriter561`:
+	return intoWriter561
 }
 
-func TaintStepTest_ArchiveZipWriterCreateHeader_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromWriter658` into `intoWriter155`.
+func TaintStepTest_ArchiveZipWriterCreateHeader_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromWriter365` into `intoWriter832`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriter658`:
-	fromWriter658 := sourceCQL.(io.Writer)
+	// Assume that `sourceCQL` has the underlying type of `fromWriter365`:
+	fromWriter365 := sourceCQL.(io.Writer)
 
-	// Declare `intoWriter155` variable:
-	var intoWriter155 zip.Writer
+	// Declare `intoWriter832` variable:
+	var intoWriter832 zip.Writer
 
 	// Call the method that will transfer the taint
-	// from the result `intermediateCQL` to receiver `intoWriter155`:
-	intermediateCQL, _ := intoWriter155.CreateHeader(nil)
+	// from the result `intermediateCQL` to receiver `intoWriter832`:
+	intermediateCQL, _ := intoWriter832.CreateHeader(nil)
 
-	// Extra step (`fromWriter658` taints `intermediateCQL`, which taints `intoWriter155`:
-	link(fromWriter658, intermediateCQL)
+	// Extra step (`fromWriter365` taints `intermediateCQL`, which taints `intoWriter832`:
+	link(fromWriter365, intermediateCQL)
 
-	// Sink the tainted `intoWriter155`:
-	sink(intoWriter155)
+	// Return the tainted `intoWriter832`:
+	return intoWriter832
 }
 
-func TaintStepTest_ArchiveZipWriterRegisterCompressor_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromCompressor967` into `intoWriter713`.
+func TaintStepTest_ArchiveZipWriterRegisterCompressor_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromCompressor406` into `intoWriter903`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromCompressor967`:
-	fromCompressor967 := sourceCQL.(zip.Compressor)
+	// Assume that `sourceCQL` has the underlying type of `fromCompressor406`:
+	fromCompressor406 := sourceCQL.(zip.Compressor)
 
-	// Declare `intoWriter713` variable:
-	var intoWriter713 zip.Writer
+	// Declare `intoWriter903` variable:
+	var intoWriter903 zip.Writer
 
 	// Call the method that transfers the taint
-	// from the parameter `fromCompressor967` to the receiver `intoWriter713`
-	// (`intoWriter713` is now tainted).
-	intoWriter713.RegisterCompressor(0, fromCompressor967)
+	// from the parameter `fromCompressor406` to the receiver `intoWriter903`
+	// (`intoWriter903` is now tainted).
+	intoWriter903.RegisterCompressor(0, fromCompressor406)
 
-	// Sink the tainted `intoWriter713`:
-	sink(intoWriter713)
+	// Return the tainted `intoWriter903`:
+	return intoWriter903
 }
 
-func TaintStepTest_ArchiveZipWriterSetComment_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString773` into `intoWriter180`.
+func TaintStepTest_ArchiveZipWriterSetComment_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString992` into `intoWriter299`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString773`:
-	fromString773 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString992`:
+	fromString992 := sourceCQL.(string)
 
-	// Declare `intoWriter180` variable:
-	var intoWriter180 zip.Writer
+	// Declare `intoWriter299` variable:
+	var intoWriter299 zip.Writer
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString773` to the receiver `intoWriter180`
-	// (`intoWriter180` is now tainted).
-	intoWriter180.SetComment(fromString773)
+	// from the parameter `fromString992` to the receiver `intoWriter299`
+	// (`intoWriter299` is now tainted).
+	intoWriter299.SetComment(fromString992)
 
-	// Sink the tainted `intoWriter180`:
-	sink(intoWriter180)
+	// Return the tainted `intoWriter299`:
+	return intoWriter299
 }
 
 func RunAllTaints_ArchiveZip() {
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_ArchiveZipFileInfoHeader_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_ArchiveZipFileInfoHeader_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_ArchiveZipNewReader_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_ArchiveZipNewReader_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_ArchiveZipNewWriter_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_ArchiveZipNewWriter_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_ArchiveZipOpenReader_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_ArchiveZipOpenReader_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_ArchiveZipFileOpen_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_ArchiveZipFileOpen_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_ArchiveZipFileHeaderFileInfo_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_ArchiveZipFileHeaderFileInfo_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_ArchiveZipFileHeaderMode_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_ArchiveZipFileHeaderMode_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_ArchiveZipFileHeaderSetMode_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_ArchiveZipFileHeaderSetMode_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_ArchiveZipReaderRegisterDecompressor_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_ArchiveZipReaderRegisterDecompressor_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_ArchiveZipWriterCreate_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_ArchiveZipWriterCreate_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_ArchiveZipWriterCreateHeader_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_ArchiveZipWriterCreateHeader_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_ArchiveZipWriterCreateHeader_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_ArchiveZipWriterCreateHeader_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_ArchiveZipWriterRegisterCompressor_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_ArchiveZipWriterRegisterCompressor_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_ArchiveZipWriterSetComment_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_ArchiveZipWriterSetComment_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 }

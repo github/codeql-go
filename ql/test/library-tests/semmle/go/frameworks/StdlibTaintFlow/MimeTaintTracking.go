@@ -2,147 +2,175 @@ package main
 
 import "mime"
 
-func TaintStepTest_MimeFormatMediaType_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString687` into `intoString419`.
+func TaintStepTest_MimeFormatMediaType_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString884` into `intoString437`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString687`:
-	fromString687 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString687` to result `intoString419`
-	// (`intoString419` is now tainted).
-	intoString419 := mime.FormatMediaType(fromString687, nil)
-
-	// Sink the tainted `intoString419`:
-	sink(intoString419)
-}
-
-func TaintStepTest_MimeFormatMediaType_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromMapstringstring894` into `intoString410`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromMapstringstring894`:
-	fromMapstringstring894 := sourceCQL.(map[string]string)
+	// Assume that `sourceCQL` has the underlying type of `fromString884`:
+	fromString884 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromMapstringstring894` to result `intoString410`
-	// (`intoString410` is now tainted).
-	intoString410 := mime.FormatMediaType("", fromMapstringstring894)
+	// from the parameter `fromString884` to result `intoString437`
+	// (`intoString437` is now tainted).
+	intoString437 := mime.FormatMediaType(fromString884, nil)
 
-	// Sink the tainted `intoString410`:
-	sink(intoString410)
+	// Return the tainted `intoString437`:
+	return intoString437
 }
 
-func TaintStepTest_MimeParseMediaType_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString298` into `intoString986`.
+func TaintStepTest_MimeFormatMediaType_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromMapstringstring280` into `intoString354`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString298`:
-	fromString298 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromMapstringstring280`:
+	fromMapstringstring280 := sourceCQL.(map[string]string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString298` to result `intoString986`
-	// (`intoString986` is now tainted).
-	intoString986, _, _ := mime.ParseMediaType(fromString298)
+	// from the parameter `fromMapstringstring280` to result `intoString354`
+	// (`intoString354` is now tainted).
+	intoString354 := mime.FormatMediaType("", fromMapstringstring280)
 
-	// Sink the tainted `intoString986`:
-	sink(intoString986)
+	// Return the tainted `intoString354`:
+	return intoString354
 }
 
-func TaintStepTest_MimeParseMediaType_B0I0O1(sourceCQL interface{}) {
-	// The flow is from `fromString310` into `intoMapstringstring600`.
+func TaintStepTest_MimeParseMediaType_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString508` into `intoString806`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString310`:
-	fromString310 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString508`:
+	fromString508 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString310` to result `intoMapstringstring600`
-	// (`intoMapstringstring600` is now tainted).
-	_, intoMapstringstring600, _ := mime.ParseMediaType(fromString310)
+	// from the parameter `fromString508` to result `intoString806`
+	// (`intoString806` is now tainted).
+	intoString806, _, _ := mime.ParseMediaType(fromString508)
 
-	// Sink the tainted `intoMapstringstring600`:
-	sink(intoMapstringstring600)
+	// Return the tainted `intoString806`:
+	return intoString806
 }
 
-func TaintStepTest_MimeWordDecoderDecode_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString438` into `intoString587`.
+func TaintStepTest_MimeParseMediaType_B0I0O1(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString521` into `intoMapstringstring871`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString438`:
-	fromString438 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString521`:
+	fromString521 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString521` to result `intoMapstringstring871`
+	// (`intoMapstringstring871` is now tainted).
+	_, intoMapstringstring871, _ := mime.ParseMediaType(fromString521)
+
+	// Return the tainted `intoMapstringstring871`:
+	return intoMapstringstring871
+}
+
+func TaintStepTest_MimeWordDecoderDecode_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString112` into `intoString524`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString112`:
+	fromString112 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL mime.WordDecoder
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString438` to the result `intoString587`
-	// (`intoString587` is now tainted).
-	intoString587, _ := mediumObjCQL.Decode(fromString438)
+	// from the parameter `fromString112` to the result `intoString524`
+	// (`intoString524` is now tainted).
+	intoString524, _ := mediumObjCQL.Decode(fromString112)
 
-	// Sink the tainted `intoString587`:
-	sink(intoString587)
+	// Return the tainted `intoString524`:
+	return intoString524
 }
 
-func TaintStepTest_MimeWordDecoderDecodeHeader_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString567` into `intoString479`.
+func TaintStepTest_MimeWordDecoderDecodeHeader_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString586` into `intoString976`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString567`:
-	fromString567 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString586`:
+	fromString586 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL mime.WordDecoder
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString567` to the result `intoString479`
-	// (`intoString479` is now tainted).
-	intoString479, _ := mediumObjCQL.DecodeHeader(fromString567)
+	// from the parameter `fromString586` to the result `intoString976`
+	// (`intoString976` is now tainted).
+	intoString976, _ := mediumObjCQL.DecodeHeader(fromString586)
 
-	// Sink the tainted `intoString479`:
-	sink(intoString479)
+	// Return the tainted `intoString976`:
+	return intoString976
 }
 
-func TaintStepTest_MimeWordEncoderEncode_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString357` into `intoString426`.
+func TaintStepTest_MimeWordEncoderEncode_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString315` into `intoString262`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString357`:
-	fromString357 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString315`:
+	fromString315 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL mime.WordEncoder
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString357` to the result `intoString426`
-	// (`intoString426` is now tainted).
-	intoString426 := mediumObjCQL.Encode("", fromString357)
+	// from the parameter `fromString315` to the result `intoString262`
+	// (`intoString262` is now tainted).
+	intoString262 := mediumObjCQL.Encode("", fromString315)
 
-	// Sink the tainted `intoString426`:
-	sink(intoString426)
+	// Return the tainted `intoString262`:
+	return intoString262
 }
 
 func RunAllTaints_Mime() {
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_MimeFormatMediaType_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_MimeFormatMediaType_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_MimeFormatMediaType_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_MimeFormatMediaType_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_MimeParseMediaType_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_MimeParseMediaType_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_MimeParseMediaType_B0I0O1(source)
+		// Run the taint scenario:
+		out := TaintStepTest_MimeParseMediaType_B0I0O1(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_MimeWordDecoderDecode_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_MimeWordDecoderDecode_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_MimeWordDecoderDecodeHeader_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_MimeWordDecoderDecodeHeader_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_MimeWordEncoderEncode_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_MimeWordEncoderEncode_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 }

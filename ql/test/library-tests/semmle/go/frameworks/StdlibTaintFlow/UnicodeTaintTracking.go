@@ -2,166 +2,198 @@ package main
 
 import "unicode"
 
-func TaintStepTest_UnicodeSimpleFold_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromRune453` into `intoRune253`.
+func TaintStepTest_UnicodeSimpleFold_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRune997` into `intoRune571`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRune453`:
-	fromRune453 := sourceCQL.(rune)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromRune453` to result `intoRune253`
-	// (`intoRune253` is now tainted).
-	intoRune253 := unicode.SimpleFold(fromRune453)
-
-	// Sink the tainted `intoRune253`:
-	sink(intoRune253)
-}
-
-func TaintStepTest_UnicodeTo_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromRune314` into `intoRune977`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromRune314`:
-	fromRune314 := sourceCQL.(rune)
+	// Assume that `sourceCQL` has the underlying type of `fromRune997`:
+	fromRune997 := sourceCQL.(rune)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromRune314` to result `intoRune977`
-	// (`intoRune977` is now tainted).
-	intoRune977 := unicode.To(0, fromRune314)
+	// from the parameter `fromRune997` to result `intoRune571`
+	// (`intoRune571` is now tainted).
+	intoRune571 := unicode.SimpleFold(fromRune997)
 
-	// Sink the tainted `intoRune977`:
-	sink(intoRune977)
+	// Return the tainted `intoRune571`:
+	return intoRune571
 }
 
-func TaintStepTest_UnicodeToLower_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromRune550` into `intoRune283`.
+func TaintStepTest_UnicodeTo_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRune597` into `intoRune134`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRune550`:
-	fromRune550 := sourceCQL.(rune)
+	// Assume that `sourceCQL` has the underlying type of `fromRune597`:
+	fromRune597 := sourceCQL.(rune)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromRune550` to result `intoRune283`
-	// (`intoRune283` is now tainted).
-	intoRune283 := unicode.ToLower(fromRune550)
+	// from the parameter `fromRune597` to result `intoRune134`
+	// (`intoRune134` is now tainted).
+	intoRune134 := unicode.To(0, fromRune597)
 
-	// Sink the tainted `intoRune283`:
-	sink(intoRune283)
+	// Return the tainted `intoRune134`:
+	return intoRune134
 }
 
-func TaintStepTest_UnicodeToTitle_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromRune506` into `intoRune274`.
+func TaintStepTest_UnicodeToLower_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRune744` into `intoRune368`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRune506`:
-	fromRune506 := sourceCQL.(rune)
+	// Assume that `sourceCQL` has the underlying type of `fromRune744`:
+	fromRune744 := sourceCQL.(rune)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromRune506` to result `intoRune274`
-	// (`intoRune274` is now tainted).
-	intoRune274 := unicode.ToTitle(fromRune506)
+	// from the parameter `fromRune744` to result `intoRune368`
+	// (`intoRune368` is now tainted).
+	intoRune368 := unicode.ToLower(fromRune744)
 
-	// Sink the tainted `intoRune274`:
-	sink(intoRune274)
+	// Return the tainted `intoRune368`:
+	return intoRune368
 }
 
-func TaintStepTest_UnicodeToUpper_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromRune393` into `intoRune408`.
+func TaintStepTest_UnicodeToTitle_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRune152` into `intoRune971`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRune393`:
-	fromRune393 := sourceCQL.(rune)
+	// Assume that `sourceCQL` has the underlying type of `fromRune152`:
+	fromRune152 := sourceCQL.(rune)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromRune393` to result `intoRune408`
-	// (`intoRune408` is now tainted).
-	intoRune408 := unicode.ToUpper(fromRune393)
+	// from the parameter `fromRune152` to result `intoRune971`
+	// (`intoRune971` is now tainted).
+	intoRune971 := unicode.ToTitle(fromRune152)
 
-	// Sink the tainted `intoRune408`:
-	sink(intoRune408)
+	// Return the tainted `intoRune971`:
+	return intoRune971
 }
 
-func TaintStepTest_UnicodeSpecialCaseToLower_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromRune577` into `intoRune154`.
+func TaintStepTest_UnicodeToUpper_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRune414` into `intoRune338`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRune577`:
-	fromRune577 := sourceCQL.(rune)
+	// Assume that `sourceCQL` has the underlying type of `fromRune414`:
+	fromRune414 := sourceCQL.(rune)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromRune414` to result `intoRune338`
+	// (`intoRune338` is now tainted).
+	intoRune338 := unicode.ToUpper(fromRune414)
+
+	// Return the tainted `intoRune338`:
+	return intoRune338
+}
+
+func TaintStepTest_UnicodeSpecialCaseToLower_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRune677` into `intoRune338`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromRune677`:
+	fromRune677 := sourceCQL.(rune)
 
 	// Declare medium object/interface:
 	var mediumObjCQL unicode.SpecialCase
 
 	// Call the method that transfers the taint
-	// from the parameter `fromRune577` to the result `intoRune154`
-	// (`intoRune154` is now tainted).
-	intoRune154 := mediumObjCQL.ToLower(fromRune577)
+	// from the parameter `fromRune677` to the result `intoRune338`
+	// (`intoRune338` is now tainted).
+	intoRune338 := mediumObjCQL.ToLower(fromRune677)
 
-	// Sink the tainted `intoRune154`:
-	sink(intoRune154)
+	// Return the tainted `intoRune338`:
+	return intoRune338
 }
 
-func TaintStepTest_UnicodeSpecialCaseToTitle_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromRune185` into `intoRune374`.
+func TaintStepTest_UnicodeSpecialCaseToTitle_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRune576` into `intoRune898`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRune185`:
-	fromRune185 := sourceCQL.(rune)
+	// Assume that `sourceCQL` has the underlying type of `fromRune576`:
+	fromRune576 := sourceCQL.(rune)
 
 	// Declare medium object/interface:
 	var mediumObjCQL unicode.SpecialCase
 
 	// Call the method that transfers the taint
-	// from the parameter `fromRune185` to the result `intoRune374`
-	// (`intoRune374` is now tainted).
-	intoRune374 := mediumObjCQL.ToTitle(fromRune185)
+	// from the parameter `fromRune576` to the result `intoRune898`
+	// (`intoRune898` is now tainted).
+	intoRune898 := mediumObjCQL.ToTitle(fromRune576)
 
-	// Sink the tainted `intoRune374`:
-	sink(intoRune374)
+	// Return the tainted `intoRune898`:
+	return intoRune898
 }
 
-func TaintStepTest_UnicodeSpecialCaseToUpper_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromRune344` into `intoRune481`.
+func TaintStepTest_UnicodeSpecialCaseToUpper_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRune374` into `intoRune918`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRune344`:
-	fromRune344 := sourceCQL.(rune)
+	// Assume that `sourceCQL` has the underlying type of `fromRune374`:
+	fromRune374 := sourceCQL.(rune)
 
 	// Declare medium object/interface:
 	var mediumObjCQL unicode.SpecialCase
 
 	// Call the method that transfers the taint
-	// from the parameter `fromRune344` to the result `intoRune481`
-	// (`intoRune481` is now tainted).
-	intoRune481 := mediumObjCQL.ToUpper(fromRune344)
+	// from the parameter `fromRune374` to the result `intoRune918`
+	// (`intoRune918` is now tainted).
+	intoRune918 := mediumObjCQL.ToUpper(fromRune374)
 
-	// Sink the tainted `intoRune481`:
-	sink(intoRune481)
+	// Return the tainted `intoRune918`:
+	return intoRune918
 }
 
 func RunAllTaints_Unicode() {
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_UnicodeSimpleFold_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_UnicodeSimpleFold_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_UnicodeTo_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_UnicodeTo_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_UnicodeToLower_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_UnicodeToLower_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_UnicodeToTitle_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_UnicodeToTitle_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_UnicodeToUpper_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_UnicodeToUpper_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_UnicodeSpecialCaseToLower_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_UnicodeSpecialCaseToLower_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_UnicodeSpecialCaseToTitle_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_UnicodeSpecialCaseToTitle_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_UnicodeSpecialCaseToUpper_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_UnicodeSpecialCaseToUpper_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 }

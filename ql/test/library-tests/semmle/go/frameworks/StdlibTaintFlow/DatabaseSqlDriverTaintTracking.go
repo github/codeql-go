@@ -2,134 +2,158 @@ package main
 
 import "database/sql/driver"
 
-func TaintStepTest_DatabaseSqlDriverNotNullConvertValue_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromInterface739` into `intoValue461`.
+func TaintStepTest_DatabaseSqlDriverNotNullConvertValue_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromInterface844` into `intoValue755`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface739`:
-	fromInterface739 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface844`:
+	fromInterface844 := sourceCQL.(interface{})
 
 	// Declare medium object/interface:
 	var mediumObjCQL driver.NotNull
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface739` to the result `intoValue461`
-	// (`intoValue461` is now tainted).
-	intoValue461, _ := mediumObjCQL.ConvertValue(fromInterface739)
+	// from the parameter `fromInterface844` to the result `intoValue755`
+	// (`intoValue755` is now tainted).
+	intoValue755, _ := mediumObjCQL.ConvertValue(fromInterface844)
 
-	// Sink the tainted `intoValue461`:
-	sink(intoValue461)
+	// Return the tainted `intoValue755`:
+	return intoValue755
 }
 
-func TaintStepTest_DatabaseSqlDriverNullConvertValue_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromInterface849` into `intoValue310`.
+func TaintStepTest_DatabaseSqlDriverNullConvertValue_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromInterface345` into `intoValue892`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface849`:
-	fromInterface849 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface345`:
+	fromInterface345 := sourceCQL.(interface{})
 
 	// Declare medium object/interface:
 	var mediumObjCQL driver.Null
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface849` to the result `intoValue310`
-	// (`intoValue310` is now tainted).
-	intoValue310, _ := mediumObjCQL.ConvertValue(fromInterface849)
+	// from the parameter `fromInterface345` to the result `intoValue892`
+	// (`intoValue892` is now tainted).
+	intoValue892, _ := mediumObjCQL.ConvertValue(fromInterface345)
 
-	// Sink the tainted `intoValue310`:
-	sink(intoValue310)
+	// Return the tainted `intoValue892`:
+	return intoValue892
 }
 
-func TaintStepTest_DatabaseSqlDriverValueConverterConvertValue_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromInterface234` into `intoValue778`.
+func TaintStepTest_DatabaseSqlDriverValueConverterConvertValue_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromInterface427` into `intoValue264`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface234`:
-	fromInterface234 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface427`:
+	fromInterface427 := sourceCQL.(interface{})
 
 	// Declare medium object/interface:
 	var mediumObjCQL driver.ValueConverter
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface234` to the result `intoValue778`
-	// (`intoValue778` is now tainted).
-	intoValue778, _ := mediumObjCQL.ConvertValue(fromInterface234)
+	// from the parameter `fromInterface427` to the result `intoValue264`
+	// (`intoValue264` is now tainted).
+	intoValue264, _ := mediumObjCQL.ConvertValue(fromInterface427)
 
-	// Sink the tainted `intoValue778`:
-	sink(intoValue778)
+	// Return the tainted `intoValue264`:
+	return intoValue264
 }
 
-func TaintStepTest_DatabaseSqlDriverConnPrepare_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString479` into `intoStmt958`.
+func TaintStepTest_DatabaseSqlDriverConnPrepare_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString304` into `intoStmt792`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString479`:
-	fromString479 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString304`:
+	fromString304 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL driver.Conn
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString479` to the result `intoStmt958`
-	// (`intoStmt958` is now tainted).
-	intoStmt958, _ := mediumObjCQL.Prepare(fromString479)
+	// from the parameter `fromString304` to the result `intoStmt792`
+	// (`intoStmt792` is now tainted).
+	intoStmt792, _ := mediumObjCQL.Prepare(fromString304)
 
-	// Sink the tainted `intoStmt958`:
-	sink(intoStmt958)
+	// Return the tainted `intoStmt792`:
+	return intoStmt792
 }
 
-func TaintStepTest_DatabaseSqlDriverConnPrepareContextPrepareContext_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString368` into `intoStmt853`.
+func TaintStepTest_DatabaseSqlDriverConnPrepareContextPrepareContext_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString383` into `intoStmt350`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString368`:
-	fromString368 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString383`:
+	fromString383 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL driver.ConnPrepareContext
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString368` to the result `intoStmt853`
-	// (`intoStmt853` is now tainted).
-	intoStmt853, _ := mediumObjCQL.PrepareContext(nil, fromString368)
+	// from the parameter `fromString383` to the result `intoStmt350`
+	// (`intoStmt350` is now tainted).
+	intoStmt350, _ := mediumObjCQL.PrepareContext(nil, fromString383)
 
-	// Sink the tainted `intoStmt853`:
-	sink(intoStmt853)
+	// Return the tainted `intoStmt350`:
+	return intoStmt350
 }
 
-func TaintStepTest_DatabaseSqlDriverValuerValue_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromValuer463` into `intoValue165`.
+func TaintStepTest_DatabaseSqlDriverValuerValue_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromValuer627` into `intoValue742`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromValuer463`:
-	fromValuer463 := sourceCQL.(driver.Valuer)
+	// Assume that `sourceCQL` has the underlying type of `fromValuer627`:
+	fromValuer627 := sourceCQL.(driver.Valuer)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromValuer463` to the result `intoValue165`
-	// (`intoValue165` is now tainted).
-	intoValue165, _ := fromValuer463.Value()
+	// from the receiver `fromValuer627` to the result `intoValue742`
+	// (`intoValue742` is now tainted).
+	intoValue742, _ := fromValuer627.Value()
 
-	// Sink the tainted `intoValue165`:
-	sink(intoValue165)
+	// Return the tainted `intoValue742`:
+	return intoValue742
 }
 
 func RunAllTaints_DatabaseSqlDriver() {
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_DatabaseSqlDriverNotNullConvertValue_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_DatabaseSqlDriverNotNullConvertValue_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_DatabaseSqlDriverNullConvertValue_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_DatabaseSqlDriverNullConvertValue_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_DatabaseSqlDriverValueConverterConvertValue_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_DatabaseSqlDriverValueConverterConvertValue_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_DatabaseSqlDriverConnPrepare_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_DatabaseSqlDriverConnPrepare_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_DatabaseSqlDriverConnPrepareContextPrepareContext_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_DatabaseSqlDriverConnPrepareContextPrepareContext_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_DatabaseSqlDriverValuerValue_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_DatabaseSqlDriverValuerValue_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 }

@@ -2,163 +2,195 @@ package main
 
 import "crypto/rsa"
 
-func TaintStepTest_CryptoRsaDecryptOAEP_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte221` into `intoByte610`.
+func TaintStepTest_CryptoRsaDecryptOAEP_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte691` into `intoByte976`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte221`:
-	fromByte221 := sourceCQL.([]byte)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromByte221` to result `intoByte610`
-	// (`intoByte610` is now tainted).
-	intoByte610, _ := rsa.DecryptOAEP(nil, nil, nil, fromByte221, nil)
-
-	// Sink the tainted `intoByte610`:
-	sink(intoByte610)
-}
-
-func TaintStepTest_CryptoRsaDecryptPKCS1V15_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte234` into `intoByte114`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte234`:
-	fromByte234 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte691`:
+	fromByte691 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte234` to result `intoByte114`
-	// (`intoByte114` is now tainted).
-	intoByte114, _ := rsa.DecryptPKCS1v15(nil, nil, fromByte234)
+	// from the parameter `fromByte691` to result `intoByte976`
+	// (`intoByte976` is now tainted).
+	intoByte976, _ := rsa.DecryptOAEP(nil, nil, nil, fromByte691, nil)
 
-	// Sink the tainted `intoByte114`:
-	sink(intoByte114)
+	// Return the tainted `intoByte976`:
+	return intoByte976
 }
 
-func TaintStepTest_CryptoRsaEncryptOAEP_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte522` into `intoByte431`.
+func TaintStepTest_CryptoRsaDecryptPKCS1V15_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte480` into `intoByte970`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte522`:
-	fromByte522 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte480`:
+	fromByte480 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte522` to result `intoByte431`
-	// (`intoByte431` is now tainted).
-	intoByte431, _ := rsa.EncryptOAEP(nil, nil, nil, fromByte522, nil)
+	// from the parameter `fromByte480` to result `intoByte970`
+	// (`intoByte970` is now tainted).
+	intoByte970, _ := rsa.DecryptPKCS1v15(nil, nil, fromByte480)
 
-	// Sink the tainted `intoByte431`:
-	sink(intoByte431)
+	// Return the tainted `intoByte970`:
+	return intoByte970
 }
 
-func TaintStepTest_CryptoRsaEncryptPKCS1V15_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte809` into `intoByte950`.
+func TaintStepTest_CryptoRsaEncryptOAEP_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte655` into `intoByte327`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte809`:
-	fromByte809 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte655`:
+	fromByte655 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte809` to result `intoByte950`
-	// (`intoByte950` is now tainted).
-	intoByte950, _ := rsa.EncryptPKCS1v15(nil, nil, fromByte809)
+	// from the parameter `fromByte655` to result `intoByte327`
+	// (`intoByte327` is now tainted).
+	intoByte327, _ := rsa.EncryptOAEP(nil, nil, nil, fromByte655, nil)
 
-	// Sink the tainted `intoByte950`:
-	sink(intoByte950)
+	// Return the tainted `intoByte327`:
+	return intoByte327
 }
 
-func TaintStepTest_CryptoRsaSignPKCS1V15_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte271` into `intoByte368`.
+func TaintStepTest_CryptoRsaEncryptPKCS1V15_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte181` into `intoByte953`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte271`:
-	fromByte271 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte181`:
+	fromByte181 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte271` to result `intoByte368`
-	// (`intoByte368` is now tainted).
-	intoByte368, _ := rsa.SignPKCS1v15(nil, nil, 0, fromByte271)
+	// from the parameter `fromByte181` to result `intoByte953`
+	// (`intoByte953` is now tainted).
+	intoByte953, _ := rsa.EncryptPKCS1v15(nil, nil, fromByte181)
 
-	// Sink the tainted `intoByte368`:
-	sink(intoByte368)
+	// Return the tainted `intoByte953`:
+	return intoByte953
 }
 
-func TaintStepTest_CryptoRsaSignPSS_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte665` into `intoByte257`.
+func TaintStepTest_CryptoRsaSignPKCS1V15_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte459` into `intoByte740`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte665`:
-	fromByte665 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte459`:
+	fromByte459 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte665` to result `intoByte257`
-	// (`intoByte257` is now tainted).
-	intoByte257, _ := rsa.SignPSS(nil, nil, 0, fromByte665, nil)
+	// from the parameter `fromByte459` to result `intoByte740`
+	// (`intoByte740` is now tainted).
+	intoByte740, _ := rsa.SignPKCS1v15(nil, nil, 0, fromByte459)
 
-	// Sink the tainted `intoByte257`:
-	sink(intoByte257)
+	// Return the tainted `intoByte740`:
+	return intoByte740
 }
 
-func TaintStepTest_CryptoRsaPrivateKeyDecrypt_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte820` into `intoByte558`.
+func TaintStepTest_CryptoRsaSignPSS_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte742` into `intoByte514`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte820`:
-	fromByte820 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte742`:
+	fromByte742 := sourceCQL.([]byte)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromByte742` to result `intoByte514`
+	// (`intoByte514` is now tainted).
+	intoByte514, _ := rsa.SignPSS(nil, nil, 0, fromByte742, nil)
+
+	// Return the tainted `intoByte514`:
+	return intoByte514
+}
+
+func TaintStepTest_CryptoRsaPrivateKeyDecrypt_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte115` into `intoByte823`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte115`:
+	fromByte115 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL rsa.PrivateKey
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte820` to the result `intoByte558`
-	// (`intoByte558` is now tainted).
-	intoByte558, _ := mediumObjCQL.Decrypt(nil, fromByte820, nil)
+	// from the parameter `fromByte115` to the result `intoByte823`
+	// (`intoByte823` is now tainted).
+	intoByte823, _ := mediumObjCQL.Decrypt(nil, fromByte115, nil)
 
-	// Sink the tainted `intoByte558`:
-	sink(intoByte558)
+	// Return the tainted `intoByte823`:
+	return intoByte823
 }
 
-func TaintStepTest_CryptoRsaPrivateKeySign_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte238` into `intoByte878`.
+func TaintStepTest_CryptoRsaPrivateKeySign_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte699` into `intoByte819`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte238`:
-	fromByte238 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte699`:
+	fromByte699 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL rsa.PrivateKey
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte238` to the result `intoByte878`
-	// (`intoByte878` is now tainted).
-	intoByte878, _ := mediumObjCQL.Sign(nil, fromByte238, nil)
+	// from the parameter `fromByte699` to the result `intoByte819`
+	// (`intoByte819` is now tainted).
+	intoByte819, _ := mediumObjCQL.Sign(nil, fromByte699, nil)
 
-	// Sink the tainted `intoByte878`:
-	sink(intoByte878)
+	// Return the tainted `intoByte819`:
+	return intoByte819
 }
 
 func RunAllTaints_CryptoRsa() {
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_CryptoRsaDecryptOAEP_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_CryptoRsaDecryptOAEP_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_CryptoRsaDecryptPKCS1V15_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_CryptoRsaDecryptPKCS1V15_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_CryptoRsaEncryptOAEP_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_CryptoRsaEncryptOAEP_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_CryptoRsaEncryptPKCS1V15_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_CryptoRsaEncryptPKCS1V15_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_CryptoRsaSignPKCS1V15_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_CryptoRsaSignPKCS1V15_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_CryptoRsaSignPSS_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_CryptoRsaSignPSS_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_CryptoRsaPrivateKeyDecrypt_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_CryptoRsaPrivateKeyDecrypt_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_CryptoRsaPrivateKeySign_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_CryptoRsaPrivateKeySign_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 }

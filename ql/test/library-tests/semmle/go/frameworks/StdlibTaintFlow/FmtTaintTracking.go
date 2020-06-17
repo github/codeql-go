@@ -5,503 +5,599 @@ import (
 	"io"
 )
 
-func TaintStepTest_FmtErrorf_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString342` into `intoError527`.
+func TaintStepTest_FmtErrorf_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString245` into `intoError593`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString342`:
-	fromString342 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString342` to result `intoError527`
-	// (`intoError527` is now tainted).
-	intoError527 := fmt.Errorf(fromString342, nil)
-
-	// Sink the tainted `intoError527`:
-	sink(intoError527)
-}
-
-func TaintStepTest_FmtErrorf_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromInterface499` into `intoError440`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromInterface499`:
-	fromInterface499 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromString245`:
+	fromString245 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface499` to result `intoError440`
-	// (`intoError440` is now tainted).
-	intoError440 := fmt.Errorf("", fromInterface499)
+	// from the parameter `fromString245` to result `intoError593`
+	// (`intoError593` is now tainted).
+	intoError593 := fmt.Errorf(fromString245, nil)
 
-	// Sink the tainted `intoError440`:
-	sink(intoError440)
+	// Return the tainted `intoError593`:
+	return intoError593
 }
 
-func TaintStepTest_FmtFprint_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromInterface616` into `intoWriter683`.
+func TaintStepTest_FmtErrorf_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromInterface328` into `intoError975`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface616`:
-	fromInterface616 := sourceCQL.([]interface{})
-
-	// Declare `intoWriter683` variable:
-	var intoWriter683 io.Writer
+	// Assume that `sourceCQL` has the underlying type of `fromInterface328`:
+	fromInterface328 := sourceCQL.(interface{})
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface616` to parameter `intoWriter683`;
-	// `intoWriter683` is now tainted.
-	fmt.Fprint(intoWriter683, fromInterface616)
+	// from the parameter `fromInterface328` to result `intoError975`
+	// (`intoError975` is now tainted).
+	intoError975 := fmt.Errorf("", fromInterface328)
 
-	// Sink the tainted `intoWriter683`:
-	sink(intoWriter683)
+	// Return the tainted `intoError975`:
+	return intoError975
 }
 
-func TaintStepTest_FmtFprintf_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString167` into `intoWriter152`.
+func TaintStepTest_FmtFprint_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromInterface678` into `intoWriter202`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString167`:
-	fromString167 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromInterface678`:
+	fromInterface678 := sourceCQL.(interface{})
 
-	// Declare `intoWriter152` variable:
-	var intoWriter152 io.Writer
+	// Declare `intoWriter202` variable:
+	var intoWriter202 io.Writer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString167` to parameter `intoWriter152`;
-	// `intoWriter152` is now tainted.
-	fmt.Fprintf(intoWriter152, fromString167, nil)
+	// from the parameter `fromInterface678` to parameter `intoWriter202`;
+	// `intoWriter202` is now tainted.
+	fmt.Fprint(intoWriter202, fromInterface678)
 
-	// Sink the tainted `intoWriter152`:
-	sink(intoWriter152)
+	// Return the tainted `intoWriter202`:
+	return intoWriter202
 }
 
-func TaintStepTest_FmtFprintf_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromInterface801` into `intoWriter669`.
+func TaintStepTest_FmtFprintf_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString563` into `intoWriter560`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface801`:
-	fromInterface801 := sourceCQL.([]interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromString563`:
+	fromString563 := sourceCQL.(string)
 
-	// Declare `intoWriter669` variable:
-	var intoWriter669 io.Writer
+	// Declare `intoWriter560` variable:
+	var intoWriter560 io.Writer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface801` to parameter `intoWriter669`;
-	// `intoWriter669` is now tainted.
-	fmt.Fprintf(intoWriter669, "", fromInterface801)
+	// from the parameter `fromString563` to parameter `intoWriter560`;
+	// `intoWriter560` is now tainted.
+	fmt.Fprintf(intoWriter560, fromString563, nil)
 
-	// Sink the tainted `intoWriter669`:
-	sink(intoWriter669)
+	// Return the tainted `intoWriter560`:
+	return intoWriter560
 }
 
-func TaintStepTest_FmtFprintln_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromInterface976` into `intoWriter630`.
+func TaintStepTest_FmtFprintf_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromInterface560` into `intoWriter411`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface976`:
-	fromInterface976 := sourceCQL.([]interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface560`:
+	fromInterface560 := sourceCQL.(interface{})
 
-	// Declare `intoWriter630` variable:
-	var intoWriter630 io.Writer
+	// Declare `intoWriter411` variable:
+	var intoWriter411 io.Writer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface976` to parameter `intoWriter630`;
-	// `intoWriter630` is now tainted.
-	fmt.Fprintln(intoWriter630, fromInterface976)
+	// from the parameter `fromInterface560` to parameter `intoWriter411`;
+	// `intoWriter411` is now tainted.
+	fmt.Fprintf(intoWriter411, "", fromInterface560)
 
-	// Sink the tainted `intoWriter630`:
-	sink(intoWriter630)
+	// Return the tainted `intoWriter411`:
+	return intoWriter411
 }
 
-func TaintStepTest_FmtFscan_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromReader402` into `intoInterface784`.
+func TaintStepTest_FmtFprintln_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromInterface850` into `intoWriter272`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader402`:
-	fromReader402 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromInterface850`:
+	fromInterface850 := sourceCQL.(interface{})
 
-	// Declare `intoInterface784` variable:
-	var intoInterface784 []interface{}
+	// Declare `intoWriter272` variable:
+	var intoWriter272 io.Writer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader402` to parameter `intoInterface784`;
-	// `intoInterface784` is now tainted.
-	fmt.Fscan(fromReader402, intoInterface784)
+	// from the parameter `fromInterface850` to parameter `intoWriter272`;
+	// `intoWriter272` is now tainted.
+	fmt.Fprintln(intoWriter272, fromInterface850)
 
-	// Sink the tainted `intoInterface784`:
-	sink(intoInterface784)
+	// Return the tainted `intoWriter272`:
+	return intoWriter272
 }
 
-func TaintStepTest_FmtFscanf_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromReader679` into `intoInterface127`.
+func TaintStepTest_FmtFscan_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader517` into `intoInterface315`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader679`:
-	fromReader679 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader517`:
+	fromReader517 := sourceCQL.(io.Reader)
 
-	// Declare `intoInterface127` variable:
-	var intoInterface127 []interface{}
+	// Declare `intoInterface315` variable:
+	var intoInterface315 interface{}
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader679` to parameter `intoInterface127`;
-	// `intoInterface127` is now tainted.
-	fmt.Fscanf(fromReader679, "", intoInterface127)
+	// from the parameter `fromReader517` to parameter `intoInterface315`;
+	// `intoInterface315` is now tainted.
+	fmt.Fscan(fromReader517, intoInterface315)
 
-	// Sink the tainted `intoInterface127`:
-	sink(intoInterface127)
+	// Return the tainted `intoInterface315`:
+	return intoInterface315
 }
 
-func TaintStepTest_FmtFscanf_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromString208` into `intoInterface274`.
+func TaintStepTest_FmtFscanf_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader910` into `intoInterface574`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString208`:
-	fromString208 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromReader910`:
+	fromReader910 := sourceCQL.(io.Reader)
 
-	// Declare `intoInterface274` variable:
-	var intoInterface274 []interface{}
+	// Declare `intoInterface574` variable:
+	var intoInterface574 interface{}
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString208` to parameter `intoInterface274`;
-	// `intoInterface274` is now tainted.
-	fmt.Fscanf(nil, fromString208, intoInterface274)
+	// from the parameter `fromReader910` to parameter `intoInterface574`;
+	// `intoInterface574` is now tainted.
+	fmt.Fscanf(fromReader910, "", intoInterface574)
 
-	// Sink the tainted `intoInterface274`:
-	sink(intoInterface274)
+	// Return the tainted `intoInterface574`:
+	return intoInterface574
 }
 
-func TaintStepTest_FmtFscanln_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromReader332` into `intoInterface177`.
+func TaintStepTest_FmtFscanf_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString915` into `intoInterface408`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader332`:
-	fromReader332 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromString915`:
+	fromString915 := sourceCQL.(string)
 
-	// Declare `intoInterface177` variable:
-	var intoInterface177 []interface{}
+	// Declare `intoInterface408` variable:
+	var intoInterface408 interface{}
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader332` to parameter `intoInterface177`;
-	// `intoInterface177` is now tainted.
-	fmt.Fscanln(fromReader332, intoInterface177)
+	// from the parameter `fromString915` to parameter `intoInterface408`;
+	// `intoInterface408` is now tainted.
+	fmt.Fscanf(nil, fromString915, intoInterface408)
 
-	// Sink the tainted `intoInterface177`:
-	sink(intoInterface177)
+	// Return the tainted `intoInterface408`:
+	return intoInterface408
 }
 
-func TaintStepTest_FmtSprint_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromInterface841` into `intoString300`.
+func TaintStepTest_FmtFscanln_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader694` into `intoInterface648`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface841`:
-	fromInterface841 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromReader694`:
+	fromReader694 := sourceCQL.(io.Reader)
+
+	// Declare `intoInterface648` variable:
+	var intoInterface648 interface{}
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface841` to result `intoString300`
-	// (`intoString300` is now tainted).
-	intoString300 := fmt.Sprint(fromInterface841)
+	// from the parameter `fromReader694` to parameter `intoInterface648`;
+	// `intoInterface648` is now tainted.
+	fmt.Fscanln(fromReader694, intoInterface648)
 
-	// Sink the tainted `intoString300`:
-	sink(intoString300)
+	// Return the tainted `intoInterface648`:
+	return intoInterface648
 }
 
-func TaintStepTest_FmtSprintf_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString235` into `intoString140`.
+func TaintStepTest_FmtSprint_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromInterface324` into `intoString770`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString235`:
-	fromString235 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromInterface324`:
+	fromInterface324 := sourceCQL.(interface{})
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString235` to result `intoString140`
-	// (`intoString140` is now tainted).
-	intoString140 := fmt.Sprintf(fromString235, nil)
+	// from the parameter `fromInterface324` to result `intoString770`
+	// (`intoString770` is now tainted).
+	intoString770 := fmt.Sprint(fromInterface324)
 
-	// Sink the tainted `intoString140`:
-	sink(intoString140)
+	// Return the tainted `intoString770`:
+	return intoString770
 }
 
-func TaintStepTest_FmtSprintf_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromInterface506` into `intoString833`.
+func TaintStepTest_FmtSprintf_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString141` into `intoString895`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface506`:
-	fromInterface506 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromString141`:
+	fromString141 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface506` to result `intoString833`
-	// (`intoString833` is now tainted).
-	intoString833 := fmt.Sprintf("", fromInterface506)
+	// from the parameter `fromString141` to result `intoString895`
+	// (`intoString895` is now tainted).
+	intoString895 := fmt.Sprintf(fromString141, nil)
 
-	// Sink the tainted `intoString833`:
-	sink(intoString833)
+	// Return the tainted `intoString895`:
+	return intoString895
 }
 
-func TaintStepTest_FmtSprintln_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromInterface375` into `intoString181`.
+func TaintStepTest_FmtSprintf_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromInterface256` into `intoString730`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface375`:
-	fromInterface375 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface256`:
+	fromInterface256 := sourceCQL.(interface{})
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface375` to result `intoString181`
-	// (`intoString181` is now tainted).
-	intoString181 := fmt.Sprintln(fromInterface375)
+	// from the parameter `fromInterface256` to result `intoString730`
+	// (`intoString730` is now tainted).
+	intoString730 := fmt.Sprintf("", fromInterface256)
 
-	// Sink the tainted `intoString181`:
-	sink(intoString181)
+	// Return the tainted `intoString730`:
+	return intoString730
 }
 
-func TaintStepTest_FmtSscan_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString620` into `intoInterface355`.
+func TaintStepTest_FmtSprintln_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromInterface539` into `intoString977`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString620`:
-	fromString620 := sourceCQL.(string)
-
-	// Declare `intoInterface355` variable:
-	var intoInterface355 []interface{}
+	// Assume that `sourceCQL` has the underlying type of `fromInterface539`:
+	fromInterface539 := sourceCQL.(interface{})
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString620` to parameter `intoInterface355`;
-	// `intoInterface355` is now tainted.
-	fmt.Sscan(fromString620, intoInterface355)
+	// from the parameter `fromInterface539` to result `intoString977`
+	// (`intoString977` is now tainted).
+	intoString977 := fmt.Sprintln(fromInterface539)
 
-	// Sink the tainted `intoInterface355`:
-	sink(intoInterface355)
+	// Return the tainted `intoString977`:
+	return intoString977
 }
 
-func TaintStepTest_FmtSscanf_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString433` into `intoInterface453`.
+func TaintStepTest_FmtSscan_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString282` into `intoInterface920`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString433`:
-	fromString433 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString282`:
+	fromString282 := sourceCQL.(string)
 
-	// Declare `intoInterface453` variable:
-	var intoInterface453 []interface{}
+	// Declare `intoInterface920` variable:
+	var intoInterface920 interface{}
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString433` to parameter `intoInterface453`;
-	// `intoInterface453` is now tainted.
-	fmt.Sscanf(fromString433, "", intoInterface453)
+	// from the parameter `fromString282` to parameter `intoInterface920`;
+	// `intoInterface920` is now tainted.
+	fmt.Sscan(fromString282, intoInterface920)
 
-	// Sink the tainted `intoInterface453`:
-	sink(intoInterface453)
+	// Return the tainted `intoInterface920`:
+	return intoInterface920
 }
 
-func TaintStepTest_FmtSscanf_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromString868` into `intoInterface624`.
+func TaintStepTest_FmtSscanf_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString190` into `intoInterface631`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString868`:
-	fromString868 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString190`:
+	fromString190 := sourceCQL.(string)
 
-	// Declare `intoInterface624` variable:
-	var intoInterface624 []interface{}
+	// Declare `intoInterface631` variable:
+	var intoInterface631 interface{}
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString868` to parameter `intoInterface624`;
-	// `intoInterface624` is now tainted.
-	fmt.Sscanf("", fromString868, intoInterface624)
+	// from the parameter `fromString190` to parameter `intoInterface631`;
+	// `intoInterface631` is now tainted.
+	fmt.Sscanf(fromString190, "", intoInterface631)
 
-	// Sink the tainted `intoInterface624`:
-	sink(intoInterface624)
+	// Return the tainted `intoInterface631`:
+	return intoInterface631
 }
 
-func TaintStepTest_FmtSscanln_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString559` into `intoInterface873`.
+func TaintStepTest_FmtSscanf_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString792` into `intoInterface515`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString559`:
-	fromString559 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString792`:
+	fromString792 := sourceCQL.(string)
 
-	// Declare `intoInterface873` variable:
-	var intoInterface873 []interface{}
+	// Declare `intoInterface515` variable:
+	var intoInterface515 interface{}
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString559` to parameter `intoInterface873`;
-	// `intoInterface873` is now tainted.
-	fmt.Sscanln(fromString559, intoInterface873)
+	// from the parameter `fromString792` to parameter `intoInterface515`;
+	// `intoInterface515` is now tainted.
+	fmt.Sscanf("", fromString792, intoInterface515)
 
-	// Sink the tainted `intoInterface873`:
-	sink(intoInterface873)
+	// Return the tainted `intoInterface515`:
+	return intoInterface515
 }
 
-func TaintStepTest_FmtGoStringerGoString_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromGoStringer326` into `intoString624`.
+func TaintStepTest_FmtSscanln_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString832` into `intoInterface703`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromGoStringer326`:
-	fromGoStringer326 := sourceCQL.(fmt.GoStringer)
+	// Assume that `sourceCQL` has the underlying type of `fromString832`:
+	fromString832 := sourceCQL.(string)
+
+	// Declare `intoInterface703` variable:
+	var intoInterface703 interface{}
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString832` to parameter `intoInterface703`;
+	// `intoInterface703` is now tainted.
+	fmt.Sscanln(fromString832, intoInterface703)
+
+	// Return the tainted `intoInterface703`:
+	return intoInterface703
+}
+
+func TaintStepTest_FmtGoStringerGoString_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromGoStringer410` into `intoString686`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromGoStringer410`:
+	fromGoStringer410 := sourceCQL.(fmt.GoStringer)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromGoStringer326` to the result `intoString624`
-	// (`intoString624` is now tainted).
-	intoString624 := fromGoStringer326.GoString()
+	// from the receiver `fromGoStringer410` to the result `intoString686`
+	// (`intoString686` is now tainted).
+	intoString686 := fromGoStringer410.GoString()
 
-	// Sink the tainted `intoString624`:
-	sink(intoString624)
+	// Return the tainted `intoString686`:
+	return intoString686
 }
 
-func TaintStepTest_FmtScanStateRead_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromScanState821` into `intoByte113`.
+func TaintStepTest_FmtScanStateRead_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromScanState852` into `intoByte390`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromScanState821`:
-	fromScanState821 := sourceCQL.(fmt.ScanState)
+	// Assume that `sourceCQL` has the underlying type of `fromScanState852`:
+	fromScanState852 := sourceCQL.(fmt.ScanState)
 
-	// Declare `intoByte113` variable:
-	var intoByte113 []byte
+	// Declare `intoByte390` variable:
+	var intoByte390 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromScanState821` to the argument `intoByte113`
-	// (`intoByte113` is now tainted).
-	fromScanState821.Read(intoByte113)
+	// from the receiver `fromScanState852` to the argument `intoByte390`
+	// (`intoByte390` is now tainted).
+	fromScanState852.Read(intoByte390)
 
-	// Sink the tainted `intoByte113`:
-	sink(intoByte113)
+	// Return the tainted `intoByte390`:
+	return intoByte390
 }
 
-func TaintStepTest_FmtScanStateReadRune_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromScanState869` into `intoRune281`.
+func TaintStepTest_FmtScanStateReadRune_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromScanState495` into `intoRune377`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromScanState869`:
-	fromScanState869 := sourceCQL.(fmt.ScanState)
+	// Assume that `sourceCQL` has the underlying type of `fromScanState495`:
+	fromScanState495 := sourceCQL.(fmt.ScanState)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromScanState869` to the result `intoRune281`
-	// (`intoRune281` is now tainted).
-	intoRune281, _, _ := fromScanState869.ReadRune()
+	// from the receiver `fromScanState495` to the result `intoRune377`
+	// (`intoRune377` is now tainted).
+	intoRune377, _, _ := fromScanState495.ReadRune()
 
-	// Sink the tainted `intoRune281`:
-	sink(intoRune281)
+	// Return the tainted `intoRune377`:
+	return intoRune377
 }
 
-func TaintStepTest_FmtStringerString_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromStringer874` into `intoString880`.
+func TaintStepTest_FmtStringerString_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromStringer774` into `intoString360`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromStringer874`:
-	fromStringer874 := sourceCQL.(fmt.Stringer)
+	// Assume that `sourceCQL` has the underlying type of `fromStringer774`:
+	fromStringer774 := sourceCQL.(fmt.Stringer)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromStringer874` to the result `intoString880`
-	// (`intoString880` is now tainted).
-	intoString880 := fromStringer874.String()
+	// from the receiver `fromStringer774` to the result `intoString360`
+	// (`intoString360` is now tainted).
+	intoString360 := fromStringer774.String()
 
-	// Sink the tainted `intoString880`:
-	sink(intoString880)
+	// Return the tainted `intoString360`:
+	return intoString360
 }
 
-func TaintStepTest_FmtScanStateToken_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromScanState144` into `intoByte918`.
+func TaintStepTest_FmtScanStateToken_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromScanState807` into `intoByte814`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromScanState144`:
-	fromScanState144 := sourceCQL.(fmt.ScanState)
+	// Assume that `sourceCQL` has the underlying type of `fromScanState807`:
+	fromScanState807 := sourceCQL.(fmt.ScanState)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromScanState144` to the result `intoByte918`
-	// (`intoByte918` is now tainted).
-	intoByte918, _ := fromScanState144.Token(false, nil)
+	// from the receiver `fromScanState807` to the result `intoByte814`
+	// (`intoByte814` is now tainted).
+	intoByte814, _ := fromScanState807.Token(false, nil)
 
-	// Sink the tainted `intoByte918`:
-	sink(intoByte918)
+	// Return the tainted `intoByte814`:
+	return intoByte814
 }
 
-func TaintStepTest_FmtStateWrite_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromByte722` into `intoState194`.
+func TaintStepTest_FmtStateWrite_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte754` into `intoState171`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte722`:
-	fromByte722 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte754`:
+	fromByte754 := sourceCQL.([]byte)
 
-	// Declare `intoState194` variable:
-	var intoState194 fmt.State
+	// Declare `intoState171` variable:
+	var intoState171 fmt.State
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte722` to the receiver `intoState194`
-	// (`intoState194` is now tainted).
-	intoState194.Write(fromByte722)
+	// from the parameter `fromByte754` to the receiver `intoState171`
+	// (`intoState171` is now tainted).
+	intoState171.Write(fromByte754)
 
-	// Sink the tainted `intoState194`:
-	sink(intoState194)
+	// Return the tainted `intoState171`:
+	return intoState171
 }
 
 func RunAllTaints_Fmt() {
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtErrorf_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtErrorf_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtErrorf_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtErrorf_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtFprint_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtFprint_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtFprintf_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtFprintf_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtFprintf_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtFprintf_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtFprintln_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtFprintln_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtFscan_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtFscan_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtFscanf_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtFscanf_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtFscanf_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtFscanf_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtFscanln_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtFscanln_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtSprint_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtSprint_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtSprintf_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtSprintf_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtSprintf_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtSprintf_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtSprintln_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtSprintln_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtSscan_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtSscan_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtSscanf_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtSscanf_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtSscanf_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtSscanf_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtSscanln_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtSscanln_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtGoStringerGoString_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtGoStringerGoString_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtScanStateRead_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtScanStateRead_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtScanStateReadRune_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtScanStateReadRune_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtStringerString_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtStringerString_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtScanStateToken_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtScanStateToken_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_FmtStateWrite_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_FmtStateWrite_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 }

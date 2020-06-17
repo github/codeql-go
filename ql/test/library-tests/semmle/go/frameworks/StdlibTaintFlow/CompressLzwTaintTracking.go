@@ -5,48 +5,56 @@ import (
 	"io"
 )
 
-func TaintStepTest_CompressLzwNewReader_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromReader169` into `intoReadCloser320`.
+func TaintStepTest_CompressLzwNewReader_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader548` into `intoReadCloser786`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader169`:
-	fromReader169 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader548`:
+	fromReader548 := sourceCQL.(io.Reader)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader169` to result `intoReadCloser320`
-	// (`intoReadCloser320` is now tainted).
-	intoReadCloser320 := lzw.NewReader(fromReader169, 0, 0)
+	// from the parameter `fromReader548` to result `intoReadCloser786`
+	// (`intoReadCloser786` is now tainted).
+	intoReadCloser786 := lzw.NewReader(fromReader548, 0, 0)
 
-	// Sink the tainted `intoReadCloser320`:
-	sink(intoReadCloser320)
+	// Return the tainted `intoReadCloser786`:
+	return intoReadCloser786
 }
 
-func TaintStepTest_CompressLzwNewWriter_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromWriteCloser259` into `intoWriter440`.
+func TaintStepTest_CompressLzwNewWriter_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromWriteCloser308` into `intoWriter185`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriteCloser259`:
-	fromWriteCloser259 := sourceCQL.(io.WriteCloser)
+	// Assume that `sourceCQL` has the underlying type of `fromWriteCloser308`:
+	fromWriteCloser308 := sourceCQL.(io.WriteCloser)
 
-	// Declare `intoWriter440` variable:
-	var intoWriter440 io.Writer
+	// Declare `intoWriter185` variable:
+	var intoWriter185 io.Writer
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoWriter440`:
-	intermediateCQL := lzw.NewWriter(intoWriter440, 0, 0)
+	// from the result `intermediateCQL` to parameter `intoWriter185`:
+	intermediateCQL := lzw.NewWriter(intoWriter185, 0, 0)
 
-	// Extra step (`fromWriteCloser259` taints `intermediateCQL`, which taints `intoWriter440`:
-	link(fromWriteCloser259, intermediateCQL)
+	// Extra step (`fromWriteCloser308` taints `intermediateCQL`, which taints `intoWriter185`:
+	link(fromWriteCloser308, intermediateCQL)
 
-	// Sink the tainted `intoWriter440`:
-	sink(intoWriter440)
+	// Return the tainted `intoWriter185`:
+	return intoWriter185
 }
 
 func RunAllTaints_CompressLzw() {
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_CompressLzwNewReader_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_CompressLzwNewReader_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_CompressLzwNewWriter_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_CompressLzwNewWriter_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 }

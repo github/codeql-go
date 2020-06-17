@@ -2,197 +2,233 @@ package main
 
 import "database/sql"
 
-func TaintStepTest_DatabaseSqlNamed_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString695` into `intoNamedArg843`.
+func TaintStepTest_DatabaseSqlNamed_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString873` into `intoNamedArg963`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString695`:
-	fromString695 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString695` to result `intoNamedArg843`
-	// (`intoNamedArg843` is now tainted).
-	intoNamedArg843 := sql.Named(fromString695, nil)
-
-	// Sink the tainted `intoNamedArg843`:
-	sink(intoNamedArg843)
-}
-
-func TaintStepTest_DatabaseSqlNamed_B0I1O0(sourceCQL interface{}) {
-	// The flow is from `fromInterface304` into `intoNamedArg991`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromInterface304`:
-	fromInterface304 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromString873`:
+	fromString873 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface304` to result `intoNamedArg991`
-	// (`intoNamedArg991` is now tainted).
-	intoNamedArg991 := sql.Named("", fromInterface304)
+	// from the parameter `fromString873` to result `intoNamedArg963`
+	// (`intoNamedArg963` is now tainted).
+	intoNamedArg963 := sql.Named(fromString873, nil)
 
-	// Sink the tainted `intoNamedArg991`:
-	sink(intoNamedArg991)
+	// Return the tainted `intoNamedArg963`:
+	return intoNamedArg963
 }
 
-func TaintStepTest_DatabaseSqlConnPrepareContext_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString949` into `intoStmt367`.
+func TaintStepTest_DatabaseSqlNamed_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromInterface355` into `intoNamedArg273`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString949`:
-	fromString949 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromInterface355`:
+	fromInterface355 := sourceCQL.(interface{})
+
+	// Call the function that transfers the taint
+	// from the parameter `fromInterface355` to result `intoNamedArg273`
+	// (`intoNamedArg273` is now tainted).
+	intoNamedArg273 := sql.Named("", fromInterface355)
+
+	// Return the tainted `intoNamedArg273`:
+	return intoNamedArg273
+}
+
+func TaintStepTest_DatabaseSqlConnPrepareContext_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString256` into `intoStmt508`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString256`:
+	fromString256 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL sql.Conn
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString949` to the result `intoStmt367`
-	// (`intoStmt367` is now tainted).
-	intoStmt367, _ := mediumObjCQL.PrepareContext(nil, fromString949)
+	// from the parameter `fromString256` to the result `intoStmt508`
+	// (`intoStmt508` is now tainted).
+	intoStmt508, _ := mediumObjCQL.PrepareContext(nil, fromString256)
 
-	// Sink the tainted `intoStmt367`:
-	sink(intoStmt367)
+	// Return the tainted `intoStmt508`:
+	return intoStmt508
 }
 
-func TaintStepTest_DatabaseSqlDBPrepare_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString352` into `intoStmt789`.
+func TaintStepTest_DatabaseSqlDBPrepare_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString934` into `intoStmt270`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString352`:
-	fromString352 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString934`:
+	fromString934 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL sql.DB
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString352` to the result `intoStmt789`
-	// (`intoStmt789` is now tainted).
-	intoStmt789, _ := mediumObjCQL.Prepare(fromString352)
+	// from the parameter `fromString934` to the result `intoStmt270`
+	// (`intoStmt270` is now tainted).
+	intoStmt270, _ := mediumObjCQL.Prepare(fromString934)
 
-	// Sink the tainted `intoStmt789`:
-	sink(intoStmt789)
+	// Return the tainted `intoStmt270`:
+	return intoStmt270
 }
 
-func TaintStepTest_DatabaseSqlDBPrepareContext_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString383` into `intoStmt820`.
+func TaintStepTest_DatabaseSqlDBPrepareContext_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString348` into `intoStmt800`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString383`:
-	fromString383 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString348`:
+	fromString348 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL sql.DB
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString383` to the result `intoStmt820`
-	// (`intoStmt820` is now tainted).
-	intoStmt820, _ := mediumObjCQL.PrepareContext(nil, fromString383)
+	// from the parameter `fromString348` to the result `intoStmt800`
+	// (`intoStmt800` is now tainted).
+	intoStmt800, _ := mediumObjCQL.PrepareContext(nil, fromString348)
 
-	// Sink the tainted `intoStmt820`:
-	sink(intoStmt820)
+	// Return the tainted `intoStmt800`:
+	return intoStmt800
 }
 
-func TaintStepTest_DatabaseSqlTxPrepare_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString783` into `intoStmt592`.
+func TaintStepTest_DatabaseSqlTxPrepare_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString849` into `intoStmt202`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString783`:
-	fromString783 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString849`:
+	fromString849 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL sql.Tx
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString783` to the result `intoStmt592`
-	// (`intoStmt592` is now tainted).
-	intoStmt592, _ := mediumObjCQL.Prepare(fromString783)
+	// from the parameter `fromString849` to the result `intoStmt202`
+	// (`intoStmt202` is now tainted).
+	intoStmt202, _ := mediumObjCQL.Prepare(fromString849)
 
-	// Sink the tainted `intoStmt592`:
-	sink(intoStmt592)
+	// Return the tainted `intoStmt202`:
+	return intoStmt202
 }
 
-func TaintStepTest_DatabaseSqlTxPrepareContext_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString498` into `intoStmt364`.
+func TaintStepTest_DatabaseSqlTxPrepareContext_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString589` into `intoStmt743`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString498`:
-	fromString498 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString589`:
+	fromString589 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL sql.Tx
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString498` to the result `intoStmt364`
-	// (`intoStmt364` is now tainted).
-	intoStmt364, _ := mediumObjCQL.PrepareContext(nil, fromString498)
+	// from the parameter `fromString589` to the result `intoStmt743`
+	// (`intoStmt743` is now tainted).
+	intoStmt743, _ := mediumObjCQL.PrepareContext(nil, fromString589)
 
-	// Sink the tainted `intoStmt364`:
-	sink(intoStmt364)
+	// Return the tainted `intoStmt743`:
+	return intoStmt743
 }
 
-func TaintStepTest_DatabaseSqlTxStmt_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromStmt441` into `intoStmt114`.
+func TaintStepTest_DatabaseSqlTxStmt_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromStmt561` into `intoStmt503`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromStmt441`:
-	fromStmt441 := sourceCQL.(*sql.Stmt)
+	// Assume that `sourceCQL` has the underlying type of `fromStmt561`:
+	fromStmt561 := sourceCQL.(*sql.Stmt)
 
 	// Declare medium object/interface:
 	var mediumObjCQL sql.Tx
 
 	// Call the method that transfers the taint
-	// from the parameter `fromStmt441` to the result `intoStmt114`
-	// (`intoStmt114` is now tainted).
-	intoStmt114 := mediumObjCQL.Stmt(fromStmt441)
+	// from the parameter `fromStmt561` to the result `intoStmt503`
+	// (`intoStmt503` is now tainted).
+	intoStmt503 := mediumObjCQL.Stmt(fromStmt561)
 
-	// Sink the tainted `intoStmt114`:
-	sink(intoStmt114)
+	// Return the tainted `intoStmt503`:
+	return intoStmt503
 }
 
-func TaintStepTest_DatabaseSqlTxStmtContext_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromStmt795` into `intoStmt461`.
+func TaintStepTest_DatabaseSqlTxStmtContext_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromStmt451` into `intoStmt779`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromStmt795`:
-	fromStmt795 := sourceCQL.(*sql.Stmt)
+	// Assume that `sourceCQL` has the underlying type of `fromStmt451`:
+	fromStmt451 := sourceCQL.(*sql.Stmt)
 
 	// Declare medium object/interface:
 	var mediumObjCQL sql.Tx
 
 	// Call the method that transfers the taint
-	// from the parameter `fromStmt795` to the result `intoStmt461`
-	// (`intoStmt461` is now tainted).
-	intoStmt461 := mediumObjCQL.StmtContext(nil, fromStmt795)
+	// from the parameter `fromStmt451` to the result `intoStmt779`
+	// (`intoStmt779` is now tainted).
+	intoStmt779 := mediumObjCQL.StmtContext(nil, fromStmt451)
 
-	// Sink the tainted `intoStmt461`:
-	sink(intoStmt461)
+	// Return the tainted `intoStmt779`:
+	return intoStmt779
 }
 
 func RunAllTaints_DatabaseSql() {
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_DatabaseSqlNamed_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_DatabaseSqlNamed_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_DatabaseSqlNamed_B0I1O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_DatabaseSqlNamed_B0I1O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_DatabaseSqlConnPrepareContext_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_DatabaseSqlConnPrepareContext_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_DatabaseSqlDBPrepare_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_DatabaseSqlDBPrepare_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_DatabaseSqlDBPrepareContext_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_DatabaseSqlDBPrepareContext_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_DatabaseSqlTxPrepare_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_DatabaseSqlTxPrepare_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_DatabaseSqlTxPrepareContext_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_DatabaseSqlTxPrepareContext_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_DatabaseSqlTxStmt_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_DatabaseSqlTxStmt_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_DatabaseSqlTxStmtContext_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_DatabaseSqlTxStmtContext_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 }

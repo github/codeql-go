@@ -5,125 +5,149 @@ import (
 	"net/mail"
 )
 
-func TaintStepTest_NetMailParseAddress_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString673` into `intoAddress485`.
+func TaintStepTest_NetMailParseAddress_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString853` into `intoAddress437`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString673`:
-	fromString673 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString673` to result `intoAddress485`
-	// (`intoAddress485` is now tainted).
-	intoAddress485, _ := mail.ParseAddress(fromString673)
-
-	// Sink the tainted `intoAddress485`:
-	sink(intoAddress485)
-}
-
-func TaintStepTest_NetMailParseAddressList_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString797` into `intoAddress889`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString797`:
-	fromString797 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString853`:
+	fromString853 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString797` to result `intoAddress889`
-	// (`intoAddress889` is now tainted).
-	intoAddress889, _ := mail.ParseAddressList(fromString797)
+	// from the parameter `fromString853` to result `intoAddress437`
+	// (`intoAddress437` is now tainted).
+	intoAddress437, _ := mail.ParseAddress(fromString853)
 
-	// Sink the tainted `intoAddress889`:
-	sink(intoAddress889)
+	// Return the tainted `intoAddress437`:
+	return intoAddress437
 }
 
-func TaintStepTest_NetMailReadMessage_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromReader677` into `intoMessage855`.
+func TaintStepTest_NetMailParseAddressList_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString653` into `intoAddress475`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader677`:
-	fromReader677 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromString653`:
+	fromString653 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader677` to result `intoMessage855`
-	// (`intoMessage855` is now tainted).
-	intoMessage855, _ := mail.ReadMessage(fromReader677)
+	// from the parameter `fromString653` to result `intoAddress475`
+	// (`intoAddress475` is now tainted).
+	intoAddress475, _ := mail.ParseAddressList(fromString653)
 
-	// Sink the tainted `intoMessage855`:
-	sink(intoMessage855)
+	// Return the tainted `intoAddress475`:
+	return intoAddress475
 }
 
-func TaintStepTest_NetMailAddressParserParse_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString458` into `intoAddress866`.
+func TaintStepTest_NetMailReadMessage_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader164` into `intoMessage464`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString458`:
-	fromString458 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromReader164`:
+	fromReader164 := sourceCQL.(io.Reader)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromReader164` to result `intoMessage464`
+	// (`intoMessage464` is now tainted).
+	intoMessage464, _ := mail.ReadMessage(fromReader164)
+
+	// Return the tainted `intoMessage464`:
+	return intoMessage464
+}
+
+func TaintStepTest_NetMailAddressParserParse_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString445` into `intoAddress182`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString445`:
+	fromString445 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL mail.AddressParser
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString458` to the result `intoAddress866`
-	// (`intoAddress866` is now tainted).
-	intoAddress866, _ := mediumObjCQL.Parse(fromString458)
+	// from the parameter `fromString445` to the result `intoAddress182`
+	// (`intoAddress182` is now tainted).
+	intoAddress182, _ := mediumObjCQL.Parse(fromString445)
 
-	// Sink the tainted `intoAddress866`:
-	sink(intoAddress866)
+	// Return the tainted `intoAddress182`:
+	return intoAddress182
 }
 
-func TaintStepTest_NetMailAddressParserParseList_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromString515` into `intoAddress683`.
+func TaintStepTest_NetMailAddressParserParseList_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString759` into `intoAddress288`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString515`:
-	fromString515 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString759`:
+	fromString759 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL mail.AddressParser
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString515` to the result `intoAddress683`
-	// (`intoAddress683` is now tainted).
-	intoAddress683, _ := mediumObjCQL.ParseList(fromString515)
+	// from the parameter `fromString759` to the result `intoAddress288`
+	// (`intoAddress288` is now tainted).
+	intoAddress288, _ := mediumObjCQL.ParseList(fromString759)
 
-	// Sink the tainted `intoAddress683`:
-	sink(intoAddress683)
+	// Return the tainted `intoAddress288`:
+	return intoAddress288
 }
 
-func TaintStepTest_NetMailHeaderGet_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromHeader206` into `intoString258`.
+func TaintStepTest_NetMailHeaderGet_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromHeader667` into `intoString477`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromHeader206`:
-	fromHeader206 := sourceCQL.(mail.Header)
+	// Assume that `sourceCQL` has the underlying type of `fromHeader667`:
+	fromHeader667 := sourceCQL.(mail.Header)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromHeader206` to the result `intoString258`
-	// (`intoString258` is now tainted).
-	intoString258 := fromHeader206.Get("")
+	// from the receiver `fromHeader667` to the result `intoString477`
+	// (`intoString477` is now tainted).
+	intoString477 := fromHeader667.Get("")
 
-	// Sink the tainted `intoString258`:
-	sink(intoString258)
+	// Return the tainted `intoString477`:
+	return intoString477
 }
 
 func RunAllTaints_NetMail() {
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_NetMailParseAddress_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_NetMailParseAddress_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_NetMailParseAddressList_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_NetMailParseAddressList_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_NetMailReadMessage_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_NetMailReadMessage_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_NetMailAddressParserParse_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_NetMailAddressParserParse_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_NetMailAddressParserParseList_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_NetMailAddressParserParseList_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_NetMailHeaderGet_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_NetMailHeaderGet_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 }

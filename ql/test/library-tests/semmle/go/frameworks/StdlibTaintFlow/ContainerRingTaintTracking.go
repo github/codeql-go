@@ -2,103 +2,123 @@ package main
 
 import "container/ring"
 
-func TaintStepTest_ContainerRingRingLink_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromRing965` into `intoRing415`.
+func TaintStepTest_ContainerRingRingLink_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRing922` into `intoRing273`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRing965`:
-	fromRing965 := sourceCQL.(*ring.Ring)
+	// Assume that `sourceCQL` has the underlying type of `fromRing922`:
+	fromRing922 := sourceCQL.(*ring.Ring)
 
 	// Declare medium object/interface:
 	var mediumObjCQL ring.Ring
 
 	// Call the method that transfers the taint
-	// from the parameter `fromRing965` to the result `intoRing415`
-	// (`intoRing415` is now tainted).
-	intoRing415 := mediumObjCQL.Link(fromRing965)
+	// from the parameter `fromRing922` to the result `intoRing273`
+	// (`intoRing273` is now tainted).
+	intoRing273 := mediumObjCQL.Link(fromRing922)
 
-	// Sink the tainted `intoRing415`:
-	sink(intoRing415)
+	// Return the tainted `intoRing273`:
+	return intoRing273
 }
 
-func TaintStepTest_ContainerRingRingMove_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromRing989` into `intoRing701`.
+func TaintStepTest_ContainerRingRingMove_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRing241` into `intoRing234`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRing989`:
-	fromRing989 := sourceCQL.(ring.Ring)
+	// Assume that `sourceCQL` has the underlying type of `fromRing241`:
+	fromRing241 := sourceCQL.(ring.Ring)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromRing989` to the result `intoRing701`
-	// (`intoRing701` is now tainted).
-	intoRing701 := fromRing989.Move(0)
+	// from the receiver `fromRing241` to the result `intoRing234`
+	// (`intoRing234` is now tainted).
+	intoRing234 := fromRing241.Move(0)
 
-	// Sink the tainted `intoRing701`:
-	sink(intoRing701)
+	// Return the tainted `intoRing234`:
+	return intoRing234
 }
 
-func TaintStepTest_ContainerRingRingNext_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromRing303` into `intoRing732`.
+func TaintStepTest_ContainerRingRingNext_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRing882` into `intoRing858`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRing303`:
-	fromRing303 := sourceCQL.(ring.Ring)
+	// Assume that `sourceCQL` has the underlying type of `fromRing882`:
+	fromRing882 := sourceCQL.(ring.Ring)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromRing303` to the result `intoRing732`
-	// (`intoRing732` is now tainted).
-	intoRing732 := fromRing303.Next()
+	// from the receiver `fromRing882` to the result `intoRing858`
+	// (`intoRing858` is now tainted).
+	intoRing858 := fromRing882.Next()
 
-	// Sink the tainted `intoRing732`:
-	sink(intoRing732)
+	// Return the tainted `intoRing858`:
+	return intoRing858
 }
 
-func TaintStepTest_ContainerRingRingPrev_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromRing757` into `intoRing633`.
+func TaintStepTest_ContainerRingRingPrev_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRing793` into `intoRing548`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRing757`:
-	fromRing757 := sourceCQL.(ring.Ring)
+	// Assume that `sourceCQL` has the underlying type of `fromRing793`:
+	fromRing793 := sourceCQL.(ring.Ring)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromRing757` to the result `intoRing633`
-	// (`intoRing633` is now tainted).
-	intoRing633 := fromRing757.Prev()
+	// from the receiver `fromRing793` to the result `intoRing548`
+	// (`intoRing548` is now tainted).
+	intoRing548 := fromRing793.Prev()
 
-	// Sink the tainted `intoRing633`:
-	sink(intoRing633)
+	// Return the tainted `intoRing548`:
+	return intoRing548
 }
 
-func TaintStepTest_ContainerRingRingUnlink_B0I0O0(sourceCQL interface{}) {
-	// The flow is from `fromRing547` into `intoRing582`.
+func TaintStepTest_ContainerRingRingUnlink_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRing187` into `intoRing554`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRing547`:
-	fromRing547 := sourceCQL.(ring.Ring)
+	// Assume that `sourceCQL` has the underlying type of `fromRing187`:
+	fromRing187 := sourceCQL.(ring.Ring)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromRing547` to the result `intoRing582`
-	// (`intoRing582` is now tainted).
-	intoRing582 := fromRing547.Unlink(0)
+	// from the receiver `fromRing187` to the result `intoRing554`
+	// (`intoRing554` is now tainted).
+	intoRing554 := fromRing187.Unlink(0)
 
-	// Sink the tainted `intoRing582`:
-	sink(intoRing582)
+	// Return the tainted `intoRing554`:
+	return intoRing554
 }
 
 func RunAllTaints_ContainerRing() {
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_ContainerRingRingLink_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_ContainerRingRingLink_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_ContainerRingRingMove_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_ContainerRingRingMove_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_ContainerRingRingNext_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_ContainerRingRingNext_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_ContainerRingRingPrev_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_ContainerRingRingPrev_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 	{
+		// Create a new source:
 		source := newSource()
-		TaintStepTest_ContainerRingRingUnlink_B0I0O0(source)
+		// Run the taint scenario:
+		out := TaintStepTest_ContainerRingRingUnlink_B0I0O0(source)
+		// If the taint step(s) succeeded, then `out` is tainted and will be sink-able here:
+		sink(out)
 	}
 }
