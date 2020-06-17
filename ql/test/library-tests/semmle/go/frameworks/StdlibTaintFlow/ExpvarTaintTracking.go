@@ -5,225 +5,225 @@ package main
 import "expvar"
 
 func TaintStepTest_ExpvarGet_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString809` into `intoVar140`.
+	// The flow is from `fromString656` into `intoVar414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString809`:
-	fromString809 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString656`:
+	fromString656 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString809` to result `intoVar140`
-	// (`intoVar140` is now tainted).
-	intoVar140 := expvar.Get(fromString809)
+	// from the parameter `fromString656` to result `intoVar414`
+	// (`intoVar414` is now tainted).
+	intoVar414 := expvar.Get(fromString656)
 
-	// Return the tainted `intoVar140`:
-	return intoVar140
+	// Return the tainted `intoVar414`:
+	return intoVar414
 }
 
 func TaintStepTest_ExpvarFloatString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromFloat929` into `intoString715`.
+	// The flow is from `fromFloat518` into `intoString650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromFloat929`:
-	fromFloat929 := sourceCQL.(expvar.Float)
+	// Assume that `sourceCQL` has the underlying type of `fromFloat518`:
+	fromFloat518 := sourceCQL.(expvar.Float)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromFloat929` to the result `intoString715`
-	// (`intoString715` is now tainted).
-	intoString715 := fromFloat929.String()
+	// from the receiver `fromFloat518` to the result `intoString650`
+	// (`intoString650` is now tainted).
+	intoString650 := fromFloat518.String()
 
-	// Return the tainted `intoString715`:
-	return intoString715
+	// Return the tainted `intoString650`:
+	return intoString650
 }
 
 func TaintStepTest_ExpvarFuncString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromFunc759` into `intoString456`.
+	// The flow is from `fromFunc784` into `intoString957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromFunc759`:
-	fromFunc759 := sourceCQL.(expvar.Func)
+	// Assume that `sourceCQL` has the underlying type of `fromFunc784`:
+	fromFunc784 := sourceCQL.(expvar.Func)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromFunc759` to the result `intoString456`
-	// (`intoString456` is now tainted).
-	intoString456 := fromFunc759.String()
+	// from the receiver `fromFunc784` to the result `intoString957`
+	// (`intoString957` is now tainted).
+	intoString957 := fromFunc784.String()
 
-	// Return the tainted `intoString456`:
-	return intoString456
+	// Return the tainted `intoString957`:
+	return intoString957
 }
 
 func TaintStepTest_ExpvarFuncValue_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromFunc679` into `intoInterface495`.
+	// The flow is from `fromFunc520` into `intoInterface443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromFunc679`:
-	fromFunc679 := sourceCQL.(expvar.Func)
+	// Assume that `sourceCQL` has the underlying type of `fromFunc520`:
+	fromFunc520 := sourceCQL.(expvar.Func)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromFunc679` to the result `intoInterface495`
-	// (`intoInterface495` is now tainted).
-	intoInterface495 := fromFunc679.Value()
+	// from the receiver `fromFunc520` to the result `intoInterface443`
+	// (`intoInterface443` is now tainted).
+	intoInterface443 := fromFunc520.Value()
 
-	// Return the tainted `intoInterface495`:
-	return intoInterface495
+	// Return the tainted `intoInterface443`:
+	return intoInterface443
 }
 
 func TaintStepTest_ExpvarIntString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInt552` into `intoString791`.
+	// The flow is from `fromInt127` into `intoString483`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInt552`:
-	fromInt552 := sourceCQL.(expvar.Int)
+	// Assume that `sourceCQL` has the underlying type of `fromInt127`:
+	fromInt127 := sourceCQL.(expvar.Int)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromInt552` to the result `intoString791`
-	// (`intoString791` is now tainted).
-	intoString791 := fromInt552.String()
+	// from the receiver `fromInt127` to the result `intoString483`
+	// (`intoString483` is now tainted).
+	intoString483 := fromInt127.String()
 
-	// Return the tainted `intoString791`:
-	return intoString791
+	// Return the tainted `intoString483`:
+	return intoString483
 }
 
 func TaintStepTest_ExpvarMapDo_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromFuncexpvarKeyValue531` into `intoMap860`.
+	// The flow is from `fromFuncexpvarKeyValue989` into `intoMap982`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromFuncexpvarKeyValue531`:
-	fromFuncexpvarKeyValue531 := sourceCQL.(func(expvar.KeyValue))
+	// Assume that `sourceCQL` has the underlying type of `fromFuncexpvarKeyValue989`:
+	fromFuncexpvarKeyValue989 := sourceCQL.(func(expvar.KeyValue))
 
-	// Declare `intoMap860` variable:
-	var intoMap860 expvar.Map
+	// Declare `intoMap982` variable:
+	var intoMap982 expvar.Map
 
 	// Call the method that transfers the taint
-	// from the parameter `fromFuncexpvarKeyValue531` to the receiver `intoMap860`
-	// (`intoMap860` is now tainted).
-	intoMap860.Do(fromFuncexpvarKeyValue531)
+	// from the parameter `fromFuncexpvarKeyValue989` to the receiver `intoMap982`
+	// (`intoMap982` is now tainted).
+	intoMap982.Do(fromFuncexpvarKeyValue989)
 
-	// Return the tainted `intoMap860`:
-	return intoMap860
+	// Return the tainted `intoMap982`:
+	return intoMap982
 }
 
 func TaintStepTest_ExpvarMapGet_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromMap288` into `intoVar904`.
+	// The flow is from `fromMap417` into `intoVar584`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromMap288`:
-	fromMap288 := sourceCQL.(expvar.Map)
+	// Assume that `sourceCQL` has the underlying type of `fromMap417`:
+	fromMap417 := sourceCQL.(expvar.Map)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromMap288` to the result `intoVar904`
-	// (`intoVar904` is now tainted).
-	intoVar904 := fromMap288.Get("")
+	// from the receiver `fromMap417` to the result `intoVar584`
+	// (`intoVar584` is now tainted).
+	intoVar584 := fromMap417.Get("")
 
-	// Return the tainted `intoVar904`:
-	return intoVar904
+	// Return the tainted `intoVar584`:
+	return intoVar584
 }
 
 func TaintStepTest_ExpvarMapSet_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString704` into `intoMap267`.
+	// The flow is from `fromString991` into `intoMap881`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString704`:
-	fromString704 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString991`:
+	fromString991 := sourceCQL.(string)
 
-	// Declare `intoMap267` variable:
-	var intoMap267 expvar.Map
+	// Declare `intoMap881` variable:
+	var intoMap881 expvar.Map
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString704` to the receiver `intoMap267`
-	// (`intoMap267` is now tainted).
-	intoMap267.Set(fromString704, nil)
+	// from the parameter `fromString991` to the receiver `intoMap881`
+	// (`intoMap881` is now tainted).
+	intoMap881.Set(fromString991, nil)
 
-	// Return the tainted `intoMap267`:
-	return intoMap267
+	// Return the tainted `intoMap881`:
+	return intoMap881
 }
 
 func TaintStepTest_ExpvarMapSet_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromVar449` into `intoMap846`.
+	// The flow is from `fromVar186` into `intoMap284`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromVar449`:
-	fromVar449 := sourceCQL.(expvar.Var)
+	// Assume that `sourceCQL` has the underlying type of `fromVar186`:
+	fromVar186 := sourceCQL.(expvar.Var)
 
-	// Declare `intoMap846` variable:
-	var intoMap846 expvar.Map
+	// Declare `intoMap284` variable:
+	var intoMap284 expvar.Map
 
 	// Call the method that transfers the taint
-	// from the parameter `fromVar449` to the receiver `intoMap846`
-	// (`intoMap846` is now tainted).
-	intoMap846.Set("", fromVar449)
+	// from the parameter `fromVar186` to the receiver `intoMap284`
+	// (`intoMap284` is now tainted).
+	intoMap284.Set("", fromVar186)
 
-	// Return the tainted `intoMap846`:
-	return intoMap846
+	// Return the tainted `intoMap284`:
+	return intoMap284
 }
 
 func TaintStepTest_ExpvarMapString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromMap507` into `intoString782`.
+	// The flow is from `fromMap908` into `intoString137`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromMap507`:
-	fromMap507 := sourceCQL.(expvar.Map)
+	// Assume that `sourceCQL` has the underlying type of `fromMap908`:
+	fromMap908 := sourceCQL.(expvar.Map)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromMap507` to the result `intoString782`
-	// (`intoString782` is now tainted).
-	intoString782 := fromMap507.String()
+	// from the receiver `fromMap908` to the result `intoString137`
+	// (`intoString137` is now tainted).
+	intoString137 := fromMap908.String()
 
-	// Return the tainted `intoString782`:
-	return intoString782
+	// Return the tainted `intoString137`:
+	return intoString137
 }
 
 func TaintStepTest_ExpvarStringSet_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString914` into `intoString270`.
+	// The flow is from `fromString494` into `intoString873`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString914`:
-	fromString914 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString494`:
+	fromString494 := sourceCQL.(string)
 
-	// Declare `intoString270` variable:
-	var intoString270 expvar.String
+	// Declare `intoString873` variable:
+	var intoString873 expvar.String
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString914` to the receiver `intoString270`
-	// (`intoString270` is now tainted).
-	intoString270.Set(fromString914)
+	// from the parameter `fromString494` to the receiver `intoString873`
+	// (`intoString873` is now tainted).
+	intoString873.Set(fromString494)
 
-	// Return the tainted `intoString270`:
-	return intoString270
+	// Return the tainted `intoString873`:
+	return intoString873
 }
 
 func TaintStepTest_ExpvarStringString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString163` into `intoString504`.
+	// The flow is from `fromString599` into `intoString409`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString163`:
-	fromString163 := sourceCQL.(expvar.String)
+	// Assume that `sourceCQL` has the underlying type of `fromString599`:
+	fromString599 := sourceCQL.(expvar.String)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromString163` to the result `intoString504`
-	// (`intoString504` is now tainted).
-	intoString504 := fromString163.String()
+	// from the receiver `fromString599` to the result `intoString409`
+	// (`intoString409` is now tainted).
+	intoString409 := fromString599.String()
 
-	// Return the tainted `intoString504`:
-	return intoString504
+	// Return the tainted `intoString409`:
+	return intoString409
 }
 
 func TaintStepTest_ExpvarStringValue_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString516` into `intoString797`.
+	// The flow is from `fromString246` into `intoString898`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString516`:
-	fromString516 := sourceCQL.(expvar.String)
+	// Assume that `sourceCQL` has the underlying type of `fromString246`:
+	fromString246 := sourceCQL.(expvar.String)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromString516` to the result `intoString797`
-	// (`intoString797` is now tainted).
-	intoString797 := fromString516.Value()
+	// from the receiver `fromString246` to the result `intoString898`
+	// (`intoString898` is now tainted).
+	intoString898 := fromString246.Value()
 
-	// Return the tainted `intoString797`:
-	return intoString797
+	// Return the tainted `intoString898`:
+	return intoString898
 }
 
 func TaintStepTest_ExpvarVarString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromVar181` into `intoString341`.
+	// The flow is from `fromVar598` into `intoString631`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromVar181`:
-	fromVar181 := sourceCQL.(expvar.Var)
+	// Assume that `sourceCQL` has the underlying type of `fromVar598`:
+	fromVar598 := sourceCQL.(expvar.Var)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromVar181` to the result `intoString341`
-	// (`intoString341` is now tainted).
-	intoString341 := fromVar181.String()
+	// from the receiver `fromVar598` to the result `intoString631`
+	// (`intoString631` is now tainted).
+	intoString631 := fromVar598.String()
 
-	// Return the tainted `intoString341`:
-	return intoString341
+	// Return the tainted `intoString631`:
+	return intoString631
 }
 
 func RunAllTaints_Expvar() {

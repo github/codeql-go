@@ -9,143 +9,143 @@ import (
 )
 
 func TaintStepTest_EncodingGobNewDecoder_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader212` into `intoDecoder950`.
+	// The flow is from `fromReader656` into `intoDecoder414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader212`:
-	fromReader212 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader656`:
+	fromReader656 := sourceCQL.(io.Reader)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader212` to result `intoDecoder950`
-	// (`intoDecoder950` is now tainted).
-	intoDecoder950 := gob.NewDecoder(fromReader212)
+	// from the parameter `fromReader656` to result `intoDecoder414`
+	// (`intoDecoder414` is now tainted).
+	intoDecoder414 := gob.NewDecoder(fromReader656)
 
-	// Return the tainted `intoDecoder950`:
-	return intoDecoder950
+	// Return the tainted `intoDecoder414`:
+	return intoDecoder414
 }
 
 func TaintStepTest_EncodingGobNewEncoder_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromEncoder502` into `intoWriter580`.
+	// The flow is from `fromEncoder518` into `intoWriter650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromEncoder502`:
-	fromEncoder502 := sourceCQL.(*gob.Encoder)
+	// Assume that `sourceCQL` has the underlying type of `fromEncoder518`:
+	fromEncoder518 := sourceCQL.(*gob.Encoder)
 
-	// Declare `intoWriter580` variable:
-	var intoWriter580 io.Writer
+	// Declare `intoWriter650` variable:
+	var intoWriter650 io.Writer
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoWriter580`:
-	intermediateCQL := gob.NewEncoder(intoWriter580)
+	// from the result `intermediateCQL` to parameter `intoWriter650`:
+	intermediateCQL := gob.NewEncoder(intoWriter650)
 
-	// Extra step (`fromEncoder502` taints `intermediateCQL`, which taints `intoWriter580`:
-	link(fromEncoder502, intermediateCQL)
+	// Extra step (`fromEncoder518` taints `intermediateCQL`, which taints `intoWriter650`:
+	link(fromEncoder518, intermediateCQL)
 
-	// Return the tainted `intoWriter580`:
-	return intoWriter580
+	// Return the tainted `intoWriter650`:
+	return intoWriter650
 }
 
 func TaintStepTest_EncodingGobDecoderDecode_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromDecoder318` into `intoInterface920`.
+	// The flow is from `fromDecoder784` into `intoInterface957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromDecoder318`:
-	fromDecoder318 := sourceCQL.(gob.Decoder)
+	// Assume that `sourceCQL` has the underlying type of `fromDecoder784`:
+	fromDecoder784 := sourceCQL.(gob.Decoder)
 
-	// Declare `intoInterface920` variable:
-	var intoInterface920 interface{}
+	// Declare `intoInterface957` variable:
+	var intoInterface957 interface{}
 
 	// Call the method that transfers the taint
-	// from the receiver `fromDecoder318` to the argument `intoInterface920`
-	// (`intoInterface920` is now tainted).
-	fromDecoder318.Decode(intoInterface920)
+	// from the receiver `fromDecoder784` to the argument `intoInterface957`
+	// (`intoInterface957` is now tainted).
+	fromDecoder784.Decode(intoInterface957)
 
-	// Return the tainted `intoInterface920`:
-	return intoInterface920
+	// Return the tainted `intoInterface957`:
+	return intoInterface957
 }
 
 func TaintStepTest_EncodingGobDecoderDecodeValue_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromDecoder214` into `intoValue857`.
+	// The flow is from `fromDecoder520` into `intoValue443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromDecoder214`:
-	fromDecoder214 := sourceCQL.(gob.Decoder)
+	// Assume that `sourceCQL` has the underlying type of `fromDecoder520`:
+	fromDecoder520 := sourceCQL.(gob.Decoder)
 
-	// Declare `intoValue857` variable:
-	var intoValue857 reflect.Value
+	// Declare `intoValue443` variable:
+	var intoValue443 reflect.Value
 
 	// Call the method that transfers the taint
-	// from the receiver `fromDecoder214` to the argument `intoValue857`
-	// (`intoValue857` is now tainted).
-	fromDecoder214.DecodeValue(intoValue857)
+	// from the receiver `fromDecoder520` to the argument `intoValue443`
+	// (`intoValue443` is now tainted).
+	fromDecoder520.DecodeValue(intoValue443)
 
-	// Return the tainted `intoValue857`:
-	return intoValue857
+	// Return the tainted `intoValue443`:
+	return intoValue443
 }
 
 func TaintStepTest_EncodingGobEncoderEncode_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface163` into `intoEncoder711`.
+	// The flow is from `fromInterface127` into `intoEncoder483`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface163`:
-	fromInterface163 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface127`:
+	fromInterface127 := sourceCQL.(interface{})
 
-	// Declare `intoEncoder711` variable:
-	var intoEncoder711 gob.Encoder
+	// Declare `intoEncoder483` variable:
+	var intoEncoder483 gob.Encoder
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface163` to the receiver `intoEncoder711`
-	// (`intoEncoder711` is now tainted).
-	intoEncoder711.Encode(fromInterface163)
+	// from the parameter `fromInterface127` to the receiver `intoEncoder483`
+	// (`intoEncoder483` is now tainted).
+	intoEncoder483.Encode(fromInterface127)
 
-	// Return the tainted `intoEncoder711`:
-	return intoEncoder711
+	// Return the tainted `intoEncoder483`:
+	return intoEncoder483
 }
 
 func TaintStepTest_EncodingGobEncoderEncodeValue_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromValue896` into `intoEncoder601`.
+	// The flow is from `fromValue989` into `intoEncoder982`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromValue896`:
-	fromValue896 := sourceCQL.(reflect.Value)
+	// Assume that `sourceCQL` has the underlying type of `fromValue989`:
+	fromValue989 := sourceCQL.(reflect.Value)
 
-	// Declare `intoEncoder601` variable:
-	var intoEncoder601 gob.Encoder
+	// Declare `intoEncoder982` variable:
+	var intoEncoder982 gob.Encoder
 
 	// Call the method that transfers the taint
-	// from the parameter `fromValue896` to the receiver `intoEncoder601`
-	// (`intoEncoder601` is now tainted).
-	intoEncoder601.EncodeValue(fromValue896)
+	// from the parameter `fromValue989` to the receiver `intoEncoder982`
+	// (`intoEncoder982` is now tainted).
+	intoEncoder982.EncodeValue(fromValue989)
 
-	// Return the tainted `intoEncoder601`:
-	return intoEncoder601
+	// Return the tainted `intoEncoder982`:
+	return intoEncoder982
 }
 
 func TaintStepTest_EncodingGobGobDecoderGobDecode_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte229` into `intoGobDecoder376`.
+	// The flow is from `fromByte417` into `intoGobDecoder584`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte229`:
-	fromByte229 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte417`:
+	fromByte417 := sourceCQL.([]byte)
 
-	// Declare `intoGobDecoder376` variable:
-	var intoGobDecoder376 gob.GobDecoder
+	// Declare `intoGobDecoder584` variable:
+	var intoGobDecoder584 gob.GobDecoder
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte229` to the receiver `intoGobDecoder376`
-	// (`intoGobDecoder376` is now tainted).
-	intoGobDecoder376.GobDecode(fromByte229)
+	// from the parameter `fromByte417` to the receiver `intoGobDecoder584`
+	// (`intoGobDecoder584` is now tainted).
+	intoGobDecoder584.GobDecode(fromByte417)
 
-	// Return the tainted `intoGobDecoder376`:
-	return intoGobDecoder376
+	// Return the tainted `intoGobDecoder584`:
+	return intoGobDecoder584
 }
 
 func TaintStepTest_EncodingGobGobEncoderGobEncode_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromGobEncoder321` into `intoByte914`.
+	// The flow is from `fromGobEncoder991` into `intoByte881`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromGobEncoder321`:
-	fromGobEncoder321 := sourceCQL.(gob.GobEncoder)
+	// Assume that `sourceCQL` has the underlying type of `fromGobEncoder991`:
+	fromGobEncoder991 := sourceCQL.(gob.GobEncoder)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromGobEncoder321` to the result `intoByte914`
-	// (`intoByte914` is now tainted).
-	intoByte914, _ := fromGobEncoder321.GobEncode()
+	// from the receiver `fromGobEncoder991` to the result `intoByte881`
+	// (`intoByte881` is now tainted).
+	intoByte881, _ := fromGobEncoder991.GobEncode()
 
-	// Return the tainted `intoByte914`:
-	return intoByte914
+	// Return the tainted `intoByte881`:
+	return intoByte881
 }
 
 func RunAllTaints_EncodingGob() {

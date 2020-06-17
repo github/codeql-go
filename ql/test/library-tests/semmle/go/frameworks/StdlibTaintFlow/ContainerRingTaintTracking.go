@@ -5,81 +5,81 @@ package main
 import "container/ring"
 
 func TaintStepTest_ContainerRingRingLink_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRing750` into `intoRing817`.
+	// The flow is from `fromRing656` into `intoRing414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRing750`:
-	fromRing750 := sourceCQL.(*ring.Ring)
+	// Assume that `sourceCQL` has the underlying type of `fromRing656`:
+	fromRing656 := sourceCQL.(*ring.Ring)
 
 	// Declare medium object/interface:
 	var mediumObjCQL ring.Ring
 
 	// Call the method that transfers the taint
-	// from the parameter `fromRing750` to the result `intoRing817`
-	// (`intoRing817` is now tainted).
-	intoRing817 := mediumObjCQL.Link(fromRing750)
+	// from the parameter `fromRing656` to the result `intoRing414`
+	// (`intoRing414` is now tainted).
+	intoRing414 := mediumObjCQL.Link(fromRing656)
 
-	// Return the tainted `intoRing817`:
-	return intoRing817
+	// Return the tainted `intoRing414`:
+	return intoRing414
 }
 
 func TaintStepTest_ContainerRingRingMove_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRing659` into `intoRing232`.
+	// The flow is from `fromRing518` into `intoRing650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRing659`:
-	fromRing659 := sourceCQL.(ring.Ring)
+	// Assume that `sourceCQL` has the underlying type of `fromRing518`:
+	fromRing518 := sourceCQL.(ring.Ring)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromRing659` to the result `intoRing232`
-	// (`intoRing232` is now tainted).
-	intoRing232 := fromRing659.Move(0)
+	// from the receiver `fromRing518` to the result `intoRing650`
+	// (`intoRing650` is now tainted).
+	intoRing650 := fromRing518.Move(0)
 
-	// Return the tainted `intoRing232`:
-	return intoRing232
+	// Return the tainted `intoRing650`:
+	return intoRing650
 }
 
 func TaintStepTest_ContainerRingRingNext_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRing810` into `intoRing501`.
+	// The flow is from `fromRing784` into `intoRing957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRing810`:
-	fromRing810 := sourceCQL.(ring.Ring)
+	// Assume that `sourceCQL` has the underlying type of `fromRing784`:
+	fromRing784 := sourceCQL.(ring.Ring)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromRing810` to the result `intoRing501`
-	// (`intoRing501` is now tainted).
-	intoRing501 := fromRing810.Next()
+	// from the receiver `fromRing784` to the result `intoRing957`
+	// (`intoRing957` is now tainted).
+	intoRing957 := fromRing784.Next()
 
-	// Return the tainted `intoRing501`:
-	return intoRing501
+	// Return the tainted `intoRing957`:
+	return intoRing957
 }
 
 func TaintStepTest_ContainerRingRingPrev_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRing438` into `intoRing858`.
+	// The flow is from `fromRing520` into `intoRing443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRing438`:
-	fromRing438 := sourceCQL.(ring.Ring)
+	// Assume that `sourceCQL` has the underlying type of `fromRing520`:
+	fromRing520 := sourceCQL.(ring.Ring)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromRing438` to the result `intoRing858`
-	// (`intoRing858` is now tainted).
-	intoRing858 := fromRing438.Prev()
+	// from the receiver `fromRing520` to the result `intoRing443`
+	// (`intoRing443` is now tainted).
+	intoRing443 := fromRing520.Prev()
 
-	// Return the tainted `intoRing858`:
-	return intoRing858
+	// Return the tainted `intoRing443`:
+	return intoRing443
 }
 
 func TaintStepTest_ContainerRingRingUnlink_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRing546` into `intoRing364`.
+	// The flow is from `fromRing127` into `intoRing483`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRing546`:
-	fromRing546 := sourceCQL.(ring.Ring)
+	// Assume that `sourceCQL` has the underlying type of `fromRing127`:
+	fromRing127 := sourceCQL.(ring.Ring)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromRing546` to the result `intoRing364`
-	// (`intoRing364` is now tainted).
-	intoRing364 := fromRing546.Unlink(0)
+	// from the receiver `fromRing127` to the result `intoRing483`
+	// (`intoRing483` is now tainted).
+	intoRing483 := fromRing127.Unlink(0)
 
-	// Return the tainted `intoRing364`:
-	return intoRing364
+	// Return the tainted `intoRing483`:
+	return intoRing483
 }
 
 func RunAllTaints_ContainerRing() {

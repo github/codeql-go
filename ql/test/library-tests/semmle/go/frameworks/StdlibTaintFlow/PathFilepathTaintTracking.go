@@ -5,213 +5,213 @@ package main
 import "path/filepath"
 
 func TaintStepTest_PathFilepathAbs_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString530` into `intoString198`.
+	// The flow is from `fromString656` into `intoString414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString530`:
-	fromString530 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString656`:
+	fromString656 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString530` to result `intoString198`
-	// (`intoString198` is now tainted).
-	intoString198, _ := filepath.Abs(fromString530)
+	// from the parameter `fromString656` to result `intoString414`
+	// (`intoString414` is now tainted).
+	intoString414, _ := filepath.Abs(fromString656)
 
-	// Return the tainted `intoString198`:
-	return intoString198
+	// Return the tainted `intoString414`:
+	return intoString414
 }
 
 func TaintStepTest_PathFilepathBase_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString278` into `intoString628`.
+	// The flow is from `fromString518` into `intoString650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString278`:
-	fromString278 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString518`:
+	fromString518 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString278` to result `intoString628`
-	// (`intoString628` is now tainted).
-	intoString628 := filepath.Base(fromString278)
+	// from the parameter `fromString518` to result `intoString650`
+	// (`intoString650` is now tainted).
+	intoString650 := filepath.Base(fromString518)
 
-	// Return the tainted `intoString628`:
-	return intoString628
+	// Return the tainted `intoString650`:
+	return intoString650
 }
 
 func TaintStepTest_PathFilepathClean_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString856` into `intoString847`.
+	// The flow is from `fromString784` into `intoString957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString856`:
-	fromString856 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString784`:
+	fromString784 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString856` to result `intoString847`
-	// (`intoString847` is now tainted).
-	intoString847 := filepath.Clean(fromString856)
+	// from the parameter `fromString784` to result `intoString957`
+	// (`intoString957` is now tainted).
+	intoString957 := filepath.Clean(fromString784)
 
-	// Return the tainted `intoString847`:
-	return intoString847
+	// Return the tainted `intoString957`:
+	return intoString957
 }
 
 func TaintStepTest_PathFilepathDir_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString467` into `intoString701`.
+	// The flow is from `fromString520` into `intoString443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString467`:
-	fromString467 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString520`:
+	fromString520 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString467` to result `intoString701`
-	// (`intoString701` is now tainted).
-	intoString701 := filepath.Dir(fromString467)
+	// from the parameter `fromString520` to result `intoString443`
+	// (`intoString443` is now tainted).
+	intoString443 := filepath.Dir(fromString520)
 
-	// Return the tainted `intoString701`:
-	return intoString701
+	// Return the tainted `intoString443`:
+	return intoString443
 }
 
 func TaintStepTest_PathFilepathEvalSymlinks_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString152` into `intoString718`.
+	// The flow is from `fromString127` into `intoString483`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString152`:
-	fromString152 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString127`:
+	fromString127 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString152` to result `intoString718`
-	// (`intoString718` is now tainted).
-	intoString718, _ := filepath.EvalSymlinks(fromString152)
+	// from the parameter `fromString127` to result `intoString483`
+	// (`intoString483` is now tainted).
+	intoString483, _ := filepath.EvalSymlinks(fromString127)
 
-	// Return the tainted `intoString718`:
-	return intoString718
+	// Return the tainted `intoString483`:
+	return intoString483
 }
 
 func TaintStepTest_PathFilepathExt_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString312` into `intoString203`.
+	// The flow is from `fromString989` into `intoString982`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString312`:
-	fromString312 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString989`:
+	fromString989 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString312` to result `intoString203`
-	// (`intoString203` is now tainted).
-	intoString203 := filepath.Ext(fromString312)
+	// from the parameter `fromString989` to result `intoString982`
+	// (`intoString982` is now tainted).
+	intoString982 := filepath.Ext(fromString989)
 
-	// Return the tainted `intoString203`:
-	return intoString203
+	// Return the tainted `intoString982`:
+	return intoString982
 }
 
 func TaintStepTest_PathFilepathFromSlash_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString523` into `intoString680`.
+	// The flow is from `fromString417` into `intoString584`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString523`:
-	fromString523 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString417`:
+	fromString417 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString523` to result `intoString680`
-	// (`intoString680` is now tainted).
-	intoString680 := filepath.FromSlash(fromString523)
+	// from the parameter `fromString417` to result `intoString584`
+	// (`intoString584` is now tainted).
+	intoString584 := filepath.FromSlash(fromString417)
 
-	// Return the tainted `intoString680`:
-	return intoString680
+	// Return the tainted `intoString584`:
+	return intoString584
 }
 
 func TaintStepTest_PathFilepathJoin_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString935` into `intoString773`.
+	// The flow is from `fromString991` into `intoString881`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString935`:
-	fromString935 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString991`:
+	fromString991 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString935` to result `intoString773`
-	// (`intoString773` is now tainted).
-	intoString773 := filepath.Join(fromString935)
+	// from the parameter `fromString991` to result `intoString881`
+	// (`intoString881` is now tainted).
+	intoString881 := filepath.Join(fromString991)
 
-	// Return the tainted `intoString773`:
-	return intoString773
+	// Return the tainted `intoString881`:
+	return intoString881
 }
 
 func TaintStepTest_PathFilepathRel_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString289` into `intoString807`.
+	// The flow is from `fromString186` into `intoString284`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString289`:
-	fromString289 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString186`:
+	fromString186 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString289` to result `intoString807`
-	// (`intoString807` is now tainted).
-	intoString807, _ := filepath.Rel(fromString289, "")
+	// from the parameter `fromString186` to result `intoString284`
+	// (`intoString284` is now tainted).
+	intoString284, _ := filepath.Rel(fromString186, "")
 
-	// Return the tainted `intoString807`:
-	return intoString807
+	// Return the tainted `intoString284`:
+	return intoString284
 }
 
 func TaintStepTest_PathFilepathRel_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString267` into `intoString896`.
+	// The flow is from `fromString908` into `intoString137`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString267`:
-	fromString267 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString908`:
+	fromString908 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString267` to result `intoString896`
-	// (`intoString896` is now tainted).
-	intoString896, _ := filepath.Rel("", fromString267)
+	// from the parameter `fromString908` to result `intoString137`
+	// (`intoString137` is now tainted).
+	intoString137, _ := filepath.Rel("", fromString908)
 
-	// Return the tainted `intoString896`:
-	return intoString896
+	// Return the tainted `intoString137`:
+	return intoString137
 }
 
 func TaintStepTest_PathFilepathSplit_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString848` into `intoString258`.
+	// The flow is from `fromString494` into `intoString873`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString848`:
-	fromString848 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString494`:
+	fromString494 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString848` to result `intoString258`
-	// (`intoString258` is now tainted).
-	intoString258, _ := filepath.Split(fromString848)
+	// from the parameter `fromString494` to result `intoString873`
+	// (`intoString873` is now tainted).
+	intoString873, _ := filepath.Split(fromString494)
 
-	// Return the tainted `intoString258`:
-	return intoString258
+	// Return the tainted `intoString873`:
+	return intoString873
 }
 
 func TaintStepTest_PathFilepathSplit_B0I0O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString584` into `intoString732`.
+	// The flow is from `fromString599` into `intoString409`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString584`:
-	fromString584 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString599`:
+	fromString599 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString584` to result `intoString732`
-	// (`intoString732` is now tainted).
-	_, intoString732 := filepath.Split(fromString584)
+	// from the parameter `fromString599` to result `intoString409`
+	// (`intoString409` is now tainted).
+	_, intoString409 := filepath.Split(fromString599)
 
-	// Return the tainted `intoString732`:
-	return intoString732
+	// Return the tainted `intoString409`:
+	return intoString409
 }
 
 func TaintStepTest_PathFilepathSplitList_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString451` into `intoString313`.
+	// The flow is from `fromString246` into `intoString898`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString451`:
-	fromString451 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString246`:
+	fromString246 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString451` to result `intoString313`
-	// (`intoString313` is now tainted).
-	intoString313 := filepath.SplitList(fromString451)
+	// from the parameter `fromString246` to result `intoString898`
+	// (`intoString898` is now tainted).
+	intoString898 := filepath.SplitList(fromString246)
 
-	// Return the tainted `intoString313`:
-	return intoString313
+	// Return the tainted `intoString898`:
+	return intoString898
 }
 
 func TaintStepTest_PathFilepathToSlash_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString623` into `intoString223`.
+	// The flow is from `fromString598` into `intoString631`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString623`:
-	fromString623 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString598`:
+	fromString598 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString623` to result `intoString223`
-	// (`intoString223` is now tainted).
-	intoString223 := filepath.ToSlash(fromString623)
+	// from the parameter `fromString598` to result `intoString631`
+	// (`intoString631` is now tainted).
+	intoString631 := filepath.ToSlash(fromString598)
 
-	// Return the tainted `intoString223`:
-	return intoString223
+	// Return the tainted `intoString631`:
+	return intoString631
 }
 
 func RunAllTaints_PathFilepath() {

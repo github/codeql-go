@@ -5,39 +5,39 @@ package main
 import "crypto"
 
 func TaintStepTest_CryptoDecrypterDecrypt_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte491` into `intoByte867`.
+	// The flow is from `fromByte656` into `intoByte414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte491`:
-	fromByte491 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte656`:
+	fromByte656 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL crypto.Decrypter
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte491` to the result `intoByte867`
-	// (`intoByte867` is now tainted).
-	intoByte867, _ := mediumObjCQL.Decrypt(nil, fromByte491, nil)
+	// from the parameter `fromByte656` to the result `intoByte414`
+	// (`intoByte414` is now tainted).
+	intoByte414, _ := mediumObjCQL.Decrypt(nil, fromByte656, nil)
 
-	// Return the tainted `intoByte867`:
-	return intoByte867
+	// Return the tainted `intoByte414`:
+	return intoByte414
 }
 
 func TaintStepTest_CryptoSignerSign_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte554` into `intoByte331`.
+	// The flow is from `fromByte518` into `intoByte650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte554`:
-	fromByte554 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte518`:
+	fromByte518 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL crypto.Signer
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte554` to the result `intoByte331`
-	// (`intoByte331` is now tainted).
-	intoByte331, _ := mediumObjCQL.Sign(nil, fromByte554, nil)
+	// from the parameter `fromByte518` to the result `intoByte650`
+	// (`intoByte650` is now tainted).
+	intoByte650, _ := mediumObjCQL.Sign(nil, fromByte518, nil)
 
-	// Return the tainted `intoByte331`:
-	return intoByte331
+	// Return the tainted `intoByte650`:
+	return intoByte650
 }
 
 func RunAllTaints_Crypto() {

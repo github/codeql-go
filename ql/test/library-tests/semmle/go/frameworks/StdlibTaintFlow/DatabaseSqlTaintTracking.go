@@ -5,159 +5,159 @@ package main
 import "database/sql"
 
 func TaintStepTest_DatabaseSqlNamed_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString953` into `intoNamedArg403`.
+	// The flow is from `fromString656` into `intoNamedArg414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString953`:
-	fromString953 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString656`:
+	fromString656 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString953` to result `intoNamedArg403`
-	// (`intoNamedArg403` is now tainted).
-	intoNamedArg403 := sql.Named(fromString953, nil)
+	// from the parameter `fromString656` to result `intoNamedArg414`
+	// (`intoNamedArg414` is now tainted).
+	intoNamedArg414 := sql.Named(fromString656, nil)
 
-	// Return the tainted `intoNamedArg403`:
-	return intoNamedArg403
+	// Return the tainted `intoNamedArg414`:
+	return intoNamedArg414
 }
 
 func TaintStepTest_DatabaseSqlNamed_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface414` into `intoNamedArg712`.
+	// The flow is from `fromInterface518` into `intoNamedArg650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface414`:
-	fromInterface414 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface518`:
+	fromInterface518 := sourceCQL.(interface{})
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface414` to result `intoNamedArg712`
-	// (`intoNamedArg712` is now tainted).
-	intoNamedArg712 := sql.Named("", fromInterface414)
+	// from the parameter `fromInterface518` to result `intoNamedArg650`
+	// (`intoNamedArg650` is now tainted).
+	intoNamedArg650 := sql.Named("", fromInterface518)
 
-	// Return the tainted `intoNamedArg712`:
-	return intoNamedArg712
+	// Return the tainted `intoNamedArg650`:
+	return intoNamedArg650
 }
 
 func TaintStepTest_DatabaseSqlConnPrepareContext_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString825` into `intoStmt646`.
+	// The flow is from `fromString784` into `intoStmt957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString825`:
-	fromString825 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString784`:
+	fromString784 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL sql.Conn
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString825` to the result `intoStmt646`
-	// (`intoStmt646` is now tainted).
-	intoStmt646, _ := mediumObjCQL.PrepareContext(nil, fromString825)
+	// from the parameter `fromString784` to the result `intoStmt957`
+	// (`intoStmt957` is now tainted).
+	intoStmt957, _ := mediumObjCQL.PrepareContext(nil, fromString784)
 
-	// Return the tainted `intoStmt646`:
-	return intoStmt646
+	// Return the tainted `intoStmt957`:
+	return intoStmt957
 }
 
 func TaintStepTest_DatabaseSqlDBPrepare_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString632` into `intoStmt416`.
+	// The flow is from `fromString520` into `intoStmt443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString632`:
-	fromString632 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString520`:
+	fromString520 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL sql.DB
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString632` to the result `intoStmt416`
-	// (`intoStmt416` is now tainted).
-	intoStmt416, _ := mediumObjCQL.Prepare(fromString632)
+	// from the parameter `fromString520` to the result `intoStmt443`
+	// (`intoStmt443` is now tainted).
+	intoStmt443, _ := mediumObjCQL.Prepare(fromString520)
 
-	// Return the tainted `intoStmt416`:
-	return intoStmt416
+	// Return the tainted `intoStmt443`:
+	return intoStmt443
 }
 
 func TaintStepTest_DatabaseSqlDBPrepareContext_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString469` into `intoStmt512`.
+	// The flow is from `fromString127` into `intoStmt483`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString469`:
-	fromString469 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString127`:
+	fromString127 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL sql.DB
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString469` to the result `intoStmt512`
-	// (`intoStmt512` is now tainted).
-	intoStmt512, _ := mediumObjCQL.PrepareContext(nil, fromString469)
+	// from the parameter `fromString127` to the result `intoStmt483`
+	// (`intoStmt483` is now tainted).
+	intoStmt483, _ := mediumObjCQL.PrepareContext(nil, fromString127)
 
-	// Return the tainted `intoStmt512`:
-	return intoStmt512
+	// Return the tainted `intoStmt483`:
+	return intoStmt483
 }
 
 func TaintStepTest_DatabaseSqlTxPrepare_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString528` into `intoStmt430`.
+	// The flow is from `fromString989` into `intoStmt982`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString528`:
-	fromString528 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString989`:
+	fromString989 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL sql.Tx
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString528` to the result `intoStmt430`
-	// (`intoStmt430` is now tainted).
-	intoStmt430, _ := mediumObjCQL.Prepare(fromString528)
+	// from the parameter `fromString989` to the result `intoStmt982`
+	// (`intoStmt982` is now tainted).
+	intoStmt982, _ := mediumObjCQL.Prepare(fromString989)
 
-	// Return the tainted `intoStmt430`:
-	return intoStmt430
+	// Return the tainted `intoStmt982`:
+	return intoStmt982
 }
 
 func TaintStepTest_DatabaseSqlTxPrepareContext_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString182` into `intoStmt241`.
+	// The flow is from `fromString417` into `intoStmt584`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString182`:
-	fromString182 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString417`:
+	fromString417 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL sql.Tx
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString182` to the result `intoStmt241`
-	// (`intoStmt241` is now tainted).
-	intoStmt241, _ := mediumObjCQL.PrepareContext(nil, fromString182)
+	// from the parameter `fromString417` to the result `intoStmt584`
+	// (`intoStmt584` is now tainted).
+	intoStmt584, _ := mediumObjCQL.PrepareContext(nil, fromString417)
 
-	// Return the tainted `intoStmt241`:
-	return intoStmt241
+	// Return the tainted `intoStmt584`:
+	return intoStmt584
 }
 
 func TaintStepTest_DatabaseSqlTxStmt_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromStmt535` into `intoStmt123`.
+	// The flow is from `fromStmt991` into `intoStmt881`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromStmt535`:
-	fromStmt535 := sourceCQL.(*sql.Stmt)
+	// Assume that `sourceCQL` has the underlying type of `fromStmt991`:
+	fromStmt991 := sourceCQL.(*sql.Stmt)
 
 	// Declare medium object/interface:
 	var mediumObjCQL sql.Tx
 
 	// Call the method that transfers the taint
-	// from the parameter `fromStmt535` to the result `intoStmt123`
-	// (`intoStmt123` is now tainted).
-	intoStmt123 := mediumObjCQL.Stmt(fromStmt535)
+	// from the parameter `fromStmt991` to the result `intoStmt881`
+	// (`intoStmt881` is now tainted).
+	intoStmt881 := mediumObjCQL.Stmt(fromStmt991)
 
-	// Return the tainted `intoStmt123`:
-	return intoStmt123
+	// Return the tainted `intoStmt881`:
+	return intoStmt881
 }
 
 func TaintStepTest_DatabaseSqlTxStmtContext_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromStmt977` into `intoStmt648`.
+	// The flow is from `fromStmt186` into `intoStmt284`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromStmt977`:
-	fromStmt977 := sourceCQL.(*sql.Stmt)
+	// Assume that `sourceCQL` has the underlying type of `fromStmt186`:
+	fromStmt186 := sourceCQL.(*sql.Stmt)
 
 	// Declare medium object/interface:
 	var mediumObjCQL sql.Tx
 
 	// Call the method that transfers the taint
-	// from the parameter `fromStmt977` to the result `intoStmt648`
-	// (`intoStmt648` is now tainted).
-	intoStmt648 := mediumObjCQL.StmtContext(nil, fromStmt977)
+	// from the parameter `fromStmt186` to the result `intoStmt284`
+	// (`intoStmt284` is now tainted).
+	intoStmt284 := mediumObjCQL.StmtContext(nil, fromStmt186)
 
-	// Return the tainted `intoStmt648`:
-	return intoStmt648
+	// Return the tainted `intoStmt284`:
+	return intoStmt284
 }
 
 func RunAllTaints_DatabaseSql() {

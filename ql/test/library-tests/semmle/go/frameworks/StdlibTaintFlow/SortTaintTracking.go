@@ -5,18 +5,18 @@ package main
 import "sort"
 
 func TaintStepTest_SortReverse_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface646` into `intoInterface488`.
+	// The flow is from `fromInterface656` into `intoInterface414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface646`:
-	fromInterface646 := sourceCQL.(sort.Interface)
+	// Assume that `sourceCQL` has the underlying type of `fromInterface656`:
+	fromInterface656 := sourceCQL.(sort.Interface)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface646` to result `intoInterface488`
-	// (`intoInterface488` is now tainted).
-	intoInterface488 := sort.Reverse(fromInterface646)
+	// from the parameter `fromInterface656` to result `intoInterface414`
+	// (`intoInterface414` is now tainted).
+	intoInterface414 := sort.Reverse(fromInterface656)
 
-	// Return the tainted `intoInterface488`:
-	return intoInterface488
+	// Return the tainted `intoInterface414`:
+	return intoInterface414
 }
 
 func RunAllTaints_Sort() {

@@ -5,36 +5,36 @@ package main
 import "crypto/ed25519"
 
 func TaintStepTest_CryptoEd25519Sign_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte197` into `intoByte939`.
+	// The flow is from `fromByte656` into `intoByte414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte197`:
-	fromByte197 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte656`:
+	fromByte656 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte197` to result `intoByte939`
-	// (`intoByte939` is now tainted).
-	intoByte939 := ed25519.Sign(nil, fromByte197)
+	// from the parameter `fromByte656` to result `intoByte414`
+	// (`intoByte414` is now tainted).
+	intoByte414 := ed25519.Sign(nil, fromByte656)
 
-	// Return the tainted `intoByte939`:
-	return intoByte939
+	// Return the tainted `intoByte414`:
+	return intoByte414
 }
 
 func TaintStepTest_CryptoEd25519PrivateKeySign_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte967` into `intoByte570`.
+	// The flow is from `fromByte518` into `intoByte650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte967`:
-	fromByte967 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte518`:
+	fromByte518 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL ed25519.PrivateKey
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte967` to the result `intoByte570`
-	// (`intoByte570` is now tainted).
-	intoByte570, _ := mediumObjCQL.Sign(nil, fromByte967, nil)
+	// from the parameter `fromByte518` to the result `intoByte650`
+	// (`intoByte650` is now tainted).
+	intoByte650, _ := mediumObjCQL.Sign(nil, fromByte518, nil)
 
-	// Return the tainted `intoByte570`:
-	return intoByte570
+	// Return the tainted `intoByte650`:
+	return intoByte650
 }
 
 func RunAllTaints_CryptoEd25519() {

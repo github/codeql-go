@@ -5,51 +5,51 @@ package main
 import "errors"
 
 func TaintStepTest_ErrorsAs_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromError637` into `intoInterface320`.
+	// The flow is from `fromError656` into `intoInterface414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromError637`:
-	fromError637 := sourceCQL.(error)
+	// Assume that `sourceCQL` has the underlying type of `fromError656`:
+	fromError656 := sourceCQL.(error)
 
-	// Declare `intoInterface320` variable:
-	var intoInterface320 interface{}
+	// Declare `intoInterface414` variable:
+	var intoInterface414 interface{}
 
 	// Call the function that transfers the taint
-	// from the parameter `fromError637` to parameter `intoInterface320`;
-	// `intoInterface320` is now tainted.
-	errors.As(fromError637, intoInterface320)
+	// from the parameter `fromError656` to parameter `intoInterface414`;
+	// `intoInterface414` is now tainted.
+	errors.As(fromError656, intoInterface414)
 
-	// Return the tainted `intoInterface320`:
-	return intoInterface320
+	// Return the tainted `intoInterface414`:
+	return intoInterface414
 }
 
 func TaintStepTest_ErrorsNew_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString379` into `intoError522`.
+	// The flow is from `fromString518` into `intoError650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString379`:
-	fromString379 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString518`:
+	fromString518 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString379` to result `intoError522`
-	// (`intoError522` is now tainted).
-	intoError522 := errors.New(fromString379)
+	// from the parameter `fromString518` to result `intoError650`
+	// (`intoError650` is now tainted).
+	intoError650 := errors.New(fromString518)
 
-	// Return the tainted `intoError522`:
-	return intoError522
+	// Return the tainted `intoError650`:
+	return intoError650
 }
 
 func TaintStepTest_ErrorsUnwrap_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromError804` into `intoError872`.
+	// The flow is from `fromError784` into `intoError957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromError804`:
-	fromError804 := sourceCQL.(error)
+	// Assume that `sourceCQL` has the underlying type of `fromError784`:
+	fromError784 := sourceCQL.(error)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromError804` to result `intoError872`
-	// (`intoError872` is now tainted).
-	intoError872 := errors.Unwrap(fromError804)
+	// from the parameter `fromError784` to result `intoError957`
+	// (`intoError957` is now tainted).
+	intoError957 := errors.Unwrap(fromError784)
 
-	// Return the tainted `intoError872`:
-	return intoError872
+	// Return the tainted `intoError957`:
+	return intoError957
 }
 
 func RunAllTaints_Errors() {

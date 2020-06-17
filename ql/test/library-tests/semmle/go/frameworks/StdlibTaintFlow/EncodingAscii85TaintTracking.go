@@ -8,74 +8,74 @@ import (
 )
 
 func TaintStepTest_EncodingAscii85Decode_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte269` into `intoByte120`.
+	// The flow is from `fromByte656` into `intoByte414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte269`:
-	fromByte269 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte656`:
+	fromByte656 := sourceCQL.([]byte)
 
-	// Declare `intoByte120` variable:
-	var intoByte120 []byte
+	// Declare `intoByte414` variable:
+	var intoByte414 []byte
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte269` to parameter `intoByte120`;
-	// `intoByte120` is now tainted.
-	ascii85.Decode(intoByte120, fromByte269, false)
+	// from the parameter `fromByte656` to parameter `intoByte414`;
+	// `intoByte414` is now tainted.
+	ascii85.Decode(intoByte414, fromByte656, false)
 
-	// Return the tainted `intoByte120`:
-	return intoByte120
+	// Return the tainted `intoByte414`:
+	return intoByte414
 }
 
 func TaintStepTest_EncodingAscii85Encode_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte846` into `intoByte322`.
+	// The flow is from `fromByte518` into `intoByte650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte846`:
-	fromByte846 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte518`:
+	fromByte518 := sourceCQL.([]byte)
 
-	// Declare `intoByte322` variable:
-	var intoByte322 []byte
+	// Declare `intoByte650` variable:
+	var intoByte650 []byte
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte846` to parameter `intoByte322`;
-	// `intoByte322` is now tainted.
-	ascii85.Encode(intoByte322, fromByte846)
+	// from the parameter `fromByte518` to parameter `intoByte650`;
+	// `intoByte650` is now tainted.
+	ascii85.Encode(intoByte650, fromByte518)
 
-	// Return the tainted `intoByte322`:
-	return intoByte322
+	// Return the tainted `intoByte650`:
+	return intoByte650
 }
 
 func TaintStepTest_EncodingAscii85NewDecoder_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader241` into `intoReader836`.
+	// The flow is from `fromReader784` into `intoReader957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader241`:
-	fromReader241 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader784`:
+	fromReader784 := sourceCQL.(io.Reader)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader241` to result `intoReader836`
-	// (`intoReader836` is now tainted).
-	intoReader836 := ascii85.NewDecoder(fromReader241)
+	// from the parameter `fromReader784` to result `intoReader957`
+	// (`intoReader957` is now tainted).
+	intoReader957 := ascii85.NewDecoder(fromReader784)
 
-	// Return the tainted `intoReader836`:
-	return intoReader836
+	// Return the tainted `intoReader957`:
+	return intoReader957
 }
 
 func TaintStepTest_EncodingAscii85NewEncoder_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromWriteCloser111` into `intoWriter171`.
+	// The flow is from `fromWriteCloser520` into `intoWriter443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriteCloser111`:
-	fromWriteCloser111 := sourceCQL.(io.WriteCloser)
+	// Assume that `sourceCQL` has the underlying type of `fromWriteCloser520`:
+	fromWriteCloser520 := sourceCQL.(io.WriteCloser)
 
-	// Declare `intoWriter171` variable:
-	var intoWriter171 io.Writer
+	// Declare `intoWriter443` variable:
+	var intoWriter443 io.Writer
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoWriter171`:
-	intermediateCQL := ascii85.NewEncoder(intoWriter171)
+	// from the result `intermediateCQL` to parameter `intoWriter443`:
+	intermediateCQL := ascii85.NewEncoder(intoWriter443)
 
-	// Extra step (`fromWriteCloser111` taints `intermediateCQL`, which taints `intoWriter171`:
-	link(fromWriteCloser111, intermediateCQL)
+	// Extra step (`fromWriteCloser520` taints `intermediateCQL`, which taints `intoWriter443`:
+	link(fromWriteCloser520, intermediateCQL)
 
-	// Return the tainted `intoWriter171`:
-	return intoWriter171
+	// Return the tainted `intoWriter443`:
+	return intoWriter443
 }
 
 func RunAllTaints_EncodingAscii85() {

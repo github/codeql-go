@@ -5,162 +5,162 @@ package main
 import "encoding/asn1"
 
 func TaintStepTest_EncodingAsn1Marshal_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface253` into `intoByte218`.
+	// The flow is from `fromInterface656` into `intoByte414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface253`:
-	fromInterface253 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface656`:
+	fromInterface656 := sourceCQL.(interface{})
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface253` to result `intoByte218`
-	// (`intoByte218` is now tainted).
-	intoByte218, _ := asn1.Marshal(fromInterface253)
+	// from the parameter `fromInterface656` to result `intoByte414`
+	// (`intoByte414` is now tainted).
+	intoByte414, _ := asn1.Marshal(fromInterface656)
 
-	// Return the tainted `intoByte218`:
-	return intoByte218
+	// Return the tainted `intoByte414`:
+	return intoByte414
 }
 
 func TaintStepTest_EncodingAsn1MarshalWithParams_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface633` into `intoByte976`.
+	// The flow is from `fromInterface518` into `intoByte650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface633`:
-	fromInterface633 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface518`:
+	fromInterface518 := sourceCQL.(interface{})
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface633` to result `intoByte976`
-	// (`intoByte976` is now tainted).
-	intoByte976, _ := asn1.MarshalWithParams(fromInterface633, "")
+	// from the parameter `fromInterface518` to result `intoByte650`
+	// (`intoByte650` is now tainted).
+	intoByte650, _ := asn1.MarshalWithParams(fromInterface518, "")
 
-	// Return the tainted `intoByte976`:
-	return intoByte976
+	// Return the tainted `intoByte650`:
+	return intoByte650
 }
 
 func TaintStepTest_EncodingAsn1MarshalWithParams_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString452` into `intoByte221`.
+	// The flow is from `fromString784` into `intoByte957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString452`:
-	fromString452 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString784`:
+	fromString784 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString452` to result `intoByte221`
-	// (`intoByte221` is now tainted).
-	intoByte221, _ := asn1.MarshalWithParams(nil, fromString452)
+	// from the parameter `fromString784` to result `intoByte957`
+	// (`intoByte957` is now tainted).
+	intoByte957, _ := asn1.MarshalWithParams(nil, fromString784)
 
-	// Return the tainted `intoByte221`:
-	return intoByte221
+	// Return the tainted `intoByte957`:
+	return intoByte957
 }
 
 func TaintStepTest_EncodingAsn1Unmarshal_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte975` into `intoInterface376`.
+	// The flow is from `fromByte520` into `intoInterface443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte975`:
-	fromByte975 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte520`:
+	fromByte520 := sourceCQL.([]byte)
 
-	// Declare `intoInterface376` variable:
-	var intoInterface376 interface{}
+	// Declare `intoInterface443` variable:
+	var intoInterface443 interface{}
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte975` to parameter `intoInterface376`;
-	// `intoInterface376` is now tainted.
-	asn1.Unmarshal(fromByte975, intoInterface376)
+	// from the parameter `fromByte520` to parameter `intoInterface443`;
+	// `intoInterface443` is now tainted.
+	asn1.Unmarshal(fromByte520, intoInterface443)
 
-	// Return the tainted `intoInterface376`:
-	return intoInterface376
+	// Return the tainted `intoInterface443`:
+	return intoInterface443
 }
 
 func TaintStepTest_EncodingAsn1Unmarshal_B0I0O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte901` into `intoByte391`.
+	// The flow is from `fromByte127` into `intoByte483`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte901`:
-	fromByte901 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte127`:
+	fromByte127 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte901` to result `intoByte391`
-	// (`intoByte391` is now tainted).
-	intoByte391, _ := asn1.Unmarshal(fromByte901, nil)
+	// from the parameter `fromByte127` to result `intoByte483`
+	// (`intoByte483` is now tainted).
+	intoByte483, _ := asn1.Unmarshal(fromByte127, nil)
 
-	// Return the tainted `intoByte391`:
-	return intoByte391
+	// Return the tainted `intoByte483`:
+	return intoByte483
 }
 
 func TaintStepTest_EncodingAsn1UnmarshalWithParams_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte724` into `intoInterface572`.
+	// The flow is from `fromByte989` into `intoInterface982`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte724`:
-	fromByte724 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte989`:
+	fromByte989 := sourceCQL.([]byte)
 
-	// Declare `intoInterface572` variable:
-	var intoInterface572 interface{}
+	// Declare `intoInterface982` variable:
+	var intoInterface982 interface{}
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte724` to parameter `intoInterface572`;
-	// `intoInterface572` is now tainted.
-	asn1.UnmarshalWithParams(fromByte724, intoInterface572, "")
+	// from the parameter `fromByte989` to parameter `intoInterface982`;
+	// `intoInterface982` is now tainted.
+	asn1.UnmarshalWithParams(fromByte989, intoInterface982, "")
 
-	// Return the tainted `intoInterface572`:
-	return intoInterface572
+	// Return the tainted `intoInterface982`:
+	return intoInterface982
 }
 
 func TaintStepTest_EncodingAsn1UnmarshalWithParams_B0I0O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte800` into `intoByte637`.
+	// The flow is from `fromByte417` into `intoByte584`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte800`:
-	fromByte800 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte417`:
+	fromByte417 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte800` to result `intoByte637`
-	// (`intoByte637` is now tainted).
-	intoByte637, _ := asn1.UnmarshalWithParams(fromByte800, nil, "")
+	// from the parameter `fromByte417` to result `intoByte584`
+	// (`intoByte584` is now tainted).
+	intoByte584, _ := asn1.UnmarshalWithParams(fromByte417, nil, "")
 
-	// Return the tainted `intoByte637`:
-	return intoByte637
+	// Return the tainted `intoByte584`:
+	return intoByte584
 }
 
 func TaintStepTest_EncodingAsn1UnmarshalWithParams_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString116` into `intoInterface640`.
+	// The flow is from `fromString991` into `intoInterface881`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString116`:
-	fromString116 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString991`:
+	fromString991 := sourceCQL.(string)
 
-	// Declare `intoInterface640` variable:
-	var intoInterface640 interface{}
+	// Declare `intoInterface881` variable:
+	var intoInterface881 interface{}
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString116` to parameter `intoInterface640`;
-	// `intoInterface640` is now tainted.
-	asn1.UnmarshalWithParams(nil, intoInterface640, fromString116)
+	// from the parameter `fromString991` to parameter `intoInterface881`;
+	// `intoInterface881` is now tainted.
+	asn1.UnmarshalWithParams(nil, intoInterface881, fromString991)
 
-	// Return the tainted `intoInterface640`:
-	return intoInterface640
+	// Return the tainted `intoInterface881`:
+	return intoInterface881
 }
 
 func TaintStepTest_EncodingAsn1UnmarshalWithParams_B0I1O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString303` into `intoByte784`.
+	// The flow is from `fromString186` into `intoByte284`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString303`:
-	fromString303 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString186`:
+	fromString186 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString303` to result `intoByte784`
-	// (`intoByte784` is now tainted).
-	intoByte784, _ := asn1.UnmarshalWithParams(nil, nil, fromString303)
+	// from the parameter `fromString186` to result `intoByte284`
+	// (`intoByte284` is now tainted).
+	intoByte284, _ := asn1.UnmarshalWithParams(nil, nil, fromString186)
 
-	// Return the tainted `intoByte784`:
-	return intoByte784
+	// Return the tainted `intoByte284`:
+	return intoByte284
 }
 
 func TaintStepTest_EncodingAsn1ObjectIdentifierString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromObjectIdentifier271` into `intoString833`.
+	// The flow is from `fromObjectIdentifier908` into `intoString137`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromObjectIdentifier271`:
-	fromObjectIdentifier271 := sourceCQL.(asn1.ObjectIdentifier)
+	// Assume that `sourceCQL` has the underlying type of `fromObjectIdentifier908`:
+	fromObjectIdentifier908 := sourceCQL.(asn1.ObjectIdentifier)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromObjectIdentifier271` to the result `intoString833`
-	// (`intoString833` is now tainted).
-	intoString833 := fromObjectIdentifier271.String()
+	// from the receiver `fromObjectIdentifier908` to the result `intoString137`
+	// (`intoString137` is now tainted).
+	intoString137 := fromObjectIdentifier908.String()
 
-	// Return the tainted `intoString833`:
-	return intoString833
+	// Return the tainted `intoString137`:
+	return intoString137
 }
 
 func RunAllTaints_EncodingAsn1() {

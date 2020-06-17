@@ -8,741 +8,741 @@ import (
 )
 
 func TaintStepTest_StringsFields_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString825` into `intoString600`.
+	// The flow is from `fromString656` into `intoString414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString825`:
-	fromString825 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString656`:
+	fromString656 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString825` to result `intoString600`
-	// (`intoString600` is now tainted).
-	intoString600 := strings.Fields(fromString825)
+	// from the parameter `fromString656` to result `intoString414`
+	// (`intoString414` is now tainted).
+	intoString414 := strings.Fields(fromString656)
 
-	// Return the tainted `intoString600`:
-	return intoString600
+	// Return the tainted `intoString414`:
+	return intoString414
 }
 
 func TaintStepTest_StringsFieldsFunc_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString799` into `intoString505`.
+	// The flow is from `fromString518` into `intoString650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString799`:
-	fromString799 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString518`:
+	fromString518 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString799` to result `intoString505`
-	// (`intoString505` is now tainted).
-	intoString505 := strings.FieldsFunc(fromString799, nil)
+	// from the parameter `fromString518` to result `intoString650`
+	// (`intoString650` is now tainted).
+	intoString650 := strings.FieldsFunc(fromString518, nil)
 
-	// Return the tainted `intoString505`:
-	return intoString505
+	// Return the tainted `intoString650`:
+	return intoString650
 }
 
 func TaintStepTest_StringsJoin_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString374` into `intoString507`.
+	// The flow is from `fromString784` into `intoString957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString374`:
-	fromString374 := sourceCQL.([]string)
+	// Assume that `sourceCQL` has the underlying type of `fromString784`:
+	fromString784 := sourceCQL.([]string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString374` to result `intoString507`
-	// (`intoString507` is now tainted).
-	intoString507 := strings.Join(fromString374, "")
+	// from the parameter `fromString784` to result `intoString957`
+	// (`intoString957` is now tainted).
+	intoString957 := strings.Join(fromString784, "")
 
-	// Return the tainted `intoString507`:
-	return intoString507
+	// Return the tainted `intoString957`:
+	return intoString957
 }
 
 func TaintStepTest_StringsJoin_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString770` into `intoString897`.
+	// The flow is from `fromString520` into `intoString443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString770`:
-	fromString770 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString520`:
+	fromString520 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString770` to result `intoString897`
-	// (`intoString897` is now tainted).
-	intoString897 := strings.Join(nil, fromString770)
+	// from the parameter `fromString520` to result `intoString443`
+	// (`intoString443` is now tainted).
+	intoString443 := strings.Join(nil, fromString520)
 
-	// Return the tainted `intoString897`:
-	return intoString897
+	// Return the tainted `intoString443`:
+	return intoString443
 }
 
 func TaintStepTest_StringsMap_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString654` into `intoString549`.
+	// The flow is from `fromString127` into `intoString483`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString654`:
-	fromString654 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString127`:
+	fromString127 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString654` to result `intoString549`
-	// (`intoString549` is now tainted).
-	intoString549 := strings.Map(nil, fromString654)
+	// from the parameter `fromString127` to result `intoString483`
+	// (`intoString483` is now tainted).
+	intoString483 := strings.Map(nil, fromString127)
 
-	// Return the tainted `intoString549`:
-	return intoString549
+	// Return the tainted `intoString483`:
+	return intoString483
 }
 
 func TaintStepTest_StringsNewReader_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString883` into `intoReader386`.
+	// The flow is from `fromString989` into `intoReader982`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString883`:
-	fromString883 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString989`:
+	fromString989 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString883` to result `intoReader386`
-	// (`intoReader386` is now tainted).
-	intoReader386 := strings.NewReader(fromString883)
+	// from the parameter `fromString989` to result `intoReader982`
+	// (`intoReader982` is now tainted).
+	intoReader982 := strings.NewReader(fromString989)
 
-	// Return the tainted `intoReader386`:
-	return intoReader386
+	// Return the tainted `intoReader982`:
+	return intoReader982
 }
 
 func TaintStepTest_StringsNewReplacer_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString843` into `intoReplacer846`.
+	// The flow is from `fromString417` into `intoReplacer584`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString843`:
-	fromString843 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString417`:
+	fromString417 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString843` to result `intoReplacer846`
-	// (`intoReplacer846` is now tainted).
-	intoReplacer846 := strings.NewReplacer(fromString843)
+	// from the parameter `fromString417` to result `intoReplacer584`
+	// (`intoReplacer584` is now tainted).
+	intoReplacer584 := strings.NewReplacer(fromString417)
 
-	// Return the tainted `intoReplacer846`:
-	return intoReplacer846
+	// Return the tainted `intoReplacer584`:
+	return intoReplacer584
 }
 
 func TaintStepTest_StringsRepeat_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString490` into `intoString976`.
+	// The flow is from `fromString991` into `intoString881`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString490`:
-	fromString490 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString991`:
+	fromString991 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString490` to result `intoString976`
-	// (`intoString976` is now tainted).
-	intoString976 := strings.Repeat(fromString490, 0)
+	// from the parameter `fromString991` to result `intoString881`
+	// (`intoString881` is now tainted).
+	intoString881 := strings.Repeat(fromString991, 0)
 
-	// Return the tainted `intoString976`:
-	return intoString976
+	// Return the tainted `intoString881`:
+	return intoString881
 }
 
 func TaintStepTest_StringsReplace_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString596` into `intoString739`.
+	// The flow is from `fromString186` into `intoString284`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString596`:
-	fromString596 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString186`:
+	fromString186 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString596` to result `intoString739`
-	// (`intoString739` is now tainted).
-	intoString739 := strings.Replace(fromString596, "", "", 0)
+	// from the parameter `fromString186` to result `intoString284`
+	// (`intoString284` is now tainted).
+	intoString284 := strings.Replace(fromString186, "", "", 0)
 
-	// Return the tainted `intoString739`:
-	return intoString739
+	// Return the tainted `intoString284`:
+	return intoString284
 }
 
 func TaintStepTest_StringsReplace_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString150` into `intoString384`.
+	// The flow is from `fromString908` into `intoString137`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString150`:
-	fromString150 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString908`:
+	fromString908 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString150` to result `intoString384`
-	// (`intoString384` is now tainted).
-	intoString384 := strings.Replace("", "", fromString150, 0)
+	// from the parameter `fromString908` to result `intoString137`
+	// (`intoString137` is now tainted).
+	intoString137 := strings.Replace("", "", fromString908, 0)
 
-	// Return the tainted `intoString384`:
-	return intoString384
+	// Return the tainted `intoString137`:
+	return intoString137
 }
 
 func TaintStepTest_StringsReplaceAll_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString560` into `intoString401`.
+	// The flow is from `fromString494` into `intoString873`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString560`:
-	fromString560 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString560` to result `intoString401`
-	// (`intoString401` is now tainted).
-	intoString401 := strings.ReplaceAll(fromString560, "", "")
-
-	// Return the tainted `intoString401`:
-	return intoString401
-}
-
-func TaintStepTest_StringsReplaceAll_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString387` into `intoString714`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString387`:
-	fromString387 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString494`:
+	fromString494 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString387` to result `intoString714`
-	// (`intoString714` is now tainted).
-	intoString714 := strings.ReplaceAll("", "", fromString387)
-
-	// Return the tainted `intoString714`:
-	return intoString714
-}
-
-func TaintStepTest_StringsSplit_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString866` into `intoString806`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString866`:
-	fromString866 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString866` to result `intoString806`
-	// (`intoString806` is now tainted).
-	intoString806 := strings.Split(fromString866, "")
-
-	// Return the tainted `intoString806`:
-	return intoString806
-}
-
-func TaintStepTest_StringsSplitAfter_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString953` into `intoString949`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString953`:
-	fromString953 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString953` to result `intoString949`
-	// (`intoString949` is now tainted).
-	intoString949 := strings.SplitAfter(fromString953, "")
-
-	// Return the tainted `intoString949`:
-	return intoString949
-}
-
-func TaintStepTest_StringsSplitAfterN_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString921` into `intoString307`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString921`:
-	fromString921 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString921` to result `intoString307`
-	// (`intoString307` is now tainted).
-	intoString307 := strings.SplitAfterN(fromString921, "", 0)
-
-	// Return the tainted `intoString307`:
-	return intoString307
-}
-
-func TaintStepTest_StringsSplitN_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString729` into `intoString716`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString729`:
-	fromString729 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString729` to result `intoString716`
-	// (`intoString716` is now tainted).
-	intoString716 := strings.SplitN(fromString729, "", 0)
-
-	// Return the tainted `intoString716`:
-	return intoString716
-}
-
-func TaintStepTest_StringsTitle_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString410` into `intoString944`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString410`:
-	fromString410 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString410` to result `intoString944`
-	// (`intoString944` is now tainted).
-	intoString944 := strings.Title(fromString410)
-
-	// Return the tainted `intoString944`:
-	return intoString944
-}
-
-func TaintStepTest_StringsToLower_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString430` into `intoString996`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString430`:
-	fromString430 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString430` to result `intoString996`
-	// (`intoString996` is now tainted).
-	intoString996 := strings.ToLower(fromString430)
-
-	// Return the tainted `intoString996`:
-	return intoString996
-}
-
-func TaintStepTest_StringsToLowerSpecial_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString766` into `intoString848`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString766`:
-	fromString766 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString766` to result `intoString848`
-	// (`intoString848` is now tainted).
-	intoString848 := strings.ToLowerSpecial(nil, fromString766)
-
-	// Return the tainted `intoString848`:
-	return intoString848
-}
-
-func TaintStepTest_StringsToTitle_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString490` into `intoString987`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString490`:
-	fromString490 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString490` to result `intoString987`
-	// (`intoString987` is now tainted).
-	intoString987 := strings.ToTitle(fromString490)
-
-	// Return the tainted `intoString987`:
-	return intoString987
-}
-
-func TaintStepTest_StringsToTitleSpecial_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString884` into `intoString338`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString884`:
-	fromString884 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString884` to result `intoString338`
-	// (`intoString338` is now tainted).
-	intoString338 := strings.ToTitleSpecial(nil, fromString884)
-
-	// Return the tainted `intoString338`:
-	return intoString338
-}
-
-func TaintStepTest_StringsToUpper_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString625` into `intoString673`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString625`:
-	fromString625 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString625` to result `intoString673`
-	// (`intoString673` is now tainted).
-	intoString673 := strings.ToUpper(fromString625)
-
-	// Return the tainted `intoString673`:
-	return intoString673
-}
-
-func TaintStepTest_StringsToUpperSpecial_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString222` into `intoString262`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString222`:
-	fromString222 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString222` to result `intoString262`
-	// (`intoString262` is now tainted).
-	intoString262 := strings.ToUpperSpecial(nil, fromString222)
-
-	// Return the tainted `intoString262`:
-	return intoString262
-}
-
-func TaintStepTest_StringsToValidUTF8_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString485` into `intoString534`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString485`:
-	fromString485 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString485` to result `intoString534`
-	// (`intoString534` is now tainted).
-	intoString534 := strings.ToValidUTF8(fromString485, "")
-
-	// Return the tainted `intoString534`:
-	return intoString534
-}
-
-func TaintStepTest_StringsToValidUTF8_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString458` into `intoString310`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString458`:
-	fromString458 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString458` to result `intoString310`
-	// (`intoString310` is now tainted).
-	intoString310 := strings.ToValidUTF8("", fromString458)
-
-	// Return the tainted `intoString310`:
-	return intoString310
-}
-
-func TaintStepTest_StringsTrim_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString475` into `intoString552`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString475`:
-	fromString475 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString475` to result `intoString552`
-	// (`intoString552` is now tainted).
-	intoString552 := strings.Trim(fromString475, "")
-
-	// Return the tainted `intoString552`:
-	return intoString552
-}
-
-func TaintStepTest_StringsTrimFunc_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString622` into `intoString390`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString622`:
-	fromString622 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString622` to result `intoString390`
-	// (`intoString390` is now tainted).
-	intoString390 := strings.TrimFunc(fromString622, nil)
-
-	// Return the tainted `intoString390`:
-	return intoString390
-}
-
-func TaintStepTest_StringsTrimLeft_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString820` into `intoString673`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString820`:
-	fromString820 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString820` to result `intoString673`
-	// (`intoString673` is now tainted).
-	intoString673 := strings.TrimLeft(fromString820, "")
-
-	// Return the tainted `intoString673`:
-	return intoString673
-}
-
-func TaintStepTest_StringsTrimLeftFunc_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString197` into `intoString497`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString197`:
-	fromString197 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString197` to result `intoString497`
-	// (`intoString497` is now tainted).
-	intoString497 := strings.TrimLeftFunc(fromString197, nil)
-
-	// Return the tainted `intoString497`:
-	return intoString497
-}
-
-func TaintStepTest_StringsTrimPrefix_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString323` into `intoString307`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString323`:
-	fromString323 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString323` to result `intoString307`
-	// (`intoString307` is now tainted).
-	intoString307 := strings.TrimPrefix(fromString323, "")
-
-	// Return the tainted `intoString307`:
-	return intoString307
-}
-
-func TaintStepTest_StringsTrimRight_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString532` into `intoString167`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString532`:
-	fromString532 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString532` to result `intoString167`
-	// (`intoString167` is now tainted).
-	intoString167 := strings.TrimRight(fromString532, "")
-
-	// Return the tainted `intoString167`:
-	return intoString167
-}
-
-func TaintStepTest_StringsTrimRightFunc_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString638` into `intoString277`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString638`:
-	fromString638 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString638` to result `intoString277`
-	// (`intoString277` is now tainted).
-	intoString277 := strings.TrimRightFunc(fromString638, nil)
-
-	// Return the tainted `intoString277`:
-	return intoString277
-}
-
-func TaintStepTest_StringsTrimSpace_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString411` into `intoString846`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString411`:
-	fromString411 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString411` to result `intoString846`
-	// (`intoString846` is now tainted).
-	intoString846 := strings.TrimSpace(fromString411)
-
-	// Return the tainted `intoString846`:
-	return intoString846
-}
-
-func TaintStepTest_StringsTrimSuffix_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString615` into `intoString862`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString615`:
-	fromString615 := sourceCQL.(string)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromString615` to result `intoString862`
-	// (`intoString862` is now tainted).
-	intoString862 := strings.TrimSuffix(fromString615, "")
-
-	// Return the tainted `intoString862`:
-	return intoString862
-}
-
-func TaintStepTest_StringsBuilderString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromBuilder843` into `intoString676`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromBuilder843`:
-	fromBuilder843 := sourceCQL.(strings.Builder)
-
-	// Call the method that transfers the taint
-	// from the receiver `fromBuilder843` to the result `intoString676`
-	// (`intoString676` is now tainted).
-	intoString676 := fromBuilder843.String()
-
-	// Return the tainted `intoString676`:
-	return intoString676
-}
-
-func TaintStepTest_StringsBuilderWrite_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte987` into `intoBuilder364`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte987`:
-	fromByte987 := sourceCQL.([]byte)
-
-	// Declare `intoBuilder364` variable:
-	var intoBuilder364 strings.Builder
-
-	// Call the method that transfers the taint
-	// from the parameter `fromByte987` to the receiver `intoBuilder364`
-	// (`intoBuilder364` is now tainted).
-	intoBuilder364.Write(fromByte987)
-
-	// Return the tainted `intoBuilder364`:
-	return intoBuilder364
-}
-
-func TaintStepTest_StringsBuilderWriteByte_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte860` into `intoBuilder515`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte860`:
-	fromByte860 := sourceCQL.(byte)
-
-	// Declare `intoBuilder515` variable:
-	var intoBuilder515 strings.Builder
-
-	// Call the method that transfers the taint
-	// from the parameter `fromByte860` to the receiver `intoBuilder515`
-	// (`intoBuilder515` is now tainted).
-	intoBuilder515.WriteByte(fromByte860)
-
-	// Return the tainted `intoBuilder515`:
-	return intoBuilder515
-}
-
-func TaintStepTest_StringsBuilderWriteRune_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRune322` into `intoBuilder934`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromRune322`:
-	fromRune322 := sourceCQL.(rune)
-
-	// Declare `intoBuilder934` variable:
-	var intoBuilder934 strings.Builder
-
-	// Call the method that transfers the taint
-	// from the parameter `fromRune322` to the receiver `intoBuilder934`
-	// (`intoBuilder934` is now tainted).
-	intoBuilder934.WriteRune(fromRune322)
-
-	// Return the tainted `intoBuilder934`:
-	return intoBuilder934
-}
-
-func TaintStepTest_StringsBuilderWriteString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString870` into `intoBuilder197`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString870`:
-	fromString870 := sourceCQL.(string)
-
-	// Declare `intoBuilder197` variable:
-	var intoBuilder197 strings.Builder
-
-	// Call the method that transfers the taint
-	// from the parameter `fromString870` to the receiver `intoBuilder197`
-	// (`intoBuilder197` is now tainted).
-	intoBuilder197.WriteString(fromString870)
-
-	// Return the tainted `intoBuilder197`:
-	return intoBuilder197
-}
-
-func TaintStepTest_StringsReaderRead_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader183` into `intoByte254`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromReader183`:
-	fromReader183 := sourceCQL.(strings.Reader)
-
-	// Declare `intoByte254` variable:
-	var intoByte254 []byte
-
-	// Call the method that transfers the taint
-	// from the receiver `fromReader183` to the argument `intoByte254`
-	// (`intoByte254` is now tainted).
-	fromReader183.Read(intoByte254)
-
-	// Return the tainted `intoByte254`:
-	return intoByte254
-}
-
-func TaintStepTest_StringsReaderReadAt_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader560` into `intoByte556`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromReader560`:
-	fromReader560 := sourceCQL.(strings.Reader)
-
-	// Declare `intoByte556` variable:
-	var intoByte556 []byte
-
-	// Call the method that transfers the taint
-	// from the receiver `fromReader560` to the argument `intoByte556`
-	// (`intoByte556` is now tainted).
-	fromReader560.ReadAt(intoByte556, 0)
-
-	// Return the tainted `intoByte556`:
-	return intoByte556
-}
-
-func TaintStepTest_StringsReaderReadByte_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader331` into `intoByte131`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromReader331`:
-	fromReader331 := sourceCQL.(strings.Reader)
-
-	// Call the method that transfers the taint
-	// from the receiver `fromReader331` to the result `intoByte131`
-	// (`intoByte131` is now tainted).
-	intoByte131, _ := fromReader331.ReadByte()
-
-	// Return the tainted `intoByte131`:
-	return intoByte131
-}
-
-func TaintStepTest_StringsReaderReadRune_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader822` into `intoRune545`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromReader822`:
-	fromReader822 := sourceCQL.(strings.Reader)
-
-	// Call the method that transfers the taint
-	// from the receiver `fromReader822` to the result `intoRune545`
-	// (`intoRune545` is now tainted).
-	intoRune545, _, _ := fromReader822.ReadRune()
-
-	// Return the tainted `intoRune545`:
-	return intoRune545
-}
-
-func TaintStepTest_StringsReaderReset_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString477` into `intoReader276`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString477`:
-	fromString477 := sourceCQL.(string)
-
-	// Declare `intoReader276` variable:
-	var intoReader276 strings.Reader
-
-	// Call the method that transfers the taint
-	// from the parameter `fromString477` to the receiver `intoReader276`
-	// (`intoReader276` is now tainted).
-	intoReader276.Reset(fromString477)
-
-	// Return the tainted `intoReader276`:
-	return intoReader276
-}
-
-func TaintStepTest_StringsReaderWriteTo_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader359` into `intoWriter417`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromReader359`:
-	fromReader359 := sourceCQL.(strings.Reader)
-
-	// Declare `intoWriter417` variable:
-	var intoWriter417 io.Writer
-
-	// Call the method that transfers the taint
-	// from the receiver `fromReader359` to the argument `intoWriter417`
-	// (`intoWriter417` is now tainted).
-	fromReader359.WriteTo(intoWriter417)
-
-	// Return the tainted `intoWriter417`:
-	return intoWriter417
-}
-
-func TaintStepTest_StringsReplacerReplace_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString272` into `intoString873`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString272`:
-	fromString272 := sourceCQL.(string)
-
-	// Declare medium object/interface:
-	var mediumObjCQL strings.Replacer
-
-	// Call the method that transfers the taint
-	// from the parameter `fromString272` to the result `intoString873`
+	// from the parameter `fromString494` to result `intoString873`
 	// (`intoString873` is now tainted).
-	intoString873 := mediumObjCQL.Replace(fromString272)
+	intoString873 := strings.ReplaceAll(fromString494, "", "")
 
 	// Return the tainted `intoString873`:
 	return intoString873
 }
 
-func TaintStepTest_StringsReplacerWriteString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString165` into `intoWriter327`.
+func TaintStepTest_StringsReplaceAll_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString599` into `intoString409`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString599`:
+	fromString599 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString599` to result `intoString409`
+	// (`intoString409` is now tainted).
+	intoString409 := strings.ReplaceAll("", "", fromString599)
+
+	// Return the tainted `intoString409`:
+	return intoString409
+}
+
+func TaintStepTest_StringsSplit_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString246` into `intoString898`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString246`:
+	fromString246 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString246` to result `intoString898`
+	// (`intoString898` is now tainted).
+	intoString898 := strings.Split(fromString246, "")
+
+	// Return the tainted `intoString898`:
+	return intoString898
+}
+
+func TaintStepTest_StringsSplitAfter_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString598` into `intoString631`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString598`:
+	fromString598 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString598` to result `intoString631`
+	// (`intoString631` is now tainted).
+	intoString631 := strings.SplitAfter(fromString598, "")
+
+	// Return the tainted `intoString631`:
+	return intoString631
+}
+
+func TaintStepTest_StringsSplitAfterN_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString165` into `intoString150`.
 
 	// Assume that `sourceCQL` has the underlying type of `fromString165`:
 	fromString165 := sourceCQL.(string)
 
-	// Declare `intoWriter327` variable:
-	var intoWriter327 io.Writer
+	// Call the function that transfers the taint
+	// from the parameter `fromString165` to result `intoString150`
+	// (`intoString150` is now tainted).
+	intoString150 := strings.SplitAfterN(fromString165, "", 0)
+
+	// Return the tainted `intoString150`:
+	return intoString150
+}
+
+func TaintStepTest_StringsSplitN_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString340` into `intoString471`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString340`:
+	fromString340 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString340` to result `intoString471`
+	// (`intoString471` is now tainted).
+	intoString471 := strings.SplitN(fromString340, "", 0)
+
+	// Return the tainted `intoString471`:
+	return intoString471
+}
+
+func TaintStepTest_StringsTitle_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString290` into `intoString758`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString290`:
+	fromString290 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString290` to result `intoString758`
+	// (`intoString758` is now tainted).
+	intoString758 := strings.Title(fromString290)
+
+	// Return the tainted `intoString758`:
+	return intoString758
+}
+
+func TaintStepTest_StringsToLower_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString396` into `intoString707`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString396`:
+	fromString396 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString396` to result `intoString707`
+	// (`intoString707` is now tainted).
+	intoString707 := strings.ToLower(fromString396)
+
+	// Return the tainted `intoString707`:
+	return intoString707
+}
+
+func TaintStepTest_StringsToLowerSpecial_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString912` into `intoString718`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString912`:
+	fromString912 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString912` to result `intoString718`
+	// (`intoString718` is now tainted).
+	intoString718 := strings.ToLowerSpecial(nil, fromString912)
+
+	// Return the tainted `intoString718`:
+	return intoString718
+}
+
+func TaintStepTest_StringsToTitle_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString972` into `intoString633`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString972`:
+	fromString972 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString972` to result `intoString633`
+	// (`intoString633` is now tainted).
+	intoString633 := strings.ToTitle(fromString972)
+
+	// Return the tainted `intoString633`:
+	return intoString633
+}
+
+func TaintStepTest_StringsToTitleSpecial_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString316` into `intoString145`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString316`:
+	fromString316 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString316` to result `intoString145`
+	// (`intoString145` is now tainted).
+	intoString145 := strings.ToTitleSpecial(nil, fromString316)
+
+	// Return the tainted `intoString145`:
+	return intoString145
+}
+
+func TaintStepTest_StringsToUpper_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString817` into `intoString474`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString817`:
+	fromString817 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString817` to result `intoString474`
+	// (`intoString474` is now tainted).
+	intoString474 := strings.ToUpper(fromString817)
+
+	// Return the tainted `intoString474`:
+	return intoString474
+}
+
+func TaintStepTest_StringsToUpperSpecial_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString832` into `intoString378`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString832`:
+	fromString832 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString832` to result `intoString378`
+	// (`intoString378` is now tainted).
+	intoString378 := strings.ToUpperSpecial(nil, fromString832)
+
+	// Return the tainted `intoString378`:
+	return intoString378
+}
+
+func TaintStepTest_StringsToValidUTF8_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString541` into `intoString139`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString541`:
+	fromString541 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString541` to result `intoString139`
+	// (`intoString139` is now tainted).
+	intoString139 := strings.ToValidUTF8(fromString541, "")
+
+	// Return the tainted `intoString139`:
+	return intoString139
+}
+
+func TaintStepTest_StringsToValidUTF8_B0I1O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString814` into `intoString768`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString814`:
+	fromString814 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString814` to result `intoString768`
+	// (`intoString768` is now tainted).
+	intoString768 := strings.ToValidUTF8("", fromString814)
+
+	// Return the tainted `intoString768`:
+	return intoString768
+}
+
+func TaintStepTest_StringsTrim_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString468` into `intoString736`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString468`:
+	fromString468 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString468` to result `intoString736`
+	// (`intoString736` is now tainted).
+	intoString736 := strings.Trim(fromString468, "")
+
+	// Return the tainted `intoString736`:
+	return intoString736
+}
+
+func TaintStepTest_StringsTrimFunc_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString516` into `intoString246`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString516`:
+	fromString516 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString516` to result `intoString246`
+	// (`intoString246` is now tainted).
+	intoString246 := strings.TrimFunc(fromString516, nil)
+
+	// Return the tainted `intoString246`:
+	return intoString246
+}
+
+func TaintStepTest_StringsTrimLeft_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString679` into `intoString736`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString679`:
+	fromString679 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString679` to result `intoString736`
+	// (`intoString736` is now tainted).
+	intoString736 := strings.TrimLeft(fromString679, "")
+
+	// Return the tainted `intoString736`:
+	return intoString736
+}
+
+func TaintStepTest_StringsTrimLeftFunc_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString839` into `intoString273`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString839`:
+	fromString839 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString839` to result `intoString273`
+	// (`intoString273` is now tainted).
+	intoString273 := strings.TrimLeftFunc(fromString839, nil)
+
+	// Return the tainted `intoString273`:
+	return intoString273
+}
+
+func TaintStepTest_StringsTrimPrefix_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString982` into `intoString458`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString982`:
+	fromString982 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString982` to result `intoString458`
+	// (`intoString458` is now tainted).
+	intoString458 := strings.TrimPrefix(fromString982, "")
+
+	// Return the tainted `intoString458`:
+	return intoString458
+}
+
+func TaintStepTest_StringsTrimRight_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString506` into `intoString213`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString506`:
+	fromString506 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString506` to result `intoString213`
+	// (`intoString213` is now tainted).
+	intoString213 := strings.TrimRight(fromString506, "")
+
+	// Return the tainted `intoString213`:
+	return intoString213
+}
+
+func TaintStepTest_StringsTrimRightFunc_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString468` into `intoString219`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString468`:
+	fromString468 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString468` to result `intoString219`
+	// (`intoString219` is now tainted).
+	intoString219 := strings.TrimRightFunc(fromString468, nil)
+
+	// Return the tainted `intoString219`:
+	return intoString219
+}
+
+func TaintStepTest_StringsTrimSpace_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString265` into `intoString971`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString265`:
+	fromString265 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString265` to result `intoString971`
+	// (`intoString971` is now tainted).
+	intoString971 := strings.TrimSpace(fromString265)
+
+	// Return the tainted `intoString971`:
+	return intoString971
+}
+
+func TaintStepTest_StringsTrimSuffix_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString320` into `intoString545`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString320`:
+	fromString320 := sourceCQL.(string)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromString320` to result `intoString545`
+	// (`intoString545` is now tainted).
+	intoString545 := strings.TrimSuffix(fromString320, "")
+
+	// Return the tainted `intoString545`:
+	return intoString545
+}
+
+func TaintStepTest_StringsBuilderString_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromBuilder566` into `intoString497`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromBuilder566`:
+	fromBuilder566 := sourceCQL.(strings.Builder)
+
+	// Call the method that transfers the taint
+	// from the receiver `fromBuilder566` to the result `intoString497`
+	// (`intoString497` is now tainted).
+	intoString497 := fromBuilder566.String()
+
+	// Return the tainted `intoString497`:
+	return intoString497
+}
+
+func TaintStepTest_StringsBuilderWrite_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte274` into `intoBuilder783`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte274`:
+	fromByte274 := sourceCQL.([]byte)
+
+	// Declare `intoBuilder783` variable:
+	var intoBuilder783 strings.Builder
+
+	// Call the method that transfers the taint
+	// from the parameter `fromByte274` to the receiver `intoBuilder783`
+	// (`intoBuilder783` is now tainted).
+	intoBuilder783.Write(fromByte274)
+
+	// Return the tainted `intoBuilder783`:
+	return intoBuilder783
+}
+
+func TaintStepTest_StringsBuilderWriteByte_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte905` into `intoBuilder389`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte905`:
+	fromByte905 := sourceCQL.(byte)
+
+	// Declare `intoBuilder389` variable:
+	var intoBuilder389 strings.Builder
+
+	// Call the method that transfers the taint
+	// from the parameter `fromByte905` to the receiver `intoBuilder389`
+	// (`intoBuilder389` is now tainted).
+	intoBuilder389.WriteByte(fromByte905)
+
+	// Return the tainted `intoBuilder389`:
+	return intoBuilder389
+}
+
+func TaintStepTest_StringsBuilderWriteRune_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromRune198` into `intoBuilder477`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromRune198`:
+	fromRune198 := sourceCQL.(rune)
+
+	// Declare `intoBuilder477` variable:
+	var intoBuilder477 strings.Builder
+
+	// Call the method that transfers the taint
+	// from the parameter `fromRune198` to the receiver `intoBuilder477`
+	// (`intoBuilder477` is now tainted).
+	intoBuilder477.WriteRune(fromRune198)
+
+	// Return the tainted `intoBuilder477`:
+	return intoBuilder477
+}
+
+func TaintStepTest_StringsBuilderWriteString_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString544` into `intoBuilder382`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString544`:
+	fromString544 := sourceCQL.(string)
+
+	// Declare `intoBuilder382` variable:
+	var intoBuilder382 strings.Builder
+
+	// Call the method that transfers the taint
+	// from the parameter `fromString544` to the receiver `intoBuilder382`
+	// (`intoBuilder382` is now tainted).
+	intoBuilder382.WriteString(fromString544)
+
+	// Return the tainted `intoBuilder382`:
+	return intoBuilder382
+}
+
+func TaintStepTest_StringsReaderRead_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader715` into `intoByte179`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromReader715`:
+	fromReader715 := sourceCQL.(strings.Reader)
+
+	// Declare `intoByte179` variable:
+	var intoByte179 []byte
+
+	// Call the method that transfers the taint
+	// from the receiver `fromReader715` to the argument `intoByte179`
+	// (`intoByte179` is now tainted).
+	fromReader715.Read(intoByte179)
+
+	// Return the tainted `intoByte179`:
+	return intoByte179
+}
+
+func TaintStepTest_StringsReaderReadAt_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader366` into `intoByte648`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromReader366`:
+	fromReader366 := sourceCQL.(strings.Reader)
+
+	// Declare `intoByte648` variable:
+	var intoByte648 []byte
+
+	// Call the method that transfers the taint
+	// from the receiver `fromReader366` to the argument `intoByte648`
+	// (`intoByte648` is now tainted).
+	fromReader366.ReadAt(intoByte648, 0)
+
+	// Return the tainted `intoByte648`:
+	return intoByte648
+}
+
+func TaintStepTest_StringsReaderReadByte_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader544` into `intoByte484`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromReader544`:
+	fromReader544 := sourceCQL.(strings.Reader)
+
+	// Call the method that transfers the taint
+	// from the receiver `fromReader544` to the result `intoByte484`
+	// (`intoByte484` is now tainted).
+	intoByte484, _ := fromReader544.ReadByte()
+
+	// Return the tainted `intoByte484`:
+	return intoByte484
+}
+
+func TaintStepTest_StringsReaderReadRune_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader824` into `intoRune754`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromReader824`:
+	fromReader824 := sourceCQL.(strings.Reader)
+
+	// Call the method that transfers the taint
+	// from the receiver `fromReader824` to the result `intoRune754`
+	// (`intoRune754` is now tainted).
+	intoRune754, _, _ := fromReader824.ReadRune()
+
+	// Return the tainted `intoRune754`:
+	return intoRune754
+}
+
+func TaintStepTest_StringsReaderReset_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString680` into `intoReader722`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString680`:
+	fromString680 := sourceCQL.(string)
+
+	// Declare `intoReader722` variable:
+	var intoReader722 strings.Reader
+
+	// Call the method that transfers the taint
+	// from the parameter `fromString680` to the receiver `intoReader722`
+	// (`intoReader722` is now tainted).
+	intoReader722.Reset(fromString680)
+
+	// Return the tainted `intoReader722`:
+	return intoReader722
+}
+
+func TaintStepTest_StringsReaderWriteTo_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader506` into `intoWriter121`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromReader506`:
+	fromReader506 := sourceCQL.(strings.Reader)
+
+	// Declare `intoWriter121` variable:
+	var intoWriter121 io.Writer
+
+	// Call the method that transfers the taint
+	// from the receiver `fromReader506` to the argument `intoWriter121`
+	// (`intoWriter121` is now tainted).
+	fromReader506.WriteTo(intoWriter121)
+
+	// Return the tainted `intoWriter121`:
+	return intoWriter121
+}
+
+func TaintStepTest_StringsReplacerReplace_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString293` into `intoString151`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString293`:
+	fromString293 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL strings.Replacer
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString165` to the parameter `intoWriter327`
-	// (`intoWriter327` is now tainted).
-	mediumObjCQL.WriteString(intoWriter327, fromString165)
+	// from the parameter `fromString293` to the result `intoString151`
+	// (`intoString151` is now tainted).
+	intoString151 := mediumObjCQL.Replace(fromString293)
 
-	// Return the tainted `intoWriter327`:
-	return intoWriter327
+	// Return the tainted `intoString151`:
+	return intoString151
+}
+
+func TaintStepTest_StringsReplacerWriteString_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString849` into `intoWriter322`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString849`:
+	fromString849 := sourceCQL.(string)
+
+	// Declare `intoWriter322` variable:
+	var intoWriter322 io.Writer
+
+	// Declare medium object/interface:
+	var mediumObjCQL strings.Replacer
+
+	// Call the method that transfers the taint
+	// from the parameter `fromString849` to the parameter `intoWriter322`
+	// (`intoWriter322` is now tainted).
+	mediumObjCQL.WriteString(intoWriter322, fromString849)
+
+	// Return the tainted `intoWriter322`:
+	return intoWriter322
 }
 
 func RunAllTaints_Strings() {

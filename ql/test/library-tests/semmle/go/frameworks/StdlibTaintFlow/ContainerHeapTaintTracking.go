@@ -5,84 +5,84 @@ package main
 import "container/heap"
 
 func TaintStepTest_ContainerHeapPop_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface767` into `intoInterface725`.
+	// The flow is from `fromInterface656` into `intoInterface414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface767`:
-	fromInterface767 := sourceCQL.(heap.Interface)
-
-	// Call the function that transfers the taint
-	// from the parameter `fromInterface767` to result `intoInterface725`
-	// (`intoInterface725` is now tainted).
-	intoInterface725 := heap.Pop(fromInterface767)
-
-	// Return the tainted `intoInterface725`:
-	return intoInterface725
-}
-
-func TaintStepTest_ContainerHeapPush_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface907` into `intoInterface414`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromInterface907`:
-	fromInterface907 := sourceCQL.(interface{})
-
-	// Declare `intoInterface414` variable:
-	var intoInterface414 heap.Interface
+	// Assume that `sourceCQL` has the underlying type of `fromInterface656`:
+	fromInterface656 := sourceCQL.(heap.Interface)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface907` to parameter `intoInterface414`;
-	// `intoInterface414` is now tainted.
-	heap.Push(intoInterface414, fromInterface907)
+	// from the parameter `fromInterface656` to result `intoInterface414`
+	// (`intoInterface414` is now tainted).
+	intoInterface414 := heap.Pop(fromInterface656)
 
 	// Return the tainted `intoInterface414`:
 	return intoInterface414
 }
 
-func TaintStepTest_ContainerHeapRemove_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface569` into `intoInterface697`.
+func TaintStepTest_ContainerHeapPush_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromInterface518` into `intoInterface650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface569`:
-	fromInterface569 := sourceCQL.(heap.Interface)
+	// Assume that `sourceCQL` has the underlying type of `fromInterface518`:
+	fromInterface518 := sourceCQL.(interface{})
+
+	// Declare `intoInterface650` variable:
+	var intoInterface650 heap.Interface
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface569` to result `intoInterface697`
-	// (`intoInterface697` is now tainted).
-	intoInterface697 := heap.Remove(fromInterface569, 0)
+	// from the parameter `fromInterface518` to parameter `intoInterface650`;
+	// `intoInterface650` is now tainted.
+	heap.Push(intoInterface650, fromInterface518)
 
-	// Return the tainted `intoInterface697`:
-	return intoInterface697
+	// Return the tainted `intoInterface650`:
+	return intoInterface650
+}
+
+func TaintStepTest_ContainerHeapRemove_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromInterface784` into `intoInterface957`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromInterface784`:
+	fromInterface784 := sourceCQL.(heap.Interface)
+
+	// Call the function that transfers the taint
+	// from the parameter `fromInterface784` to result `intoInterface957`
+	// (`intoInterface957` is now tainted).
+	intoInterface957 := heap.Remove(fromInterface784, 0)
+
+	// Return the tainted `intoInterface957`:
+	return intoInterface957
 }
 
 func TaintStepTest_ContainerHeapInterfacePop_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface814` into `intoInterface646`.
+	// The flow is from `fromInterface520` into `intoInterface443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface814`:
-	fromInterface814 := sourceCQL.(heap.Interface)
+	// Assume that `sourceCQL` has the underlying type of `fromInterface520`:
+	fromInterface520 := sourceCQL.(heap.Interface)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromInterface814` to the result `intoInterface646`
-	// (`intoInterface646` is now tainted).
-	intoInterface646 := fromInterface814.Pop()
+	// from the receiver `fromInterface520` to the result `intoInterface443`
+	// (`intoInterface443` is now tainted).
+	intoInterface443 := fromInterface520.Pop()
 
-	// Return the tainted `intoInterface646`:
-	return intoInterface646
+	// Return the tainted `intoInterface443`:
+	return intoInterface443
 }
 
 func TaintStepTest_ContainerHeapInterfacePush_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface159` into `intoInterface843`.
+	// The flow is from `fromInterface127` into `intoInterface483`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface159`:
-	fromInterface159 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface127`:
+	fromInterface127 := sourceCQL.(interface{})
 
-	// Declare `intoInterface843` variable:
-	var intoInterface843 heap.Interface
+	// Declare `intoInterface483` variable:
+	var intoInterface483 heap.Interface
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface159` to the receiver `intoInterface843`
-	// (`intoInterface843` is now tainted).
-	intoInterface843.Push(fromInterface159)
+	// from the parameter `fromInterface127` to the receiver `intoInterface483`
+	// (`intoInterface483` is now tainted).
+	intoInterface483.Push(fromInterface127)
 
-	// Return the tainted `intoInterface843`:
-	return intoInterface843
+	// Return the tainted `intoInterface483`:
+	return intoInterface483
 }
 
 func RunAllTaints_ContainerHeap() {

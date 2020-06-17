@@ -8,87 +8,87 @@ import (
 )
 
 func TaintStepTest_EncodingBinaryPutUvarint_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUint64620` into `intoByte980`.
+	// The flow is from `fromUint64656` into `intoByte414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUint64620`:
-	fromUint64620 := sourceCQL.(uint64)
+	// Assume that `sourceCQL` has the underlying type of `fromUint64656`:
+	fromUint64656 := sourceCQL.(uint64)
 
-	// Declare `intoByte980` variable:
-	var intoByte980 []byte
+	// Declare `intoByte414` variable:
+	var intoByte414 []byte
 
 	// Call the function that transfers the taint
-	// from the parameter `fromUint64620` to parameter `intoByte980`;
-	// `intoByte980` is now tainted.
-	binary.PutUvarint(intoByte980, fromUint64620)
+	// from the parameter `fromUint64656` to parameter `intoByte414`;
+	// `intoByte414` is now tainted.
+	binary.PutUvarint(intoByte414, fromUint64656)
 
-	// Return the tainted `intoByte980`:
-	return intoByte980
+	// Return the tainted `intoByte414`:
+	return intoByte414
 }
 
 func TaintStepTest_EncodingBinaryRead_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader902` into `intoInterface418`.
+	// The flow is from `fromReader518` into `intoInterface650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader902`:
-	fromReader902 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader518`:
+	fromReader518 := sourceCQL.(io.Reader)
 
-	// Declare `intoInterface418` variable:
-	var intoInterface418 interface{}
+	// Declare `intoInterface650` variable:
+	var intoInterface650 interface{}
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader902` to parameter `intoInterface418`;
-	// `intoInterface418` is now tainted.
-	binary.Read(fromReader902, nil, intoInterface418)
+	// from the parameter `fromReader518` to parameter `intoInterface650`;
+	// `intoInterface650` is now tainted.
+	binary.Read(fromReader518, nil, intoInterface650)
 
-	// Return the tainted `intoInterface418`:
-	return intoInterface418
+	// Return the tainted `intoInterface650`:
+	return intoInterface650
 }
 
 func TaintStepTest_EncodingBinaryReadUvarint_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByteReader703` into `intoUint64256`.
+	// The flow is from `fromByteReader784` into `intoUint64957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByteReader703`:
-	fromByteReader703 := sourceCQL.(io.ByteReader)
+	// Assume that `sourceCQL` has the underlying type of `fromByteReader784`:
+	fromByteReader784 := sourceCQL.(io.ByteReader)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByteReader703` to result `intoUint64256`
-	// (`intoUint64256` is now tainted).
-	intoUint64256, _ := binary.ReadUvarint(fromByteReader703)
+	// from the parameter `fromByteReader784` to result `intoUint64957`
+	// (`intoUint64957` is now tainted).
+	intoUint64957, _ := binary.ReadUvarint(fromByteReader784)
 
-	// Return the tainted `intoUint64256`:
-	return intoUint64256
+	// Return the tainted `intoUint64957`:
+	return intoUint64957
 }
 
 func TaintStepTest_EncodingBinaryWrite_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface503` into `intoWriter150`.
+	// The flow is from `fromInterface520` into `intoWriter443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface503`:
-	fromInterface503 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface520`:
+	fromInterface520 := sourceCQL.(interface{})
 
-	// Declare `intoWriter150` variable:
-	var intoWriter150 io.Writer
+	// Declare `intoWriter443` variable:
+	var intoWriter443 io.Writer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface503` to parameter `intoWriter150`;
-	// `intoWriter150` is now tainted.
-	binary.Write(intoWriter150, nil, fromInterface503)
+	// from the parameter `fromInterface520` to parameter `intoWriter443`;
+	// `intoWriter443` is now tainted.
+	binary.Write(intoWriter443, nil, fromInterface520)
 
-	// Return the tainted `intoWriter150`:
-	return intoWriter150
+	// Return the tainted `intoWriter443`:
+	return intoWriter443
 }
 
 func TaintStepTest_EncodingBinaryByteOrderString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByteOrder563` into `intoString810`.
+	// The flow is from `fromByteOrder127` into `intoString483`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByteOrder563`:
-	fromByteOrder563 := sourceCQL.(binary.ByteOrder)
+	// Assume that `sourceCQL` has the underlying type of `fromByteOrder127`:
+	fromByteOrder127 := sourceCQL.(binary.ByteOrder)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromByteOrder563` to the result `intoString810`
-	// (`intoString810` is now tainted).
-	intoString810 := fromByteOrder563.String()
+	// from the receiver `fromByteOrder127` to the result `intoString483`
+	// (`intoString483` is now tainted).
+	intoString483 := fromByteOrder127.String()
 
-	// Return the tainted `intoString810`:
-	return intoString810
+	// Return the tainted `intoString483`:
+	return intoString483
 }
 
 func RunAllTaints_EncodingBinary() {

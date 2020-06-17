@@ -9,426 +9,426 @@ import (
 )
 
 func TaintStepTest_NetTextprotoCanonicalMIMEHeaderKey_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString404` into `intoString427`.
+	// The flow is from `fromString656` into `intoString414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString404`:
-	fromString404 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString656`:
+	fromString656 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString404` to result `intoString427`
-	// (`intoString427` is now tainted).
-	intoString427 := textproto.CanonicalMIMEHeaderKey(fromString404)
+	// from the parameter `fromString656` to result `intoString414`
+	// (`intoString414` is now tainted).
+	intoString414 := textproto.CanonicalMIMEHeaderKey(fromString656)
 
-	// Return the tainted `intoString427`:
-	return intoString427
+	// Return the tainted `intoString414`:
+	return intoString414
 }
 
 func TaintStepTest_NetTextprotoNewConn_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReadWriteCloser962` into `intoConn614`.
+	// The flow is from `fromReadWriteCloser518` into `intoConn650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReadWriteCloser962`:
-	fromReadWriteCloser962 := sourceCQL.(io.ReadWriteCloser)
+	// Assume that `sourceCQL` has the underlying type of `fromReadWriteCloser518`:
+	fromReadWriteCloser518 := sourceCQL.(io.ReadWriteCloser)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReadWriteCloser962` to result `intoConn614`
-	// (`intoConn614` is now tainted).
-	intoConn614 := textproto.NewConn(fromReadWriteCloser962)
+	// from the parameter `fromReadWriteCloser518` to result `intoConn650`
+	// (`intoConn650` is now tainted).
+	intoConn650 := textproto.NewConn(fromReadWriteCloser518)
 
-	// Return the tainted `intoConn614`:
-	return intoConn614
+	// Return the tainted `intoConn650`:
+	return intoConn650
 }
 
 func TaintStepTest_NetTextprotoNewConn_B1I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromConn769` into `intoReadWriteCloser332`.
+	// The flow is from `fromConn784` into `intoReadWriteCloser957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromConn769`:
-	fromConn769 := sourceCQL.(*textproto.Conn)
+	// Assume that `sourceCQL` has the underlying type of `fromConn784`:
+	fromConn784 := sourceCQL.(*textproto.Conn)
 
-	// Declare `intoReadWriteCloser332` variable:
-	var intoReadWriteCloser332 io.ReadWriteCloser
+	// Declare `intoReadWriteCloser957` variable:
+	var intoReadWriteCloser957 io.ReadWriteCloser
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoReadWriteCloser332`:
-	intermediateCQL := textproto.NewConn(intoReadWriteCloser332)
+	// from the result `intermediateCQL` to parameter `intoReadWriteCloser957`:
+	intermediateCQL := textproto.NewConn(intoReadWriteCloser957)
 
-	// Extra step (`fromConn769` taints `intermediateCQL`, which taints `intoReadWriteCloser332`:
-	link(fromConn769, intermediateCQL)
+	// Extra step (`fromConn784` taints `intermediateCQL`, which taints `intoReadWriteCloser957`:
+	link(fromConn784, intermediateCQL)
 
-	// Return the tainted `intoReadWriteCloser332`:
-	return intoReadWriteCloser332
+	// Return the tainted `intoReadWriteCloser957`:
+	return intoReadWriteCloser957
 }
 
 func TaintStepTest_NetTextprotoNewReader_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader423` into `intoReader702`.
+	// The flow is from `fromReader520` into `intoReader443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader423`:
-	fromReader423 := sourceCQL.(*bufio.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader520`:
+	fromReader520 := sourceCQL.(*bufio.Reader)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader423` to result `intoReader702`
-	// (`intoReader702` is now tainted).
-	intoReader702 := textproto.NewReader(fromReader423)
+	// from the parameter `fromReader520` to result `intoReader443`
+	// (`intoReader443` is now tainted).
+	intoReader443 := textproto.NewReader(fromReader520)
 
-	// Return the tainted `intoReader702`:
-	return intoReader702
+	// Return the tainted `intoReader443`:
+	return intoReader443
 }
 
 func TaintStepTest_NetTextprotoNewWriter_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromWriter141` into `intoWriter988`.
+	// The flow is from `fromWriter127` into `intoWriter483`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriter141`:
-	fromWriter141 := sourceCQL.(*textproto.Writer)
+	// Assume that `sourceCQL` has the underlying type of `fromWriter127`:
+	fromWriter127 := sourceCQL.(*textproto.Writer)
 
-	// Declare `intoWriter988` variable:
-	var intoWriter988 *bufio.Writer
+	// Declare `intoWriter483` variable:
+	var intoWriter483 *bufio.Writer
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoWriter988`:
-	intermediateCQL := textproto.NewWriter(intoWriter988)
+	// from the result `intermediateCQL` to parameter `intoWriter483`:
+	intermediateCQL := textproto.NewWriter(intoWriter483)
 
-	// Extra step (`fromWriter141` taints `intermediateCQL`, which taints `intoWriter988`:
-	link(fromWriter141, intermediateCQL)
+	// Extra step (`fromWriter127` taints `intermediateCQL`, which taints `intoWriter483`:
+	link(fromWriter127, intermediateCQL)
 
-	// Return the tainted `intoWriter988`:
-	return intoWriter988
+	// Return the tainted `intoWriter483`:
+	return intoWriter483
 }
 
 func TaintStepTest_NetTextprotoTrimBytes_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte177` into `intoByte919`.
+	// The flow is from `fromByte989` into `intoByte982`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte177`:
-	fromByte177 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte989`:
+	fromByte989 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte177` to result `intoByte919`
-	// (`intoByte919` is now tainted).
-	intoByte919 := textproto.TrimBytes(fromByte177)
+	// from the parameter `fromByte989` to result `intoByte982`
+	// (`intoByte982` is now tainted).
+	intoByte982 := textproto.TrimBytes(fromByte989)
 
-	// Return the tainted `intoByte919`:
-	return intoByte919
+	// Return the tainted `intoByte982`:
+	return intoByte982
 }
 
 func TaintStepTest_NetTextprotoTrimString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString986` into `intoString438`.
+	// The flow is from `fromString417` into `intoString584`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString986`:
-	fromString986 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString417`:
+	fromString417 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString986` to result `intoString438`
-	// (`intoString438` is now tainted).
-	intoString438 := textproto.TrimString(fromString986)
+	// from the parameter `fromString417` to result `intoString584`
+	// (`intoString584` is now tainted).
+	intoString584 := textproto.TrimString(fromString417)
 
-	// Return the tainted `intoString438`:
-	return intoString438
+	// Return the tainted `intoString584`:
+	return intoString584
 }
 
 func TaintStepTest_NetTextprotoMIMEHeaderAdd_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString977` into `intoMIMEHeader912`.
+	// The flow is from `fromString991` into `intoMIMEHeader881`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString977`:
-	fromString977 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString991`:
+	fromString991 := sourceCQL.(string)
 
-	// Declare `intoMIMEHeader912` variable:
-	var intoMIMEHeader912 textproto.MIMEHeader
+	// Declare `intoMIMEHeader881` variable:
+	var intoMIMEHeader881 textproto.MIMEHeader
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString977` to the receiver `intoMIMEHeader912`
-	// (`intoMIMEHeader912` is now tainted).
-	intoMIMEHeader912.Add(fromString977, "")
+	// from the parameter `fromString991` to the receiver `intoMIMEHeader881`
+	// (`intoMIMEHeader881` is now tainted).
+	intoMIMEHeader881.Add(fromString991, "")
 
-	// Return the tainted `intoMIMEHeader912`:
-	return intoMIMEHeader912
+	// Return the tainted `intoMIMEHeader881`:
+	return intoMIMEHeader881
 }
 
 func TaintStepTest_NetTextprotoMIMEHeaderAdd_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString520` into `intoMIMEHeader558`.
+	// The flow is from `fromString186` into `intoMIMEHeader284`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString520`:
-	fromString520 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString186`:
+	fromString186 := sourceCQL.(string)
 
-	// Declare `intoMIMEHeader558` variable:
-	var intoMIMEHeader558 textproto.MIMEHeader
+	// Declare `intoMIMEHeader284` variable:
+	var intoMIMEHeader284 textproto.MIMEHeader
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString520` to the receiver `intoMIMEHeader558`
-	// (`intoMIMEHeader558` is now tainted).
-	intoMIMEHeader558.Add("", fromString520)
+	// from the parameter `fromString186` to the receiver `intoMIMEHeader284`
+	// (`intoMIMEHeader284` is now tainted).
+	intoMIMEHeader284.Add("", fromString186)
 
-	// Return the tainted `intoMIMEHeader558`:
-	return intoMIMEHeader558
+	// Return the tainted `intoMIMEHeader284`:
+	return intoMIMEHeader284
 }
 
 func TaintStepTest_NetTextprotoMIMEHeaderGet_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromMIMEHeader313` into `intoString695`.
+	// The flow is from `fromMIMEHeader908` into `intoString137`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromMIMEHeader313`:
-	fromMIMEHeader313 := sourceCQL.(textproto.MIMEHeader)
+	// Assume that `sourceCQL` has the underlying type of `fromMIMEHeader908`:
+	fromMIMEHeader908 := sourceCQL.(textproto.MIMEHeader)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromMIMEHeader313` to the result `intoString695`
-	// (`intoString695` is now tainted).
-	intoString695 := fromMIMEHeader313.Get("")
+	// from the receiver `fromMIMEHeader908` to the result `intoString137`
+	// (`intoString137` is now tainted).
+	intoString137 := fromMIMEHeader908.Get("")
 
-	// Return the tainted `intoString695`:
-	return intoString695
+	// Return the tainted `intoString137`:
+	return intoString137
 }
 
 func TaintStepTest_NetTextprotoMIMEHeaderSet_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString516` into `intoMIMEHeader858`.
+	// The flow is from `fromString494` into `intoMIMEHeader873`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString516`:
-	fromString516 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString494`:
+	fromString494 := sourceCQL.(string)
 
-	// Declare `intoMIMEHeader858` variable:
-	var intoMIMEHeader858 textproto.MIMEHeader
+	// Declare `intoMIMEHeader873` variable:
+	var intoMIMEHeader873 textproto.MIMEHeader
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString516` to the receiver `intoMIMEHeader858`
-	// (`intoMIMEHeader858` is now tainted).
-	intoMIMEHeader858.Set(fromString516, "")
+	// from the parameter `fromString494` to the receiver `intoMIMEHeader873`
+	// (`intoMIMEHeader873` is now tainted).
+	intoMIMEHeader873.Set(fromString494, "")
 
-	// Return the tainted `intoMIMEHeader858`:
-	return intoMIMEHeader858
+	// Return the tainted `intoMIMEHeader873`:
+	return intoMIMEHeader873
 }
 
 func TaintStepTest_NetTextprotoMIMEHeaderSet_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString525` into `intoMIMEHeader323`.
+	// The flow is from `fromString599` into `intoMIMEHeader409`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString525`:
-	fromString525 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString599`:
+	fromString599 := sourceCQL.(string)
 
-	// Declare `intoMIMEHeader323` variable:
-	var intoMIMEHeader323 textproto.MIMEHeader
+	// Declare `intoMIMEHeader409` variable:
+	var intoMIMEHeader409 textproto.MIMEHeader
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString525` to the receiver `intoMIMEHeader323`
-	// (`intoMIMEHeader323` is now tainted).
-	intoMIMEHeader323.Set("", fromString525)
+	// from the parameter `fromString599` to the receiver `intoMIMEHeader409`
+	// (`intoMIMEHeader409` is now tainted).
+	intoMIMEHeader409.Set("", fromString599)
 
-	// Return the tainted `intoMIMEHeader323`:
-	return intoMIMEHeader323
+	// Return the tainted `intoMIMEHeader409`:
+	return intoMIMEHeader409
 }
 
 func TaintStepTest_NetTextprotoMIMEHeaderValues_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromMIMEHeader706` into `intoString353`.
+	// The flow is from `fromMIMEHeader246` into `intoString898`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromMIMEHeader706`:
-	fromMIMEHeader706 := sourceCQL.(textproto.MIMEHeader)
+	// Assume that `sourceCQL` has the underlying type of `fromMIMEHeader246`:
+	fromMIMEHeader246 := sourceCQL.(textproto.MIMEHeader)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromMIMEHeader706` to the result `intoString353`
-	// (`intoString353` is now tainted).
-	intoString353 := fromMIMEHeader706.Values("")
+	// from the receiver `fromMIMEHeader246` to the result `intoString898`
+	// (`intoString898` is now tainted).
+	intoString898 := fromMIMEHeader246.Values("")
 
-	// Return the tainted `intoString353`:
-	return intoString353
+	// Return the tainted `intoString898`:
+	return intoString898
 }
 
 func TaintStepTest_NetTextprotoReaderDotReader_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader683` into `intoReader536`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromReader683`:
-	fromReader683 := sourceCQL.(textproto.Reader)
-
-	// Call the method that transfers the taint
-	// from the receiver `fromReader683` to the result `intoReader536`
-	// (`intoReader536` is now tainted).
-	intoReader536 := fromReader683.DotReader()
-
-	// Return the tainted `intoReader536`:
-	return intoReader536
-}
-
-func TaintStepTest_NetTextprotoReaderReadCodeLine_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader306` into `intoString557`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromReader306`:
-	fromReader306 := sourceCQL.(textproto.Reader)
-
-	// Call the method that transfers the taint
-	// from the receiver `fromReader306` to the result `intoString557`
-	// (`intoString557` is now tainted).
-	_, intoString557, _ := fromReader306.ReadCodeLine(0)
-
-	// Return the tainted `intoString557`:
-	return intoString557
-}
-
-func TaintStepTest_NetTextprotoReaderReadContinuedLine_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader658` into `intoString721`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromReader658`:
-	fromReader658 := sourceCQL.(textproto.Reader)
-
-	// Call the method that transfers the taint
-	// from the receiver `fromReader658` to the result `intoString721`
-	// (`intoString721` is now tainted).
-	intoString721, _ := fromReader658.ReadContinuedLine()
-
-	// Return the tainted `intoString721`:
-	return intoString721
-}
-
-func TaintStepTest_NetTextprotoReaderReadContinuedLineBytes_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader980` into `intoByte570`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromReader980`:
-	fromReader980 := sourceCQL.(textproto.Reader)
-
-	// Call the method that transfers the taint
-	// from the receiver `fromReader980` to the result `intoByte570`
-	// (`intoByte570` is now tainted).
-	intoByte570, _ := fromReader980.ReadContinuedLineBytes()
-
-	// Return the tainted `intoByte570`:
-	return intoByte570
-}
-
-func TaintStepTest_NetTextprotoReaderReadDotBytes_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader756` into `intoByte149`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromReader756`:
-	fromReader756 := sourceCQL.(textproto.Reader)
-
-	// Call the method that transfers the taint
-	// from the receiver `fromReader756` to the result `intoByte149`
-	// (`intoByte149` is now tainted).
-	intoByte149, _ := fromReader756.ReadDotBytes()
-
-	// Return the tainted `intoByte149`:
-	return intoByte149
-}
-
-func TaintStepTest_NetTextprotoReaderReadDotLines_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader988` into `intoString966`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromReader988`:
-	fromReader988 := sourceCQL.(textproto.Reader)
-
-	// Call the method that transfers the taint
-	// from the receiver `fromReader988` to the result `intoString966`
-	// (`intoString966` is now tainted).
-	intoString966, _ := fromReader988.ReadDotLines()
-
-	// Return the tainted `intoString966`:
-	return intoString966
-}
-
-func TaintStepTest_NetTextprotoReaderReadLine_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader554` into `intoString558`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromReader554`:
-	fromReader554 := sourceCQL.(textproto.Reader)
-
-	// Call the method that transfers the taint
-	// from the receiver `fromReader554` to the result `intoString558`
-	// (`intoString558` is now tainted).
-	intoString558, _ := fromReader554.ReadLine()
-
-	// Return the tainted `intoString558`:
-	return intoString558
-}
-
-func TaintStepTest_NetTextprotoReaderReadLineBytes_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader396` into `intoByte457`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromReader396`:
-	fromReader396 := sourceCQL.(textproto.Reader)
-
-	// Call the method that transfers the taint
-	// from the receiver `fromReader396` to the result `intoByte457`
-	// (`intoByte457` is now tainted).
-	intoByte457, _ := fromReader396.ReadLineBytes()
-
-	// Return the tainted `intoByte457`:
-	return intoByte457
-}
-
-func TaintStepTest_NetTextprotoReaderReadMIMEHeader_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader139` into `intoMIMEHeader115`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromReader139`:
-	fromReader139 := sourceCQL.(textproto.Reader)
-
-	// Call the method that transfers the taint
-	// from the receiver `fromReader139` to the result `intoMIMEHeader115`
-	// (`intoMIMEHeader115` is now tainted).
-	intoMIMEHeader115, _ := fromReader139.ReadMIMEHeader()
-
-	// Return the tainted `intoMIMEHeader115`:
-	return intoMIMEHeader115
-}
-
-func TaintStepTest_NetTextprotoReaderReadResponse_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader598` into `intoString922`.
+	// The flow is from `fromReader598` into `intoReader631`.
 
 	// Assume that `sourceCQL` has the underlying type of `fromReader598`:
 	fromReader598 := sourceCQL.(textproto.Reader)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromReader598` to the result `intoString922`
-	// (`intoString922` is now tainted).
-	_, intoString922, _ := fromReader598.ReadResponse(0)
+	// from the receiver `fromReader598` to the result `intoReader631`
+	// (`intoReader631` is now tainted).
+	intoReader631 := fromReader598.DotReader()
 
-	// Return the tainted `intoString922`:
-	return intoString922
+	// Return the tainted `intoReader631`:
+	return intoReader631
+}
+
+func TaintStepTest_NetTextprotoReaderReadCodeLine_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader165` into `intoString150`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromReader165`:
+	fromReader165 := sourceCQL.(textproto.Reader)
+
+	// Call the method that transfers the taint
+	// from the receiver `fromReader165` to the result `intoString150`
+	// (`intoString150` is now tainted).
+	_, intoString150, _ := fromReader165.ReadCodeLine(0)
+
+	// Return the tainted `intoString150`:
+	return intoString150
+}
+
+func TaintStepTest_NetTextprotoReaderReadContinuedLine_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader340` into `intoString471`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromReader340`:
+	fromReader340 := sourceCQL.(textproto.Reader)
+
+	// Call the method that transfers the taint
+	// from the receiver `fromReader340` to the result `intoString471`
+	// (`intoString471` is now tainted).
+	intoString471, _ := fromReader340.ReadContinuedLine()
+
+	// Return the tainted `intoString471`:
+	return intoString471
+}
+
+func TaintStepTest_NetTextprotoReaderReadContinuedLineBytes_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader290` into `intoByte758`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromReader290`:
+	fromReader290 := sourceCQL.(textproto.Reader)
+
+	// Call the method that transfers the taint
+	// from the receiver `fromReader290` to the result `intoByte758`
+	// (`intoByte758` is now tainted).
+	intoByte758, _ := fromReader290.ReadContinuedLineBytes()
+
+	// Return the tainted `intoByte758`:
+	return intoByte758
+}
+
+func TaintStepTest_NetTextprotoReaderReadDotBytes_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader396` into `intoByte707`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromReader396`:
+	fromReader396 := sourceCQL.(textproto.Reader)
+
+	// Call the method that transfers the taint
+	// from the receiver `fromReader396` to the result `intoByte707`
+	// (`intoByte707` is now tainted).
+	intoByte707, _ := fromReader396.ReadDotBytes()
+
+	// Return the tainted `intoByte707`:
+	return intoByte707
+}
+
+func TaintStepTest_NetTextprotoReaderReadDotLines_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader912` into `intoString718`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromReader912`:
+	fromReader912 := sourceCQL.(textproto.Reader)
+
+	// Call the method that transfers the taint
+	// from the receiver `fromReader912` to the result `intoString718`
+	// (`intoString718` is now tainted).
+	intoString718, _ := fromReader912.ReadDotLines()
+
+	// Return the tainted `intoString718`:
+	return intoString718
+}
+
+func TaintStepTest_NetTextprotoReaderReadLine_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader972` into `intoString633`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromReader972`:
+	fromReader972 := sourceCQL.(textproto.Reader)
+
+	// Call the method that transfers the taint
+	// from the receiver `fromReader972` to the result `intoString633`
+	// (`intoString633` is now tainted).
+	intoString633, _ := fromReader972.ReadLine()
+
+	// Return the tainted `intoString633`:
+	return intoString633
+}
+
+func TaintStepTest_NetTextprotoReaderReadLineBytes_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader316` into `intoByte145`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromReader316`:
+	fromReader316 := sourceCQL.(textproto.Reader)
+
+	// Call the method that transfers the taint
+	// from the receiver `fromReader316` to the result `intoByte145`
+	// (`intoByte145` is now tainted).
+	intoByte145, _ := fromReader316.ReadLineBytes()
+
+	// Return the tainted `intoByte145`:
+	return intoByte145
+}
+
+func TaintStepTest_NetTextprotoReaderReadMIMEHeader_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader817` into `intoMIMEHeader474`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromReader817`:
+	fromReader817 := sourceCQL.(textproto.Reader)
+
+	// Call the method that transfers the taint
+	// from the receiver `fromReader817` to the result `intoMIMEHeader474`
+	// (`intoMIMEHeader474` is now tainted).
+	intoMIMEHeader474, _ := fromReader817.ReadMIMEHeader()
+
+	// Return the tainted `intoMIMEHeader474`:
+	return intoMIMEHeader474
+}
+
+func TaintStepTest_NetTextprotoReaderReadResponse_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromReader832` into `intoString378`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromReader832`:
+	fromReader832 := sourceCQL.(textproto.Reader)
+
+	// Call the method that transfers the taint
+	// from the receiver `fromReader832` to the result `intoString378`
+	// (`intoString378` is now tainted).
+	_, intoString378, _ := fromReader832.ReadResponse(0)
+
+	// Return the tainted `intoString378`:
+	return intoString378
 }
 
 func TaintStepTest_NetTextprotoWriterDotWriter_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromWriteCloser490` into `intoWriter234`.
+	// The flow is from `fromWriteCloser541` into `intoWriter139`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriteCloser490`:
-	fromWriteCloser490 := sourceCQL.(io.WriteCloser)
+	// Assume that `sourceCQL` has the underlying type of `fromWriteCloser541`:
+	fromWriteCloser541 := sourceCQL.(io.WriteCloser)
 
-	// Declare `intoWriter234` variable:
-	var intoWriter234 textproto.Writer
+	// Declare `intoWriter139` variable:
+	var intoWriter139 textproto.Writer
 
 	// Call the method that will transfer the taint
-	// from the result `intermediateCQL` to receiver `intoWriter234`:
-	intermediateCQL := intoWriter234.DotWriter()
+	// from the result `intermediateCQL` to receiver `intoWriter139`:
+	intermediateCQL := intoWriter139.DotWriter()
 
-	// Extra step (`fromWriteCloser490` taints `intermediateCQL`, which taints `intoWriter234`:
-	link(fromWriteCloser490, intermediateCQL)
+	// Extra step (`fromWriteCloser541` taints `intermediateCQL`, which taints `intoWriter139`:
+	link(fromWriteCloser541, intermediateCQL)
 
-	// Return the tainted `intoWriter234`:
-	return intoWriter234
+	// Return the tainted `intoWriter139`:
+	return intoWriter139
 }
 
 func TaintStepTest_NetTextprotoWriterPrintfLine_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString421` into `intoWriter154`.
+	// The flow is from `fromString814` into `intoWriter768`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString421`:
-	fromString421 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString814`:
+	fromString814 := sourceCQL.(string)
 
-	// Declare `intoWriter154` variable:
-	var intoWriter154 textproto.Writer
+	// Declare `intoWriter768` variable:
+	var intoWriter768 textproto.Writer
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString421` to the receiver `intoWriter154`
-	// (`intoWriter154` is now tainted).
-	intoWriter154.PrintfLine(fromString421, nil)
+	// from the parameter `fromString814` to the receiver `intoWriter768`
+	// (`intoWriter768` is now tainted).
+	intoWriter768.PrintfLine(fromString814, nil)
 
-	// Return the tainted `intoWriter154`:
-	return intoWriter154
+	// Return the tainted `intoWriter768`:
+	return intoWriter768
 }
 
 func TaintStepTest_NetTextprotoWriterPrintfLine_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface897` into `intoWriter795`.
+	// The flow is from `fromInterface468` into `intoWriter736`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface897`:
-	fromInterface897 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface468`:
+	fromInterface468 := sourceCQL.(interface{})
 
-	// Declare `intoWriter795` variable:
-	var intoWriter795 textproto.Writer
+	// Declare `intoWriter736` variable:
+	var intoWriter736 textproto.Writer
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface897` to the receiver `intoWriter795`
-	// (`intoWriter795` is now tainted).
-	intoWriter795.PrintfLine("", fromInterface897)
+	// from the parameter `fromInterface468` to the receiver `intoWriter736`
+	// (`intoWriter736` is now tainted).
+	intoWriter736.PrintfLine("", fromInterface468)
 
-	// Return the tainted `intoWriter795`:
-	return intoWriter795
+	// Return the tainted `intoWriter736`:
+	return intoWriter736
 }
 
 func RunAllTaints_NetTextproto() {

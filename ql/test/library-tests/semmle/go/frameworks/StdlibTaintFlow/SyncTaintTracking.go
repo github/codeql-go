@@ -5,156 +5,156 @@ package main
 import "sync"
 
 func TaintStepTest_SyncMapLoad_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromMap276` into `intoInterface697`.
+	// The flow is from `fromMap656` into `intoInterface414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromMap276`:
-	fromMap276 := sourceCQL.(sync.Map)
+	// Assume that `sourceCQL` has the underlying type of `fromMap656`:
+	fromMap656 := sourceCQL.(sync.Map)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromMap276` to the result `intoInterface697`
-	// (`intoInterface697` is now tainted).
-	intoInterface697, _ := fromMap276.Load(nil)
+	// from the receiver `fromMap656` to the result `intoInterface414`
+	// (`intoInterface414` is now tainted).
+	intoInterface414, _ := fromMap656.Load(nil)
 
-	// Return the tainted `intoInterface697`:
-	return intoInterface697
+	// Return the tainted `intoInterface414`:
+	return intoInterface414
 }
 
 func TaintStepTest_SyncMapLoadOrStore_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromMap165` into `intoInterface211`.
+	// The flow is from `fromMap518` into `intoInterface650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromMap165`:
-	fromMap165 := sourceCQL.(sync.Map)
+	// Assume that `sourceCQL` has the underlying type of `fromMap518`:
+	fromMap518 := sourceCQL.(sync.Map)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromMap165` to the result `intoInterface211`
-	// (`intoInterface211` is now tainted).
-	intoInterface211, _ := fromMap165.LoadOrStore(nil, nil)
+	// from the receiver `fromMap518` to the result `intoInterface650`
+	// (`intoInterface650` is now tainted).
+	intoInterface650, _ := fromMap518.LoadOrStore(nil, nil)
 
-	// Return the tainted `intoInterface211`:
-	return intoInterface211
+	// Return the tainted `intoInterface650`:
+	return intoInterface650
 }
 
 func TaintStepTest_SyncMapLoadOrStore_B1I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface843` into `intoMap938`.
+	// The flow is from `fromInterface784` into `intoMap957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface843`:
-	fromInterface843 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface784`:
+	fromInterface784 := sourceCQL.(interface{})
 
-	// Declare `intoMap938` variable:
-	var intoMap938 sync.Map
+	// Declare `intoMap957` variable:
+	var intoMap957 sync.Map
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface843` to the receiver `intoMap938`
-	// (`intoMap938` is now tainted).
-	intoMap938.LoadOrStore(nil, fromInterface843)
+	// from the parameter `fromInterface784` to the receiver `intoMap957`
+	// (`intoMap957` is now tainted).
+	intoMap957.LoadOrStore(nil, fromInterface784)
 
-	// Return the tainted `intoMap938`:
-	return intoMap938
+	// Return the tainted `intoMap957`:
+	return intoMap957
 }
 
 func TaintStepTest_SyncMapLoadOrStore_B1I0O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface428` into `intoInterface251`.
+	// The flow is from `fromInterface520` into `intoInterface443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface428`:
-	fromInterface428 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface520`:
+	fromInterface520 := sourceCQL.(interface{})
 
 	// Declare medium object/interface:
 	var mediumObjCQL sync.Map
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface428` to the result `intoInterface251`
-	// (`intoInterface251` is now tainted).
-	intoInterface251, _ := mediumObjCQL.LoadOrStore(nil, fromInterface428)
+	// from the parameter `fromInterface520` to the result `intoInterface443`
+	// (`intoInterface443` is now tainted).
+	intoInterface443, _ := mediumObjCQL.LoadOrStore(nil, fromInterface520)
 
-	// Return the tainted `intoInterface251`:
-	return intoInterface251
+	// Return the tainted `intoInterface443`:
+	return intoInterface443
 }
 
 func TaintStepTest_SyncMapRange_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromMap959` into `intoFunckeyInterfaceValueInterfaceBool408`.
+	// The flow is from `fromMap127` into `intoFunckeyInterfaceValueInterfaceBool483`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromMap959`:
-	fromMap959 := sourceCQL.(sync.Map)
+	// Assume that `sourceCQL` has the underlying type of `fromMap127`:
+	fromMap127 := sourceCQL.(sync.Map)
 
-	// Declare `intoFunckeyInterfaceValueInterfaceBool408` variable:
-	var intoFunckeyInterfaceValueInterfaceBool408 func(interface{}, interface{}) bool
+	// Declare `intoFunckeyInterfaceValueInterfaceBool483` variable:
+	var intoFunckeyInterfaceValueInterfaceBool483 func(interface{}, interface{}) bool
 
 	// Call the method that transfers the taint
-	// from the receiver `fromMap959` to the argument `intoFunckeyInterfaceValueInterfaceBool408`
-	// (`intoFunckeyInterfaceValueInterfaceBool408` is now tainted).
-	fromMap959.Range(intoFunckeyInterfaceValueInterfaceBool408)
+	// from the receiver `fromMap127` to the argument `intoFunckeyInterfaceValueInterfaceBool483`
+	// (`intoFunckeyInterfaceValueInterfaceBool483` is now tainted).
+	fromMap127.Range(intoFunckeyInterfaceValueInterfaceBool483)
 
-	// Return the tainted `intoFunckeyInterfaceValueInterfaceBool408`:
-	return intoFunckeyInterfaceValueInterfaceBool408
+	// Return the tainted `intoFunckeyInterfaceValueInterfaceBool483`:
+	return intoFunckeyInterfaceValueInterfaceBool483
 }
 
 func TaintStepTest_SyncMapStore_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface306` into `intoMap831`.
+	// The flow is from `fromInterface989` into `intoMap982`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface306`:
-	fromInterface306 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface989`:
+	fromInterface989 := sourceCQL.(interface{})
 
-	// Declare `intoMap831` variable:
-	var intoMap831 sync.Map
+	// Declare `intoMap982` variable:
+	var intoMap982 sync.Map
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface306` to the receiver `intoMap831`
-	// (`intoMap831` is now tainted).
-	intoMap831.Store(fromInterface306, nil)
+	// from the parameter `fromInterface989` to the receiver `intoMap982`
+	// (`intoMap982` is now tainted).
+	intoMap982.Store(fromInterface989, nil)
 
-	// Return the tainted `intoMap831`:
-	return intoMap831
+	// Return the tainted `intoMap982`:
+	return intoMap982
 }
 
 func TaintStepTest_SyncMapStore_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface136` into `intoMap705`.
+	// The flow is from `fromInterface417` into `intoMap584`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface136`:
-	fromInterface136 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface417`:
+	fromInterface417 := sourceCQL.(interface{})
 
-	// Declare `intoMap705` variable:
-	var intoMap705 sync.Map
+	// Declare `intoMap584` variable:
+	var intoMap584 sync.Map
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface136` to the receiver `intoMap705`
-	// (`intoMap705` is now tainted).
-	intoMap705.Store(nil, fromInterface136)
+	// from the parameter `fromInterface417` to the receiver `intoMap584`
+	// (`intoMap584` is now tainted).
+	intoMap584.Store(nil, fromInterface417)
 
-	// Return the tainted `intoMap705`:
-	return intoMap705
+	// Return the tainted `intoMap584`:
+	return intoMap584
 }
 
 func TaintStepTest_SyncPoolGet_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromPool649` into `intoInterface952`.
+	// The flow is from `fromPool991` into `intoInterface881`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromPool649`:
-	fromPool649 := sourceCQL.(sync.Pool)
+	// Assume that `sourceCQL` has the underlying type of `fromPool991`:
+	fromPool991 := sourceCQL.(sync.Pool)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromPool649` to the result `intoInterface952`
-	// (`intoInterface952` is now tainted).
-	intoInterface952 := fromPool649.Get()
+	// from the receiver `fromPool991` to the result `intoInterface881`
+	// (`intoInterface881` is now tainted).
+	intoInterface881 := fromPool991.Get()
 
-	// Return the tainted `intoInterface952`:
-	return intoInterface952
+	// Return the tainted `intoInterface881`:
+	return intoInterface881
 }
 
 func TaintStepTest_SyncPoolPut_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface186` into `intoPool649`.
+	// The flow is from `fromInterface186` into `intoPool284`.
 
 	// Assume that `sourceCQL` has the underlying type of `fromInterface186`:
 	fromInterface186 := sourceCQL.(interface{})
 
-	// Declare `intoPool649` variable:
-	var intoPool649 sync.Pool
+	// Declare `intoPool284` variable:
+	var intoPool284 sync.Pool
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface186` to the receiver `intoPool649`
-	// (`intoPool649` is now tainted).
-	intoPool649.Put(fromInterface186)
+	// from the parameter `fromInterface186` to the receiver `intoPool284`
+	// (`intoPool284` is now tainted).
+	intoPool284.Put(fromInterface186)
 
-	// Return the tainted `intoPool649`:
-	return intoPool649
+	// Return the tainted `intoPool284`:
+	return intoPool284
 }
 
 func RunAllTaints_Sync() {

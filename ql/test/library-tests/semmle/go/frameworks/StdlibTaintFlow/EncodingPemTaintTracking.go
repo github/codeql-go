@@ -8,66 +8,66 @@ import (
 )
 
 func TaintStepTest_EncodingPemDecode_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte489` into `intoBlock311`.
+	// The flow is from `fromByte656` into `intoBlock414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte489`:
-	fromByte489 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte656`:
+	fromByte656 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte489` to result `intoBlock311`
-	// (`intoBlock311` is now tainted).
-	intoBlock311, _ := pem.Decode(fromByte489)
+	// from the parameter `fromByte656` to result `intoBlock414`
+	// (`intoBlock414` is now tainted).
+	intoBlock414, _ := pem.Decode(fromByte656)
 
-	// Return the tainted `intoBlock311`:
-	return intoBlock311
+	// Return the tainted `intoBlock414`:
+	return intoBlock414
 }
 
 func TaintStepTest_EncodingPemDecode_B0I0O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte272` into `intoByte579`.
+	// The flow is from `fromByte518` into `intoByte650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte272`:
-	fromByte272 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte518`:
+	fromByte518 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte272` to result `intoByte579`
-	// (`intoByte579` is now tainted).
-	_, intoByte579 := pem.Decode(fromByte272)
+	// from the parameter `fromByte518` to result `intoByte650`
+	// (`intoByte650` is now tainted).
+	_, intoByte650 := pem.Decode(fromByte518)
 
-	// Return the tainted `intoByte579`:
-	return intoByte579
+	// Return the tainted `intoByte650`:
+	return intoByte650
 }
 
 func TaintStepTest_EncodingPemEncode_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromBlock409` into `intoWriter652`.
+	// The flow is from `fromBlock784` into `intoWriter957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromBlock409`:
-	fromBlock409 := sourceCQL.(*pem.Block)
+	// Assume that `sourceCQL` has the underlying type of `fromBlock784`:
+	fromBlock784 := sourceCQL.(*pem.Block)
 
-	// Declare `intoWriter652` variable:
-	var intoWriter652 io.Writer
+	// Declare `intoWriter957` variable:
+	var intoWriter957 io.Writer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromBlock409` to parameter `intoWriter652`;
-	// `intoWriter652` is now tainted.
-	pem.Encode(intoWriter652, fromBlock409)
+	// from the parameter `fromBlock784` to parameter `intoWriter957`;
+	// `intoWriter957` is now tainted.
+	pem.Encode(intoWriter957, fromBlock784)
 
-	// Return the tainted `intoWriter652`:
-	return intoWriter652
+	// Return the tainted `intoWriter957`:
+	return intoWriter957
 }
 
 func TaintStepTest_EncodingPemEncodeToMemory_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromBlock867` into `intoByte466`.
+	// The flow is from `fromBlock520` into `intoByte443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromBlock867`:
-	fromBlock867 := sourceCQL.(*pem.Block)
+	// Assume that `sourceCQL` has the underlying type of `fromBlock520`:
+	fromBlock520 := sourceCQL.(*pem.Block)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromBlock867` to result `intoByte466`
-	// (`intoByte466` is now tainted).
-	intoByte466 := pem.EncodeToMemory(fromBlock867)
+	// from the parameter `fromBlock520` to result `intoByte443`
+	// (`intoByte443` is now tainted).
+	intoByte443 := pem.EncodeToMemory(fromBlock520)
 
-	// Return the tainted `intoByte466`:
-	return intoByte466
+	// Return the tainted `intoByte443`:
+	return intoByte443
 }
 
 func RunAllTaints_EncodingPem() {

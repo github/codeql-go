@@ -8,18 +8,18 @@ import (
 )
 
 func TaintStepTest_CompressBzip2NewReader_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader815` into `intoReader389`.
+	// The flow is from `fromReader656` into `intoReader414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader815`:
-	fromReader815 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader656`:
+	fromReader656 := sourceCQL.(io.Reader)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader815` to result `intoReader389`
-	// (`intoReader389` is now tainted).
-	intoReader389 := bzip2.NewReader(fromReader815)
+	// from the parameter `fromReader656` to result `intoReader414`
+	// (`intoReader414` is now tainted).
+	intoReader414 := bzip2.NewReader(fromReader656)
 
-	// Return the tainted `intoReader389`:
-	return intoReader389
+	// Return the tainted `intoReader414`:
+	return intoReader414
 }
 
 func RunAllTaints_CompressBzip2() {

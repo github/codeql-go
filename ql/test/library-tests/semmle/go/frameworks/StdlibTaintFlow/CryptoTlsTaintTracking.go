@@ -8,124 +8,124 @@ import (
 )
 
 func TaintStepTest_CryptoTlsClient_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromConn950` into `intoConn947`.
+	// The flow is from `fromConn656` into `intoConn414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromConn950`:
-	fromConn950 := sourceCQL.(net.Conn)
+	// Assume that `sourceCQL` has the underlying type of `fromConn656`:
+	fromConn656 := sourceCQL.(net.Conn)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromConn950` to result `intoConn947`
-	// (`intoConn947` is now tainted).
-	intoConn947 := tls.Client(fromConn950, nil)
+	// from the parameter `fromConn656` to result `intoConn414`
+	// (`intoConn414` is now tainted).
+	intoConn414 := tls.Client(fromConn656, nil)
 
-	// Return the tainted `intoConn947`:
-	return intoConn947
+	// Return the tainted `intoConn414`:
+	return intoConn414
 }
 
 func TaintStepTest_CryptoTlsClient_B1I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromConn833` into `intoConn612`.
+	// The flow is from `fromConn518` into `intoConn650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromConn833`:
-	fromConn833 := sourceCQL.(*tls.Conn)
+	// Assume that `sourceCQL` has the underlying type of `fromConn518`:
+	fromConn518 := sourceCQL.(*tls.Conn)
 
-	// Declare `intoConn612` variable:
-	var intoConn612 net.Conn
+	// Declare `intoConn650` variable:
+	var intoConn650 net.Conn
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoConn612`:
-	intermediateCQL := tls.Client(intoConn612, nil)
+	// from the result `intermediateCQL` to parameter `intoConn650`:
+	intermediateCQL := tls.Client(intoConn650, nil)
 
-	// Extra step (`fromConn833` taints `intermediateCQL`, which taints `intoConn612`:
-	link(fromConn833, intermediateCQL)
+	// Extra step (`fromConn518` taints `intermediateCQL`, which taints `intoConn650`:
+	link(fromConn518, intermediateCQL)
 
-	// Return the tainted `intoConn612`:
-	return intoConn612
+	// Return the tainted `intoConn650`:
+	return intoConn650
 }
 
 func TaintStepTest_CryptoTlsNewListener_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromListener763` into `intoListener571`.
+	// The flow is from `fromListener784` into `intoListener957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromListener763`:
-	fromListener763 := sourceCQL.(net.Listener)
+	// Assume that `sourceCQL` has the underlying type of `fromListener784`:
+	fromListener784 := sourceCQL.(net.Listener)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromListener763` to result `intoListener571`
-	// (`intoListener571` is now tainted).
-	intoListener571 := tls.NewListener(fromListener763, nil)
+	// from the parameter `fromListener784` to result `intoListener957`
+	// (`intoListener957` is now tainted).
+	intoListener957 := tls.NewListener(fromListener784, nil)
 
-	// Return the tainted `intoListener571`:
-	return intoListener571
+	// Return the tainted `intoListener957`:
+	return intoListener957
 }
 
 func TaintStepTest_CryptoTlsServer_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromConn211` into `intoConn662`.
+	// The flow is from `fromConn520` into `intoConn443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromConn211`:
-	fromConn211 := sourceCQL.(net.Conn)
+	// Assume that `sourceCQL` has the underlying type of `fromConn520`:
+	fromConn520 := sourceCQL.(net.Conn)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromConn211` to result `intoConn662`
-	// (`intoConn662` is now tainted).
-	intoConn662 := tls.Server(fromConn211, nil)
+	// from the parameter `fromConn520` to result `intoConn443`
+	// (`intoConn443` is now tainted).
+	intoConn443 := tls.Server(fromConn520, nil)
 
-	// Return the tainted `intoConn662`:
-	return intoConn662
+	// Return the tainted `intoConn443`:
+	return intoConn443
 }
 
 func TaintStepTest_CryptoTlsServer_B1I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromConn565` into `intoConn138`.
+	// The flow is from `fromConn127` into `intoConn483`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromConn565`:
-	fromConn565 := sourceCQL.(*tls.Conn)
+	// Assume that `sourceCQL` has the underlying type of `fromConn127`:
+	fromConn127 := sourceCQL.(*tls.Conn)
 
-	// Declare `intoConn138` variable:
-	var intoConn138 net.Conn
+	// Declare `intoConn483` variable:
+	var intoConn483 net.Conn
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoConn138`:
-	intermediateCQL := tls.Server(intoConn138, nil)
+	// from the result `intermediateCQL` to parameter `intoConn483`:
+	intermediateCQL := tls.Server(intoConn483, nil)
 
-	// Extra step (`fromConn565` taints `intermediateCQL`, which taints `intoConn138`:
-	link(fromConn565, intermediateCQL)
+	// Extra step (`fromConn127` taints `intermediateCQL`, which taints `intoConn483`:
+	link(fromConn127, intermediateCQL)
 
-	// Return the tainted `intoConn138`:
-	return intoConn138
+	// Return the tainted `intoConn483`:
+	return intoConn483
 }
 
 func TaintStepTest_CryptoTlsConnRead_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromConn127` into `intoByte467`.
+	// The flow is from `fromConn989` into `intoByte982`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromConn127`:
-	fromConn127 := sourceCQL.(tls.Conn)
+	// Assume that `sourceCQL` has the underlying type of `fromConn989`:
+	fromConn989 := sourceCQL.(tls.Conn)
 
-	// Declare `intoByte467` variable:
-	var intoByte467 []byte
+	// Declare `intoByte982` variable:
+	var intoByte982 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromConn127` to the argument `intoByte467`
-	// (`intoByte467` is now tainted).
-	fromConn127.Read(intoByte467)
+	// from the receiver `fromConn989` to the argument `intoByte982`
+	// (`intoByte982` is now tainted).
+	fromConn989.Read(intoByte982)
 
-	// Return the tainted `intoByte467`:
-	return intoByte467
+	// Return the tainted `intoByte982`:
+	return intoByte982
 }
 
 func TaintStepTest_CryptoTlsConnWrite_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte748` into `intoConn123`.
+	// The flow is from `fromByte417` into `intoConn584`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte748`:
-	fromByte748 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte417`:
+	fromByte417 := sourceCQL.([]byte)
 
-	// Declare `intoConn123` variable:
-	var intoConn123 tls.Conn
+	// Declare `intoConn584` variable:
+	var intoConn584 tls.Conn
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte748` to the receiver `intoConn123`
-	// (`intoConn123` is now tainted).
-	intoConn123.Write(fromByte748)
+	// from the parameter `fromByte417` to the receiver `intoConn584`
+	// (`intoConn584` is now tainted).
+	intoConn584.Write(fromByte417)
 
-	// Return the tainted `intoConn123`:
-	return intoConn123
+	// Return the tainted `intoConn584`:
+	return intoConn584
 }
 
 func RunAllTaints_CryptoTls() {

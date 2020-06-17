@@ -5,21 +5,21 @@ package main
 import "crypto/ecdsa"
 
 func TaintStepTest_CryptoEcdsaPrivateKeySign_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte163` into `intoByte978`.
+	// The flow is from `fromByte656` into `intoByte414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte163`:
-	fromByte163 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte656`:
+	fromByte656 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL ecdsa.PrivateKey
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte163` to the result `intoByte978`
-	// (`intoByte978` is now tainted).
-	intoByte978, _ := mediumObjCQL.Sign(nil, fromByte163, nil)
+	// from the parameter `fromByte656` to the result `intoByte414`
+	// (`intoByte414` is now tainted).
+	intoByte414, _ := mediumObjCQL.Sign(nil, fromByte656, nil)
 
-	// Return the tainted `intoByte978`:
-	return intoByte978
+	// Return the tainted `intoByte414`:
+	return intoByte414
 }
 
 func RunAllTaints_CryptoEcdsa() {

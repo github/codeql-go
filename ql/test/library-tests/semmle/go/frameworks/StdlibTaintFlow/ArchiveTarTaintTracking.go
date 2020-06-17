@@ -9,137 +9,137 @@ import (
 )
 
 func TaintStepTest_ArchiveTarFileInfoHeader_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromFileInfo193` into `intoHeader385`.
+	// The flow is from `fromFileInfo656` into `intoHeader414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromFileInfo193`:
-	fromFileInfo193 := sourceCQL.(os.FileInfo)
+	// Assume that `sourceCQL` has the underlying type of `fromFileInfo656`:
+	fromFileInfo656 := sourceCQL.(os.FileInfo)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromFileInfo193` to result `intoHeader385`
-	// (`intoHeader385` is now tainted).
-	intoHeader385, _ := tar.FileInfoHeader(fromFileInfo193, "")
+	// from the parameter `fromFileInfo656` to result `intoHeader414`
+	// (`intoHeader414` is now tainted).
+	intoHeader414, _ := tar.FileInfoHeader(fromFileInfo656, "")
 
-	// Return the tainted `intoHeader385`:
-	return intoHeader385
+	// Return the tainted `intoHeader414`:
+	return intoHeader414
 }
 
 func TaintStepTest_ArchiveTarNewReader_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader668` into `intoReader352`.
+	// The flow is from `fromReader518` into `intoReader650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader668`:
-	fromReader668 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader518`:
+	fromReader518 := sourceCQL.(io.Reader)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader668` to result `intoReader352`
-	// (`intoReader352` is now tainted).
-	intoReader352 := tar.NewReader(fromReader668)
+	// from the parameter `fromReader518` to result `intoReader650`
+	// (`intoReader650` is now tainted).
+	intoReader650 := tar.NewReader(fromReader518)
 
-	// Return the tainted `intoReader352`:
-	return intoReader352
+	// Return the tainted `intoReader650`:
+	return intoReader650
 }
 
 func TaintStepTest_ArchiveTarNewWriter_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromWriter921` into `intoWriter471`.
+	// The flow is from `fromWriter784` into `intoWriter957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriter921`:
-	fromWriter921 := sourceCQL.(*tar.Writer)
+	// Assume that `sourceCQL` has the underlying type of `fromWriter784`:
+	fromWriter784 := sourceCQL.(*tar.Writer)
 
-	// Declare `intoWriter471` variable:
-	var intoWriter471 io.Writer
+	// Declare `intoWriter957` variable:
+	var intoWriter957 io.Writer
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoWriter471`:
-	intermediateCQL := tar.NewWriter(intoWriter471)
+	// from the result `intermediateCQL` to parameter `intoWriter957`:
+	intermediateCQL := tar.NewWriter(intoWriter957)
 
-	// Extra step (`fromWriter921` taints `intermediateCQL`, which taints `intoWriter471`:
-	link(fromWriter921, intermediateCQL)
+	// Extra step (`fromWriter784` taints `intermediateCQL`, which taints `intoWriter957`:
+	link(fromWriter784, intermediateCQL)
 
-	// Return the tainted `intoWriter471`:
-	return intoWriter471
+	// Return the tainted `intoWriter957`:
+	return intoWriter957
 }
 
 func TaintStepTest_ArchiveTarHeaderFileInfo_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromHeader182` into `intoFileInfo300`.
+	// The flow is from `fromHeader520` into `intoFileInfo443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromHeader182`:
-	fromHeader182 := sourceCQL.(tar.Header)
+	// Assume that `sourceCQL` has the underlying type of `fromHeader520`:
+	fromHeader520 := sourceCQL.(tar.Header)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromHeader182` to the result `intoFileInfo300`
-	// (`intoFileInfo300` is now tainted).
-	intoFileInfo300 := fromHeader182.FileInfo()
+	// from the receiver `fromHeader520` to the result `intoFileInfo443`
+	// (`intoFileInfo443` is now tainted).
+	intoFileInfo443 := fromHeader520.FileInfo()
 
-	// Return the tainted `intoFileInfo300`:
-	return intoFileInfo300
+	// Return the tainted `intoFileInfo443`:
+	return intoFileInfo443
 }
 
 func TaintStepTest_ArchiveTarReaderNext_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader598` into `intoHeader416`.
+	// The flow is from `fromReader127` into `intoHeader483`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader598`:
-	fromReader598 := sourceCQL.(tar.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader127`:
+	fromReader127 := sourceCQL.(tar.Reader)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromReader598` to the result `intoHeader416`
-	// (`intoHeader416` is now tainted).
-	intoHeader416, _ := fromReader598.Next()
+	// from the receiver `fromReader127` to the result `intoHeader483`
+	// (`intoHeader483` is now tainted).
+	intoHeader483, _ := fromReader127.Next()
 
-	// Return the tainted `intoHeader416`:
-	return intoHeader416
+	// Return the tainted `intoHeader483`:
+	return intoHeader483
 }
 
 func TaintStepTest_ArchiveTarReaderRead_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader166` into `intoByte997`.
+	// The flow is from `fromReader989` into `intoByte982`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader166`:
-	fromReader166 := sourceCQL.(tar.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader989`:
+	fromReader989 := sourceCQL.(tar.Reader)
 
-	// Declare `intoByte997` variable:
-	var intoByte997 []byte
+	// Declare `intoByte982` variable:
+	var intoByte982 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromReader166` to the argument `intoByte997`
-	// (`intoByte997` is now tainted).
-	fromReader166.Read(intoByte997)
+	// from the receiver `fromReader989` to the argument `intoByte982`
+	// (`intoByte982` is now tainted).
+	fromReader989.Read(intoByte982)
 
-	// Return the tainted `intoByte997`:
-	return intoByte997
+	// Return the tainted `intoByte982`:
+	return intoByte982
 }
 
 func TaintStepTest_ArchiveTarWriterWrite_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte501` into `intoWriter894`.
+	// The flow is from `fromByte417` into `intoWriter584`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte501`:
-	fromByte501 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte417`:
+	fromByte417 := sourceCQL.([]byte)
 
-	// Declare `intoWriter894` variable:
-	var intoWriter894 tar.Writer
+	// Declare `intoWriter584` variable:
+	var intoWriter584 tar.Writer
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte501` to the receiver `intoWriter894`
-	// (`intoWriter894` is now tainted).
-	intoWriter894.Write(fromByte501)
+	// from the parameter `fromByte417` to the receiver `intoWriter584`
+	// (`intoWriter584` is now tainted).
+	intoWriter584.Write(fromByte417)
 
-	// Return the tainted `intoWriter894`:
-	return intoWriter894
+	// Return the tainted `intoWriter584`:
+	return intoWriter584
 }
 
 func TaintStepTest_ArchiveTarWriterWriteHeader_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromHeader973` into `intoWriter946`.
+	// The flow is from `fromHeader991` into `intoWriter881`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromHeader973`:
-	fromHeader973 := sourceCQL.(*tar.Header)
+	// Assume that `sourceCQL` has the underlying type of `fromHeader991`:
+	fromHeader991 := sourceCQL.(*tar.Header)
 
-	// Declare `intoWriter946` variable:
-	var intoWriter946 tar.Writer
+	// Declare `intoWriter881` variable:
+	var intoWriter881 tar.Writer
 
 	// Call the method that transfers the taint
-	// from the parameter `fromHeader973` to the receiver `intoWriter946`
-	// (`intoWriter946` is now tainted).
-	intoWriter946.WriteHeader(fromHeader973)
+	// from the parameter `fromHeader991` to the receiver `intoWriter881`
+	// (`intoWriter881` is now tainted).
+	intoWriter881.WriteHeader(fromHeader991)
 
-	// Return the tainted `intoWriter946`:
-	return intoWriter946
+	// Return the tainted `intoWriter881`:
+	return intoWriter881
 }
 
 func RunAllTaints_ArchiveTar() {

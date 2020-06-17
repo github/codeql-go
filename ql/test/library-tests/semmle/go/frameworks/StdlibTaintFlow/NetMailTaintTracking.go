@@ -8,99 +8,99 @@ import (
 )
 
 func TaintStepTest_NetMailParseAddress_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString869` into `intoAddress222`.
+	// The flow is from `fromString656` into `intoAddress414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString869`:
-	fromString869 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString656`:
+	fromString656 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString869` to result `intoAddress222`
-	// (`intoAddress222` is now tainted).
-	intoAddress222, _ := mail.ParseAddress(fromString869)
+	// from the parameter `fromString656` to result `intoAddress414`
+	// (`intoAddress414` is now tainted).
+	intoAddress414, _ := mail.ParseAddress(fromString656)
 
-	// Return the tainted `intoAddress222`:
-	return intoAddress222
+	// Return the tainted `intoAddress414`:
+	return intoAddress414
 }
 
 func TaintStepTest_NetMailParseAddressList_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString518` into `intoAddress228`.
+	// The flow is from `fromString518` into `intoAddress650`.
 
 	// Assume that `sourceCQL` has the underlying type of `fromString518`:
 	fromString518 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString518` to result `intoAddress228`
-	// (`intoAddress228` is now tainted).
-	intoAddress228, _ := mail.ParseAddressList(fromString518)
+	// from the parameter `fromString518` to result `intoAddress650`
+	// (`intoAddress650` is now tainted).
+	intoAddress650, _ := mail.ParseAddressList(fromString518)
 
-	// Return the tainted `intoAddress228`:
-	return intoAddress228
+	// Return the tainted `intoAddress650`:
+	return intoAddress650
 }
 
 func TaintStepTest_NetMailReadMessage_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader465` into `intoMessage496`.
+	// The flow is from `fromReader784` into `intoMessage957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader465`:
-	fromReader465 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader784`:
+	fromReader784 := sourceCQL.(io.Reader)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader465` to result `intoMessage496`
-	// (`intoMessage496` is now tainted).
-	intoMessage496, _ := mail.ReadMessage(fromReader465)
+	// from the parameter `fromReader784` to result `intoMessage957`
+	// (`intoMessage957` is now tainted).
+	intoMessage957, _ := mail.ReadMessage(fromReader784)
 
-	// Return the tainted `intoMessage496`:
-	return intoMessage496
+	// Return the tainted `intoMessage957`:
+	return intoMessage957
 }
 
 func TaintStepTest_NetMailAddressParserParse_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString859` into `intoAddress877`.
+	// The flow is from `fromString520` into `intoAddress443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString859`:
-	fromString859 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString520`:
+	fromString520 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL mail.AddressParser
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString859` to the result `intoAddress877`
-	// (`intoAddress877` is now tainted).
-	intoAddress877, _ := mediumObjCQL.Parse(fromString859)
+	// from the parameter `fromString520` to the result `intoAddress443`
+	// (`intoAddress443` is now tainted).
+	intoAddress443, _ := mediumObjCQL.Parse(fromString520)
 
-	// Return the tainted `intoAddress877`:
-	return intoAddress877
+	// Return the tainted `intoAddress443`:
+	return intoAddress443
 }
 
 func TaintStepTest_NetMailAddressParserParseList_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString814` into `intoAddress529`.
+	// The flow is from `fromString127` into `intoAddress483`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString814`:
-	fromString814 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString127`:
+	fromString127 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL mail.AddressParser
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString814` to the result `intoAddress529`
-	// (`intoAddress529` is now tainted).
-	intoAddress529, _ := mediumObjCQL.ParseList(fromString814)
+	// from the parameter `fromString127` to the result `intoAddress483`
+	// (`intoAddress483` is now tainted).
+	intoAddress483, _ := mediumObjCQL.ParseList(fromString127)
 
-	// Return the tainted `intoAddress529`:
-	return intoAddress529
+	// Return the tainted `intoAddress483`:
+	return intoAddress483
 }
 
 func TaintStepTest_NetMailHeaderGet_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromHeader646` into `intoString366`.
+	// The flow is from `fromHeader989` into `intoString982`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromHeader646`:
-	fromHeader646 := sourceCQL.(mail.Header)
+	// Assume that `sourceCQL` has the underlying type of `fromHeader989`:
+	fromHeader989 := sourceCQL.(mail.Header)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromHeader646` to the result `intoString366`
-	// (`intoString366` is now tainted).
-	intoString366 := fromHeader646.Get("")
+	// from the receiver `fromHeader989` to the result `intoString982`
+	// (`intoString982` is now tainted).
+	intoString982 := fromHeader989.Get("")
 
-	// Return the tainted `intoString366`:
-	return intoString366
+	// Return the tainted `intoString982`:
+	return intoString982
 }
 
 func RunAllTaints_NetMail() {

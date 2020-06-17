@@ -8,147 +8,147 @@ import (
 )
 
 func TaintStepTest_CompressZlibNewReader_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader652` into `intoReadCloser713`.
+	// The flow is from `fromReader656` into `intoReadCloser414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader652`:
-	fromReader652 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader656`:
+	fromReader656 := sourceCQL.(io.Reader)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader652` to result `intoReadCloser713`
-	// (`intoReadCloser713` is now tainted).
-	intoReadCloser713, _ := zlib.NewReader(fromReader652)
+	// from the parameter `fromReader656` to result `intoReadCloser414`
+	// (`intoReadCloser414` is now tainted).
+	intoReadCloser414, _ := zlib.NewReader(fromReader656)
 
-	// Return the tainted `intoReadCloser713`:
-	return intoReadCloser713
+	// Return the tainted `intoReadCloser414`:
+	return intoReadCloser414
 }
 
 func TaintStepTest_CompressZlibNewReaderDict_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader612` into `intoReadCloser160`.
+	// The flow is from `fromReader518` into `intoReadCloser650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader612`:
-	fromReader612 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader518`:
+	fromReader518 := sourceCQL.(io.Reader)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader612` to result `intoReadCloser160`
-	// (`intoReadCloser160` is now tainted).
-	intoReadCloser160, _ := zlib.NewReaderDict(fromReader612, nil)
+	// from the parameter `fromReader518` to result `intoReadCloser650`
+	// (`intoReadCloser650` is now tainted).
+	intoReadCloser650, _ := zlib.NewReaderDict(fromReader518, nil)
 
-	// Return the tainted `intoReadCloser160`:
-	return intoReadCloser160
+	// Return the tainted `intoReadCloser650`:
+	return intoReadCloser650
 }
 
 func TaintStepTest_CompressZlibNewWriter_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromWriter616` into `intoWriter631`.
+	// The flow is from `fromWriter784` into `intoWriter957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriter616`:
-	fromWriter616 := sourceCQL.(*zlib.Writer)
+	// Assume that `sourceCQL` has the underlying type of `fromWriter784`:
+	fromWriter784 := sourceCQL.(*zlib.Writer)
 
-	// Declare `intoWriter631` variable:
-	var intoWriter631 io.Writer
+	// Declare `intoWriter957` variable:
+	var intoWriter957 io.Writer
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoWriter631`:
-	intermediateCQL := zlib.NewWriter(intoWriter631)
+	// from the result `intermediateCQL` to parameter `intoWriter957`:
+	intermediateCQL := zlib.NewWriter(intoWriter957)
 
-	// Extra step (`fromWriter616` taints `intermediateCQL`, which taints `intoWriter631`:
-	link(fromWriter616, intermediateCQL)
+	// Extra step (`fromWriter784` taints `intermediateCQL`, which taints `intoWriter957`:
+	link(fromWriter784, intermediateCQL)
 
-	// Return the tainted `intoWriter631`:
-	return intoWriter631
+	// Return the tainted `intoWriter957`:
+	return intoWriter957
 }
 
 func TaintStepTest_CompressZlibNewWriterLevel_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromWriter400` into `intoWriter438`.
+	// The flow is from `fromWriter520` into `intoWriter443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriter400`:
-	fromWriter400 := sourceCQL.(*zlib.Writer)
+	// Assume that `sourceCQL` has the underlying type of `fromWriter520`:
+	fromWriter520 := sourceCQL.(*zlib.Writer)
 
-	// Declare `intoWriter438` variable:
-	var intoWriter438 io.Writer
+	// Declare `intoWriter443` variable:
+	var intoWriter443 io.Writer
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoWriter438`:
-	intermediateCQL, _ := zlib.NewWriterLevel(intoWriter438, 0)
+	// from the result `intermediateCQL` to parameter `intoWriter443`:
+	intermediateCQL, _ := zlib.NewWriterLevel(intoWriter443, 0)
 
-	// Extra step (`fromWriter400` taints `intermediateCQL`, which taints `intoWriter438`:
-	link(fromWriter400, intermediateCQL)
+	// Extra step (`fromWriter520` taints `intermediateCQL`, which taints `intoWriter443`:
+	link(fromWriter520, intermediateCQL)
 
-	// Return the tainted `intoWriter438`:
-	return intoWriter438
+	// Return the tainted `intoWriter443`:
+	return intoWriter443
 }
 
 func TaintStepTest_CompressZlibNewWriterLevelDict_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromWriter807` into `intoWriter834`.
+	// The flow is from `fromWriter127` into `intoWriter483`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriter807`:
-	fromWriter807 := sourceCQL.(*zlib.Writer)
+	// Assume that `sourceCQL` has the underlying type of `fromWriter127`:
+	fromWriter127 := sourceCQL.(*zlib.Writer)
 
-	// Declare `intoWriter834` variable:
-	var intoWriter834 io.Writer
+	// Declare `intoWriter483` variable:
+	var intoWriter483 io.Writer
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoWriter834`:
-	intermediateCQL, _ := zlib.NewWriterLevelDict(intoWriter834, 0, nil)
+	// from the result `intermediateCQL` to parameter `intoWriter483`:
+	intermediateCQL, _ := zlib.NewWriterLevelDict(intoWriter483, 0, nil)
 
-	// Extra step (`fromWriter807` taints `intermediateCQL`, which taints `intoWriter834`:
-	link(fromWriter807, intermediateCQL)
+	// Extra step (`fromWriter127` taints `intermediateCQL`, which taints `intoWriter483`:
+	link(fromWriter127, intermediateCQL)
 
-	// Return the tainted `intoWriter834`:
-	return intoWriter834
+	// Return the tainted `intoWriter483`:
+	return intoWriter483
 }
 
 func TaintStepTest_CompressZlibWriterReset_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromWriter723` into `intoWriter827`.
+	// The flow is from `fromWriter989` into `intoWriter982`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriter723`:
-	fromWriter723 := sourceCQL.(zlib.Writer)
+	// Assume that `sourceCQL` has the underlying type of `fromWriter989`:
+	fromWriter989 := sourceCQL.(zlib.Writer)
 
-	// Declare `intoWriter827` variable:
-	var intoWriter827 io.Writer
+	// Declare `intoWriter982` variable:
+	var intoWriter982 io.Writer
 
 	// Call the method that transfers the taint
-	// from the receiver `fromWriter723` to the argument `intoWriter827`
-	// (`intoWriter827` is now tainted).
-	fromWriter723.Reset(intoWriter827)
+	// from the receiver `fromWriter989` to the argument `intoWriter982`
+	// (`intoWriter982` is now tainted).
+	fromWriter989.Reset(intoWriter982)
 
-	// Return the tainted `intoWriter827`:
-	return intoWriter827
+	// Return the tainted `intoWriter982`:
+	return intoWriter982
 }
 
 func TaintStepTest_CompressZlibWriterWrite_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte636` into `intoWriter561`.
+	// The flow is from `fromByte417` into `intoWriter584`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte636`:
-	fromByte636 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte417`:
+	fromByte417 := sourceCQL.([]byte)
 
-	// Declare `intoWriter561` variable:
-	var intoWriter561 zlib.Writer
+	// Declare `intoWriter584` variable:
+	var intoWriter584 zlib.Writer
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte636` to the receiver `intoWriter561`
-	// (`intoWriter561` is now tainted).
-	intoWriter561.Write(fromByte636)
+	// from the parameter `fromByte417` to the receiver `intoWriter584`
+	// (`intoWriter584` is now tainted).
+	intoWriter584.Write(fromByte417)
 
-	// Return the tainted `intoWriter561`:
-	return intoWriter561
+	// Return the tainted `intoWriter584`:
+	return intoWriter584
 }
 
 func TaintStepTest_CompressZlibResetterReset_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader150` into `intoResetter243`.
+	// The flow is from `fromReader991` into `intoResetter881`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader150`:
-	fromReader150 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader991`:
+	fromReader991 := sourceCQL.(io.Reader)
 
-	// Declare `intoResetter243` variable:
-	var intoResetter243 zlib.Resetter
+	// Declare `intoResetter881` variable:
+	var intoResetter881 zlib.Resetter
 
 	// Call the method that transfers the taint
-	// from the parameter `fromReader150` to the receiver `intoResetter243`
-	// (`intoResetter243` is now tainted).
-	intoResetter243.Reset(fromReader150, nil)
+	// from the parameter `fromReader991` to the receiver `intoResetter881`
+	// (`intoResetter881` is now tainted).
+	intoResetter881.Reset(fromReader991, nil)
 
-	// Return the tainted `intoResetter243`:
-	return intoResetter243
+	// Return the tainted `intoResetter881`:
+	return intoResetter881
 }
 
 func RunAllTaints_CompressZlib() {

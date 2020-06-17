@@ -8,464 +8,464 @@ import (
 )
 
 func TaintStepTest_EncodingXmlCopyToken_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromToken820` into `intoToken646`.
+	// The flow is from `fromToken656` into `intoToken414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromToken820`:
-	fromToken820 := sourceCQL.(xml.Token)
+	// Assume that `sourceCQL` has the underlying type of `fromToken656`:
+	fromToken656 := sourceCQL.(xml.Token)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromToken820` to result `intoToken646`
-	// (`intoToken646` is now tainted).
-	intoToken646 := xml.CopyToken(fromToken820)
+	// from the parameter `fromToken656` to result `intoToken414`
+	// (`intoToken414` is now tainted).
+	intoToken414 := xml.CopyToken(fromToken656)
 
-	// Return the tainted `intoToken646`:
-	return intoToken646
+	// Return the tainted `intoToken414`:
+	return intoToken414
 }
 
 func TaintStepTest_EncodingXmlEscape_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte802` into `intoWriter161`.
+	// The flow is from `fromByte518` into `intoWriter650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte802`:
-	fromByte802 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte518`:
+	fromByte518 := sourceCQL.([]byte)
 
-	// Declare `intoWriter161` variable:
-	var intoWriter161 io.Writer
+	// Declare `intoWriter650` variable:
+	var intoWriter650 io.Writer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte802` to parameter `intoWriter161`;
-	// `intoWriter161` is now tainted.
-	xml.Escape(intoWriter161, fromByte802)
+	// from the parameter `fromByte518` to parameter `intoWriter650`;
+	// `intoWriter650` is now tainted.
+	xml.Escape(intoWriter650, fromByte518)
 
-	// Return the tainted `intoWriter161`:
-	return intoWriter161
+	// Return the tainted `intoWriter650`:
+	return intoWriter650
 }
 
 func TaintStepTest_EncodingXmlEscapeText_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte793` into `intoWriter966`.
+	// The flow is from `fromByte784` into `intoWriter957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte793`:
-	fromByte793 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte784`:
+	fromByte784 := sourceCQL.([]byte)
 
-	// Declare `intoWriter966` variable:
-	var intoWriter966 io.Writer
+	// Declare `intoWriter957` variable:
+	var intoWriter957 io.Writer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte793` to parameter `intoWriter966`;
-	// `intoWriter966` is now tainted.
-	xml.EscapeText(intoWriter966, fromByte793)
+	// from the parameter `fromByte784` to parameter `intoWriter957`;
+	// `intoWriter957` is now tainted.
+	xml.EscapeText(intoWriter957, fromByte784)
 
-	// Return the tainted `intoWriter966`:
-	return intoWriter966
+	// Return the tainted `intoWriter957`:
+	return intoWriter957
 }
 
 func TaintStepTest_EncodingXmlMarshal_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface112` into `intoByte569`.
+	// The flow is from `fromInterface520` into `intoByte443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface112`:
-	fromInterface112 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface520`:
+	fromInterface520 := sourceCQL.(interface{})
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface112` to result `intoByte569`
-	// (`intoByte569` is now tainted).
-	intoByte569, _ := xml.Marshal(fromInterface112)
+	// from the parameter `fromInterface520` to result `intoByte443`
+	// (`intoByte443` is now tainted).
+	intoByte443, _ := xml.Marshal(fromInterface520)
 
-	// Return the tainted `intoByte569`:
-	return intoByte569
+	// Return the tainted `intoByte443`:
+	return intoByte443
 }
 
 func TaintStepTest_EncodingXmlMarshalIndent_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface113` into `intoByte187`.
+	// The flow is from `fromInterface127` into `intoByte483`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface113`:
-	fromInterface113 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface127`:
+	fromInterface127 := sourceCQL.(interface{})
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface113` to result `intoByte187`
-	// (`intoByte187` is now tainted).
-	intoByte187, _ := xml.MarshalIndent(fromInterface113, "", "")
+	// from the parameter `fromInterface127` to result `intoByte483`
+	// (`intoByte483` is now tainted).
+	intoByte483, _ := xml.MarshalIndent(fromInterface127, "", "")
 
-	// Return the tainted `intoByte187`:
-	return intoByte187
+	// Return the tainted `intoByte483`:
+	return intoByte483
 }
 
 func TaintStepTest_EncodingXmlMarshalIndent_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString158` into `intoByte946`.
+	// The flow is from `fromString989` into `intoByte982`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString158`:
-	fromString158 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString989`:
+	fromString989 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString158` to result `intoByte946`
-	// (`intoByte946` is now tainted).
-	intoByte946, _ := xml.MarshalIndent(nil, fromString158, "")
+	// from the parameter `fromString989` to result `intoByte982`
+	// (`intoByte982` is now tainted).
+	intoByte982, _ := xml.MarshalIndent(nil, fromString989, "")
 
-	// Return the tainted `intoByte946`:
-	return intoByte946
+	// Return the tainted `intoByte982`:
+	return intoByte982
 }
 
 func TaintStepTest_EncodingXmlMarshalIndent_B0I2O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString857` into `intoByte611`.
+	// The flow is from `fromString417` into `intoByte584`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString857`:
-	fromString857 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString417`:
+	fromString417 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString857` to result `intoByte611`
-	// (`intoByte611` is now tainted).
-	intoByte611, _ := xml.MarshalIndent(nil, "", fromString857)
+	// from the parameter `fromString417` to result `intoByte584`
+	// (`intoByte584` is now tainted).
+	intoByte584, _ := xml.MarshalIndent(nil, "", fromString417)
 
-	// Return the tainted `intoByte611`:
-	return intoByte611
+	// Return the tainted `intoByte584`:
+	return intoByte584
 }
 
 func TaintStepTest_EncodingXmlNewDecoder_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader656` into `intoDecoder598`.
+	// The flow is from `fromReader991` into `intoDecoder881`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader656`:
-	fromReader656 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader991`:
+	fromReader991 := sourceCQL.(io.Reader)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader656` to result `intoDecoder598`
-	// (`intoDecoder598` is now tainted).
-	intoDecoder598 := xml.NewDecoder(fromReader656)
+	// from the parameter `fromReader991` to result `intoDecoder881`
+	// (`intoDecoder881` is now tainted).
+	intoDecoder881 := xml.NewDecoder(fromReader991)
 
-	// Return the tainted `intoDecoder598`:
-	return intoDecoder598
+	// Return the tainted `intoDecoder881`:
+	return intoDecoder881
 }
 
 func TaintStepTest_EncodingXmlNewEncoder_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromEncoder413` into `intoWriter586`.
+	// The flow is from `fromEncoder186` into `intoWriter284`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromEncoder413`:
-	fromEncoder413 := sourceCQL.(*xml.Encoder)
+	// Assume that `sourceCQL` has the underlying type of `fromEncoder186`:
+	fromEncoder186 := sourceCQL.(*xml.Encoder)
 
-	// Declare `intoWriter586` variable:
-	var intoWriter586 io.Writer
+	// Declare `intoWriter284` variable:
+	var intoWriter284 io.Writer
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoWriter586`:
-	intermediateCQL := xml.NewEncoder(intoWriter586)
+	// from the result `intermediateCQL` to parameter `intoWriter284`:
+	intermediateCQL := xml.NewEncoder(intoWriter284)
 
-	// Extra step (`fromEncoder413` taints `intermediateCQL`, which taints `intoWriter586`:
-	link(fromEncoder413, intermediateCQL)
+	// Extra step (`fromEncoder186` taints `intermediateCQL`, which taints `intoWriter284`:
+	link(fromEncoder186, intermediateCQL)
 
-	// Return the tainted `intoWriter586`:
-	return intoWriter586
+	// Return the tainted `intoWriter284`:
+	return intoWriter284
 }
 
 func TaintStepTest_EncodingXmlNewTokenDecoder_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromTokenReader926` into `intoDecoder815`.
+	// The flow is from `fromTokenReader908` into `intoDecoder137`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromTokenReader926`:
-	fromTokenReader926 := sourceCQL.(xml.TokenReader)
+	// Assume that `sourceCQL` has the underlying type of `fromTokenReader908`:
+	fromTokenReader908 := sourceCQL.(xml.TokenReader)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromTokenReader926` to result `intoDecoder815`
-	// (`intoDecoder815` is now tainted).
-	intoDecoder815 := xml.NewTokenDecoder(fromTokenReader926)
+	// from the parameter `fromTokenReader908` to result `intoDecoder137`
+	// (`intoDecoder137` is now tainted).
+	intoDecoder137 := xml.NewTokenDecoder(fromTokenReader908)
 
-	// Return the tainted `intoDecoder815`:
-	return intoDecoder815
+	// Return the tainted `intoDecoder137`:
+	return intoDecoder137
 }
 
 func TaintStepTest_EncodingXmlUnmarshal_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte903` into `intoInterface939`.
+	// The flow is from `fromByte494` into `intoInterface873`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte903`:
-	fromByte903 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte494`:
+	fromByte494 := sourceCQL.([]byte)
 
-	// Declare `intoInterface939` variable:
-	var intoInterface939 interface{}
+	// Declare `intoInterface873` variable:
+	var intoInterface873 interface{}
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte903` to parameter `intoInterface939`;
-	// `intoInterface939` is now tainted.
-	xml.Unmarshal(fromByte903, intoInterface939)
+	// from the parameter `fromByte494` to parameter `intoInterface873`;
+	// `intoInterface873` is now tainted.
+	xml.Unmarshal(fromByte494, intoInterface873)
 
-	// Return the tainted `intoInterface939`:
-	return intoInterface939
+	// Return the tainted `intoInterface873`:
+	return intoInterface873
 }
 
 func TaintStepTest_EncodingXmlCharDataCopy_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromCharData335` into `intoCharData699`.
+	// The flow is from `fromCharData599` into `intoCharData409`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromCharData335`:
-	fromCharData335 := sourceCQL.(xml.CharData)
+	// Assume that `sourceCQL` has the underlying type of `fromCharData599`:
+	fromCharData599 := sourceCQL.(xml.CharData)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromCharData335` to the result `intoCharData699`
-	// (`intoCharData699` is now tainted).
-	intoCharData699 := fromCharData335.Copy()
+	// from the receiver `fromCharData599` to the result `intoCharData409`
+	// (`intoCharData409` is now tainted).
+	intoCharData409 := fromCharData599.Copy()
 
-	// Return the tainted `intoCharData699`:
-	return intoCharData699
+	// Return the tainted `intoCharData409`:
+	return intoCharData409
 }
 
 func TaintStepTest_EncodingXmlCommentCopy_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromComment566` into `intoComment511`.
+	// The flow is from `fromComment246` into `intoComment898`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromComment566`:
-	fromComment566 := sourceCQL.(xml.Comment)
+	// Assume that `sourceCQL` has the underlying type of `fromComment246`:
+	fromComment246 := sourceCQL.(xml.Comment)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromComment566` to the result `intoComment511`
-	// (`intoComment511` is now tainted).
-	intoComment511 := fromComment566.Copy()
+	// from the receiver `fromComment246` to the result `intoComment898`
+	// (`intoComment898` is now tainted).
+	intoComment898 := fromComment246.Copy()
 
-	// Return the tainted `intoComment511`:
-	return intoComment511
+	// Return the tainted `intoComment898`:
+	return intoComment898
 }
 
 func TaintStepTest_EncodingXmlDecoderDecode_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromDecoder544` into `intoInterface465`.
+	// The flow is from `fromDecoder598` into `intoInterface631`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromDecoder544`:
-	fromDecoder544 := sourceCQL.(xml.Decoder)
+	// Assume that `sourceCQL` has the underlying type of `fromDecoder598`:
+	fromDecoder598 := sourceCQL.(xml.Decoder)
 
-	// Declare `intoInterface465` variable:
-	var intoInterface465 interface{}
+	// Declare `intoInterface631` variable:
+	var intoInterface631 interface{}
 
 	// Call the method that transfers the taint
-	// from the receiver `fromDecoder544` to the argument `intoInterface465`
-	// (`intoInterface465` is now tainted).
-	fromDecoder544.Decode(intoInterface465)
+	// from the receiver `fromDecoder598` to the argument `intoInterface631`
+	// (`intoInterface631` is now tainted).
+	fromDecoder598.Decode(intoInterface631)
 
-	// Return the tainted `intoInterface465`:
-	return intoInterface465
+	// Return the tainted `intoInterface631`:
+	return intoInterface631
 }
 
 func TaintStepTest_EncodingXmlDecoderDecodeElement_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromDecoder869` into `intoInterface830`.
+	// The flow is from `fromDecoder165` into `intoInterface150`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromDecoder869`:
-	fromDecoder869 := sourceCQL.(xml.Decoder)
+	// Assume that `sourceCQL` has the underlying type of `fromDecoder165`:
+	fromDecoder165 := sourceCQL.(xml.Decoder)
 
-	// Declare `intoInterface830` variable:
-	var intoInterface830 interface{}
+	// Declare `intoInterface150` variable:
+	var intoInterface150 interface{}
 
 	// Call the method that transfers the taint
-	// from the receiver `fromDecoder869` to the argument `intoInterface830`
-	// (`intoInterface830` is now tainted).
-	fromDecoder869.DecodeElement(intoInterface830, nil)
+	// from the receiver `fromDecoder165` to the argument `intoInterface150`
+	// (`intoInterface150` is now tainted).
+	fromDecoder165.DecodeElement(intoInterface150, nil)
 
-	// Return the tainted `intoInterface830`:
-	return intoInterface830
+	// Return the tainted `intoInterface150`:
+	return intoInterface150
 }
 
 func TaintStepTest_EncodingXmlDecoderRawToken_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromDecoder914` into `intoToken343`.
+	// The flow is from `fromDecoder340` into `intoToken471`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromDecoder914`:
-	fromDecoder914 := sourceCQL.(xml.Decoder)
+	// Assume that `sourceCQL` has the underlying type of `fromDecoder340`:
+	fromDecoder340 := sourceCQL.(xml.Decoder)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromDecoder914` to the result `intoToken343`
-	// (`intoToken343` is now tainted).
-	intoToken343, _ := fromDecoder914.RawToken()
+	// from the receiver `fromDecoder340` to the result `intoToken471`
+	// (`intoToken471` is now tainted).
+	intoToken471, _ := fromDecoder340.RawToken()
 
-	// Return the tainted `intoToken343`:
-	return intoToken343
+	// Return the tainted `intoToken471`:
+	return intoToken471
 }
 
 func TaintStepTest_EncodingXmlDecoderToken_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromDecoder974` into `intoToken254`.
+	// The flow is from `fromDecoder290` into `intoToken758`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromDecoder974`:
-	fromDecoder974 := sourceCQL.(xml.Decoder)
+	// Assume that `sourceCQL` has the underlying type of `fromDecoder290`:
+	fromDecoder290 := sourceCQL.(xml.Decoder)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromDecoder974` to the result `intoToken254`
-	// (`intoToken254` is now tainted).
-	intoToken254, _ := fromDecoder974.Token()
+	// from the receiver `fromDecoder290` to the result `intoToken758`
+	// (`intoToken758` is now tainted).
+	intoToken758, _ := fromDecoder290.Token()
 
-	// Return the tainted `intoToken254`:
-	return intoToken254
+	// Return the tainted `intoToken758`:
+	return intoToken758
 }
 
 func TaintStepTest_EncodingXmlDirectiveCopy_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromDirective792` into `intoDirective953`.
+	// The flow is from `fromDirective396` into `intoDirective707`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromDirective792`:
-	fromDirective792 := sourceCQL.(xml.Directive)
+	// Assume that `sourceCQL` has the underlying type of `fromDirective396`:
+	fromDirective396 := sourceCQL.(xml.Directive)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromDirective792` to the result `intoDirective953`
-	// (`intoDirective953` is now tainted).
-	intoDirective953 := fromDirective792.Copy()
+	// from the receiver `fromDirective396` to the result `intoDirective707`
+	// (`intoDirective707` is now tainted).
+	intoDirective707 := fromDirective396.Copy()
 
-	// Return the tainted `intoDirective953`:
-	return intoDirective953
+	// Return the tainted `intoDirective707`:
+	return intoDirective707
 }
 
 func TaintStepTest_EncodingXmlEncoderEncode_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface783` into `intoEncoder967`.
+	// The flow is from `fromInterface912` into `intoEncoder718`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface783`:
-	fromInterface783 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface912`:
+	fromInterface912 := sourceCQL.(interface{})
 
-	// Declare `intoEncoder967` variable:
-	var intoEncoder967 xml.Encoder
+	// Declare `intoEncoder718` variable:
+	var intoEncoder718 xml.Encoder
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface783` to the receiver `intoEncoder967`
-	// (`intoEncoder967` is now tainted).
-	intoEncoder967.Encode(fromInterface783)
+	// from the parameter `fromInterface912` to the receiver `intoEncoder718`
+	// (`intoEncoder718` is now tainted).
+	intoEncoder718.Encode(fromInterface912)
 
-	// Return the tainted `intoEncoder967`:
-	return intoEncoder967
+	// Return the tainted `intoEncoder718`:
+	return intoEncoder718
 }
 
 func TaintStepTest_EncodingXmlEncoderEncodeElement_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface403` into `intoEncoder467`.
+	// The flow is from `fromInterface972` into `intoEncoder633`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface403`:
-	fromInterface403 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface972`:
+	fromInterface972 := sourceCQL.(interface{})
 
-	// Declare `intoEncoder467` variable:
-	var intoEncoder467 xml.Encoder
+	// Declare `intoEncoder633` variable:
+	var intoEncoder633 xml.Encoder
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface403` to the receiver `intoEncoder467`
-	// (`intoEncoder467` is now tainted).
-	intoEncoder467.EncodeElement(fromInterface403, xml.StartElement{})
+	// from the parameter `fromInterface972` to the receiver `intoEncoder633`
+	// (`intoEncoder633` is now tainted).
+	intoEncoder633.EncodeElement(fromInterface972, xml.StartElement{})
 
-	// Return the tainted `intoEncoder467`:
-	return intoEncoder467
+	// Return the tainted `intoEncoder633`:
+	return intoEncoder633
 }
 
 func TaintStepTest_EncodingXmlEncoderEncodeToken_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromToken759` into `intoEncoder637`.
+	// The flow is from `fromToken316` into `intoEncoder145`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromToken759`:
-	fromToken759 := sourceCQL.(xml.Token)
+	// Assume that `sourceCQL` has the underlying type of `fromToken316`:
+	fromToken316 := sourceCQL.(xml.Token)
 
-	// Declare `intoEncoder637` variable:
-	var intoEncoder637 xml.Encoder
+	// Declare `intoEncoder145` variable:
+	var intoEncoder145 xml.Encoder
 
 	// Call the method that transfers the taint
-	// from the parameter `fromToken759` to the receiver `intoEncoder637`
-	// (`intoEncoder637` is now tainted).
-	intoEncoder637.EncodeToken(fromToken759)
+	// from the parameter `fromToken316` to the receiver `intoEncoder145`
+	// (`intoEncoder145` is now tainted).
+	intoEncoder145.EncodeToken(fromToken316)
 
-	// Return the tainted `intoEncoder637`:
-	return intoEncoder637
+	// Return the tainted `intoEncoder145`:
+	return intoEncoder145
 }
 
 func TaintStepTest_EncodingXmlEncoderIndent_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString659` into `intoEncoder831`.
+	// The flow is from `fromString817` into `intoEncoder474`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString659`:
-	fromString659 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString817`:
+	fromString817 := sourceCQL.(string)
 
-	// Declare `intoEncoder831` variable:
-	var intoEncoder831 xml.Encoder
+	// Declare `intoEncoder474` variable:
+	var intoEncoder474 xml.Encoder
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString659` to the receiver `intoEncoder831`
-	// (`intoEncoder831` is now tainted).
-	intoEncoder831.Indent(fromString659, "")
+	// from the parameter `fromString817` to the receiver `intoEncoder474`
+	// (`intoEncoder474` is now tainted).
+	intoEncoder474.Indent(fromString817, "")
 
-	// Return the tainted `intoEncoder831`:
-	return intoEncoder831
+	// Return the tainted `intoEncoder474`:
+	return intoEncoder474
 }
 
 func TaintStepTest_EncodingXmlEncoderIndent_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString616` into `intoEncoder795`.
+	// The flow is from `fromString832` into `intoEncoder378`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString616`:
-	fromString616 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString832`:
+	fromString832 := sourceCQL.(string)
 
-	// Declare `intoEncoder795` variable:
-	var intoEncoder795 xml.Encoder
+	// Declare `intoEncoder378` variable:
+	var intoEncoder378 xml.Encoder
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString616` to the receiver `intoEncoder795`
-	// (`intoEncoder795` is now tainted).
-	intoEncoder795.Indent("", fromString616)
+	// from the parameter `fromString832` to the receiver `intoEncoder378`
+	// (`intoEncoder378` is now tainted).
+	intoEncoder378.Indent("", fromString832)
 
-	// Return the tainted `intoEncoder795`:
-	return intoEncoder795
+	// Return the tainted `intoEncoder378`:
+	return intoEncoder378
 }
 
 func TaintStepTest_EncodingXmlProcInstCopy_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromProcInst864` into `intoProcInst887`.
+	// The flow is from `fromProcInst541` into `intoProcInst139`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromProcInst864`:
-	fromProcInst864 := sourceCQL.(xml.ProcInst)
+	// Assume that `sourceCQL` has the underlying type of `fromProcInst541`:
+	fromProcInst541 := sourceCQL.(xml.ProcInst)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromProcInst864` to the result `intoProcInst887`
-	// (`intoProcInst887` is now tainted).
-	intoProcInst887 := fromProcInst864.Copy()
+	// from the receiver `fromProcInst541` to the result `intoProcInst139`
+	// (`intoProcInst139` is now tainted).
+	intoProcInst139 := fromProcInst541.Copy()
 
-	// Return the tainted `intoProcInst887`:
-	return intoProcInst887
+	// Return the tainted `intoProcInst139`:
+	return intoProcInst139
 }
 
 func TaintStepTest_EncodingXmlStartElementCopy_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromStartElement640` into `intoStartElement683`.
+	// The flow is from `fromStartElement814` into `intoStartElement768`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromStartElement640`:
-	fromStartElement640 := sourceCQL.(xml.StartElement)
+	// Assume that `sourceCQL` has the underlying type of `fromStartElement814`:
+	fromStartElement814 := sourceCQL.(xml.StartElement)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromStartElement640` to the result `intoStartElement683`
-	// (`intoStartElement683` is now tainted).
-	intoStartElement683 := fromStartElement640.Copy()
+	// from the receiver `fromStartElement814` to the result `intoStartElement768`
+	// (`intoStartElement768` is now tainted).
+	intoStartElement768 := fromStartElement814.Copy()
 
-	// Return the tainted `intoStartElement683`:
-	return intoStartElement683
+	// Return the tainted `intoStartElement768`:
+	return intoStartElement768
 }
 
 func TaintStepTest_EncodingXmlMarshalerMarshalXML_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromMarshaler308` into `intoEncoder383`.
+	// The flow is from `fromMarshaler468` into `intoEncoder736`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromMarshaler308`:
-	fromMarshaler308 := sourceCQL.(xml.Marshaler)
+	// Assume that `sourceCQL` has the underlying type of `fromMarshaler468`:
+	fromMarshaler468 := sourceCQL.(xml.Marshaler)
 
-	// Declare `intoEncoder383` variable:
-	var intoEncoder383 *xml.Encoder
+	// Declare `intoEncoder736` variable:
+	var intoEncoder736 *xml.Encoder
 
 	// Call the method that transfers the taint
-	// from the receiver `fromMarshaler308` to the argument `intoEncoder383`
-	// (`intoEncoder383` is now tainted).
-	fromMarshaler308.MarshalXML(intoEncoder383, xml.StartElement{})
+	// from the receiver `fromMarshaler468` to the argument `intoEncoder736`
+	// (`intoEncoder736` is now tainted).
+	fromMarshaler468.MarshalXML(intoEncoder736, xml.StartElement{})
 
-	// Return the tainted `intoEncoder383`:
-	return intoEncoder383
+	// Return the tainted `intoEncoder736`:
+	return intoEncoder736
 }
 
 func TaintStepTest_EncodingXmlTokenReaderToken_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromTokenReader951` into `intoToken425`.
+	// The flow is from `fromTokenReader516` into `intoToken246`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromTokenReader951`:
-	fromTokenReader951 := sourceCQL.(xml.TokenReader)
+	// Assume that `sourceCQL` has the underlying type of `fromTokenReader516`:
+	fromTokenReader516 := sourceCQL.(xml.TokenReader)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromTokenReader951` to the result `intoToken425`
-	// (`intoToken425` is now tainted).
-	intoToken425, _ := fromTokenReader951.Token()
+	// from the receiver `fromTokenReader516` to the result `intoToken246`
+	// (`intoToken246` is now tainted).
+	intoToken246, _ := fromTokenReader516.Token()
 
-	// Return the tainted `intoToken425`:
-	return intoToken425
+	// Return the tainted `intoToken246`:
+	return intoToken246
 }
 
 func TaintStepTest_EncodingXmlUnmarshalerUnmarshalXML_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromDecoder948` into `intoUnmarshaler763`.
+	// The flow is from `fromDecoder679` into `intoUnmarshaler736`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromDecoder948`:
-	fromDecoder948 := sourceCQL.(*xml.Decoder)
+	// Assume that `sourceCQL` has the underlying type of `fromDecoder679`:
+	fromDecoder679 := sourceCQL.(*xml.Decoder)
 
-	// Declare `intoUnmarshaler763` variable:
-	var intoUnmarshaler763 xml.Unmarshaler
+	// Declare `intoUnmarshaler736` variable:
+	var intoUnmarshaler736 xml.Unmarshaler
 
 	// Call the method that transfers the taint
-	// from the parameter `fromDecoder948` to the receiver `intoUnmarshaler763`
-	// (`intoUnmarshaler763` is now tainted).
-	intoUnmarshaler763.UnmarshalXML(fromDecoder948, xml.StartElement{})
+	// from the parameter `fromDecoder679` to the receiver `intoUnmarshaler736`
+	// (`intoUnmarshaler736` is now tainted).
+	intoUnmarshaler736.UnmarshalXML(fromDecoder679, xml.StartElement{})
 
-	// Return the tainted `intoUnmarshaler763`:
-	return intoUnmarshaler763
+	// Return the tainted `intoUnmarshaler736`:
+	return intoUnmarshaler736
 }
 
 func RunAllTaints_EncodingXml() {

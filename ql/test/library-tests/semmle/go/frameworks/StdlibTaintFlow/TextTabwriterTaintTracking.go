@@ -8,83 +8,83 @@ import (
 )
 
 func TaintStepTest_TextTabwriterNewWriter_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromWriter584` into `intoWriter217`.
+	// The flow is from `fromWriter656` into `intoWriter414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriter584`:
-	fromWriter584 := sourceCQL.(*tabwriter.Writer)
+	// Assume that `sourceCQL` has the underlying type of `fromWriter656`:
+	fromWriter656 := sourceCQL.(*tabwriter.Writer)
 
-	// Declare `intoWriter217` variable:
-	var intoWriter217 io.Writer
+	// Declare `intoWriter414` variable:
+	var intoWriter414 io.Writer
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoWriter217`:
-	intermediateCQL := tabwriter.NewWriter(intoWriter217, 0, 0, 0, 0, 0)
+	// from the result `intermediateCQL` to parameter `intoWriter414`:
+	intermediateCQL := tabwriter.NewWriter(intoWriter414, 0, 0, 0, 0, 0)
 
-	// Extra step (`fromWriter584` taints `intermediateCQL`, which taints `intoWriter217`:
-	link(fromWriter584, intermediateCQL)
+	// Extra step (`fromWriter656` taints `intermediateCQL`, which taints `intoWriter414`:
+	link(fromWriter656, intermediateCQL)
 
-	// Return the tainted `intoWriter217`:
-	return intoWriter217
+	// Return the tainted `intoWriter414`:
+	return intoWriter414
 }
 
 func TaintStepTest_TextTabwriterWriterInit_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromWriter475` into `intoWriter939`.
+	// The flow is from `fromWriter518` into `intoWriter650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriter475`:
-	fromWriter475 := sourceCQL.(tabwriter.Writer)
+	// Assume that `sourceCQL` has the underlying type of `fromWriter518`:
+	fromWriter518 := sourceCQL.(tabwriter.Writer)
 
-	// Declare `intoWriter939` variable:
-	var intoWriter939 io.Writer
+	// Declare `intoWriter650` variable:
+	var intoWriter650 io.Writer
 
 	// Call the method that transfers the taint
-	// from the receiver `fromWriter475` to the argument `intoWriter939`
-	// (`intoWriter939` is now tainted).
-	fromWriter475.Init(intoWriter939, 0, 0, 0, 0, 0)
+	// from the receiver `fromWriter518` to the argument `intoWriter650`
+	// (`intoWriter650` is now tainted).
+	fromWriter518.Init(intoWriter650, 0, 0, 0, 0, 0)
 
-	// Return the tainted `intoWriter939`:
-	return intoWriter939
+	// Return the tainted `intoWriter650`:
+	return intoWriter650
 }
 
 func TaintStepTest_TextTabwriterWriterInit_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromWriter425` into `intoWriter476`.
+	// The flow is from `fromWriter784` into `intoWriter957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriter425`:
-	fromWriter425 := sourceCQL.(*tabwriter.Writer)
+	// Assume that `sourceCQL` has the underlying type of `fromWriter784`:
+	fromWriter784 := sourceCQL.(*tabwriter.Writer)
 
-	// Declare `intoWriter476` variable:
-	var intoWriter476 io.Writer
+	// Declare `intoWriter957` variable:
+	var intoWriter957 io.Writer
 
 	// Declare medium object/interface:
 	var mediumObjCQL tabwriter.Writer
 
 	// Call the method that transfers the taint
-	// from the result `fromWriter425` to the parameter `intoWriter476`
-	// (`intoWriter476` is now tainted).
-	intermediateCQL := mediumObjCQL.Init(intoWriter476, 0, 0, 0, 0, 0)
+	// from the result `fromWriter784` to the parameter `intoWriter957`
+	// (`intoWriter957` is now tainted).
+	intermediateCQL := mediumObjCQL.Init(intoWriter957, 0, 0, 0, 0, 0)
 
-	// Extra step (`fromWriter425` taints `intermediateCQL`, which taints `intoWriter476`:
-	link(fromWriter425, intermediateCQL)
+	// Extra step (`fromWriter784` taints `intermediateCQL`, which taints `intoWriter957`:
+	link(fromWriter784, intermediateCQL)
 
-	// Return the tainted `intoWriter476`:
-	return intoWriter476
+	// Return the tainted `intoWriter957`:
+	return intoWriter957
 }
 
 func TaintStepTest_TextTabwriterWriterWrite_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte568` into `intoWriter118`.
+	// The flow is from `fromByte520` into `intoWriter443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte568`:
-	fromByte568 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte520`:
+	fromByte520 := sourceCQL.([]byte)
 
-	// Declare `intoWriter118` variable:
-	var intoWriter118 tabwriter.Writer
+	// Declare `intoWriter443` variable:
+	var intoWriter443 tabwriter.Writer
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte568` to the receiver `intoWriter118`
-	// (`intoWriter118` is now tainted).
-	intoWriter118.Write(fromByte568)
+	// from the parameter `fromByte520` to the receiver `intoWriter443`
+	// (`intoWriter443` is now tainted).
+	intoWriter443.Write(fromByte520)
 
-	// Return the tainted `intoWriter118`:
-	return intoWriter118
+	// Return the tainted `intoWriter443`:
+	return intoWriter443
 }
 
 func RunAllTaints_TextTabwriter() {

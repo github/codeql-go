@@ -9,374 +9,374 @@ import (
 )
 
 func TaintStepTest_EncodingJsonCompact_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte936` into `intoBuffer157`.
+	// The flow is from `fromByte656` into `intoBuffer414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte936`:
-	fromByte936 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte656`:
+	fromByte656 := sourceCQL.([]byte)
 
-	// Declare `intoBuffer157` variable:
-	var intoBuffer157 *bytes.Buffer
+	// Declare `intoBuffer414` variable:
+	var intoBuffer414 *bytes.Buffer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte936` to parameter `intoBuffer157`;
-	// `intoBuffer157` is now tainted.
-	json.Compact(intoBuffer157, fromByte936)
+	// from the parameter `fromByte656` to parameter `intoBuffer414`;
+	// `intoBuffer414` is now tainted.
+	json.Compact(intoBuffer414, fromByte656)
 
-	// Return the tainted `intoBuffer157`:
-	return intoBuffer157
+	// Return the tainted `intoBuffer414`:
+	return intoBuffer414
 }
 
 func TaintStepTest_EncodingJsonHTMLEscape_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte578` into `intoBuffer427`.
+	// The flow is from `fromByte518` into `intoBuffer650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte578`:
-	fromByte578 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte518`:
+	fromByte518 := sourceCQL.([]byte)
 
-	// Declare `intoBuffer427` variable:
-	var intoBuffer427 *bytes.Buffer
+	// Declare `intoBuffer650` variable:
+	var intoBuffer650 *bytes.Buffer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte578` to parameter `intoBuffer427`;
-	// `intoBuffer427` is now tainted.
-	json.HTMLEscape(intoBuffer427, fromByte578)
+	// from the parameter `fromByte518` to parameter `intoBuffer650`;
+	// `intoBuffer650` is now tainted.
+	json.HTMLEscape(intoBuffer650, fromByte518)
 
-	// Return the tainted `intoBuffer427`:
-	return intoBuffer427
+	// Return the tainted `intoBuffer650`:
+	return intoBuffer650
 }
 
 func TaintStepTest_EncodingJsonIndent_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte898` into `intoBuffer486`.
+	// The flow is from `fromByte784` into `intoBuffer957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte898`:
-	fromByte898 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte784`:
+	fromByte784 := sourceCQL.([]byte)
 
-	// Declare `intoBuffer486` variable:
-	var intoBuffer486 *bytes.Buffer
+	// Declare `intoBuffer957` variable:
+	var intoBuffer957 *bytes.Buffer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte898` to parameter `intoBuffer486`;
-	// `intoBuffer486` is now tainted.
-	json.Indent(intoBuffer486, fromByte898, "", "")
+	// from the parameter `fromByte784` to parameter `intoBuffer957`;
+	// `intoBuffer957` is now tainted.
+	json.Indent(intoBuffer957, fromByte784, "", "")
 
-	// Return the tainted `intoBuffer486`:
-	return intoBuffer486
+	// Return the tainted `intoBuffer957`:
+	return intoBuffer957
 }
 
 func TaintStepTest_EncodingJsonIndent_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString244` into `intoBuffer784`.
+	// The flow is from `fromString520` into `intoBuffer443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString244`:
-	fromString244 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString520`:
+	fromString520 := sourceCQL.(string)
 
-	// Declare `intoBuffer784` variable:
-	var intoBuffer784 *bytes.Buffer
+	// Declare `intoBuffer443` variable:
+	var intoBuffer443 *bytes.Buffer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString244` to parameter `intoBuffer784`;
-	// `intoBuffer784` is now tainted.
-	json.Indent(intoBuffer784, nil, fromString244, "")
+	// from the parameter `fromString520` to parameter `intoBuffer443`;
+	// `intoBuffer443` is now tainted.
+	json.Indent(intoBuffer443, nil, fromString520, "")
 
-	// Return the tainted `intoBuffer784`:
-	return intoBuffer784
+	// Return the tainted `intoBuffer443`:
+	return intoBuffer443
 }
 
 func TaintStepTest_EncodingJsonIndent_B0I2O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString174` into `intoBuffer157`.
+	// The flow is from `fromString127` into `intoBuffer483`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString174`:
-	fromString174 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString127`:
+	fromString127 := sourceCQL.(string)
 
-	// Declare `intoBuffer157` variable:
-	var intoBuffer157 *bytes.Buffer
+	// Declare `intoBuffer483` variable:
+	var intoBuffer483 *bytes.Buffer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString174` to parameter `intoBuffer157`;
-	// `intoBuffer157` is now tainted.
-	json.Indent(intoBuffer157, nil, "", fromString174)
+	// from the parameter `fromString127` to parameter `intoBuffer483`;
+	// `intoBuffer483` is now tainted.
+	json.Indent(intoBuffer483, nil, "", fromString127)
 
-	// Return the tainted `intoBuffer157`:
-	return intoBuffer157
+	// Return the tainted `intoBuffer483`:
+	return intoBuffer483
 }
 
 func TaintStepTest_EncodingJsonMarshal_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface197` into `intoByte769`.
+	// The flow is from `fromInterface989` into `intoByte982`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface197`:
-	fromInterface197 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface989`:
+	fromInterface989 := sourceCQL.(interface{})
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface197` to result `intoByte769`
-	// (`intoByte769` is now tainted).
-	intoByte769, _ := json.Marshal(fromInterface197)
+	// from the parameter `fromInterface989` to result `intoByte982`
+	// (`intoByte982` is now tainted).
+	intoByte982, _ := json.Marshal(fromInterface989)
 
-	// Return the tainted `intoByte769`:
-	return intoByte769
+	// Return the tainted `intoByte982`:
+	return intoByte982
 }
 
 func TaintStepTest_EncodingJsonMarshalIndent_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface942` into `intoByte853`.
+	// The flow is from `fromInterface417` into `intoByte584`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface942`:
-	fromInterface942 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface417`:
+	fromInterface417 := sourceCQL.(interface{})
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface942` to result `intoByte853`
-	// (`intoByte853` is now tainted).
-	intoByte853, _ := json.MarshalIndent(fromInterface942, "", "")
+	// from the parameter `fromInterface417` to result `intoByte584`
+	// (`intoByte584` is now tainted).
+	intoByte584, _ := json.MarshalIndent(fromInterface417, "", "")
 
-	// Return the tainted `intoByte853`:
-	return intoByte853
+	// Return the tainted `intoByte584`:
+	return intoByte584
 }
 
 func TaintStepTest_EncodingJsonMarshalIndent_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString838` into `intoByte607`.
+	// The flow is from `fromString991` into `intoByte881`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString838`:
-	fromString838 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString991`:
+	fromString991 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString838` to result `intoByte607`
-	// (`intoByte607` is now tainted).
-	intoByte607, _ := json.MarshalIndent(nil, fromString838, "")
+	// from the parameter `fromString991` to result `intoByte881`
+	// (`intoByte881` is now tainted).
+	intoByte881, _ := json.MarshalIndent(nil, fromString991, "")
 
-	// Return the tainted `intoByte607`:
-	return intoByte607
+	// Return the tainted `intoByte881`:
+	return intoByte881
 }
 
 func TaintStepTest_EncodingJsonMarshalIndent_B0I2O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString389` into `intoByte326`.
+	// The flow is from `fromString186` into `intoByte284`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString389`:
-	fromString389 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString186`:
+	fromString186 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString389` to result `intoByte326`
-	// (`intoByte326` is now tainted).
-	intoByte326, _ := json.MarshalIndent(nil, "", fromString389)
+	// from the parameter `fromString186` to result `intoByte284`
+	// (`intoByte284` is now tainted).
+	intoByte284, _ := json.MarshalIndent(nil, "", fromString186)
 
-	// Return the tainted `intoByte326`:
-	return intoByte326
+	// Return the tainted `intoByte284`:
+	return intoByte284
 }
 
 func TaintStepTest_EncodingJsonNewDecoder_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader539` into `intoDecoder964`.
+	// The flow is from `fromReader908` into `intoDecoder137`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader539`:
-	fromReader539 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader908`:
+	fromReader908 := sourceCQL.(io.Reader)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader539` to result `intoDecoder964`
-	// (`intoDecoder964` is now tainted).
-	intoDecoder964 := json.NewDecoder(fromReader539)
+	// from the parameter `fromReader908` to result `intoDecoder137`
+	// (`intoDecoder137` is now tainted).
+	intoDecoder137 := json.NewDecoder(fromReader908)
 
-	// Return the tainted `intoDecoder964`:
-	return intoDecoder964
+	// Return the tainted `intoDecoder137`:
+	return intoDecoder137
 }
 
 func TaintStepTest_EncodingJsonNewEncoder_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromEncoder644` into `intoWriter687`.
+	// The flow is from `fromEncoder494` into `intoWriter873`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromEncoder644`:
-	fromEncoder644 := sourceCQL.(*json.Encoder)
+	// Assume that `sourceCQL` has the underlying type of `fromEncoder494`:
+	fromEncoder494 := sourceCQL.(*json.Encoder)
 
-	// Declare `intoWriter687` variable:
-	var intoWriter687 io.Writer
+	// Declare `intoWriter873` variable:
+	var intoWriter873 io.Writer
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoWriter687`:
-	intermediateCQL := json.NewEncoder(intoWriter687)
+	// from the result `intermediateCQL` to parameter `intoWriter873`:
+	intermediateCQL := json.NewEncoder(intoWriter873)
 
-	// Extra step (`fromEncoder644` taints `intermediateCQL`, which taints `intoWriter687`:
-	link(fromEncoder644, intermediateCQL)
+	// Extra step (`fromEncoder494` taints `intermediateCQL`, which taints `intoWriter873`:
+	link(fromEncoder494, intermediateCQL)
 
-	// Return the tainted `intoWriter687`:
-	return intoWriter687
+	// Return the tainted `intoWriter873`:
+	return intoWriter873
 }
 
 func TaintStepTest_EncodingJsonUnmarshal_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte316` into `intoInterface781`.
+	// The flow is from `fromByte599` into `intoInterface409`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte316`:
-	fromByte316 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte599`:
+	fromByte599 := sourceCQL.([]byte)
 
-	// Declare `intoInterface781` variable:
-	var intoInterface781 interface{}
+	// Declare `intoInterface409` variable:
+	var intoInterface409 interface{}
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte316` to parameter `intoInterface781`;
-	// `intoInterface781` is now tainted.
-	json.Unmarshal(fromByte316, intoInterface781)
+	// from the parameter `fromByte599` to parameter `intoInterface409`;
+	// `intoInterface409` is now tainted.
+	json.Unmarshal(fromByte599, intoInterface409)
 
-	// Return the tainted `intoInterface781`:
-	return intoInterface781
+	// Return the tainted `intoInterface409`:
+	return intoInterface409
 }
 
 func TaintStepTest_EncodingJsonDecoderBuffered_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromDecoder444` into `intoReader131`.
+	// The flow is from `fromDecoder246` into `intoReader898`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromDecoder444`:
-	fromDecoder444 := sourceCQL.(json.Decoder)
+	// Assume that `sourceCQL` has the underlying type of `fromDecoder246`:
+	fromDecoder246 := sourceCQL.(json.Decoder)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromDecoder444` to the result `intoReader131`
-	// (`intoReader131` is now tainted).
-	intoReader131 := fromDecoder444.Buffered()
+	// from the receiver `fromDecoder246` to the result `intoReader898`
+	// (`intoReader898` is now tainted).
+	intoReader898 := fromDecoder246.Buffered()
 
-	// Return the tainted `intoReader131`:
-	return intoReader131
+	// Return the tainted `intoReader898`:
+	return intoReader898
 }
 
 func TaintStepTest_EncodingJsonDecoderDecode_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromDecoder891` into `intoInterface228`.
+	// The flow is from `fromDecoder598` into `intoInterface631`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromDecoder891`:
-	fromDecoder891 := sourceCQL.(json.Decoder)
+	// Assume that `sourceCQL` has the underlying type of `fromDecoder598`:
+	fromDecoder598 := sourceCQL.(json.Decoder)
 
-	// Declare `intoInterface228` variable:
-	var intoInterface228 interface{}
+	// Declare `intoInterface631` variable:
+	var intoInterface631 interface{}
 
 	// Call the method that transfers the taint
-	// from the receiver `fromDecoder891` to the argument `intoInterface228`
-	// (`intoInterface228` is now tainted).
-	fromDecoder891.Decode(intoInterface228)
+	// from the receiver `fromDecoder598` to the argument `intoInterface631`
+	// (`intoInterface631` is now tainted).
+	fromDecoder598.Decode(intoInterface631)
 
-	// Return the tainted `intoInterface228`:
-	return intoInterface228
+	// Return the tainted `intoInterface631`:
+	return intoInterface631
 }
 
 func TaintStepTest_EncodingJsonDecoderToken_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromDecoder645` into `intoToken297`.
+	// The flow is from `fromDecoder165` into `intoToken150`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromDecoder645`:
-	fromDecoder645 := sourceCQL.(json.Decoder)
+	// Assume that `sourceCQL` has the underlying type of `fromDecoder165`:
+	fromDecoder165 := sourceCQL.(json.Decoder)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromDecoder645` to the result `intoToken297`
-	// (`intoToken297` is now tainted).
-	intoToken297, _ := fromDecoder645.Token()
+	// from the receiver `fromDecoder165` to the result `intoToken150`
+	// (`intoToken150` is now tainted).
+	intoToken150, _ := fromDecoder165.Token()
 
-	// Return the tainted `intoToken297`:
-	return intoToken297
+	// Return the tainted `intoToken150`:
+	return intoToken150
 }
 
 func TaintStepTest_EncodingJsonEncoderEncode_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface482` into `intoEncoder280`.
+	// The flow is from `fromInterface340` into `intoEncoder471`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface482`:
-	fromInterface482 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface340`:
+	fromInterface340 := sourceCQL.(interface{})
 
-	// Declare `intoEncoder280` variable:
-	var intoEncoder280 json.Encoder
+	// Declare `intoEncoder471` variable:
+	var intoEncoder471 json.Encoder
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface482` to the receiver `intoEncoder280`
-	// (`intoEncoder280` is now tainted).
-	intoEncoder280.Encode(fromInterface482)
+	// from the parameter `fromInterface340` to the receiver `intoEncoder471`
+	// (`intoEncoder471` is now tainted).
+	intoEncoder471.Encode(fromInterface340)
 
-	// Return the tainted `intoEncoder280`:
-	return intoEncoder280
+	// Return the tainted `intoEncoder471`:
+	return intoEncoder471
 }
 
 func TaintStepTest_EncodingJsonEncoderSetIndent_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString120` into `intoEncoder274`.
+	// The flow is from `fromString290` into `intoEncoder758`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString120`:
-	fromString120 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString290`:
+	fromString290 := sourceCQL.(string)
 
-	// Declare `intoEncoder274` variable:
-	var intoEncoder274 json.Encoder
+	// Declare `intoEncoder758` variable:
+	var intoEncoder758 json.Encoder
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString120` to the receiver `intoEncoder274`
-	// (`intoEncoder274` is now tainted).
-	intoEncoder274.SetIndent(fromString120, "")
+	// from the parameter `fromString290` to the receiver `intoEncoder758`
+	// (`intoEncoder758` is now tainted).
+	intoEncoder758.SetIndent(fromString290, "")
 
-	// Return the tainted `intoEncoder274`:
-	return intoEncoder274
+	// Return the tainted `intoEncoder758`:
+	return intoEncoder758
 }
 
 func TaintStepTest_EncodingJsonEncoderSetIndent_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString443` into `intoEncoder508`.
+	// The flow is from `fromString396` into `intoEncoder707`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString443`:
-	fromString443 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString396`:
+	fromString396 := sourceCQL.(string)
 
-	// Declare `intoEncoder508` variable:
-	var intoEncoder508 json.Encoder
+	// Declare `intoEncoder707` variable:
+	var intoEncoder707 json.Encoder
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString443` to the receiver `intoEncoder508`
-	// (`intoEncoder508` is now tainted).
-	intoEncoder508.SetIndent("", fromString443)
+	// from the parameter `fromString396` to the receiver `intoEncoder707`
+	// (`intoEncoder707` is now tainted).
+	intoEncoder707.SetIndent("", fromString396)
 
-	// Return the tainted `intoEncoder508`:
-	return intoEncoder508
+	// Return the tainted `intoEncoder707`:
+	return intoEncoder707
 }
 
 func TaintStepTest_EncodingJsonRawMessageMarshalJSON_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRawMessage760` into `intoByte600`.
+	// The flow is from `fromRawMessage912` into `intoByte718`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRawMessage760`:
-	fromRawMessage760 := sourceCQL.(json.RawMessage)
+	// Assume that `sourceCQL` has the underlying type of `fromRawMessage912`:
+	fromRawMessage912 := sourceCQL.(json.RawMessage)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromRawMessage760` to the result `intoByte600`
-	// (`intoByte600` is now tainted).
-	intoByte600, _ := fromRawMessage760.MarshalJSON()
+	// from the receiver `fromRawMessage912` to the result `intoByte718`
+	// (`intoByte718` is now tainted).
+	intoByte718, _ := fromRawMessage912.MarshalJSON()
 
-	// Return the tainted `intoByte600`:
-	return intoByte600
+	// Return the tainted `intoByte718`:
+	return intoByte718
 }
 
 func TaintStepTest_EncodingJsonRawMessageUnmarshalJSON_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte841` into `intoRawMessage249`.
+	// The flow is from `fromByte972` into `intoRawMessage633`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte841`:
-	fromByte841 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte972`:
+	fromByte972 := sourceCQL.([]byte)
 
-	// Declare `intoRawMessage249` variable:
-	var intoRawMessage249 json.RawMessage
+	// Declare `intoRawMessage633` variable:
+	var intoRawMessage633 json.RawMessage
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte841` to the receiver `intoRawMessage249`
-	// (`intoRawMessage249` is now tainted).
-	intoRawMessage249.UnmarshalJSON(fromByte841)
+	// from the parameter `fromByte972` to the receiver `intoRawMessage633`
+	// (`intoRawMessage633` is now tainted).
+	intoRawMessage633.UnmarshalJSON(fromByte972)
 
-	// Return the tainted `intoRawMessage249`:
-	return intoRawMessage249
+	// Return the tainted `intoRawMessage633`:
+	return intoRawMessage633
 }
 
 func TaintStepTest_EncodingJsonMarshalerMarshalJSON_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromMarshaler623` into `intoByte610`.
+	// The flow is from `fromMarshaler316` into `intoByte145`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromMarshaler623`:
-	fromMarshaler623 := sourceCQL.(json.Marshaler)
+	// Assume that `sourceCQL` has the underlying type of `fromMarshaler316`:
+	fromMarshaler316 := sourceCQL.(json.Marshaler)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromMarshaler623` to the result `intoByte610`
-	// (`intoByte610` is now tainted).
-	intoByte610, _ := fromMarshaler623.MarshalJSON()
+	// from the receiver `fromMarshaler316` to the result `intoByte145`
+	// (`intoByte145` is now tainted).
+	intoByte145, _ := fromMarshaler316.MarshalJSON()
 
-	// Return the tainted `intoByte610`:
-	return intoByte610
+	// Return the tainted `intoByte145`:
+	return intoByte145
 }
 
 func TaintStepTest_EncodingJsonUnmarshalerUnmarshalJSON_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte876` into `intoUnmarshaler171`.
+	// The flow is from `fromByte817` into `intoUnmarshaler474`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte876`:
-	fromByte876 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte817`:
+	fromByte817 := sourceCQL.([]byte)
 
-	// Declare `intoUnmarshaler171` variable:
-	var intoUnmarshaler171 json.Unmarshaler
+	// Declare `intoUnmarshaler474` variable:
+	var intoUnmarshaler474 json.Unmarshaler
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte876` to the receiver `intoUnmarshaler171`
-	// (`intoUnmarshaler171` is now tainted).
-	intoUnmarshaler171.UnmarshalJSON(fromByte876)
+	// from the parameter `fromByte817` to the receiver `intoUnmarshaler474`
+	// (`intoUnmarshaler474` is now tainted).
+	intoUnmarshaler474.UnmarshalJSON(fromByte817)
 
-	// Return the tainted `intoUnmarshaler171`:
-	return intoUnmarshaler171
+	// Return the tainted `intoUnmarshaler474`:
+	return intoUnmarshaler474
 }
 
 func RunAllTaints_EncodingJson() {

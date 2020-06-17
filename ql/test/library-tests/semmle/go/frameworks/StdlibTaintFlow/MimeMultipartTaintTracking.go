@@ -8,212 +8,212 @@ import (
 )
 
 func TaintStepTest_MimeMultipartNewReader_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader893` into `intoReader251`.
+	// The flow is from `fromReader656` into `intoReader414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader893`:
-	fromReader893 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader656`:
+	fromReader656 := sourceCQL.(io.Reader)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader893` to result `intoReader251`
-	// (`intoReader251` is now tainted).
-	intoReader251 := multipart.NewReader(fromReader893, "")
+	// from the parameter `fromReader656` to result `intoReader414`
+	// (`intoReader414` is now tainted).
+	intoReader414 := multipart.NewReader(fromReader656, "")
 
-	// Return the tainted `intoReader251`:
-	return intoReader251
+	// Return the tainted `intoReader414`:
+	return intoReader414
 }
 
 func TaintStepTest_MimeMultipartNewWriter_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromWriter561` into `intoWriter269`.
+	// The flow is from `fromWriter518` into `intoWriter650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriter561`:
-	fromWriter561 := sourceCQL.(*multipart.Writer)
+	// Assume that `sourceCQL` has the underlying type of `fromWriter518`:
+	fromWriter518 := sourceCQL.(*multipart.Writer)
 
-	// Declare `intoWriter269` variable:
-	var intoWriter269 io.Writer
+	// Declare `intoWriter650` variable:
+	var intoWriter650 io.Writer
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoWriter269`:
-	intermediateCQL := multipart.NewWriter(intoWriter269)
+	// from the result `intermediateCQL` to parameter `intoWriter650`:
+	intermediateCQL := multipart.NewWriter(intoWriter650)
 
-	// Extra step (`fromWriter561` taints `intermediateCQL`, which taints `intoWriter269`:
-	link(fromWriter561, intermediateCQL)
+	// Extra step (`fromWriter518` taints `intermediateCQL`, which taints `intoWriter650`:
+	link(fromWriter518, intermediateCQL)
 
-	// Return the tainted `intoWriter269`:
-	return intoWriter269
+	// Return the tainted `intoWriter650`:
+	return intoWriter650
 }
 
 func TaintStepTest_MimeMultipartFileHeaderOpen_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromFileHeader432` into `intoFile667`.
+	// The flow is from `fromFileHeader784` into `intoFile957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromFileHeader432`:
-	fromFileHeader432 := sourceCQL.(multipart.FileHeader)
+	// Assume that `sourceCQL` has the underlying type of `fromFileHeader784`:
+	fromFileHeader784 := sourceCQL.(multipart.FileHeader)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromFileHeader432` to the result `intoFile667`
-	// (`intoFile667` is now tainted).
-	intoFile667, _ := fromFileHeader432.Open()
+	// from the receiver `fromFileHeader784` to the result `intoFile957`
+	// (`intoFile957` is now tainted).
+	intoFile957, _ := fromFileHeader784.Open()
 
-	// Return the tainted `intoFile667`:
-	return intoFile667
+	// Return the tainted `intoFile957`:
+	return intoFile957
 }
 
 func TaintStepTest_MimeMultipartPartRead_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromPart911` into `intoByte522`.
+	// The flow is from `fromPart520` into `intoByte443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromPart911`:
-	fromPart911 := sourceCQL.(multipart.Part)
+	// Assume that `sourceCQL` has the underlying type of `fromPart520`:
+	fromPart520 := sourceCQL.(multipart.Part)
 
-	// Declare `intoByte522` variable:
-	var intoByte522 []byte
+	// Declare `intoByte443` variable:
+	var intoByte443 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromPart911` to the argument `intoByte522`
-	// (`intoByte522` is now tainted).
-	fromPart911.Read(intoByte522)
+	// from the receiver `fromPart520` to the argument `intoByte443`
+	// (`intoByte443` is now tainted).
+	fromPart520.Read(intoByte443)
 
-	// Return the tainted `intoByte522`:
-	return intoByte522
+	// Return the tainted `intoByte443`:
+	return intoByte443
 }
 
 func TaintStepTest_MimeMultipartReaderNextPart_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader130` into `intoPart706`.
+	// The flow is from `fromReader127` into `intoPart483`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader130`:
-	fromReader130 := sourceCQL.(multipart.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader127`:
+	fromReader127 := sourceCQL.(multipart.Reader)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromReader130` to the result `intoPart706`
-	// (`intoPart706` is now tainted).
-	intoPart706, _ := fromReader130.NextPart()
+	// from the receiver `fromReader127` to the result `intoPart483`
+	// (`intoPart483` is now tainted).
+	intoPart483, _ := fromReader127.NextPart()
 
-	// Return the tainted `intoPart706`:
-	return intoPart706
+	// Return the tainted `intoPart483`:
+	return intoPart483
 }
 
 func TaintStepTest_MimeMultipartReaderNextRawPart_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader749` into `intoPart595`.
+	// The flow is from `fromReader989` into `intoPart982`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader749`:
-	fromReader749 := sourceCQL.(multipart.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader989`:
+	fromReader989 := sourceCQL.(multipart.Reader)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromReader749` to the result `intoPart595`
-	// (`intoPart595` is now tainted).
-	intoPart595, _ := fromReader749.NextRawPart()
+	// from the receiver `fromReader989` to the result `intoPart982`
+	// (`intoPart982` is now tainted).
+	intoPart982, _ := fromReader989.NextRawPart()
 
-	// Return the tainted `intoPart595`:
-	return intoPart595
+	// Return the tainted `intoPart982`:
+	return intoPart982
 }
 
 func TaintStepTest_MimeMultipartReaderReadForm_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader204` into `intoForm718`.
+	// The flow is from `fromReader417` into `intoForm584`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader204`:
-	fromReader204 := sourceCQL.(multipart.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader417`:
+	fromReader417 := sourceCQL.(multipart.Reader)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromReader204` to the result `intoForm718`
-	// (`intoForm718` is now tainted).
-	intoForm718, _ := fromReader204.ReadForm(0)
+	// from the receiver `fromReader417` to the result `intoForm584`
+	// (`intoForm584` is now tainted).
+	intoForm584, _ := fromReader417.ReadForm(0)
 
-	// Return the tainted `intoForm718`:
-	return intoForm718
+	// Return the tainted `intoForm584`:
+	return intoForm584
 }
 
 func TaintStepTest_MimeMultipartWriterCreateFormField_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromWriter363` into `intoWriter596`.
+	// The flow is from `fromWriter991` into `intoWriter881`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriter363`:
-	fromWriter363 := sourceCQL.(io.Writer)
+	// Assume that `sourceCQL` has the underlying type of `fromWriter991`:
+	fromWriter991 := sourceCQL.(io.Writer)
 
-	// Declare `intoWriter596` variable:
-	var intoWriter596 multipart.Writer
+	// Declare `intoWriter881` variable:
+	var intoWriter881 multipart.Writer
 
 	// Call the method that will transfer the taint
-	// from the result `intermediateCQL` to receiver `intoWriter596`:
-	intermediateCQL, _ := intoWriter596.CreateFormField("")
+	// from the result `intermediateCQL` to receiver `intoWriter881`:
+	intermediateCQL, _ := intoWriter881.CreateFormField("")
 
-	// Extra step (`fromWriter363` taints `intermediateCQL`, which taints `intoWriter596`:
-	link(fromWriter363, intermediateCQL)
+	// Extra step (`fromWriter991` taints `intermediateCQL`, which taints `intoWriter881`:
+	link(fromWriter991, intermediateCQL)
 
-	// Return the tainted `intoWriter596`:
-	return intoWriter596
+	// Return the tainted `intoWriter881`:
+	return intoWriter881
 }
 
 func TaintStepTest_MimeMultipartWriterCreateFormFile_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromWriter576` into `intoWriter599`.
+	// The flow is from `fromWriter186` into `intoWriter284`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriter576`:
-	fromWriter576 := sourceCQL.(io.Writer)
+	// Assume that `sourceCQL` has the underlying type of `fromWriter186`:
+	fromWriter186 := sourceCQL.(io.Writer)
 
-	// Declare `intoWriter599` variable:
-	var intoWriter599 multipart.Writer
+	// Declare `intoWriter284` variable:
+	var intoWriter284 multipart.Writer
 
 	// Call the method that will transfer the taint
-	// from the result `intermediateCQL` to receiver `intoWriter599`:
-	intermediateCQL, _ := intoWriter599.CreateFormFile("", "")
+	// from the result `intermediateCQL` to receiver `intoWriter284`:
+	intermediateCQL, _ := intoWriter284.CreateFormFile("", "")
 
-	// Extra step (`fromWriter576` taints `intermediateCQL`, which taints `intoWriter599`:
-	link(fromWriter576, intermediateCQL)
+	// Extra step (`fromWriter186` taints `intermediateCQL`, which taints `intoWriter284`:
+	link(fromWriter186, intermediateCQL)
 
-	// Return the tainted `intoWriter599`:
-	return intoWriter599
+	// Return the tainted `intoWriter284`:
+	return intoWriter284
 }
 
 func TaintStepTest_MimeMultipartWriterCreatePart_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromWriter634` into `intoWriter548`.
+	// The flow is from `fromWriter908` into `intoWriter137`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriter634`:
-	fromWriter634 := sourceCQL.(io.Writer)
+	// Assume that `sourceCQL` has the underlying type of `fromWriter908`:
+	fromWriter908 := sourceCQL.(io.Writer)
 
-	// Declare `intoWriter548` variable:
-	var intoWriter548 multipart.Writer
+	// Declare `intoWriter137` variable:
+	var intoWriter137 multipart.Writer
 
 	// Call the method that will transfer the taint
-	// from the result `intermediateCQL` to receiver `intoWriter548`:
-	intermediateCQL, _ := intoWriter548.CreatePart(nil)
+	// from the result `intermediateCQL` to receiver `intoWriter137`:
+	intermediateCQL, _ := intoWriter137.CreatePart(nil)
 
-	// Extra step (`fromWriter634` taints `intermediateCQL`, which taints `intoWriter548`:
-	link(fromWriter634, intermediateCQL)
+	// Extra step (`fromWriter908` taints `intermediateCQL`, which taints `intoWriter137`:
+	link(fromWriter908, intermediateCQL)
 
-	// Return the tainted `intoWriter548`:
-	return intoWriter548
+	// Return the tainted `intoWriter137`:
+	return intoWriter137
 }
 
 func TaintStepTest_MimeMultipartWriterWriteField_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString480` into `intoWriter370`.
+	// The flow is from `fromString494` into `intoWriter873`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString480`:
-	fromString480 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString494`:
+	fromString494 := sourceCQL.(string)
 
-	// Declare `intoWriter370` variable:
-	var intoWriter370 multipart.Writer
+	// Declare `intoWriter873` variable:
+	var intoWriter873 multipart.Writer
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString480` to the receiver `intoWriter370`
-	// (`intoWriter370` is now tainted).
-	intoWriter370.WriteField(fromString480, "")
+	// from the parameter `fromString494` to the receiver `intoWriter873`
+	// (`intoWriter873` is now tainted).
+	intoWriter873.WriteField(fromString494, "")
 
-	// Return the tainted `intoWriter370`:
-	return intoWriter370
+	// Return the tainted `intoWriter873`:
+	return intoWriter873
 }
 
 func TaintStepTest_MimeMultipartWriterWriteField_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString711` into `intoWriter501`.
+	// The flow is from `fromString599` into `intoWriter409`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString711`:
-	fromString711 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString599`:
+	fromString599 := sourceCQL.(string)
 
-	// Declare `intoWriter501` variable:
-	var intoWriter501 multipart.Writer
+	// Declare `intoWriter409` variable:
+	var intoWriter409 multipart.Writer
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString711` to the receiver `intoWriter501`
-	// (`intoWriter501` is now tainted).
-	intoWriter501.WriteField("", fromString711)
+	// from the parameter `fromString599` to the receiver `intoWriter409`
+	// (`intoWriter409` is now tainted).
+	intoWriter409.WriteField("", fromString599)
 
-	// Return the tainted `intoWriter501`:
-	return intoWriter501
+	// Return the tainted `intoWriter409`:
+	return intoWriter409
 }
 
 func RunAllTaints_MimeMultipart() {

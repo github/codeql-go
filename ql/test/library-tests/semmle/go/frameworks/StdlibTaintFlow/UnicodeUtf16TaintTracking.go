@@ -5,93 +5,93 @@ package main
 import "unicode/utf16"
 
 func TaintStepTest_UnicodeUtf16Decode_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUint16865` into `intoRune342`.
+	// The flow is from `fromUint16656` into `intoRune414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUint16865`:
-	fromUint16865 := sourceCQL.([]uint16)
+	// Assume that `sourceCQL` has the underlying type of `fromUint16656`:
+	fromUint16656 := sourceCQL.([]uint16)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromUint16865` to result `intoRune342`
-	// (`intoRune342` is now tainted).
-	intoRune342 := utf16.Decode(fromUint16865)
+	// from the parameter `fromUint16656` to result `intoRune414`
+	// (`intoRune414` is now tainted).
+	intoRune414 := utf16.Decode(fromUint16656)
 
-	// Return the tainted `intoRune342`:
-	return intoRune342
+	// Return the tainted `intoRune414`:
+	return intoRune414
 }
 
 func TaintStepTest_UnicodeUtf16DecodeRune_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRune823` into `intoRune288`.
+	// The flow is from `fromRune518` into `intoRune650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRune823`:
-	fromRune823 := sourceCQL.(rune)
+	// Assume that `sourceCQL` has the underlying type of `fromRune518`:
+	fromRune518 := sourceCQL.(rune)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromRune823` to result `intoRune288`
-	// (`intoRune288` is now tainted).
-	intoRune288 := utf16.DecodeRune(fromRune823, 0)
+	// from the parameter `fromRune518` to result `intoRune650`
+	// (`intoRune650` is now tainted).
+	intoRune650 := utf16.DecodeRune(fromRune518, 0)
 
-	// Return the tainted `intoRune288`:
-	return intoRune288
+	// Return the tainted `intoRune650`:
+	return intoRune650
 }
 
 func TaintStepTest_UnicodeUtf16DecodeRune_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRune248` into `intoRune662`.
+	// The flow is from `fromRune784` into `intoRune957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRune248`:
-	fromRune248 := sourceCQL.(rune)
+	// Assume that `sourceCQL` has the underlying type of `fromRune784`:
+	fromRune784 := sourceCQL.(rune)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromRune248` to result `intoRune662`
-	// (`intoRune662` is now tainted).
-	intoRune662 := utf16.DecodeRune(0, fromRune248)
+	// from the parameter `fromRune784` to result `intoRune957`
+	// (`intoRune957` is now tainted).
+	intoRune957 := utf16.DecodeRune(0, fromRune784)
 
-	// Return the tainted `intoRune662`:
-	return intoRune662
+	// Return the tainted `intoRune957`:
+	return intoRune957
 }
 
 func TaintStepTest_UnicodeUtf16Encode_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRune704` into `intoUint16461`.
+	// The flow is from `fromRune520` into `intoUint16443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRune704`:
-	fromRune704 := sourceCQL.([]rune)
+	// Assume that `sourceCQL` has the underlying type of `fromRune520`:
+	fromRune520 := sourceCQL.([]rune)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromRune704` to result `intoUint16461`
-	// (`intoUint16461` is now tainted).
-	intoUint16461 := utf16.Encode(fromRune704)
+	// from the parameter `fromRune520` to result `intoUint16443`
+	// (`intoUint16443` is now tainted).
+	intoUint16443 := utf16.Encode(fromRune520)
 
-	// Return the tainted `intoUint16461`:
-	return intoUint16461
+	// Return the tainted `intoUint16443`:
+	return intoUint16443
 }
 
 func TaintStepTest_UnicodeUtf16EncodeRune_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRune168` into `intoRune704`.
+	// The flow is from `fromRune127` into `intoRune483`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRune168`:
-	fromRune168 := sourceCQL.(rune)
+	// Assume that `sourceCQL` has the underlying type of `fromRune127`:
+	fromRune127 := sourceCQL.(rune)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromRune168` to result `intoRune704`
-	// (`intoRune704` is now tainted).
-	intoRune704, _ := utf16.EncodeRune(fromRune168)
+	// from the parameter `fromRune127` to result `intoRune483`
+	// (`intoRune483` is now tainted).
+	intoRune483, _ := utf16.EncodeRune(fromRune127)
 
-	// Return the tainted `intoRune704`:
-	return intoRune704
+	// Return the tainted `intoRune483`:
+	return intoRune483
 }
 
 func TaintStepTest_UnicodeUtf16EncodeRune_B0I0O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRune698` into `intoRune845`.
+	// The flow is from `fromRune989` into `intoRune982`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRune698`:
-	fromRune698 := sourceCQL.(rune)
+	// Assume that `sourceCQL` has the underlying type of `fromRune989`:
+	fromRune989 := sourceCQL.(rune)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromRune698` to result `intoRune845`
-	// (`intoRune845` is now tainted).
-	_, intoRune845 := utf16.EncodeRune(fromRune698)
+	// from the parameter `fromRune989` to result `intoRune982`
+	// (`intoRune982` is now tainted).
+	_, intoRune982 := utf16.EncodeRune(fromRune989)
 
-	// Return the tainted `intoRune845`:
-	return intoRune845
+	// Return the tainted `intoRune982`:
+	return intoRune982
 }
 
 func RunAllTaints_UnicodeUtf16() {

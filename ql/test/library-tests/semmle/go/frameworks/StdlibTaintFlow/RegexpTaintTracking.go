@@ -8,807 +8,807 @@ import (
 )
 
 func TaintStepTest_RegexpCompile_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString748` into `intoRegexp210`.
+	// The flow is from `fromString656` into `intoRegexp414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString748`:
-	fromString748 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString656`:
+	fromString656 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString748` to result `intoRegexp210`
-	// (`intoRegexp210` is now tainted).
-	intoRegexp210, _ := regexp.Compile(fromString748)
+	// from the parameter `fromString656` to result `intoRegexp414`
+	// (`intoRegexp414` is now tainted).
+	intoRegexp414, _ := regexp.Compile(fromString656)
 
-	// Return the tainted `intoRegexp210`:
-	return intoRegexp210
+	// Return the tainted `intoRegexp414`:
+	return intoRegexp414
 }
 
 func TaintStepTest_RegexpCompilePOSIX_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString174` into `intoRegexp800`.
+	// The flow is from `fromString518` into `intoRegexp650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString174`:
-	fromString174 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString518`:
+	fromString518 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString174` to result `intoRegexp800`
-	// (`intoRegexp800` is now tainted).
-	intoRegexp800, _ := regexp.CompilePOSIX(fromString174)
+	// from the parameter `fromString518` to result `intoRegexp650`
+	// (`intoRegexp650` is now tainted).
+	intoRegexp650, _ := regexp.CompilePOSIX(fromString518)
 
-	// Return the tainted `intoRegexp800`:
-	return intoRegexp800
+	// Return the tainted `intoRegexp650`:
+	return intoRegexp650
 }
 
 func TaintStepTest_RegexpMustCompile_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString463` into `intoRegexp491`.
+	// The flow is from `fromString784` into `intoRegexp957`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString463`:
-	fromString463 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString784`:
+	fromString784 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString463` to result `intoRegexp491`
-	// (`intoRegexp491` is now tainted).
-	intoRegexp491 := regexp.MustCompile(fromString463)
+	// from the parameter `fromString784` to result `intoRegexp957`
+	// (`intoRegexp957` is now tainted).
+	intoRegexp957 := regexp.MustCompile(fromString784)
 
-	// Return the tainted `intoRegexp491`:
-	return intoRegexp491
+	// Return the tainted `intoRegexp957`:
+	return intoRegexp957
 }
 
 func TaintStepTest_RegexpMustCompilePOSIX_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString754` into `intoRegexp284`.
+	// The flow is from `fromString520` into `intoRegexp443`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString754`:
-	fromString754 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString520`:
+	fromString520 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString754` to result `intoRegexp284`
-	// (`intoRegexp284` is now tainted).
-	intoRegexp284 := regexp.MustCompilePOSIX(fromString754)
+	// from the parameter `fromString520` to result `intoRegexp443`
+	// (`intoRegexp443` is now tainted).
+	intoRegexp443 := regexp.MustCompilePOSIX(fromString520)
 
-	// Return the tainted `intoRegexp284`:
-	return intoRegexp284
+	// Return the tainted `intoRegexp443`:
+	return intoRegexp443
 }
 
 func TaintStepTest_RegexpQuoteMeta_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString932` into `intoString919`.
+	// The flow is from `fromString127` into `intoString483`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString932`:
-	fromString932 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString127`:
+	fromString127 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString932` to result `intoString919`
-	// (`intoString919` is now tainted).
-	intoString919 := regexp.QuoteMeta(fromString932)
+	// from the parameter `fromString127` to result `intoString483`
+	// (`intoString483` is now tainted).
+	intoString483 := regexp.QuoteMeta(fromString127)
 
-	// Return the tainted `intoString919`:
-	return intoString919
+	// Return the tainted `intoString483`:
+	return intoString483
 }
 
 func TaintStepTest_RegexpRegexpCopy_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRegexp271` into `intoRegexp775`.
+	// The flow is from `fromRegexp989` into `intoRegexp982`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRegexp271`:
-	fromRegexp271 := sourceCQL.(regexp.Regexp)
+	// Assume that `sourceCQL` has the underlying type of `fromRegexp989`:
+	fromRegexp989 := sourceCQL.(regexp.Regexp)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromRegexp271` to the result `intoRegexp775`
-	// (`intoRegexp775` is now tainted).
-	intoRegexp775 := fromRegexp271.Copy()
+	// from the receiver `fromRegexp989` to the result `intoRegexp982`
+	// (`intoRegexp982` is now tainted).
+	intoRegexp982 := fromRegexp989.Copy()
 
-	// Return the tainted `intoRegexp775`:
-	return intoRegexp775
+	// Return the tainted `intoRegexp982`:
+	return intoRegexp982
 }
 
 func TaintStepTest_RegexpRegexpExpand_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte886` into `intoByte943`.
+	// The flow is from `fromByte417` into `intoByte584`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte886`:
-	fromByte886 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte417`:
+	fromByte417 := sourceCQL.([]byte)
 
-	// Declare `intoByte943` variable:
-	var intoByte943 []byte
+	// Declare `intoByte584` variable:
+	var intoByte584 []byte
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte886` to the parameter `intoByte943`
-	// (`intoByte943` is now tainted).
-	mediumObjCQL.Expand(intoByte943, fromByte886, nil, nil)
+	// from the parameter `fromByte417` to the parameter `intoByte584`
+	// (`intoByte584` is now tainted).
+	mediumObjCQL.Expand(intoByte584, fromByte417, nil, nil)
 
-	// Return the tainted `intoByte943`:
-	return intoByte943
+	// Return the tainted `intoByte584`:
+	return intoByte584
 }
 
 func TaintStepTest_RegexpRegexpExpand_B0I0O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte560` into `intoByte302`.
+	// The flow is from `fromByte991` into `intoByte881`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte560`:
-	fromByte560 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte991`:
+	fromByte991 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte560` to the result `intoByte302`
-	// (`intoByte302` is now tainted).
-	intoByte302 := mediumObjCQL.Expand(nil, fromByte560, nil, nil)
+	// from the parameter `fromByte991` to the result `intoByte881`
+	// (`intoByte881` is now tainted).
+	intoByte881 := mediumObjCQL.Expand(nil, fromByte991, nil, nil)
 
-	// Return the tainted `intoByte302`:
-	return intoByte302
+	// Return the tainted `intoByte881`:
+	return intoByte881
 }
 
 func TaintStepTest_RegexpRegexpExpand_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte136` into `intoByte246`.
+	// The flow is from `fromByte186` into `intoByte284`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte136`:
-	fromByte136 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte186`:
+	fromByte186 := sourceCQL.([]byte)
 
-	// Declare `intoByte246` variable:
-	var intoByte246 []byte
+	// Declare `intoByte284` variable:
+	var intoByte284 []byte
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte136` to the parameter `intoByte246`
-	// (`intoByte246` is now tainted).
-	mediumObjCQL.Expand(intoByte246, nil, fromByte136, nil)
+	// from the parameter `fromByte186` to the parameter `intoByte284`
+	// (`intoByte284` is now tainted).
+	mediumObjCQL.Expand(intoByte284, nil, fromByte186, nil)
 
-	// Return the tainted `intoByte246`:
-	return intoByte246
+	// Return the tainted `intoByte284`:
+	return intoByte284
 }
 
 func TaintStepTest_RegexpRegexpExpand_B0I1O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte790` into `intoByte264`.
+	// The flow is from `fromByte908` into `intoByte137`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte790`:
-	fromByte790 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte908`:
+	fromByte908 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte790` to the result `intoByte264`
-	// (`intoByte264` is now tainted).
-	intoByte264 := mediumObjCQL.Expand(nil, nil, fromByte790, nil)
+	// from the parameter `fromByte908` to the result `intoByte137`
+	// (`intoByte137` is now tainted).
+	intoByte137 := mediumObjCQL.Expand(nil, nil, fromByte908, nil)
 
-	// Return the tainted `intoByte264`:
-	return intoByte264
+	// Return the tainted `intoByte137`:
+	return intoByte137
 }
 
 func TaintStepTest_RegexpRegexpExpandString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString854` into `intoByte344`.
+	// The flow is from `fromString494` into `intoByte873`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString854`:
-	fromString854 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString494`:
+	fromString494 := sourceCQL.(string)
 
-	// Declare `intoByte344` variable:
-	var intoByte344 []byte
+	// Declare `intoByte873` variable:
+	var intoByte873 []byte
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString854` to the parameter `intoByte344`
-	// (`intoByte344` is now tainted).
-	mediumObjCQL.ExpandString(intoByte344, fromString854, "", nil)
+	// from the parameter `fromString494` to the parameter `intoByte873`
+	// (`intoByte873` is now tainted).
+	mediumObjCQL.ExpandString(intoByte873, fromString494, "", nil)
 
-	// Return the tainted `intoByte344`:
-	return intoByte344
+	// Return the tainted `intoByte873`:
+	return intoByte873
 }
 
 func TaintStepTest_RegexpRegexpExpandString_B0I0O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString556` into `intoByte654`.
+	// The flow is from `fromString599` into `intoByte409`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString556`:
-	fromString556 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString599`:
+	fromString599 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString556` to the result `intoByte654`
-	// (`intoByte654` is now tainted).
-	intoByte654 := mediumObjCQL.ExpandString(nil, fromString556, "", nil)
+	// from the parameter `fromString599` to the result `intoByte409`
+	// (`intoByte409` is now tainted).
+	intoByte409 := mediumObjCQL.ExpandString(nil, fromString599, "", nil)
 
-	// Return the tainted `intoByte654`:
-	return intoByte654
+	// Return the tainted `intoByte409`:
+	return intoByte409
 }
 
 func TaintStepTest_RegexpRegexpExpandString_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString584` into `intoByte893`.
+	// The flow is from `fromString246` into `intoByte898`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString584`:
-	fromString584 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString246`:
+	fromString246 := sourceCQL.(string)
 
-	// Declare `intoByte893` variable:
-	var intoByte893 []byte
+	// Declare `intoByte898` variable:
+	var intoByte898 []byte
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString584` to the parameter `intoByte893`
-	// (`intoByte893` is now tainted).
-	mediumObjCQL.ExpandString(intoByte893, "", fromString584, nil)
+	// from the parameter `fromString246` to the parameter `intoByte898`
+	// (`intoByte898` is now tainted).
+	mediumObjCQL.ExpandString(intoByte898, "", fromString246, nil)
 
-	// Return the tainted `intoByte893`:
-	return intoByte893
+	// Return the tainted `intoByte898`:
+	return intoByte898
 }
 
 func TaintStepTest_RegexpRegexpExpandString_B0I1O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString708` into `intoByte304`.
+	// The flow is from `fromString598` into `intoByte631`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString708`:
-	fromString708 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString598`:
+	fromString598 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString708` to the result `intoByte304`
-	// (`intoByte304` is now tainted).
-	intoByte304 := mediumObjCQL.ExpandString(nil, "", fromString708, nil)
+	// from the parameter `fromString598` to the result `intoByte631`
+	// (`intoByte631` is now tainted).
+	intoByte631 := mediumObjCQL.ExpandString(nil, "", fromString598, nil)
 
-	// Return the tainted `intoByte304`:
-	return intoByte304
+	// Return the tainted `intoByte631`:
+	return intoByte631
 }
 
 func TaintStepTest_RegexpRegexpFind_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte599` into `intoByte129`.
+	// The flow is from `fromByte165` into `intoByte150`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte599`:
-	fromByte599 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte165`:
+	fromByte165 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte599` to the result `intoByte129`
-	// (`intoByte129` is now tainted).
-	intoByte129 := mediumObjCQL.Find(fromByte599)
+	// from the parameter `fromByte165` to the result `intoByte150`
+	// (`intoByte150` is now tainted).
+	intoByte150 := mediumObjCQL.Find(fromByte165)
 
-	// Return the tainted `intoByte129`:
-	return intoByte129
+	// Return the tainted `intoByte150`:
+	return intoByte150
 }
 
 func TaintStepTest_RegexpRegexpFindAll_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte518` into `intoByte555`.
+	// The flow is from `fromByte340` into `intoByte471`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte518`:
-	fromByte518 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte340`:
+	fromByte340 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte518` to the result `intoByte555`
-	// (`intoByte555` is now tainted).
-	intoByte555 := mediumObjCQL.FindAll(fromByte518, 0)
+	// from the parameter `fromByte340` to the result `intoByte471`
+	// (`intoByte471` is now tainted).
+	intoByte471 := mediumObjCQL.FindAll(fromByte340, 0)
 
-	// Return the tainted `intoByte555`:
-	return intoByte555
+	// Return the tainted `intoByte471`:
+	return intoByte471
 }
 
 func TaintStepTest_RegexpRegexpFindAllIndex_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte890` into `intoInt802`.
+	// The flow is from `fromByte290` into `intoInt758`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte890`:
-	fromByte890 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte290`:
+	fromByte290 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte890` to the result `intoInt802`
-	// (`intoInt802` is now tainted).
-	intoInt802 := mediumObjCQL.FindAllIndex(fromByte890, 0)
+	// from the parameter `fromByte290` to the result `intoInt758`
+	// (`intoInt758` is now tainted).
+	intoInt758 := mediumObjCQL.FindAllIndex(fromByte290, 0)
 
-	// Return the tainted `intoInt802`:
-	return intoInt802
+	// Return the tainted `intoInt758`:
+	return intoInt758
 }
 
 func TaintStepTest_RegexpRegexpFindAllString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString165` into `intoString518`.
+	// The flow is from `fromString396` into `intoString707`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString165`:
-	fromString165 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString396`:
+	fromString396 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString165` to the result `intoString518`
-	// (`intoString518` is now tainted).
-	intoString518 := mediumObjCQL.FindAllString(fromString165, 0)
+	// from the parameter `fromString396` to the result `intoString707`
+	// (`intoString707` is now tainted).
+	intoString707 := mediumObjCQL.FindAllString(fromString396, 0)
 
-	// Return the tainted `intoString518`:
-	return intoString518
+	// Return the tainted `intoString707`:
+	return intoString707
 }
 
 func TaintStepTest_RegexpRegexpFindAllStringIndex_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString807` into `intoInt945`.
+	// The flow is from `fromString912` into `intoInt718`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString807`:
-	fromString807 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString912`:
+	fromString912 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString807` to the result `intoInt945`
-	// (`intoInt945` is now tainted).
-	intoInt945 := mediumObjCQL.FindAllStringIndex(fromString807, 0)
+	// from the parameter `fromString912` to the result `intoInt718`
+	// (`intoInt718` is now tainted).
+	intoInt718 := mediumObjCQL.FindAllStringIndex(fromString912, 0)
 
-	// Return the tainted `intoInt945`:
-	return intoInt945
+	// Return the tainted `intoInt718`:
+	return intoInt718
 }
 
 func TaintStepTest_RegexpRegexpFindAllStringSubmatch_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString755` into `intoString730`.
+	// The flow is from `fromString972` into `intoString633`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString755`:
-	fromString755 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString972`:
+	fromString972 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString755` to the result `intoString730`
-	// (`intoString730` is now tainted).
-	intoString730 := mediumObjCQL.FindAllStringSubmatch(fromString755, 0)
+	// from the parameter `fromString972` to the result `intoString633`
+	// (`intoString633` is now tainted).
+	intoString633 := mediumObjCQL.FindAllStringSubmatch(fromString972, 0)
 
-	// Return the tainted `intoString730`:
-	return intoString730
+	// Return the tainted `intoString633`:
+	return intoString633
 }
 
 func TaintStepTest_RegexpRegexpFindAllStringSubmatchIndex_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString828` into `intoInt297`.
+	// The flow is from `fromString316` into `intoInt145`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString828`:
-	fromString828 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString316`:
+	fromString316 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString828` to the result `intoInt297`
-	// (`intoInt297` is now tainted).
-	intoInt297 := mediumObjCQL.FindAllStringSubmatchIndex(fromString828, 0)
+	// from the parameter `fromString316` to the result `intoInt145`
+	// (`intoInt145` is now tainted).
+	intoInt145 := mediumObjCQL.FindAllStringSubmatchIndex(fromString316, 0)
 
-	// Return the tainted `intoInt297`:
-	return intoInt297
+	// Return the tainted `intoInt145`:
+	return intoInt145
 }
 
 func TaintStepTest_RegexpRegexpFindAllSubmatch_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte915` into `intoByte401`.
+	// The flow is from `fromByte817` into `intoByte474`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte915`:
-	fromByte915 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte817`:
+	fromByte817 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte915` to the result `intoByte401`
-	// (`intoByte401` is now tainted).
-	intoByte401 := mediumObjCQL.FindAllSubmatch(fromByte915, 0)
+	// from the parameter `fromByte817` to the result `intoByte474`
+	// (`intoByte474` is now tainted).
+	intoByte474 := mediumObjCQL.FindAllSubmatch(fromByte817, 0)
 
-	// Return the tainted `intoByte401`:
-	return intoByte401
+	// Return the tainted `intoByte474`:
+	return intoByte474
 }
 
 func TaintStepTest_RegexpRegexpFindAllSubmatchIndex_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte555` into `intoInt338`.
+	// The flow is from `fromByte832` into `intoInt378`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte555`:
-	fromByte555 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte832`:
+	fromByte832 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte555` to the result `intoInt338`
-	// (`intoInt338` is now tainted).
-	intoInt338 := mediumObjCQL.FindAllSubmatchIndex(fromByte555, 0)
+	// from the parameter `fromByte832` to the result `intoInt378`
+	// (`intoInt378` is now tainted).
+	intoInt378 := mediumObjCQL.FindAllSubmatchIndex(fromByte832, 0)
 
-	// Return the tainted `intoInt338`:
-	return intoInt338
+	// Return the tainted `intoInt378`:
+	return intoInt378
 }
 
 func TaintStepTest_RegexpRegexpFindIndex_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte810` into `intoInt511`.
+	// The flow is from `fromByte541` into `intoInt139`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte810`:
-	fromByte810 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte541`:
+	fromByte541 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte810` to the result `intoInt511`
-	// (`intoInt511` is now tainted).
-	intoInt511 := mediumObjCQL.FindIndex(fromByte810)
+	// from the parameter `fromByte541` to the result `intoInt139`
+	// (`intoInt139` is now tainted).
+	intoInt139 := mediumObjCQL.FindIndex(fromByte541)
 
-	// Return the tainted `intoInt511`:
-	return intoInt511
+	// Return the tainted `intoInt139`:
+	return intoInt139
 }
 
 func TaintStepTest_RegexpRegexpFindReaderIndex_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRuneReader728` into `intoInt587`.
+	// The flow is from `fromRuneReader814` into `intoInt768`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRuneReader728`:
-	fromRuneReader728 := sourceCQL.(io.RuneReader)
+	// Assume that `sourceCQL` has the underlying type of `fromRuneReader814`:
+	fromRuneReader814 := sourceCQL.(io.RuneReader)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromRuneReader728` to the result `intoInt587`
-	// (`intoInt587` is now tainted).
-	intoInt587 := mediumObjCQL.FindReaderIndex(fromRuneReader728)
+	// from the parameter `fromRuneReader814` to the result `intoInt768`
+	// (`intoInt768` is now tainted).
+	intoInt768 := mediumObjCQL.FindReaderIndex(fromRuneReader814)
 
-	// Return the tainted `intoInt587`:
-	return intoInt587
+	// Return the tainted `intoInt768`:
+	return intoInt768
 }
 
 func TaintStepTest_RegexpRegexpFindReaderSubmatchIndex_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRuneReader189` into `intoInt426`.
+	// The flow is from `fromRuneReader468` into `intoInt736`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRuneReader189`:
-	fromRuneReader189 := sourceCQL.(io.RuneReader)
-
-	// Declare medium object/interface:
-	var mediumObjCQL regexp.Regexp
-
-	// Call the method that transfers the taint
-	// from the parameter `fromRuneReader189` to the result `intoInt426`
-	// (`intoInt426` is now tainted).
-	intoInt426 := mediumObjCQL.FindReaderSubmatchIndex(fromRuneReader189)
-
-	// Return the tainted `intoInt426`:
-	return intoInt426
-}
-
-func TaintStepTest_RegexpRegexpFindString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString830` into `intoString139`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString830`:
-	fromString830 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromRuneReader468`:
+	fromRuneReader468 := sourceCQL.(io.RuneReader)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString830` to the result `intoString139`
-	// (`intoString139` is now tainted).
-	intoString139 := mediumObjCQL.FindString(fromString830)
-
-	// Return the tainted `intoString139`:
-	return intoString139
-}
-
-func TaintStepTest_RegexpRegexpFindStringIndex_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString295` into `intoInt161`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString295`:
-	fromString295 := sourceCQL.(string)
-
-	// Declare medium object/interface:
-	var mediumObjCQL regexp.Regexp
-
-	// Call the method that transfers the taint
-	// from the parameter `fromString295` to the result `intoInt161`
-	// (`intoInt161` is now tainted).
-	intoInt161 := mediumObjCQL.FindStringIndex(fromString295)
-
-	// Return the tainted `intoInt161`:
-	return intoInt161
-}
-
-func TaintStepTest_RegexpRegexpFindStringSubmatch_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString376` into `intoString496`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString376`:
-	fromString376 := sourceCQL.(string)
-
-	// Declare medium object/interface:
-	var mediumObjCQL regexp.Regexp
-
-	// Call the method that transfers the taint
-	// from the parameter `fromString376` to the result `intoString496`
-	// (`intoString496` is now tainted).
-	intoString496 := mediumObjCQL.FindStringSubmatch(fromString376)
-
-	// Return the tainted `intoString496`:
-	return intoString496
-}
-
-func TaintStepTest_RegexpRegexpFindStringSubmatchIndex_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString827` into `intoInt736`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromString827`:
-	fromString827 := sourceCQL.(string)
-
-	// Declare medium object/interface:
-	var mediumObjCQL regexp.Regexp
-
-	// Call the method that transfers the taint
-	// from the parameter `fromString827` to the result `intoInt736`
+	// from the parameter `fromRuneReader468` to the result `intoInt736`
 	// (`intoInt736` is now tainted).
-	intoInt736 := mediumObjCQL.FindStringSubmatchIndex(fromString827)
+	intoInt736 := mediumObjCQL.FindReaderSubmatchIndex(fromRuneReader468)
 
 	// Return the tainted `intoInt736`:
 	return intoInt736
 }
 
-func TaintStepTest_RegexpRegexpFindSubmatch_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte960` into `intoByte345`.
+func TaintStepTest_RegexpRegexpFindString_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString516` into `intoString246`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte960`:
-	fromByte960 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromString516`:
+	fromString516 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte960` to the result `intoByte345`
-	// (`intoByte345` is now tainted).
-	intoByte345 := mediumObjCQL.FindSubmatch(fromByte960)
+	// from the parameter `fromString516` to the result `intoString246`
+	// (`intoString246` is now tainted).
+	intoString246 := mediumObjCQL.FindString(fromString516)
 
-	// Return the tainted `intoByte345`:
-	return intoByte345
+	// Return the tainted `intoString246`:
+	return intoString246
+}
+
+func TaintStepTest_RegexpRegexpFindStringIndex_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString679` into `intoInt736`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString679`:
+	fromString679 := sourceCQL.(string)
+
+	// Declare medium object/interface:
+	var mediumObjCQL regexp.Regexp
+
+	// Call the method that transfers the taint
+	// from the parameter `fromString679` to the result `intoInt736`
+	// (`intoInt736` is now tainted).
+	intoInt736 := mediumObjCQL.FindStringIndex(fromString679)
+
+	// Return the tainted `intoInt736`:
+	return intoInt736
+}
+
+func TaintStepTest_RegexpRegexpFindStringSubmatch_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString839` into `intoString273`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString839`:
+	fromString839 := sourceCQL.(string)
+
+	// Declare medium object/interface:
+	var mediumObjCQL regexp.Regexp
+
+	// Call the method that transfers the taint
+	// from the parameter `fromString839` to the result `intoString273`
+	// (`intoString273` is now tainted).
+	intoString273 := mediumObjCQL.FindStringSubmatch(fromString839)
+
+	// Return the tainted `intoString273`:
+	return intoString273
+}
+
+func TaintStepTest_RegexpRegexpFindStringSubmatchIndex_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromString982` into `intoInt458`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromString982`:
+	fromString982 := sourceCQL.(string)
+
+	// Declare medium object/interface:
+	var mediumObjCQL regexp.Regexp
+
+	// Call the method that transfers the taint
+	// from the parameter `fromString982` to the result `intoInt458`
+	// (`intoInt458` is now tainted).
+	intoInt458 := mediumObjCQL.FindStringSubmatchIndex(fromString982)
+
+	// Return the tainted `intoInt458`:
+	return intoInt458
+}
+
+func TaintStepTest_RegexpRegexpFindSubmatch_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte506` into `intoByte213`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte506`:
+	fromByte506 := sourceCQL.([]byte)
+
+	// Declare medium object/interface:
+	var mediumObjCQL regexp.Regexp
+
+	// Call the method that transfers the taint
+	// from the parameter `fromByte506` to the result `intoByte213`
+	// (`intoByte213` is now tainted).
+	intoByte213 := mediumObjCQL.FindSubmatch(fromByte506)
+
+	// Return the tainted `intoByte213`:
+	return intoByte213
 }
 
 func TaintStepTest_RegexpRegexpFindSubmatchIndex_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte722` into `intoInt591`.
+	// The flow is from `fromByte468` into `intoInt219`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte722`:
-	fromByte722 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte468`:
+	fromByte468 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte722` to the result `intoInt591`
-	// (`intoInt591` is now tainted).
-	intoInt591 := mediumObjCQL.FindSubmatchIndex(fromByte722)
+	// from the parameter `fromByte468` to the result `intoInt219`
+	// (`intoInt219` is now tainted).
+	intoInt219 := mediumObjCQL.FindSubmatchIndex(fromByte468)
 
-	// Return the tainted `intoInt591`:
-	return intoInt591
+	// Return the tainted `intoInt219`:
+	return intoInt219
 }
 
 func TaintStepTest_RegexpRegexpReplaceAll_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte366` into `intoByte499`.
+	// The flow is from `fromByte265` into `intoByte971`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte366`:
-	fromByte366 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte265`:
+	fromByte265 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte366` to the result `intoByte499`
-	// (`intoByte499` is now tainted).
-	intoByte499 := mediumObjCQL.ReplaceAll(fromByte366, nil)
+	// from the parameter `fromByte265` to the result `intoByte971`
+	// (`intoByte971` is now tainted).
+	intoByte971 := mediumObjCQL.ReplaceAll(fromByte265, nil)
 
-	// Return the tainted `intoByte499`:
-	return intoByte499
+	// Return the tainted `intoByte971`:
+	return intoByte971
 }
 
 func TaintStepTest_RegexpRegexpReplaceAll_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte186` into `intoByte332`.
+	// The flow is from `fromByte320` into `intoByte545`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte186`:
-	fromByte186 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte320`:
+	fromByte320 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte186` to the result `intoByte332`
-	// (`intoByte332` is now tainted).
-	intoByte332 := mediumObjCQL.ReplaceAll(nil, fromByte186)
+	// from the parameter `fromByte320` to the result `intoByte545`
+	// (`intoByte545` is now tainted).
+	intoByte545 := mediumObjCQL.ReplaceAll(nil, fromByte320)
 
-	// Return the tainted `intoByte332`:
-	return intoByte332
+	// Return the tainted `intoByte545`:
+	return intoByte545
 }
 
 func TaintStepTest_RegexpRegexpReplaceAllFunc_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte382` into `intoByte447`.
+	// The flow is from `fromByte566` into `intoByte497`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte382`:
-	fromByte382 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte566`:
+	fromByte566 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte382` to the result `intoByte447`
-	// (`intoByte447` is now tainted).
-	intoByte447 := mediumObjCQL.ReplaceAllFunc(fromByte382, nil)
+	// from the parameter `fromByte566` to the result `intoByte497`
+	// (`intoByte497` is now tainted).
+	intoByte497 := mediumObjCQL.ReplaceAllFunc(fromByte566, nil)
 
-	// Return the tainted `intoByte447`:
-	return intoByte447
+	// Return the tainted `intoByte497`:
+	return intoByte497
 }
 
 func TaintStepTest_RegexpRegexpReplaceAllFunc_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromFuncbytebyte366` into `intoByte317`.
+	// The flow is from `fromFuncbytebyte274` into `intoByte783`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromFuncbytebyte366`:
-	fromFuncbytebyte366 := sourceCQL.(func([]byte) []byte)
+	// Assume that `sourceCQL` has the underlying type of `fromFuncbytebyte274`:
+	fromFuncbytebyte274 := sourceCQL.(func([]byte) []byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromFuncbytebyte366` to the result `intoByte317`
-	// (`intoByte317` is now tainted).
-	intoByte317 := mediumObjCQL.ReplaceAllFunc(nil, fromFuncbytebyte366)
+	// from the parameter `fromFuncbytebyte274` to the result `intoByte783`
+	// (`intoByte783` is now tainted).
+	intoByte783 := mediumObjCQL.ReplaceAllFunc(nil, fromFuncbytebyte274)
 
-	// Return the tainted `intoByte317`:
-	return intoByte317
+	// Return the tainted `intoByte783`:
+	return intoByte783
 }
 
 func TaintStepTest_RegexpRegexpReplaceAllLiteral_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte815` into `intoByte467`.
+	// The flow is from `fromByte905` into `intoByte389`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte815`:
-	fromByte815 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte905`:
+	fromByte905 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte815` to the result `intoByte467`
-	// (`intoByte467` is now tainted).
-	intoByte467 := mediumObjCQL.ReplaceAllLiteral(fromByte815, nil)
+	// from the parameter `fromByte905` to the result `intoByte389`
+	// (`intoByte389` is now tainted).
+	intoByte389 := mediumObjCQL.ReplaceAllLiteral(fromByte905, nil)
 
-	// Return the tainted `intoByte467`:
-	return intoByte467
+	// Return the tainted `intoByte389`:
+	return intoByte389
 }
 
 func TaintStepTest_RegexpRegexpReplaceAllLiteral_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte133` into `intoByte429`.
+	// The flow is from `fromByte198` into `intoByte477`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte133`:
-	fromByte133 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte198`:
+	fromByte198 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte133` to the result `intoByte429`
-	// (`intoByte429` is now tainted).
-	intoByte429 := mediumObjCQL.ReplaceAllLiteral(nil, fromByte133)
+	// from the parameter `fromByte198` to the result `intoByte477`
+	// (`intoByte477` is now tainted).
+	intoByte477 := mediumObjCQL.ReplaceAllLiteral(nil, fromByte198)
 
-	// Return the tainted `intoByte429`:
-	return intoByte429
+	// Return the tainted `intoByte477`:
+	return intoByte477
 }
 
 func TaintStepTest_RegexpRegexpReplaceAllLiteralString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString723` into `intoString896`.
+	// The flow is from `fromString544` into `intoString382`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString723`:
-	fromString723 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString544`:
+	fromString544 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString723` to the result `intoString896`
-	// (`intoString896` is now tainted).
-	intoString896 := mediumObjCQL.ReplaceAllLiteralString(fromString723, "")
+	// from the parameter `fromString544` to the result `intoString382`
+	// (`intoString382` is now tainted).
+	intoString382 := mediumObjCQL.ReplaceAllLiteralString(fromString544, "")
 
-	// Return the tainted `intoString896`:
-	return intoString896
+	// Return the tainted `intoString382`:
+	return intoString382
 }
 
 func TaintStepTest_RegexpRegexpReplaceAllLiteralString_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString474` into `intoString363`.
+	// The flow is from `fromString715` into `intoString179`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString474`:
-	fromString474 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString715`:
+	fromString715 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString474` to the result `intoString363`
-	// (`intoString363` is now tainted).
-	intoString363 := mediumObjCQL.ReplaceAllLiteralString("", fromString474)
+	// from the parameter `fromString715` to the result `intoString179`
+	// (`intoString179` is now tainted).
+	intoString179 := mediumObjCQL.ReplaceAllLiteralString("", fromString715)
 
-	// Return the tainted `intoString363`:
-	return intoString363
+	// Return the tainted `intoString179`:
+	return intoString179
 }
 
 func TaintStepTest_RegexpRegexpReplaceAllString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString235` into `intoString121`.
+	// The flow is from `fromString366` into `intoString648`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString235`:
-	fromString235 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString366`:
+	fromString366 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString235` to the result `intoString121`
-	// (`intoString121` is now tainted).
-	intoString121 := mediumObjCQL.ReplaceAllString(fromString235, "")
+	// from the parameter `fromString366` to the result `intoString648`
+	// (`intoString648` is now tainted).
+	intoString648 := mediumObjCQL.ReplaceAllString(fromString366, "")
 
-	// Return the tainted `intoString121`:
-	return intoString121
+	// Return the tainted `intoString648`:
+	return intoString648
 }
 
 func TaintStepTest_RegexpRegexpReplaceAllString_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString640` into `intoString124`.
+	// The flow is from `fromString544` into `intoString484`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString640`:
-	fromString640 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString544`:
+	fromString544 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString640` to the result `intoString124`
-	// (`intoString124` is now tainted).
-	intoString124 := mediumObjCQL.ReplaceAllString("", fromString640)
+	// from the parameter `fromString544` to the result `intoString484`
+	// (`intoString484` is now tainted).
+	intoString484 := mediumObjCQL.ReplaceAllString("", fromString544)
 
-	// Return the tainted `intoString124`:
-	return intoString124
+	// Return the tainted `intoString484`:
+	return intoString484
 }
 
 func TaintStepTest_RegexpRegexpReplaceAllStringFunc_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString991` into `intoString559`.
+	// The flow is from `fromString824` into `intoString754`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString991`:
-	fromString991 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString824`:
+	fromString824 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString991` to the result `intoString559`
-	// (`intoString559` is now tainted).
-	intoString559 := mediumObjCQL.ReplaceAllStringFunc(fromString991, nil)
+	// from the parameter `fromString824` to the result `intoString754`
+	// (`intoString754` is now tainted).
+	intoString754 := mediumObjCQL.ReplaceAllStringFunc(fromString824, nil)
 
-	// Return the tainted `intoString559`:
-	return intoString559
+	// Return the tainted `intoString754`:
+	return intoString754
 }
 
 func TaintStepTest_RegexpRegexpReplaceAllStringFunc_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromFuncstringString654` into `intoString400`.
+	// The flow is from `fromFuncstringString680` into `intoString722`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromFuncstringString654`:
-	fromFuncstringString654 := sourceCQL.(func(string) string)
+	// Assume that `sourceCQL` has the underlying type of `fromFuncstringString680`:
+	fromFuncstringString680 := sourceCQL.(func(string) string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromFuncstringString654` to the result `intoString400`
-	// (`intoString400` is now tainted).
-	intoString400 := mediumObjCQL.ReplaceAllStringFunc("", fromFuncstringString654)
+	// from the parameter `fromFuncstringString680` to the result `intoString722`
+	// (`intoString722` is now tainted).
+	intoString722 := mediumObjCQL.ReplaceAllStringFunc("", fromFuncstringString680)
 
-	// Return the tainted `intoString400`:
-	return intoString400
+	// Return the tainted `intoString722`:
+	return intoString722
 }
 
 func TaintStepTest_RegexpRegexpSplit_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString551` into `intoString158`.
+	// The flow is from `fromString506` into `intoString121`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString551`:
-	fromString551 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString506`:
+	fromString506 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL regexp.Regexp
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString551` to the result `intoString158`
-	// (`intoString158` is now tainted).
-	intoString158 := mediumObjCQL.Split(fromString551, 0)
+	// from the parameter `fromString506` to the result `intoString121`
+	// (`intoString121` is now tainted).
+	intoString121 := mediumObjCQL.Split(fromString506, 0)
 
-	// Return the tainted `intoString158`:
-	return intoString158
+	// Return the tainted `intoString121`:
+	return intoString121
 }
 
 func RunAllTaints_Regexp() {
