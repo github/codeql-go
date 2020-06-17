@@ -1713,29 +1713,3 @@ module CompressFlate {
     }
   }
 }
-
-module CompressLzw {
-  class NewReader extends TaintTracking::FunctionModel {
-    NewReader() { hasQualifiedName("compress/lzw", "NewReader") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
-    }
-  }
-
-  private class NewWriter extends TaintTracking::FunctionModel {
-    NewWriter() { this.hasQualifiedName("compress/lzw", "NewWriter") }
-
-    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
-      input.isResult() and output.isParameter(0)
-    }
-  }
-
-  class WriterWrite extends TaintTracking::FunctionModel, Method {
-    WriterWrite() { this.(Method).hasQualifiedName("compress/lzw", "Writer", "Write") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
-    }
-  }
-}
