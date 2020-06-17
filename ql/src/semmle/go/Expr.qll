@@ -213,6 +213,23 @@ class Ellipsis extends @ellipsis, Expr {
 }
 
 /**
+ * A literal expression.
+ *
+ * Examples:
+ *
+ * ```go
+ * "hello"
+ * func(x, y int) int { return x + y }
+ * map[string]int{"A": 1, "B": 2}
+ * ```
+ */
+class Literal extends Expr {
+  Literal() {
+    this instanceof @basiclit or this instanceof @funclit or this instanceof @compositelit
+  }
+}
+
+/**
  * A literal expression of basic type.
  *
  * Examples:
@@ -222,7 +239,7 @@ class Ellipsis extends @ellipsis, Expr {
  * "hello"
  * ```
  */
-class BasicLit extends @basiclit, Expr {
+class BasicLit extends @basiclit, Literal {
   /** Gets the value of this literal expressed as a string. */
   string getValue() { literals(this, result, _) }
 
@@ -319,10 +336,10 @@ class StringLit extends @stringlit, BasicLit { }
  * func(x, y int) int { return x + y }
  * ```
  */
-class FuncLit extends @funclit, Expr, StmtParent, FuncDef {
+class FuncLit extends @funclit, Literal, StmtParent, FuncDef {
   override FuncTypeExpr getTypeExpr() { result = getChildExpr(0) }
 
-  override SignatureType getType() { result = Expr.super.getType() }
+  override SignatureType getType() { result = Literal.super.getType() }
 
   /** Gets the body of this function literal. */
   override BlockStmt getBody() { result = getChildStmt(1) }
@@ -342,7 +359,7 @@ class FuncLit extends @funclit, Expr, StmtParent, FuncDef {
  * map[string]int{"A": 1, "B": 2}
  * ```
  */
-class CompositeLit extends @compositelit, Expr {
+class CompositeLit extends @compositelit, Literal {
   /** Gets the expression representing the type of this composite literal. */
   Expr getTypeExpr() { result = getChildExpr(0) }
 
@@ -398,6 +415,8 @@ class MapLit extends CompositeLit {
 
   /** Gets the value type of this literal. */
   Type getValueType() { result = mt.getValueType() }
+
+  override string toString() { result = "map literal" }
 }
 
 /**
@@ -418,6 +437,73 @@ class StructLit extends CompositeLit {
 
   /** Gets the struct type underlying this literal. */
   StructType getStructType() { result = st }
+
+  override string toString() { result = "struct literal" }
+}
+
+/**
+ * An array or slice literal.
+ *
+ * Examples:
+ *
+ * ```go
+ * [10]string{}
+ * [6]int{1, 2, 3, 5}
+ * [...]string{"Sat", "Sun"}
+ * []int{1, 2, 3, 5}
+ * []string{"Sat", "Sun"}
+ * ```
+ */
+class ArrayOrSliceLit extends CompositeLit {
+  CompositeType type;
+
+  ArrayOrSliceLit() {
+    type = getType().getUnderlyingType() and
+    (
+      type instanceof ArrayType
+      or
+      type instanceof SliceType
+    )
+  }
+}
+
+/**
+ * An array literal.
+ *
+ * Examples:
+ *
+ * ```go
+ * [10]string{}
+ * [6]int{1, 2, 3, 5}
+ * [...]string{"Sat", "Sun"}
+ * ```
+ */
+class ArrayLit extends ArrayOrSliceLit {
+  override ArrayType type;
+
+  /** Gets the array type underlying this literal. */
+  ArrayType getArrayType() { result = type }
+
+  override string toString() { result = "array literal" }
+}
+
+/**
+ * A slice literal.
+ *
+ * Examples:
+ *
+ * ```go
+ * []int{1, 2, 3, 5}
+ * []string{"Sat", "Sun"}
+ * ```
+ */
+class SliceLit extends ArrayOrSliceLit {
+  override SliceType type;
+
+  /** Gets the slice type underlying this literal. */
+  SliceType getSliceType() { result = type }
+
+  override string toString() { result = "slice literal" }
 }
 
 /**
@@ -687,7 +773,7 @@ class KeyValueExpr extends @keyvalueexpr, Expr {
  * [5]int
  * ```
  */
-class ArrayTypeExpr extends @arraytypeexpr, Expr {
+class ArrayTypeExpr extends @arraytypeexpr, TypeExpr {
   /** Gets the length expression of this array type. */
   Expr getLength() { result = getChildExpr(0) }
 
@@ -706,7 +792,7 @@ class ArrayTypeExpr extends @arraytypeexpr, Expr {
  * struct {x, y int; z float32}
  * ```
  */
-class StructTypeExpr extends @structtypeexpr, Expr {
+class StructTypeExpr extends @structtypeexpr, TypeExpr {
   /** Gets the `i`th field declared in this struct type expression (0-based). */
   FieldDecl getField(int i) { fields(result, this, i) }
 
@@ -728,7 +814,7 @@ class StructTypeExpr extends @structtypeexpr, Expr {
  * func(a, b int, c float32) (float32, bool)
  * ```
  */
-class FuncTypeExpr extends @functypeexpr, Expr, ScopeNode {
+class FuncTypeExpr extends @functypeexpr, TypeExpr, ScopeNode {
   /** Gets the `i`th parameter of this function type (0-based). */
   ParameterDecl getParameterDecl(int i) {
     result.getFunctionTypeExpr() = this and
@@ -768,7 +854,7 @@ class FuncTypeExpr extends @functypeexpr, Expr, ScopeNode {
  * interface { Read(p []byte) (n int, err error); Close() error}
  * ```
  */
-class InterfaceTypeExpr extends @interfacetypeexpr, Expr {
+class InterfaceTypeExpr extends @interfacetypeexpr, TypeExpr {
   /** Gets the `i`th method specification of this interface type. */
   MethodSpec getMethod(int i) {
     result.getInterfaceTypeExpr() = this and
@@ -793,7 +879,7 @@ class InterfaceTypeExpr extends @interfacetypeexpr, Expr {
  * map[string]int
  * ```
  */
-class MapTypeExpr extends @maptypeexpr, Expr {
+class MapTypeExpr extends @maptypeexpr, TypeExpr {
   /** Gets the expression representing the key type of this map type. */
   Expr getKeyTypeExpr() { result = getChildExpr(0) }
 
@@ -974,13 +1060,9 @@ class ComplementExpr extends @complementexpr, BitwiseUnaryExpr {
 }
 
 /**
- * A unary pointer-dereference expression using `*`.
+ * A unary pointer-dereference expression.
  *
- * Examples:
- *
- * ```go
- * *p
- * ```
+ * This class exists for compatibility reasons only and should not normally be used directly. Use `StarExpr` instead.
  */
 class DerefExpr extends @derefexpr, UnaryExpr {
   override predicate mayHaveOwnSideEffects() { any() }
@@ -1460,7 +1542,7 @@ class AndNotExpr extends @andnotexpr, BitwiseBinaryExpr {
  * <-chan int
  * ```
  */
-class ChanTypeExpr extends @chantypeexpr, Expr {
+class ChanTypeExpr extends @chantypeexpr, TypeExpr {
   /**
    * Gets the expression representing the type of values flowing through the channel.
    */
@@ -1559,7 +1641,7 @@ class SimpleName extends Name, Ident { }
  * ```go
  * fmt.Println
  * ```
-*/
+ */
 class QualifiedName extends Name, SelectorExpr { }
 
 /**
@@ -1701,12 +1783,12 @@ class LabelName extends Name {
  */
 private predicate isTypeExprBottomUp(Expr e) {
   e instanceof TypeName or
-  e instanceof ArrayTypeExpr or
-  e instanceof StructTypeExpr or
-  e instanceof FuncTypeExpr or
-  e instanceof InterfaceTypeExpr or
-  e instanceof MapTypeExpr or
-  e instanceof ChanTypeExpr or
+  e instanceof @arraytypeexpr or
+  e instanceof @structtypeexpr or
+  e instanceof @functypeexpr or
+  e instanceof @interfacetypeexpr or
+  e instanceof @maptypeexpr or
+  e instanceof @chantypeexpr or
   isTypeExprBottomUp(e.(ParenExpr).getExpr()) or
   isTypeExprBottomUp(e.(StarExpr).getBase()) or
   isTypeExprBottomUp(e.(Ellipsis).getOperand())
@@ -1769,7 +1851,7 @@ private predicate isTypeExprTopDown(Expr e) {
  *
  * ```go
  * int
- * func 
+ * func
  * ```
  */
 class TypeExpr extends Expr {
