@@ -1,41 +1,43 @@
+// WARNING: This file was automatically generated. DO NOT EDIT.
+
 package main
 
 import "crypto"
 
 func TaintStepTest_CryptoDecrypterDecrypt_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte982` into `intoByte248`.
+	// The flow is from `fromByte491` into `intoByte867`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte982`:
-	fromByte982 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte491`:
+	fromByte491 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL crypto.Decrypter
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte982` to the result `intoByte248`
-	// (`intoByte248` is now tainted).
-	intoByte248, _ := mediumObjCQL.Decrypt(nil, fromByte982, nil)
+	// from the parameter `fromByte491` to the result `intoByte867`
+	// (`intoByte867` is now tainted).
+	intoByte867, _ := mediumObjCQL.Decrypt(nil, fromByte491, nil)
 
-	// Return the tainted `intoByte248`:
-	return intoByte248
+	// Return the tainted `intoByte867`:
+	return intoByte867
 }
 
 func TaintStepTest_CryptoSignerSign_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte892` into `intoByte431`.
+	// The flow is from `fromByte554` into `intoByte331`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte892`:
-	fromByte892 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte554`:
+	fromByte554 := sourceCQL.([]byte)
 
 	// Declare medium object/interface:
 	var mediumObjCQL crypto.Signer
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte892` to the result `intoByte431`
-	// (`intoByte431` is now tainted).
-	intoByte431, _ := mediumObjCQL.Sign(nil, fromByte892, nil)
+	// from the parameter `fromByte554` to the result `intoByte331`
+	// (`intoByte331` is now tainted).
+	intoByte331, _ := mediumObjCQL.Sign(nil, fromByte554, nil)
 
-	// Return the tainted `intoByte431`:
-	return intoByte431
+	// Return the tainted `intoByte331`:
+	return intoByte331
 }
 
 func RunAllTaints_Crypto() {

@@ -1,110 +1,112 @@
+// WARNING: This file was automatically generated. DO NOT EDIT.
+
 package main
 
 import "database/sql/driver"
 
 func TaintStepTest_DatabaseSqlDriverNotNullConvertValue_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface844` into `intoValue755`.
+	// The flow is from `fromInterface887` into `intoValue805`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface844`:
-	fromInterface844 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface887`:
+	fromInterface887 := sourceCQL.(interface{})
 
 	// Declare medium object/interface:
 	var mediumObjCQL driver.NotNull
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface844` to the result `intoValue755`
-	// (`intoValue755` is now tainted).
-	intoValue755, _ := mediumObjCQL.ConvertValue(fromInterface844)
+	// from the parameter `fromInterface887` to the result `intoValue805`
+	// (`intoValue805` is now tainted).
+	intoValue805, _ := mediumObjCQL.ConvertValue(fromInterface887)
 
-	// Return the tainted `intoValue755`:
-	return intoValue755
+	// Return the tainted `intoValue805`:
+	return intoValue805
 }
 
 func TaintStepTest_DatabaseSqlDriverNullConvertValue_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface345` into `intoValue892`.
+	// The flow is from `fromInterface523` into `intoValue237`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface345`:
-	fromInterface345 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface523`:
+	fromInterface523 := sourceCQL.(interface{})
 
 	// Declare medium object/interface:
 	var mediumObjCQL driver.Null
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface345` to the result `intoValue892`
-	// (`intoValue892` is now tainted).
-	intoValue892, _ := mediumObjCQL.ConvertValue(fromInterface345)
+	// from the parameter `fromInterface523` to the result `intoValue237`
+	// (`intoValue237` is now tainted).
+	intoValue237, _ := mediumObjCQL.ConvertValue(fromInterface523)
 
-	// Return the tainted `intoValue892`:
-	return intoValue892
+	// Return the tainted `intoValue237`:
+	return intoValue237
 }
 
 func TaintStepTest_DatabaseSqlDriverValueConverterConvertValue_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface427` into `intoValue264`.
+	// The flow is from `fromInterface304` into `intoValue989`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface427`:
-	fromInterface427 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface304`:
+	fromInterface304 := sourceCQL.(interface{})
 
 	// Declare medium object/interface:
 	var mediumObjCQL driver.ValueConverter
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface427` to the result `intoValue264`
-	// (`intoValue264` is now tainted).
-	intoValue264, _ := mediumObjCQL.ConvertValue(fromInterface427)
+	// from the parameter `fromInterface304` to the result `intoValue989`
+	// (`intoValue989` is now tainted).
+	intoValue989, _ := mediumObjCQL.ConvertValue(fromInterface304)
 
-	// Return the tainted `intoValue264`:
-	return intoValue264
+	// Return the tainted `intoValue989`:
+	return intoValue989
 }
 
 func TaintStepTest_DatabaseSqlDriverConnPrepare_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString304` into `intoStmt792`.
+	// The flow is from `fromString370` into `intoStmt823`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString304`:
-	fromString304 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString370`:
+	fromString370 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL driver.Conn
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString304` to the result `intoStmt792`
-	// (`intoStmt792` is now tainted).
-	intoStmt792, _ := mediumObjCQL.Prepare(fromString304)
+	// from the parameter `fromString370` to the result `intoStmt823`
+	// (`intoStmt823` is now tainted).
+	intoStmt823, _ := mediumObjCQL.Prepare(fromString370)
 
-	// Return the tainted `intoStmt792`:
-	return intoStmt792
+	// Return the tainted `intoStmt823`:
+	return intoStmt823
 }
 
 func TaintStepTest_DatabaseSqlDriverConnPrepareContextPrepareContext_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString383` into `intoStmt350`.
+	// The flow is from `fromString945` into `intoStmt848`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString383`:
-	fromString383 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString945`:
+	fromString945 := sourceCQL.(string)
 
 	// Declare medium object/interface:
 	var mediumObjCQL driver.ConnPrepareContext
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString383` to the result `intoStmt350`
-	// (`intoStmt350` is now tainted).
-	intoStmt350, _ := mediumObjCQL.PrepareContext(nil, fromString383)
+	// from the parameter `fromString945` to the result `intoStmt848`
+	// (`intoStmt848` is now tainted).
+	intoStmt848, _ := mediumObjCQL.PrepareContext(nil, fromString945)
 
-	// Return the tainted `intoStmt350`:
-	return intoStmt350
+	// Return the tainted `intoStmt848`:
+	return intoStmt848
 }
 
 func TaintStepTest_DatabaseSqlDriverValuerValue_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromValuer627` into `intoValue742`.
+	// The flow is from `fromValuer919` into `intoValue365`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromValuer627`:
-	fromValuer627 := sourceCQL.(driver.Valuer)
+	// Assume that `sourceCQL` has the underlying type of `fromValuer919`:
+	fromValuer919 := sourceCQL.(driver.Valuer)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromValuer627` to the result `intoValue742`
-	// (`intoValue742` is now tainted).
-	intoValue742, _ := fromValuer627.Value()
+	// from the receiver `fromValuer919` to the result `intoValue365`
+	// (`intoValue365` is now tainted).
+	intoValue365, _ := fromValuer919.Value()
 
-	// Return the tainted `intoValue742`:
-	return intoValue742
+	// Return the tainted `intoValue365`:
+	return intoValue365
 }
 
 func RunAllTaints_DatabaseSqlDriver() {

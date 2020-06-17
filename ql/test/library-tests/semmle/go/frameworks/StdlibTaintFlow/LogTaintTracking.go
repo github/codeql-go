@@ -1,3 +1,5 @@
+// WARNING: This file was automatically generated. DO NOT EDIT.
+
 package main
 
 import (
@@ -6,310 +8,310 @@ import (
 )
 
 func TaintStepTest_LogNew_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromLogger136` into `intoWriter742`.
+	// The flow is from `fromLogger346` into `intoWriter806`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromLogger136`:
-	fromLogger136 := sourceCQL.(*log.Logger)
+	// Assume that `sourceCQL` has the underlying type of `fromLogger346`:
+	fromLogger346 := sourceCQL.(*log.Logger)
 
-	// Declare `intoWriter742` variable:
-	var intoWriter742 io.Writer
+	// Declare `intoWriter806` variable:
+	var intoWriter806 io.Writer
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoWriter742`:
-	intermediateCQL := log.New(intoWriter742, "", 0)
+	// from the result `intermediateCQL` to parameter `intoWriter806`:
+	intermediateCQL := log.New(intoWriter806, "", 0)
 
-	// Extra step (`fromLogger136` taints `intermediateCQL`, which taints `intoWriter742`:
-	link(fromLogger136, intermediateCQL)
+	// Extra step (`fromLogger346` taints `intermediateCQL`, which taints `intoWriter806`:
+	link(fromLogger346, intermediateCQL)
 
-	// Return the tainted `intoWriter742`:
-	return intoWriter742
+	// Return the tainted `intoWriter806`:
+	return intoWriter806
 }
 
 func TaintStepTest_LogLoggerFatal_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface706` into `intoLogger111`.
+	// The flow is from `fromInterface748` into `intoLogger897`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface706`:
-	fromInterface706 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface748`:
+	fromInterface748 := sourceCQL.(interface{})
 
-	// Declare `intoLogger111` variable:
-	var intoLogger111 log.Logger
+	// Declare `intoLogger897` variable:
+	var intoLogger897 log.Logger
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface706` to the receiver `intoLogger111`
-	// (`intoLogger111` is now tainted).
-	intoLogger111.Fatal(fromInterface706)
+	// from the parameter `fromInterface748` to the receiver `intoLogger897`
+	// (`intoLogger897` is now tainted).
+	intoLogger897.Fatal(fromInterface748)
 
-	// Return the tainted `intoLogger111`:
-	return intoLogger111
+	// Return the tainted `intoLogger897`:
+	return intoLogger897
 }
 
 func TaintStepTest_LogLoggerFatalf_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString484` into `intoLogger209`.
+	// The flow is from `fromString324` into `intoLogger448`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString484`:
-	fromString484 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString324`:
+	fromString324 := sourceCQL.(string)
 
-	// Declare `intoLogger209` variable:
-	var intoLogger209 log.Logger
+	// Declare `intoLogger448` variable:
+	var intoLogger448 log.Logger
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString484` to the receiver `intoLogger209`
-	// (`intoLogger209` is now tainted).
-	intoLogger209.Fatalf(fromString484, nil)
+	// from the parameter `fromString324` to the receiver `intoLogger448`
+	// (`intoLogger448` is now tainted).
+	intoLogger448.Fatalf(fromString324, nil)
 
-	// Return the tainted `intoLogger209`:
-	return intoLogger209
+	// Return the tainted `intoLogger448`:
+	return intoLogger448
 }
 
 func TaintStepTest_LogLoggerFatalf_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface345` into `intoLogger374`.
+	// The flow is from `fromInterface940` into `intoLogger581`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface345`:
-	fromInterface345 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface940`:
+	fromInterface940 := sourceCQL.(interface{})
 
-	// Declare `intoLogger374` variable:
-	var intoLogger374 log.Logger
+	// Declare `intoLogger581` variable:
+	var intoLogger581 log.Logger
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface345` to the receiver `intoLogger374`
-	// (`intoLogger374` is now tainted).
-	intoLogger374.Fatalf("", fromInterface345)
+	// from the parameter `fromInterface940` to the receiver `intoLogger581`
+	// (`intoLogger581` is now tainted).
+	intoLogger581.Fatalf("", fromInterface940)
 
-	// Return the tainted `intoLogger374`:
-	return intoLogger374
+	// Return the tainted `intoLogger581`:
+	return intoLogger581
 }
 
 func TaintStepTest_LogLoggerFatalln_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface587` into `intoLogger651`.
+	// The flow is from `fromInterface499` into `intoLogger508`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface587`:
-	fromInterface587 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface499`:
+	fromInterface499 := sourceCQL.(interface{})
 
-	// Declare `intoLogger651` variable:
-	var intoLogger651 log.Logger
+	// Declare `intoLogger508` variable:
+	var intoLogger508 log.Logger
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface587` to the receiver `intoLogger651`
-	// (`intoLogger651` is now tainted).
-	intoLogger651.Fatalln(fromInterface587)
+	// from the parameter `fromInterface499` to the receiver `intoLogger508`
+	// (`intoLogger508` is now tainted).
+	intoLogger508.Fatalln(fromInterface499)
 
-	// Return the tainted `intoLogger651`:
-	return intoLogger651
+	// Return the tainted `intoLogger508`:
+	return intoLogger508
 }
 
 func TaintStepTest_LogLoggerPanic_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface782` into `intoLogger653`.
+	// The flow is from `fromInterface565` into `intoLogger438`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface782`:
-	fromInterface782 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface565`:
+	fromInterface565 := sourceCQL.(interface{})
 
-	// Declare `intoLogger653` variable:
-	var intoLogger653 log.Logger
+	// Declare `intoLogger438` variable:
+	var intoLogger438 log.Logger
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface782` to the receiver `intoLogger653`
-	// (`intoLogger653` is now tainted).
-	intoLogger653.Panic(fromInterface782)
+	// from the parameter `fromInterface565` to the receiver `intoLogger438`
+	// (`intoLogger438` is now tainted).
+	intoLogger438.Panic(fromInterface565)
 
-	// Return the tainted `intoLogger653`:
-	return intoLogger653
+	// Return the tainted `intoLogger438`:
+	return intoLogger438
 }
 
 func TaintStepTest_LogLoggerPanicf_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString879` into `intoLogger909`.
+	// The flow is from `fromString618` into `intoLogger115`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString879`:
-	fromString879 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString618`:
+	fromString618 := sourceCQL.(string)
 
-	// Declare `intoLogger909` variable:
-	var intoLogger909 log.Logger
+	// Declare `intoLogger115` variable:
+	var intoLogger115 log.Logger
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString879` to the receiver `intoLogger909`
-	// (`intoLogger909` is now tainted).
-	intoLogger909.Panicf(fromString879, nil)
+	// from the parameter `fromString618` to the receiver `intoLogger115`
+	// (`intoLogger115` is now tainted).
+	intoLogger115.Panicf(fromString618, nil)
 
-	// Return the tainted `intoLogger909`:
-	return intoLogger909
+	// Return the tainted `intoLogger115`:
+	return intoLogger115
 }
 
 func TaintStepTest_LogLoggerPanicf_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface595` into `intoLogger293`.
+	// The flow is from `fromInterface534` into `intoLogger483`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface595`:
-	fromInterface595 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface534`:
+	fromInterface534 := sourceCQL.(interface{})
 
-	// Declare `intoLogger293` variable:
-	var intoLogger293 log.Logger
+	// Declare `intoLogger483` variable:
+	var intoLogger483 log.Logger
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface595` to the receiver `intoLogger293`
-	// (`intoLogger293` is now tainted).
-	intoLogger293.Panicf("", fromInterface595)
+	// from the parameter `fromInterface534` to the receiver `intoLogger483`
+	// (`intoLogger483` is now tainted).
+	intoLogger483.Panicf("", fromInterface534)
 
-	// Return the tainted `intoLogger293`:
-	return intoLogger293
+	// Return the tainted `intoLogger483`:
+	return intoLogger483
 }
 
 func TaintStepTest_LogLoggerPanicln_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface269` into `intoLogger747`.
+	// The flow is from `fromInterface848` into `intoLogger783`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface269`:
-	fromInterface269 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface848`:
+	fromInterface848 := sourceCQL.(interface{})
 
-	// Declare `intoLogger747` variable:
-	var intoLogger747 log.Logger
+	// Declare `intoLogger783` variable:
+	var intoLogger783 log.Logger
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface269` to the receiver `intoLogger747`
-	// (`intoLogger747` is now tainted).
-	intoLogger747.Panicln(fromInterface269)
+	// from the parameter `fromInterface848` to the receiver `intoLogger783`
+	// (`intoLogger783` is now tainted).
+	intoLogger783.Panicln(fromInterface848)
 
-	// Return the tainted `intoLogger747`:
-	return intoLogger747
+	// Return the tainted `intoLogger783`:
+	return intoLogger783
 }
 
 func TaintStepTest_LogLoggerPrint_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface961` into `intoLogger219`.
+	// The flow is from `fromInterface655` into `intoLogger498`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface961`:
-	fromInterface961 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface655`:
+	fromInterface655 := sourceCQL.(interface{})
 
-	// Declare `intoLogger219` variable:
-	var intoLogger219 log.Logger
+	// Declare `intoLogger498` variable:
+	var intoLogger498 log.Logger
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface961` to the receiver `intoLogger219`
-	// (`intoLogger219` is now tainted).
-	intoLogger219.Print(fromInterface961)
+	// from the parameter `fromInterface655` to the receiver `intoLogger498`
+	// (`intoLogger498` is now tainted).
+	intoLogger498.Print(fromInterface655)
 
-	// Return the tainted `intoLogger219`:
-	return intoLogger219
+	// Return the tainted `intoLogger498`:
+	return intoLogger498
 }
 
 func TaintStepTest_LogLoggerPrintf_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString998` into `intoLogger834`.
+	// The flow is from `fromString309` into `intoLogger274`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString998`:
-	fromString998 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString309`:
+	fromString309 := sourceCQL.(string)
 
-	// Declare `intoLogger834` variable:
-	var intoLogger834 log.Logger
+	// Declare `intoLogger274` variable:
+	var intoLogger274 log.Logger
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString998` to the receiver `intoLogger834`
-	// (`intoLogger834` is now tainted).
-	intoLogger834.Printf(fromString998, nil)
+	// from the parameter `fromString309` to the receiver `intoLogger274`
+	// (`intoLogger274` is now tainted).
+	intoLogger274.Printf(fromString309, nil)
 
-	// Return the tainted `intoLogger834`:
-	return intoLogger834
+	// Return the tainted `intoLogger274`:
+	return intoLogger274
 }
 
 func TaintStepTest_LogLoggerPrintf_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface796` into `intoLogger235`.
+	// The flow is from `fromInterface540` into `intoLogger785`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface796`:
-	fromInterface796 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface540`:
+	fromInterface540 := sourceCQL.(interface{})
 
-	// Declare `intoLogger235` variable:
-	var intoLogger235 log.Logger
+	// Declare `intoLogger785` variable:
+	var intoLogger785 log.Logger
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface796` to the receiver `intoLogger235`
-	// (`intoLogger235` is now tainted).
-	intoLogger235.Printf("", fromInterface796)
+	// from the parameter `fromInterface540` to the receiver `intoLogger785`
+	// (`intoLogger785` is now tainted).
+	intoLogger785.Printf("", fromInterface540)
 
-	// Return the tainted `intoLogger235`:
-	return intoLogger235
+	// Return the tainted `intoLogger785`:
+	return intoLogger785
 }
 
 func TaintStepTest_LogLoggerPrintln_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface469` into `intoLogger213`.
+	// The flow is from `fromInterface179` into `intoLogger852`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface469`:
-	fromInterface469 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface179`:
+	fromInterface179 := sourceCQL.(interface{})
 
-	// Declare `intoLogger213` variable:
-	var intoLogger213 log.Logger
+	// Declare `intoLogger852` variable:
+	var intoLogger852 log.Logger
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface469` to the receiver `intoLogger213`
-	// (`intoLogger213` is now tainted).
-	intoLogger213.Println(fromInterface469)
+	// from the parameter `fromInterface179` to the receiver `intoLogger852`
+	// (`intoLogger852` is now tainted).
+	intoLogger852.Println(fromInterface179)
 
-	// Return the tainted `intoLogger213`:
-	return intoLogger213
+	// Return the tainted `intoLogger852`:
+	return intoLogger852
 }
 
 func TaintStepTest_LogLoggerSetOutput_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromLogger914` into `intoWriter856`.
+	// The flow is from `fromLogger376` into `intoWriter181`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromLogger914`:
-	fromLogger914 := sourceCQL.(log.Logger)
+	// Assume that `sourceCQL` has the underlying type of `fromLogger376`:
+	fromLogger376 := sourceCQL.(log.Logger)
 
-	// Declare `intoWriter856` variable:
-	var intoWriter856 io.Writer
+	// Declare `intoWriter181` variable:
+	var intoWriter181 io.Writer
 
 	// Call the method that transfers the taint
-	// from the receiver `fromLogger914` to the argument `intoWriter856`
-	// (`intoWriter856` is now tainted).
-	fromLogger914.SetOutput(intoWriter856)
+	// from the receiver `fromLogger376` to the argument `intoWriter181`
+	// (`intoWriter181` is now tainted).
+	fromLogger376.SetOutput(intoWriter181)
 
-	// Return the tainted `intoWriter856`:
-	return intoWriter856
+	// Return the tainted `intoWriter181`:
+	return intoWriter181
 }
 
 func TaintStepTest_LogLoggerSetPrefix_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString421` into `intoLogger476`.
+	// The flow is from `fromString727` into `intoLogger168`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString421`:
-	fromString421 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString727`:
+	fromString727 := sourceCQL.(string)
 
-	// Declare `intoLogger476` variable:
-	var intoLogger476 log.Logger
+	// Declare `intoLogger168` variable:
+	var intoLogger168 log.Logger
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString421` to the receiver `intoLogger476`
-	// (`intoLogger476` is now tainted).
-	intoLogger476.SetPrefix(fromString421)
+	// from the parameter `fromString727` to the receiver `intoLogger168`
+	// (`intoLogger168` is now tainted).
+	intoLogger168.SetPrefix(fromString727)
 
-	// Return the tainted `intoLogger476`:
-	return intoLogger476
+	// Return the tainted `intoLogger168`:
+	return intoLogger168
 }
 
 func TaintStepTest_LogLoggerWriter_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromWriter182` into `intoLogger144`.
+	// The flow is from `fromWriter784` into `intoLogger314`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriter182`:
-	fromWriter182 := sourceCQL.(io.Writer)
+	// Assume that `sourceCQL` has the underlying type of `fromWriter784`:
+	fromWriter784 := sourceCQL.(io.Writer)
 
-	// Declare `intoLogger144` variable:
-	var intoLogger144 log.Logger
+	// Declare `intoLogger314` variable:
+	var intoLogger314 log.Logger
 
 	// Call the method that will transfer the taint
-	// from the result `intermediateCQL` to receiver `intoLogger144`:
-	intermediateCQL := intoLogger144.Writer()
+	// from the result `intermediateCQL` to receiver `intoLogger314`:
+	intermediateCQL := intoLogger314.Writer()
 
-	// Extra step (`fromWriter182` taints `intermediateCQL`, which taints `intoLogger144`:
-	link(fromWriter182, intermediateCQL)
+	// Extra step (`fromWriter784` taints `intermediateCQL`, which taints `intoLogger314`:
+	link(fromWriter784, intermediateCQL)
 
-	// Return the tainted `intoLogger144`:
-	return intoLogger144
+	// Return the tainted `intoLogger314`:
+	return intoLogger314
 }
 
 func TaintStepTest_LogLoggerWriter_B1I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromLogger725` into `intoWriter849`.
+	// The flow is from `fromLogger164` into `intoWriter460`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromLogger725`:
-	fromLogger725 := sourceCQL.(log.Logger)
+	// Assume that `sourceCQL` has the underlying type of `fromLogger164`:
+	fromLogger164 := sourceCQL.(log.Logger)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromLogger725` to the result `intoWriter849`
-	// (`intoWriter849` is now tainted).
-	intoWriter849 := fromLogger725.Writer()
+	// from the receiver `fromLogger164` to the result `intoWriter460`
+	// (`intoWriter460` is now tainted).
+	intoWriter460 := fromLogger164.Writer()
 
-	// Return the tainted `intoWriter849`:
-	return intoWriter849
+	// Return the tainted `intoWriter460`:
+	return intoWriter460
 }
 
 func RunAllTaints_Log() {

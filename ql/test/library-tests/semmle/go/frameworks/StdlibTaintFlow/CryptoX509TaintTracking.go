@@ -1,3 +1,5 @@
+// WARNING: This file was automatically generated. DO NOT EDIT.
+
 package main
 
 import (
@@ -6,69 +8,69 @@ import (
 )
 
 func TaintStepTest_CryptoX509DecryptPEMBlock_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromBlock129` into `intoByte456`.
+	// The flow is from `fromBlock611` into `intoByte115`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromBlock129`:
-	fromBlock129 := sourceCQL.(*pem.Block)
+	// Assume that `sourceCQL` has the underlying type of `fromBlock611`:
+	fromBlock611 := sourceCQL.(*pem.Block)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromBlock129` to result `intoByte456`
-	// (`intoByte456` is now tainted).
-	intoByte456, _ := x509.DecryptPEMBlock(fromBlock129, nil)
+	// from the parameter `fromBlock611` to result `intoByte115`
+	// (`intoByte115` is now tainted).
+	intoByte115, _ := x509.DecryptPEMBlock(fromBlock611, nil)
 
-	// Return the tainted `intoByte456`:
-	return intoByte456
+	// Return the tainted `intoByte115`:
+	return intoByte115
 }
 
 func TaintStepTest_CryptoX509EncryptPEMBlock_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte375` into `intoBlock851`.
+	// The flow is from `fromByte497` into `intoBlock176`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte375`:
-	fromByte375 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte497`:
+	fromByte497 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte375` to result `intoBlock851`
-	// (`intoBlock851` is now tainted).
-	intoBlock851, _ := x509.EncryptPEMBlock(nil, "", fromByte375, nil, 0)
+	// from the parameter `fromByte497` to result `intoBlock176`
+	// (`intoBlock176` is now tainted).
+	intoBlock176, _ := x509.EncryptPEMBlock(nil, "", fromByte497, nil, 0)
 
-	// Return the tainted `intoBlock851`:
-	return intoBlock851
+	// Return the tainted `intoBlock176`:
+	return intoBlock176
 }
 
 func TaintStepTest_CryptoX509CertPoolAddCert_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromCertificate432` into `intoCertPool128`.
+	// The flow is from `fromCertificate789` into `intoCertPool537`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromCertificate432`:
-	fromCertificate432 := sourceCQL.(*x509.Certificate)
+	// Assume that `sourceCQL` has the underlying type of `fromCertificate789`:
+	fromCertificate789 := sourceCQL.(*x509.Certificate)
 
-	// Declare `intoCertPool128` variable:
-	var intoCertPool128 x509.CertPool
+	// Declare `intoCertPool537` variable:
+	var intoCertPool537 x509.CertPool
 
 	// Call the method that transfers the taint
-	// from the parameter `fromCertificate432` to the receiver `intoCertPool128`
-	// (`intoCertPool128` is now tainted).
-	intoCertPool128.AddCert(fromCertificate432)
+	// from the parameter `fromCertificate789` to the receiver `intoCertPool537`
+	// (`intoCertPool537` is now tainted).
+	intoCertPool537.AddCert(fromCertificate789)
 
-	// Return the tainted `intoCertPool128`:
-	return intoCertPool128
+	// Return the tainted `intoCertPool537`:
+	return intoCertPool537
 }
 
 func TaintStepTest_CryptoX509CertPoolAppendCertsFromPEM_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte258` into `intoCertPool911`.
+	// The flow is from `fromByte570` into `intoCertPool344`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte258`:
-	fromByte258 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte570`:
+	fromByte570 := sourceCQL.([]byte)
 
-	// Declare `intoCertPool911` variable:
-	var intoCertPool911 x509.CertPool
+	// Declare `intoCertPool344` variable:
+	var intoCertPool344 x509.CertPool
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte258` to the receiver `intoCertPool911`
-	// (`intoCertPool911` is now tainted).
-	intoCertPool911.AppendCertsFromPEM(fromByte258)
+	// from the parameter `fromByte570` to the receiver `intoCertPool344`
+	// (`intoCertPool344` is now tainted).
+	intoCertPool344.AppendCertsFromPEM(fromByte570)
 
-	// Return the tainted `intoCertPool911`:
-	return intoCertPool911
+	// Return the tainted `intoCertPool344`:
+	return intoCertPool344
 }
 
 func RunAllTaints_CryptoX509() {

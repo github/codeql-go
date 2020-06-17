@@ -1,3 +1,5 @@
+// WARNING: This file was automatically generated. DO NOT EDIT.
+
 package main
 
 import (
@@ -6,114 +8,114 @@ import (
 )
 
 func TaintStepTest_TextScannerTokenString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRune820` into `intoString981`.
+	// The flow is from `fromRune952` into `intoString719`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRune820`:
-	fromRune820 := sourceCQL.(rune)
+	// Assume that `sourceCQL` has the underlying type of `fromRune952`:
+	fromRune952 := sourceCQL.(rune)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromRune820` to result `intoString981`
-	// (`intoString981` is now tainted).
-	intoString981 := scanner.TokenString(fromRune820)
+	// from the parameter `fromRune952` to result `intoString719`
+	// (`intoString719` is now tainted).
+	intoString719 := scanner.TokenString(fromRune952)
 
-	// Return the tainted `intoString981`:
-	return intoString981
+	// Return the tainted `intoString719`:
+	return intoString719
 }
 
 func TaintStepTest_TextScannerScannerInit_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader385` into `intoScanner417`.
+	// The flow is from `fromReader807` into `intoScanner503`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader385`:
-	fromReader385 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader807`:
+	fromReader807 := sourceCQL.(io.Reader)
 
-	// Declare `intoScanner417` variable:
-	var intoScanner417 scanner.Scanner
+	// Declare `intoScanner503` variable:
+	var intoScanner503 scanner.Scanner
 
 	// Call the method that transfers the taint
-	// from the parameter `fromReader385` to the receiver `intoScanner417`
-	// (`intoScanner417` is now tainted).
-	intoScanner417.Init(fromReader385)
+	// from the parameter `fromReader807` to the receiver `intoScanner503`
+	// (`intoScanner503` is now tainted).
+	intoScanner503.Init(fromReader807)
 
-	// Return the tainted `intoScanner417`:
-	return intoScanner417
+	// Return the tainted `intoScanner503`:
+	return intoScanner503
 }
 
 func TaintStepTest_TextScannerScannerInit_B0I0O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader475` into `intoScanner466`.
+	// The flow is from `fromReader701` into `intoScanner148`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader475`:
-	fromReader475 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader701`:
+	fromReader701 := sourceCQL.(io.Reader)
 
 	// Declare medium object/interface:
 	var mediumObjCQL scanner.Scanner
 
 	// Call the method that transfers the taint
-	// from the parameter `fromReader475` to the result `intoScanner466`
-	// (`intoScanner466` is now tainted).
-	intoScanner466 := mediumObjCQL.Init(fromReader475)
+	// from the parameter `fromReader701` to the result `intoScanner148`
+	// (`intoScanner148` is now tainted).
+	intoScanner148 := mediumObjCQL.Init(fromReader701)
 
-	// Return the tainted `intoScanner466`:
-	return intoScanner466
+	// Return the tainted `intoScanner148`:
+	return intoScanner148
 }
 
 func TaintStepTest_TextScannerScannerNext_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromScanner304` into `intoRune640`.
+	// The flow is from `fromScanner309` into `intoRune492`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromScanner304`:
-	fromScanner304 := sourceCQL.(scanner.Scanner)
+	// Assume that `sourceCQL` has the underlying type of `fromScanner309`:
+	fromScanner309 := sourceCQL.(scanner.Scanner)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromScanner304` to the result `intoRune640`
-	// (`intoRune640` is now tainted).
-	intoRune640 := fromScanner304.Next()
+	// from the receiver `fromScanner309` to the result `intoRune492`
+	// (`intoRune492` is now tainted).
+	intoRune492 := fromScanner309.Next()
 
-	// Return the tainted `intoRune640`:
-	return intoRune640
+	// Return the tainted `intoRune492`:
+	return intoRune492
 }
 
 func TaintStepTest_TextScannerScannerPeek_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromScanner570` into `intoRune652`.
+	// The flow is from `fromScanner758` into `intoRune669`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromScanner570`:
-	fromScanner570 := sourceCQL.(scanner.Scanner)
+	// Assume that `sourceCQL` has the underlying type of `fromScanner758`:
+	fromScanner758 := sourceCQL.(scanner.Scanner)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromScanner570` to the result `intoRune652`
-	// (`intoRune652` is now tainted).
-	intoRune652 := fromScanner570.Peek()
+	// from the receiver `fromScanner758` to the result `intoRune669`
+	// (`intoRune669` is now tainted).
+	intoRune669 := fromScanner758.Peek()
 
-	// Return the tainted `intoRune652`:
-	return intoRune652
+	// Return the tainted `intoRune669`:
+	return intoRune669
 }
 
 func TaintStepTest_TextScannerScannerScan_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromScanner711` into `intoRune935`.
+	// The flow is from `fromScanner584` into `intoRune306`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromScanner711`:
-	fromScanner711 := sourceCQL.(scanner.Scanner)
+	// Assume that `sourceCQL` has the underlying type of `fromScanner584`:
+	fromScanner584 := sourceCQL.(scanner.Scanner)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromScanner711` to the result `intoRune935`
-	// (`intoRune935` is now tainted).
-	intoRune935 := fromScanner711.Scan()
+	// from the receiver `fromScanner584` to the result `intoRune306`
+	// (`intoRune306` is now tainted).
+	intoRune306 := fromScanner584.Scan()
 
-	// Return the tainted `intoRune935`:
-	return intoRune935
+	// Return the tainted `intoRune306`:
+	return intoRune306
 }
 
 func TaintStepTest_TextScannerScannerTokenText_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromScanner791` into `intoString804`.
+	// The flow is from `fromScanner403` into `intoString963`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromScanner791`:
-	fromScanner791 := sourceCQL.(scanner.Scanner)
+	// Assume that `sourceCQL` has the underlying type of `fromScanner403`:
+	fromScanner403 := sourceCQL.(scanner.Scanner)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromScanner791` to the result `intoString804`
-	// (`intoString804` is now tainted).
-	intoString804 := fromScanner791.TokenText()
+	// from the receiver `fromScanner403` to the result `intoString963`
+	// (`intoString963` is now tainted).
+	intoString963 := fromScanner403.TokenText()
 
-	// Return the tainted `intoString804`:
-	return intoString804
+	// Return the tainted `intoString963`:
+	return intoString963
 }
 
 func RunAllTaints_TextScanner() {

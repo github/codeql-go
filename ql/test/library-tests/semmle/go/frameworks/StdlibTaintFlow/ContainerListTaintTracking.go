@@ -1,320 +1,322 @@
+// WARNING: This file was automatically generated. DO NOT EDIT.
+
 package main
 
 import "container/list"
 
 func TaintStepTest_ContainerListListBack_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromList827` into `intoElement134`.
+	// The flow is from `fromList554` into `intoElement692`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromList827`:
-	fromList827 := sourceCQL.(list.List)
+	// Assume that `sourceCQL` has the underlying type of `fromList554`:
+	fromList554 := sourceCQL.(list.List)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromList827` to the result `intoElement134`
-	// (`intoElement134` is now tainted).
-	intoElement134 := fromList827.Back()
+	// from the receiver `fromList554` to the result `intoElement692`
+	// (`intoElement692` is now tainted).
+	intoElement692 := fromList554.Back()
 
-	// Return the tainted `intoElement134`:
-	return intoElement134
+	// Return the tainted `intoElement692`:
+	return intoElement692
 }
 
 func TaintStepTest_ContainerListListFront_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromList801` into `intoElement795`.
+	// The flow is from `fromList174` into `intoElement853`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromList801`:
-	fromList801 := sourceCQL.(list.List)
+	// Assume that `sourceCQL` has the underlying type of `fromList174`:
+	fromList174 := sourceCQL.(list.List)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromList801` to the result `intoElement795`
-	// (`intoElement795` is now tainted).
-	intoElement795 := fromList801.Front()
+	// from the receiver `fromList174` to the result `intoElement853`
+	// (`intoElement853` is now tainted).
+	intoElement853 := fromList174.Front()
 
-	// Return the tainted `intoElement795`:
-	return intoElement795
+	// Return the tainted `intoElement853`:
+	return intoElement853
 }
 
 func TaintStepTest_ContainerListListInit_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromList179` into `intoList744`.
+	// The flow is from `fromList299` into `intoList852`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromList179`:
-	fromList179 := sourceCQL.(list.List)
+	// Assume that `sourceCQL` has the underlying type of `fromList299`:
+	fromList299 := sourceCQL.(list.List)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromList179` to the result `intoList744`
-	// (`intoList744` is now tainted).
-	intoList744 := fromList179.Init()
+	// from the receiver `fromList299` to the result `intoList852`
+	// (`intoList852` is now tainted).
+	intoList852 := fromList299.Init()
 
-	// Return the tainted `intoList744`:
-	return intoList744
+	// Return the tainted `intoList852`:
+	return intoList852
 }
 
 func TaintStepTest_ContainerListListInsertAfter_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface353` into `intoList333`.
+	// The flow is from `fromInterface174` into `intoList489`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface353`:
-	fromInterface353 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface174`:
+	fromInterface174 := sourceCQL.(interface{})
 
-	// Declare `intoList333` variable:
-	var intoList333 list.List
+	// Declare `intoList489` variable:
+	var intoList489 list.List
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface353` to the receiver `intoList333`
-	// (`intoList333` is now tainted).
-	intoList333.InsertAfter(fromInterface353, nil)
+	// from the parameter `fromInterface174` to the receiver `intoList489`
+	// (`intoList489` is now tainted).
+	intoList489.InsertAfter(fromInterface174, nil)
 
-	// Return the tainted `intoList333`:
-	return intoList333
+	// Return the tainted `intoList489`:
+	return intoList489
 }
 
 func TaintStepTest_ContainerListListInsertAfter_B0I0O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface231` into `intoElement539`.
+	// The flow is from `fromInterface560` into `intoElement689`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface231`:
-	fromInterface231 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface560`:
+	fromInterface560 := sourceCQL.(interface{})
 
 	// Declare medium object/interface:
 	var mediumObjCQL list.List
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface231` to the result `intoElement539`
-	// (`intoElement539` is now tainted).
-	intoElement539 := mediumObjCQL.InsertAfter(fromInterface231, nil)
+	// from the parameter `fromInterface560` to the result `intoElement689`
+	// (`intoElement689` is now tainted).
+	intoElement689 := mediumObjCQL.InsertAfter(fromInterface560, nil)
 
-	// Return the tainted `intoElement539`:
-	return intoElement539
+	// Return the tainted `intoElement689`:
+	return intoElement689
 }
 
 func TaintStepTest_ContainerListListInsertBefore_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface319` into `intoList649`.
+	// The flow is from `fromInterface648` into `intoList519`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface319`:
-	fromInterface319 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface648`:
+	fromInterface648 := sourceCQL.(interface{})
 
-	// Declare `intoList649` variable:
-	var intoList649 list.List
+	// Declare `intoList519` variable:
+	var intoList519 list.List
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface319` to the receiver `intoList649`
-	// (`intoList649` is now tainted).
-	intoList649.InsertBefore(fromInterface319, nil)
+	// from the parameter `fromInterface648` to the receiver `intoList519`
+	// (`intoList519` is now tainted).
+	intoList519.InsertBefore(fromInterface648, nil)
 
-	// Return the tainted `intoList649`:
-	return intoList649
+	// Return the tainted `intoList519`:
+	return intoList519
 }
 
 func TaintStepTest_ContainerListListInsertBefore_B0I0O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface974` into `intoElement168`.
+	// The flow is from `fromInterface465` into `intoElement723`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface974`:
-	fromInterface974 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface465`:
+	fromInterface465 := sourceCQL.(interface{})
 
 	// Declare medium object/interface:
 	var mediumObjCQL list.List
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface974` to the result `intoElement168`
-	// (`intoElement168` is now tainted).
-	intoElement168 := mediumObjCQL.InsertBefore(fromInterface974, nil)
+	// from the parameter `fromInterface465` to the result `intoElement723`
+	// (`intoElement723` is now tainted).
+	intoElement723 := mediumObjCQL.InsertBefore(fromInterface465, nil)
 
-	// Return the tainted `intoElement168`:
-	return intoElement168
+	// Return the tainted `intoElement723`:
+	return intoElement723
 }
 
 func TaintStepTest_ContainerListListMoveAfter_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromElement234` into `intoList729`.
+	// The flow is from `fromElement596` into `intoList315`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromElement234`:
-	fromElement234 := sourceCQL.(*list.Element)
+	// Assume that `sourceCQL` has the underlying type of `fromElement596`:
+	fromElement596 := sourceCQL.(*list.Element)
 
-	// Declare `intoList729` variable:
-	var intoList729 list.List
+	// Declare `intoList315` variable:
+	var intoList315 list.List
 
 	// Call the method that transfers the taint
-	// from the parameter `fromElement234` to the receiver `intoList729`
-	// (`intoList729` is now tainted).
-	intoList729.MoveAfter(fromElement234, nil)
+	// from the parameter `fromElement596` to the receiver `intoList315`
+	// (`intoList315` is now tainted).
+	intoList315.MoveAfter(fromElement596, nil)
 
-	// Return the tainted `intoList729`:
-	return intoList729
+	// Return the tainted `intoList315`:
+	return intoList315
 }
 
 func TaintStepTest_ContainerListListMoveBefore_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromElement447` into `intoList203`.
+	// The flow is from `fromElement616` into `intoList613`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromElement447`:
-	fromElement447 := sourceCQL.(*list.Element)
+	// Assume that `sourceCQL` has the underlying type of `fromElement616`:
+	fromElement616 := sourceCQL.(*list.Element)
 
-	// Declare `intoList203` variable:
-	var intoList203 list.List
+	// Declare `intoList613` variable:
+	var intoList613 list.List
 
 	// Call the method that transfers the taint
-	// from the parameter `fromElement447` to the receiver `intoList203`
-	// (`intoList203` is now tainted).
-	intoList203.MoveBefore(fromElement447, nil)
+	// from the parameter `fromElement616` to the receiver `intoList613`
+	// (`intoList613` is now tainted).
+	intoList613.MoveBefore(fromElement616, nil)
 
-	// Return the tainted `intoList203`:
-	return intoList203
+	// Return the tainted `intoList613`:
+	return intoList613
 }
 
 func TaintStepTest_ContainerListListMoveToBack_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromElement803` into `intoList858`.
+	// The flow is from `fromElement915` into `intoList650`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromElement803`:
-	fromElement803 := sourceCQL.(*list.Element)
+	// Assume that `sourceCQL` has the underlying type of `fromElement915`:
+	fromElement915 := sourceCQL.(*list.Element)
 
-	// Declare `intoList858` variable:
-	var intoList858 list.List
+	// Declare `intoList650` variable:
+	var intoList650 list.List
 
 	// Call the method that transfers the taint
-	// from the parameter `fromElement803` to the receiver `intoList858`
-	// (`intoList858` is now tainted).
-	intoList858.MoveToBack(fromElement803)
+	// from the parameter `fromElement915` to the receiver `intoList650`
+	// (`intoList650` is now tainted).
+	intoList650.MoveToBack(fromElement915)
 
-	// Return the tainted `intoList858`:
-	return intoList858
+	// Return the tainted `intoList650`:
+	return intoList650
 }
 
 func TaintStepTest_ContainerListListMoveToFront_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromElement908` into `intoList483`.
+	// The flow is from `fromElement542` into `intoList277`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromElement908`:
-	fromElement908 := sourceCQL.(*list.Element)
+	// Assume that `sourceCQL` has the underlying type of `fromElement542`:
+	fromElement542 := sourceCQL.(*list.Element)
 
-	// Declare `intoList483` variable:
-	var intoList483 list.List
+	// Declare `intoList277` variable:
+	var intoList277 list.List
 
 	// Call the method that transfers the taint
-	// from the parameter `fromElement908` to the receiver `intoList483`
-	// (`intoList483` is now tainted).
-	intoList483.MoveToFront(fromElement908)
+	// from the parameter `fromElement542` to the receiver `intoList277`
+	// (`intoList277` is now tainted).
+	intoList277.MoveToFront(fromElement542)
 
-	// Return the tainted `intoList483`:
-	return intoList483
+	// Return the tainted `intoList277`:
+	return intoList277
 }
 
 func TaintStepTest_ContainerListListPushBack_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface714` into `intoList520`.
+	// The flow is from `fromInterface416` into `intoList594`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface714`:
-	fromInterface714 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface416`:
+	fromInterface416 := sourceCQL.(interface{})
 
-	// Declare `intoList520` variable:
-	var intoList520 list.List
+	// Declare `intoList594` variable:
+	var intoList594 list.List
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface714` to the receiver `intoList520`
-	// (`intoList520` is now tainted).
-	intoList520.PushBack(fromInterface714)
+	// from the parameter `fromInterface416` to the receiver `intoList594`
+	// (`intoList594` is now tainted).
+	intoList594.PushBack(fromInterface416)
 
-	// Return the tainted `intoList520`:
-	return intoList520
+	// Return the tainted `intoList594`:
+	return intoList594
 }
 
 func TaintStepTest_ContainerListListPushBack_B0I0O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface984` into `intoElement885`.
+	// The flow is from `fromInterface666` into `intoElement615`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface984`:
-	fromInterface984 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface666`:
+	fromInterface666 := sourceCQL.(interface{})
 
 	// Declare medium object/interface:
 	var mediumObjCQL list.List
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface984` to the result `intoElement885`
-	// (`intoElement885` is now tainted).
-	intoElement885 := mediumObjCQL.PushBack(fromInterface984)
+	// from the parameter `fromInterface666` to the result `intoElement615`
+	// (`intoElement615` is now tainted).
+	intoElement615 := mediumObjCQL.PushBack(fromInterface666)
 
-	// Return the tainted `intoElement885`:
-	return intoElement885
+	// Return the tainted `intoElement615`:
+	return intoElement615
 }
 
 func TaintStepTest_ContainerListListPushBackList_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromList160` into `intoList597`.
+	// The flow is from `fromList684` into `intoList741`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromList160`:
-	fromList160 := sourceCQL.(*list.List)
+	// Assume that `sourceCQL` has the underlying type of `fromList684`:
+	fromList684 := sourceCQL.(*list.List)
 
-	// Declare `intoList597` variable:
-	var intoList597 list.List
+	// Declare `intoList741` variable:
+	var intoList741 list.List
 
 	// Call the method that transfers the taint
-	// from the parameter `fromList160` to the receiver `intoList597`
-	// (`intoList597` is now tainted).
-	intoList597.PushBackList(fromList160)
+	// from the parameter `fromList684` to the receiver `intoList741`
+	// (`intoList741` is now tainted).
+	intoList741.PushBackList(fromList684)
 
-	// Return the tainted `intoList597`:
-	return intoList597
+	// Return the tainted `intoList741`:
+	return intoList741
 }
 
 func TaintStepTest_ContainerListListPushFront_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface190` into `intoList311`.
+	// The flow is from `fromInterface129` into `intoList218`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface190`:
-	fromInterface190 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface129`:
+	fromInterface129 := sourceCQL.(interface{})
 
-	// Declare `intoList311` variable:
-	var intoList311 list.List
+	// Declare `intoList218` variable:
+	var intoList218 list.List
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface190` to the receiver `intoList311`
-	// (`intoList311` is now tainted).
-	intoList311.PushFront(fromInterface190)
+	// from the parameter `fromInterface129` to the receiver `intoList218`
+	// (`intoList218` is now tainted).
+	intoList218.PushFront(fromInterface129)
 
-	// Return the tainted `intoList311`:
-	return intoList311
+	// Return the tainted `intoList218`:
+	return intoList218
 }
 
 func TaintStepTest_ContainerListListPushFront_B0I0O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface504` into `intoElement993`.
+	// The flow is from `fromInterface391` into `intoElement401`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface504`:
-	fromInterface504 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface391`:
+	fromInterface391 := sourceCQL.(interface{})
 
 	// Declare medium object/interface:
 	var mediumObjCQL list.List
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface504` to the result `intoElement993`
-	// (`intoElement993` is now tainted).
-	intoElement993 := mediumObjCQL.PushFront(fromInterface504)
+	// from the parameter `fromInterface391` to the result `intoElement401`
+	// (`intoElement401` is now tainted).
+	intoElement401 := mediumObjCQL.PushFront(fromInterface391)
 
-	// Return the tainted `intoElement993`:
-	return intoElement993
+	// Return the tainted `intoElement401`:
+	return intoElement401
 }
 
 func TaintStepTest_ContainerListListPushFrontList_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromList368` into `intoList586`.
+	// The flow is from `fromList179` into `intoList313`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromList368`:
-	fromList368 := sourceCQL.(*list.List)
+	// Assume that `sourceCQL` has the underlying type of `fromList179`:
+	fromList179 := sourceCQL.(*list.List)
 
-	// Declare `intoList586` variable:
-	var intoList586 list.List
+	// Declare `intoList313` variable:
+	var intoList313 list.List
 
 	// Call the method that transfers the taint
-	// from the parameter `fromList368` to the receiver `intoList586`
-	// (`intoList586` is now tainted).
-	intoList586.PushFrontList(fromList368)
+	// from the parameter `fromList179` to the receiver `intoList313`
+	// (`intoList313` is now tainted).
+	intoList313.PushFrontList(fromList179)
 
-	// Return the tainted `intoList586`:
-	return intoList586
+	// Return the tainted `intoList313`:
+	return intoList313
 }
 
 func TaintStepTest_ContainerListListRemove_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromElement859` into `intoInterface679`.
+	// The flow is from `fromElement932` into `intoInterface431`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromElement859`:
-	fromElement859 := sourceCQL.(*list.Element)
+	// Assume that `sourceCQL` has the underlying type of `fromElement932`:
+	fromElement932 := sourceCQL.(*list.Element)
 
 	// Declare medium object/interface:
 	var mediumObjCQL list.List
 
 	// Call the method that transfers the taint
-	// from the parameter `fromElement859` to the result `intoInterface679`
-	// (`intoInterface679` is now tainted).
-	intoInterface679 := mediumObjCQL.Remove(fromElement859)
+	// from the parameter `fromElement932` to the result `intoInterface431`
+	// (`intoInterface431` is now tainted).
+	intoInterface431 := mediumObjCQL.Remove(fromElement932)
 
-	// Return the tainted `intoInterface679`:
-	return intoInterface679
+	// Return the tainted `intoInterface431`:
+	return intoInterface431
 }
 
 func RunAllTaints_ContainerList() {

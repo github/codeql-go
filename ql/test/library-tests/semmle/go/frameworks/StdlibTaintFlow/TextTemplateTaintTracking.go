@@ -1,3 +1,5 @@
+// WARNING: This file was automatically generated. DO NOT EDIT.
+
 package main
 
 import (
@@ -6,237 +8,237 @@ import (
 )
 
 func TaintStepTest_TextTemplateHTMLEscape_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte914` into `intoWriter960`.
+	// The flow is from `fromByte785` into `intoWriter156`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte914`:
-	fromByte914 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte785`:
+	fromByte785 := sourceCQL.([]byte)
 
-	// Declare `intoWriter960` variable:
-	var intoWriter960 io.Writer
+	// Declare `intoWriter156` variable:
+	var intoWriter156 io.Writer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte914` to parameter `intoWriter960`;
-	// `intoWriter960` is now tainted.
-	template.HTMLEscape(intoWriter960, fromByte914)
+	// from the parameter `fromByte785` to parameter `intoWriter156`;
+	// `intoWriter156` is now tainted.
+	template.HTMLEscape(intoWriter156, fromByte785)
 
-	// Return the tainted `intoWriter960`:
-	return intoWriter960
+	// Return the tainted `intoWriter156`:
+	return intoWriter156
 }
 
 func TaintStepTest_TextTemplateHTMLEscapeString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString931` into `intoString288`.
+	// The flow is from `fromString995` into `intoString636`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString931`:
-	fromString931 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString995`:
+	fromString995 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString931` to result `intoString288`
-	// (`intoString288` is now tainted).
-	intoString288 := template.HTMLEscapeString(fromString931)
+	// from the parameter `fromString995` to result `intoString636`
+	// (`intoString636` is now tainted).
+	intoString636 := template.HTMLEscapeString(fromString995)
 
-	// Return the tainted `intoString288`:
-	return intoString288
+	// Return the tainted `intoString636`:
+	return intoString636
 }
 
 func TaintStepTest_TextTemplateHTMLEscaper_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface135` into `intoString196`.
+	// The flow is from `fromInterface235` into `intoString876`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface135`:
-	fromInterface135 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface235`:
+	fromInterface235 := sourceCQL.(interface{})
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface135` to result `intoString196`
-	// (`intoString196` is now tainted).
-	intoString196 := template.HTMLEscaper(fromInterface135)
+	// from the parameter `fromInterface235` to result `intoString876`
+	// (`intoString876` is now tainted).
+	intoString876 := template.HTMLEscaper(fromInterface235)
 
-	// Return the tainted `intoString196`:
-	return intoString196
+	// Return the tainted `intoString876`:
+	return intoString876
 }
 
 func TaintStepTest_TextTemplateJSEscape_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte619` into `intoWriter285`.
+	// The flow is from `fromByte473` into `intoWriter287`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte619`:
-	fromByte619 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte473`:
+	fromByte473 := sourceCQL.([]byte)
 
-	// Declare `intoWriter285` variable:
-	var intoWriter285 io.Writer
+	// Declare `intoWriter287` variable:
+	var intoWriter287 io.Writer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte619` to parameter `intoWriter285`;
-	// `intoWriter285` is now tainted.
-	template.JSEscape(intoWriter285, fromByte619)
+	// from the parameter `fromByte473` to parameter `intoWriter287`;
+	// `intoWriter287` is now tainted.
+	template.JSEscape(intoWriter287, fromByte473)
 
-	// Return the tainted `intoWriter285`:
-	return intoWriter285
+	// Return the tainted `intoWriter287`:
+	return intoWriter287
 }
 
 func TaintStepTest_TextTemplateJSEscapeString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString470` into `intoString384`.
+	// The flow is from `fromString618` into `intoString838`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString470`:
-	fromString470 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString618`:
+	fromString618 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString470` to result `intoString384`
-	// (`intoString384` is now tainted).
-	intoString384 := template.JSEscapeString(fromString470)
+	// from the parameter `fromString618` to result `intoString838`
+	// (`intoString838` is now tainted).
+	intoString838 := template.JSEscapeString(fromString618)
 
-	// Return the tainted `intoString384`:
-	return intoString384
+	// Return the tainted `intoString838`:
+	return intoString838
 }
 
 func TaintStepTest_TextTemplateJSEscaper_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface211` into `intoString312`.
+	// The flow is from `fromInterface318` into `intoString298`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface211`:
-	fromInterface211 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface318`:
+	fromInterface318 := sourceCQL.(interface{})
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface211` to result `intoString312`
-	// (`intoString312` is now tainted).
-	intoString312 := template.JSEscaper(fromInterface211)
+	// from the parameter `fromInterface318` to result `intoString298`
+	// (`intoString298` is now tainted).
+	intoString298 := template.JSEscaper(fromInterface318)
 
-	// Return the tainted `intoString312`:
-	return intoString312
+	// Return the tainted `intoString298`:
+	return intoString298
 }
 
 func TaintStepTest_TextTemplateNew_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString897` into `intoTemplate510`.
+	// The flow is from `fromString758` into `intoTemplate459`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString897`:
-	fromString897 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString758`:
+	fromString758 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString897` to result `intoTemplate510`
-	// (`intoTemplate510` is now tainted).
-	intoTemplate510 := template.New(fromString897)
+	// from the parameter `fromString758` to result `intoTemplate459`
+	// (`intoTemplate459` is now tainted).
+	intoTemplate459 := template.New(fromString758)
 
-	// Return the tainted `intoTemplate510`:
-	return intoTemplate510
+	// Return the tainted `intoTemplate459`:
+	return intoTemplate459
 }
 
 func TaintStepTest_TextTemplateParseFiles_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString502` into `intoTemplate280`.
+	// The flow is from `fromString571` into `intoTemplate472`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString502`:
-	fromString502 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString571`:
+	fromString571 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString502` to result `intoTemplate280`
-	// (`intoTemplate280` is now tainted).
-	intoTemplate280, _ := template.ParseFiles(fromString502)
+	// from the parameter `fromString571` to result `intoTemplate472`
+	// (`intoTemplate472` is now tainted).
+	intoTemplate472, _ := template.ParseFiles(fromString571)
 
-	// Return the tainted `intoTemplate280`:
-	return intoTemplate280
+	// Return the tainted `intoTemplate472`:
+	return intoTemplate472
 }
 
 func TaintStepTest_TextTemplateParseGlob_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString731` into `intoTemplate195`.
+	// The flow is from `fromString191` into `intoTemplate123`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString731`:
-	fromString731 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString191`:
+	fromString191 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString731` to result `intoTemplate195`
-	// (`intoTemplate195` is now tainted).
-	intoTemplate195, _ := template.ParseGlob(fromString731)
+	// from the parameter `fromString191` to result `intoTemplate123`
+	// (`intoTemplate123` is now tainted).
+	intoTemplate123, _ := template.ParseGlob(fromString191)
 
-	// Return the tainted `intoTemplate195`:
-	return intoTemplate195
+	// Return the tainted `intoTemplate123`:
+	return intoTemplate123
 }
 
 func TaintStepTest_TextTemplateURLQueryEscaper_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface703` into `intoString643`.
+	// The flow is from `fromInterface451` into `intoString118`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface703`:
-	fromInterface703 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface451`:
+	fromInterface451 := sourceCQL.(interface{})
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface703` to result `intoString643`
-	// (`intoString643` is now tainted).
-	intoString643 := template.URLQueryEscaper(fromInterface703)
+	// from the parameter `fromInterface451` to result `intoString118`
+	// (`intoString118` is now tainted).
+	intoString118 := template.URLQueryEscaper(fromInterface451)
 
-	// Return the tainted `intoString643`:
-	return intoString643
+	// Return the tainted `intoString118`:
+	return intoString118
 }
 
 func TaintStepTest_TextTemplateTemplateExecute_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromTemplate152` into `intoWriter577`.
+	// The flow is from `fromTemplate216` into `intoWriter748`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromTemplate152`:
-	fromTemplate152 := sourceCQL.(template.Template)
+	// Assume that `sourceCQL` has the underlying type of `fromTemplate216`:
+	fromTemplate216 := sourceCQL.(template.Template)
 
-	// Declare `intoWriter577` variable:
-	var intoWriter577 io.Writer
+	// Declare `intoWriter748` variable:
+	var intoWriter748 io.Writer
 
 	// Call the method that transfers the taint
-	// from the receiver `fromTemplate152` to the argument `intoWriter577`
-	// (`intoWriter577` is now tainted).
-	fromTemplate152.Execute(intoWriter577, nil)
+	// from the receiver `fromTemplate216` to the argument `intoWriter748`
+	// (`intoWriter748` is now tainted).
+	fromTemplate216.Execute(intoWriter748, nil)
 
-	// Return the tainted `intoWriter577`:
-	return intoWriter577
+	// Return the tainted `intoWriter748`:
+	return intoWriter748
 }
 
 func TaintStepTest_TextTemplateTemplateExecute_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface411` into `intoWriter412`.
+	// The flow is from `fromInterface568` into `intoWriter543`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface411`:
-	fromInterface411 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface568`:
+	fromInterface568 := sourceCQL.(interface{})
 
-	// Declare `intoWriter412` variable:
-	var intoWriter412 io.Writer
+	// Declare `intoWriter543` variable:
+	var intoWriter543 io.Writer
 
 	// Declare medium object/interface:
 	var mediumObjCQL template.Template
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface411` to the parameter `intoWriter412`
-	// (`intoWriter412` is now tainted).
-	mediumObjCQL.Execute(intoWriter412, fromInterface411)
+	// from the parameter `fromInterface568` to the parameter `intoWriter543`
+	// (`intoWriter543` is now tainted).
+	mediumObjCQL.Execute(intoWriter543, fromInterface568)
 
-	// Return the tainted `intoWriter412`:
-	return intoWriter412
+	// Return the tainted `intoWriter543`:
+	return intoWriter543
 }
 
 func TaintStepTest_TextTemplateTemplateExecuteTemplate_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromTemplate380` into `intoWriter162`.
+	// The flow is from `fromTemplate391` into `intoWriter672`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromTemplate380`:
-	fromTemplate380 := sourceCQL.(template.Template)
+	// Assume that `sourceCQL` has the underlying type of `fromTemplate391`:
+	fromTemplate391 := sourceCQL.(template.Template)
 
-	// Declare `intoWriter162` variable:
-	var intoWriter162 io.Writer
+	// Declare `intoWriter672` variable:
+	var intoWriter672 io.Writer
 
 	// Call the method that transfers the taint
-	// from the receiver `fromTemplate380` to the argument `intoWriter162`
-	// (`intoWriter162` is now tainted).
-	fromTemplate380.ExecuteTemplate(intoWriter162, "", nil)
+	// from the receiver `fromTemplate391` to the argument `intoWriter672`
+	// (`intoWriter672` is now tainted).
+	fromTemplate391.ExecuteTemplate(intoWriter672, "", nil)
 
-	// Return the tainted `intoWriter162`:
-	return intoWriter162
+	// Return the tainted `intoWriter672`:
+	return intoWriter672
 }
 
 func TaintStepTest_TextTemplateTemplateExecuteTemplate_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface446` into `intoWriter588`.
+	// The flow is from `fromInterface175` into `intoWriter140`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface446`:
-	fromInterface446 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface175`:
+	fromInterface175 := sourceCQL.(interface{})
 
-	// Declare `intoWriter588` variable:
-	var intoWriter588 io.Writer
+	// Declare `intoWriter140` variable:
+	var intoWriter140 io.Writer
 
 	// Declare medium object/interface:
 	var mediumObjCQL template.Template
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface446` to the parameter `intoWriter588`
-	// (`intoWriter588` is now tainted).
-	mediumObjCQL.ExecuteTemplate(intoWriter588, "", fromInterface446)
+	// from the parameter `fromInterface175` to the parameter `intoWriter140`
+	// (`intoWriter140` is now tainted).
+	mediumObjCQL.ExecuteTemplate(intoWriter140, "", fromInterface175)
 
-	// Return the tainted `intoWriter588`:
-	return intoWriter588
+	// Return the tainted `intoWriter140`:
+	return intoWriter140
 }
 
 func RunAllTaints_TextTemplate() {

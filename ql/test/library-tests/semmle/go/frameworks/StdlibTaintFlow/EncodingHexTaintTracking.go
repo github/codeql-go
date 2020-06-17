@@ -1,3 +1,5 @@
+// WARNING: This file was automatically generated. DO NOT EDIT.
+
 package main
 
 import (
@@ -6,139 +8,139 @@ import (
 )
 
 func TaintStepTest_EncodingHexDecode_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte708` into `intoByte185`.
+	// The flow is from `fromByte325` into `intoByte463`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte708`:
-	fromByte708 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte325`:
+	fromByte325 := sourceCQL.([]byte)
 
-	// Declare `intoByte185` variable:
-	var intoByte185 []byte
+	// Declare `intoByte463` variable:
+	var intoByte463 []byte
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte708` to parameter `intoByte185`;
-	// `intoByte185` is now tainted.
-	hex.Decode(intoByte185, fromByte708)
+	// from the parameter `fromByte325` to parameter `intoByte463`;
+	// `intoByte463` is now tainted.
+	hex.Decode(intoByte463, fromByte325)
 
-	// Return the tainted `intoByte185`:
-	return intoByte185
+	// Return the tainted `intoByte463`:
+	return intoByte463
 }
 
 func TaintStepTest_EncodingHexDecodeString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString124` into `intoByte637`.
+	// The flow is from `fromString140` into `intoByte410`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString124`:
-	fromString124 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString140`:
+	fromString140 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString124` to result `intoByte637`
-	// (`intoByte637` is now tainted).
-	intoByte637, _ := hex.DecodeString(fromString124)
+	// from the parameter `fromString140` to result `intoByte410`
+	// (`intoByte410` is now tainted).
+	intoByte410, _ := hex.DecodeString(fromString140)
 
-	// Return the tainted `intoByte637`:
-	return intoByte637
+	// Return the tainted `intoByte410`:
+	return intoByte410
 }
 
 func TaintStepTest_EncodingHexDump_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte935` into `intoString520`.
+	// The flow is from `fromByte663` into `intoString665`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte935`:
-	fromByte935 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte663`:
+	fromByte663 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte935` to result `intoString520`
-	// (`intoString520` is now tainted).
-	intoString520 := hex.Dump(fromByte935)
+	// from the parameter `fromByte663` to result `intoString665`
+	// (`intoString665` is now tainted).
+	intoString665 := hex.Dump(fromByte663)
 
-	// Return the tainted `intoString520`:
-	return intoString520
+	// Return the tainted `intoString665`:
+	return intoString665
 }
 
 func TaintStepTest_EncodingHexDumper_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromWriteCloser700` into `intoWriter486`.
+	// The flow is from `fromWriteCloser893` into `intoWriter940`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriteCloser700`:
-	fromWriteCloser700 := sourceCQL.(io.WriteCloser)
+	// Assume that `sourceCQL` has the underlying type of `fromWriteCloser893`:
+	fromWriteCloser893 := sourceCQL.(io.WriteCloser)
 
-	// Declare `intoWriter486` variable:
-	var intoWriter486 io.Writer
+	// Declare `intoWriter940` variable:
+	var intoWriter940 io.Writer
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoWriter486`:
-	intermediateCQL := hex.Dumper(intoWriter486)
+	// from the result `intermediateCQL` to parameter `intoWriter940`:
+	intermediateCQL := hex.Dumper(intoWriter940)
 
-	// Extra step (`fromWriteCloser700` taints `intermediateCQL`, which taints `intoWriter486`:
-	link(fromWriteCloser700, intermediateCQL)
+	// Extra step (`fromWriteCloser893` taints `intermediateCQL`, which taints `intoWriter940`:
+	link(fromWriteCloser893, intermediateCQL)
 
-	// Return the tainted `intoWriter486`:
-	return intoWriter486
+	// Return the tainted `intoWriter940`:
+	return intoWriter940
 }
 
 func TaintStepTest_EncodingHexEncode_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte835` into `intoByte208`.
+	// The flow is from `fromByte878` into `intoByte906`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte835`:
-	fromByte835 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte878`:
+	fromByte878 := sourceCQL.([]byte)
 
-	// Declare `intoByte208` variable:
-	var intoByte208 []byte
+	// Declare `intoByte906` variable:
+	var intoByte906 []byte
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte835` to parameter `intoByte208`;
-	// `intoByte208` is now tainted.
-	hex.Encode(intoByte208, fromByte835)
+	// from the parameter `fromByte878` to parameter `intoByte906`;
+	// `intoByte906` is now tainted.
+	hex.Encode(intoByte906, fromByte878)
 
-	// Return the tainted `intoByte208`:
-	return intoByte208
+	// Return the tainted `intoByte906`:
+	return intoByte906
 }
 
 func TaintStepTest_EncodingHexEncodeToString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte375` into `intoString166`.
+	// The flow is from `fromByte613` into `intoString878`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte375`:
-	fromByte375 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte613`:
+	fromByte613 := sourceCQL.([]byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte375` to result `intoString166`
-	// (`intoString166` is now tainted).
-	intoString166 := hex.EncodeToString(fromByte375)
+	// from the parameter `fromByte613` to result `intoString878`
+	// (`intoString878` is now tainted).
+	intoString878 := hex.EncodeToString(fromByte613)
 
-	// Return the tainted `intoString166`:
-	return intoString166
+	// Return the tainted `intoString878`:
+	return intoString878
 }
 
 func TaintStepTest_EncodingHexNewDecoder_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader916` into `intoReader561`.
+	// The flow is from `fromReader701` into `intoReader830`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader916`:
-	fromReader916 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader701`:
+	fromReader701 := sourceCQL.(io.Reader)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader916` to result `intoReader561`
-	// (`intoReader561` is now tainted).
-	intoReader561 := hex.NewDecoder(fromReader916)
+	// from the parameter `fromReader701` to result `intoReader830`
+	// (`intoReader830` is now tainted).
+	intoReader830 := hex.NewDecoder(fromReader701)
 
-	// Return the tainted `intoReader561`:
-	return intoReader561
+	// Return the tainted `intoReader830`:
+	return intoReader830
 }
 
 func TaintStepTest_EncodingHexNewEncoder_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromWriter667` into `intoWriter458`.
+	// The flow is from `fromWriter905` into `intoWriter686`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriter667`:
-	fromWriter667 := sourceCQL.(io.Writer)
+	// Assume that `sourceCQL` has the underlying type of `fromWriter905`:
+	fromWriter905 := sourceCQL.(io.Writer)
 
-	// Declare `intoWriter458` variable:
-	var intoWriter458 io.Writer
+	// Declare `intoWriter686` variable:
+	var intoWriter686 io.Writer
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoWriter458`:
-	intermediateCQL := hex.NewEncoder(intoWriter458)
+	// from the result `intermediateCQL` to parameter `intoWriter686`:
+	intermediateCQL := hex.NewEncoder(intoWriter686)
 
-	// Extra step (`fromWriter667` taints `intermediateCQL`, which taints `intoWriter458`:
-	link(fromWriter667, intermediateCQL)
+	// Extra step (`fromWriter905` taints `intermediateCQL`, which taints `intoWriter686`:
+	link(fromWriter905, intermediateCQL)
 
-	// Return the tainted `intoWriter458`:
-	return intoWriter458
+	// Return the tainted `intoWriter686`:
+	return intoWriter686
 }
 
 func RunAllTaints_EncodingHex() {

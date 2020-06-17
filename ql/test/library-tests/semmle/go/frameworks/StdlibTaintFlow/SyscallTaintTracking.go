@@ -1,199 +1,201 @@
+// WARNING: This file was automatically generated. DO NOT EDIT.
+
 package main
 
 import "syscall"
 
 func TaintStepTest_SyscallBytePtrFromString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString506` into `intoByte294`.
+	// The flow is from `fromString711` into `intoByte975`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString506`:
-	fromString506 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString711`:
+	fromString711 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString506` to result `intoByte294`
-	// (`intoByte294` is now tainted).
-	intoByte294, _ := syscall.BytePtrFromString(fromString506)
+	// from the parameter `fromString711` to result `intoByte975`
+	// (`intoByte975` is now tainted).
+	intoByte975, _ := syscall.BytePtrFromString(fromString711)
 
-	// Return the tainted `intoByte294`:
-	return intoByte294
+	// Return the tainted `intoByte975`:
+	return intoByte975
 }
 
 func TaintStepTest_SyscallByteSliceFromString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString301` into `intoByte693`.
+	// The flow is from `fromString781` into `intoByte466`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString301`:
-	fromString301 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString781`:
+	fromString781 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString301` to result `intoByte693`
-	// (`intoByte693` is now tainted).
-	intoByte693, _ := syscall.ByteSliceFromString(fromString301)
+	// from the parameter `fromString781` to result `intoByte466`
+	// (`intoByte466` is now tainted).
+	intoByte466, _ := syscall.ByteSliceFromString(fromString781)
 
-	// Return the tainted `intoByte693`:
-	return intoByte693
+	// Return the tainted `intoByte466`:
+	return intoByte466
 }
 
 func TaintStepTest_SyscallPread_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInt793` into `intoByte920`.
+	// The flow is from `fromInt237` into `intoByte429`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInt793`:
-	fromInt793 := sourceCQL.(int)
+	// Assume that `sourceCQL` has the underlying type of `fromInt237`:
+	fromInt237 := sourceCQL.(int)
 
-	// Declare `intoByte920` variable:
-	var intoByte920 []byte
+	// Declare `intoByte429` variable:
+	var intoByte429 []byte
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInt793` to parameter `intoByte920`;
-	// `intoByte920` is now tainted.
-	syscall.Pread(fromInt793, intoByte920, 0)
+	// from the parameter `fromInt237` to parameter `intoByte429`;
+	// `intoByte429` is now tainted.
+	syscall.Pread(fromInt237, intoByte429, 0)
 
-	// Return the tainted `intoByte920`:
-	return intoByte920
+	// Return the tainted `intoByte429`:
+	return intoByte429
 }
 
 func TaintStepTest_SyscallSlicePtrFromStrings_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString276` into `intoByte846`.
+	// The flow is from `fromString135` into `intoByte664`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString276`:
-	fromString276 := sourceCQL.([]string)
+	// Assume that `sourceCQL` has the underlying type of `fromString135`:
+	fromString135 := sourceCQL.([]string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString276` to result `intoByte846`
-	// (`intoByte846` is now tainted).
-	intoByte846, _ := syscall.SlicePtrFromStrings(fromString276)
+	// from the parameter `fromString135` to result `intoByte664`
+	// (`intoByte664` is now tainted).
+	intoByte664, _ := syscall.SlicePtrFromStrings(fromString135)
 
-	// Return the tainted `intoByte846`:
-	return intoByte846
+	// Return the tainted `intoByte664`:
+	return intoByte664
 }
 
 func TaintStepTest_SyscallStringBytePtr_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString636` into `intoByte655`.
+	// The flow is from `fromString514` into `intoByte120`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString636`:
-	fromString636 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString514`:
+	fromString514 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString636` to result `intoByte655`
-	// (`intoByte655` is now tainted).
-	intoByte655 := syscall.StringBytePtr(fromString636)
+	// from the parameter `fromString514` to result `intoByte120`
+	// (`intoByte120` is now tainted).
+	intoByte120 := syscall.StringBytePtr(fromString514)
 
-	// Return the tainted `intoByte655`:
-	return intoByte655
+	// Return the tainted `intoByte120`:
+	return intoByte120
 }
 
 func TaintStepTest_SyscallStringByteSlice_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString545` into `intoByte614`.
+	// The flow is from `fromString796` into `intoByte178`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString545`:
-	fromString545 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString796`:
+	fromString796 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString545` to result `intoByte614`
-	// (`intoByte614` is now tainted).
-	intoByte614 := syscall.StringByteSlice(fromString545)
+	// from the parameter `fromString796` to result `intoByte178`
+	// (`intoByte178` is now tainted).
+	intoByte178 := syscall.StringByteSlice(fromString796)
 
-	// Return the tainted `intoByte614`:
-	return intoByte614
+	// Return the tainted `intoByte178`:
+	return intoByte178
 }
 
 func TaintStepTest_SyscallStringSlicePtr_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString729` into `intoByte943`.
+	// The flow is from `fromString227` into `intoByte707`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString729`:
-	fromString729 := sourceCQL.([]string)
+	// Assume that `sourceCQL` has the underlying type of `fromString227`:
+	fromString227 := sourceCQL.([]string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString729` to result `intoByte943`
-	// (`intoByte943` is now tainted).
-	intoByte943 := syscall.StringSlicePtr(fromString729)
+	// from the parameter `fromString227` to result `intoByte707`
+	// (`intoByte707` is now tainted).
+	intoByte707 := syscall.StringSlicePtr(fromString227)
 
-	// Return the tainted `intoByte943`:
-	return intoByte943
+	// Return the tainted `intoByte707`:
+	return intoByte707
 }
 
 func TaintStepTest_SyscallUnixCredentials_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUcred940` into `intoByte660`.
+	// The flow is from `fromUcred694` into `intoByte303`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUcred940`:
-	fromUcred940 := sourceCQL.(*syscall.Ucred)
+	// Assume that `sourceCQL` has the underlying type of `fromUcred694`:
+	fromUcred694 := sourceCQL.(*syscall.Ucred)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromUcred940` to result `intoByte660`
-	// (`intoByte660` is now tainted).
-	intoByte660 := syscall.UnixCredentials(fromUcred940)
+	// from the parameter `fromUcred694` to result `intoByte303`
+	// (`intoByte303` is now tainted).
+	intoByte303 := syscall.UnixCredentials(fromUcred694)
 
-	// Return the tainted `intoByte660`:
-	return intoByte660
+	// Return the tainted `intoByte303`:
+	return intoByte303
 }
 
 func TaintStepTest_SyscallRawConnRead_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRawConn718` into `intoFuncfdUintptrdoneBool883`.
+	// The flow is from `fromRawConn962` into `intoFuncfdUintptrdoneBool681`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRawConn718`:
-	fromRawConn718 := sourceCQL.(syscall.RawConn)
+	// Assume that `sourceCQL` has the underlying type of `fromRawConn962`:
+	fromRawConn962 := sourceCQL.(syscall.RawConn)
 
-	// Declare `intoFuncfdUintptrdoneBool883` variable:
-	var intoFuncfdUintptrdoneBool883 func(uintptr) bool
+	// Declare `intoFuncfdUintptrdoneBool681` variable:
+	var intoFuncfdUintptrdoneBool681 func(uintptr) bool
 
 	// Call the method that transfers the taint
-	// from the receiver `fromRawConn718` to the argument `intoFuncfdUintptrdoneBool883`
-	// (`intoFuncfdUintptrdoneBool883` is now tainted).
-	fromRawConn718.Read(intoFuncfdUintptrdoneBool883)
+	// from the receiver `fromRawConn962` to the argument `intoFuncfdUintptrdoneBool681`
+	// (`intoFuncfdUintptrdoneBool681` is now tainted).
+	fromRawConn962.Read(intoFuncfdUintptrdoneBool681)
 
-	// Return the tainted `intoFuncfdUintptrdoneBool883`:
-	return intoFuncfdUintptrdoneBool883
+	// Return the tainted `intoFuncfdUintptrdoneBool681`:
+	return intoFuncfdUintptrdoneBool681
 }
 
 func TaintStepTest_SyscallConnSyscallConn_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromConn564` into `intoRawConn694`.
+	// The flow is from `fromConn315` into `intoRawConn754`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromConn564`:
-	fromConn564 := sourceCQL.(syscall.Conn)
+	// Assume that `sourceCQL` has the underlying type of `fromConn315`:
+	fromConn315 := sourceCQL.(syscall.Conn)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromConn564` to the result `intoRawConn694`
-	// (`intoRawConn694` is now tainted).
-	intoRawConn694, _ := fromConn564.SyscallConn()
+	// from the receiver `fromConn315` to the result `intoRawConn754`
+	// (`intoRawConn754` is now tainted).
+	intoRawConn754, _ := fromConn315.SyscallConn()
 
-	// Return the tainted `intoRawConn694`:
-	return intoRawConn694
+	// Return the tainted `intoRawConn754`:
+	return intoRawConn754
 }
 
 func TaintStepTest_SyscallConnSyscallConn_B1I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRawConn121` into `intoConn137`.
+	// The flow is from `fromRawConn598` into `intoConn377`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRawConn121`:
-	fromRawConn121 := sourceCQL.(syscall.RawConn)
+	// Assume that `sourceCQL` has the underlying type of `fromRawConn598`:
+	fromRawConn598 := sourceCQL.(syscall.RawConn)
 
-	// Declare `intoConn137` variable:
-	var intoConn137 syscall.Conn
+	// Declare `intoConn377` variable:
+	var intoConn377 syscall.Conn
 
 	// Call the method that will transfer the taint
-	// from the result `intermediateCQL` to receiver `intoConn137`:
-	intermediateCQL, _ := intoConn137.SyscallConn()
+	// from the result `intermediateCQL` to receiver `intoConn377`:
+	intermediateCQL, _ := intoConn377.SyscallConn()
 
-	// Extra step (`fromRawConn121` taints `intermediateCQL`, which taints `intoConn137`:
-	link(fromRawConn121, intermediateCQL)
+	// Extra step (`fromRawConn598` taints `intermediateCQL`, which taints `intoConn377`:
+	link(fromRawConn598, intermediateCQL)
 
-	// Return the tainted `intoConn137`:
-	return intoConn137
+	// Return the tainted `intoConn377`:
+	return intoConn377
 }
 
 func TaintStepTest_SyscallRawConnWrite_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromFuncfdUintptrdoneBool243` into `intoRawConn216`.
+	// The flow is from `fromFuncfdUintptrdoneBool925` into `intoRawConn643`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromFuncfdUintptrdoneBool243`:
-	fromFuncfdUintptrdoneBool243 := sourceCQL.(func(uintptr) bool)
+	// Assume that `sourceCQL` has the underlying type of `fromFuncfdUintptrdoneBool925`:
+	fromFuncfdUintptrdoneBool925 := sourceCQL.(func(uintptr) bool)
 
-	// Declare `intoRawConn216` variable:
-	var intoRawConn216 syscall.RawConn
+	// Declare `intoRawConn643` variable:
+	var intoRawConn643 syscall.RawConn
 
 	// Call the method that transfers the taint
-	// from the parameter `fromFuncfdUintptrdoneBool243` to the receiver `intoRawConn216`
-	// (`intoRawConn216` is now tainted).
-	intoRawConn216.Write(fromFuncfdUintptrdoneBool243)
+	// from the parameter `fromFuncfdUintptrdoneBool925` to the receiver `intoRawConn643`
+	// (`intoRawConn643` is now tainted).
+	intoRawConn643.Write(fromFuncfdUintptrdoneBool925)
 
-	// Return the tainted `intoRawConn216`:
-	return intoRawConn216
+	// Return the tainted `intoRawConn643`:
+	return intoRawConn643
 }
 
 func RunAllTaints_Syscall() {

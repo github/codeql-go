@@ -1,35 +1,37 @@
+// WARNING: This file was automatically generated. DO NOT EDIT.
+
 package main
 
 import "html"
 
 func TaintStepTest_HtmlEscapeString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString894` into `intoString347`.
+	// The flow is from `fromString761` into `intoString784`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString894`:
-	fromString894 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString761`:
+	fromString761 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString894` to result `intoString347`
-	// (`intoString347` is now tainted).
-	intoString347 := html.EscapeString(fromString894)
+	// from the parameter `fromString761` to result `intoString784`
+	// (`intoString784` is now tainted).
+	intoString784 := html.EscapeString(fromString761)
 
-	// Return the tainted `intoString347`:
-	return intoString347
+	// Return the tainted `intoString784`:
+	return intoString784
 }
 
 func TaintStepTest_HtmlUnescapeString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString801` into `intoString860`.
+	// The flow is from `fromString394` into `intoString703`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString801`:
-	fromString801 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString394`:
+	fromString394 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString801` to result `intoString860`
-	// (`intoString860` is now tainted).
-	intoString860 := html.UnescapeString(fromString801)
+	// from the parameter `fromString394` to result `intoString703`
+	// (`intoString703` is now tainted).
+	intoString703 := html.UnescapeString(fromString394)
 
-	// Return the tainted `intoString860`:
-	return intoString860
+	// Return the tainted `intoString703`:
+	return intoString703
 }
 
 func RunAllTaints_Html() {

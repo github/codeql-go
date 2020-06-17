@@ -1,493 +1,495 @@
+// WARNING: This file was automatically generated. DO NOT EDIT.
+
 package main
 
 import "io"
 
 func TaintStepTest_IoCopy_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader557` into `intoWriter196`.
+	// The flow is from `fromReader516` into `intoWriter638`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader557`:
-	fromReader557 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader516`:
+	fromReader516 := sourceCQL.(io.Reader)
 
-	// Declare `intoWriter196` variable:
-	var intoWriter196 io.Writer
+	// Declare `intoWriter638` variable:
+	var intoWriter638 io.Writer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader557` to parameter `intoWriter196`;
-	// `intoWriter196` is now tainted.
-	io.Copy(intoWriter196, fromReader557)
+	// from the parameter `fromReader516` to parameter `intoWriter638`;
+	// `intoWriter638` is now tainted.
+	io.Copy(intoWriter638, fromReader516)
 
-	// Return the tainted `intoWriter196`:
-	return intoWriter196
+	// Return the tainted `intoWriter638`:
+	return intoWriter638
 }
 
 func TaintStepTest_IoCopyBuffer_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader327` into `intoWriter995`.
+	// The flow is from `fromReader207` into `intoWriter585`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader327`:
-	fromReader327 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader207`:
+	fromReader207 := sourceCQL.(io.Reader)
 
-	// Declare `intoWriter995` variable:
-	var intoWriter995 io.Writer
+	// Declare `intoWriter585` variable:
+	var intoWriter585 io.Writer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader327` to parameter `intoWriter995`;
-	// `intoWriter995` is now tainted.
-	io.CopyBuffer(intoWriter995, fromReader327, nil)
+	// from the parameter `fromReader207` to parameter `intoWriter585`;
+	// `intoWriter585` is now tainted.
+	io.CopyBuffer(intoWriter585, fromReader207, nil)
 
-	// Return the tainted `intoWriter995`:
-	return intoWriter995
+	// Return the tainted `intoWriter585`:
+	return intoWriter585
 }
 
 func TaintStepTest_IoCopyN_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader285` into `intoWriter530`.
+	// The flow is from `fromReader924` into `intoWriter566`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader285`:
-	fromReader285 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader924`:
+	fromReader924 := sourceCQL.(io.Reader)
 
-	// Declare `intoWriter530` variable:
-	var intoWriter530 io.Writer
+	// Declare `intoWriter566` variable:
+	var intoWriter566 io.Writer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader285` to parameter `intoWriter530`;
-	// `intoWriter530` is now tainted.
-	io.CopyN(intoWriter530, fromReader285, 0)
+	// from the parameter `fromReader924` to parameter `intoWriter566`;
+	// `intoWriter566` is now tainted.
+	io.CopyN(intoWriter566, fromReader924, 0)
 
-	// Return the tainted `intoWriter530`:
-	return intoWriter530
+	// Return the tainted `intoWriter566`:
+	return intoWriter566
 }
 
 func TaintStepTest_IoLimitReader_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader866` into `intoReader673`.
+	// The flow is from `fromReader387` into `intoReader834`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader866`:
-	fromReader866 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader387`:
+	fromReader387 := sourceCQL.(io.Reader)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader866` to result `intoReader673`
-	// (`intoReader673` is now tainted).
-	intoReader673 := io.LimitReader(fromReader866, 0)
+	// from the parameter `fromReader387` to result `intoReader834`
+	// (`intoReader834` is now tainted).
+	intoReader834 := io.LimitReader(fromReader387, 0)
 
-	// Return the tainted `intoReader673`:
-	return intoReader673
+	// Return the tainted `intoReader834`:
+	return intoReader834
 }
 
 func TaintStepTest_IoMultiReader_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader920` into `intoReader439`.
+	// The flow is from `fromReader509` into `intoReader734`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader920`:
-	fromReader920 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader509`:
+	fromReader509 := sourceCQL.(io.Reader)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader920` to result `intoReader439`
-	// (`intoReader439` is now tainted).
-	intoReader439 := io.MultiReader(fromReader920)
+	// from the parameter `fromReader509` to result `intoReader734`
+	// (`intoReader734` is now tainted).
+	intoReader734 := io.MultiReader(fromReader509)
 
-	// Return the tainted `intoReader439`:
-	return intoReader439
+	// Return the tainted `intoReader734`:
+	return intoReader734
 }
 
 func TaintStepTest_IoMultiWriter_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromWriter731` into `intoWriter508`.
+	// The flow is from `fromWriter751` into `intoWriter428`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriter731`:
-	fromWriter731 := sourceCQL.(io.Writer)
+	// Assume that `sourceCQL` has the underlying type of `fromWriter751`:
+	fromWriter751 := sourceCQL.(io.Writer)
 
-	// Declare `intoWriter508` variable:
-	var intoWriter508 io.Writer
+	// Declare `intoWriter428` variable:
+	var intoWriter428 io.Writer
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoWriter508`:
-	intermediateCQL := io.MultiWriter(intoWriter508)
+	// from the result `intermediateCQL` to parameter `intoWriter428`:
+	intermediateCQL := io.MultiWriter(intoWriter428)
 
-	// Extra step (`fromWriter731` taints `intermediateCQL`, which taints `intoWriter508`:
-	link(fromWriter731, intermediateCQL)
+	// Extra step (`fromWriter751` taints `intermediateCQL`, which taints `intoWriter428`:
+	link(fromWriter751, intermediateCQL)
 
-	// Return the tainted `intoWriter508`:
-	return intoWriter508
+	// Return the tainted `intoWriter428`:
+	return intoWriter428
 }
 
 func TaintStepTest_IoNewSectionReader_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReaderAt745` into `intoSectionReader743`.
+	// The flow is from `fromReaderAt788` into `intoSectionReader483`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReaderAt745`:
-	fromReaderAt745 := sourceCQL.(io.ReaderAt)
+	// Assume that `sourceCQL` has the underlying type of `fromReaderAt788`:
+	fromReaderAt788 := sourceCQL.(io.ReaderAt)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReaderAt745` to result `intoSectionReader743`
-	// (`intoSectionReader743` is now tainted).
-	intoSectionReader743 := io.NewSectionReader(fromReaderAt745, 0, 0)
+	// from the parameter `fromReaderAt788` to result `intoSectionReader483`
+	// (`intoSectionReader483` is now tainted).
+	intoSectionReader483 := io.NewSectionReader(fromReaderAt788, 0, 0)
 
-	// Return the tainted `intoSectionReader743`:
-	return intoSectionReader743
+	// Return the tainted `intoSectionReader483`:
+	return intoSectionReader483
 }
 
 func TaintStepTest_IoPipe_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromPipeWriter935` into `intoPipeReader885`.
+	// The flow is from `fromPipeWriter215` into `intoPipeReader441`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromPipeWriter935`:
-	fromPipeWriter935 := sourceCQL.(*io.PipeWriter)
+	// Assume that `sourceCQL` has the underlying type of `fromPipeWriter215`:
+	fromPipeWriter215 := sourceCQL.(*io.PipeWriter)
 
 	// Call the function that transfers the taint
-	// from the result `fromPipeWriter935` to result `intoPipeReader885`
+	// from the result `fromPipeWriter215` to result `intoPipeReader441`
 	// (extra steps needed)
-	intoPipeReader885, intermediateCQL := io.Pipe()
+	intoPipeReader441, intermediateCQL := io.Pipe()
 
-	// Extra step (`fromPipeWriter935` taints `intermediateCQL`, which taints `intoPipeReader885`:
-	link(fromPipeWriter935, intermediateCQL)
+	// Extra step (`fromPipeWriter215` taints `intermediateCQL`, which taints `intoPipeReader441`:
+	link(fromPipeWriter215, intermediateCQL)
 
-	// Return the tainted `intoPipeReader885`:
-	return intoPipeReader885
+	// Return the tainted `intoPipeReader441`:
+	return intoPipeReader441
 }
 
 func TaintStepTest_IoReadAtLeast_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader808` into `intoByte794`.
+	// The flow is from `fromReader662` into `intoByte945`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader808`:
-	fromReader808 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader662`:
+	fromReader662 := sourceCQL.(io.Reader)
 
-	// Declare `intoByte794` variable:
-	var intoByte794 []byte
+	// Declare `intoByte945` variable:
+	var intoByte945 []byte
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader808` to parameter `intoByte794`;
-	// `intoByte794` is now tainted.
-	io.ReadAtLeast(fromReader808, intoByte794, 0)
+	// from the parameter `fromReader662` to parameter `intoByte945`;
+	// `intoByte945` is now tainted.
+	io.ReadAtLeast(fromReader662, intoByte945, 0)
 
-	// Return the tainted `intoByte794`:
-	return intoByte794
+	// Return the tainted `intoByte945`:
+	return intoByte945
 }
 
 func TaintStepTest_IoReadFull_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader649` into `intoByte302`.
+	// The flow is from `fromReader583` into `intoByte987`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader649`:
-	fromReader649 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader583`:
+	fromReader583 := sourceCQL.(io.Reader)
 
-	// Declare `intoByte302` variable:
-	var intoByte302 []byte
+	// Declare `intoByte987` variable:
+	var intoByte987 []byte
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader649` to parameter `intoByte302`;
-	// `intoByte302` is now tainted.
-	io.ReadFull(fromReader649, intoByte302)
+	// from the parameter `fromReader583` to parameter `intoByte987`;
+	// `intoByte987` is now tainted.
+	io.ReadFull(fromReader583, intoByte987)
 
-	// Return the tainted `intoByte302`:
-	return intoByte302
+	// Return the tainted `intoByte987`:
+	return intoByte987
 }
 
 func TaintStepTest_IoTeeReader_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader570` into `intoWriter471`.
+	// The flow is from `fromReader359` into `intoWriter557`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader570`:
-	fromReader570 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader359`:
+	fromReader359 := sourceCQL.(io.Reader)
 
-	// Declare `intoWriter471` variable:
-	var intoWriter471 io.Writer
+	// Declare `intoWriter557` variable:
+	var intoWriter557 io.Writer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader570` to parameter `intoWriter471`;
-	// `intoWriter471` is now tainted.
-	io.TeeReader(fromReader570, intoWriter471)
+	// from the parameter `fromReader359` to parameter `intoWriter557`;
+	// `intoWriter557` is now tainted.
+	io.TeeReader(fromReader359, intoWriter557)
 
-	// Return the tainted `intoWriter471`:
-	return intoWriter471
+	// Return the tainted `intoWriter557`:
+	return intoWriter557
 }
 
 func TaintStepTest_IoTeeReader_B0I0O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader545` into `intoReader664`.
+	// The flow is from `fromReader868` into `intoReader869`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader545`:
-	fromReader545 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader868`:
+	fromReader868 := sourceCQL.(io.Reader)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromReader545` to result `intoReader664`
-	// (`intoReader664` is now tainted).
-	intoReader664 := io.TeeReader(fromReader545, nil)
+	// from the parameter `fromReader868` to result `intoReader869`
+	// (`intoReader869` is now tainted).
+	intoReader869 := io.TeeReader(fromReader868, nil)
 
-	// Return the tainted `intoReader664`:
-	return intoReader664
+	// Return the tainted `intoReader869`:
+	return intoReader869
 }
 
 func TaintStepTest_IoWriteString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString348` into `intoWriter751`.
+	// The flow is from `fromString252` into `intoWriter933`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString348`:
-	fromString348 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString252`:
+	fromString252 := sourceCQL.(string)
 
-	// Declare `intoWriter751` variable:
-	var intoWriter751 io.Writer
+	// Declare `intoWriter933` variable:
+	var intoWriter933 io.Writer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString348` to parameter `intoWriter751`;
-	// `intoWriter751` is now tainted.
-	io.WriteString(intoWriter751, fromString348)
+	// from the parameter `fromString252` to parameter `intoWriter933`;
+	// `intoWriter933` is now tainted.
+	io.WriteString(intoWriter933, fromString252)
 
-	// Return the tainted `intoWriter751`:
-	return intoWriter751
+	// Return the tainted `intoWriter933`:
+	return intoWriter933
 }
 
 func TaintStepTest_IoLimitedReaderRead_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromLimitedReader517` into `intoByte407`.
+	// The flow is from `fromLimitedReader976` into `intoByte791`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromLimitedReader517`:
-	fromLimitedReader517 := sourceCQL.(io.LimitedReader)
+	// Assume that `sourceCQL` has the underlying type of `fromLimitedReader976`:
+	fromLimitedReader976 := sourceCQL.(io.LimitedReader)
 
-	// Declare `intoByte407` variable:
-	var intoByte407 []byte
+	// Declare `intoByte791` variable:
+	var intoByte791 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromLimitedReader517` to the argument `intoByte407`
-	// (`intoByte407` is now tainted).
-	fromLimitedReader517.Read(intoByte407)
+	// from the receiver `fromLimitedReader976` to the argument `intoByte791`
+	// (`intoByte791` is now tainted).
+	fromLimitedReader976.Read(intoByte791)
 
-	// Return the tainted `intoByte407`:
-	return intoByte407
+	// Return the tainted `intoByte791`:
+	return intoByte791
 }
 
 func TaintStepTest_IoPipeReaderRead_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromPipeReader922` into `intoByte816`.
+	// The flow is from `fromPipeReader943` into `intoByte330`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromPipeReader922`:
-	fromPipeReader922 := sourceCQL.(io.PipeReader)
+	// Assume that `sourceCQL` has the underlying type of `fromPipeReader943`:
+	fromPipeReader943 := sourceCQL.(io.PipeReader)
 
-	// Declare `intoByte816` variable:
-	var intoByte816 []byte
+	// Declare `intoByte330` variable:
+	var intoByte330 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromPipeReader922` to the argument `intoByte816`
-	// (`intoByte816` is now tainted).
-	fromPipeReader922.Read(intoByte816)
+	// from the receiver `fromPipeReader943` to the argument `intoByte330`
+	// (`intoByte330` is now tainted).
+	fromPipeReader943.Read(intoByte330)
 
-	// Return the tainted `intoByte816`:
-	return intoByte816
+	// Return the tainted `intoByte330`:
+	return intoByte330
 }
 
 func TaintStepTest_IoPipeWriterWrite_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte274` into `intoPipeWriter437`.
+	// The flow is from `fromByte450` into `intoPipeWriter717`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte274`:
-	fromByte274 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte450`:
+	fromByte450 := sourceCQL.([]byte)
 
-	// Declare `intoPipeWriter437` variable:
-	var intoPipeWriter437 io.PipeWriter
+	// Declare `intoPipeWriter717` variable:
+	var intoPipeWriter717 io.PipeWriter
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte274` to the receiver `intoPipeWriter437`
-	// (`intoPipeWriter437` is now tainted).
-	intoPipeWriter437.Write(fromByte274)
+	// from the parameter `fromByte450` to the receiver `intoPipeWriter717`
+	// (`intoPipeWriter717` is now tainted).
+	intoPipeWriter717.Write(fromByte450)
 
-	// Return the tainted `intoPipeWriter437`:
-	return intoPipeWriter437
+	// Return the tainted `intoPipeWriter717`:
+	return intoPipeWriter717
 }
 
 func TaintStepTest_IoSectionReaderRead_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromSectionReader900` into `intoByte594`.
+	// The flow is from `fromSectionReader498` into `intoByte474`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromSectionReader900`:
-	fromSectionReader900 := sourceCQL.(io.SectionReader)
+	// Assume that `sourceCQL` has the underlying type of `fromSectionReader498`:
+	fromSectionReader498 := sourceCQL.(io.SectionReader)
 
-	// Declare `intoByte594` variable:
-	var intoByte594 []byte
+	// Declare `intoByte474` variable:
+	var intoByte474 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromSectionReader900` to the argument `intoByte594`
-	// (`intoByte594` is now tainted).
-	fromSectionReader900.Read(intoByte594)
+	// from the receiver `fromSectionReader498` to the argument `intoByte474`
+	// (`intoByte474` is now tainted).
+	fromSectionReader498.Read(intoByte474)
 
-	// Return the tainted `intoByte594`:
-	return intoByte594
+	// Return the tainted `intoByte474`:
+	return intoByte474
 }
 
 func TaintStepTest_IoSectionReaderReadAt_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromSectionReader736` into `intoByte730`.
+	// The flow is from `fromSectionReader700` into `intoByte336`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromSectionReader736`:
-	fromSectionReader736 := sourceCQL.(io.SectionReader)
+	// Assume that `sourceCQL` has the underlying type of `fromSectionReader700`:
+	fromSectionReader700 := sourceCQL.(io.SectionReader)
 
-	// Declare `intoByte730` variable:
-	var intoByte730 []byte
+	// Declare `intoByte336` variable:
+	var intoByte336 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromSectionReader736` to the argument `intoByte730`
-	// (`intoByte730` is now tainted).
-	fromSectionReader736.ReadAt(intoByte730, 0)
+	// from the receiver `fromSectionReader700` to the argument `intoByte336`
+	// (`intoByte336` is now tainted).
+	fromSectionReader700.ReadAt(intoByte336, 0)
 
-	// Return the tainted `intoByte730`:
-	return intoByte730
+	// Return the tainted `intoByte336`:
+	return intoByte336
 }
 
 func TaintStepTest_IoReaderRead_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader908` into `intoByte347`.
+	// The flow is from `fromReader416` into `intoByte236`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader908`:
-	fromReader908 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader416`:
+	fromReader416 := sourceCQL.(io.Reader)
 
-	// Declare `intoByte347` variable:
-	var intoByte347 []byte
+	// Declare `intoByte236` variable:
+	var intoByte236 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromReader908` to the argument `intoByte347`
-	// (`intoByte347` is now tainted).
-	fromReader908.Read(intoByte347)
+	// from the receiver `fromReader416` to the argument `intoByte236`
+	// (`intoByte236` is now tainted).
+	fromReader416.Read(intoByte236)
 
-	// Return the tainted `intoByte347`:
-	return intoByte347
+	// Return the tainted `intoByte236`:
+	return intoByte236
 }
 
 func TaintStepTest_IoReaderAtReadAt_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReaderAt600` into `intoByte406`.
+	// The flow is from `fromReaderAt746` into `intoByte115`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReaderAt600`:
-	fromReaderAt600 := sourceCQL.(io.ReaderAt)
+	// Assume that `sourceCQL` has the underlying type of `fromReaderAt746`:
+	fromReaderAt746 := sourceCQL.(io.ReaderAt)
 
-	// Declare `intoByte406` variable:
-	var intoByte406 []byte
+	// Declare `intoByte115` variable:
+	var intoByte115 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromReaderAt600` to the argument `intoByte406`
-	// (`intoByte406` is now tainted).
-	fromReaderAt600.ReadAt(intoByte406, 0)
+	// from the receiver `fromReaderAt746` to the argument `intoByte115`
+	// (`intoByte115` is now tainted).
+	fromReaderAt746.ReadAt(intoByte115, 0)
 
-	// Return the tainted `intoByte406`:
-	return intoByte406
+	// Return the tainted `intoByte115`:
+	return intoByte115
 }
 
 func TaintStepTest_IoByteReaderReadByte_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByteReader744` into `intoByte500`.
+	// The flow is from `fromByteReader657` into `intoByte587`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByteReader744`:
-	fromByteReader744 := sourceCQL.(io.ByteReader)
+	// Assume that `sourceCQL` has the underlying type of `fromByteReader657`:
+	fromByteReader657 := sourceCQL.(io.ByteReader)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromByteReader744` to the result `intoByte500`
-	// (`intoByte500` is now tainted).
-	intoByte500, _ := fromByteReader744.ReadByte()
+	// from the receiver `fromByteReader657` to the result `intoByte587`
+	// (`intoByte587` is now tainted).
+	intoByte587, _ := fromByteReader657.ReadByte()
 
-	// Return the tainted `intoByte500`:
-	return intoByte500
+	// Return the tainted `intoByte587`:
+	return intoByte587
 }
 
 func TaintStepTest_IoReaderFromReadFrom_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader418` into `intoReaderFrom775`.
+	// The flow is from `fromReader736` into `intoReaderFrom844`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader418`:
-	fromReader418 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader736`:
+	fromReader736 := sourceCQL.(io.Reader)
 
-	// Declare `intoReaderFrom775` variable:
-	var intoReaderFrom775 io.ReaderFrom
+	// Declare `intoReaderFrom844` variable:
+	var intoReaderFrom844 io.ReaderFrom
 
 	// Call the method that transfers the taint
-	// from the parameter `fromReader418` to the receiver `intoReaderFrom775`
-	// (`intoReaderFrom775` is now tainted).
-	intoReaderFrom775.ReadFrom(fromReader418)
+	// from the parameter `fromReader736` to the receiver `intoReaderFrom844`
+	// (`intoReaderFrom844` is now tainted).
+	intoReaderFrom844.ReadFrom(fromReader736)
 
-	// Return the tainted `intoReaderFrom775`:
-	return intoReaderFrom775
+	// Return the tainted `intoReaderFrom844`:
+	return intoReaderFrom844
 }
 
 func TaintStepTest_IoRuneReaderReadRune_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRuneReader915` into `intoRune847`.
+	// The flow is from `fromRuneReader125` into `intoRune487`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRuneReader915`:
-	fromRuneReader915 := sourceCQL.(io.RuneReader)
+	// Assume that `sourceCQL` has the underlying type of `fromRuneReader125`:
+	fromRuneReader125 := sourceCQL.(io.RuneReader)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromRuneReader915` to the result `intoRune847`
-	// (`intoRune847` is now tainted).
-	intoRune847, _, _ := fromRuneReader915.ReadRune()
+	// from the receiver `fromRuneReader125` to the result `intoRune487`
+	// (`intoRune487` is now tainted).
+	intoRune487, _, _ := fromRuneReader125.ReadRune()
 
-	// Return the tainted `intoRune847`:
-	return intoRune847
+	// Return the tainted `intoRune487`:
+	return intoRune487
 }
 
 func TaintStepTest_IoWriterWrite_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte114` into `intoWriter150`.
+	// The flow is from `fromByte722` into `intoWriter140`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte114`:
-	fromByte114 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte722`:
+	fromByte722 := sourceCQL.([]byte)
 
-	// Declare `intoWriter150` variable:
-	var intoWriter150 io.Writer
+	// Declare `intoWriter140` variable:
+	var intoWriter140 io.Writer
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte114` to the receiver `intoWriter150`
-	// (`intoWriter150` is now tainted).
-	intoWriter150.Write(fromByte114)
+	// from the parameter `fromByte722` to the receiver `intoWriter140`
+	// (`intoWriter140` is now tainted).
+	intoWriter140.Write(fromByte722)
 
-	// Return the tainted `intoWriter150`:
-	return intoWriter150
+	// Return the tainted `intoWriter140`:
+	return intoWriter140
 }
 
 func TaintStepTest_IoWriterAtWriteAt_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte679` into `intoWriterAt944`.
+	// The flow is from `fromByte697` into `intoWriterAt830`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte679`:
-	fromByte679 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte697`:
+	fromByte697 := sourceCQL.([]byte)
 
-	// Declare `intoWriterAt944` variable:
-	var intoWriterAt944 io.WriterAt
+	// Declare `intoWriterAt830` variable:
+	var intoWriterAt830 io.WriterAt
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte679` to the receiver `intoWriterAt944`
-	// (`intoWriterAt944` is now tainted).
-	intoWriterAt944.WriteAt(fromByte679, 0)
+	// from the parameter `fromByte697` to the receiver `intoWriterAt830`
+	// (`intoWriterAt830` is now tainted).
+	intoWriterAt830.WriteAt(fromByte697, 0)
 
-	// Return the tainted `intoWriterAt944`:
-	return intoWriterAt944
+	// Return the tainted `intoWriterAt830`:
+	return intoWriterAt830
 }
 
 func TaintStepTest_IoByteWriterWriteByte_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte736` into `intoByteWriter282`.
+	// The flow is from `fromByte280` into `intoByteWriter203`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte736`:
-	fromByte736 := sourceCQL.(byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte280`:
+	fromByte280 := sourceCQL.(byte)
 
-	// Declare `intoByteWriter282` variable:
-	var intoByteWriter282 io.ByteWriter
+	// Declare `intoByteWriter203` variable:
+	var intoByteWriter203 io.ByteWriter
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte736` to the receiver `intoByteWriter282`
-	// (`intoByteWriter282` is now tainted).
-	intoByteWriter282.WriteByte(fromByte736)
+	// from the parameter `fromByte280` to the receiver `intoByteWriter203`
+	// (`intoByteWriter203` is now tainted).
+	intoByteWriter203.WriteByte(fromByte280)
 
-	// Return the tainted `intoByteWriter282`:
-	return intoByteWriter282
+	// Return the tainted `intoByteWriter203`:
+	return intoByteWriter203
 }
 
 func TaintStepTest_IoStringWriterWriteString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString744` into `intoStringWriter359`.
+	// The flow is from `fromString850` into `intoStringWriter985`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString744`:
-	fromString744 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString850`:
+	fromString850 := sourceCQL.(string)
 
-	// Declare `intoStringWriter359` variable:
-	var intoStringWriter359 io.StringWriter
+	// Declare `intoStringWriter985` variable:
+	var intoStringWriter985 io.StringWriter
 
 	// Call the method that transfers the taint
-	// from the parameter `fromString744` to the receiver `intoStringWriter359`
-	// (`intoStringWriter359` is now tainted).
-	intoStringWriter359.WriteString(fromString744)
+	// from the parameter `fromString850` to the receiver `intoStringWriter985`
+	// (`intoStringWriter985` is now tainted).
+	intoStringWriter985.WriteString(fromString850)
 
-	// Return the tainted `intoStringWriter359`:
-	return intoStringWriter359
+	// Return the tainted `intoStringWriter985`:
+	return intoStringWriter985
 }
 
 func TaintStepTest_IoWriterToWriteTo_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromWriterTo673` into `intoWriter741`.
+	// The flow is from `fromWriterTo392` into `intoWriter596`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromWriterTo673`:
-	fromWriterTo673 := sourceCQL.(io.WriterTo)
+	// Assume that `sourceCQL` has the underlying type of `fromWriterTo392`:
+	fromWriterTo392 := sourceCQL.(io.WriterTo)
 
-	// Declare `intoWriter741` variable:
-	var intoWriter741 io.Writer
+	// Declare `intoWriter596` variable:
+	var intoWriter596 io.Writer
 
 	// Call the method that transfers the taint
-	// from the receiver `fromWriterTo673` to the argument `intoWriter741`
-	// (`intoWriter741` is now tainted).
-	fromWriterTo673.WriteTo(intoWriter741)
+	// from the receiver `fromWriterTo392` to the argument `intoWriter596`
+	// (`intoWriter596` is now tainted).
+	fromWriterTo392.WriteTo(intoWriter596)
 
-	// Return the tainted `intoWriter741`:
-	return intoWriter741
+	// Return the tainted `intoWriter596`:
+	return intoWriter596
 }
 
 func RunAllTaints_Io() {

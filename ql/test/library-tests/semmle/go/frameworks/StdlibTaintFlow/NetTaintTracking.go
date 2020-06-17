@@ -1,3 +1,5 @@
+// WARNING: This file was automatically generated. DO NOT EDIT.
+
 package main
 
 import (
@@ -8,1420 +10,1420 @@ import (
 )
 
 func TaintStepTest_NetFileConn_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromFile403` into `intoConn756`.
+	// The flow is from `fromFile433` into `intoConn130`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromFile403`:
-	fromFile403 := sourceCQL.(*os.File)
+	// Assume that `sourceCQL` has the underlying type of `fromFile433`:
+	fromFile433 := sourceCQL.(*os.File)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromFile403` to result `intoConn756`
-	// (`intoConn756` is now tainted).
-	intoConn756, _ := net.FileConn(fromFile403)
+	// from the parameter `fromFile433` to result `intoConn130`
+	// (`intoConn130` is now tainted).
+	intoConn130, _ := net.FileConn(fromFile433)
 
-	// Return the tainted `intoConn756`:
-	return intoConn756
+	// Return the tainted `intoConn130`:
+	return intoConn130
 }
 
 func TaintStepTest_NetFileConn_B1I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromConn223` into `intoFile910`.
+	// The flow is from `fromConn472` into `intoFile822`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromConn223`:
-	fromConn223 := sourceCQL.(net.Conn)
+	// Assume that `sourceCQL` has the underlying type of `fromConn472`:
+	fromConn472 := sourceCQL.(net.Conn)
 
-	// Declare `intoFile910` variable:
-	var intoFile910 *os.File
+	// Declare `intoFile822` variable:
+	var intoFile822 *os.File
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoFile910`:
-	intermediateCQL, _ := net.FileConn(intoFile910)
+	// from the result `intermediateCQL` to parameter `intoFile822`:
+	intermediateCQL, _ := net.FileConn(intoFile822)
 
-	// Extra step (`fromConn223` taints `intermediateCQL`, which taints `intoFile910`:
-	link(fromConn223, intermediateCQL)
+	// Extra step (`fromConn472` taints `intermediateCQL`, which taints `intoFile822`:
+	link(fromConn472, intermediateCQL)
 
-	// Return the tainted `intoFile910`:
-	return intoFile910
+	// Return the tainted `intoFile822`:
+	return intoFile822
 }
 
 func TaintStepTest_NetFileListener_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromFile243` into `intoListener944`.
+	// The flow is from `fromFile195` into `intoListener567`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromFile243`:
-	fromFile243 := sourceCQL.(*os.File)
+	// Assume that `sourceCQL` has the underlying type of `fromFile195`:
+	fromFile195 := sourceCQL.(*os.File)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromFile243` to result `intoListener944`
-	// (`intoListener944` is now tainted).
-	intoListener944, _ := net.FileListener(fromFile243)
+	// from the parameter `fromFile195` to result `intoListener567`
+	// (`intoListener567` is now tainted).
+	intoListener567, _ := net.FileListener(fromFile195)
 
-	// Return the tainted `intoListener944`:
-	return intoListener944
+	// Return the tainted `intoListener567`:
+	return intoListener567
 }
 
 func TaintStepTest_NetFileListener_B1I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromListener815` into `intoFile322`.
+	// The flow is from `fromListener613` into `intoFile783`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromListener815`:
-	fromListener815 := sourceCQL.(net.Listener)
+	// Assume that `sourceCQL` has the underlying type of `fromListener613`:
+	fromListener613 := sourceCQL.(net.Listener)
 
-	// Declare `intoFile322` variable:
-	var intoFile322 *os.File
+	// Declare `intoFile783` variable:
+	var intoFile783 *os.File
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoFile322`:
-	intermediateCQL, _ := net.FileListener(intoFile322)
+	// from the result `intermediateCQL` to parameter `intoFile783`:
+	intermediateCQL, _ := net.FileListener(intoFile783)
 
-	// Extra step (`fromListener815` taints `intermediateCQL`, which taints `intoFile322`:
-	link(fromListener815, intermediateCQL)
+	// Extra step (`fromListener613` taints `intermediateCQL`, which taints `intoFile783`:
+	link(fromListener613, intermediateCQL)
 
-	// Return the tainted `intoFile322`:
-	return intoFile322
+	// Return the tainted `intoFile783`:
+	return intoFile783
 }
 
 func TaintStepTest_NetFilePacketConn_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromFile525` into `intoPacketConn651`.
+	// The flow is from `fromFile632` into `intoPacketConn937`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromFile525`:
-	fromFile525 := sourceCQL.(*os.File)
+	// Assume that `sourceCQL` has the underlying type of `fromFile632`:
+	fromFile632 := sourceCQL.(*os.File)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromFile525` to result `intoPacketConn651`
-	// (`intoPacketConn651` is now tainted).
-	intoPacketConn651, _ := net.FilePacketConn(fromFile525)
+	// from the parameter `fromFile632` to result `intoPacketConn937`
+	// (`intoPacketConn937` is now tainted).
+	intoPacketConn937, _ := net.FilePacketConn(fromFile632)
 
-	// Return the tainted `intoPacketConn651`:
-	return intoPacketConn651
+	// Return the tainted `intoPacketConn937`:
+	return intoPacketConn937
 }
 
 func TaintStepTest_NetFilePacketConn_B1I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromPacketConn612` into `intoFile144`.
+	// The flow is from `fromPacketConn383` into `intoFile947`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromPacketConn612`:
-	fromPacketConn612 := sourceCQL.(net.PacketConn)
+	// Assume that `sourceCQL` has the underlying type of `fromPacketConn383`:
+	fromPacketConn383 := sourceCQL.(net.PacketConn)
 
-	// Declare `intoFile144` variable:
-	var intoFile144 *os.File
+	// Declare `intoFile947` variable:
+	var intoFile947 *os.File
 
 	// Call the function that will transfer the taint
-	// from the result `intermediateCQL` to parameter `intoFile144`:
-	intermediateCQL, _ := net.FilePacketConn(intoFile144)
+	// from the result `intermediateCQL` to parameter `intoFile947`:
+	intermediateCQL, _ := net.FilePacketConn(intoFile947)
 
-	// Extra step (`fromPacketConn612` taints `intermediateCQL`, which taints `intoFile144`:
-	link(fromPacketConn612, intermediateCQL)
+	// Extra step (`fromPacketConn383` taints `intermediateCQL`, which taints `intoFile947`:
+	link(fromPacketConn383, intermediateCQL)
 
-	// Return the tainted `intoFile144`:
-	return intoFile144
+	// Return the tainted `intoFile947`:
+	return intoFile947
 }
 
 func TaintStepTest_NetIPv4_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte742` into `intoIP981`.
+	// The flow is from `fromByte702` into `intoIP209`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte742`:
-	fromByte742 := sourceCQL.(byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte702`:
+	fromByte702 := sourceCQL.(byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte742` to result `intoIP981`
-	// (`intoIP981` is now tainted).
-	intoIP981 := net.IPv4(fromByte742, 0, 0, 0)
+	// from the parameter `fromByte702` to result `intoIP209`
+	// (`intoIP209` is now tainted).
+	intoIP209 := net.IPv4(fromByte702, 0, 0, 0)
 
-	// Return the tainted `intoIP981`:
-	return intoIP981
+	// Return the tainted `intoIP209`:
+	return intoIP209
 }
 
 func TaintStepTest_NetIPv4_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte258` into `intoIP991`.
+	// The flow is from `fromByte988` into `intoIP477`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte258`:
-	fromByte258 := sourceCQL.(byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte988`:
+	fromByte988 := sourceCQL.(byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte258` to result `intoIP991`
-	// (`intoIP991` is now tainted).
-	intoIP991 := net.IPv4(0, fromByte258, 0, 0)
+	// from the parameter `fromByte988` to result `intoIP477`
+	// (`intoIP477` is now tainted).
+	intoIP477 := net.IPv4(0, fromByte988, 0, 0)
 
-	// Return the tainted `intoIP991`:
-	return intoIP991
+	// Return the tainted `intoIP477`:
+	return intoIP477
 }
 
 func TaintStepTest_NetIPv4_B0I2O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte692` into `intoIP227`.
+	// The flow is from `fromByte936` into `intoIP515`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte692`:
-	fromByte692 := sourceCQL.(byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte936`:
+	fromByte936 := sourceCQL.(byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte692` to result `intoIP227`
-	// (`intoIP227` is now tainted).
-	intoIP227 := net.IPv4(0, 0, fromByte692, 0)
+	// from the parameter `fromByte936` to result `intoIP515`
+	// (`intoIP515` is now tainted).
+	intoIP515 := net.IPv4(0, 0, fromByte936, 0)
 
-	// Return the tainted `intoIP227`:
-	return intoIP227
+	// Return the tainted `intoIP515`:
+	return intoIP515
 }
 
 func TaintStepTest_NetIPv4_B0I3O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte921` into `intoIP255`.
+	// The flow is from `fromByte710` into `intoIP254`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte921`:
-	fromByte921 := sourceCQL.(byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte710`:
+	fromByte710 := sourceCQL.(byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte921` to result `intoIP255`
-	// (`intoIP255` is now tainted).
-	intoIP255 := net.IPv4(0, 0, 0, fromByte921)
+	// from the parameter `fromByte710` to result `intoIP254`
+	// (`intoIP254` is now tainted).
+	intoIP254 := net.IPv4(0, 0, 0, fromByte710)
 
-	// Return the tainted `intoIP255`:
-	return intoIP255
+	// Return the tainted `intoIP254`:
+	return intoIP254
 }
 
 func TaintStepTest_NetIPv4Mask_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte496` into `intoIPMask146`.
+	// The flow is from `fromByte910` into `intoIPMask145`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte496`:
-	fromByte496 := sourceCQL.(byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte910`:
+	fromByte910 := sourceCQL.(byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte496` to result `intoIPMask146`
-	// (`intoIPMask146` is now tainted).
-	intoIPMask146 := net.IPv4Mask(fromByte496, 0, 0, 0)
+	// from the parameter `fromByte910` to result `intoIPMask145`
+	// (`intoIPMask145` is now tainted).
+	intoIPMask145 := net.IPv4Mask(fromByte910, 0, 0, 0)
 
-	// Return the tainted `intoIPMask146`:
-	return intoIPMask146
+	// Return the tainted `intoIPMask145`:
+	return intoIPMask145
 }
 
 func TaintStepTest_NetIPv4Mask_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte703` into `intoIPMask559`.
+	// The flow is from `fromByte239` into `intoIPMask224`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte703`:
-	fromByte703 := sourceCQL.(byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte239`:
+	fromByte239 := sourceCQL.(byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte703` to result `intoIPMask559`
-	// (`intoIPMask559` is now tainted).
-	intoIPMask559 := net.IPv4Mask(0, fromByte703, 0, 0)
+	// from the parameter `fromByte239` to result `intoIPMask224`
+	// (`intoIPMask224` is now tainted).
+	intoIPMask224 := net.IPv4Mask(0, fromByte239, 0, 0)
 
-	// Return the tainted `intoIPMask559`:
-	return intoIPMask559
+	// Return the tainted `intoIPMask224`:
+	return intoIPMask224
 }
 
 func TaintStepTest_NetIPv4Mask_B0I2O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte178` into `intoIPMask758`.
+	// The flow is from `fromByte439` into `intoIPMask718`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte178`:
-	fromByte178 := sourceCQL.(byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte439`:
+	fromByte439 := sourceCQL.(byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte178` to result `intoIPMask758`
-	// (`intoIPMask758` is now tainted).
-	intoIPMask758 := net.IPv4Mask(0, 0, fromByte178, 0)
+	// from the parameter `fromByte439` to result `intoIPMask718`
+	// (`intoIPMask718` is now tainted).
+	intoIPMask718 := net.IPv4Mask(0, 0, fromByte439, 0)
 
-	// Return the tainted `intoIPMask758`:
-	return intoIPMask758
+	// Return the tainted `intoIPMask718`:
+	return intoIPMask718
 }
 
 func TaintStepTest_NetIPv4Mask_B0I3O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte230` into `intoIPMask188`.
+	// The flow is from `fromByte179` into `intoIPMask346`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte230`:
-	fromByte230 := sourceCQL.(byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte179`:
+	fromByte179 := sourceCQL.(byte)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromByte230` to result `intoIPMask188`
-	// (`intoIPMask188` is now tainted).
-	intoIPMask188 := net.IPv4Mask(0, 0, 0, fromByte230)
+	// from the parameter `fromByte179` to result `intoIPMask346`
+	// (`intoIPMask346` is now tainted).
+	intoIPMask346 := net.IPv4Mask(0, 0, 0, fromByte179)
 
-	// Return the tainted `intoIPMask188`:
-	return intoIPMask188
+	// Return the tainted `intoIPMask346`:
+	return intoIPMask346
 }
 
 func TaintStepTest_NetJoinHostPort_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString480` into `intoString801`.
+	// The flow is from `fromString843` into `intoString846`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString480`:
-	fromString480 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString843`:
+	fromString843 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString480` to result `intoString801`
-	// (`intoString801` is now tainted).
-	intoString801 := net.JoinHostPort(fromString480, "")
+	// from the parameter `fromString843` to result `intoString846`
+	// (`intoString846` is now tainted).
+	intoString846 := net.JoinHostPort(fromString843, "")
 
-	// Return the tainted `intoString801`:
-	return intoString801
+	// Return the tainted `intoString846`:
+	return intoString846
 }
 
 func TaintStepTest_NetJoinHostPort_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString558` into `intoString626`.
+	// The flow is from `fromString631` into `intoString612`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString558`:
-	fromString558 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString631`:
+	fromString631 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString558` to result `intoString626`
-	// (`intoString626` is now tainted).
-	intoString626 := net.JoinHostPort("", fromString558)
+	// from the parameter `fromString631` to result `intoString612`
+	// (`intoString612` is now tainted).
+	intoString612 := net.JoinHostPort("", fromString631)
 
-	// Return the tainted `intoString626`:
-	return intoString626
+	// Return the tainted `intoString612`:
+	return intoString612
 }
 
 func TaintStepTest_NetParseCIDR_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString758` into `intoIP634`.
+	// The flow is from `fromString799` into `intoIP390`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString758`:
-	fromString758 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString799`:
+	fromString799 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString758` to result `intoIP634`
-	// (`intoIP634` is now tainted).
-	intoIP634, _, _ := net.ParseCIDR(fromString758)
+	// from the parameter `fromString799` to result `intoIP390`
+	// (`intoIP390` is now tainted).
+	intoIP390, _, _ := net.ParseCIDR(fromString799)
 
-	// Return the tainted `intoIP634`:
-	return intoIP634
+	// Return the tainted `intoIP390`:
+	return intoIP390
 }
 
 func TaintStepTest_NetParseCIDR_B0I0O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString576` into `intoIPNet730`.
+	// The flow is from `fromString845` into `intoIPNet368`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString576`:
-	fromString576 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString845`:
+	fromString845 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString576` to result `intoIPNet730`
-	// (`intoIPNet730` is now tainted).
-	_, intoIPNet730, _ := net.ParseCIDR(fromString576)
+	// from the parameter `fromString845` to result `intoIPNet368`
+	// (`intoIPNet368` is now tainted).
+	_, intoIPNet368, _ := net.ParseCIDR(fromString845)
 
-	// Return the tainted `intoIPNet730`:
-	return intoIPNet730
+	// Return the tainted `intoIPNet368`:
+	return intoIPNet368
 }
 
 func TaintStepTest_NetParseIP_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString320` into `intoIP587`.
+	// The flow is from `fromString995` into `intoIP509`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString320`:
-	fromString320 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString995`:
+	fromString995 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString320` to result `intoIP587`
-	// (`intoIP587` is now tainted).
-	intoIP587 := net.ParseIP(fromString320)
+	// from the parameter `fromString995` to result `intoIP509`
+	// (`intoIP509` is now tainted).
+	intoIP509 := net.ParseIP(fromString995)
 
-	// Return the tainted `intoIP587`:
-	return intoIP587
+	// Return the tainted `intoIP509`:
+	return intoIP509
 }
 
 func TaintStepTest_NetParseMAC_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString497` into `intoHardwareAddr405`.
+	// The flow is from `fromString545` into `intoHardwareAddr953`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString497`:
-	fromString497 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString545`:
+	fromString545 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString497` to result `intoHardwareAddr405`
-	// (`intoHardwareAddr405` is now tainted).
-	intoHardwareAddr405, _ := net.ParseMAC(fromString497)
+	// from the parameter `fromString545` to result `intoHardwareAddr953`
+	// (`intoHardwareAddr953` is now tainted).
+	intoHardwareAddr953, _ := net.ParseMAC(fromString545)
 
-	// Return the tainted `intoHardwareAddr405`:
-	return intoHardwareAddr405
+	// Return the tainted `intoHardwareAddr953`:
+	return intoHardwareAddr953
 }
 
 func TaintStepTest_NetPipe_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromConn497` into `intoConn549`.
+	// The flow is from `fromConn347` into `intoConn654`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromConn497`:
-	fromConn497 := sourceCQL.(net.Conn)
+	// Assume that `sourceCQL` has the underlying type of `fromConn347`:
+	fromConn347 := sourceCQL.(net.Conn)
 
 	// Call the function that transfers the taint
-	// from the result `fromConn497` to result `intoConn549`
+	// from the result `fromConn347` to result `intoConn654`
 	// (extra steps needed)
-	intermediateCQL, intoConn549 := net.Pipe()
+	intermediateCQL, intoConn654 := net.Pipe()
 
-	// Extra step (`fromConn497` taints `intermediateCQL`, which taints `intoConn549`:
-	link(fromConn497, intermediateCQL)
+	// Extra step (`fromConn347` taints `intermediateCQL`, which taints `intoConn654`:
+	link(fromConn347, intermediateCQL)
 
-	// Return the tainted `intoConn549`:
-	return intoConn549
+	// Return the tainted `intoConn654`:
+	return intoConn654
 }
 
 func TaintStepTest_NetPipe_B1I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromConn195` into `intoConn231`.
+	// The flow is from `fromConn961` into `intoConn273`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromConn195`:
-	fromConn195 := sourceCQL.(net.Conn)
+	// Assume that `sourceCQL` has the underlying type of `fromConn961`:
+	fromConn961 := sourceCQL.(net.Conn)
 
 	// Call the function that transfers the taint
-	// from the result `fromConn195` to result `intoConn231`
+	// from the result `fromConn961` to result `intoConn273`
 	// (extra steps needed)
-	intoConn231, intermediateCQL := net.Pipe()
+	intoConn273, intermediateCQL := net.Pipe()
 
-	// Extra step (`fromConn195` taints `intermediateCQL`, which taints `intoConn231`:
-	link(fromConn195, intermediateCQL)
+	// Extra step (`fromConn961` taints `intermediateCQL`, which taints `intoConn273`:
+	link(fromConn961, intermediateCQL)
 
-	// Return the tainted `intoConn231`:
-	return intoConn231
+	// Return the tainted `intoConn273`:
+	return intoConn273
 }
 
 func TaintStepTest_NetSplitHostPort_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString598` into `intoString420`.
+	// The flow is from `fromString453` into `intoString318`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString598`:
-	fromString598 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString453`:
+	fromString453 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString598` to result `intoString420`
-	// (`intoString420` is now tainted).
-	intoString420, _, _ := net.SplitHostPort(fromString598)
+	// from the parameter `fromString453` to result `intoString318`
+	// (`intoString318` is now tainted).
+	intoString318, _, _ := net.SplitHostPort(fromString453)
 
-	// Return the tainted `intoString420`:
-	return intoString420
+	// Return the tainted `intoString318`:
+	return intoString318
 }
 
 func TaintStepTest_NetSplitHostPort_B0I0O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromString846` into `intoString195`.
+	// The flow is from `fromString775` into `intoString670`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromString846`:
-	fromString846 := sourceCQL.(string)
+	// Assume that `sourceCQL` has the underlying type of `fromString775`:
+	fromString775 := sourceCQL.(string)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromString846` to result `intoString195`
-	// (`intoString195` is now tainted).
-	_, intoString195, _ := net.SplitHostPort(fromString846)
+	// from the parameter `fromString775` to result `intoString670`
+	// (`intoString670` is now tainted).
+	_, intoString670, _ := net.SplitHostPort(fromString775)
 
-	// Return the tainted `intoString195`:
-	return intoString195
+	// Return the tainted `intoString670`:
+	return intoString670
 }
 
 func TaintStepTest_NetBuffersRead_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromBuffers715` into `intoByte553`.
+	// The flow is from `fromBuffers455` into `intoByte371`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromBuffers715`:
-	fromBuffers715 := sourceCQL.(net.Buffers)
+	// Assume that `sourceCQL` has the underlying type of `fromBuffers455`:
+	fromBuffers455 := sourceCQL.(net.Buffers)
 
-	// Declare `intoByte553` variable:
-	var intoByte553 []byte
+	// Declare `intoByte371` variable:
+	var intoByte371 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromBuffers715` to the argument `intoByte553`
-	// (`intoByte553` is now tainted).
-	fromBuffers715.Read(intoByte553)
+	// from the receiver `fromBuffers455` to the argument `intoByte371`
+	// (`intoByte371` is now tainted).
+	fromBuffers455.Read(intoByte371)
 
-	// Return the tainted `intoByte553`:
-	return intoByte553
+	// Return the tainted `intoByte371`:
+	return intoByte371
 }
 
 func TaintStepTest_NetBuffersWriteTo_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromBuffers179` into `intoWriter795`.
+	// The flow is from `fromBuffers648` into `intoWriter499`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromBuffers179`:
-	fromBuffers179 := sourceCQL.(net.Buffers)
+	// Assume that `sourceCQL` has the underlying type of `fromBuffers648`:
+	fromBuffers648 := sourceCQL.(net.Buffers)
 
-	// Declare `intoWriter795` variable:
-	var intoWriter795 io.Writer
+	// Declare `intoWriter499` variable:
+	var intoWriter499 io.Writer
 
 	// Call the method that transfers the taint
-	// from the receiver `fromBuffers179` to the argument `intoWriter795`
-	// (`intoWriter795` is now tainted).
-	fromBuffers179.WriteTo(intoWriter795)
+	// from the receiver `fromBuffers648` to the argument `intoWriter499`
+	// (`intoWriter499` is now tainted).
+	fromBuffers648.WriteTo(intoWriter499)
 
-	// Return the tainted `intoWriter795`:
-	return intoWriter795
+	// Return the tainted `intoWriter499`:
+	return intoWriter499
 }
 
 func TaintStepTest_NetFlagsString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromFlags743` into `intoString159`.
+	// The flow is from `fromFlags642` into `intoString949`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromFlags743`:
-	fromFlags743 := sourceCQL.(net.Flags)
+	// Assume that `sourceCQL` has the underlying type of `fromFlags642`:
+	fromFlags642 := sourceCQL.(net.Flags)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromFlags743` to the result `intoString159`
-	// (`intoString159` is now tainted).
-	intoString159 := fromFlags743.String()
+	// from the receiver `fromFlags642` to the result `intoString949`
+	// (`intoString949` is now tainted).
+	intoString949 := fromFlags642.String()
 
-	// Return the tainted `intoString159`:
-	return intoString159
+	// Return the tainted `intoString949`:
+	return intoString949
 }
 
 func TaintStepTest_NetHardwareAddrString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromHardwareAddr472` into `intoString550`.
+	// The flow is from `fromHardwareAddr341` into `intoString870`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromHardwareAddr472`:
-	fromHardwareAddr472 := sourceCQL.(net.HardwareAddr)
+	// Assume that `sourceCQL` has the underlying type of `fromHardwareAddr341`:
+	fromHardwareAddr341 := sourceCQL.(net.HardwareAddr)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromHardwareAddr472` to the result `intoString550`
+	// from the receiver `fromHardwareAddr341` to the result `intoString870`
+	// (`intoString870` is now tainted).
+	intoString870 := fromHardwareAddr341.String()
+
+	// Return the tainted `intoString870`:
+	return intoString870
+}
+
+func TaintStepTest_NetIPMarshalText_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromIP135` into `intoByte738`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromIP135`:
+	fromIP135 := sourceCQL.(net.IP)
+
+	// Call the method that transfers the taint
+	// from the receiver `fromIP135` to the result `intoByte738`
+	// (`intoByte738` is now tainted).
+	intoByte738, _ := fromIP135.MarshalText()
+
+	// Return the tainted `intoByte738`:
+	return intoByte738
+}
+
+func TaintStepTest_NetIPString_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromIP579` into `intoString752`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromIP579`:
+	fromIP579 := sourceCQL.(net.IP)
+
+	// Call the method that transfers the taint
+	// from the receiver `fromIP579` to the result `intoString752`
+	// (`intoString752` is now tainted).
+	intoString752 := fromIP579.String()
+
+	// Return the tainted `intoString752`:
+	return intoString752
+}
+
+func TaintStepTest_NetIPTo16_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromIP545` into `intoIP866`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromIP545`:
+	fromIP545 := sourceCQL.(net.IP)
+
+	// Call the method that transfers the taint
+	// from the receiver `fromIP545` to the result `intoIP866`
+	// (`intoIP866` is now tainted).
+	intoIP866 := fromIP545.To16()
+
+	// Return the tainted `intoIP866`:
+	return intoIP866
+}
+
+func TaintStepTest_NetIPTo4_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromIP200` into `intoIP522`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromIP200`:
+	fromIP200 := sourceCQL.(net.IP)
+
+	// Call the method that transfers the taint
+	// from the receiver `fromIP200` to the result `intoIP522`
+	// (`intoIP522` is now tainted).
+	intoIP522 := fromIP200.To4()
+
+	// Return the tainted `intoIP522`:
+	return intoIP522
+}
+
+func TaintStepTest_NetIPUnmarshalText_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromByte948` into `intoIP722`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromByte948`:
+	fromByte948 := sourceCQL.([]byte)
+
+	// Declare `intoIP722` variable:
+	var intoIP722 net.IP
+
+	// Call the method that transfers the taint
+	// from the parameter `fromByte948` to the receiver `intoIP722`
+	// (`intoIP722` is now tainted).
+	intoIP722.UnmarshalText(fromByte948)
+
+	// Return the tainted `intoIP722`:
+	return intoIP722
+}
+
+func TaintStepTest_NetIPAddrString_B0I0O0(sourceCQL interface{}) interface{} {
+	// The flow is from `fromIPAddr430` into `intoString550`.
+
+	// Assume that `sourceCQL` has the underlying type of `fromIPAddr430`:
+	fromIPAddr430 := sourceCQL.(net.IPAddr)
+
+	// Call the method that transfers the taint
+	// from the receiver `fromIPAddr430` to the result `intoString550`
 	// (`intoString550` is now tainted).
-	intoString550 := fromHardwareAddr472.String()
+	intoString550 := fromIPAddr430.String()
 
 	// Return the tainted `intoString550`:
 	return intoString550
 }
 
-func TaintStepTest_NetIPMarshalText_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromIP450` into `intoByte546`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromIP450`:
-	fromIP450 := sourceCQL.(net.IP)
-
-	// Call the method that transfers the taint
-	// from the receiver `fromIP450` to the result `intoByte546`
-	// (`intoByte546` is now tainted).
-	intoByte546, _ := fromIP450.MarshalText()
-
-	// Return the tainted `intoByte546`:
-	return intoByte546
-}
-
-func TaintStepTest_NetIPString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromIP124` into `intoString925`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromIP124`:
-	fromIP124 := sourceCQL.(net.IP)
-
-	// Call the method that transfers the taint
-	// from the receiver `fromIP124` to the result `intoString925`
-	// (`intoString925` is now tainted).
-	intoString925 := fromIP124.String()
-
-	// Return the tainted `intoString925`:
-	return intoString925
-}
-
-func TaintStepTest_NetIPTo16_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromIP227` into `intoIP616`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromIP227`:
-	fromIP227 := sourceCQL.(net.IP)
-
-	// Call the method that transfers the taint
-	// from the receiver `fromIP227` to the result `intoIP616`
-	// (`intoIP616` is now tainted).
-	intoIP616 := fromIP227.To16()
-
-	// Return the tainted `intoIP616`:
-	return intoIP616
-}
-
-func TaintStepTest_NetIPTo4_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromIP264` into `intoIP157`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromIP264`:
-	fromIP264 := sourceCQL.(net.IP)
-
-	// Call the method that transfers the taint
-	// from the receiver `fromIP264` to the result `intoIP157`
-	// (`intoIP157` is now tainted).
-	intoIP157 := fromIP264.To4()
-
-	// Return the tainted `intoIP157`:
-	return intoIP157
-}
-
-func TaintStepTest_NetIPUnmarshalText_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte437` into `intoIP434`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromByte437`:
-	fromByte437 := sourceCQL.([]byte)
-
-	// Declare `intoIP434` variable:
-	var intoIP434 net.IP
-
-	// Call the method that transfers the taint
-	// from the parameter `fromByte437` to the receiver `intoIP434`
-	// (`intoIP434` is now tainted).
-	intoIP434.UnmarshalText(fromByte437)
-
-	// Return the tainted `intoIP434`:
-	return intoIP434
-}
-
-func TaintStepTest_NetIPAddrString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromIPAddr357` into `intoString961`.
-
-	// Assume that `sourceCQL` has the underlying type of `fromIPAddr357`:
-	fromIPAddr357 := sourceCQL.(net.IPAddr)
-
-	// Call the method that transfers the taint
-	// from the receiver `fromIPAddr357` to the result `intoString961`
-	// (`intoString961` is now tainted).
-	intoString961 := fromIPAddr357.String()
-
-	// Return the tainted `intoString961`:
-	return intoString961
-}
-
 func TaintStepTest_NetIPConnReadFrom_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromIPConn709` into `intoByte536`.
+	// The flow is from `fromIPConn571` into `intoByte930`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromIPConn709`:
-	fromIPConn709 := sourceCQL.(net.IPConn)
+	// Assume that `sourceCQL` has the underlying type of `fromIPConn571`:
+	fromIPConn571 := sourceCQL.(net.IPConn)
 
-	// Declare `intoByte536` variable:
-	var intoByte536 []byte
+	// Declare `intoByte930` variable:
+	var intoByte930 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromIPConn709` to the argument `intoByte536`
-	// (`intoByte536` is now tainted).
-	fromIPConn709.ReadFrom(intoByte536)
+	// from the receiver `fromIPConn571` to the argument `intoByte930`
+	// (`intoByte930` is now tainted).
+	fromIPConn571.ReadFrom(intoByte930)
 
-	// Return the tainted `intoByte536`:
-	return intoByte536
+	// Return the tainted `intoByte930`:
+	return intoByte930
 }
 
 func TaintStepTest_NetIPConnReadFromIP_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromIPConn255` into `intoByte778`.
+	// The flow is from `fromIPConn112` into `intoByte207`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromIPConn255`:
-	fromIPConn255 := sourceCQL.(net.IPConn)
+	// Assume that `sourceCQL` has the underlying type of `fromIPConn112`:
+	fromIPConn112 := sourceCQL.(net.IPConn)
 
-	// Declare `intoByte778` variable:
-	var intoByte778 []byte
+	// Declare `intoByte207` variable:
+	var intoByte207 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromIPConn255` to the argument `intoByte778`
-	// (`intoByte778` is now tainted).
-	fromIPConn255.ReadFromIP(intoByte778)
+	// from the receiver `fromIPConn112` to the argument `intoByte207`
+	// (`intoByte207` is now tainted).
+	fromIPConn112.ReadFromIP(intoByte207)
 
-	// Return the tainted `intoByte778`:
-	return intoByte778
+	// Return the tainted `intoByte207`:
+	return intoByte207
 }
 
 func TaintStepTest_NetIPConnReadMsgIP_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromIPConn618` into `intoByte377`.
+	// The flow is from `fromIPConn957` into `intoByte556`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromIPConn618`:
-	fromIPConn618 := sourceCQL.(net.IPConn)
+	// Assume that `sourceCQL` has the underlying type of `fromIPConn957`:
+	fromIPConn957 := sourceCQL.(net.IPConn)
 
-	// Declare `intoByte377` variable:
-	var intoByte377 []byte
+	// Declare `intoByte556` variable:
+	var intoByte556 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromIPConn618` to the argument `intoByte377`
-	// (`intoByte377` is now tainted).
-	fromIPConn618.ReadMsgIP(intoByte377, nil)
+	// from the receiver `fromIPConn957` to the argument `intoByte556`
+	// (`intoByte556` is now tainted).
+	fromIPConn957.ReadMsgIP(intoByte556, nil)
 
-	// Return the tainted `intoByte377`:
-	return intoByte377
+	// Return the tainted `intoByte556`:
+	return intoByte556
 }
 
 func TaintStepTest_NetIPConnReadMsgIP_B0I0O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromIPConn722` into `intoByte420`.
+	// The flow is from `fromIPConn430` into `intoByte414`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromIPConn722`:
-	fromIPConn722 := sourceCQL.(net.IPConn)
+	// Assume that `sourceCQL` has the underlying type of `fromIPConn430`:
+	fromIPConn430 := sourceCQL.(net.IPConn)
 
-	// Declare `intoByte420` variable:
-	var intoByte420 []byte
+	// Declare `intoByte414` variable:
+	var intoByte414 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromIPConn722` to the argument `intoByte420`
-	// (`intoByte420` is now tainted).
-	fromIPConn722.ReadMsgIP(nil, intoByte420)
+	// from the receiver `fromIPConn430` to the argument `intoByte414`
+	// (`intoByte414` is now tainted).
+	fromIPConn430.ReadMsgIP(nil, intoByte414)
 
-	// Return the tainted `intoByte420`:
-	return intoByte420
+	// Return the tainted `intoByte414`:
+	return intoByte414
 }
 
 func TaintStepTest_NetIPConnSyscallConn_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromIPConn906` into `intoRawConn980`.
+	// The flow is from `fromIPConn297` into `intoRawConn614`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromIPConn906`:
-	fromIPConn906 := sourceCQL.(net.IPConn)
+	// Assume that `sourceCQL` has the underlying type of `fromIPConn297`:
+	fromIPConn297 := sourceCQL.(net.IPConn)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromIPConn906` to the result `intoRawConn980`
-	// (`intoRawConn980` is now tainted).
-	intoRawConn980, _ := fromIPConn906.SyscallConn()
+	// from the receiver `fromIPConn297` to the result `intoRawConn614`
+	// (`intoRawConn614` is now tainted).
+	intoRawConn614, _ := fromIPConn297.SyscallConn()
 
-	// Return the tainted `intoRawConn980`:
-	return intoRawConn980
+	// Return the tainted `intoRawConn614`:
+	return intoRawConn614
 }
 
 func TaintStepTest_NetIPConnSyscallConn_B1I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRawConn247` into `intoIPConn436`.
+	// The flow is from `fromRawConn273` into `intoIPConn760`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRawConn247`:
-	fromRawConn247 := sourceCQL.(syscall.RawConn)
+	// Assume that `sourceCQL` has the underlying type of `fromRawConn273`:
+	fromRawConn273 := sourceCQL.(syscall.RawConn)
 
-	// Declare `intoIPConn436` variable:
-	var intoIPConn436 net.IPConn
+	// Declare `intoIPConn760` variable:
+	var intoIPConn760 net.IPConn
 
 	// Call the method that will transfer the taint
-	// from the result `intermediateCQL` to receiver `intoIPConn436`:
-	intermediateCQL, _ := intoIPConn436.SyscallConn()
+	// from the result `intermediateCQL` to receiver `intoIPConn760`:
+	intermediateCQL, _ := intoIPConn760.SyscallConn()
 
-	// Extra step (`fromRawConn247` taints `intermediateCQL`, which taints `intoIPConn436`:
-	link(fromRawConn247, intermediateCQL)
+	// Extra step (`fromRawConn273` taints `intermediateCQL`, which taints `intoIPConn760`:
+	link(fromRawConn273, intermediateCQL)
 
-	// Return the tainted `intoIPConn436`:
-	return intoIPConn436
+	// Return the tainted `intoIPConn760`:
+	return intoIPConn760
 }
 
 func TaintStepTest_NetIPConnWriteMsgIP_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte245` into `intoIPConn423`.
+	// The flow is from `fromByte584` into `intoIPConn612`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte245`:
-	fromByte245 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte584`:
+	fromByte584 := sourceCQL.([]byte)
 
-	// Declare `intoIPConn423` variable:
-	var intoIPConn423 net.IPConn
+	// Declare `intoIPConn612` variable:
+	var intoIPConn612 net.IPConn
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte245` to the receiver `intoIPConn423`
-	// (`intoIPConn423` is now tainted).
-	intoIPConn423.WriteMsgIP(fromByte245, nil, nil)
+	// from the parameter `fromByte584` to the receiver `intoIPConn612`
+	// (`intoIPConn612` is now tainted).
+	intoIPConn612.WriteMsgIP(fromByte584, nil, nil)
 
-	// Return the tainted `intoIPConn423`:
-	return intoIPConn423
+	// Return the tainted `intoIPConn612`:
+	return intoIPConn612
 }
 
 func TaintStepTest_NetIPConnWriteMsgIP_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte211` into `intoIPConn551`.
+	// The flow is from `fromByte574` into `intoIPConn783`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte211`:
-	fromByte211 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte574`:
+	fromByte574 := sourceCQL.([]byte)
 
-	// Declare `intoIPConn551` variable:
-	var intoIPConn551 net.IPConn
+	// Declare `intoIPConn783` variable:
+	var intoIPConn783 net.IPConn
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte211` to the receiver `intoIPConn551`
-	// (`intoIPConn551` is now tainted).
-	intoIPConn551.WriteMsgIP(nil, fromByte211, nil)
+	// from the parameter `fromByte574` to the receiver `intoIPConn783`
+	// (`intoIPConn783` is now tainted).
+	intoIPConn783.WriteMsgIP(nil, fromByte574, nil)
 
-	// Return the tainted `intoIPConn551`:
-	return intoIPConn551
+	// Return the tainted `intoIPConn783`:
+	return intoIPConn783
 }
 
 func TaintStepTest_NetIPConnWriteTo_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte734` into `intoIPConn298`.
+	// The flow is from `fromByte401` into `intoIPConn829`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte734`:
-	fromByte734 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte401`:
+	fromByte401 := sourceCQL.([]byte)
 
-	// Declare `intoIPConn298` variable:
-	var intoIPConn298 net.IPConn
+	// Declare `intoIPConn829` variable:
+	var intoIPConn829 net.IPConn
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte734` to the receiver `intoIPConn298`
-	// (`intoIPConn298` is now tainted).
-	intoIPConn298.WriteTo(fromByte734, nil)
+	// from the parameter `fromByte401` to the receiver `intoIPConn829`
+	// (`intoIPConn829` is now tainted).
+	intoIPConn829.WriteTo(fromByte401, nil)
 
-	// Return the tainted `intoIPConn298`:
-	return intoIPConn298
+	// Return the tainted `intoIPConn829`:
+	return intoIPConn829
 }
 
 func TaintStepTest_NetIPConnWriteToIP_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte153` into `intoIPConn267`.
+	// The flow is from `fromByte936` into `intoIPConn711`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte153`:
-	fromByte153 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte936`:
+	fromByte936 := sourceCQL.([]byte)
 
-	// Declare `intoIPConn267` variable:
-	var intoIPConn267 net.IPConn
+	// Declare `intoIPConn711` variable:
+	var intoIPConn711 net.IPConn
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte153` to the receiver `intoIPConn267`
-	// (`intoIPConn267` is now tainted).
-	intoIPConn267.WriteToIP(fromByte153, nil)
+	// from the parameter `fromByte936` to the receiver `intoIPConn711`
+	// (`intoIPConn711` is now tainted).
+	intoIPConn711.WriteToIP(fromByte936, nil)
 
-	// Return the tainted `intoIPConn267`:
-	return intoIPConn267
+	// Return the tainted `intoIPConn711`:
+	return intoIPConn711
 }
 
 func TaintStepTest_NetIPMaskString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromIPMask508` into `intoString532`.
+	// The flow is from `fromIPMask333` into `intoString555`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromIPMask508`:
-	fromIPMask508 := sourceCQL.(net.IPMask)
+	// Assume that `sourceCQL` has the underlying type of `fromIPMask333`:
+	fromIPMask333 := sourceCQL.(net.IPMask)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromIPMask508` to the result `intoString532`
-	// (`intoString532` is now tainted).
-	intoString532 := fromIPMask508.String()
+	// from the receiver `fromIPMask333` to the result `intoString555`
+	// (`intoString555` is now tainted).
+	intoString555 := fromIPMask333.String()
 
-	// Return the tainted `intoString532`:
-	return intoString532
+	// Return the tainted `intoString555`:
+	return intoString555
 }
 
 func TaintStepTest_NetIPNetString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromIPNet561` into `intoString470`.
+	// The flow is from `fromIPNet382` into `intoString685`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromIPNet561`:
-	fromIPNet561 := sourceCQL.(net.IPNet)
+	// Assume that `sourceCQL` has the underlying type of `fromIPNet382`:
+	fromIPNet382 := sourceCQL.(net.IPNet)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromIPNet561` to the result `intoString470`
-	// (`intoString470` is now tainted).
-	intoString470 := fromIPNet561.String()
+	// from the receiver `fromIPNet382` to the result `intoString685`
+	// (`intoString685` is now tainted).
+	intoString685 := fromIPNet382.String()
 
-	// Return the tainted `intoString470`:
-	return intoString470
+	// Return the tainted `intoString685`:
+	return intoString685
 }
 
 func TaintStepTest_NetTCPAddrString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromTCPAddr263` into `intoString373`.
+	// The flow is from `fromTCPAddr972` into `intoString488`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromTCPAddr263`:
-	fromTCPAddr263 := sourceCQL.(net.TCPAddr)
+	// Assume that `sourceCQL` has the underlying type of `fromTCPAddr972`:
+	fromTCPAddr972 := sourceCQL.(net.TCPAddr)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromTCPAddr263` to the result `intoString373`
-	// (`intoString373` is now tainted).
-	intoString373 := fromTCPAddr263.String()
+	// from the receiver `fromTCPAddr972` to the result `intoString488`
+	// (`intoString488` is now tainted).
+	intoString488 := fromTCPAddr972.String()
 
-	// Return the tainted `intoString373`:
-	return intoString373
+	// Return the tainted `intoString488`:
+	return intoString488
 }
 
 func TaintStepTest_NetTCPConnReadFrom_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromReader640` into `intoTCPConn322`.
+	// The flow is from `fromReader897` into `intoTCPConn485`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromReader640`:
-	fromReader640 := sourceCQL.(io.Reader)
+	// Assume that `sourceCQL` has the underlying type of `fromReader897`:
+	fromReader897 := sourceCQL.(io.Reader)
 
-	// Declare `intoTCPConn322` variable:
-	var intoTCPConn322 net.TCPConn
+	// Declare `intoTCPConn485` variable:
+	var intoTCPConn485 net.TCPConn
 
 	// Call the method that transfers the taint
-	// from the parameter `fromReader640` to the receiver `intoTCPConn322`
-	// (`intoTCPConn322` is now tainted).
-	intoTCPConn322.ReadFrom(fromReader640)
+	// from the parameter `fromReader897` to the receiver `intoTCPConn485`
+	// (`intoTCPConn485` is now tainted).
+	intoTCPConn485.ReadFrom(fromReader897)
 
-	// Return the tainted `intoTCPConn322`:
-	return intoTCPConn322
+	// Return the tainted `intoTCPConn485`:
+	return intoTCPConn485
 }
 
 func TaintStepTest_NetTCPConnSyscallConn_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromTCPConn987` into `intoRawConn593`.
+	// The flow is from `fromTCPConn601` into `intoRawConn949`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromTCPConn987`:
-	fromTCPConn987 := sourceCQL.(net.TCPConn)
+	// Assume that `sourceCQL` has the underlying type of `fromTCPConn601`:
+	fromTCPConn601 := sourceCQL.(net.TCPConn)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromTCPConn987` to the result `intoRawConn593`
-	// (`intoRawConn593` is now tainted).
-	intoRawConn593, _ := fromTCPConn987.SyscallConn()
+	// from the receiver `fromTCPConn601` to the result `intoRawConn949`
+	// (`intoRawConn949` is now tainted).
+	intoRawConn949, _ := fromTCPConn601.SyscallConn()
 
-	// Return the tainted `intoRawConn593`:
-	return intoRawConn593
+	// Return the tainted `intoRawConn949`:
+	return intoRawConn949
 }
 
 func TaintStepTest_NetTCPConnSyscallConn_B1I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRawConn799` into `intoTCPConn712`.
+	// The flow is from `fromRawConn255` into `intoTCPConn679`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRawConn799`:
-	fromRawConn799 := sourceCQL.(syscall.RawConn)
+	// Assume that `sourceCQL` has the underlying type of `fromRawConn255`:
+	fromRawConn255 := sourceCQL.(syscall.RawConn)
 
-	// Declare `intoTCPConn712` variable:
-	var intoTCPConn712 net.TCPConn
+	// Declare `intoTCPConn679` variable:
+	var intoTCPConn679 net.TCPConn
 
 	// Call the method that will transfer the taint
-	// from the result `intermediateCQL` to receiver `intoTCPConn712`:
-	intermediateCQL, _ := intoTCPConn712.SyscallConn()
+	// from the result `intermediateCQL` to receiver `intoTCPConn679`:
+	intermediateCQL, _ := intoTCPConn679.SyscallConn()
 
-	// Extra step (`fromRawConn799` taints `intermediateCQL`, which taints `intoTCPConn712`:
-	link(fromRawConn799, intermediateCQL)
+	// Extra step (`fromRawConn255` taints `intermediateCQL`, which taints `intoTCPConn679`:
+	link(fromRawConn255, intermediateCQL)
 
-	// Return the tainted `intoTCPConn712`:
-	return intoTCPConn712
+	// Return the tainted `intoTCPConn679`:
+	return intoTCPConn679
 }
 
 func TaintStepTest_NetTCPListenerFile_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromTCPListener974` into `intoFile944`.
+	// The flow is from `fromTCPListener429` into `intoFile937`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromTCPListener974`:
-	fromTCPListener974 := sourceCQL.(net.TCPListener)
+	// Assume that `sourceCQL` has the underlying type of `fromTCPListener429`:
+	fromTCPListener429 := sourceCQL.(net.TCPListener)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromTCPListener974` to the result `intoFile944`
-	// (`intoFile944` is now tainted).
-	intoFile944, _ := fromTCPListener974.File()
+	// from the receiver `fromTCPListener429` to the result `intoFile937`
+	// (`intoFile937` is now tainted).
+	intoFile937, _ := fromTCPListener429.File()
 
-	// Return the tainted `intoFile944`:
-	return intoFile944
+	// Return the tainted `intoFile937`:
+	return intoFile937
 }
 
 func TaintStepTest_NetTCPListenerFile_B1I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromFile943` into `intoTCPListener523`.
+	// The flow is from `fromFile562` into `intoTCPListener435`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromFile943`:
-	fromFile943 := sourceCQL.(*os.File)
+	// Assume that `sourceCQL` has the underlying type of `fromFile562`:
+	fromFile562 := sourceCQL.(*os.File)
 
-	// Declare `intoTCPListener523` variable:
-	var intoTCPListener523 net.TCPListener
+	// Declare `intoTCPListener435` variable:
+	var intoTCPListener435 net.TCPListener
 
 	// Call the method that will transfer the taint
-	// from the result `intermediateCQL` to receiver `intoTCPListener523`:
-	intermediateCQL, _ := intoTCPListener523.File()
+	// from the result `intermediateCQL` to receiver `intoTCPListener435`:
+	intermediateCQL, _ := intoTCPListener435.File()
 
-	// Extra step (`fromFile943` taints `intermediateCQL`, which taints `intoTCPListener523`:
-	link(fromFile943, intermediateCQL)
+	// Extra step (`fromFile562` taints `intermediateCQL`, which taints `intoTCPListener435`:
+	link(fromFile562, intermediateCQL)
 
-	// Return the tainted `intoTCPListener523`:
-	return intoTCPListener523
+	// Return the tainted `intoTCPListener435`:
+	return intoTCPListener435
 }
 
 func TaintStepTest_NetTCPListenerSyscallConn_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromTCPListener760` into `intoRawConn207`.
+	// The flow is from `fromTCPListener188` into `intoRawConn801`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromTCPListener760`:
-	fromTCPListener760 := sourceCQL.(net.TCPListener)
+	// Assume that `sourceCQL` has the underlying type of `fromTCPListener188`:
+	fromTCPListener188 := sourceCQL.(net.TCPListener)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromTCPListener760` to the result `intoRawConn207`
-	// (`intoRawConn207` is now tainted).
-	intoRawConn207, _ := fromTCPListener760.SyscallConn()
+	// from the receiver `fromTCPListener188` to the result `intoRawConn801`
+	// (`intoRawConn801` is now tainted).
+	intoRawConn801, _ := fromTCPListener188.SyscallConn()
 
-	// Return the tainted `intoRawConn207`:
-	return intoRawConn207
+	// Return the tainted `intoRawConn801`:
+	return intoRawConn801
 }
 
 func TaintStepTest_NetTCPListenerSyscallConn_B1I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRawConn510` into `intoTCPListener867`.
+	// The flow is from `fromRawConn470` into `intoTCPListener452`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRawConn510`:
-	fromRawConn510 := sourceCQL.(syscall.RawConn)
+	// Assume that `sourceCQL` has the underlying type of `fromRawConn470`:
+	fromRawConn470 := sourceCQL.(syscall.RawConn)
 
-	// Declare `intoTCPListener867` variable:
-	var intoTCPListener867 net.TCPListener
+	// Declare `intoTCPListener452` variable:
+	var intoTCPListener452 net.TCPListener
 
 	// Call the method that will transfer the taint
-	// from the result `intermediateCQL` to receiver `intoTCPListener867`:
-	intermediateCQL, _ := intoTCPListener867.SyscallConn()
+	// from the result `intermediateCQL` to receiver `intoTCPListener452`:
+	intermediateCQL, _ := intoTCPListener452.SyscallConn()
 
-	// Extra step (`fromRawConn510` taints `intermediateCQL`, which taints `intoTCPListener867`:
-	link(fromRawConn510, intermediateCQL)
+	// Extra step (`fromRawConn470` taints `intermediateCQL`, which taints `intoTCPListener452`:
+	link(fromRawConn470, intermediateCQL)
 
-	// Return the tainted `intoTCPListener867`:
-	return intoTCPListener867
+	// Return the tainted `intoTCPListener452`:
+	return intoTCPListener452
 }
 
 func TaintStepTest_NetUDPConnReadFrom_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUDPConn293` into `intoByte449`.
+	// The flow is from `fromUDPConn465` into `intoByte599`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUDPConn293`:
-	fromUDPConn293 := sourceCQL.(net.UDPConn)
+	// Assume that `sourceCQL` has the underlying type of `fromUDPConn465`:
+	fromUDPConn465 := sourceCQL.(net.UDPConn)
 
-	// Declare `intoByte449` variable:
-	var intoByte449 []byte
+	// Declare `intoByte599` variable:
+	var intoByte599 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromUDPConn293` to the argument `intoByte449`
-	// (`intoByte449` is now tainted).
-	fromUDPConn293.ReadFrom(intoByte449)
+	// from the receiver `fromUDPConn465` to the argument `intoByte599`
+	// (`intoByte599` is now tainted).
+	fromUDPConn465.ReadFrom(intoByte599)
 
-	// Return the tainted `intoByte449`:
-	return intoByte449
+	// Return the tainted `intoByte599`:
+	return intoByte599
 }
 
 func TaintStepTest_NetUDPConnReadFromUDP_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUDPConn479` into `intoByte596`.
+	// The flow is from `fromUDPConn476` into `intoByte634`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUDPConn479`:
-	fromUDPConn479 := sourceCQL.(net.UDPConn)
+	// Assume that `sourceCQL` has the underlying type of `fromUDPConn476`:
+	fromUDPConn476 := sourceCQL.(net.UDPConn)
 
-	// Declare `intoByte596` variable:
-	var intoByte596 []byte
+	// Declare `intoByte634` variable:
+	var intoByte634 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromUDPConn479` to the argument `intoByte596`
-	// (`intoByte596` is now tainted).
-	fromUDPConn479.ReadFromUDP(intoByte596)
+	// from the receiver `fromUDPConn476` to the argument `intoByte634`
+	// (`intoByte634` is now tainted).
+	fromUDPConn476.ReadFromUDP(intoByte634)
 
-	// Return the tainted `intoByte596`:
-	return intoByte596
+	// Return the tainted `intoByte634`:
+	return intoByte634
 }
 
 func TaintStepTest_NetUDPConnReadMsgUDP_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUDPConn506` into `intoByte321`.
+	// The flow is from `fromUDPConn247` into `intoByte825`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUDPConn506`:
-	fromUDPConn506 := sourceCQL.(net.UDPConn)
+	// Assume that `sourceCQL` has the underlying type of `fromUDPConn247`:
+	fromUDPConn247 := sourceCQL.(net.UDPConn)
 
-	// Declare `intoByte321` variable:
-	var intoByte321 []byte
+	// Declare `intoByte825` variable:
+	var intoByte825 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromUDPConn506` to the argument `intoByte321`
-	// (`intoByte321` is now tainted).
-	fromUDPConn506.ReadMsgUDP(intoByte321, nil)
+	// from the receiver `fromUDPConn247` to the argument `intoByte825`
+	// (`intoByte825` is now tainted).
+	fromUDPConn247.ReadMsgUDP(intoByte825, nil)
 
-	// Return the tainted `intoByte321`:
-	return intoByte321
+	// Return the tainted `intoByte825`:
+	return intoByte825
 }
 
 func TaintStepTest_NetUDPConnReadMsgUDP_B0I0O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUDPConn199` into `intoByte316`.
+	// The flow is from `fromUDPConn311` into `intoByte519`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUDPConn199`:
-	fromUDPConn199 := sourceCQL.(net.UDPConn)
+	// Assume that `sourceCQL` has the underlying type of `fromUDPConn311`:
+	fromUDPConn311 := sourceCQL.(net.UDPConn)
 
-	// Declare `intoByte316` variable:
-	var intoByte316 []byte
+	// Declare `intoByte519` variable:
+	var intoByte519 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromUDPConn199` to the argument `intoByte316`
-	// (`intoByte316` is now tainted).
-	fromUDPConn199.ReadMsgUDP(nil, intoByte316)
+	// from the receiver `fromUDPConn311` to the argument `intoByte519`
+	// (`intoByte519` is now tainted).
+	fromUDPConn311.ReadMsgUDP(nil, intoByte519)
 
-	// Return the tainted `intoByte316`:
-	return intoByte316
+	// Return the tainted `intoByte519`:
+	return intoByte519
 }
 
 func TaintStepTest_NetUDPConnSyscallConn_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUDPConn895` into `intoRawConn744`.
+	// The flow is from `fromUDPConn278` into `intoRawConn824`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUDPConn895`:
-	fromUDPConn895 := sourceCQL.(net.UDPConn)
+	// Assume that `sourceCQL` has the underlying type of `fromUDPConn278`:
+	fromUDPConn278 := sourceCQL.(net.UDPConn)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromUDPConn895` to the result `intoRawConn744`
-	// (`intoRawConn744` is now tainted).
-	intoRawConn744, _ := fromUDPConn895.SyscallConn()
+	// from the receiver `fromUDPConn278` to the result `intoRawConn824`
+	// (`intoRawConn824` is now tainted).
+	intoRawConn824, _ := fromUDPConn278.SyscallConn()
 
-	// Return the tainted `intoRawConn744`:
-	return intoRawConn744
+	// Return the tainted `intoRawConn824`:
+	return intoRawConn824
 }
 
 func TaintStepTest_NetUDPConnSyscallConn_B1I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRawConn617` into `intoUDPConn446`.
+	// The flow is from `fromRawConn824` into `intoUDPConn983`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRawConn617`:
-	fromRawConn617 := sourceCQL.(syscall.RawConn)
+	// Assume that `sourceCQL` has the underlying type of `fromRawConn824`:
+	fromRawConn824 := sourceCQL.(syscall.RawConn)
 
-	// Declare `intoUDPConn446` variable:
-	var intoUDPConn446 net.UDPConn
+	// Declare `intoUDPConn983` variable:
+	var intoUDPConn983 net.UDPConn
 
 	// Call the method that will transfer the taint
-	// from the result `intermediateCQL` to receiver `intoUDPConn446`:
-	intermediateCQL, _ := intoUDPConn446.SyscallConn()
+	// from the result `intermediateCQL` to receiver `intoUDPConn983`:
+	intermediateCQL, _ := intoUDPConn983.SyscallConn()
 
-	// Extra step (`fromRawConn617` taints `intermediateCQL`, which taints `intoUDPConn446`:
-	link(fromRawConn617, intermediateCQL)
+	// Extra step (`fromRawConn824` taints `intermediateCQL`, which taints `intoUDPConn983`:
+	link(fromRawConn824, intermediateCQL)
 
-	// Return the tainted `intoUDPConn446`:
-	return intoUDPConn446
+	// Return the tainted `intoUDPConn983`:
+	return intoUDPConn983
 }
 
 func TaintStepTest_NetUDPConnWriteMsgUDP_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte112` into `intoUDPConn490`.
+	// The flow is from `fromByte488` into `intoUDPConn601`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte112`:
-	fromByte112 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte488`:
+	fromByte488 := sourceCQL.([]byte)
 
-	// Declare `intoUDPConn490` variable:
-	var intoUDPConn490 net.UDPConn
+	// Declare `intoUDPConn601` variable:
+	var intoUDPConn601 net.UDPConn
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte112` to the receiver `intoUDPConn490`
-	// (`intoUDPConn490` is now tainted).
-	intoUDPConn490.WriteMsgUDP(fromByte112, nil, nil)
+	// from the parameter `fromByte488` to the receiver `intoUDPConn601`
+	// (`intoUDPConn601` is now tainted).
+	intoUDPConn601.WriteMsgUDP(fromByte488, nil, nil)
 
-	// Return the tainted `intoUDPConn490`:
-	return intoUDPConn490
+	// Return the tainted `intoUDPConn601`:
+	return intoUDPConn601
 }
 
 func TaintStepTest_NetUDPConnWriteMsgUDP_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte382` into `intoUDPConn925`.
+	// The flow is from `fromByte213` into `intoUDPConn356`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte382`:
-	fromByte382 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte213`:
+	fromByte213 := sourceCQL.([]byte)
 
-	// Declare `intoUDPConn925` variable:
-	var intoUDPConn925 net.UDPConn
+	// Declare `intoUDPConn356` variable:
+	var intoUDPConn356 net.UDPConn
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte382` to the receiver `intoUDPConn925`
-	// (`intoUDPConn925` is now tainted).
-	intoUDPConn925.WriteMsgUDP(nil, fromByte382, nil)
+	// from the parameter `fromByte213` to the receiver `intoUDPConn356`
+	// (`intoUDPConn356` is now tainted).
+	intoUDPConn356.WriteMsgUDP(nil, fromByte213, nil)
 
-	// Return the tainted `intoUDPConn925`:
-	return intoUDPConn925
+	// Return the tainted `intoUDPConn356`:
+	return intoUDPConn356
 }
 
 func TaintStepTest_NetUDPConnWriteTo_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte272` into `intoUDPConn842`.
+	// The flow is from `fromByte652` into `intoUDPConn757`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte272`:
-	fromByte272 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte652`:
+	fromByte652 := sourceCQL.([]byte)
 
-	// Declare `intoUDPConn842` variable:
-	var intoUDPConn842 net.UDPConn
+	// Declare `intoUDPConn757` variable:
+	var intoUDPConn757 net.UDPConn
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte272` to the receiver `intoUDPConn842`
-	// (`intoUDPConn842` is now tainted).
-	intoUDPConn842.WriteTo(fromByte272, nil)
+	// from the parameter `fromByte652` to the receiver `intoUDPConn757`
+	// (`intoUDPConn757` is now tainted).
+	intoUDPConn757.WriteTo(fromByte652, nil)
 
-	// Return the tainted `intoUDPConn842`:
-	return intoUDPConn842
+	// Return the tainted `intoUDPConn757`:
+	return intoUDPConn757
 }
 
 func TaintStepTest_NetUDPConnWriteToUDP_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte421` into `intoUDPConn233`.
+	// The flow is from `fromByte509` into `intoUDPConn345`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte421`:
-	fromByte421 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte509`:
+	fromByte509 := sourceCQL.([]byte)
 
-	// Declare `intoUDPConn233` variable:
-	var intoUDPConn233 net.UDPConn
+	// Declare `intoUDPConn345` variable:
+	var intoUDPConn345 net.UDPConn
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte421` to the receiver `intoUDPConn233`
-	// (`intoUDPConn233` is now tainted).
-	intoUDPConn233.WriteToUDP(fromByte421, nil)
+	// from the parameter `fromByte509` to the receiver `intoUDPConn345`
+	// (`intoUDPConn345` is now tainted).
+	intoUDPConn345.WriteToUDP(fromByte509, nil)
 
-	// Return the tainted `intoUDPConn233`:
-	return intoUDPConn233
+	// Return the tainted `intoUDPConn345`:
+	return intoUDPConn345
 }
 
 func TaintStepTest_NetUnixAddrString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUnixAddr649` into `intoString513`.
+	// The flow is from `fromUnixAddr807` into `intoString876`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUnixAddr649`:
-	fromUnixAddr649 := sourceCQL.(net.UnixAddr)
+	// Assume that `sourceCQL` has the underlying type of `fromUnixAddr807`:
+	fromUnixAddr807 := sourceCQL.(net.UnixAddr)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromUnixAddr649` to the result `intoString513`
-	// (`intoString513` is now tainted).
-	intoString513 := fromUnixAddr649.String()
+	// from the receiver `fromUnixAddr807` to the result `intoString876`
+	// (`intoString876` is now tainted).
+	intoString876 := fromUnixAddr807.String()
 
-	// Return the tainted `intoString513`:
-	return intoString513
+	// Return the tainted `intoString876`:
+	return intoString876
 }
 
 func TaintStepTest_NetUnixConnReadFrom_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUnixConn507` into `intoByte560`.
+	// The flow is from `fromUnixConn784` into `intoByte451`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUnixConn507`:
-	fromUnixConn507 := sourceCQL.(net.UnixConn)
+	// Assume that `sourceCQL` has the underlying type of `fromUnixConn784`:
+	fromUnixConn784 := sourceCQL.(net.UnixConn)
 
-	// Declare `intoByte560` variable:
-	var intoByte560 []byte
+	// Declare `intoByte451` variable:
+	var intoByte451 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromUnixConn507` to the argument `intoByte560`
-	// (`intoByte560` is now tainted).
-	fromUnixConn507.ReadFrom(intoByte560)
+	// from the receiver `fromUnixConn784` to the argument `intoByte451`
+	// (`intoByte451` is now tainted).
+	fromUnixConn784.ReadFrom(intoByte451)
 
-	// Return the tainted `intoByte560`:
-	return intoByte560
+	// Return the tainted `intoByte451`:
+	return intoByte451
 }
 
 func TaintStepTest_NetUnixConnReadFromUnix_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUnixConn423` into `intoByte841`.
+	// The flow is from `fromUnixConn985` into `intoByte597`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUnixConn423`:
-	fromUnixConn423 := sourceCQL.(net.UnixConn)
+	// Assume that `sourceCQL` has the underlying type of `fromUnixConn985`:
+	fromUnixConn985 := sourceCQL.(net.UnixConn)
 
-	// Declare `intoByte841` variable:
-	var intoByte841 []byte
+	// Declare `intoByte597` variable:
+	var intoByte597 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromUnixConn423` to the argument `intoByte841`
-	// (`intoByte841` is now tainted).
-	fromUnixConn423.ReadFromUnix(intoByte841)
+	// from the receiver `fromUnixConn985` to the argument `intoByte597`
+	// (`intoByte597` is now tainted).
+	fromUnixConn985.ReadFromUnix(intoByte597)
 
-	// Return the tainted `intoByte841`:
-	return intoByte841
+	// Return the tainted `intoByte597`:
+	return intoByte597
 }
 
 func TaintStepTest_NetUnixConnReadMsgUnix_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUnixConn804` into `intoByte864`.
+	// The flow is from `fromUnixConn160` into `intoByte315`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUnixConn804`:
-	fromUnixConn804 := sourceCQL.(net.UnixConn)
+	// Assume that `sourceCQL` has the underlying type of `fromUnixConn160`:
+	fromUnixConn160 := sourceCQL.(net.UnixConn)
 
-	// Declare `intoByte864` variable:
-	var intoByte864 []byte
+	// Declare `intoByte315` variable:
+	var intoByte315 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromUnixConn804` to the argument `intoByte864`
-	// (`intoByte864` is now tainted).
-	fromUnixConn804.ReadMsgUnix(intoByte864, nil)
+	// from the receiver `fromUnixConn160` to the argument `intoByte315`
+	// (`intoByte315` is now tainted).
+	fromUnixConn160.ReadMsgUnix(intoByte315, nil)
 
-	// Return the tainted `intoByte864`:
-	return intoByte864
+	// Return the tainted `intoByte315`:
+	return intoByte315
 }
 
 func TaintStepTest_NetUnixConnReadMsgUnix_B0I0O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUnixConn971` into `intoByte183`.
+	// The flow is from `fromUnixConn792` into `intoByte433`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUnixConn971`:
-	fromUnixConn971 := sourceCQL.(net.UnixConn)
+	// Assume that `sourceCQL` has the underlying type of `fromUnixConn792`:
+	fromUnixConn792 := sourceCQL.(net.UnixConn)
 
-	// Declare `intoByte183` variable:
-	var intoByte183 []byte
+	// Declare `intoByte433` variable:
+	var intoByte433 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromUnixConn971` to the argument `intoByte183`
-	// (`intoByte183` is now tainted).
-	fromUnixConn971.ReadMsgUnix(nil, intoByte183)
+	// from the receiver `fromUnixConn792` to the argument `intoByte433`
+	// (`intoByte433` is now tainted).
+	fromUnixConn792.ReadMsgUnix(nil, intoByte433)
 
-	// Return the tainted `intoByte183`:
-	return intoByte183
+	// Return the tainted `intoByte433`:
+	return intoByte433
 }
 
 func TaintStepTest_NetUnixConnSyscallConn_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUnixConn667` into `intoRawConn897`.
+	// The flow is from `fromUnixConn465` into `intoRawConn786`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUnixConn667`:
-	fromUnixConn667 := sourceCQL.(net.UnixConn)
+	// Assume that `sourceCQL` has the underlying type of `fromUnixConn465`:
+	fromUnixConn465 := sourceCQL.(net.UnixConn)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromUnixConn667` to the result `intoRawConn897`
-	// (`intoRawConn897` is now tainted).
-	intoRawConn897, _ := fromUnixConn667.SyscallConn()
+	// from the receiver `fromUnixConn465` to the result `intoRawConn786`
+	// (`intoRawConn786` is now tainted).
+	intoRawConn786, _ := fromUnixConn465.SyscallConn()
 
-	// Return the tainted `intoRawConn897`:
-	return intoRawConn897
+	// Return the tainted `intoRawConn786`:
+	return intoRawConn786
 }
 
 func TaintStepTest_NetUnixConnSyscallConn_B1I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRawConn538` into `intoUnixConn128`.
+	// The flow is from `fromRawConn637` into `intoUnixConn813`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRawConn538`:
-	fromRawConn538 := sourceCQL.(syscall.RawConn)
+	// Assume that `sourceCQL` has the underlying type of `fromRawConn637`:
+	fromRawConn637 := sourceCQL.(syscall.RawConn)
 
-	// Declare `intoUnixConn128` variable:
-	var intoUnixConn128 net.UnixConn
+	// Declare `intoUnixConn813` variable:
+	var intoUnixConn813 net.UnixConn
 
 	// Call the method that will transfer the taint
-	// from the result `intermediateCQL` to receiver `intoUnixConn128`:
-	intermediateCQL, _ := intoUnixConn128.SyscallConn()
+	// from the result `intermediateCQL` to receiver `intoUnixConn813`:
+	intermediateCQL, _ := intoUnixConn813.SyscallConn()
 
-	// Extra step (`fromRawConn538` taints `intermediateCQL`, which taints `intoUnixConn128`:
-	link(fromRawConn538, intermediateCQL)
+	// Extra step (`fromRawConn637` taints `intermediateCQL`, which taints `intoUnixConn813`:
+	link(fromRawConn637, intermediateCQL)
 
-	// Return the tainted `intoUnixConn128`:
-	return intoUnixConn128
+	// Return the tainted `intoUnixConn813`:
+	return intoUnixConn813
 }
 
 func TaintStepTest_NetUnixConnWriteMsgUnix_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte816` into `intoUnixConn785`.
+	// The flow is from `fromByte542` into `intoUnixConn720`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte816`:
-	fromByte816 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte542`:
+	fromByte542 := sourceCQL.([]byte)
 
-	// Declare `intoUnixConn785` variable:
-	var intoUnixConn785 net.UnixConn
+	// Declare `intoUnixConn720` variable:
+	var intoUnixConn720 net.UnixConn
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte816` to the receiver `intoUnixConn785`
-	// (`intoUnixConn785` is now tainted).
-	intoUnixConn785.WriteMsgUnix(fromByte816, nil, nil)
+	// from the parameter `fromByte542` to the receiver `intoUnixConn720`
+	// (`intoUnixConn720` is now tainted).
+	intoUnixConn720.WriteMsgUnix(fromByte542, nil, nil)
 
-	// Return the tainted `intoUnixConn785`:
-	return intoUnixConn785
+	// Return the tainted `intoUnixConn720`:
+	return intoUnixConn720
 }
 
 func TaintStepTest_NetUnixConnWriteMsgUnix_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte120` into `intoUnixConn137`.
+	// The flow is from `fromByte534` into `intoUnixConn170`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte120`:
-	fromByte120 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte534`:
+	fromByte534 := sourceCQL.([]byte)
 
-	// Declare `intoUnixConn137` variable:
-	var intoUnixConn137 net.UnixConn
+	// Declare `intoUnixConn170` variable:
+	var intoUnixConn170 net.UnixConn
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte120` to the receiver `intoUnixConn137`
-	// (`intoUnixConn137` is now tainted).
-	intoUnixConn137.WriteMsgUnix(nil, fromByte120, nil)
+	// from the parameter `fromByte534` to the receiver `intoUnixConn170`
+	// (`intoUnixConn170` is now tainted).
+	intoUnixConn170.WriteMsgUnix(nil, fromByte534, nil)
 
-	// Return the tainted `intoUnixConn137`:
-	return intoUnixConn137
+	// Return the tainted `intoUnixConn170`:
+	return intoUnixConn170
 }
 
 func TaintStepTest_NetUnixConnWriteTo_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte884` into `intoUnixConn903`.
+	// The flow is from `fromByte668` into `intoUnixConn949`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte884`:
-	fromByte884 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte668`:
+	fromByte668 := sourceCQL.([]byte)
 
-	// Declare `intoUnixConn903` variable:
-	var intoUnixConn903 net.UnixConn
+	// Declare `intoUnixConn949` variable:
+	var intoUnixConn949 net.UnixConn
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte884` to the receiver `intoUnixConn903`
-	// (`intoUnixConn903` is now tainted).
-	intoUnixConn903.WriteTo(fromByte884, nil)
+	// from the parameter `fromByte668` to the receiver `intoUnixConn949`
+	// (`intoUnixConn949` is now tainted).
+	intoUnixConn949.WriteTo(fromByte668, nil)
 
-	// Return the tainted `intoUnixConn903`:
-	return intoUnixConn903
+	// Return the tainted `intoUnixConn949`:
+	return intoUnixConn949
 }
 
 func TaintStepTest_NetUnixConnWriteToUnix_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte846` into `intoUnixConn607`.
+	// The flow is from `fromByte327` into `intoUnixConn172`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte846`:
-	fromByte846 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte327`:
+	fromByte327 := sourceCQL.([]byte)
 
-	// Declare `intoUnixConn607` variable:
-	var intoUnixConn607 net.UnixConn
+	// Declare `intoUnixConn172` variable:
+	var intoUnixConn172 net.UnixConn
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte846` to the receiver `intoUnixConn607`
-	// (`intoUnixConn607` is now tainted).
-	intoUnixConn607.WriteToUnix(fromByte846, nil)
+	// from the parameter `fromByte327` to the receiver `intoUnixConn172`
+	// (`intoUnixConn172` is now tainted).
+	intoUnixConn172.WriteToUnix(fromByte327, nil)
 
-	// Return the tainted `intoUnixConn607`:
-	return intoUnixConn607
+	// Return the tainted `intoUnixConn172`:
+	return intoUnixConn172
 }
 
 func TaintStepTest_NetUnixListenerFile_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUnixListener264` into `intoFile894`.
+	// The flow is from `fromUnixListener449` into `intoFile678`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUnixListener264`:
-	fromUnixListener264 := sourceCQL.(net.UnixListener)
+	// Assume that `sourceCQL` has the underlying type of `fromUnixListener449`:
+	fromUnixListener449 := sourceCQL.(net.UnixListener)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromUnixListener264` to the result `intoFile894`
-	// (`intoFile894` is now tainted).
-	intoFile894, _ := fromUnixListener264.File()
+	// from the receiver `fromUnixListener449` to the result `intoFile678`
+	// (`intoFile678` is now tainted).
+	intoFile678, _ := fromUnixListener449.File()
 
-	// Return the tainted `intoFile894`:
-	return intoFile894
+	// Return the tainted `intoFile678`:
+	return intoFile678
 }
 
 func TaintStepTest_NetUnixListenerFile_B1I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromFile839` into `intoUnixListener291`.
+	// The flow is from `fromFile944` into `intoUnixListener683`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromFile839`:
-	fromFile839 := sourceCQL.(*os.File)
+	// Assume that `sourceCQL` has the underlying type of `fromFile944`:
+	fromFile944 := sourceCQL.(*os.File)
 
-	// Declare `intoUnixListener291` variable:
-	var intoUnixListener291 net.UnixListener
+	// Declare `intoUnixListener683` variable:
+	var intoUnixListener683 net.UnixListener
 
 	// Call the method that will transfer the taint
-	// from the result `intermediateCQL` to receiver `intoUnixListener291`:
-	intermediateCQL, _ := intoUnixListener291.File()
+	// from the result `intermediateCQL` to receiver `intoUnixListener683`:
+	intermediateCQL, _ := intoUnixListener683.File()
 
-	// Extra step (`fromFile839` taints `intermediateCQL`, which taints `intoUnixListener291`:
-	link(fromFile839, intermediateCQL)
+	// Extra step (`fromFile944` taints `intermediateCQL`, which taints `intoUnixListener683`:
+	link(fromFile944, intermediateCQL)
 
-	// Return the tainted `intoUnixListener291`:
-	return intoUnixListener291
+	// Return the tainted `intoUnixListener683`:
+	return intoUnixListener683
 }
 
 func TaintStepTest_NetUnixListenerSyscallConn_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUnixListener306` into `intoRawConn224`.
+	// The flow is from `fromUnixListener818` into `intoRawConn202`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUnixListener306`:
-	fromUnixListener306 := sourceCQL.(net.UnixListener)
+	// Assume that `sourceCQL` has the underlying type of `fromUnixListener818`:
+	fromUnixListener818 := sourceCQL.(net.UnixListener)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromUnixListener306` to the result `intoRawConn224`
-	// (`intoRawConn224` is now tainted).
-	intoRawConn224, _ := fromUnixListener306.SyscallConn()
+	// from the receiver `fromUnixListener818` to the result `intoRawConn202`
+	// (`intoRawConn202` is now tainted).
+	intoRawConn202, _ := fromUnixListener818.SyscallConn()
 
-	// Return the tainted `intoRawConn224`:
-	return intoRawConn224
+	// Return the tainted `intoRawConn202`:
+	return intoRawConn202
 }
 
 func TaintStepTest_NetUnixListenerSyscallConn_B1I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromRawConn236` into `intoUnixListener753`.
+	// The flow is from `fromRawConn791` into `intoUnixListener744`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromRawConn236`:
-	fromRawConn236 := sourceCQL.(syscall.RawConn)
+	// Assume that `sourceCQL` has the underlying type of `fromRawConn791`:
+	fromRawConn791 := sourceCQL.(syscall.RawConn)
 
-	// Declare `intoUnixListener753` variable:
-	var intoUnixListener753 net.UnixListener
+	// Declare `intoUnixListener744` variable:
+	var intoUnixListener744 net.UnixListener
 
 	// Call the method that will transfer the taint
-	// from the result `intermediateCQL` to receiver `intoUnixListener753`:
-	intermediateCQL, _ := intoUnixListener753.SyscallConn()
+	// from the result `intermediateCQL` to receiver `intoUnixListener744`:
+	intermediateCQL, _ := intoUnixListener744.SyscallConn()
 
-	// Extra step (`fromRawConn236` taints `intermediateCQL`, which taints `intoUnixListener753`:
-	link(fromRawConn236, intermediateCQL)
+	// Extra step (`fromRawConn791` taints `intermediateCQL`, which taints `intoUnixListener744`:
+	link(fromRawConn791, intermediateCQL)
 
-	// Return the tainted `intoUnixListener753`:
-	return intoUnixListener753
+	// Return the tainted `intoUnixListener744`:
+	return intoUnixListener744
 }
 
 func TaintStepTest_NetConnRead_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromConn681` into `intoByte870`.
+	// The flow is from `fromConn880` into `intoByte919`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromConn681`:
-	fromConn681 := sourceCQL.(net.Conn)
+	// Assume that `sourceCQL` has the underlying type of `fromConn880`:
+	fromConn880 := sourceCQL.(net.Conn)
 
-	// Declare `intoByte870` variable:
-	var intoByte870 []byte
+	// Declare `intoByte919` variable:
+	var intoByte919 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromConn681` to the argument `intoByte870`
-	// (`intoByte870` is now tainted).
-	fromConn681.Read(intoByte870)
+	// from the receiver `fromConn880` to the argument `intoByte919`
+	// (`intoByte919` is now tainted).
+	fromConn880.Read(intoByte919)
 
-	// Return the tainted `intoByte870`:
-	return intoByte870
+	// Return the tainted `intoByte919`:
+	return intoByte919
 }
 
 func TaintStepTest_NetPacketConnReadFrom_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromPacketConn944` into `intoByte588`.
+	// The flow is from `fromPacketConn641` into `intoByte166`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromPacketConn944`:
-	fromPacketConn944 := sourceCQL.(net.PacketConn)
+	// Assume that `sourceCQL` has the underlying type of `fromPacketConn641`:
+	fromPacketConn641 := sourceCQL.(net.PacketConn)
 
-	// Declare `intoByte588` variable:
-	var intoByte588 []byte
+	// Declare `intoByte166` variable:
+	var intoByte166 []byte
 
 	// Call the method that transfers the taint
-	// from the receiver `fromPacketConn944` to the argument `intoByte588`
-	// (`intoByte588` is now tainted).
-	fromPacketConn944.ReadFrom(intoByte588)
+	// from the receiver `fromPacketConn641` to the argument `intoByte166`
+	// (`intoByte166` is now tainted).
+	fromPacketConn641.ReadFrom(intoByte166)
 
-	// Return the tainted `intoByte588`:
-	return intoByte588
+	// Return the tainted `intoByte166`:
+	return intoByte166
 }
 
 func TaintStepTest_NetAddrString_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromAddr207` into `intoString446`.
+	// The flow is from `fromAddr262` into `intoString540`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromAddr207`:
-	fromAddr207 := sourceCQL.(net.Addr)
+	// Assume that `sourceCQL` has the underlying type of `fromAddr262`:
+	fromAddr262 := sourceCQL.(net.Addr)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromAddr207` to the result `intoString446`
-	// (`intoString446` is now tainted).
-	intoString446 := fromAddr207.String()
+	// from the receiver `fromAddr262` to the result `intoString540`
+	// (`intoString540` is now tainted).
+	intoString540 := fromAddr262.String()
 
-	// Return the tainted `intoString446`:
-	return intoString446
+	// Return the tainted `intoString540`:
+	return intoString540
 }
 
 func TaintStepTest_NetConnWrite_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte714` into `intoConn564`.
+	// The flow is from `fromByte547` into `intoConn566`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte714`:
-	fromByte714 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte547`:
+	fromByte547 := sourceCQL.([]byte)
 
-	// Declare `intoConn564` variable:
-	var intoConn564 net.Conn
+	// Declare `intoConn566` variable:
+	var intoConn566 net.Conn
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte714` to the receiver `intoConn564`
-	// (`intoConn564` is now tainted).
-	intoConn564.Write(fromByte714)
+	// from the parameter `fromByte547` to the receiver `intoConn566`
+	// (`intoConn566` is now tainted).
+	intoConn566.Write(fromByte547)
 
-	// Return the tainted `intoConn564`:
-	return intoConn564
+	// Return the tainted `intoConn566`:
+	return intoConn566
 }
 
 func TaintStepTest_NetPacketConnWriteTo_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromByte835` into `intoPacketConn591`.
+	// The flow is from `fromByte602` into `intoPacketConn314`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromByte835`:
-	fromByte835 := sourceCQL.([]byte)
+	// Assume that `sourceCQL` has the underlying type of `fromByte602`:
+	fromByte602 := sourceCQL.([]byte)
 
-	// Declare `intoPacketConn591` variable:
-	var intoPacketConn591 net.PacketConn
+	// Declare `intoPacketConn314` variable:
+	var intoPacketConn314 net.PacketConn
 
 	// Call the method that transfers the taint
-	// from the parameter `fromByte835` to the receiver `intoPacketConn591`
-	// (`intoPacketConn591` is now tainted).
-	intoPacketConn591.WriteTo(fromByte835, nil)
+	// from the parameter `fromByte602` to the receiver `intoPacketConn314`
+	// (`intoPacketConn314` is now tainted).
+	intoPacketConn314.WriteTo(fromByte602, nil)
 
-	// Return the tainted `intoPacketConn591`:
-	return intoPacketConn591
+	// Return the tainted `intoPacketConn314`:
+	return intoPacketConn314
 }
 
 func RunAllTaints_Net() {

@@ -1,3 +1,5 @@
+// WARNING: This file was automatically generated. DO NOT EDIT.
+
 package main
 
 import (
@@ -6,108 +8,108 @@ import (
 )
 
 func TaintStepTest_ContextWithCancel_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromContext587` into `intoContext566`.
+	// The flow is from `fromContext496` into `intoContext728`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromContext587`:
-	fromContext587 := sourceCQL.(context.Context)
+	// Assume that `sourceCQL` has the underlying type of `fromContext496`:
+	fromContext496 := sourceCQL.(context.Context)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromContext587` to result `intoContext566`
-	// (`intoContext566` is now tainted).
-	intoContext566, _ := context.WithCancel(fromContext587)
+	// from the parameter `fromContext496` to result `intoContext728`
+	// (`intoContext728` is now tainted).
+	intoContext728, _ := context.WithCancel(fromContext496)
 
-	// Return the tainted `intoContext566`:
-	return intoContext566
+	// Return the tainted `intoContext728`:
+	return intoContext728
 }
 
 func TaintStepTest_ContextWithDeadline_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromContext877` into `intoContext206`.
+	// The flow is from `fromContext132` into `intoContext344`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromContext877`:
-	fromContext877 := sourceCQL.(context.Context)
+	// Assume that `sourceCQL` has the underlying type of `fromContext132`:
+	fromContext132 := sourceCQL.(context.Context)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromContext877` to result `intoContext206`
-	// (`intoContext206` is now tainted).
-	intoContext206, _ := context.WithDeadline(fromContext877, time.Time{})
+	// from the parameter `fromContext132` to result `intoContext344`
+	// (`intoContext344` is now tainted).
+	intoContext344, _ := context.WithDeadline(fromContext132, time.Time{})
 
-	// Return the tainted `intoContext206`:
-	return intoContext206
+	// Return the tainted `intoContext344`:
+	return intoContext344
 }
 
 func TaintStepTest_ContextWithTimeout_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromContext848` into `intoContext136`.
+	// The flow is from `fromContext511` into `intoContext162`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromContext848`:
-	fromContext848 := sourceCQL.(context.Context)
+	// Assume that `sourceCQL` has the underlying type of `fromContext511`:
+	fromContext511 := sourceCQL.(context.Context)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromContext848` to result `intoContext136`
-	// (`intoContext136` is now tainted).
-	intoContext136, _ := context.WithTimeout(fromContext848, 0)
+	// from the parameter `fromContext511` to result `intoContext162`
+	// (`intoContext162` is now tainted).
+	intoContext162, _ := context.WithTimeout(fromContext511, 0)
 
-	// Return the tainted `intoContext136`:
-	return intoContext136
+	// Return the tainted `intoContext162`:
+	return intoContext162
 }
 
 func TaintStepTest_ContextWithValue_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromContext142` into `intoContext283`.
+	// The flow is from `fromContext235` into `intoContext220`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromContext142`:
-	fromContext142 := sourceCQL.(context.Context)
+	// Assume that `sourceCQL` has the underlying type of `fromContext235`:
+	fromContext235 := sourceCQL.(context.Context)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromContext142` to result `intoContext283`
-	// (`intoContext283` is now tainted).
-	intoContext283 := context.WithValue(fromContext142, nil, nil)
+	// from the parameter `fromContext235` to result `intoContext220`
+	// (`intoContext220` is now tainted).
+	intoContext220 := context.WithValue(fromContext235, nil, nil)
 
-	// Return the tainted `intoContext283`:
-	return intoContext283
+	// Return the tainted `intoContext220`:
+	return intoContext220
 }
 
 func TaintStepTest_ContextWithValue_B0I1O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface762` into `intoContext214`.
+	// The flow is from `fromInterface151` into `intoContext600`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface762`:
-	fromInterface762 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface151`:
+	fromInterface151 := sourceCQL.(interface{})
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface762` to result `intoContext214`
-	// (`intoContext214` is now tainted).
-	intoContext214 := context.WithValue(nil, fromInterface762, nil)
+	// from the parameter `fromInterface151` to result `intoContext600`
+	// (`intoContext600` is now tainted).
+	intoContext600 := context.WithValue(nil, fromInterface151, nil)
 
-	// Return the tainted `intoContext214`:
-	return intoContext214
+	// Return the tainted `intoContext600`:
+	return intoContext600
 }
 
 func TaintStepTest_ContextWithValue_B0I2O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface822` into `intoContext183`.
+	// The flow is from `fromInterface914` into `intoContext279`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface822`:
-	fromInterface822 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface914`:
+	fromInterface914 := sourceCQL.(interface{})
 
 	// Call the function that transfers the taint
-	// from the parameter `fromInterface822` to result `intoContext183`
-	// (`intoContext183` is now tainted).
-	intoContext183 := context.WithValue(nil, nil, fromInterface822)
+	// from the parameter `fromInterface914` to result `intoContext279`
+	// (`intoContext279` is now tainted).
+	intoContext279 := context.WithValue(nil, nil, fromInterface914)
 
-	// Return the tainted `intoContext183`:
-	return intoContext183
+	// Return the tainted `intoContext279`:
+	return intoContext279
 }
 
 func TaintStepTest_ContextContextValue_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromContext712` into `intoInterface772`.
+	// The flow is from `fromContext232` into `intoInterface952`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromContext712`:
-	fromContext712 := sourceCQL.(context.Context)
+	// Assume that `sourceCQL` has the underlying type of `fromContext232`:
+	fromContext232 := sourceCQL.(context.Context)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromContext712` to the result `intoInterface772`
-	// (`intoInterface772` is now tainted).
-	intoInterface772 := fromContext712.Value(nil)
+	// from the receiver `fromContext232` to the result `intoInterface952`
+	// (`intoInterface952` is now tainted).
+	intoInterface952 := fromContext232.Value(nil)
 
-	// Return the tainted `intoInterface772`:
-	return intoInterface772
+	// Return the tainted `intoInterface952`:
+	return intoInterface952
 }
 
 func RunAllTaints_Context() {

@@ -1,3 +1,5 @@
+// WARNING: This file was automatically generated. DO NOT EDIT.
+
 package main
 
 import (
@@ -6,237 +8,237 @@ import (
 )
 
 func TaintStepTest_SyncAtomicAddUintptr_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUintptr582` into `intoUintptr753`.
+	// The flow is from `fromUintptr883` into `intoUintptr239`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUintptr582`:
-	fromUintptr582 := sourceCQL.(uintptr)
+	// Assume that `sourceCQL` has the underlying type of `fromUintptr883`:
+	fromUintptr883 := sourceCQL.(uintptr)
 
-	// Declare `intoUintptr753` variable:
-	var intoUintptr753 *uintptr
+	// Declare `intoUintptr239` variable:
+	var intoUintptr239 *uintptr
 
 	// Call the function that transfers the taint
-	// from the parameter `fromUintptr582` to parameter `intoUintptr753`;
-	// `intoUintptr753` is now tainted.
-	atomic.AddUintptr(intoUintptr753, fromUintptr582)
+	// from the parameter `fromUintptr883` to parameter `intoUintptr239`;
+	// `intoUintptr239` is now tainted.
+	atomic.AddUintptr(intoUintptr239, fromUintptr883)
 
-	// Return the tainted `intoUintptr753`:
-	return intoUintptr753
+	// Return the tainted `intoUintptr239`:
+	return intoUintptr239
 }
 
 func TaintStepTest_SyncAtomicAddUintptr_B0I0O1(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUintptr187` into `intoUintptr980`.
+	// The flow is from `fromUintptr900` into `intoUintptr565`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUintptr187`:
-	fromUintptr187 := sourceCQL.(uintptr)
+	// Assume that `sourceCQL` has the underlying type of `fromUintptr900`:
+	fromUintptr900 := sourceCQL.(uintptr)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromUintptr187` to result `intoUintptr980`
-	// (`intoUintptr980` is now tainted).
-	intoUintptr980 := atomic.AddUintptr(nil, fromUintptr187)
+	// from the parameter `fromUintptr900` to result `intoUintptr565`
+	// (`intoUintptr565` is now tainted).
+	intoUintptr565 := atomic.AddUintptr(nil, fromUintptr900)
 
-	// Return the tainted `intoUintptr980`:
-	return intoUintptr980
+	// Return the tainted `intoUintptr565`:
+	return intoUintptr565
 }
 
 func TaintStepTest_SyncAtomicCompareAndSwapPointer_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromPointer240` into `intoPointer455`.
+	// The flow is from `fromPointer503` into `intoPointer259`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromPointer240`:
-	fromPointer240 := sourceCQL.(unsafe.Pointer)
+	// Assume that `sourceCQL` has the underlying type of `fromPointer503`:
+	fromPointer503 := sourceCQL.(unsafe.Pointer)
 
-	// Declare `intoPointer455` variable:
-	var intoPointer455 *unsafe.Pointer
+	// Declare `intoPointer259` variable:
+	var intoPointer259 *unsafe.Pointer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromPointer240` to parameter `intoPointer455`;
-	// `intoPointer455` is now tainted.
-	atomic.CompareAndSwapPointer(intoPointer455, nil, fromPointer240)
+	// from the parameter `fromPointer503` to parameter `intoPointer259`;
+	// `intoPointer259` is now tainted.
+	atomic.CompareAndSwapPointer(intoPointer259, nil, fromPointer503)
 
-	// Return the tainted `intoPointer455`:
-	return intoPointer455
+	// Return the tainted `intoPointer259`:
+	return intoPointer259
 }
 
 func TaintStepTest_SyncAtomicCompareAndSwapUintptr_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUintptr962` into `intoUintptr323`.
+	// The flow is from `fromUintptr680` into `intoUintptr571`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUintptr962`:
-	fromUintptr962 := sourceCQL.(uintptr)
+	// Assume that `sourceCQL` has the underlying type of `fromUintptr680`:
+	fromUintptr680 := sourceCQL.(uintptr)
 
-	// Declare `intoUintptr323` variable:
-	var intoUintptr323 *uintptr
+	// Declare `intoUintptr571` variable:
+	var intoUintptr571 *uintptr
 
 	// Call the function that transfers the taint
-	// from the parameter `fromUintptr962` to parameter `intoUintptr323`;
-	// `intoUintptr323` is now tainted.
-	atomic.CompareAndSwapUintptr(intoUintptr323, 0, fromUintptr962)
+	// from the parameter `fromUintptr680` to parameter `intoUintptr571`;
+	// `intoUintptr571` is now tainted.
+	atomic.CompareAndSwapUintptr(intoUintptr571, 0, fromUintptr680)
 
-	// Return the tainted `intoUintptr323`:
-	return intoUintptr323
+	// Return the tainted `intoUintptr571`:
+	return intoUintptr571
 }
 
 func TaintStepTest_SyncAtomicLoadPointer_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromPointer244` into `intoPointer748`.
+	// The flow is from `fromPointer323` into `intoPointer225`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromPointer244`:
-	fromPointer244 := sourceCQL.(*unsafe.Pointer)
+	// Assume that `sourceCQL` has the underlying type of `fromPointer323`:
+	fromPointer323 := sourceCQL.(*unsafe.Pointer)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromPointer244` to result `intoPointer748`
-	// (`intoPointer748` is now tainted).
-	intoPointer748 := atomic.LoadPointer(fromPointer244)
+	// from the parameter `fromPointer323` to result `intoPointer225`
+	// (`intoPointer225` is now tainted).
+	intoPointer225 := atomic.LoadPointer(fromPointer323)
 
-	// Return the tainted `intoPointer748`:
-	return intoPointer748
+	// Return the tainted `intoPointer225`:
+	return intoPointer225
 }
 
 func TaintStepTest_SyncAtomicLoadUintptr_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUintptr527` into `intoUintptr127`.
+	// The flow is from `fromUintptr361` into `intoUintptr665`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUintptr527`:
-	fromUintptr527 := sourceCQL.(*uintptr)
+	// Assume that `sourceCQL` has the underlying type of `fromUintptr361`:
+	fromUintptr361 := sourceCQL.(*uintptr)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromUintptr527` to result `intoUintptr127`
-	// (`intoUintptr127` is now tainted).
-	intoUintptr127 := atomic.LoadUintptr(fromUintptr527)
+	// from the parameter `fromUintptr361` to result `intoUintptr665`
+	// (`intoUintptr665` is now tainted).
+	intoUintptr665 := atomic.LoadUintptr(fromUintptr361)
 
-	// Return the tainted `intoUintptr127`:
-	return intoUintptr127
+	// Return the tainted `intoUintptr665`:
+	return intoUintptr665
 }
 
 func TaintStepTest_SyncAtomicStorePointer_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromPointer283` into `intoPointer281`.
+	// The flow is from `fromPointer385` into `intoPointer858`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromPointer283`:
-	fromPointer283 := sourceCQL.(unsafe.Pointer)
+	// Assume that `sourceCQL` has the underlying type of `fromPointer385`:
+	fromPointer385 := sourceCQL.(unsafe.Pointer)
 
-	// Declare `intoPointer281` variable:
-	var intoPointer281 *unsafe.Pointer
+	// Declare `intoPointer858` variable:
+	var intoPointer858 *unsafe.Pointer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromPointer283` to parameter `intoPointer281`;
-	// `intoPointer281` is now tainted.
-	atomic.StorePointer(intoPointer281, fromPointer283)
+	// from the parameter `fromPointer385` to parameter `intoPointer858`;
+	// `intoPointer858` is now tainted.
+	atomic.StorePointer(intoPointer858, fromPointer385)
 
-	// Return the tainted `intoPointer281`:
-	return intoPointer281
+	// Return the tainted `intoPointer858`:
+	return intoPointer858
 }
 
 func TaintStepTest_SyncAtomicStoreUintptr_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUintptr607` into `intoUintptr348`.
+	// The flow is from `fromUintptr592` into `intoUintptr184`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUintptr607`:
-	fromUintptr607 := sourceCQL.(uintptr)
+	// Assume that `sourceCQL` has the underlying type of `fromUintptr592`:
+	fromUintptr592 := sourceCQL.(uintptr)
 
-	// Declare `intoUintptr348` variable:
-	var intoUintptr348 *uintptr
+	// Declare `intoUintptr184` variable:
+	var intoUintptr184 *uintptr
 
 	// Call the function that transfers the taint
-	// from the parameter `fromUintptr607` to parameter `intoUintptr348`;
-	// `intoUintptr348` is now tainted.
-	atomic.StoreUintptr(intoUintptr348, fromUintptr607)
+	// from the parameter `fromUintptr592` to parameter `intoUintptr184`;
+	// `intoUintptr184` is now tainted.
+	atomic.StoreUintptr(intoUintptr184, fromUintptr592)
 
-	// Return the tainted `intoUintptr348`:
-	return intoUintptr348
+	// Return the tainted `intoUintptr184`:
+	return intoUintptr184
 }
 
 func TaintStepTest_SyncAtomicSwapPointer_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromPointer530` into `intoPointer750`.
+	// The flow is from `fromPointer722` into `intoPointer591`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromPointer530`:
-	fromPointer530 := sourceCQL.(unsafe.Pointer)
+	// Assume that `sourceCQL` has the underlying type of `fromPointer722`:
+	fromPointer722 := sourceCQL.(unsafe.Pointer)
 
-	// Declare `intoPointer750` variable:
-	var intoPointer750 *unsafe.Pointer
+	// Declare `intoPointer591` variable:
+	var intoPointer591 *unsafe.Pointer
 
 	// Call the function that transfers the taint
-	// from the parameter `fromPointer530` to parameter `intoPointer750`;
-	// `intoPointer750` is now tainted.
-	atomic.SwapPointer(intoPointer750, fromPointer530)
+	// from the parameter `fromPointer722` to parameter `intoPointer591`;
+	// `intoPointer591` is now tainted.
+	atomic.SwapPointer(intoPointer591, fromPointer722)
 
-	// Return the tainted `intoPointer750`:
-	return intoPointer750
+	// Return the tainted `intoPointer591`:
+	return intoPointer591
 }
 
 func TaintStepTest_SyncAtomicSwapPointer_B1I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromPointer792` into `intoPointer237`.
+	// The flow is from `fromPointer703` into `intoPointer341`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromPointer792`:
-	fromPointer792 := sourceCQL.(*unsafe.Pointer)
+	// Assume that `sourceCQL` has the underlying type of `fromPointer703`:
+	fromPointer703 := sourceCQL.(*unsafe.Pointer)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromPointer792` to result `intoPointer237`
-	// (`intoPointer237` is now tainted).
-	intoPointer237 := atomic.SwapPointer(fromPointer792, nil)
+	// from the parameter `fromPointer703` to result `intoPointer341`
+	// (`intoPointer341` is now tainted).
+	intoPointer341 := atomic.SwapPointer(fromPointer703, nil)
 
-	// Return the tainted `intoPointer237`:
-	return intoPointer237
+	// Return the tainted `intoPointer341`:
+	return intoPointer341
 }
 
 func TaintStepTest_SyncAtomicSwapUintptr_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUintptr814` into `intoUintptr577`.
+	// The flow is from `fromUintptr550` into `intoUintptr395`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUintptr814`:
-	fromUintptr814 := sourceCQL.(uintptr)
+	// Assume that `sourceCQL` has the underlying type of `fromUintptr550`:
+	fromUintptr550 := sourceCQL.(uintptr)
 
-	// Declare `intoUintptr577` variable:
-	var intoUintptr577 *uintptr
+	// Declare `intoUintptr395` variable:
+	var intoUintptr395 *uintptr
 
 	// Call the function that transfers the taint
-	// from the parameter `fromUintptr814` to parameter `intoUintptr577`;
-	// `intoUintptr577` is now tainted.
-	atomic.SwapUintptr(intoUintptr577, fromUintptr814)
+	// from the parameter `fromUintptr550` to parameter `intoUintptr395`;
+	// `intoUintptr395` is now tainted.
+	atomic.SwapUintptr(intoUintptr395, fromUintptr550)
 
-	// Return the tainted `intoUintptr577`:
-	return intoUintptr577
+	// Return the tainted `intoUintptr395`:
+	return intoUintptr395
 }
 
 func TaintStepTest_SyncAtomicSwapUintptr_B1I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromUintptr192` into `intoUintptr169`.
+	// The flow is from `fromUintptr432` into `intoUintptr491`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromUintptr192`:
-	fromUintptr192 := sourceCQL.(*uintptr)
+	// Assume that `sourceCQL` has the underlying type of `fromUintptr432`:
+	fromUintptr432 := sourceCQL.(*uintptr)
 
 	// Call the function that transfers the taint
-	// from the parameter `fromUintptr192` to result `intoUintptr169`
-	// (`intoUintptr169` is now tainted).
-	intoUintptr169 := atomic.SwapUintptr(fromUintptr192, 0)
+	// from the parameter `fromUintptr432` to result `intoUintptr491`
+	// (`intoUintptr491` is now tainted).
+	intoUintptr491 := atomic.SwapUintptr(fromUintptr432, 0)
 
-	// Return the tainted `intoUintptr169`:
-	return intoUintptr169
+	// Return the tainted `intoUintptr491`:
+	return intoUintptr491
 }
 
 func TaintStepTest_SyncAtomicValueLoad_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromValue132` into `intoInterface600`.
+	// The flow is from `fromValue514` into `intoInterface757`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromValue132`:
-	fromValue132 := sourceCQL.(atomic.Value)
+	// Assume that `sourceCQL` has the underlying type of `fromValue514`:
+	fromValue514 := sourceCQL.(atomic.Value)
 
 	// Call the method that transfers the taint
-	// from the receiver `fromValue132` to the result `intoInterface600`
-	// (`intoInterface600` is now tainted).
-	intoInterface600 := fromValue132.Load()
+	// from the receiver `fromValue514` to the result `intoInterface757`
+	// (`intoInterface757` is now tainted).
+	intoInterface757 := fromValue514.Load()
 
-	// Return the tainted `intoInterface600`:
-	return intoInterface600
+	// Return the tainted `intoInterface757`:
+	return intoInterface757
 }
 
 func TaintStepTest_SyncAtomicValueStore_B0I0O0(sourceCQL interface{}) interface{} {
-	// The flow is from `fromInterface119` into `intoValue275`.
+	// The flow is from `fromInterface489` into `intoValue985`.
 
-	// Assume that `sourceCQL` has the underlying type of `fromInterface119`:
-	fromInterface119 := sourceCQL.(interface{})
+	// Assume that `sourceCQL` has the underlying type of `fromInterface489`:
+	fromInterface489 := sourceCQL.(interface{})
 
-	// Declare `intoValue275` variable:
-	var intoValue275 atomic.Value
+	// Declare `intoValue985` variable:
+	var intoValue985 atomic.Value
 
 	// Call the method that transfers the taint
-	// from the parameter `fromInterface119` to the receiver `intoValue275`
-	// (`intoValue275` is now tainted).
-	intoValue275.Store(fromInterface119)
+	// from the parameter `fromInterface489` to the receiver `intoValue985`
+	// (`intoValue985` is now tainted).
+	intoValue985.Store(fromInterface489)
 
-	// Return the tainted `intoValue275`:
-	return intoValue275
+	// Return the tainted `intoValue985`:
+	return intoValue985
 }
 
 func RunAllTaints_SyncAtomic() {
