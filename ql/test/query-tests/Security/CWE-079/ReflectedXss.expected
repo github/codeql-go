@@ -1,5 +1,6 @@
 edges
 | ReflectedXss.go:11:15:11:20 | selection of Form : Values | ReflectedXss.go:14:44:14:51 | username |
+| ReflectedXssGood.go:12:15:12:20 | selection of Form : Values | ReflectedXssGood.go:15:44:15:70 | call to EscapeString |
 | contenttype.go:11:11:11:16 | selection of Form : Values | contenttype.go:17:11:17:22 | type conversion |
 | contenttype.go:49:11:49:16 | selection of Form : Values | contenttype.go:53:34:53:37 | data |
 | tst.go:14:15:14:20 | selection of Form : Values | tst.go:18:12:18:39 | type conversion |
@@ -13,6 +14,8 @@ edges
 nodes
 | ReflectedXss.go:11:15:11:20 | selection of Form : Values | semmle.label | selection of Form : Values |
 | ReflectedXss.go:14:44:14:51 | username | semmle.label | username |
+| ReflectedXssGood.go:12:15:12:20 | selection of Form : Values | semmle.label | selection of Form : Values |
+| ReflectedXssGood.go:15:44:15:70 | call to EscapeString | semmle.label | call to EscapeString |
 | contenttype.go:11:11:11:16 | selection of Form : Values | semmle.label | selection of Form : Values |
 | contenttype.go:17:11:17:22 | type conversion | semmle.label | type conversion |
 | contenttype.go:49:11:49:16 | selection of Form : Values | semmle.label | selection of Form : Values |
@@ -35,6 +38,7 @@ nodes
 | websocketXss.go:55:24:55:31 | gorilla3 | semmle.label | gorilla3 |
 #select
 | ReflectedXss.go:14:44:14:51 | username | ReflectedXss.go:11:15:11:20 | selection of Form : Values | ReflectedXss.go:14:44:14:51 | username | Cross-site scripting vulnerability due to $@. | ReflectedXss.go:11:15:11:20 | selection of Form | user-provided value |
+| ReflectedXssGood.go:15:44:15:70 | call to EscapeString | ReflectedXssGood.go:12:15:12:20 | selection of Form : Values | ReflectedXssGood.go:15:44:15:70 | call to EscapeString | Cross-site scripting vulnerability due to $@. | ReflectedXssGood.go:12:15:12:20 | selection of Form | user-provided value |
 | contenttype.go:17:11:17:22 | type conversion | contenttype.go:11:11:11:16 | selection of Form : Values | contenttype.go:17:11:17:22 | type conversion | Cross-site scripting vulnerability due to $@. | contenttype.go:11:11:11:16 | selection of Form | user-provided value |
 | contenttype.go:53:34:53:37 | data | contenttype.go:49:11:49:16 | selection of Form : Values | contenttype.go:53:34:53:37 | data | Cross-site scripting vulnerability due to $@. | contenttype.go:49:11:49:16 | selection of Form | user-provided value |
 | tst.go:18:12:18:39 | type conversion | tst.go:14:15:14:20 | selection of Form : Values | tst.go:18:12:18:39 | type conversion | Cross-site scripting vulnerability due to $@. | tst.go:14:15:14:20 | selection of Form | user-provided value |
