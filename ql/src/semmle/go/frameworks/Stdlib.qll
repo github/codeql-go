@@ -1679,37 +1679,3 @@ module CompressBzip2 {
     }
   }
 }
-
-module CompressFlate {
-  class NewReader extends TaintTracking::FunctionModel {
-    NewReader() { hasQualifiedName("compress/flate", ["NewReader", "NewReaderDict"]) }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
-    }
-  }
-
-  private class NewWriter extends TaintTracking::FunctionModel {
-    NewWriter() { this.hasQualifiedName("compress/flate", ["NewWriter", "NewWriterDict"]) }
-
-    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
-      input.isResult(0) and output.isParameter(0)
-    }
-  }
-
-  class WriterReset extends TaintTracking::FunctionModel, Method {
-    WriterReset() { this.(Method).hasQualifiedName("compress/flate", "Writer", "Reset") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isParameter(0)
-    }
-  }
-
-  class WriterWrite extends TaintTracking::FunctionModel, Method {
-    WriterWrite() { this.(Method).hasQualifiedName("compress/flate", "Writer", "Write") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
-    }
-  }
-}
