@@ -1661,21 +1661,3 @@ module CompressGzip {
     }
   }
 }
-
-module CompressBzip2 {
-  class NewReader extends TaintTracking::FunctionModel {
-    NewReader() { hasQualifiedName("compress/bzip2", "NewReader") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
-    }
-  }
-
-  class WriterWrite extends TaintTracking::FunctionModel, Method {
-    WriterWrite() { this.(Method).hasQualifiedName("compress/bzip2", "Writer", "Write") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isReceiver()
-    }
-  }
-}
