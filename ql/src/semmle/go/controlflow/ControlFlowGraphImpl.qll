@@ -1761,7 +1761,7 @@ module CFG {
         or
         first = MkImplicitTrue(this)
         or
-        firstNode(this.(TypeSwitchStmt).getChildStmt(1), first)
+        firstNode(this.(TypeSwitchStmt).getAssign(), first)
       )
     }
 
@@ -1775,7 +1775,7 @@ module CFG {
         last = MkImplicitTrue(this) and
         cmpl = Bool(true)
         or
-        lastNode(this.(TypeSwitchStmt).getChildStmt(1), last, cmpl)
+        lastNode(this.(TypeSwitchStmt).getAssign(), last, cmpl)
       ) and
       (
         not cmpl.isNormal()
@@ -1811,13 +1811,13 @@ module CFG {
       (
         firstNode(this.(ExpressionSwitchStmt).getExpr(), succ) or
         succ = MkImplicitTrue(this) or
-        firstNode(this.(TypeSwitchStmt).getChildStmt(1), succ)
+        firstNode(this.(TypeSwitchStmt).getAssign(), succ)
       )
       or
       (
         lastNode(this.(ExpressionSwitchStmt).getExpr(), pred, normalCompletion()) or
         pred = MkImplicitTrue(this) or
-        lastNode(this.(TypeSwitchStmt).getChildStmt(1), pred, normalCompletion())
+        lastNode(this.(TypeSwitchStmt).getAssign(), pred, normalCompletion())
       ) and
       (
         firstNode(getNonDefaultCase(0), succ)
