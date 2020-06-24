@@ -350,6 +350,8 @@ class Function extends ValueEntity, @functionobject {
   /** Holds if this function has no observable side effects. */
   predicate mayHaveSideEffects() { none() }
 
+  predicate mayReturnNormally() { any() }
+
   /**
    * Holds if calling this function may cause a runtime panic.
    *
@@ -516,6 +518,8 @@ class DeclaredFunction extends Function, DeclaredEntity, @declfunctionobject {
 /** A built-in function. */
 class BuiltinFunction extends Function, BuiltinEntity, @builtinfunctionobject {
   override predicate mayHaveSideEffects() { builtinFunction(getName(), false, _, _) }
+
+  override predicate mayReturnNormally() { builtinFunction(getName(), _, _, false) }
 
   override predicate mayPanic() { builtinFunction(getName(), _, true, _) }
 

@@ -259,6 +259,8 @@ module ControlFlow {
    * Gets the exit node of function or file `root`.
    */
   Node exitNode(Root root) { result = MkExitNode(root) }
+
+  predicate mayReturnNormally(FuncDecl f) { CFG::mayReturnNormally(f.getBody()) }
 }
 
 class Write = ControlFlow::WriteNode;
