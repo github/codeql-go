@@ -46,7 +46,6 @@ module NetMailTaintTracking {
       // signature: func (Header).Get(key string) string
       this.(Method).hasQualifiedName("net/mail", "Header", "Get") and
       (inp.isReceiver() and outp.isResult())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

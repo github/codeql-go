@@ -46,7 +46,6 @@ module EncodingBase32TaintTracking {
       // signature: func (*Encoding).EncodeToString(src []byte) string
       this.(Method).hasQualifiedName("encoding/base32", "Encoding", "EncodeToString") and
       (inp.isParameter(0) and outp.isResult())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

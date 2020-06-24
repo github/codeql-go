@@ -68,7 +68,6 @@ module OsTaintTracking {
       // signature: func (*File).WriteString(s string) (n int, err error)
       this.(Method).hasQualifiedName("os", "File", "WriteString") and
       (inp.isParameter(0) and outp.isReceiver())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

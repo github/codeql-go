@@ -46,7 +46,6 @@ module EncodingCsvTaintTracking {
       // signature: func (*Writer).WriteAll(records [][]string) error
       this.(Method).hasQualifiedName("encoding/csv", "Writer", "WriteAll") and
       (inp.isParameter(0) and outp.isReceiver())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

@@ -38,7 +38,6 @@ module CryptoX509TaintTracking {
       // signature: func (*CertPool).AppendCertsFromPEM(pemCerts []byte) (ok bool)
       this.(Method).hasQualifiedName("crypto/x509", "CertPool", "AppendCertsFromPEM") and
       (inp.isParameter(0) and outp.isReceiver())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

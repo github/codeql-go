@@ -66,7 +66,6 @@ module MimeMultipartTaintTracking {
       // signature: func (*Writer).WriteField(fieldname string, value string) error
       this.(Method).hasQualifiedName("mime/multipart", "Writer", "WriteField") and
       (inp.isParameter(_) and outp.isReceiver())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

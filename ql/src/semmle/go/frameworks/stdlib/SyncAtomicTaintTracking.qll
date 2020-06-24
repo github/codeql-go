@@ -73,7 +73,6 @@ module SyncAtomicTaintTracking {
       // signature: func (*Value).Store(x interface{})
       this.(Method).hasQualifiedName("sync/atomic", "Value", "Store") and
       (inp.isParameter(0) and outp.isReceiver())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

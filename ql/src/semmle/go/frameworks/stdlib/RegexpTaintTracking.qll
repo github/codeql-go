@@ -160,7 +160,6 @@ module RegexpTaintTracking {
       // signature: func (*Regexp).Split(s string, n int) []string
       this.(Method).hasQualifiedName("regexp", "Regexp", "Split") and
       (inp.isParameter(0) and outp.isResult())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

@@ -31,7 +31,6 @@ module ContainerRingTaintTracking {
       // signature: func (*Ring).Unlink(n int) *Ring
       this.(Method).hasQualifiedName("container/ring", "Ring", "Unlink") and
       (inp.isReceiver() and outp.isResult())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

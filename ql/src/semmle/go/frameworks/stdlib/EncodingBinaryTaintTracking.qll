@@ -38,7 +38,6 @@ module EncodingBinaryTaintTracking {
     FunctionOutput outp;
 
     MethodAndInterfaceTaintTracking() {
-      // Methods:
       // Interfaces:
       // signature: func (ByteOrder).String() string
       this.implements("encoding/binary", "ByteOrder", "String") and

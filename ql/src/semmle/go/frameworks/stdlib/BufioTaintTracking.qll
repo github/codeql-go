@@ -136,7 +136,6 @@ module BufioTaintTracking {
       // signature: func (*Writer).WriteString(s string) (int, error)
       this.(Method).hasQualifiedName("bufio", "Writer", "WriteString") and
       (inp.isParameter(0) and outp.isReceiver())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

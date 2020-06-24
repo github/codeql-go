@@ -30,7 +30,6 @@ module CryptoEd25519TaintTracking {
       // signature: func (PrivateKey).Sign(rand io.Reader, message []byte, opts crypto.SignerOpts) (signature []byte, err error)
       this.(Method).hasQualifiedName("crypto/ed25519", "PrivateKey", "Sign") and
       (inp.isParameter(1) and outp.isResult(0))
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

@@ -15,7 +15,6 @@ module CryptoEcdsaTaintTracking {
       // signature: func (*PrivateKey).Sign(rand io.Reader, digest []byte, opts crypto.SignerOpts) ([]byte, error)
       this.(Method).hasQualifiedName("crypto/ecdsa", "PrivateKey", "Sign") and
       (inp.isParameter(1) and outp.isResult(0))
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

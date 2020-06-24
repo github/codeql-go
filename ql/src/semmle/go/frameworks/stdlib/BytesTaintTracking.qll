@@ -230,7 +230,6 @@ module BytesTaintTracking {
       // signature: func (*Reader).WriteTo(w io.Writer) (n int64, err error)
       this.(Method).hasQualifiedName("bytes", "Reader", "WriteTo") and
       (inp.isReceiver() and outp.isParameter(0))
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

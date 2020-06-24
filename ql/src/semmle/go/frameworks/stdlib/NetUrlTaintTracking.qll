@@ -132,7 +132,6 @@ module NetUrlTaintTracking {
       // signature: func (Values).Set(key string, value string)
       this.(Method).hasQualifiedName("net/url", "Values", "Set") and
       (inp.isParameter(_) and outp.isReceiver())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

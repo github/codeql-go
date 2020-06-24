@@ -218,7 +218,6 @@ module ReflectTaintTracking {
       // signature: func (Value).UnsafeAddr() uintptr
       this.(Method).hasQualifiedName("reflect", "Value", "UnsafeAddr") and
       (inp.isReceiver() and outp.isResult())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

@@ -54,7 +54,6 @@ module UnicodeTaintTracking {
       // signature: func (SpecialCase).ToUpper(r rune) rune
       this.(Method).hasQualifiedName("unicode", "SpecialCase", "ToUpper") and
       (inp.isParameter(0) and outp.isResult())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

@@ -48,7 +48,6 @@ module EncodingAsn1TaintTracking {
       // signature: func (ObjectIdentifier).String() string
       this.(Method).hasQualifiedName("encoding/asn1", "ObjectIdentifier", "String") and
       (inp.isReceiver() and outp.isResult())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

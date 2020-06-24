@@ -76,7 +76,6 @@ module LogTaintTracking {
       (inp.isResult() and outp.isReceiver())
       or
       inp.isReceiver() and outp.isResult()
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

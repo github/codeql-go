@@ -46,7 +46,6 @@ module CryptoTlsTaintTracking {
       // signature: func (*Conn).Write(b []byte) (int, error)
       this.(Method).hasQualifiedName("crypto/tls", "Conn", "Write") and
       (inp.isParameter(0) and outp.isReceiver())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

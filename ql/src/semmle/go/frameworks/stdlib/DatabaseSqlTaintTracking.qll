@@ -54,7 +54,6 @@ module DatabaseSqlTaintTracking {
       // signature: func (*Tx).StmtContext(ctx context.Context, stmt *Stmt) *Stmt
       this.(Method).hasQualifiedName("database/sql", "Tx", "StmtContext") and
       (inp.isParameter(1) and outp.isResult())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

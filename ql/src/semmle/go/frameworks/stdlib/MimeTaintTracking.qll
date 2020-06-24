@@ -42,7 +42,6 @@ module MimeTaintTracking {
       // signature: func (WordEncoder).Encode(charset string, s string) string
       this.(Method).hasQualifiedName("mime", "WordEncoder", "Encode") and
       (inp.isParameter(1) and outp.isResult())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

@@ -74,7 +74,6 @@ module FmtTaintTracking {
     FunctionOutput outp;
 
     MethodAndInterfaceTaintTracking() {
-      // Methods:
       // Interfaces:
       // signature: func (GoStringer).GoString() string
       this.implements("fmt", "GoStringer", "GoString") and

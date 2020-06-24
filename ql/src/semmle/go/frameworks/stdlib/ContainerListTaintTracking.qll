@@ -79,7 +79,6 @@ module ContainerListTaintTracking {
       // signature: func (*List).Remove(e *Element) interface{}
       this.(Method).hasQualifiedName("container/list", "List", "Remove") and
       (inp.isParameter(0) and outp.isResult())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

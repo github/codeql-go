@@ -37,7 +37,6 @@ module TextTabwriterTaintTracking {
       // signature: func (*Writer).Write(buf []byte) (n int, err error)
       this.(Method).hasQualifiedName("text/tabwriter", "Writer", "Write") and
       (inp.isParameter(0) and outp.isReceiver())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

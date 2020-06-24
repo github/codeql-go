@@ -11,7 +11,6 @@ module CryptoTaintTracking {
     FunctionOutput outp;
 
     MethodAndInterfaceTaintTracking() {
-      // Methods:
       // Interfaces:
       // signature: func (Decrypter).Decrypt(rand io.Reader, msg []byte, opts DecrypterOpts) (plaintext []byte, err error)
       this.implements("crypto", "Decrypter", "Decrypt") and

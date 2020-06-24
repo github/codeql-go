@@ -125,7 +125,6 @@ module HtmlTemplateTaintTracking {
       // signature: func (*Template).Templates() []*Template
       this.(Method).hasQualifiedName("html/template", "Template", "Templates") and
       (inp.isReceiver() and outp.isResult())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

@@ -54,7 +54,6 @@ module ArchiveTarTaintTracking {
       // signature: func (*Writer).WriteHeader(hdr *Header) error
       this.(Method).hasQualifiedName("archive/tar", "Writer", "WriteHeader") and
       (inp.isParameter(0) and outp.isReceiver())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

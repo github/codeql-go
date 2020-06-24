@@ -76,7 +76,6 @@ module TextTemplateTaintTracking {
         (inp.isReceiver() or inp.isParameter(2)) and
         outp.isParameter(0)
       )
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

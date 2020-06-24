@@ -112,7 +112,6 @@ module NetTextprotoTaintTracking {
       // signature: func (*Writer).PrintfLine(format string, args ...interface{}) error
       this.(Method).hasQualifiedName("net/textproto", "Writer", "PrintfLine") and
       (inp.isParameter(_) and outp.isReceiver())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

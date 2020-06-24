@@ -34,7 +34,6 @@ module ContainerHeapTaintTracking {
     FunctionOutput outp;
 
     MethodAndInterfaceTaintTracking() {
-      // Methods:
       // Interfaces:
       // signature: func (Interface).Pop() interface{}
       this.implements("container/heap", "Interface", "Pop") and

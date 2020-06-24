@@ -38,7 +38,6 @@ module MimeQuotedprintableTaintTracking {
       // signature: func (*Writer).Write(p []byte) (n int, err error)
       this.(Method).hasQualifiedName("mime/quotedprintable", "Writer", "Write") and
       (inp.isParameter(0) and outp.isReceiver())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

@@ -194,7 +194,6 @@ module StringsTaintTracking {
       // signature: func (*Replacer).WriteString(w io.Writer, s string) (n int, err error)
       this.(Method).hasQualifiedName("strings", "Replacer", "WriteString") and
       (inp.isParameter(1) and outp.isParameter(0))
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

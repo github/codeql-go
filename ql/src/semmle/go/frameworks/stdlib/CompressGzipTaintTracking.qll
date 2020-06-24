@@ -50,7 +50,6 @@ module CompressGzipTaintTracking {
       // signature: func (*Writer).Write(p []byte) (int, error)
       this.(Method).hasQualifiedName("compress/gzip", "Writer", "Write") and
       (inp.isParameter(0) and outp.isReceiver())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

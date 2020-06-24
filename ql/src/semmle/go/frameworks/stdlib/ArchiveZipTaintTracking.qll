@@ -77,7 +77,6 @@ module ArchiveZipTaintTracking {
       // signature: func (*Writer).SetComment(comment string) error
       this.(Method).hasQualifiedName("archive/zip", "Writer", "SetComment") and
       (inp.isParameter(0) and outp.isReceiver())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {

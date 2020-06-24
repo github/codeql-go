@@ -11,7 +11,6 @@ module EncodingTaintTracking {
     FunctionOutput outp;
 
     MethodAndInterfaceTaintTracking() {
-      // Methods:
       // Interfaces:
       // signature: func (BinaryMarshaler).MarshalBinary() (data []byte, err error)
       this.implements("encoding", "BinaryMarshaler", "MarshalBinary") and

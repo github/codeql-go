@@ -38,7 +38,6 @@ module ContextTaintTracking {
     FunctionOutput outp;
 
     MethodAndInterfaceTaintTracking() {
-      // Methods:
       // Interfaces:
       // signature: func (Context).Value(key interface{}) interface{}
       this.implements("context", "Context", "Value") and

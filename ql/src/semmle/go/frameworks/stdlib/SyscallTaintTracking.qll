@@ -38,7 +38,6 @@ module SyscallTaintTracking {
     FunctionOutput outp;
 
     MethodAndInterfaceTaintTracking() {
-      // Methods:
       // Interfaces:
       // signature: func (RawConn).Read(f func(fd uintptr) (done bool)) error
       this.implements("syscall", "RawConn", "Read") and

@@ -49,7 +49,6 @@ module TextScannerTaintTracking {
       // signature: func (*Scanner).TokenText() string
       this.(Method).hasQualifiedName("text/scanner", "Scanner", "TokenText") and
       (inp.isReceiver() and outp.isResult())
-      // Interfaces:
     }
 
     override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
