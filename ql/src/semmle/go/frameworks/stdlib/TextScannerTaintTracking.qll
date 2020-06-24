@@ -6,60 +6,54 @@ import go
 
 /** Provides models of commonly used functions in the `text/scanner` package. */
 module TextScannerTaintTracking {
-  private class TokenString extends TaintTracking::FunctionModel {
-    // signature: func TokenString(tok rune) string
-    TokenString() { hasQualifiedName("text/scanner", "TokenString") }
+  private class FunctionTaintTracking extends TaintTracking::FunctionModel {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    FunctionTaintTracking() {
+      // signature: func TokenString(tok rune) string
+      hasQualifiedName("text/scanner", "TokenString") and
       (inp.isParameter(0) and outp.isResult())
+    }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 
-  private class ScannerInit extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Scanner).Init(src io.Reader) *Scanner
-    ScannerInit() { this.(Method).hasQualifiedName("text/scanner", "Scanner", "Init") }
+  private class MethodAndInterfaceTaintTracking extends TaintTracking::FunctionModel, Method {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    MethodAndInterfaceTaintTracking() {
+      // Methods:
+      // signature: func (*Scanner).Init(src io.Reader) *Scanner
+      this.(Method).hasQualifiedName("text/scanner", "Scanner", "Init") and
       (
         inp.isParameter(0) and
         (outp.isReceiver() or outp.isResult())
       )
-    }
-  }
-
-  private class ScannerNext extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Scanner).Next() rune
-    ScannerNext() { this.(Method).hasQualifiedName("text/scanner", "Scanner", "Next") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Scanner).Next() rune
+      this.(Method).hasQualifiedName("text/scanner", "Scanner", "Next") and
       (inp.isReceiver() and outp.isResult())
-    }
-  }
-
-  private class ScannerPeek extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Scanner).Peek() rune
-    ScannerPeek() { this.(Method).hasQualifiedName("text/scanner", "Scanner", "Peek") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Scanner).Peek() rune
+      this.(Method).hasQualifiedName("text/scanner", "Scanner", "Peek") and
       (inp.isReceiver() and outp.isResult())
-    }
-  }
-
-  private class ScannerScan extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Scanner).Scan() rune
-    ScannerScan() { this.(Method).hasQualifiedName("text/scanner", "Scanner", "Scan") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Scanner).Scan() rune
+      this.(Method).hasQualifiedName("text/scanner", "Scanner", "Scan") and
       (inp.isReceiver() and outp.isResult())
-    }
-  }
-
-  private class ScannerTokenText extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Scanner).TokenText() string
-    ScannerTokenText() { this.(Method).hasQualifiedName("text/scanner", "Scanner", "TokenText") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Scanner).TokenText() string
+      this.(Method).hasQualifiedName("text/scanner", "Scanner", "TokenText") and
       (inp.isReceiver() and outp.isResult())
+      // Interfaces:
+    }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

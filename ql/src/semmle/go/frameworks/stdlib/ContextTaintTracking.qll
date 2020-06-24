@@ -6,48 +6,47 @@ import go
 
 /** Provides models of commonly used functions in the `context` package. */
 module ContextTaintTracking {
-  private class WithCancel extends TaintTracking::FunctionModel {
-    // signature: func WithCancel(parent Context) (ctx Context, cancel CancelFunc)
-    WithCancel() { hasQualifiedName("context", "WithCancel") }
+  private class FunctionTaintTracking extends TaintTracking::FunctionModel {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    FunctionTaintTracking() {
+      // signature: func WithCancel(parent Context) (ctx Context, cancel CancelFunc)
+      hasQualifiedName("context", "WithCancel") and
       (inp.isParameter(0) and outp.isResult(0))
-    }
-  }
-
-  private class WithDeadline extends TaintTracking::FunctionModel {
-    // signature: func WithDeadline(parent Context, d time.Time) (Context, CancelFunc)
-    WithDeadline() { hasQualifiedName("context", "WithDeadline") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func WithDeadline(parent Context, d time.Time) (Context, CancelFunc)
+      hasQualifiedName("context", "WithDeadline") and
       (inp.isParameter(0) and outp.isResult(0))
-    }
-  }
-
-  private class WithTimeout extends TaintTracking::FunctionModel {
-    // signature: func WithTimeout(parent Context, timeout time.Duration) (Context, CancelFunc)
-    WithTimeout() { hasQualifiedName("context", "WithTimeout") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func WithTimeout(parent Context, timeout time.Duration) (Context, CancelFunc)
+      hasQualifiedName("context", "WithTimeout") and
       (inp.isParameter(0) and outp.isResult(0))
-    }
-  }
-
-  private class WithValue extends TaintTracking::FunctionModel {
-    // signature: func WithValue(parent Context, key interface{}, val interface{}) Context
-    WithValue() { hasQualifiedName("context", "WithValue") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func WithValue(parent Context, key interface{}, val interface{}) Context
+      hasQualifiedName("context", "WithValue") and
       (inp.isParameter(_) and outp.isResult())
     }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
+    }
   }
 
-  private class ContextValue extends TaintTracking::FunctionModel, Method {
-    // signature: func (Context).Value(key interface{}) interface{}
-    ContextValue() { this.implements("context", "Context", "Value") }
+  private class MethodAndInterfaceTaintTracking extends TaintTracking::FunctionModel, Method {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    MethodAndInterfaceTaintTracking() {
+      // Methods:
+      // Interfaces:
+      // signature: func (Context).Value(key interface{}) interface{}
+      this.implements("context", "Context", "Value") and
       (inp.isReceiver() and outp.isResult())
+    }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

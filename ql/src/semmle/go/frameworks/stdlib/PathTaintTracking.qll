@@ -6,57 +6,38 @@ import go
 
 /** Provides models of commonly used functions in the `path` package. */
 module PathTaintTracking {
-  private class Base extends TaintTracking::FunctionModel {
-    // signature: func Base(path string) string
-    Base() { hasQualifiedName("path", "Base") }
+  private class FunctionTaintTracking extends TaintTracking::FunctionModel {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    FunctionTaintTracking() {
+      // signature: func Base(path string) string
+      hasQualifiedName("path", "Base") and
       (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class Clean extends TaintTracking::FunctionModel {
-    // signature: func Clean(path string) string
-    Clean() { hasQualifiedName("path", "Clean") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func Clean(path string) string
+      hasQualifiedName("path", "Clean") and
       (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class Dir extends TaintTracking::FunctionModel {
-    // signature: func Dir(path string) string
-    Dir() { hasQualifiedName("path", "Dir") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func Dir(path string) string
+      hasQualifiedName("path", "Dir") and
       (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class Ext extends TaintTracking::FunctionModel {
-    // signature: func Ext(path string) string
-    Ext() { hasQualifiedName("path", "Ext") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func Ext(path string) string
+      hasQualifiedName("path", "Ext") and
       (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class Join extends TaintTracking::FunctionModel {
-    // signature: func Join(elem ...string) string
-    Join() { hasQualifiedName("path", "Join") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func Join(elem ...string) string
+      hasQualifiedName("path", "Join") and
       (inp.isParameter(_) and outp.isResult())
-    }
-  }
-
-  private class Split extends TaintTracking::FunctionModel {
-    // signature: func Split(path string) (dir string, file string)
-    Split() { hasQualifiedName("path", "Split") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func Split(path string) (dir string, file string)
+      hasQualifiedName("path", "Split") and
       (inp.isParameter(0) and outp.isResult(_))
+    }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

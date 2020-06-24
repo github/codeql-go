@@ -6,57 +6,51 @@ import go
 
 /** Provides models of commonly used functions in the `encoding/csv` package. */
 module EncodingCsvTaintTracking {
-  private class NewReader extends TaintTracking::FunctionModel {
-    // signature: func NewReader(r io.Reader) *Reader
-    NewReader() { hasQualifiedName("encoding/csv", "NewReader") }
+  private class FunctionTaintTracking extends TaintTracking::FunctionModel {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    FunctionTaintTracking() {
+      // signature: func NewReader(r io.Reader) *Reader
+      hasQualifiedName("encoding/csv", "NewReader") and
       (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class NewWriter extends TaintTracking::FunctionModel {
-    // signature: func NewWriter(w io.Writer) *Writer
-    NewWriter() { hasQualifiedName("encoding/csv", "NewWriter") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func NewWriter(w io.Writer) *Writer
+      hasQualifiedName("encoding/csv", "NewWriter") and
       (inp.isResult() and outp.isParameter(0))
     }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
+    }
   }
 
-  private class ReaderRead extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Reader).Read() (record []string, err error)
-    ReaderRead() { this.(Method).hasQualifiedName("encoding/csv", "Reader", "Read") }
+  private class MethodAndInterfaceTaintTracking extends TaintTracking::FunctionModel, Method {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    MethodAndInterfaceTaintTracking() {
+      // Methods:
+      // signature: func (*Reader).Read() (record []string, err error)
+      this.(Method).hasQualifiedName("encoding/csv", "Reader", "Read") and
       (inp.isReceiver() and outp.isResult(0))
-    }
-  }
-
-  private class ReaderReadAll extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Reader).ReadAll() (records [][]string, err error)
-    ReaderReadAll() { this.(Method).hasQualifiedName("encoding/csv", "Reader", "ReadAll") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Reader).ReadAll() (records [][]string, err error)
+      this.(Method).hasQualifiedName("encoding/csv", "Reader", "ReadAll") and
       (inp.isReceiver() and outp.isResult(0))
-    }
-  }
-
-  private class WriterWrite extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Writer).Write(record []string) error
-    WriterWrite() { this.(Method).hasQualifiedName("encoding/csv", "Writer", "Write") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Writer).Write(record []string) error
+      this.(Method).hasQualifiedName("encoding/csv", "Writer", "Write") and
       (inp.isParameter(0) and outp.isReceiver())
-    }
-  }
-
-  private class WriterWriteAll extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Writer).WriteAll(records [][]string) error
-    WriterWriteAll() { this.(Method).hasQualifiedName("encoding/csv", "Writer", "WriteAll") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Writer).WriteAll(records [][]string) error
+      this.(Method).hasQualifiedName("encoding/csv", "Writer", "WriteAll") and
       (inp.isParameter(0) and outp.isReceiver())
+      // Interfaces:
+    }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

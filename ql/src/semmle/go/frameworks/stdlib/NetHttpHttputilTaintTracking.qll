@@ -6,110 +6,75 @@ import go
 
 /** Provides models of commonly used functions in the `net/http/httputil` package. */
 module NetHttpHttputilTaintTracking {
-  private class DumpRequest extends TaintTracking::FunctionModel {
-    // signature: func DumpRequest(req *net/http.Request, body bool) ([]byte, error)
-    DumpRequest() { hasQualifiedName("net/http/httputil", "DumpRequest") }
+  private class FunctionTaintTracking extends TaintTracking::FunctionModel {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    FunctionTaintTracking() {
+      // signature: func DumpRequest(req *net/http.Request, body bool) ([]byte, error)
+      hasQualifiedName("net/http/httputil", "DumpRequest") and
       (inp.isParameter(0) and outp.isResult(0))
-    }
-  }
-
-  private class DumpRequestOut extends TaintTracking::FunctionModel {
-    // signature: func DumpRequestOut(req *net/http.Request, body bool) ([]byte, error)
-    DumpRequestOut() { hasQualifiedName("net/http/httputil", "DumpRequestOut") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func DumpRequestOut(req *net/http.Request, body bool) ([]byte, error)
+      hasQualifiedName("net/http/httputil", "DumpRequestOut") and
       (inp.isParameter(0) and outp.isResult(0))
-    }
-  }
-
-  private class DumpResponse extends TaintTracking::FunctionModel {
-    // signature: func DumpResponse(resp *net/http.Response, body bool) ([]byte, error)
-    DumpResponse() { hasQualifiedName("net/http/httputil", "DumpResponse") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func DumpResponse(resp *net/http.Response, body bool) ([]byte, error)
+      hasQualifiedName("net/http/httputil", "DumpResponse") and
       (inp.isParameter(0) and outp.isResult(0))
-    }
-  }
-
-  private class NewChunkedReader extends TaintTracking::FunctionModel {
-    // signature: func NewChunkedReader(r io.Reader) io.Reader
-    NewChunkedReader() { hasQualifiedName("net/http/httputil", "NewChunkedReader") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func NewChunkedReader(r io.Reader) io.Reader
+      hasQualifiedName("net/http/httputil", "NewChunkedReader") and
       (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class NewChunkedWriter extends TaintTracking::FunctionModel {
-    // signature: func NewChunkedWriter(w io.Writer) io.WriteCloser
-    NewChunkedWriter() { hasQualifiedName("net/http/httputil", "NewChunkedWriter") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func NewChunkedWriter(w io.Writer) io.WriteCloser
+      hasQualifiedName("net/http/httputil", "NewChunkedWriter") and
       (inp.isResult() and outp.isParameter(0))
-    }
-  }
-
-  private class NewClientConn extends TaintTracking::FunctionModel {
-    // signature: func NewClientConn(c net.Conn, r *bufio.Reader) *ClientConn
-    NewClientConn() { hasQualifiedName("net/http/httputil", "NewClientConn") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+      or
+      // signature: func NewClientConn(c net.Conn, r *bufio.Reader) *ClientConn
+      hasQualifiedName("net/http/httputil", "NewClientConn") and
+      (inp.isParameter(_) and outp.isResult())
+      or
+      inp.isResult() and outp.isParameter(0)
+      or
+      // signature: func NewProxyClientConn(c net.Conn, r *bufio.Reader) *ClientConn
+      hasQualifiedName("net/http/httputil", "NewProxyClientConn") and
+      (inp.isParameter(_) and outp.isResult())
       or
       inp.isResult() and outp.isParameter(0)
     }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
+    }
   }
 
-  private class NewProxyClientConn extends TaintTracking::FunctionModel {
-    // signature: func NewProxyClientConn(c net.Conn, r *bufio.Reader) *ClientConn
-    NewProxyClientConn() { hasQualifiedName("net/http/httputil", "NewProxyClientConn") }
+  private class MethodAndInterfaceTaintTracking extends TaintTracking::FunctionModel, Method {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(_) and outp.isResult()
+    MethodAndInterfaceTaintTracking() {
+      // Methods:
+      // signature: func (*ClientConn).Hijack() (c net.Conn, r *bufio.Reader)
+      this.(Method).hasQualifiedName("net/http/httputil", "ClientConn", "Hijack") and
+      (inp.isReceiver() and outp.isResult(_))
       or
-      inp.isResult() and outp.isParameter(0)
-    }
-  }
-
-  private class ClientConnHijack extends TaintTracking::FunctionModel, Method {
-    // signature: func (*ClientConn).Hijack() (c net.Conn, r *bufio.Reader)
-    ClientConnHijack() {
-      this.(Method).hasQualifiedName("net/http/httputil", "ClientConn", "Hijack")
-    }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      // signature: func (*ServerConn).Hijack() (net.Conn, *bufio.Reader)
+      this.(Method).hasQualifiedName("net/http/httputil", "ServerConn", "Hijack") and
       (inp.isReceiver() and outp.isResult(_))
-    }
-  }
-
-  private class ServerConnHijack extends TaintTracking::FunctionModel, Method {
-    // signature: func (*ServerConn).Hijack() (net.Conn, *bufio.Reader)
-    ServerConnHijack() {
-      this.(Method).hasQualifiedName("net/http/httputil", "ServerConn", "Hijack")
-    }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isReceiver() and outp.isResult(_))
-    }
-  }
-
-  private class BufferPoolGet extends TaintTracking::FunctionModel, Method {
-    // signature: func (BufferPool).Get() []byte
-    BufferPoolGet() { this.implements("net/http/httputil", "BufferPool", "Get") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // Interfaces:
+      // signature: func (BufferPool).Get() []byte
+      this.implements("net/http/httputil", "BufferPool", "Get") and
       (inp.isReceiver() and outp.isResult())
-    }
-  }
-
-  private class BufferPoolPut extends TaintTracking::FunctionModel, Method {
-    // signature: func (BufferPool).Put([]byte)
-    BufferPoolPut() { this.implements("net/http/httputil", "BufferPool", "Put") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (BufferPool).Put([]byte)
+      this.implements("net/http/httputil", "BufferPool", "Put") and
       (inp.isParameter(0) and outp.isReceiver())
+    }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

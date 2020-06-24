@@ -6,30 +6,26 @@ import go
 
 /** Provides models of commonly used functions in the `errors` package. */
 module ErrorsTaintTracking {
-  private class As extends TaintTracking::FunctionModel {
-    // signature: func As(err error, target interface{}) bool
-    As() { hasQualifiedName("errors", "As") }
+  private class FunctionTaintTracking extends TaintTracking::FunctionModel {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    FunctionTaintTracking() {
+      // signature: func As(err error, target interface{}) bool
+      hasQualifiedName("errors", "As") and
       (inp.isParameter(0) and outp.isParameter(1))
-    }
-  }
-
-  private class New extends TaintTracking::FunctionModel {
-    // signature: func New(text string) error
-    New() { hasQualifiedName("errors", "New") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func New(text string) error
+      hasQualifiedName("errors", "New") and
+      (inp.isParameter(0) and outp.isResult())
+      or
+      // signature: func Unwrap(err error) error
+      hasQualifiedName("errors", "Unwrap") and
       (inp.isParameter(0) and outp.isResult())
     }
-  }
 
-  private class Unwrap extends TaintTracking::FunctionModel {
-    // signature: func Unwrap(err error) error
-    Unwrap() { hasQualifiedName("errors", "Unwrap") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isParameter(0) and outp.isResult())
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

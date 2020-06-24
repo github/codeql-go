@@ -6,30 +6,26 @@ import go
 
 /** Provides models of commonly used functions in the `encoding/pem` package. */
 module EncodingPemTaintTracking {
-  private class Decode extends TaintTracking::FunctionModel {
-    // signature: func Decode(data []byte) (p *Block, rest []byte)
-    Decode() { hasQualifiedName("encoding/pem", "Decode") }
+  private class FunctionTaintTracking extends TaintTracking::FunctionModel {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    FunctionTaintTracking() {
+      // signature: func Decode(data []byte) (p *Block, rest []byte)
+      hasQualifiedName("encoding/pem", "Decode") and
       (inp.isParameter(0) and outp.isResult(_))
-    }
-  }
-
-  private class Encode extends TaintTracking::FunctionModel {
-    // signature: func Encode(out io.Writer, b *Block) error
-    Encode() { hasQualifiedName("encoding/pem", "Encode") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func Encode(out io.Writer, b *Block) error
+      hasQualifiedName("encoding/pem", "Encode") and
       (inp.isParameter(1) and outp.isParameter(0))
-    }
-  }
-
-  private class EncodeToMemory extends TaintTracking::FunctionModel {
-    // signature: func EncodeToMemory(b *Block) []byte
-    EncodeToMemory() { hasQualifiedName("encoding/pem", "EncodeToMemory") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func EncodeToMemory(b *Block) []byte
+      hasQualifiedName("encoding/pem", "EncodeToMemory") and
       (inp.isParameter(0) and outp.isResult())
+    }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

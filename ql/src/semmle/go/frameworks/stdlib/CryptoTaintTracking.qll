@@ -6,21 +6,24 @@ import go
 
 /** Provides models of commonly used functions in the `crypto` package. */
 module CryptoTaintTracking {
-  private class DecrypterDecrypt extends TaintTracking::FunctionModel, Method {
-    // signature: func (Decrypter).Decrypt(rand io.Reader, msg []byte, opts DecrypterOpts) (plaintext []byte, err error)
-    DecrypterDecrypt() { this.implements("crypto", "Decrypter", "Decrypt") }
+  private class MethodAndInterfaceTaintTracking extends TaintTracking::FunctionModel, Method {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    MethodAndInterfaceTaintTracking() {
+      // Methods:
+      // Interfaces:
+      // signature: func (Decrypter).Decrypt(rand io.Reader, msg []byte, opts DecrypterOpts) (plaintext []byte, err error)
+      this.implements("crypto", "Decrypter", "Decrypt") and
+      (inp.isParameter(1) and outp.isResult(0))
+      or
+      // signature: func (Signer).Sign(rand io.Reader, digest []byte, opts SignerOpts) (signature []byte, err error)
+      this.implements("crypto", "Signer", "Sign") and
       (inp.isParameter(1) and outp.isResult(0))
     }
-  }
 
-  private class SignerSign extends TaintTracking::FunctionModel, Method {
-    // signature: func (Signer).Sign(rand io.Reader, digest []byte, opts SignerOpts) (signature []byte, err error)
-    SignerSign() { this.implements("crypto", "Signer", "Sign") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isParameter(1) and outp.isResult(0))
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

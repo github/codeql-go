@@ -6,48 +6,47 @@ import go
 
 /** Provides models of commonly used functions in the `container/heap` package. */
 module ContainerHeapTaintTracking {
-  private class Pop extends TaintTracking::FunctionModel {
-    // signature: func Pop(h Interface) interface{}
-    Pop() { hasQualifiedName("container/heap", "Pop") }
+  private class FunctionTaintTracking extends TaintTracking::FunctionModel {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    FunctionTaintTracking() {
+      // signature: func Pop(h Interface) interface{}
+      hasQualifiedName("container/heap", "Pop") and
       (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class Push extends TaintTracking::FunctionModel {
-    // signature: func Push(h Interface, x interface{})
-    Push() { hasQualifiedName("container/heap", "Push") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func Push(h Interface, x interface{})
+      hasQualifiedName("container/heap", "Push") and
       (inp.isParameter(1) and outp.isParameter(0))
-    }
-  }
-
-  private class Remove extends TaintTracking::FunctionModel {
-    // signature: func Remove(h Interface, i int) interface{}
-    Remove() { hasQualifiedName("container/heap", "Remove") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func Remove(h Interface, i int) interface{}
+      hasQualifiedName("container/heap", "Remove") and
       (inp.isParameter(0) and outp.isResult())
     }
-  }
 
-  private class InterfacePop extends TaintTracking::FunctionModel, Method {
-    // signature: func (Interface).Pop() interface{}
-    InterfacePop() { this.implements("container/heap", "Interface", "Pop") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isReceiver() and outp.isResult())
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 
-  private class InterfacePush extends TaintTracking::FunctionModel, Method {
-    // signature: func (Interface).Push(x interface{})
-    InterfacePush() { this.implements("container/heap", "Interface", "Push") }
+  private class MethodAndInterfaceTaintTracking extends TaintTracking::FunctionModel, Method {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    MethodAndInterfaceTaintTracking() {
+      // Methods:
+      // Interfaces:
+      // signature: func (Interface).Pop() interface{}
+      this.implements("container/heap", "Interface", "Pop") and
+      (inp.isReceiver() and outp.isResult())
+      or
+      // signature: func (Interface).Push(x interface{})
+      this.implements("container/heap", "Interface", "Push") and
       (inp.isParameter(0) and outp.isReceiver())
+    }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

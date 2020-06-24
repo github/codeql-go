@@ -6,39 +6,30 @@ import go
 
 /** Provides models of commonly used functions in the `unicode/utf16` package. */
 module UnicodeUtf16TaintTracking {
-  private class Decode extends TaintTracking::FunctionModel {
-    // signature: func Decode(s []uint16) []rune
-    Decode() { hasQualifiedName("unicode/utf16", "Decode") }
+  private class FunctionTaintTracking extends TaintTracking::FunctionModel {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    FunctionTaintTracking() {
+      // signature: func Decode(s []uint16) []rune
+      hasQualifiedName("unicode/utf16", "Decode") and
       (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class DecodeRune extends TaintTracking::FunctionModel {
-    // signature: func DecodeRune(r1 rune, r2 rune) rune
-    DecodeRune() { hasQualifiedName("unicode/utf16", "DecodeRune") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func DecodeRune(r1 rune, r2 rune) rune
+      hasQualifiedName("unicode/utf16", "DecodeRune") and
       (inp.isParameter(_) and outp.isResult())
-    }
-  }
-
-  private class Encode extends TaintTracking::FunctionModel {
-    // signature: func Encode(s []rune) []uint16
-    Encode() { hasQualifiedName("unicode/utf16", "Encode") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func Encode(s []rune) []uint16
+      hasQualifiedName("unicode/utf16", "Encode") and
       (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class EncodeRune extends TaintTracking::FunctionModel {
-    // signature: func EncodeRune(r rune) (r1 rune, r2 rune)
-    EncodeRune() { hasQualifiedName("unicode/utf16", "EncodeRune") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func EncodeRune(r rune) (r1 rune, r2 rune)
+      hasQualifiedName("unicode/utf16", "EncodeRune") and
       (inp.isParameter(0) and outp.isResult(_))
+    }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

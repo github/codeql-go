@@ -6,60 +6,43 @@ import go
 
 /** Provides models of commonly used functions in the `sync` package. */
 module SyncTaintTracking {
-  private class MapLoad extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Map).Load(key interface{}) (value interface{}, ok bool)
-    MapLoad() { this.(Method).hasQualifiedName("sync", "Map", "Load") }
+  private class MethodAndInterfaceTaintTracking extends TaintTracking::FunctionModel, Method {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    MethodAndInterfaceTaintTracking() {
+      // Methods:
+      // signature: func (*Map).Load(key interface{}) (value interface{}, ok bool)
+      this.(Method).hasQualifiedName("sync", "Map", "Load") and
       (inp.isReceiver() and outp.isResult(0))
-    }
-  }
-
-  private class MapLoadOrStore extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Map).LoadOrStore(key interface{}, value interface{}) (actual interface{}, loaded bool)
-    MapLoadOrStore() { this.(Method).hasQualifiedName("sync", "Map", "LoadOrStore") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isReceiver() and outp.isResult(0)
+      or
+      // signature: func (*Map).LoadOrStore(key interface{}, value interface{}) (actual interface{}, loaded bool)
+      this.(Method).hasQualifiedName("sync", "Map", "LoadOrStore") and
+      (inp.isReceiver() and outp.isResult(0))
       or
       inp.isParameter(1) and
       (outp.isReceiver() or outp.isResult(0))
-    }
-  }
-
-  private class MapRange extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Map).Range(f func(key interface{}, value interface{}) bool)
-    MapRange() { this.(Method).hasQualifiedName("sync", "Map", "Range") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Map).Range(f func(key interface{}, value interface{}) bool)
+      this.(Method).hasQualifiedName("sync", "Map", "Range") and
       (inp.isReceiver() and outp.isParameter(0))
-    }
-  }
-
-  private class MapStore extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Map).Store(key interface{}, value interface{})
-    MapStore() { this.(Method).hasQualifiedName("sync", "Map", "Store") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Map).Store(key interface{}, value interface{})
+      this.(Method).hasQualifiedName("sync", "Map", "Store") and
       (inp.isParameter(_) and outp.isReceiver())
-    }
-  }
-
-  private class PoolGet extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Pool).Get() interface{}
-    PoolGet() { this.(Method).hasQualifiedName("sync", "Pool", "Get") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Pool).Get() interface{}
+      this.(Method).hasQualifiedName("sync", "Pool", "Get") and
       (inp.isReceiver() and outp.isResult())
-    }
-  }
-
-  private class PoolPut extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Pool).Put(x interface{})
-    PoolPut() { this.(Method).hasQualifiedName("sync", "Pool", "Put") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Pool).Put(x interface{})
+      this.(Method).hasQualifiedName("sync", "Pool", "Put") and
       (inp.isParameter(0) and outp.isReceiver())
+      // Interfaces:
+    }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

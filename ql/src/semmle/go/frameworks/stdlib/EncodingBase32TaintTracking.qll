@@ -6,61 +6,51 @@ import go
 
 /** Provides models of commonly used functions in the `encoding/base32` package. */
 module EncodingBase32TaintTracking {
-  private class NewDecoder extends TaintTracking::FunctionModel {
-    // signature: func NewDecoder(enc *Encoding, r io.Reader) io.Reader
-    NewDecoder() { hasQualifiedName("encoding/base32", "NewDecoder") }
+  private class FunctionTaintTracking extends TaintTracking::FunctionModel {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    FunctionTaintTracking() {
+      // signature: func NewDecoder(enc *Encoding, r io.Reader) io.Reader
+      hasQualifiedName("encoding/base32", "NewDecoder") and
       (inp.isParameter(1) and outp.isResult())
-    }
-  }
-
-  private class NewEncoder extends TaintTracking::FunctionModel {
-    // signature: func NewEncoder(enc *Encoding, w io.Writer) io.WriteCloser
-    NewEncoder() { hasQualifiedName("encoding/base32", "NewEncoder") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func NewEncoder(enc *Encoding, w io.Writer) io.WriteCloser
+      hasQualifiedName("encoding/base32", "NewEncoder") and
       (inp.isResult() and outp.isParameter(1))
     }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
+    }
   }
 
-  private class EncodingDecode extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Encoding).Decode(dst []byte, src []byte) (n int, err error)
-    EncodingDecode() { this.(Method).hasQualifiedName("encoding/base32", "Encoding", "Decode") }
+  private class MethodAndInterfaceTaintTracking extends TaintTracking::FunctionModel, Method {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    MethodAndInterfaceTaintTracking() {
+      // Methods:
+      // signature: func (*Encoding).Decode(dst []byte, src []byte) (n int, err error)
+      this.(Method).hasQualifiedName("encoding/base32", "Encoding", "Decode") and
       (inp.isParameter(1) and outp.isParameter(0))
-    }
-  }
-
-  private class EncodingDecodeString extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Encoding).DecodeString(s string) ([]byte, error)
-    EncodingDecodeString() {
-      this.(Method).hasQualifiedName("encoding/base32", "Encoding", "DecodeString")
-    }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Encoding).DecodeString(s string) ([]byte, error)
+      this.(Method).hasQualifiedName("encoding/base32", "Encoding", "DecodeString") and
       (inp.isParameter(0) and outp.isResult(0))
-    }
-  }
-
-  private class EncodingEncode extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Encoding).Encode(dst []byte, src []byte)
-    EncodingEncode() { this.(Method).hasQualifiedName("encoding/base32", "Encoding", "Encode") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Encoding).Encode(dst []byte, src []byte)
+      this.(Method).hasQualifiedName("encoding/base32", "Encoding", "Encode") and
       (inp.isParameter(1) and outp.isParameter(0))
-    }
-  }
-
-  private class EncodingEncodeToString extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Encoding).EncodeToString(src []byte) string
-    EncodingEncodeToString() {
-      this.(Method).hasQualifiedName("encoding/base32", "Encoding", "EncodeToString")
-    }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Encoding).EncodeToString(src []byte) string
+      this.(Method).hasQualifiedName("encoding/base32", "Encoding", "EncodeToString") and
       (inp.isParameter(0) and outp.isResult())
+      // Interfaces:
+    }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

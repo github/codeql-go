@@ -6,160 +6,95 @@ import go
 
 /** Provides models of commonly used functions in the `encoding/json` package. */
 module EncodingJsonTaintTracking {
-  private class Compact extends TaintTracking::FunctionModel {
-    // signature: func Compact(dst *bytes.Buffer, src []byte) error
-    Compact() { hasQualifiedName("encoding/json", "Compact") }
+  private class FunctionTaintTracking extends TaintTracking::FunctionModel {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    FunctionTaintTracking() {
+      // signature: func Compact(dst *bytes.Buffer, src []byte) error
+      hasQualifiedName("encoding/json", "Compact") and
       (inp.isParameter(1) and outp.isParameter(0))
-    }
-  }
-
-  private class HTMLEscape extends TaintTracking::FunctionModel {
-    // signature: func HTMLEscape(dst *bytes.Buffer, src []byte)
-    HTMLEscape() { hasQualifiedName("encoding/json", "HTMLEscape") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func HTMLEscape(dst *bytes.Buffer, src []byte)
+      hasQualifiedName("encoding/json", "HTMLEscape") and
       (inp.isParameter(1) and outp.isParameter(0))
-    }
-  }
-
-  private class Indent extends TaintTracking::FunctionModel {
-    // signature: func Indent(dst *bytes.Buffer, src []byte, prefix string, indent string) error
-    Indent() { hasQualifiedName("encoding/json", "Indent") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func Indent(dst *bytes.Buffer, src []byte, prefix string, indent string) error
+      hasQualifiedName("encoding/json", "Indent") and
       (inp.isParameter([1, 2, 3]) and outp.isParameter(0))
-    }
-  }
-
-  private class Marshal extends TaintTracking::FunctionModel {
-    // signature: func Marshal(v interface{}) ([]byte, error)
-    Marshal() { hasQualifiedName("encoding/json", "Marshal") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func Marshal(v interface{}) ([]byte, error)
+      hasQualifiedName("encoding/json", "Marshal") and
       (inp.isParameter(0) and outp.isResult(0))
-    }
-  }
-
-  private class MarshalIndent extends TaintTracking::FunctionModel {
-    // signature: func MarshalIndent(v interface{}, prefix string, indent string) ([]byte, error)
-    MarshalIndent() { hasQualifiedName("encoding/json", "MarshalIndent") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func MarshalIndent(v interface{}, prefix string, indent string) ([]byte, error)
+      hasQualifiedName("encoding/json", "MarshalIndent") and
       (inp.isParameter(_) and outp.isResult(0))
-    }
-  }
-
-  private class NewDecoder extends TaintTracking::FunctionModel {
-    // signature: func NewDecoder(r io.Reader) *Decoder
-    NewDecoder() { hasQualifiedName("encoding/json", "NewDecoder") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func NewDecoder(r io.Reader) *Decoder
+      hasQualifiedName("encoding/json", "NewDecoder") and
       (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class NewEncoder extends TaintTracking::FunctionModel {
-    // signature: func NewEncoder(w io.Writer) *Encoder
-    NewEncoder() { hasQualifiedName("encoding/json", "NewEncoder") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func NewEncoder(w io.Writer) *Encoder
+      hasQualifiedName("encoding/json", "NewEncoder") and
       (inp.isResult() and outp.isParameter(0))
-    }
-  }
-
-  private class Unmarshal extends TaintTracking::FunctionModel {
-    // signature: func Unmarshal(data []byte, v interface{}) error
-    Unmarshal() { hasQualifiedName("encoding/json", "Unmarshal") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func Unmarshal(data []byte, v interface{}) error
+      hasQualifiedName("encoding/json", "Unmarshal") and
       (inp.isParameter(0) and outp.isParameter(1))
     }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
+    }
   }
 
-  private class DecoderBuffered extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Decoder).Buffered() io.Reader
-    DecoderBuffered() { this.(Method).hasQualifiedName("encoding/json", "Decoder", "Buffered") }
+  private class MethodAndInterfaceTaintTracking extends TaintTracking::FunctionModel, Method {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    MethodAndInterfaceTaintTracking() {
+      // Methods:
+      // signature: func (*Decoder).Buffered() io.Reader
+      this.(Method).hasQualifiedName("encoding/json", "Decoder", "Buffered") and
       (inp.isReceiver() and outp.isResult())
-    }
-  }
-
-  private class DecoderDecode extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Decoder).Decode(v interface{}) error
-    DecoderDecode() { this.(Method).hasQualifiedName("encoding/json", "Decoder", "Decode") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Decoder).Decode(v interface{}) error
+      this.(Method).hasQualifiedName("encoding/json", "Decoder", "Decode") and
       (inp.isReceiver() and outp.isParameter(0))
-    }
-  }
-
-  private class DecoderToken extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Decoder).Token() (Token, error)
-    DecoderToken() { this.(Method).hasQualifiedName("encoding/json", "Decoder", "Token") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Decoder).Token() (Token, error)
+      this.(Method).hasQualifiedName("encoding/json", "Decoder", "Token") and
       (inp.isReceiver() and outp.isResult(0))
-    }
-  }
-
-  private class EncoderEncode extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Encoder).Encode(v interface{}) error
-    EncoderEncode() { this.(Method).hasQualifiedName("encoding/json", "Encoder", "Encode") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Encoder).Encode(v interface{}) error
+      this.(Method).hasQualifiedName("encoding/json", "Encoder", "Encode") and
       (inp.isParameter(0) and outp.isReceiver())
-    }
-  }
-
-  private class EncoderSetIndent extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Encoder).SetIndent(prefix string, indent string)
-    EncoderSetIndent() { this.(Method).hasQualifiedName("encoding/json", "Encoder", "SetIndent") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Encoder).SetIndent(prefix string, indent string)
+      this.(Method).hasQualifiedName("encoding/json", "Encoder", "SetIndent") and
       (inp.isParameter(_) and outp.isReceiver())
-    }
-  }
-
-  private class RawMessageMarshalJSON extends TaintTracking::FunctionModel, Method {
-    // signature: func (RawMessage).MarshalJSON() ([]byte, error)
-    RawMessageMarshalJSON() {
-      this.(Method).hasQualifiedName("encoding/json", "RawMessage", "MarshalJSON")
-    }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (RawMessage).MarshalJSON() ([]byte, error)
+      this.(Method).hasQualifiedName("encoding/json", "RawMessage", "MarshalJSON") and
       (inp.isReceiver() and outp.isResult(0))
-    }
-  }
-
-  private class RawMessageUnmarshalJSON extends TaintTracking::FunctionModel, Method {
-    // signature: func (*RawMessage).UnmarshalJSON(data []byte) error
-    RawMessageUnmarshalJSON() {
-      this.(Method).hasQualifiedName("encoding/json", "RawMessage", "UnmarshalJSON")
-    }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*RawMessage).UnmarshalJSON(data []byte) error
+      this.(Method).hasQualifiedName("encoding/json", "RawMessage", "UnmarshalJSON") and
+      (inp.isParameter(0) and outp.isReceiver())
+      or
+      // Interfaces:
+      // signature: func (Marshaler).MarshalJSON() ([]byte, error)
+      this.implements("encoding/json", "Marshaler", "MarshalJSON") and
+      (inp.isReceiver() and outp.isResult(0))
+      or
+      // signature: func (Unmarshaler).UnmarshalJSON([]byte) error
+      this.implements("encoding/json", "Unmarshaler", "UnmarshalJSON") and
       (inp.isParameter(0) and outp.isReceiver())
     }
-  }
 
-  private class MarshalerMarshalJSON extends TaintTracking::FunctionModel, Method {
-    // signature: func (Marshaler).MarshalJSON() ([]byte, error)
-    MarshalerMarshalJSON() { this.implements("encoding/json", "Marshaler", "MarshalJSON") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isReceiver() and outp.isResult(0))
-    }
-  }
-
-  private class UnmarshalerUnmarshalJSON extends TaintTracking::FunctionModel, Method {
-    // signature: func (Unmarshaler).UnmarshalJSON([]byte) error
-    UnmarshalerUnmarshalJSON() { this.implements("encoding/json", "Unmarshaler", "UnmarshalJSON") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isParameter(0) and outp.isReceiver())
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

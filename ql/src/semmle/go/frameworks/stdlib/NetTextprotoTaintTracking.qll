@@ -6,219 +6,117 @@ import go
 
 /** Provides models of commonly used functions in the `net/textproto` package. */
 module NetTextprotoTaintTracking {
-  private class CanonicalMIMEHeaderKey extends TaintTracking::FunctionModel {
-    // signature: func CanonicalMIMEHeaderKey(s string) string
-    CanonicalMIMEHeaderKey() { hasQualifiedName("net/textproto", "CanonicalMIMEHeaderKey") }
+  private class FunctionTaintTracking extends TaintTracking::FunctionModel {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    FunctionTaintTracking() {
+      // signature: func CanonicalMIMEHeaderKey(s string) string
+      hasQualifiedName("net/textproto", "CanonicalMIMEHeaderKey") and
       (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class NewConn extends TaintTracking::FunctionModel {
-    // signature: func NewConn(conn io.ReadWriteCloser) *Conn
-    NewConn() { hasQualifiedName("net/textproto", "NewConn") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      or
+      // signature: func NewConn(conn io.ReadWriteCloser) *Conn
+      hasQualifiedName("net/textproto", "NewConn") and
+      (inp.isParameter(0) and outp.isResult())
       or
       inp.isResult() and outp.isParameter(0)
-    }
-  }
-
-  private class NewReader extends TaintTracking::FunctionModel {
-    // signature: func NewReader(r *bufio.Reader) *Reader
-    NewReader() { hasQualifiedName("net/textproto", "NewReader") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func NewReader(r *bufio.Reader) *Reader
+      hasQualifiedName("net/textproto", "NewReader") and
       (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class NewWriter extends TaintTracking::FunctionModel {
-    // signature: func NewWriter(w *bufio.Writer) *Writer
-    NewWriter() { hasQualifiedName("net/textproto", "NewWriter") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func NewWriter(w *bufio.Writer) *Writer
+      hasQualifiedName("net/textproto", "NewWriter") and
       (inp.isResult() and outp.isParameter(0))
-    }
-  }
-
-  private class TrimBytes extends TaintTracking::FunctionModel {
-    // signature: func TrimBytes(b []byte) []byte
-    TrimBytes() { hasQualifiedName("net/textproto", "TrimBytes") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func TrimBytes(b []byte) []byte
+      hasQualifiedName("net/textproto", "TrimBytes") and
+      (inp.isParameter(0) and outp.isResult())
+      or
+      // signature: func TrimString(s string) string
+      hasQualifiedName("net/textproto", "TrimString") and
       (inp.isParameter(0) and outp.isResult())
     }
-  }
 
-  private class TrimString extends TaintTracking::FunctionModel {
-    // signature: func TrimString(s string) string
-    TrimString() { hasQualifiedName("net/textproto", "TrimString") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isParameter(0) and outp.isResult())
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 
-  private class MIMEHeaderAdd extends TaintTracking::FunctionModel, Method {
-    // signature: func (MIMEHeader).Add(key string, value string)
-    MIMEHeaderAdd() { this.(Method).hasQualifiedName("net/textproto", "MIMEHeader", "Add") }
+  private class MethodAndInterfaceTaintTracking extends TaintTracking::FunctionModel, Method {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    MethodAndInterfaceTaintTracking() {
+      // Methods:
+      // signature: func (MIMEHeader).Add(key string, value string)
+      this.(Method).hasQualifiedName("net/textproto", "MIMEHeader", "Add") and
       (inp.isParameter(_) and outp.isReceiver())
-    }
-  }
-
-  private class MIMEHeaderGet extends TaintTracking::FunctionModel, Method {
-    // signature: func (MIMEHeader).Get(key string) string
-    MIMEHeaderGet() { this.(Method).hasQualifiedName("net/textproto", "MIMEHeader", "Get") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (MIMEHeader).Get(key string) string
+      this.(Method).hasQualifiedName("net/textproto", "MIMEHeader", "Get") and
       (inp.isReceiver() and outp.isResult())
-    }
-  }
-
-  private class MIMEHeaderSet extends TaintTracking::FunctionModel, Method {
-    // signature: func (MIMEHeader).Set(key string, value string)
-    MIMEHeaderSet() { this.(Method).hasQualifiedName("net/textproto", "MIMEHeader", "Set") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (MIMEHeader).Set(key string, value string)
+      this.(Method).hasQualifiedName("net/textproto", "MIMEHeader", "Set") and
       (inp.isParameter(_) and outp.isReceiver())
-    }
-  }
-
-  private class MIMEHeaderValues extends TaintTracking::FunctionModel, Method {
-    // signature: func (MIMEHeader).Values(key string) []string
-    MIMEHeaderValues() { this.(Method).hasQualifiedName("net/textproto", "MIMEHeader", "Values") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (MIMEHeader).Values(key string) []string
+      this.(Method).hasQualifiedName("net/textproto", "MIMEHeader", "Values") and
       (inp.isReceiver() and outp.isResult())
-    }
-  }
-
-  private class ReaderDotReader extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Reader).DotReader() io.Reader
-    ReaderDotReader() { this.(Method).hasQualifiedName("net/textproto", "Reader", "DotReader") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Reader).DotReader() io.Reader
+      this.(Method).hasQualifiedName("net/textproto", "Reader", "DotReader") and
       (inp.isReceiver() and outp.isResult())
-    }
-  }
-
-  private class ReaderReadCodeLine extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Reader).ReadCodeLine(expectCode int) (code int, message string, err error)
-    ReaderReadCodeLine() {
-      this.(Method).hasQualifiedName("net/textproto", "Reader", "ReadCodeLine")
-    }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Reader).ReadCodeLine(expectCode int) (code int, message string, err error)
+      this.(Method).hasQualifiedName("net/textproto", "Reader", "ReadCodeLine") and
       (inp.isReceiver() and outp.isResult(1))
-    }
-  }
-
-  private class ReaderReadContinuedLine extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Reader).ReadContinuedLine() (string, error)
-    ReaderReadContinuedLine() {
-      this.(Method).hasQualifiedName("net/textproto", "Reader", "ReadContinuedLine")
-    }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Reader).ReadContinuedLine() (string, error)
+      this.(Method).hasQualifiedName("net/textproto", "Reader", "ReadContinuedLine") and
       (inp.isReceiver() and outp.isResult(0))
-    }
-  }
-
-  private class ReaderReadContinuedLineBytes extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Reader).ReadContinuedLineBytes() ([]byte, error)
-    ReaderReadContinuedLineBytes() {
-      this.(Method).hasQualifiedName("net/textproto", "Reader", "ReadContinuedLineBytes")
-    }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Reader).ReadContinuedLineBytes() ([]byte, error)
+      this.(Method).hasQualifiedName("net/textproto", "Reader", "ReadContinuedLineBytes") and
       (inp.isReceiver() and outp.isResult(0))
-    }
-  }
-
-  private class ReaderReadDotBytes extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Reader).ReadDotBytes() ([]byte, error)
-    ReaderReadDotBytes() {
-      this.(Method).hasQualifiedName("net/textproto", "Reader", "ReadDotBytes")
-    }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Reader).ReadDotBytes() ([]byte, error)
+      this.(Method).hasQualifiedName("net/textproto", "Reader", "ReadDotBytes") and
       (inp.isReceiver() and outp.isResult(0))
-    }
-  }
-
-  private class ReaderReadDotLines extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Reader).ReadDotLines() ([]string, error)
-    ReaderReadDotLines() {
-      this.(Method).hasQualifiedName("net/textproto", "Reader", "ReadDotLines")
-    }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Reader).ReadDotLines() ([]string, error)
+      this.(Method).hasQualifiedName("net/textproto", "Reader", "ReadDotLines") and
       (inp.isReceiver() and outp.isResult(0))
-    }
-  }
-
-  private class ReaderReadLine extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Reader).ReadLine() (string, error)
-    ReaderReadLine() { this.(Method).hasQualifiedName("net/textproto", "Reader", "ReadLine") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Reader).ReadLine() (string, error)
+      this.(Method).hasQualifiedName("net/textproto", "Reader", "ReadLine") and
       (inp.isReceiver() and outp.isResult(0))
-    }
-  }
-
-  private class ReaderReadLineBytes extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Reader).ReadLineBytes() ([]byte, error)
-    ReaderReadLineBytes() {
-      this.(Method).hasQualifiedName("net/textproto", "Reader", "ReadLineBytes")
-    }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Reader).ReadLineBytes() ([]byte, error)
+      this.(Method).hasQualifiedName("net/textproto", "Reader", "ReadLineBytes") and
       (inp.isReceiver() and outp.isResult(0))
-    }
-  }
-
-  private class ReaderReadMIMEHeader extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Reader).ReadMIMEHeader() (MIMEHeader, error)
-    ReaderReadMIMEHeader() {
-      this.(Method).hasQualifiedName("net/textproto", "Reader", "ReadMIMEHeader")
-    }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Reader).ReadMIMEHeader() (MIMEHeader, error)
+      this.(Method).hasQualifiedName("net/textproto", "Reader", "ReadMIMEHeader") and
       (inp.isReceiver() and outp.isResult(0))
-    }
-  }
-
-  private class ReaderReadResponse extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Reader).ReadResponse(expectCode int) (code int, message string, err error)
-    ReaderReadResponse() {
-      this.(Method).hasQualifiedName("net/textproto", "Reader", "ReadResponse")
-    }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Reader).ReadResponse(expectCode int) (code int, message string, err error)
+      this.(Method).hasQualifiedName("net/textproto", "Reader", "ReadResponse") and
       (inp.isReceiver() and outp.isResult(1))
-    }
-  }
-
-  private class WriterDotWriter extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Writer).DotWriter() io.WriteCloser
-    WriterDotWriter() { this.(Method).hasQualifiedName("net/textproto", "Writer", "DotWriter") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Writer).DotWriter() io.WriteCloser
+      this.(Method).hasQualifiedName("net/textproto", "Writer", "DotWriter") and
       (inp.isResult() and outp.isReceiver())
-    }
-  }
-
-  private class WriterPrintfLine extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Writer).PrintfLine(format string, args ...interface{}) error
-    WriterPrintfLine() { this.(Method).hasQualifiedName("net/textproto", "Writer", "PrintfLine") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Writer).PrintfLine(format string, args ...interface{}) error
+      this.(Method).hasQualifiedName("net/textproto", "Writer", "PrintfLine") and
       (inp.isParameter(_) and outp.isReceiver())
+      // Interfaces:
+    }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

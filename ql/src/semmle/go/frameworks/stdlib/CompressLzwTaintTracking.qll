@@ -6,21 +6,22 @@ import go
 
 /** Provides models of commonly used functions in the `compress/lzw` package. */
 module CompressLzwTaintTracking {
-  private class NewReader extends TaintTracking::FunctionModel {
-    // signature: func NewReader(r io.Reader, order Order, litWidth int) io.ReadCloser
-    NewReader() { hasQualifiedName("compress/lzw", "NewReader") }
+  private class FunctionTaintTracking extends TaintTracking::FunctionModel {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    FunctionTaintTracking() {
+      // signature: func NewReader(r io.Reader, order Order, litWidth int) io.ReadCloser
+      hasQualifiedName("compress/lzw", "NewReader") and
       (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class NewWriter extends TaintTracking::FunctionModel {
-    // signature: func NewWriter(w io.Writer, order Order, litWidth int) io.WriteCloser
-    NewWriter() { hasQualifiedName("compress/lzw", "NewWriter") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func NewWriter(w io.Writer, order Order, litWidth int) io.WriteCloser
+      hasQualifiedName("compress/lzw", "NewWriter") and
       (inp.isResult() and outp.isParameter(0))
+    }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

@@ -6,41 +6,43 @@ import go
 
 /** Provides models of commonly used functions in the `crypto/x509` package. */
 module CryptoX509TaintTracking {
-  private class DecryptPEMBlock extends TaintTracking::FunctionModel {
-    // signature: func DecryptPEMBlock(b *encoding/pem.Block, password []byte) ([]byte, error)
-    DecryptPEMBlock() { hasQualifiedName("crypto/x509", "DecryptPEMBlock") }
+  private class FunctionTaintTracking extends TaintTracking::FunctionModel {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    FunctionTaintTracking() {
+      // signature: func DecryptPEMBlock(b *encoding/pem.Block, password []byte) ([]byte, error)
+      hasQualifiedName("crypto/x509", "DecryptPEMBlock") and
       (inp.isParameter(0) and outp.isResult(0))
-    }
-  }
-
-  private class EncryptPEMBlock extends TaintTracking::FunctionModel {
-    // signature: func EncryptPEMBlock(rand io.Reader, blockType string, data []byte, password []byte, alg PEMCipher) (*encoding/pem.Block, error)
-    EncryptPEMBlock() { hasQualifiedName("crypto/x509", "EncryptPEMBlock") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func EncryptPEMBlock(rand io.Reader, blockType string, data []byte, password []byte, alg PEMCipher) (*encoding/pem.Block, error)
+      hasQualifiedName("crypto/x509", "EncryptPEMBlock") and
       (inp.isParameter(2) and outp.isResult(0))
     }
-  }
 
-  private class CertPoolAddCert extends TaintTracking::FunctionModel, Method {
-    // signature: func (*CertPool).AddCert(cert *Certificate)
-    CertPoolAddCert() { this.(Method).hasQualifiedName("crypto/x509", "CertPool", "AddCert") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isParameter(0) and outp.isReceiver())
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 
-  private class CertPoolAppendCertsFromPEM extends TaintTracking::FunctionModel, Method {
-    // signature: func (*CertPool).AppendCertsFromPEM(pemCerts []byte) (ok bool)
-    CertPoolAppendCertsFromPEM() {
-      this.(Method).hasQualifiedName("crypto/x509", "CertPool", "AppendCertsFromPEM")
+  private class MethodAndInterfaceTaintTracking extends TaintTracking::FunctionModel, Method {
+    FunctionInput inp;
+    FunctionOutput outp;
+
+    MethodAndInterfaceTaintTracking() {
+      // Methods:
+      // signature: func (*CertPool).AddCert(cert *Certificate)
+      this.(Method).hasQualifiedName("crypto/x509", "CertPool", "AddCert") and
+      (inp.isParameter(0) and outp.isReceiver())
+      or
+      // signature: func (*CertPool).AppendCertsFromPEM(pemCerts []byte) (ok bool)
+      this.(Method).hasQualifiedName("crypto/x509", "CertPool", "AppendCertsFromPEM") and
+      (inp.isParameter(0) and outp.isReceiver())
+      // Interfaces:
     }
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isParameter(0) and outp.isReceiver())
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

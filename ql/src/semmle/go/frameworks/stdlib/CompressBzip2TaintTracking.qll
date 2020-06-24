@@ -6,12 +6,18 @@ import go
 
 /** Provides models of commonly used functions in the `compress/bzip2` package. */
 module CompressBzip2TaintTracking {
-  private class NewReader extends TaintTracking::FunctionModel {
-    // signature: func NewReader(r io.Reader) io.Reader
-    NewReader() { hasQualifiedName("compress/bzip2", "NewReader") }
+  private class FunctionTaintTracking extends TaintTracking::FunctionModel {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    FunctionTaintTracking() {
+      // signature: func NewReader(r io.Reader) io.Reader
+      hasQualifiedName("compress/bzip2", "NewReader") and
       (inp.isParameter(0) and outp.isResult())
+    }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

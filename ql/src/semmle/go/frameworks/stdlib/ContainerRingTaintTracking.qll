@@ -6,48 +6,36 @@ import go
 
 /** Provides models of commonly used functions in the `container/ring` package. */
 module ContainerRingTaintTracking {
-  private class RingLink extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Ring).Link(s *Ring) *Ring
-    RingLink() { this.(Method).hasQualifiedName("container/ring", "Ring", "Link") }
+  private class MethodAndInterfaceTaintTracking extends TaintTracking::FunctionModel, Method {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    MethodAndInterfaceTaintTracking() {
+      // Methods:
+      // signature: func (*Ring).Link(s *Ring) *Ring
+      this.(Method).hasQualifiedName("container/ring", "Ring", "Link") and
       (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class RingMove extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Ring).Move(n int) *Ring
-    RingMove() { this.(Method).hasQualifiedName("container/ring", "Ring", "Move") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Ring).Move(n int) *Ring
+      this.(Method).hasQualifiedName("container/ring", "Ring", "Move") and
       (inp.isReceiver() and outp.isResult())
-    }
-  }
-
-  private class RingNext extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Ring).Next() *Ring
-    RingNext() { this.(Method).hasQualifiedName("container/ring", "Ring", "Next") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Ring).Next() *Ring
+      this.(Method).hasQualifiedName("container/ring", "Ring", "Next") and
       (inp.isReceiver() and outp.isResult())
-    }
-  }
-
-  private class RingPrev extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Ring).Prev() *Ring
-    RingPrev() { this.(Method).hasQualifiedName("container/ring", "Ring", "Prev") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Ring).Prev() *Ring
+      this.(Method).hasQualifiedName("container/ring", "Ring", "Prev") and
       (inp.isReceiver() and outp.isResult())
-    }
-  }
-
-  private class RingUnlink extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Ring).Unlink(n int) *Ring
-    RingUnlink() { this.(Method).hasQualifiedName("container/ring", "Ring", "Unlink") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Ring).Unlink(n int) *Ring
+      this.(Method).hasQualifiedName("container/ring", "Ring", "Unlink") and
       (inp.isReceiver() and outp.isResult())
+      // Interfaces:
+    }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

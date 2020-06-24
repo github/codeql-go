@@ -6,109 +6,78 @@ import go
 
 /** Provides models of commonly used functions in the `sync/atomic` package. */
 module SyncAtomicTaintTracking {
-  private class AddUintptr extends TaintTracking::FunctionModel {
-    // signature: func AddUintptr(addr *uintptr, delta uintptr) (new uintptr)
-    AddUintptr() { hasQualifiedName("sync/atomic", "AddUintptr") }
+  private class FunctionTaintTracking extends TaintTracking::FunctionModel {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    FunctionTaintTracking() {
+      // signature: func AddUintptr(addr *uintptr, delta uintptr) (new uintptr)
+      hasQualifiedName("sync/atomic", "AddUintptr") and
       (
         inp.isParameter(1) and
         (outp.isParameter(0) or outp.isResult())
       )
-    }
-  }
-
-  private class CompareAndSwapPointer extends TaintTracking::FunctionModel {
-    // signature: func CompareAndSwapPointer(addr *unsafe.Pointer, old unsafe.Pointer, new unsafe.Pointer) (swapped bool)
-    CompareAndSwapPointer() { hasQualifiedName("sync/atomic", "CompareAndSwapPointer") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func CompareAndSwapPointer(addr *unsafe.Pointer, old unsafe.Pointer, new unsafe.Pointer) (swapped bool)
+      hasQualifiedName("sync/atomic", "CompareAndSwapPointer") and
       (inp.isParameter(2) and outp.isParameter(0))
-    }
-  }
-
-  private class CompareAndSwapUintptr extends TaintTracking::FunctionModel {
-    // signature: func CompareAndSwapUintptr(addr *uintptr, old uintptr, new uintptr) (swapped bool)
-    CompareAndSwapUintptr() { hasQualifiedName("sync/atomic", "CompareAndSwapUintptr") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func CompareAndSwapUintptr(addr *uintptr, old uintptr, new uintptr) (swapped bool)
+      hasQualifiedName("sync/atomic", "CompareAndSwapUintptr") and
       (inp.isParameter(2) and outp.isParameter(0))
-    }
-  }
-
-  private class LoadPointer extends TaintTracking::FunctionModel {
-    // signature: func LoadPointer(addr *unsafe.Pointer) (val unsafe.Pointer)
-    LoadPointer() { hasQualifiedName("sync/atomic", "LoadPointer") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func LoadPointer(addr *unsafe.Pointer) (val unsafe.Pointer)
+      hasQualifiedName("sync/atomic", "LoadPointer") and
       (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class LoadUintptr extends TaintTracking::FunctionModel {
-    // signature: func LoadUintptr(addr *uintptr) (val uintptr)
-    LoadUintptr() { hasQualifiedName("sync/atomic", "LoadUintptr") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func LoadUintptr(addr *uintptr) (val uintptr)
+      hasQualifiedName("sync/atomic", "LoadUintptr") and
       (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class StorePointer extends TaintTracking::FunctionModel {
-    // signature: func StorePointer(addr *unsafe.Pointer, val unsafe.Pointer)
-    StorePointer() { hasQualifiedName("sync/atomic", "StorePointer") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func StorePointer(addr *unsafe.Pointer, val unsafe.Pointer)
+      hasQualifiedName("sync/atomic", "StorePointer") and
       (inp.isParameter(1) and outp.isParameter(0))
-    }
-  }
-
-  private class StoreUintptr extends TaintTracking::FunctionModel {
-    // signature: func StoreUintptr(addr *uintptr, val uintptr)
-    StoreUintptr() { hasQualifiedName("sync/atomic", "StoreUintptr") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func StoreUintptr(addr *uintptr, val uintptr)
+      hasQualifiedName("sync/atomic", "StoreUintptr") and
       (inp.isParameter(1) and outp.isParameter(0))
-    }
-  }
-
-  private class SwapPointer extends TaintTracking::FunctionModel {
-    // signature: func SwapPointer(addr *unsafe.Pointer, new unsafe.Pointer) (old unsafe.Pointer)
-    SwapPointer() { hasQualifiedName("sync/atomic", "SwapPointer") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
+      or
+      // signature: func SwapPointer(addr *unsafe.Pointer, new unsafe.Pointer) (old unsafe.Pointer)
+      hasQualifiedName("sync/atomic", "SwapPointer") and
+      (inp.isParameter(1) and outp.isParameter(0))
+      or
+      inp.isParameter(0) and outp.isResult()
+      or
+      // signature: func SwapUintptr(addr *uintptr, new uintptr) (old uintptr)
+      hasQualifiedName("sync/atomic", "SwapUintptr") and
+      (inp.isParameter(1) and outp.isParameter(0))
       or
       inp.isParameter(0) and outp.isResult()
     }
-  }
 
-  private class SwapUintptr extends TaintTracking::FunctionModel {
-    // signature: func SwapUintptr(addr *uintptr, new uintptr) (old uintptr)
-    SwapUintptr() { hasQualifiedName("sync/atomic", "SwapUintptr") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(1) and outp.isParameter(0)
-      or
-      inp.isParameter(0) and outp.isResult()
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 
-  private class ValueLoad extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Value).Load() (x interface{})
-    ValueLoad() { this.(Method).hasQualifiedName("sync/atomic", "Value", "Load") }
+  private class MethodAndInterfaceTaintTracking extends TaintTracking::FunctionModel, Method {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    MethodAndInterfaceTaintTracking() {
+      // Methods:
+      // signature: func (*Value).Load() (x interface{})
+      this.(Method).hasQualifiedName("sync/atomic", "Value", "Load") and
       (inp.isReceiver() and outp.isResult())
-    }
-  }
-
-  private class ValueStore extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Value).Store(x interface{})
-    ValueStore() { this.(Method).hasQualifiedName("sync/atomic", "Value", "Store") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*Value).Store(x interface{})
+      this.(Method).hasQualifiedName("sync/atomic", "Value", "Store") and
       (inp.isParameter(0) and outp.isReceiver())
+      // Interfaces:
+    }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

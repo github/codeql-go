@@ -6,75 +6,59 @@ import go
 
 /** Provides models of commonly used functions in the `crypto/rsa` package. */
 module CryptoRsaTaintTracking {
-  private class DecryptOAEP extends TaintTracking::FunctionModel {
-    // signature: func DecryptOAEP(hash hash.Hash, random io.Reader, priv *PrivateKey, ciphertext []byte, label []byte) ([]byte, error)
-    DecryptOAEP() { hasQualifiedName("crypto/rsa", "DecryptOAEP") }
+  private class FunctionTaintTracking extends TaintTracking::FunctionModel {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    FunctionTaintTracking() {
+      // signature: func DecryptOAEP(hash hash.Hash, random io.Reader, priv *PrivateKey, ciphertext []byte, label []byte) ([]byte, error)
+      hasQualifiedName("crypto/rsa", "DecryptOAEP") and
       (inp.isParameter(3) and outp.isResult(0))
-    }
-  }
-
-  private class DecryptPKCS1V15 extends TaintTracking::FunctionModel {
-    // signature: func DecryptPKCS1v15(rand io.Reader, priv *PrivateKey, ciphertext []byte) ([]byte, error)
-    DecryptPKCS1V15() { hasQualifiedName("crypto/rsa", "DecryptPKCS1v15") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func DecryptPKCS1v15(rand io.Reader, priv *PrivateKey, ciphertext []byte) ([]byte, error)
+      hasQualifiedName("crypto/rsa", "DecryptPKCS1v15") and
       (inp.isParameter(2) and outp.isResult(0))
-    }
-  }
-
-  private class EncryptOAEP extends TaintTracking::FunctionModel {
-    // signature: func EncryptOAEP(hash hash.Hash, random io.Reader, pub *PublicKey, msg []byte, label []byte) ([]byte, error)
-    EncryptOAEP() { hasQualifiedName("crypto/rsa", "EncryptOAEP") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func EncryptOAEP(hash hash.Hash, random io.Reader, pub *PublicKey, msg []byte, label []byte) ([]byte, error)
+      hasQualifiedName("crypto/rsa", "EncryptOAEP") and
       (inp.isParameter(3) and outp.isResult(0))
-    }
-  }
-
-  private class EncryptPKCS1V15 extends TaintTracking::FunctionModel {
-    // signature: func EncryptPKCS1v15(rand io.Reader, pub *PublicKey, msg []byte) ([]byte, error)
-    EncryptPKCS1V15() { hasQualifiedName("crypto/rsa", "EncryptPKCS1v15") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func EncryptPKCS1v15(rand io.Reader, pub *PublicKey, msg []byte) ([]byte, error)
+      hasQualifiedName("crypto/rsa", "EncryptPKCS1v15") and
       (inp.isParameter(2) and outp.isResult(0))
-    }
-  }
-
-  private class SignPKCS1V15 extends TaintTracking::FunctionModel {
-    // signature: func SignPKCS1v15(rand io.Reader, priv *PrivateKey, hash crypto.Hash, hashed []byte) ([]byte, error)
-    SignPKCS1V15() { hasQualifiedName("crypto/rsa", "SignPKCS1v15") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func SignPKCS1v15(rand io.Reader, priv *PrivateKey, hash crypto.Hash, hashed []byte) ([]byte, error)
+      hasQualifiedName("crypto/rsa", "SignPKCS1v15") and
+      (inp.isParameter(3) and outp.isResult(0))
+      or
+      // signature: func SignPSS(rand io.Reader, priv *PrivateKey, hash crypto.Hash, hashed []byte, opts *PSSOptions) ([]byte, error)
+      hasQualifiedName("crypto/rsa", "SignPSS") and
       (inp.isParameter(3) and outp.isResult(0))
     }
-  }
 
-  private class SignPSS extends TaintTracking::FunctionModel {
-    // signature: func SignPSS(rand io.Reader, priv *PrivateKey, hash crypto.Hash, hashed []byte, opts *PSSOptions) ([]byte, error)
-    SignPSS() { hasQualifiedName("crypto/rsa", "SignPSS") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isParameter(3) and outp.isResult(0))
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 
-  private class PrivateKeyDecrypt extends TaintTracking::FunctionModel, Method {
-    // signature: func (*PrivateKey).Decrypt(rand io.Reader, ciphertext []byte, opts crypto.DecrypterOpts) (plaintext []byte, err error)
-    PrivateKeyDecrypt() { this.(Method).hasQualifiedName("crypto/rsa", "PrivateKey", "Decrypt") }
+  private class MethodAndInterfaceTaintTracking extends TaintTracking::FunctionModel, Method {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    MethodAndInterfaceTaintTracking() {
+      // Methods:
+      // signature: func (*PrivateKey).Decrypt(rand io.Reader, ciphertext []byte, opts crypto.DecrypterOpts) (plaintext []byte, err error)
+      this.(Method).hasQualifiedName("crypto/rsa", "PrivateKey", "Decrypt") and
       (inp.isParameter(1) and outp.isResult(0))
+      or
+      // signature: func (*PrivateKey).Sign(rand io.Reader, digest []byte, opts crypto.SignerOpts) ([]byte, error)
+      this.(Method).hasQualifiedName("crypto/rsa", "PrivateKey", "Sign") and
+      (inp.isParameter(1) and outp.isResult(0))
+      // Interfaces:
     }
-  }
 
-  private class PrivateKeySign extends TaintTracking::FunctionModel, Method {
-    // signature: func (*PrivateKey).Sign(rand io.Reader, digest []byte, opts crypto.SignerOpts) ([]byte, error)
-    PrivateKeySign() { this.(Method).hasQualifiedName("crypto/rsa", "PrivateKey", "Sign") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isParameter(1) and outp.isResult(0))
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

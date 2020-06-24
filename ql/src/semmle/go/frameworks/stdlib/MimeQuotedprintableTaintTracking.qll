@@ -6,39 +6,43 @@ import go
 
 /** Provides models of commonly used functions in the `mime/quotedprintable` package. */
 module MimeQuotedprintableTaintTracking {
-  private class NewReader extends TaintTracking::FunctionModel {
-    // signature: func NewReader(r io.Reader) *Reader
-    NewReader() { hasQualifiedName("mime/quotedprintable", "NewReader") }
+  private class FunctionTaintTracking extends TaintTracking::FunctionModel {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    FunctionTaintTracking() {
+      // signature: func NewReader(r io.Reader) *Reader
+      hasQualifiedName("mime/quotedprintable", "NewReader") and
       (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class NewWriter extends TaintTracking::FunctionModel {
-    // signature: func NewWriter(w io.Writer) *Writer
-    NewWriter() { hasQualifiedName("mime/quotedprintable", "NewWriter") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func NewWriter(w io.Writer) *Writer
+      hasQualifiedName("mime/quotedprintable", "NewWriter") and
       (inp.isResult() and outp.isParameter(0))
     }
-  }
 
-  private class ReaderRead extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Reader).Read(p []byte) (n int, err error)
-    ReaderRead() { this.(Method).hasQualifiedName("mime/quotedprintable", "Reader", "Read") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isReceiver() and outp.isParameter(0))
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 
-  private class WriterWrite extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Writer).Write(p []byte) (n int, err error)
-    WriterWrite() { this.(Method).hasQualifiedName("mime/quotedprintable", "Writer", "Write") }
+  private class MethodAndInterfaceTaintTracking extends TaintTracking::FunctionModel, Method {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    MethodAndInterfaceTaintTracking() {
+      // Methods:
+      // signature: func (*Reader).Read(p []byte) (n int, err error)
+      this.(Method).hasQualifiedName("mime/quotedprintable", "Reader", "Read") and
+      (inp.isReceiver() and outp.isParameter(0))
+      or
+      // signature: func (*Writer).Write(p []byte) (n int, err error)
+      this.(Method).hasQualifiedName("mime/quotedprintable", "Writer", "Write") and
       (inp.isParameter(0) and outp.isReceiver())
+      // Interfaces:
+    }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

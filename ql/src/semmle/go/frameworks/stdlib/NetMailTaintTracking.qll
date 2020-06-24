@@ -6,59 +6,51 @@ import go
 
 /** Provides models of commonly used functions in the `net/mail` package. */
 module NetMailTaintTracking {
-  private class ParseAddress extends TaintTracking::FunctionModel {
-    // signature: func ParseAddress(address string) (*Address, error)
-    ParseAddress() { hasQualifiedName("net/mail", "ParseAddress") }
+  private class FunctionTaintTracking extends TaintTracking::FunctionModel {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    FunctionTaintTracking() {
+      // signature: func ParseAddress(address string) (*Address, error)
+      hasQualifiedName("net/mail", "ParseAddress") and
       (inp.isParameter(0) and outp.isResult(0))
+      or
+      // signature: func ParseAddressList(list string) ([]*Address, error)
+      hasQualifiedName("net/mail", "ParseAddressList") and
+      (inp.isParameter(0) and outp.isResult(0))
+      or
+      // signature: func ReadMessage(r io.Reader) (msg *Message, err error)
+      hasQualifiedName("net/mail", "ReadMessage") and
+      (inp.isParameter(0) and outp.isResult(0))
+    }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 
-  private class ParseAddressList extends TaintTracking::FunctionModel {
-    // signature: func ParseAddressList(list string) ([]*Address, error)
-    ParseAddressList() { hasQualifiedName("net/mail", "ParseAddressList") }
+  private class MethodAndInterfaceTaintTracking extends TaintTracking::FunctionModel, Method {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    MethodAndInterfaceTaintTracking() {
+      // Methods:
+      // signature: func (*AddressParser).Parse(address string) (*Address, error)
+      this.(Method).hasQualifiedName("net/mail", "AddressParser", "Parse") and
       (inp.isParameter(0) and outp.isResult(0))
-    }
-  }
-
-  private class ReadMessage extends TaintTracking::FunctionModel {
-    // signature: func ReadMessage(r io.Reader) (msg *Message, err error)
-    ReadMessage() { hasQualifiedName("net/mail", "ReadMessage") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (*AddressParser).ParseList(list string) ([]*Address, error)
+      this.(Method).hasQualifiedName("net/mail", "AddressParser", "ParseList") and
       (inp.isParameter(0) and outp.isResult(0))
-    }
-  }
-
-  private class AddressParserParse extends TaintTracking::FunctionModel, Method {
-    // signature: func (*AddressParser).Parse(address string) (*Address, error)
-    AddressParserParse() { this.(Method).hasQualifiedName("net/mail", "AddressParser", "Parse") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isParameter(0) and outp.isResult(0))
-    }
-  }
-
-  private class AddressParserParseList extends TaintTracking::FunctionModel, Method {
-    // signature: func (*AddressParser).ParseList(list string) ([]*Address, error)
-    AddressParserParseList() {
-      this.(Method).hasQualifiedName("net/mail", "AddressParser", "ParseList")
-    }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isParameter(0) and outp.isResult(0))
-    }
-  }
-
-  private class HeaderGet extends TaintTracking::FunctionModel, Method {
-    // signature: func (Header).Get(key string) string
-    HeaderGet() { this.(Method).hasQualifiedName("net/mail", "Header", "Get") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func (Header).Get(key string) string
+      this.(Method).hasQualifiedName("net/mail", "Header", "Get") and
       (inp.isReceiver() and outp.isResult())
+      // Interfaces:
+    }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

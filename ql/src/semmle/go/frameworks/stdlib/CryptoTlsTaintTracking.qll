@@ -6,52 +6,51 @@ import go
 
 /** Provides models of commonly used functions in the `crypto/tls` package. */
 module CryptoTlsTaintTracking {
-  private class Client extends TaintTracking::FunctionModel {
-    // signature: func Client(conn net.Conn, config *Config) *Conn
-    Client() { hasQualifiedName("crypto/tls", "Client") }
+  private class FunctionTaintTracking extends TaintTracking::FunctionModel {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
-      or
-      inp.isResult() and outp.isParameter(0)
-    }
-  }
-
-  private class NewListener extends TaintTracking::FunctionModel {
-    // signature: func NewListener(inner net.Listener, config *Config) net.Listener
-    NewListener() { hasQualifiedName("crypto/tls", "NewListener") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    FunctionTaintTracking() {
+      // signature: func Client(conn net.Conn, config *Config) *Conn
+      hasQualifiedName("crypto/tls", "Client") and
       (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class Server extends TaintTracking::FunctionModel {
-    // signature: func Server(conn net.Conn, config *Config) *Conn
-    Server() { hasQualifiedName("crypto/tls", "Server") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      inp.isParameter(0) and outp.isResult()
+      or
+      inp.isResult() and outp.isParameter(0)
+      or
+      // signature: func NewListener(inner net.Listener, config *Config) net.Listener
+      hasQualifiedName("crypto/tls", "NewListener") and
+      (inp.isParameter(0) and outp.isResult())
+      or
+      // signature: func Server(conn net.Conn, config *Config) *Conn
+      hasQualifiedName("crypto/tls", "Server") and
+      (inp.isParameter(0) and outp.isResult())
       or
       inp.isResult() and outp.isParameter(0)
     }
-  }
 
-  private class ConnRead extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Conn).Read(b []byte) (int, error)
-    ConnRead() { this.(Method).hasQualifiedName("crypto/tls", "Conn", "Read") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isReceiver() and outp.isParameter(0))
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 
-  private class ConnWrite extends TaintTracking::FunctionModel, Method {
-    // signature: func (*Conn).Write(b []byte) (int, error)
-    ConnWrite() { this.(Method).hasQualifiedName("crypto/tls", "Conn", "Write") }
+  private class MethodAndInterfaceTaintTracking extends TaintTracking::FunctionModel, Method {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    MethodAndInterfaceTaintTracking() {
+      // Methods:
+      // signature: func (*Conn).Read(b []byte) (int, error)
+      this.(Method).hasQualifiedName("crypto/tls", "Conn", "Read") and
+      (inp.isReceiver() and outp.isParameter(0))
+      or
+      // signature: func (*Conn).Write(b []byte) (int, error)
+      this.(Method).hasQualifiedName("crypto/tls", "Conn", "Write") and
       (inp.isParameter(0) and outp.isReceiver())
+      // Interfaces:
+    }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }

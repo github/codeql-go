@@ -6,75 +6,59 @@ import go
 
 /** Provides models of commonly used functions in the `unicode` package. */
 module UnicodeTaintTracking {
-  private class SimpleFold extends TaintTracking::FunctionModel {
-    // signature: func SimpleFold(r rune) rune
-    SimpleFold() { hasQualifiedName("unicode", "SimpleFold") }
+  private class FunctionTaintTracking extends TaintTracking::FunctionModel {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    FunctionTaintTracking() {
+      // signature: func SimpleFold(r rune) rune
+      hasQualifiedName("unicode", "SimpleFold") and
       (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class To extends TaintTracking::FunctionModel {
-    // signature: func To(_case int, r rune) rune
-    To() { hasQualifiedName("unicode", "To") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+      or
+      // signature: func To(_case int, r rune) rune
+      hasQualifiedName("unicode", "To") and
       (inp.isParameter(1) and outp.isResult())
+      or
+      // signature: func ToLower(r rune) rune
+      hasQualifiedName("unicode", "ToLower") and
+      (inp.isParameter(0) and outp.isResult())
+      or
+      // signature: func ToTitle(r rune) rune
+      hasQualifiedName("unicode", "ToTitle") and
+      (inp.isParameter(0) and outp.isResult())
+      or
+      // signature: func ToUpper(r rune) rune
+      hasQualifiedName("unicode", "ToUpper") and
+      (inp.isParameter(0) and outp.isResult())
+    }
+
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 
-  private class ToLower extends TaintTracking::FunctionModel {
-    // signature: func ToLower(r rune) rune
-    ToLower() { hasQualifiedName("unicode", "ToLower") }
+  private class MethodAndInterfaceTaintTracking extends TaintTracking::FunctionModel, Method {
+    FunctionInput inp;
+    FunctionOutput outp;
 
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    MethodAndInterfaceTaintTracking() {
+      // Methods:
+      // signature: func (SpecialCase).ToLower(r rune) rune
+      this.(Method).hasQualifiedName("unicode", "SpecialCase", "ToLower") and
       (inp.isParameter(0) and outp.isResult())
+      or
+      // signature: func (SpecialCase).ToTitle(r rune) rune
+      this.(Method).hasQualifiedName("unicode", "SpecialCase", "ToTitle") and
+      (inp.isParameter(0) and outp.isResult())
+      or
+      // signature: func (SpecialCase).ToUpper(r rune) rune
+      this.(Method).hasQualifiedName("unicode", "SpecialCase", "ToUpper") and
+      (inp.isParameter(0) and outp.isResult())
+      // Interfaces:
     }
-  }
 
-  private class ToTitle extends TaintTracking::FunctionModel {
-    // signature: func ToTitle(r rune) rune
-    ToTitle() { hasQualifiedName("unicode", "ToTitle") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class ToUpper extends TaintTracking::FunctionModel {
-    // signature: func ToUpper(r rune) rune
-    ToUpper() { hasQualifiedName("unicode", "ToUpper") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class SpecialCaseToLower extends TaintTracking::FunctionModel, Method {
-    // signature: func (SpecialCase).ToLower(r rune) rune
-    SpecialCaseToLower() { this.(Method).hasQualifiedName("unicode", "SpecialCase", "ToLower") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class SpecialCaseToTitle extends TaintTracking::FunctionModel, Method {
-    // signature: func (SpecialCase).ToTitle(r rune) rune
-    SpecialCaseToTitle() { this.(Method).hasQualifiedName("unicode", "SpecialCase", "ToTitle") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isParameter(0) and outp.isResult())
-    }
-  }
-
-  private class SpecialCaseToUpper extends TaintTracking::FunctionModel, Method {
-    // signature: func (SpecialCase).ToUpper(r rune) rune
-    SpecialCaseToUpper() { this.(Method).hasQualifiedName("unicode", "SpecialCase", "ToUpper") }
-
-    override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
-      (inp.isParameter(0) and outp.isResult())
+    override predicate hasTaintFlow(FunctionInput input, FunctionOutput output) {
+      input = inp and output = outp
     }
   }
 }
