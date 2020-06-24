@@ -7,7 +7,7 @@ import go
 /**
  * A declaration.
  */
-class Decl extends @decl, ExprParent, StmtParent {
+class Decl extends @decl, ExprParent, StmtParent, FieldParent {
   /**
    * Gets the kind of this declaration, which is an integer value representing the declaration's
    * node type.
@@ -30,6 +30,8 @@ class Decl extends @decl, ExprParent, StmtParent {
  */
 class BadDecl extends @baddecl, Decl {
   override string toString() { result = "bad declaration" }
+
+  override string describeQlClass() { result = "BadDecl" }
 }
 
 /**
@@ -46,6 +48,8 @@ class GenDecl extends @gendecl, Decl, Documentable {
   int getNumSpec() { result = count(getASpec()) }
 
   override predicate mayHaveSideEffects() { getASpec().mayHaveSideEffects() }
+
+  override string describeQlClass() { result = "GenDecl" }
 }
 
 /**
@@ -53,6 +57,8 @@ class GenDecl extends @gendecl, Decl, Documentable {
  */
 class ImportDecl extends @importdecl, GenDecl {
   override string toString() { result = "import declaration" }
+
+  override string describeQlClass() { result = "ImportDecl" }
 }
 
 /**
@@ -60,6 +66,8 @@ class ImportDecl extends @importdecl, GenDecl {
  */
 class ConstDecl extends @constdecl, GenDecl {
   override string toString() { result = "constant declaration" }
+
+  override string describeQlClass() { result = "ConstDecl" }
 }
 
 /**
@@ -67,6 +75,8 @@ class ConstDecl extends @constdecl, GenDecl {
  */
 class TypeDecl extends @typedecl, GenDecl {
   override string toString() { result = "type declaration" }
+
+  override string describeQlClass() { result = "TypeDecl" }
 }
 
 /**
@@ -74,6 +84,8 @@ class TypeDecl extends @typedecl, GenDecl {
  */
 class VarDecl extends @vardecl, GenDecl {
   override string toString() { result = "variable declaration" }
+
+  override string describeQlClass() { result = "VarDecl" }
 }
 
 /**
@@ -133,6 +145,8 @@ class FuncDef extends @funcdef, StmtParent, ExprParent {
    * Gets a call to this function.
    */
   DataFlow::CallNode getACall() { result.getACallee() = this }
+
+  override string describeQlClass() { result = "FuncDef" }
 }
 
 /**
@@ -155,6 +169,8 @@ class FuncDecl extends @funcdecl, Decl, Documentable, FuncDef {
   DeclaredFunction getFunction() { this = result.getFuncDecl() }
 
   override string toString() { result = "function declaration" }
+
+  override string describeQlClass() { result = "FuncDecl" }
 }
 
 /**
@@ -219,6 +235,8 @@ class MethodDecl extends FuncDecl {
    * is the variable `p`.
    */
   ReceiverVariable getReceiver() { result.getFunction() = this }
+
+  override string describeQlClass() { result = "MethodDecl" }
 }
 
 /**
@@ -243,6 +261,8 @@ class Spec extends @spec, ExprParent, Documentable {
    * Memory allocation is not considered an observable side effect.
    */
   predicate mayHaveSideEffects() { none() }
+
+  override string describeQlClass() { result = "Spec" }
 }
 
 /**
@@ -262,6 +282,8 @@ class ImportSpec extends @importspec, Spec {
   string getPath() { result = getPathExpr().getValue() }
 
   override string toString() { result = "import specifier" }
+
+  override string describeQlClass() { result = "ImportSpec" }
 }
 
 /**
@@ -344,6 +366,8 @@ class ValueSpec extends @valuespec, Spec {
   override predicate mayHaveSideEffects() { getAnInit().mayHaveSideEffects() }
 
   override string toString() { result = "value declaration specifier" }
+
+  override string describeQlClass() { result = "ValueSpec" }
 }
 
 /**
@@ -360,14 +384,15 @@ class TypeSpec extends @typespec, Spec {
   Expr getTypeExpr() { result = getChildExpr(1) }
 
   override string toString() { result = "type declaration specifier" }
+
+  override string describeQlClass() { result = "TypeSpec" }
 }
 
 /**
- * A field declaration in a struct type.
+ * A field declaration, of a struct, a function (in which case this is a parameter or result variable),
+ * or an interface (in which case this is a method or embedding spec).
  */
-class FieldDecl extends @field, Documentable, ExprParent {
-  FieldDecl() { fields(this, any(StructTypeExpr st), _) }
-
+class FieldBase extends @field, ExprParent {
   /**
    * Gets the expression representing the type of the fields declared in this declaration.
    */
@@ -377,6 +402,15 @@ class FieldDecl extends @field, Documentable, ExprParent {
    * Gets the type of the fields declared in this declaration.
    */
   Type getType() { result = getTypeExpr().getType() }
+}
+
+/**
+ * A field declaration in a struct type.
+ */
+class FieldDecl extends FieldBase, Documentable, ExprParent {
+  StructTypeExpr st;
+
+  FieldDecl() { this = st.getField(_) }
 
   /**
    * Gets the expression representing the name of the `i`th field declared in this declaration
@@ -391,12 +425,14 @@ class FieldDecl extends @field, Documentable, ExprParent {
   Expr getTag() { result = getChildExpr(-1) }
 
   /** Gets the struct type expression to which this field declaration belongs. */
-  StructTypeExpr getDeclaringStructTypeExpr() { fields(this, result, _) }
+  StructTypeExpr getDeclaringStructTypeExpr() { result = st }
 
   /** Gets the struct type to which this field declaration belongs. */
   StructType getDeclaringType() { result = getDeclaringStructTypeExpr().getType() }
 
   override string toString() { result = "field declaration" }
+
+  override string describeQlClass() { result = "FieldDecl" }
 }
 
 /**
@@ -404,47 +440,31 @@ class FieldDecl extends @field, Documentable, ExprParent {
  */
 class EmbeddedFieldDecl extends FieldDecl {
   EmbeddedFieldDecl() { not exists(this.getNameExpr(_)) }
+
+  override string describeQlClass() { result = "EmbeddedFieldDecl" }
 }
 
 /**
- * A parameter declaration.
+ * A function parameter or result variable declaration.
  */
-class ParameterDecl extends @field, Documentable, ExprParent {
-  ParameterDecl() {
-    exists(int i |
-      fields(this, any(FuncTypeExpr ft), i) and
-      i >= 0
-    )
-  }
+class ParameterOrResultDecl extends FieldBase, Documentable, ExprParent {
+  int rawIndex;
+  FuncTypeExpr ft;
+
+  ParameterOrResultDecl() { this = ft.getField(rawIndex) }
 
   /**
-   * Gets the function type expression to which this parameter declaration belongs.
+   * Gets the function type expression to which this declaration belongs.
    */
-  FuncTypeExpr getFunctionTypeExpr() { fields(this, result, _) }
+  FuncTypeExpr getFunctionTypeExpr() { result = ft }
 
   /**
-   * Gets the function to which this parameter declaration belongs.
+   * Gets the function to which this declaration belongs.
    */
   FuncDef getFunction() { result.getTypeExpr() = getFunctionTypeExpr() }
 
   /**
-   * Gets the index of this parameter declarations among all parameter declarations of
-   * its associated function type.
-   */
-  int getIndex() { fields(this, _, result) }
-
-  /**
-   * Gets the expression representing the type of the parameters declared in this declaration.
-   */
-  Expr getTypeExpr() { result = getChildExpr(0) }
-
-  /**
-   * Gets the type of the parameters declared in this declaration.
-   */
-  Type getType() { result = getTypeExpr().getType() }
-
-  /**
-   * Gets the expression representing the name of the `i`th parameter declared in this declaration
+   * Gets the expression representing the name of the `i`th variable declared in this declaration
    * (0-based).
    */
   Expr getNameExpr(int i) {
@@ -452,29 +472,41 @@ class ParameterDecl extends @field, Documentable, ExprParent {
     result = getChildExpr(i + 1)
   }
 
+  /**
+   * Gets an expression representing the name of a variable declared in this declaration.
+   */
+  Expr getANameExpr() { result = getNameExpr(_) }
+}
+
+/**
+ * A parameter declaration.
+ */
+class ParameterDecl extends ParameterOrResultDecl {
+  ParameterDecl() { rawIndex >= 0 }
+
+  /**
+   * Gets the index of this parameter declarations among all parameter declarations of
+   * its associated function type.
+   */
+  int getIndex() { result = rawIndex }
+
   override string toString() { result = "parameter declaration" }
+
+  override string describeQlClass() { result = "ParameterDecl" }
 }
 
 /**
  * A receiver declaration in a function declaration.
  */
-class ReceiverDecl extends @field, Documentable, ExprParent {
-  ReceiverDecl() { fields(this, any(FuncDecl fd), -1) }
+class ReceiverDecl extends FieldBase, Documentable, ExprParent {
+  FuncDecl fd;
+
+  ReceiverDecl() { fd.getField(-1) = this }
 
   /**
    * Gets the function declaration to which this receiver belongs.
    */
-  FuncDecl getFunction() { fields(this, result, _) }
-
-  /**
-   * Gets the expression representing the type of the receiver declared in this declaration.
-   */
-  Expr getTypeExpr() { result = getChildExpr(0) }
-
-  /**
-   * Gets the type of the receiver declared in this declaration.
-   */
-  Type getType() { result = getTypeExpr().getType() }
+  FuncDecl getFunction() { result = fd }
 
   /**
    * Gets the expression representing the name of the receiver declared in this declaration.
@@ -482,65 +514,35 @@ class ReceiverDecl extends @field, Documentable, ExprParent {
   Expr getNameExpr() { result = getChildExpr(1) }
 
   override string toString() { result = "receiver declaration" }
+
+  override string describeQlClass() { result = "ReceiverDecl" }
 }
 
 /**
  * A result variable declaration.
  */
-class ResultVariableDecl extends @field, Documentable, ExprParent {
-  ResultVariableDecl() {
-    exists(int i |
-      fields(this, any(FuncTypeExpr ft), i) and
-      i < 0
-    )
-  }
-
-  /**
-   * Gets the expression representing the type of the result variables declared in this declaration.
-   */
-  Expr getTypeExpr() { result = getChildExpr(0) }
-
-  /**
-   * Gets the type of the result variables declared in this declaration.
-   */
-  Type getType() { result = getTypeExpr().getType() }
-
-  /**
-   * Gets the expression representing the name of the `i`th result variable declared in this declaration
-   * (0-based).
-   */
-  Expr getNameExpr(int i) {
-    i >= 0 and
-    result = getChildExpr(i + 1)
-  }
-
-  /**
-   * Gets an expression representing the name of a result variable declared in this declaration.
-   */
-  Expr getANameExpr() { result = getNameExpr(_) }
-
-  /**
-   * Gets the function type expression to which this result variable declaration belongs.
-   */
-  FuncTypeExpr getFunctionTypeExpr() { fields(this, result, _) }
+class ResultVariableDecl extends ParameterOrResultDecl {
+  ResultVariableDecl() { rawIndex < 0 }
 
   /**
    * Gets the index of this result variable declaration among all result variable declarations of
    * its associated function type.
    */
-  int getIndex() { fields(this, _, -(result + 1)) }
+  int getIndex() { result = -(rawIndex + 1) }
 
   override string toString() { result = "result variable declaration" }
+
+  override string describeQlClass() { result = "ResultVariableDecl" }
 }
 
 /**
  * A method or embedding specification in an interface type expression.
  */
-class InterfaceMemberSpec extends @field, Documentable, ExprParent {
+class InterfaceMemberSpec extends FieldBase, Documentable, ExprParent {
   InterfaceTypeExpr ite;
   int idx;
 
-  InterfaceMemberSpec() { fields(this, ite, idx) }
+  InterfaceMemberSpec() { this = ite.getField(idx) }
 
   /**
    * Gets the interface type expression to which this member specification belongs.
@@ -552,17 +554,6 @@ class InterfaceMemberSpec extends @field, Documentable, ExprParent {
    * its associated interface type expression.
    */
   int getIndex() { result = idx }
-
-  /**
-   * Gets the expression representing the type of the method or embedding declared in
-   * this specification.
-   */
-  Expr getTypeExpr() { result = getChildExpr(0) }
-
-  /**
-   * Gets the type of the method or embedding declared in this specification.
-   */
-  Type getType() { result = getTypeExpr().getType() }
 }
 
 /**
@@ -579,6 +570,8 @@ class MethodSpec extends InterfaceMemberSpec {
   Expr getNameExpr() { result = name }
 
   override string toString() { result = "method declaration" }
+
+  override string describeQlClass() { result = "MethodSpec" }
 }
 
 /**
@@ -588,4 +581,6 @@ class EmbeddingSpec extends InterfaceMemberSpec {
   EmbeddingSpec() { not exists(getChildExpr(1)) }
 
   override string toString() { result = "interface embedding" }
+
+  override string describeQlClass() { result = "EmbeddingSpec" }
 }
