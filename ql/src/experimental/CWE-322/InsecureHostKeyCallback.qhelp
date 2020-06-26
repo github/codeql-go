@@ -1,0 +1,49 @@
+<!DOCTYPE qhelp PUBLIC
+  "-//Semmle//qhelp//EN"
+  "qhelp.dtd">
+<qhelp>
+<overview>
+<p>
+    The <code>ClientConfig</code> specifying the configuration for establishing a SSH connection has a field <code>HostKeyCallback</code> that must be initialized with a function that validates the host key returned by the server.
+</p>
+
+<p>
+    Not properly verifying the host key returned by server provides attackers with an oppertunity to perform a Man-in-the-Middle attack.
+    A successful attack can compromise the confidentiality and integrity of the information communicated with the server.
+</p>
+
+<p>
+    The <code>ssh</code> package provides the predefined callback <code>InsecureIgnoreHostKey</code> that can be used during development and testing.
+    It accepts any provided host key.
+    This callback, or a semantically similar callback, should not be used in production code. 
+</p>
+</overview>
+
+<recommendation>
+The <code>HostKeyCallback</code> field of <code>ClientConfig</code> should be initialized with a function that validates a host key against an allow list.
+If a key is not on a predefined allow list, the connection must be terminated and the failed security operation should be logged.
+
+When the allow list contains only a single host key then the function <code>FixedHostKey</code> can be used.
+</recommendation>
+
+<example>
+<p>The following example shows the use of <code>InsecureIgnoreHostKey</code> as commonly used in code being developed or tested.</p>
+
+<sample src="InsecureIgnoreHostKeyExample.go" />
+
+<p>The next example shows the use of custom implementation of the <code>InsecureIgnoreHostKey</code> function.</p>
+<sample src="InsecureHostKeyCallbackExample.go" />
+
+</example>
+
+<references>
+<li>
+  Go Dev:
+  <a href="https://pkg.go.dev/golang.org/x/crypto/ssh?tab=doc">package ssh</a>.
+</li>
+<li>
+  CWE:
+   <a href="https://cwe.mitre.org/data/definitions/322.html">CWE-322: Key Exchange without Entity Authentication</a>.
+</li>
+</references>
+</qhelp>
