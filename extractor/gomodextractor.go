@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/github/codeql-go/extractor/dbscheme"
 	"github.com/github/codeql-go/extractor/srcarchive"
@@ -155,9 +156,10 @@ func extractGoModComments(tw *trap.Writer, expr modfile.Expr, exprlbl trap.Label
 	var first bool = true
 	idx := 0
 	for _, comment := range allComments {
-		extractGoModComment(tw, comment, grouplbl, idx)
+		commentToken := strings.TrimSuffix(comment.Token, "\r")
+		extractGoModComment(tw, comment, commentToken, grouplbl, idx)
 		idx++
-		commentEndCol := comment.Start.LineRune + (len(comment.Token) - 1)
+		commentEndCol := comment.Start.LineRune + (len(commentToken) - 1)
 		if first {
 			startLine, startCol, endLine, endCol = comment.Start.Line, comment.Start.LineRune, comment.Start.Line, commentEndCol
 			first = false
@@ -170,9 +172,11 @@ func extractGoModComments(tw *trap.Writer, expr modfile.Expr, exprlbl trap.Label
 	extractLocation(tw, grouplbl, startLine, startCol, endLine, endCol)
 }
 
-func extractGoModComment(tw *trap.Writer, comment modfile.Comment, grouplbl trap.Label, idx int) {
-	lbl := tw.Labeler.LocalID(comment)
-	dbscheme.CommentsTable.Emit(tw, lbl, dbscheme.SlashSlashComment.Index(), grouplbl, idx, comment.Token)
 
-	extractLocation(tw, lbl, comment.Start.Line, comment.Start.LineRune, comment.Start.Line, comment.Start.LineRune+len(comment.Token))
+
+func extractGoModComment(tw *trap.Writer, comment modfile.Comment, commentToken string, grouplbl trap.Label, idx int) {
+	lbl := tw.Labeler.LocalID(comment)
+	dbscheme.CommentsTable.Emit(tw, lbl, dbscheme.SlashSlashComment.Index(), grouplbl, idx, commentToken)
+
+	extractLocation(tw, lbl, comment.Start.Line, comment.Start.LineRune, comment.Start.Line, comment.Start.LineRune + (len(commentToken) - 1))
 }
