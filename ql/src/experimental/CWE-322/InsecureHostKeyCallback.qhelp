@@ -26,6 +26,7 @@ If a key is not on a predefined allow list, the connection must be terminated an
 </p>
 <p>
 When the allow list contains only a single host key then the function <code>FixedHostKey</code> can be used.
+</p>
 </recommendation>
 
 <example>
