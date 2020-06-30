@@ -4,7 +4,7 @@
  * @kind path-problem
  * @problem.severity error
  * @precision very-high
- * @id go/security/crypto/ssl/insecure-configuration-client-config
+ * @id go/insecure-hostkeycallback
  * @tags security
  */
 
