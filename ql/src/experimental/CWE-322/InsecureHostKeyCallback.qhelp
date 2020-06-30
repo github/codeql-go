@@ -44,9 +44,5 @@ When the allow list contains only a single host key then the function <code>Fixe
   Go Dev:
   <a href="https://pkg.go.dev/golang.org/x/crypto/ssh?tab=doc">package ssh</a>.
 </li>
-<li>
-  CWE:
-   <a href="https://cwe.mitre.org/data/definitions/322.html">CWE-322: Key Exchange without Entity Authentication</a>.
-</li>
 </references>
 </qhelp>
