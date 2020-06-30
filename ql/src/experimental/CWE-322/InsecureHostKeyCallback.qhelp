@@ -23,7 +23,8 @@
 <p>
 The <code>HostKeyCallback</code> field of <code>ClientConfig</code> should be initialized with a function that validates a host key against an allow list.
 If a key is not on a predefined allow list, the connection must be terminated and the failed security operation should be logged.
-
+</p>
+<p>
 When the allow list contains only a single host key then the function <code>FixedHostKey</code> can be used.
 </recommendation>
 
