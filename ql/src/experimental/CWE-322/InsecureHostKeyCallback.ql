@@ -1,6 +1,6 @@
 /**
  * @name: Use of insecure HostKeyCallback implementation
- * @description Detects insecure SSL client configuration when assigned an implementation of the `HostKeyCallback` that exclusively returns `nil`.
+ * @description Detects insecure SSL client configurations with an implementation of the `HostKeyCallback` that accepts all host keys.
  * @kind path-problem
  * @problem.severity error
  * @precision very-high
