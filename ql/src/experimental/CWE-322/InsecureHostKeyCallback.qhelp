@@ -8,7 +8,7 @@
 </p>
 
 <p>
-    Not properly verifying the host key returned by server provides attackers with an oppertunity to perform a Man-in-the-Middle attack.
+    Not properly verifying the host key returned by a server provides attackers with an oppertunity to perform a hijack attack.
     A successful attack can compromise the confidentiality and integrity of the information communicated with the server.
 </p>
 
