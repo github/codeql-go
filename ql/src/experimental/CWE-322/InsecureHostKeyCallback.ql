@@ -32,12 +32,6 @@ class InsecureHostKeyCallbackFunc extends DataFlow::Node {
   }
 }
 
-class HostKeyCallbackField extends Field {
-  HostKeyCallbackField() {
-    this.hasQualifiedName("golang.org/x/crypto/ssh", "ClientConfig", "HostKeyCallback")
-  }
-}
-
 class HostKeyCallbackAssignmentConfig extends DataFlow::Configuration {
   HostKeyCallbackAssignmentConfig() { this = "HostKeyCallbackAssignmentConfig" }
 
@@ -46,7 +40,10 @@ class HostKeyCallbackAssignmentConfig extends DataFlow::Configuration {
   }
 
   override predicate isSink(DataFlow::Node sink) {
-    exists(HostKeyCallbackField f | sink = f.getAWrite().getRhs())
+    exists(Field f |
+      f.hasQualifiedName("golang.org/x/crypto/ssh", "ClientConfig", "HostKeyCallback") and
+      sink = f.getAWrite().getRhs()
+    )
   }
 }
 
