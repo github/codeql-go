@@ -236,7 +236,7 @@ abstract class FunctionNode extends Node {
   abstract ReceiverNode getReceiver();
 
   /**
-   * Gets a value returned by the given function via a return statement, if any
+   * Gets a value returned by the given function via a return statement or an assignment to a result variable.
    */
   abstract ResultNode getAResult();
 }
