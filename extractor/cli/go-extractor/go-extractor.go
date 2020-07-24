@@ -42,6 +42,9 @@ func parseFlags(args []string) ([]string, []string) {
 	cpuprofile = os.Getenv("CODEQL_EXTRACTOR_GO_CPU_PROFILE")
 	memprofile = os.Getenv("CODEQL_EXTRACTOR_GO_MEM_PROFILE")
 
+	buildFlagsEnv := strings.Fields(os.Getenv("CODEQL_EXTRACTOR_GO_BUILD_COMMAND_FLAGS"))
+	buildFlags = append(buildFlags, buildFlagsEnv...)
+
 	return buildFlags, args[i:]
 }
 

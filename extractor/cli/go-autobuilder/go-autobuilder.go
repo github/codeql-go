@@ -32,8 +32,10 @@ dependencies.
 This behavior can be further customized using environment variables: setting LGTM_INDEX_NEED_GOPATH
 to 'false' disables the GOPATH set-up, CODEQL_EXTRACTOR_GO_BUILD_COMMAND (or alternatively
 LGTM_INDEX_BUILD_COMMAND), can be set to a newline-separated list of commands to run in order to
-install dependencies, and LGTM_INDEX_IMPORT_PATH can be used to override the package import path,
-which is otherwise inferred from the SEMMLE_REPO_URL environment variable.
+install dependencies, LGTM_INDEX_IMPORT_PATH can be used to override the package import path,
+which is otherwise inferred from the SEMMLE_REPO_URL environment variable, and
+CODEQL_EXTRACTOR_GO_BUILD_COMMAND_FLAGS can be used to pass flags to the build command used when
+introspecting on user code using the x/tools/go/packages module.
 
 In resource-constrained environments, the environment variable CODEQL_EXTRACTOR_GO_MAX_GOROUTINES
 (or its legacy alias SEMMLE_MAX_GOROUTINES) can be used to limit the number of parallel goroutines
