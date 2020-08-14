@@ -26,8 +26,8 @@ module InsecureRandomness {
    * A random source that is not sufficient for security use. So far this is only made up
    * of the math package's rand function, more insufficient random sources can be added here.
    */
-  class NonRandomSource extends Source {
-    NonRandomSource() {
+  class InsecureRandomSource extends Source {
+    InsecureRandomSource() {
       exists(CallExpr call |
         this.asExpr() = call and
         call.getTarget().getPackage().getPath() = "math/rand"
@@ -36,24 +36,13 @@ module InsecureRandomness {
   }
 
   /**
-   * A cryptographic algorithm that takes a key as input.
+   * A cryptographic algorithm.
    */
-  class CryptographicKeySink extends Sink {
-    CryptographicKeySink() {
-      /*
-       * A call that contains one of the key words below is generally from an encryption
-       * algorithm that takes a key as input (with the exception of the math/random function).
-       */
-
+  class CryptographicSink extends Sink {
+    CryptographicSink() {
       exists(CallExpr call |
         this.asExpr() = call.getAnArgument() and
-        not call.getTarget().getPackage().getPath() = "math/rand" and
-        call
-            .getTarget()
-            .getName()
-            .matches("%" +
-                ["New", "Read", "Float32", "Float64", "Int", "Int31", "Int31n", "Int63", "Int63n",
-                    "Intn", "NormalFloat64", "Uint32", "Uint64"] + "%")
+        call.getTarget().getPackage().getPath().regexpMatch("crypto/.*")
       )
     }
   }

@@ -5,6 +5,7 @@
  * @problem.severity error
  * @id go/insecure-randomness
  * @tags security
+ *      external/cwe/cwe-327
  */
 
 import go
@@ -13,4 +14,5 @@ import DataFlow::PathGraph
 
 from Configuration cfg, DataFlow::PathNode source, DataFlow::PathNode sink
 where cfg.hasFlowPath(source, sink)
-select sink.getNode(), source, sink, "For security purposes use crypto/rand"
+select sink.getNode(), source, sink, "$@ is a weak key used in cryptographic algorithm.",
+  source.getNode(), "Random number"
