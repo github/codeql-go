@@ -26,13 +26,8 @@ module InsecureRandomness {
    * A random source that is not sufficient for security use. So far this is only made up
    * of the math package's rand function, more insufficient random sources can be added here.
    */
-  class InsecureRandomSource extends Source {
-    InsecureRandomSource() {
-      exists(CallExpr call |
-        this.asExpr() = call and
-        call.getTarget().getPackage().getPath() = "math/rand"
-      )
-    }
+  class InsecureRandomSource extends Source, DataFlow::CallNode {
+    InsecureRandomSource() { this.getTarget().getPackage().getPath() = "math/rand" }
   }
 
   /**
