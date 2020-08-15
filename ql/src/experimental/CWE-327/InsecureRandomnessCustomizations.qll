@@ -33,11 +33,11 @@ module InsecureRandomness {
   /**
    * A cryptographic algorithm.
    */
-  class CryptographicSink extends Sink {
+  class CryptographicSink extends Sink, DataFlow::Node {
     CryptographicSink() {
-      exists(CallExpr call |
-        this.asExpr() = call.getAnArgument() and
-        call.getTarget().getPackage().getPath().regexpMatch("crypto/.*")
+      exists(DataFlow::CallNode call |
+        call.getTarget().getPackage().getPath().regexpMatch("crypto/.*") and
+        this = call.getAnArgument()
       )
     }
   }
