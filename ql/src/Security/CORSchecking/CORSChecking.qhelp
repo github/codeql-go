@@ -1,0 +1,23 @@
+<!DOCTYPE qhelp PUBLIC
+  "-//Semmle//qhelp//EN"
+  "qhelp.dtd">
+<qhelp>
+
+<overview>
+<p>CORS checking in Go (about raw language library)</p>
+</overview>
+
+<recommendation>
+<p>CORS helps you to get resource from other domain, but if you don't config it correctly, it would make risks</p>
+</recommendation>
+
+<references>
+<li>References:<br> 
+<a href="https://owasp.org/www-community/attacks/CORS_OriginHeaderScrutiny">
+owasp -- cors origin header security</a>.
+
+</li>
+<!--  LocalWords:  CWE -->
+</references>
+
+</qhelp>

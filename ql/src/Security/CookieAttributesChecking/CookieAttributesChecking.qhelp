@@ -1,0 +1,29 @@
+<!DOCTYPE qhelp PUBLIC
+  "-//Semmle//qhelp//EN"
+  "qhelp.dtd">
+<qhelp>
+
+<overview>
+<p>This rule helps you to found out the Cookie set HttpOnly as True or not, and whether used HttpOnly, which decrease the damage of xss.</p>
+</overview>
+
+<recommendation>
+<p>Xss shows easily, but with HttpOnly attributes in cookie, we can decrease the damage of Xss</p></br>
+<p>For most developer, some use HttpOnly, but didn't set it as true</p></br>
+<p>Even worse, some didn't use it</p></br>
+<p>So we write this rule to help the user found out use and use correctly or not</p></br>
+<p></p></br>
+
+</recommendation>
+
+<references>
+<li>References:<br> 
+<a href="https://owasp.org/www-community/HttpOnly">
+OWASP：HttpOnly reference</a>.
+<br>
+
+</li>
+<!--  LocalWords:  CWE -->
+</references>
+
+</qhelp>
