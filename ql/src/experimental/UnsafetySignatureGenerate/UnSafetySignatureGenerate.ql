@@ -1,7 +1,8 @@
 /*
-@name Unsafety Signature Generate checking
-@description Unsafety Signature that means the developer calculate signatures by just adding it like "a+b" which would bypass easily
-@kind authoraztion
+* @name Unsafety Signature Generate checking
+* @description Unsafety Signature that means the developer calculate signatures by just adding it like "a+b" which would bypass easily
+* @kind problem
+* @problem.severity recommendation
 */
 import go
 import semmle.go.dataflow.DataFlow
@@ -47,4 +48,4 @@ class UnsafetySignatureGenerate extends DataFlow::Configuration {
 
 from UnsafetySignatureGenerate config, DataFlow::Node source, DataFlow::Node sink
 where config.hasFlow(source, sink)
-select "Patameter come from:", source, "at line: ", source.getStartLine(), "Correspond usage: ", sink, "at line: ", sink.getStartLine()
+select source, sink

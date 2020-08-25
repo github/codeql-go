@@ -1,7 +1,8 @@
 /**
  * @name Cookie Attributes Checking.
  * @description This rule helps you to found out the Cookie set HttpOnly as True or not, and whether used HttpOnly, which decrease the damage of xss.
- * @kind xss
+ * @kind problem
+ * @problem.severity warning
  */
 
 import go
@@ -14,7 +15,7 @@ where
         (
             s.getKey(x).toString() = "HttpOnly"
             and s.getAnElement().getChild(1).toString() = "false"
-            and infor = "set Cookie attribute HttpOnly, but did not set it as True"
+            and infor = "You set Cookie attribute HttpOnly, but did not set it as True"
         )
         and tmp = ""
     or
@@ -22,6 +23,6 @@ where
             x = 1
             and tmp = concat(int i| i in [1 .. s.getNumElement()]| s.getElement(i).getChild(0).toString(), "|")
             and not tmp.matches("%HttpOnly%")
-            and infor = "did not set Cookie attribute HttpOnly"
+            and infor = "You did not use Cookie attribute HttpOnly"
         )
-select "Cookie located here: ", s.getLocation(), " found this situation: ", infor
+select s, infor
