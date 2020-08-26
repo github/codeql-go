@@ -509,7 +509,12 @@ func main() {
 
 	var cmd *exec.Cmd
 	log.Printf("Running extractor command '%s %s ./...' from directory '%s'.\n", extractor, modMode, cwd)
-	cmd = exec.Command(extractor, modMode.String(), "./...")
+	if depMode == GoGetWithModules && modMode.String() != "" {
+		cmd = exec.Command(extractor, modMode.String(), "./...")
+	} else {
+		cmd = exec.Command(extractor, "./...")
+	}
+
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	err = cmd.Run()
