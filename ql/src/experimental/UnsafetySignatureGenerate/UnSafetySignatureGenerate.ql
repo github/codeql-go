@@ -22,14 +22,14 @@ class UnsafetySignatureGenerate extends DataFlow::Configuration {
             f2.hasQualifiedName("crypto/sha256", "New")
             and
             call1 = f2.getACall()
-            and 
-            call1.toString().matches(a1.getRhs().toString())
             and
-            call2.getReceiver().toString() = a1.getLhs().toString()
+            a1.getRhs() = call1.asExpr()
+            and
+            DataFlow::localFlow(call1, call2.getReceiver())
             and
             call2.getCalleeName() = "Write"
-            and 
-            source.asExpr() = f1.getACall().asExpr()
+            and
+            source = f1.getACall()
             )
     }
 
@@ -40,9 +40,11 @@ class UnsafetySignatureGenerate extends DataFlow::Configuration {
             a1.getRhs() = call1.asExpr()
             and
             (
-                b1.getLeftOperand().asExpr().toString() = a1.getLhs().toString() or 
-                b1.getRightOperand().asExpr().toString() = a1.getLhs().toString())
+                DataFlow::localFlow(call1, b1.getLeftOperand())
+                or
+                DataFlow::localFlow(call1, b1.getRightOperand())
             )
+        )
     }
 }
 

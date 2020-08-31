@@ -25,9 +25,9 @@ func (c *MainController) Get() {
 	}else {
 		message_1 := a + b
 		message_2 := []byte(message_1)
-		hashfucker := sha256.New()
-		hashfucker.Write(message_2)
-		bytes := hashfucker.Sum(nil)
+		hashCalc := sha256.New()
+		hashCalc.Write(message_2)
+		bytes := hashCalc.Sum(nil)
 		hashCode := hex.EncodeToString(bytes)
 		if hashCode == e {
 			c.Ctx.WriteString(hashCode)

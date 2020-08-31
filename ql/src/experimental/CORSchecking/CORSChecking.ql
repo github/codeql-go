@@ -20,7 +20,7 @@ and
             c = f.getACall()
             and c.getArgument(0).getStringValue() = "Access-Control-Allow-Credentials"
             and c.getArgument(1).getStringValue() = "true"
-            and s = "Allowing access to credentials can facilitate CORS attacks if Access-Control-Allow-Origin is configured improperly."
+            and s = "Allowing Access-Control-Allow-Credentials as true would expand you attack surface if CORS attacks appears。"
 
         )
         or
