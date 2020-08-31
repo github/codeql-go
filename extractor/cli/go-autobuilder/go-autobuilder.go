@@ -68,25 +68,6 @@ func getEnvGoSemVer() string {
 	return "v" + goVersion[2:]
 }
 
-func run(cmd *exec.Cmd) bool {
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-	in, _ := cmd.StdinPipe()
-	err := cmd.Start()
-	if err != nil {
-		log.Printf("Running %s failed, continuing anyway: %s\n", cmd.Path, err.Error())
-		return false
-	}
-	in.Close()
-	err = cmd.Wait()
-	if err != nil {
-		log.Printf("Running %s failed, continuing anyway: %s\n", cmd.Path, err.Error())
-		return false
-	}
-
-	return true
-}
-
 func tryBuild(buildFile, cmd string, args ...string) bool {
 	if util.FileExists(buildFile) {
 		log.Printf("%s found, running %s\n", buildFile, cmd)
@@ -191,7 +172,7 @@ func (m ModMode) argsForGoVersion(version string) []string {
 // addVersionToMod add a go version directive, e.g. `go 1.14` to a `go.mod` file.
 func addVersionToMod(goMod []byte, version string) bool {
 	cmd := exec.Command("go", "mod", "edit", "-go="+version)
-	return run(cmd)
+	return util.RunCmd(cmd)
 }
 
 // checkVendor tests to see whether a vendor directory is inconsistent according to the go frontend
@@ -434,7 +415,7 @@ func main() {
 		}
 		os.Chmod(script.Name(), 0700)
 		log.Println("Installing dependencies using custom build command.")
-		run(exec.Command(script.Name()))
+		util.RunCmd(exec.Command(script.Name()))
 	}
 
 	if modMode == ModVendor {
@@ -495,7 +476,7 @@ func main() {
 				install = exec.Command("go", "get", "-v", "./...")
 				log.Println("Installing dependencies using `go get -v ./...`.")
 			}
-			run(install)
+			util.RunCmd(install)
 		}
 	}
 
