@@ -47,11 +47,11 @@ func parseFlags(args []string, mimic bool) ([]string, []string) {
 							log.Printf("Intercepting build")
 							return parseFlags(args[i+1:], true)
 						} else {
-							log.Printf("Non-build command; skipping")
+							log.Printf("Non-build command '%s'; skipping", strings.Join(args[1:], " "))
 							os.Exit(0)
 						}
 					} else {
-						log.Printf("Non-build command; skipping")
+						log.Printf("Non-build command '%s'; skipping", strings.Join(args[1:], " "))
 						os.Exit(0)
 					}
 				} else {
@@ -110,7 +110,7 @@ func main() {
 	if len(patterns) == 0 {
 		log.Println("Nothing to extract.")
 	} else {
-		log.Printf("Build flags: %s; patterns: %s\n", strings.Join(buildFlags, " "), strings.Join(patterns, " "))
+		log.Printf("Build flags: '%s'; patterns: '%s'\n", strings.Join(buildFlags, " "), strings.Join(patterns, " "))
 		err := extractor.ExtractWithFlags(buildFlags, patterns)
 		if err != nil {
 			log.Fatalf("Error running go tooling: %s\n", err.Error())
