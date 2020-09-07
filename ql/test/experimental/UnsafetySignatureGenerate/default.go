@@ -18,6 +18,7 @@ func (c *MainController) Get() {
 	b := c.GetString("para2")
 	d, _ := c.GetInt("para3")
 	e := c.GetString("sign")
+	f := c.GetString("sign2")
 	if a == "" && b = "" {
 		c.Ctx.WriteString("please input para")
 		fmt.Print(d)
@@ -31,6 +32,9 @@ func (c *MainController) Get() {
 		hashCode := hex.EncodeToString(bytes)
 		if hashCode == e {
 			c.Ctx.WriteString(hashCode)
+		}
+		if f == "123123" {
+			c.Ctx.WriteString("just a test with sign")
 		}
 		
 	}

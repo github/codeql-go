@@ -6,27 +6,20 @@
  */
 
 import go
-from StructLit s, KeyValueExpr k, string infor, string tmp
+
+from StructLit s, KeyValueExpr k, string infor
 where
-    s.getType().hasQualifiedName("net/http", "Cookie")
-and 
-    (
-        k = s.getAnElement()
-        and
-        k.getKey().(Ident).getName() = "HttpOnly"
-        and
-        k.getValue().(Ident).getName() = "false"
-        and
-        infor = "You set Cookie attribute HttpOnly, but did not set it as True"
-        and
-        tmp = ""
-    )
-or
-    (
-        tmp = concat(int i| i in [0..s.getNumElement()]|s.getKey(i).(Ident).getName(), "|")
-        and not
-        tmp.matches("%HttpOnly%")
-        and
-        infor = "You did not use Cookie attribute HttpOnly"
-    )
+  s.getType().hasQualifiedName("net/http", "Cookie") and
+  (
+    k = s.getAnElement() and
+    k.getKey().(Ident).getName() = "HttpOnly" and
+    k.getValue().(Ident).getName() = "false" and
+    infor = "You set Cookie attribute HttpOnly, but did not set it as True"
+  )
+  or
+  not exists(KeyValueExpr k2 |
+    k2 = s.getAnElement() and
+    k2.getKey().(Ident).getName() = "HttpOnly"
+  ) and
+  infor = "You did not use Cookie attribute HttpOnly"
 select s, infor
