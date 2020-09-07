@@ -11,4 +11,8 @@ fi
 LGTM_SRC="$(pwd)"
 export LGTM_SRC
 
-"$CODEQL_EXTRACTOR_GO_ROOT/tools/$CODEQL_PLATFORM/go-autobuilder"
+if [ "${CODEQL_EXTRACTOR_GO_TRACE:-}" == "on" ]; then
+  "$CODEQL_EXTRACTOR_GO_ROOT/tools/$CODEQL_PLATFORM/go-build"
+else
+  "$CODEQL_EXTRACTOR_GO_ROOT/tools/$CODEQL_PLATFORM/go-autobuilder"
+fi

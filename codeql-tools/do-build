@@ -1,0 +1,44 @@
+#!/bin/bash -x
+
+if [ -L _lgtm_detected_source_root ]; then
+  cd "$(readlink _lgtm_detected_source_root)"
+fi
+
+if [ -d _lgtm_build_dir ]; then
+  cd _lgtm_build_dir
+fi
+
+if [ -f SConstruct ]; then
+  scons && exit 0
+fi
+
+if [ -f wscript ] && [ -x waf ]; then
+  ./waf build && exit 0
+fi
+
+if [ -f Makefile ] || [ -f makefile ] || [ -f GNUmakefile ]; then
+  make && exit 0
+fi
+
+if [ -f build.ninja ]; then
+  ninja && exit 0
+fi
+
+if [ -d ../_lgtm_build_dir ]; then
+  cd ..
+fi
+
+for f in build build.sh; do
+  if [ -x $f ] && [ -f $f ]; then
+    ./$f && exit 0
+  fi
+done
+
+if [ -f setup.py ]; then
+  python setup.py build && exit 0
+fi
+
+go build ./... && exit 0
+
+echo "Semmle autobuild: no supported build system detected."
+exit 1
