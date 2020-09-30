@@ -15,11 +15,11 @@ where
     k.getKey().(Ident).getName() = "HttpOnly" and
     k.getValue().(Ident).getName() = "false" and
     infor = "You set Cookie attribute HttpOnly, but did not set it as True"
+    or
+    not exists(KeyValueExpr k2 |
+      k2 = s.getAnElement() and
+      k2.getKey().(Ident).getName() = "HttpOnly"
+    ) and
+    infor = "You did not use Cookie attribute HttpOnly"
   )
-  or
-  not exists(KeyValueExpr k2 |
-    k2 = s.getAnElement() and
-    k2.getKey().(Ident).getName() = "HttpOnly"
-  ) and
-  infor = "You did not use Cookie attribute HttpOnly"
 select s, infor
