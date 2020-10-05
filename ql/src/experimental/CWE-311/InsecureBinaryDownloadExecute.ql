@@ -12,13 +12,16 @@ import go
 import DataFlow::PathGraph
 import semmle.go.security.CommandInjection
 
+/**
+ * A flow of a string to the URL parameter of a HTTP client request.
+ */
 class FlowStringToHTTPCall extends TaintTracking::Configuration {
   FlowStringToHTTPCall() { this = "FlowStringToHTTPCall" }
 
   predicate isSource(DataFlow::Node source, StringLit val) { source.asExpr() = val }
 
   predicate isSink(DataFlow::Node sink, HTTP::ClientRequest httpClientCall) {
-    sink = httpClientCall.(DataFlow::CallNode).getArgument(0)
+    sink = httpClientCall.getUrl()
   }
 
   override predicate isSource(DataFlow::Node source) { this.isSource(source, _) }
@@ -26,6 +29,9 @@ class FlowStringToHTTPCall extends TaintTracking::Configuration {
   override predicate isSink(DataFlow::Node sink) { this.isSink(sink, _) }
 }
 
+/**
+ * A flow of a `response.Body` to a file.
+ */
 class FlowFromResponseBodyToAFile extends TaintTracking::Configuration {
   FlowFromResponseBodyToAFile() { this = "FlowFromResponseBodyToAFile" }
 
@@ -50,6 +56,9 @@ class FlowFromResponseBodyToAFile extends TaintTracking::Configuration {
   override predicate isSink(DataFlow::Node sink) { isSink(sink, _) }
 }
 
+/**
+ * Holds if the provided `httpClientCall` response body flows to a `file`.
+ */
 predicate responseBodyFlowsToFile(HTTP::ClientRequest httpClientCall, ValueEntity file) {
   exists(FlowFromResponseBodyToAFile cfg, DataFlow::PathNode source, DataFlow::PathNode sink |
     cfg.hasFlowPath(source, sink) and
@@ -58,10 +67,16 @@ predicate responseBodyFlowsToFile(HTTP::ClientRequest httpClientCall, ValueEntit
   )
 }
 
+/**
+ * Holds if the provided `file` is the result of a `fileCreationCall`.
+ */
 predicate getFileCreationCall(DataFlow::ValueEntity file, DataFlow::CallNode fileCreationCall) {
   file.getAWrite().getRhs() = fileCreationCall.getResult(0)
 }
 
+/**
+ * A flow of a string (a filepath) to a call to a function that opens/creates a file.
+ */
 class FlowFromStringToFileCreatorCall extends TaintTracking::Configuration {
   FlowFromStringToFileCreatorCall() { this = "FlowFromStringToFileCreatorCall" }
 
@@ -77,6 +92,9 @@ class FlowFromStringToFileCreatorCall extends TaintTracking::Configuration {
   override predicate isSink(DataFlow::Node sink) { isSink(sink, _) }
 }
 
+/**
+ * Holds if the provided `fileCreationCall` had as source the provided `filename`.
+ */
 predicate getFilename(DataFlow::CallNode fileCreationCall, ValueEntity filename) {
   exists(FlowFromStringToFileCreatorCall cfg, DataFlow::PathNode source, DataFlow::PathNode sink |
     cfg.hasFlowPath(source, sink) and
@@ -86,6 +104,9 @@ predicate getFilename(DataFlow::CallNode fileCreationCall, ValueEntity filename)
   )
 }
 
+/**
+ * A flow of a string to an executor.
+ */
 class FlowToExecutor extends TaintTracking::Configuration {
   FlowToExecutor() { this = "FlowToExecutor" }
 
@@ -100,6 +121,9 @@ class FlowToExecutor extends TaintTracking::Configuration {
   override predicate isSink(DataFlow::Node sink) { isSink(sink, _) }
 }
 
+/**
+ * Holds if the provided `filename` flows to an executor.
+ */
 predicate flowsToExecutor(ValueEntity filename) {
   exists(FlowToExecutor cfg, DataFlow::PathNode source, DataFlow::PathNode sink |
     cfg.hasFlowPath(source, sink) and
