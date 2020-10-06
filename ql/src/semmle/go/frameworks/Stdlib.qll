@@ -63,6 +63,7 @@ import semmle.go.frameworks.stdlib.Syscall
 import semmle.go.frameworks.stdlib.TextScanner
 import semmle.go.frameworks.stdlib.TextTabwriter
 import semmle.go.frameworks.stdlib.TextTemplate
+import semmle.go.frameworks.stdlib.XSys
 
 /** A `String()` method. */
 class StringMethod extends TaintTracking::FunctionModel, Method {
