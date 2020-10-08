@@ -1,0 +1,29 @@
+edges
+| InsecureBinaryDownloadExecute.go:27:15:27:44 | "http://example.com/hello.bin" : string | InsecureBinaryDownloadExecute.go:29:37:29:45 | remoteURL : string |
+| InsecureBinaryDownloadExecute.go:28:2:28:14 | definition of localFilepath : pointer type | InsecureBinaryDownloadExecute.go:34:34:34:46 | localFilepath |
+| InsecureBinaryDownloadExecute.go:29:37:29:45 | remoteURL : string | InsecureBinaryDownloadExecute.go:28:2:28:14 | definition of localFilepath : pointer type |
+| InsecureBinaryDownloadExecute.go:45:25:45:54 | "http://example.com/hello.bin" : string | InsecureBinaryDownloadExecute.go:63:29:63:37 | definition of remoteURL : string |
+| InsecureBinaryDownloadExecute.go:63:29:63:37 | definition of remoteURL : string | InsecureBinaryDownloadExecute.go:65:37:65:45 | remoteURL : string |
+| InsecureBinaryDownloadExecute.go:64:2:64:14 | definition of localFilepath : pointer type | InsecureBinaryDownloadExecute.go:70:34:70:46 | localFilepath |
+| InsecureBinaryDownloadExecute.go:65:37:65:45 | remoteURL : string | InsecureBinaryDownloadExecute.go:64:2:64:14 | definition of localFilepath : pointer type |
+| InsecureBinaryDownloadExecute.go:74:15:74:35 | "http://example.com/" : string | InsecureBinaryDownloadExecute.go:76:37:76:45 | remoteURL : string |
+| InsecureBinaryDownloadExecute.go:75:2:75:14 | definition of localFilepath : pointer type | InsecureBinaryDownloadExecute.go:81:34:81:46 | localFilepath |
+| InsecureBinaryDownloadExecute.go:76:37:76:45 | remoteURL : string | InsecureBinaryDownloadExecute.go:75:2:75:14 | definition of localFilepath : pointer type |
+nodes
+| InsecureBinaryDownloadExecute.go:27:15:27:44 | "http://example.com/hello.bin" : string | semmle.label | "http://example.com/hello.bin" : string |
+| InsecureBinaryDownloadExecute.go:28:2:28:14 | definition of localFilepath : pointer type | semmle.label | definition of localFilepath : pointer type |
+| InsecureBinaryDownloadExecute.go:29:37:29:45 | remoteURL : string | semmle.label | remoteURL : string |
+| InsecureBinaryDownloadExecute.go:34:34:34:46 | localFilepath | semmle.label | localFilepath |
+| InsecureBinaryDownloadExecute.go:45:25:45:54 | "http://example.com/hello.bin" : string | semmle.label | "http://example.com/hello.bin" : string |
+| InsecureBinaryDownloadExecute.go:63:29:63:37 | definition of remoteURL : string | semmle.label | definition of remoteURL : string |
+| InsecureBinaryDownloadExecute.go:64:2:64:14 | definition of localFilepath : pointer type | semmle.label | definition of localFilepath : pointer type |
+| InsecureBinaryDownloadExecute.go:65:37:65:45 | remoteURL : string | semmle.label | remoteURL : string |
+| InsecureBinaryDownloadExecute.go:70:34:70:46 | localFilepath | semmle.label | localFilepath |
+| InsecureBinaryDownloadExecute.go:74:15:74:35 | "http://example.com/" : string | semmle.label | "http://example.com/" : string |
+| InsecureBinaryDownloadExecute.go:75:2:75:14 | definition of localFilepath : pointer type | semmle.label | definition of localFilepath : pointer type |
+| InsecureBinaryDownloadExecute.go:76:37:76:45 | remoteURL : string | semmle.label | remoteURL : string |
+| InsecureBinaryDownloadExecute.go:81:34:81:46 | localFilepath | semmle.label | localFilepath |
+#select
+| InsecureBinaryDownloadExecute.go:34:34:34:46 | localFilepath | InsecureBinaryDownloadExecute.go:27:15:27:44 | "http://example.com/hello.bin" : string | InsecureBinaryDownloadExecute.go:34:34:34:46 | localFilepath | Executes an insecure download from $@ | InsecureBinaryDownloadExecute.go:27:15:27:44 | "http://example.com/hello.bin" | here |
+| InsecureBinaryDownloadExecute.go:70:34:70:46 | localFilepath | InsecureBinaryDownloadExecute.go:45:25:45:54 | "http://example.com/hello.bin" : string | InsecureBinaryDownloadExecute.go:70:34:70:46 | localFilepath | Executes an insecure download from $@ | InsecureBinaryDownloadExecute.go:45:25:45:54 | "http://example.com/hello.bin" | here |
+| InsecureBinaryDownloadExecute.go:81:34:81:46 | localFilepath | InsecureBinaryDownloadExecute.go:74:15:74:35 | "http://example.com/" : string | InsecureBinaryDownloadExecute.go:81:34:81:46 | localFilepath | Executes an insecure download from $@ | InsecureBinaryDownloadExecute.go:74:15:74:35 | "http://example.com/" | here |
