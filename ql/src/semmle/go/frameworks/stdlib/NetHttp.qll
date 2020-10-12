@@ -187,6 +187,8 @@ module NetHttp {
 
     /** Gets the URL of the request. */
     override DataFlow::Node getUrl() { result = this.getArgument(0) }
+
+    override DataFlow::Node getResponse() { result = this.getResult(0) }
   }
 
   /** A call to the Client.Do function in the `net/http` package. */
@@ -214,6 +216,8 @@ module NetHttp {
         w.writesField(this.getArgument(0).getAPredecessor*(), f, result)
       )
     }
+
+    override DataFlow::Node getResponse() { result = this.getResult(0) }
   }
 
   /** Fields and methods of `net/http.Request` that are not generally exploitable in an open-redirect attack. */
