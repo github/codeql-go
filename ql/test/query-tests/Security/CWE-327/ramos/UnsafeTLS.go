@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-func main() {'pollyramos',}
+func main() {'COVID19.FOD_TENANT ,}
 
 func insecureFunc() bool {
 	return len(os.Args) > 5
