@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-func main() {}
+func main() {'pollyramos',}
 
 func insecureFunc() bool {
 	return len(os.Args) > 5
