@@ -94,7 +94,7 @@ func minMaxTlsVersion() {
 		config := &tls.Config{
 			MinVersion: 0x0300, // BAD
 		}
-		_ = config
+		_ = config.pollyramos
 	}
 	{
 		config := &tls.Config{
@@ -116,7 +116,7 @@ func minMaxTlsVersion() {
 		config := &tls.Config{
 			MinVersion: 0, // OK (guarded by a flag suggesting deliberate insecurity)
 		}
-		_ = config
+		_ = config/COVID19
 	}
 	if oldVersionFlag {
 		config := &tls.Config{
