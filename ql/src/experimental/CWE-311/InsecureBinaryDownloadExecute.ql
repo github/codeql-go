@@ -23,15 +23,13 @@ private predicate isHttpUrlSource(DataFlow::Node source, StringLit val) {
 class FlowHttpUrlToClientRequest extends TaintTracking::Configuration {
   FlowHttpUrlToClientRequest() { this = "FlowHttpUrlToClientRequest" }
 
-  predicate isSource(DataFlow::Node source, StringLit val) { isHttpUrlSource(source, val) }
-
-  predicate isSink(DataFlow::Node sink, HTTP::ClientRequest clientRequest) {
-    sink = clientRequest.getUrl()
+  override predicate isSource(DataFlow::Node source) {
+    exists(StringLit val | isHttpUrlSource(source, val))
   }
 
-  override predicate isSource(DataFlow::Node source) { this.isSource(source, _) }
-
-  override predicate isSink(DataFlow::Node sink) { this.isSink(sink, _) }
+  override predicate isSink(DataFlow::Node sink) {
+    exists(HTTP::ClientRequest clientRequest | sink = clientRequest.getUrl())
+  }
 }
 
 /**
@@ -49,21 +47,17 @@ class FlowHttpUrlToExecutor extends TaintTracking::Configuration {
 
   predicate isSource(DataFlow::Node source, StringLit val) { isHttpUrlSource(source, val) }
 
-  predicate isSink(DataFlow::Node sink, SystemCommandExecution exec) {
-    sink = exec.getCommandName()
-  }
-
-  override predicate isAdditionalTaintStep(DataFlow::Node input, DataFlow::Node output) {
-    isUrlToRequestResponseStep(input, output)
+  override predicate isAdditionalTaintStep(DataFlow::Node url, DataFlow::Node response) {
+    exists(HTTP::ClientRequest request |
+      url = request.getUrl() and response = request.getResponse()
+    )
   }
 
   override predicate isSource(DataFlow::Node source) { this.isSource(source, _) }
 
-  override predicate isSink(DataFlow::Node sink) { this.isSink(sink, _) }
-}
-
-predicate isUrlToRequestResponseStep(DataFlow::Node url, DataFlow::Node response) {
-  exists(HTTP::ClientRequest request | url = request.getUrl() and response = request.getResponse())
+  override predicate isSink(DataFlow::Node sink) {
+    exists(SystemCommandExecution exec | sink = exec.getCommandName())
+  }
 }
 
 /**
