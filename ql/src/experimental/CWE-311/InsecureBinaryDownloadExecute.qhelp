@@ -4,8 +4,8 @@
 <qhelp>
     <overview>
         <p>
-            All applications that download and execute binary files from the internet must makes sure that the download happens over an encrypted connection (i.e. a <code>tls-encrypted</code> connection, a.k.a. <code>https</code>).
-            The usage of an encrypted connection can guarantee that the file was not tampered with by a MITM while in transit.
+            All applications that download and execute binary files from the internet must make sure that the download happens over an encrypted connection (e.g. using the <code>https</code> protocol).
+            The usage of an encrypted connection protects against a person in the middle tampering with the file while in transit.
         </p>
     </overview>
     <recommendation>
@@ -15,11 +15,11 @@
     </recommendation>
     <example>
         <p>
-            The first example shows you the download of a binary file over an unencrypted connection, and its execution.
+            The first example shows downloading a binary file over an unencrypted connection, and its execution.
         </p>
         <sample src="BinaryDownloadExecuteBad.go" />
         <p>
-            The second example shows a corrected version of the first example.
+            HTTPS should be used to secure the transfer instead, as shown in the following example:
         </p>
         <sample src="BinaryDownloadExecuteGood.go" />
     </example>

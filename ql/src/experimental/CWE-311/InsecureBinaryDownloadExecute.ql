@@ -1,5 +1,5 @@
 /**
- * @name Download over plaint-http and execution of a binary file.
+ * @name Download over plain HTTP and execution of a binary file.
  * @description Downloading binary files over unencrypted connections and then executing them is dangerous.
  * @kind path-problem
  * @problem.severity error
@@ -12,13 +12,13 @@ import go
 import semmle.go.security.CommandInjection
 import DataFlow::PathGraph
 
-predicate isHttpUrlSource(DataFlow::Node source, StringLit val) {
+private predicate isHttpUrlSource(DataFlow::Node source, StringLit val) {
   source.asExpr() = val and
   val.getStringValue().matches("http:%")
 }
 
 /**
- * A flow of a string to the URL parameter of a HTTP client request.
+ * A flow of a string beginning with `http:` to the URL parameter of a HTTP client request.
  */
 class FlowHttpUrlToClientRequest extends TaintTracking::Configuration {
   FlowHttpUrlToClientRequest() { this = "FlowHttpUrlToClientRequest" }
@@ -34,6 +34,9 @@ class FlowHttpUrlToClientRequest extends TaintTracking::Configuration {
   override predicate isSink(DataFlow::Node sink) { this.isSink(sink, _) }
 }
 
+/**
+ * Holds if `source` is an HTTP URL that is used to make an HTTP client request.
+ */
 predicate urlFlowsToClientRequest(DataFlow::Node source) {
   exists(FlowHttpUrlToClientRequest config | config.hasFlow(source, _))
 }
@@ -63,6 +66,9 @@ predicate isUrlToRequestResponseStep(DataFlow::Node url, DataFlow::Node response
   exists(HTTP::ClientRequest request | url = request.getUrl() and response = request.getResponse())
 }
 
+/**
+ * Model of `os.Create`, propagating taint from the name of a created file to the created `os.File` instance.
+ */
 class OsCreateModel extends DataFlow::FunctionModel {
   OsCreateModel() { hasQualifiedName("os", "Create") }
 
