@@ -1,0 +1,8 @@
+test_RouteSetup_getPath
+| mux.go:33:2:33:39 | call to HandleFunc | mux.go:33:15:33:26 | "/run/{cmd}" |
+| mux.go:34:2:34:54 | call to HandleFunc | mux.go:34:15:34:36 | "/articles/{category}" |
+test_RouteSetup_getHandler
+| mux.go:33:2:33:39 | call to HandleFunc | file://:0:0:0:0 | function HandleFunc |
+| mux.go:33:2:33:39 | call to HandleFunc | mux.go:20:6:20:15 | function CmdHandler |
+| mux.go:34:2:34:54 | call to HandleFunc | file://:0:0:0:0 | function HandleFunc |
+| mux.go:34:2:34:54 | call to HandleFunc | mux.go:14:6:14:20 | function ArticlesHandler |
