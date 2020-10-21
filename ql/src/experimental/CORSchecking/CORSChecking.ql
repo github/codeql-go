@@ -20,7 +20,7 @@ where
     c.getArgument(0).getStringValue() = "Access-Control-Allow-Credentials" and
     c.getArgument(1).getStringValue() = "true" and
     s =
-      "Allowing Access-Control-Allow-Credentials as true would expand you attack surface if CORS attacks appears。"
+      "If \"Access-Control-Allow-Credentials\" is set as \"TURE\", you are easier to be attacked when CORS attacks happen."
     or
     c = f.getACall() and
     c.getArgument(0).getStringValue() = "Access-Control-Allow-Methods" and

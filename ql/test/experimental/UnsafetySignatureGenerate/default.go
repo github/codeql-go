@@ -19,7 +19,7 @@ func (c *MainController) Get() {
 	d, _ := c.GetInt("para3")
 	e := c.GetString("sign")
 	f := c.GetString("sign2")
-	if a == "" && b = "" {
+	if a == "" && b == "" {
 		c.Ctx.WriteString("please input para")
 		fmt.Print(d)
 		return
