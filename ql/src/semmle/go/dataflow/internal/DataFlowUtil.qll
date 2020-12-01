@@ -616,10 +616,22 @@ class ReadNode extends InstructionNode {
   }
 
   /**
+   * Holds if this data-flow node reads the value of field `package.type.field` on the value of `base` or its
+   * implicit dereference.
+   *
+   * For example, for the field read `x.width`, `base` is either the data-flow node corresponding
+   * to `x` or (if `x` is a pointer) the data-flow node corresponding to the implicit dereference
+   * `*x`, and `x` has the type `package.type`.
+   */
+  predicate readsField(Node base, string package, string type, string field) {
+    exists(Field f | f.hasQualifiedName(package, type, field) | this.readsField(base, f))
+  }
+
+  /**
    * Holds if this data-flow node looks up method `m` on the value of `receiver` or its implicit
    * dereference.
    *
-   * For example, for the method read `x.area`, `base` is either the data-flow node corresponding
+   * For example, for the method read `x.area`, `receiver` is either the data-flow node corresponding
    * to `x` or (if `x` is a pointer) the data-flow node corresponding to the implicit dereference
    * `*x`, and `m` is the method referenced by `area`.
    */
@@ -627,6 +639,18 @@ class ReadNode extends InstructionNode {
     insn.readsMethod(receiver.asInstruction(), m)
     or
     insn.readsMethod(IR::implicitDerefInstruction(receiver.asExpr()), m)
+  }
+
+  /**
+   * Holds if this data-flow node looks up method `package.type.name` on the value of `receiver`
+   * or its implicit dereference.
+   *
+   * For example, for the method read `x.name`, `receiver` is either the data-flow node corresponding
+   * to `x` or (if `x` is a pointer) the data-flow node corresponding to the implicit dereference
+   * `*x`, and `package.type` is a type of `x` that defines a method named `name`.
+   */
+  predicate readsMethod(Node receiver, string package, string type, string name) {
+    exists(Method m | m.hasQualifiedName(package, type, name) | this.readsMethod(receiver, m))
   }
 
   /**
@@ -878,12 +902,51 @@ class TypeCastNode extends ExprNode {
     expr instanceof ConversionExpr
   }
 
+  /**
+   * Gets the type being converted to. Note this differs from `this.getType()` for
+   * `TypeAssertExpr`s that return a (result, ok) tuple.
+   */
+  Type getResultType() {
+    if this.getType() instanceof TupleType
+    then result = this.getType().(TupleType).getComponentType(0)
+    else result = this.getType()
+  }
+
   /** Gets the operand of the type cast. */
   DataFlow::Node getOperand() {
     result.asExpr() = expr.(TypeAssertExpr).getExpr()
     or
     result.asExpr() = expr.(ConversionExpr).getOperand()
   }
+}
+
+/**
+ * A data-flow node representing an element of an array, map, slice or string defined from `range` statement.
+ *
+ * Example: in `_, x := range y { ... }`, this represents the `Node` that extracts the element from the
+ * range statement, which will flow to `x`.
+ */
+class RangeElementNode extends Node {
+  DataFlow::Node base;
+  IR::ExtractTupleElementInstruction extract;
+
+  RangeElementNode() {
+    this.asInstruction() = extract and
+    extract.extractsElement(_, 1) and
+    extract.getBase().(IR::GetNextEntryInstruction).getDomain() = base.asInstruction()
+  }
+
+  /** Gets the data-flow node representing the base from which the element is read. */
+  DataFlow::Node getBase() { result = base }
+}
+
+/**
+ * Holds if `node` reads an element from `base`, either via an element-read (`base[y]`) expression
+ * or via a range statement `_, node := range base`.
+ */
+predicate readsAnElement(DataFlow::Node node, DataFlow::Node base) {
+  node.(ElementReadNode).readsElement(base, _) or
+  node.(RangeElementNode).getBase() = base
 }
 
 /**
@@ -896,6 +959,26 @@ class TypeCastNode extends ExprNode {
 abstract class FunctionModel extends Function {
   /** Holds if data flows through this function from `input` to `output`. */
   abstract predicate hasDataFlow(FunctionInput input, FunctionOutput output);
+
+  /** Gets an input node for this model for the call `c`. */
+  DataFlow::Node getAnInputNode(DataFlow::CallNode c) { this.flowStepForCall(result, _, c) }
+
+  /** Gets an output node for this model for the call `c`. */
+  DataFlow::Node getAnOutputNode(DataFlow::CallNode c) { this.flowStepForCall(_, result, c) }
+
+  /** Holds if this function model causes data to flow from `pred` to `succ` for the call `c`. */
+  predicate flowStepForCall(DataFlow::Node pred, DataFlow::Node succ, DataFlow::CallNode c) {
+    c = this.getACall() and
+    exists(FunctionInput inp, FunctionOutput outp | this.hasDataFlow(inp, outp) |
+      pred = inp.getNode(c) and
+      succ = outp.getNode(c)
+    )
+  }
+
+  /** Holds if this function model causes data to flow from `pred` to `succ`. */
+  predicate flowStep(DataFlow::Node pred, DataFlow::Node succ) {
+    this.flowStepForCall(pred, succ, _)
+  }
 }
 
 /**
@@ -925,7 +1008,7 @@ SsaNode ssaNode(SsaVariable v) { result.getDefinition() = v.getDefinition() }
 
 /**
  * Gets the data-flow node corresponding to the `i`th element of tuple `t` (which is either a call
- * with multiple results or an iterator in a range loop).
+ * with multiple results, an iterator in a range loop, or the result of a type assertion).
  */
 Node extractTupleElement(Node t, int i) {
   exists(IR::Instruction insn | t = instructionNode(insn) |
@@ -961,11 +1044,21 @@ private predicate basicLocalFlowStep(Node nodeFrom, Node nodeTo) {
   // Instruction -> Instruction
   exists(Expr pred, Expr succ |
     succ.(LogicalBinaryExpr).getAnOperand() = pred or
-    succ.(ConversionExpr).getOperand() = pred or
-    succ.(TypeAssertExpr).getExpr() = pred
+    succ.(ConversionExpr).getOperand() = pred
   |
     nodeFrom = exprNode(pred) and
     nodeTo = exprNode(succ)
+  )
+  or
+  // Type assertion: if in the context `checked, ok := e.(*Type)` (in which
+  // case tuple-extraction instructions exist), flow from `e` to `e.(*Type)[0]`;
+  // otherwise flow from `e` to `e.(*Type)`.
+  exists(IR::Instruction evalAssert, TypeAssertExpr assert |
+    nodeFrom.asExpr() = assert.getExpr() and
+    evalAssert = IR::evalExprInstruction(assert) and
+    if exists(IR::extractTupleElement(evalAssert, _))
+    then nodeTo.asInstruction() = IR::extractTupleElement(evalAssert, 0)
+    else nodeTo.asInstruction() = evalAssert
   )
   or
   // Instruction -> SSA
@@ -1006,12 +1099,7 @@ predicate simpleLocalFlowStep(Node nodeFrom, Node nodeTo) {
   basicLocalFlowStep(nodeFrom, nodeTo)
   or
   // step through function model
-  exists(FunctionModel m, CallNode c, FunctionInput inp, FunctionOutput outp |
-    c = m.getACall() and
-    m.hasDataFlow(inp, outp) and
-    nodeFrom = inp.getNode(c) and
-    nodeTo = outp.getNode(c)
-  )
+  any(FunctionModel m).flowStep(nodeFrom, nodeTo)
 }
 
 /**
@@ -1084,25 +1172,65 @@ abstract class BarrierGuard extends Node {
    * We check this by looking for guards on `inp` that dominate a `return` statement that
    * is the only `return` in `f` that can return `true`. This means that if `f` returns `true`,
    * the guard must have been satisfied. (Similar reasoning is applied for statements returning
-   * `false` or a non-`nil` value.)
+   * `false`, `nil` or a non-`nil` value.)
    */
   private predicate guardingFunction(
     Function f, FunctionInput inp, FunctionOutput outp, DataFlow::Property p
   ) {
-    exists(ControlFlow::ConditionGuardNode guard, Node arg, FuncDecl fd, Node ret |
+    exists(FuncDecl fd, Node arg, Node ret |
       fd.getFunction() = f and
-      guards(guard, arg) and
       localFlow(inp.getExitNode(fd), arg) and
       ret = outp.getEntryNode(fd) and
-      guard.dominates(ret.getBasicBlock())
-    |
-      exists(boolean b |
-        onlyPossibleReturnOfBool(fd, outp, ret, b) and
-        p.isBoolean(b)
+      // Case: a function like "if someBarrierGuard(arg) { return true } else { return false }"
+      (
+        exists(ControlFlow::ConditionGuardNode guard |
+          guards(guard, arg) and
+          guard.dominates(ret.getBasicBlock())
+        |
+          exists(boolean b |
+            onlyPossibleReturnOfBool(fd, outp, ret, b) and
+            p.isBoolean(b)
+          )
+          or
+          onlyPossibleReturnOfNonNil(fd, outp, ret) and
+          p.isNonNil()
+          or
+          onlyPossibleReturnOfNil(fd, outp, ret) and
+          p.isNil()
+        )
+        or
+        // Case: a function like "return someBarrierGuard(arg)"
+        // or "return !someBarrierGuard(arg) && otherCond(...)"
+        exists(boolean outcome |
+          not exists(DataFlow::Node otherRet | otherRet = outp.getEntryNode(fd) | otherRet != ret) and
+          this.checks(arg.asExpr(), outcome) and
+          // This predicate's contract is (p holds of ret ==> arg is checked),
+          // (and we have (this has outcome ==> arg is checked))
+          // but p.checkOn(ret, outcome, this) gives us (ret has outcome ==> p holds of this),
+          // so we need to swap outcome and (specifically boolean) p:
+          DataFlow::booleanProperty(outcome).checkOn(ret, p.asBoolean(), this)
+        )
+        or
+        // Case: a function like "return guardProxy(arg)"
+        // or "return !guardProxy(arg) || otherCond(...)"
+        exists(
+          Function f2, FunctionInput inp2, FunctionOutput outp2, CallNode c,
+          DataFlow::Property outpProp
+        |
+          not exists(DataFlow::Node otherRet | otherRet = outp.getEntryNode(fd) | otherRet != ret) and
+          guardingFunction(f2, inp2, outp2, outpProp) and
+          c = f2.getACall() and
+          arg = inp2.getNode(c) and
+          (
+            // See comment above ("This method's contract...") for rationale re: the inversion of
+            // `p` and `outpProp` here:
+            outpProp.checkOn(ret, p.asBoolean(), outp2.getNode(c))
+            or
+            // The particular case where p is non-boolean (i.e., nil or non-nil), and we directly return `c`:
+            outpProp = p and ret = outp2.getNode(c)
+          )
+        )
       )
-      or
-      onlyPossibleReturnOfNonNil(fd, outp, ret) and
-      p.isNonNil()
     )
   }
 }
@@ -1146,5 +1274,46 @@ private predicate onlyPossibleReturnOfNonNil(FuncDecl fd, FunctionOutput res, No
   possiblyReturnsNonNil(fd, res, ret) and
   forall(Node otherRet | otherRet = res.getEntryNode(fd) and otherRet != ret |
     otherRet.asExpr() = Builtin::nil().getAReference()
+  )
+}
+
+/**
+ * Holds if function `f`'s result `output`, which must be a return value, cannot be nil.
+ */
+private predicate certainlyReturnsNonNil(Function f, FunctionOutput output) {
+  output.isResult(_) and
+  (
+    f.hasQualifiedName("errors", "New")
+    or
+    f.hasQualifiedName("fmt", "Errorf")
+    or
+    f in [Builtin::new(), Builtin::make()]
+    or
+    exists(FuncDecl fd | fd = f.getFuncDecl() |
+      forex(DataFlow::Node ret | ret = output.getEntryNode(fd) | isCertainlyNotNil(ret))
+    )
+  )
+}
+
+/**
+ * Holds if `node` cannot be `nil`.
+ */
+private predicate isCertainlyNotNil(DataFlow::Node node) {
+  node instanceof DataFlow::AddressOperationNode
+  or
+  exists(DataFlow::CallNode c, FunctionOutput output | output.getExitNode(c) = node |
+    certainlyReturnsNonNil(c.getTarget(), output)
+  )
+}
+
+/**
+ * Holds if `ret` is the only data-flow node whose value contributes to the output `res` of `fd`
+ * that returns `nil`, since all the other output nodes are known to be non-nil.
+ */
+private predicate onlyPossibleReturnOfNil(FuncDecl fd, FunctionOutput res, DataFlow::Node ret) {
+  ret = res.getEntryNode(fd) and
+  ret.asExpr() = Builtin::nil().getAReference() and
+  forall(DataFlow::Node otherRet | otherRet = res.getEntryNode(fd) and otherRet != ret |
+    isCertainlyNotNil(otherRet)
   )
 }

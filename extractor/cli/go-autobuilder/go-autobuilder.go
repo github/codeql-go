@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"golang.org/x/mod/semver"
 	"io/ioutil"
@@ -206,6 +207,51 @@ func checkVendor() bool {
 	return true
 }
 
+func getOsToolsSubdir() (string, error) {
+	switch runtime.GOOS {
+	case "darwin":
+		return "osx64", nil
+	case "linux":
+		return "linux64", nil
+	case "windows":
+		return "win64", nil
+	}
+	return "", errors.New("Unsupported OS: " + runtime.GOOS)
+}
+
+func getExtractorDir() (string, error) {
+	mypath, err := os.Executable()
+	if err == nil {
+		return filepath.Dir(mypath), nil
+	}
+	log.Printf("Could not determine path of autobuilder: %v.\n", err)
+
+	// Fall back to rebuilding our own path from the extractor root:
+	extractorRoot := os.Getenv("CODEQL_EXTRACTOR_GO_ROOT")
+	if extractorRoot == "" {
+		return "", errors.New("CODEQL_EXTRACTOR_GO_ROOT not set.\nThis binary should not be run manually; instead, use the CodeQL CLI or VSCode extension. See https://securitylab.github.com/tools/codeql")
+	}
+
+	osSubdir, err := getOsToolsSubdir()
+	if err != nil {
+		return "", err
+	}
+
+	return filepath.Join(extractorRoot, "tools", osSubdir), nil
+}
+
+func getExtractorPath() (string, error) {
+	dirname, err := getExtractorDir()
+	if err != nil {
+		return "", err
+	}
+	extractor := filepath.Join(dirname, "go-extractor")
+	if runtime.GOOS == "windows" {
+		extractor = extractor + ".exe"
+	}
+	return extractor, nil
+}
+
 func main() {
 	if len(os.Args) > 1 {
 		usage()
@@ -247,12 +293,14 @@ func main() {
 		log.Println("Found glide.yaml, enabling go modules")
 	}
 
-	// if a vendor/modules.txt file exists, we assume that there are vendored Go dependencies, and
-	// skip the dependency installation step and run the extractor with `-mod=vendor`
-	if util.FileExists("vendor/modules.txt") {
-		modMode = ModVendor
-	} else if util.DirExists("vendor") {
-		modMode = ModMod
+	if depMode == GoGetWithModules {
+		// if a vendor/modules.txt file exists, we assume that there are vendored Go dependencies, and
+		// skip the dependency installation step and run the extractor with `-mod=vendor`
+		if util.FileExists("vendor/modules.txt") {
+			modMode = ModVendor
+		} else if util.DirExists("vendor") {
+			modMode = ModMod
+		}
 	}
 
 	if modMode == ModVendor {
@@ -407,8 +455,15 @@ func main() {
 		// try to build the project
 		buildSucceeded := autobuilder.Autobuild()
 
+		// Build failed or there are still dependency errors; we'll try to install dependencies
+		// ourselves
 		if !buildSucceeded {
-			// Build failed; we'll try to install dependencies ourselves
+			log.Println("Build failed, continuing to install dependencies.")
+
+			shouldInstallDependencies = true
+		} else if util.DepErrors("./...", modMode.argsForGoVersion(getEnvGoSemVer())...) {
+			log.Println("Dependencies are still not resolving after the build, continuing to install dependencies.")
+
 			shouldInstallDependencies = true
 		}
 	} else {
@@ -507,13 +562,9 @@ func main() {
 	}
 
 	// extract
-	mypath, err := os.Executable()
+	extractor, err := getExtractorPath()
 	if err != nil {
-		log.Fatalf("Could not determine path of autobuilder: %v.\n", err)
-	}
-	extractor := filepath.Join(filepath.Dir(mypath), "go-extractor")
-	if runtime.GOOS == "windows" {
-		extractor = extractor + ".exe"
+		log.Fatalf("Could not determine path of extractor: %v.\n", err)
 	}
 
 	cwd, err := os.Getwd()
