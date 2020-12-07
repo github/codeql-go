@@ -1,6 +1,7 @@
 /**
  * Provides classes for working with HTTP-related concepts such as requests and responses.
  */
+
 import go
 
 /** Provides classes for modeling HTTP-related APIs. */
@@ -290,4 +291,3 @@ module HTTP {
     ResponseWriter getResponseWriter() { result = self.getResponseWriter() }
   }
 }
-
