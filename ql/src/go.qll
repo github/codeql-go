@@ -34,8 +34,9 @@ import semmle.go.frameworks.Email
 import semmle.go.frameworks.Encoding
 import semmle.go.frameworks.Gin
 import semmle.go.frameworks.Glog
-import semmle.go.frameworks.Logrus
 import semmle.go.frameworks.GoRestfulHttp
+import semmle.go.frameworks.HTTP
+import semmle.go.frameworks.Logrus
 import semmle.go.frameworks.Macaron
 import semmle.go.frameworks.Mux
 import semmle.go.frameworks.NoSQL
