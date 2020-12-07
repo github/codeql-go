@@ -291,4 +291,3 @@ module HTTP {
     ResponseWriter getResponseWriter() { result = self.getResponseWriter() }
   }
 }
-
