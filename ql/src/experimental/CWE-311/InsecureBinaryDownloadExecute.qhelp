@@ -1,0 +1,26 @@
+<!DOCTYPE qhelp PUBLIC
+"-//Semmle//qhelp//EN"
+"qhelp.dtd">
+<qhelp>
+    <overview>
+        <p>
+            All applications that download and execute binary files from the internet must make sure that the download happens over an encrypted connection (e.g. using the <code>https</code> protocol).
+            The usage of an encrypted connection protects against a person in the middle tampering with the file while in transit.
+        </p>
+    </overview>
+    <recommendation>
+        <p>
+            Always download over <code>https</code>.
+        </p>
+    </recommendation>
+    <example>
+        <p>
+            The first example shows downloading a binary file over an unencrypted connection, and its execution.
+        </p>
+        <sample src="BinaryDownloadExecuteBad.go" />
+        <p>
+            HTTPS should be used to secure the transfer instead, as shown in the following example:
+        </p>
+        <sample src="BinaryDownloadExecuteGood.go" />
+    </example>
+</qhelp>

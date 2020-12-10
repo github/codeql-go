@@ -569,6 +569,11 @@ module HTTP {
        * Gets the URL of the request.
        */
       abstract DataFlow::Node getUrl();
+
+      /**
+       * Gets the response to the request.
+       */
+      abstract DataFlow::Node getResponse();
     }
   }
 
@@ -587,6 +592,11 @@ module HTTP {
      * Gets the URL of the request.
      */
     DataFlow::Node getUrl() { result = self.getUrl() }
+
+    /**
+     * Gets the response to the request.
+     */
+    DataFlow::Node getResponse() { result = self.getResponse() }
   }
 
   /** Provides a class for modeling new HTTP redirect APIs. */
