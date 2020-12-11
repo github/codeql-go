@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "Protobuf_lib",
+    srcs = [
+        "testDeprecatedApi.go",
+        "testModernApi.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/frameworks/Protobuf",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/Protobuf/vendor/github.com/golang/protobuf/proto",
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/Protobuf/vendor/google.golang.org/protobuf/proto",
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/Protobuf/vendor/google.golang.org/protobuf/runtime/protoiface",
+    ],
+)
+
+go_binary(
+    name = "Protobuf",
+    embed = [":Protobuf_lib"],
+    visibility = ["//visibility:public"],
+)

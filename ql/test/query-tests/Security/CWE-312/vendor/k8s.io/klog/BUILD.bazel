@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "klog",
+    srcs = ["stub.go"],
+    importmap = "github.com/github/codeql-go/ql/test/query-tests/Security/CWE-312/vendor/k8s.io/klog",
+    importpath = "k8s.io/klog",
+    visibility = ["//visibility:public"],
+)

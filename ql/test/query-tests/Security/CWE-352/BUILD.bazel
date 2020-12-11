@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "CWE-352_lib",
+    srcs = ["ConstantOauth2State.go"],
+    importpath = "github.com/github/codeql-go/ql/test/query-tests/Security/CWE-352",
+    visibility = ["//visibility:private"],
+    deps = ["//language-packs/go/ql/test/query-tests/Security/CWE-352/vendor/golang.org/x/oauth2"],
+)
+
+go_binary(
+    name = "CWE-352",
+    embed = [":CWE-352_lib"],
+    visibility = ["//visibility:public"],
+)

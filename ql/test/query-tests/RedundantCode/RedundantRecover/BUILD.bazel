@@ -1,0 +1,20 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "RedundantRecover_lib",
+    srcs = [
+        "RedundantRecover1.go",
+        "RedundantRecover1Good.go",
+        "RedundantRecover2.go",
+        "RedundantRecover2Good.go",
+        "tst.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/query-tests/RedundantCode/RedundantRecover",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "RedundantRecover",
+    embed = [":RedundantRecover_lib"],
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "CWE-078_lib",
+    srcs = ["CommandInjection.go"],
+    importpath = "github.com/github/codeql-go/ql/src/Security/CWE-078",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "CWE-078",
+    embed = [":CWE-078_lib"],
+    visibility = ["//visibility:public"],
+)

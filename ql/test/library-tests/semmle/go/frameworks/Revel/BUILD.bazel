@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "Revel_lib",
+    srcs = [
+        "EndToEnd.go",
+        "Revel.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/frameworks/Revel",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/Revel/vendor/github.com/revel/modules/static/app/controllers",
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/Revel/vendor/github.com/revel/revel",
+    ],
+)
+
+go_binary(
+    name = "Revel",
+    embed = [":Revel_lib"],
+    visibility = ["//visibility:public"],
+)

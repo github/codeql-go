@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "query",
+    srcs = ["query.pb.go"],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/frameworks/Protobuf/protos/query",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/Protobuf/vendor/github.com/golang/protobuf/proto",
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/Protobuf/vendor/google.golang.org/protobuf/reflect/protoreflect",
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/Protobuf/vendor/google.golang.org/protobuf/runtime/protoimpl",
+    ],
+)

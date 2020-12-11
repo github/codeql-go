@@ -1,0 +1,8 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "CWE-209",
+    srcs = ["test.go"],
+    importpath = "github.com/github/codeql-go/ql/test/query-tests/Security/CWE-209",
+    visibility = ["//visibility:public"],
+)
