@@ -1,4 +1,45 @@
 load("@bazel_gazelle//:def.bzl", "gazelle")
+load("//:common.bzl", "get_codeql_arch", "pack_exe_zip", "pack_zip")
 
 # gazelle:prefix github.com/github/codeql-go
 gazelle(name = "gazelle")
+
+pack_zip(
+    name = "dist",
+    srcs = glob([
+        "codeql-tools/**",
+        "ql/src/*.dbscheme*",
+        "codeql-extractor.yml",
+        "LICENSE",
+    ]),
+    out = "pack-codeql-extractor-go.zip",
+    language = "go",
+    rewrite_prefixes = {
+        "language-packs/go/codeql-tools": "go/tools",
+        "language-packs/go/ql/src": "go",
+    },
+    visibility = ["//visibility:public"],
+)
+
+pack_exe_zip(
+    name = "dist-arch",
+    srcs = [
+        "//language-packs/go/extractor/cli/go-autobuilder",
+        "//language-packs/go/extractor/cli/go-bootstrap",
+        "//language-packs/go/extractor/cli/go-build-runner",
+        "//language-packs/go/extractor/cli/go-extractor",
+        "//language-packs/go/extractor/cli/go-gen-dbscheme",
+        "//language-packs/go/extractor/cli/go-tokenizer",
+    ],
+    language = "go",
+    overrides = {
+        "go-autobuilder": "",
+        "go-bootstrap": "",
+        "go-build-runner": "",
+        "go-extractor": "",
+        "go-gen-dbscheme": "",
+        "go-tokenizer": "",
+    },
+    platform = get_codeql_arch(),
+    visibility = ["//visibility:public"],
+)
