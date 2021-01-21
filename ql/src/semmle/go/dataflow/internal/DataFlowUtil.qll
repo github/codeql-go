@@ -1061,26 +1061,33 @@ private predicate basicLocalFlowStep(Node nodeFrom, Node nodeTo) {
     else nodeTo.asInstruction() = evalAssert
   )
   or
-  // Instruction -> SSA
+  // Instruction -> SSA defn
   exists(IR::Instruction pred, SsaExplicitDefinition succ |
     succ.getRhs() = pred and
     nodeFrom = MkInstructionNode(pred) and
     nodeTo = MkSsaNode(succ)
   )
   or
-  // SSA -> SSA
-  exists(SsaDefinition pred, SsaDefinition succ |
-    succ.(SsaVariableCapture).getSourceVariable() = pred.(SsaExplicitDefinition).getSourceVariable() or
-    succ.(SsaPseudoDefinition).getAnInput() = pred
+  // SSA defn -> SSA capture
+  exists(SsaExplicitDefinition pred, SsaVariableCapture succ |
+    // Check: should these flow from PHIs as well? Perhaps they should be included
+    // in the use-use graph?
+    succ.(SsaVariableCapture).getSourceVariable() = pred.(SsaExplicitDefinition).getSourceVariable()
   |
     nodeFrom = MkSsaNode(pred) and
     nodeTo = MkSsaNode(succ)
   )
   or
-  // SSA -> Instruction
-  exists(SsaDefinition pred, IR::Instruction succ |
-    succ = pred.getVariable().getAUse() and
+  // SSA defn -> first SSA use
+  exists(SsaExplicitDefinition pred, IR::Instruction succ | succ = pred.getAFirstUse() |
     nodeFrom = MkSsaNode(pred) and
+    nodeTo = MkInstructionNode(succ)
+  )
+  or
+  // SSA use -> successive SSA use
+  // Note this case includes Phi node traversal
+  exists(IR::Instruction pred, IR::Instruction succ | succ = getAnAdjacentUse(pred) |
+    nodeFrom = MkInstructionNode(pred) and
     nodeTo = MkInstructionNode(succ)
   )
   or
