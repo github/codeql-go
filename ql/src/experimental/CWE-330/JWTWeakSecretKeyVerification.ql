@@ -4,16 +4,15 @@ import DataFlow::PathGraph
 class JWTWeakSecretKeyVerificationSink extends DataFlow::Node {
   JWTWeakSecretKeyVerificationSink() {
     exists(DataFlow::MethodCallNode call |
-      call.getTarget().hasQualifiedName("github.com/dgrijalva/jwt-go", "Token", "SignedString") |
+      call.getTarget().hasQualifiedName("github.com/dgrijalva/jwt-go", "Token", "SignedString")
+    |
       this = call.getArgument(0)
     )
   }
 }
 
 class JWTWeakSecretKeyVerificationSource extends DataFlow::Node {
-  JWTWeakSecretKeyVerificationSource() {
-    this.getStringValue().length() = 0
-  }
+  JWTWeakSecretKeyVerificationSource() { this.getStringValue().length() = 0 }
 }
 
 class JWTWeakSecretKeyVerificationConfiguration extends TaintTracking::Configuration {
