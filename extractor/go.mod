@@ -1,8 +1,9 @@
 module github.com/github/codeql-go/extractor
 
-go 1.14
+go 1.15
 
 require (
-	golang.org/x/mod v0.3.0
-	golang.org/x/tools v0.0.0-20201022035929-9cf592e881e9
+	golang.org/x/mod v0.4.1
+	golang.org/x/sys v0.0.0-20210124154548-22da62e12c0c // indirect
+	golang.org/x/tools v0.1.0
 )

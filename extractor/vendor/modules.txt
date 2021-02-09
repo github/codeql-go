@@ -1,10 +1,13 @@
-# golang.org/x/mod v0.3.0
+# golang.org/x/mod v0.4.1
 ## explicit
 golang.org/x/mod/internal/lazyregexp
 golang.org/x/mod/modfile
 golang.org/x/mod/module
 golang.org/x/mod/semver
-# golang.org/x/tools v0.0.0-20201022035929-9cf592e881e9
+# golang.org/x/sys v0.0.0-20210124154548-22da62e12c0c
+## explicit
+golang.org/x/sys/execabs
+# golang.org/x/tools v0.1.0
 ## explicit
 golang.org/x/tools/go/gcexportdata
 golang.org/x/tools/go/internal/gcimporter
