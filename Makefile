@@ -49,7 +49,7 @@ tools: $(addsuffix $(EXE),$(addprefix tools/bin/,$(BINARIES))) tools/tokenizer.j
 
 .PHONY: $(addsuffix $(EXE),$(addprefix tools/bin/,$(BINARIES)))
 $(addsuffix $(EXE),$(addprefix tools/bin/,$(BINARIES))):
-	go build -mod=vendor -o $@ ./extractor/cli/$(basename $(@F))
+	cd extractor; go build -mod=vendor -o ../$@ ./cli/$(basename $(@F))
 
 tools-codeql: tools-$(CODEQL_PLATFORM)
 
@@ -59,19 +59,19 @@ tools-linux64: $(addprefix tools/linux64/,$(BINARIES))
 
 .PHONY: $(addprefix tools/linux64/,$(BINARIES))
 $(addprefix tools/linux64/,$(BINARIES)):
-	GOOS=linux GOARCH=amd64 go build -mod=vendor -o $@ ./extractor/cli/$(@F)
+	cd extractor; GOOS=linux GOARCH=amd64 go build -mod=vendor -o ../$@ ./cli/$(@F)
 
 tools-osx64: $(addprefix tools/osx64/,$(BINARIES))
 
 .PHONY: $(addprefix tools/osx64/,$(BINARIES))
 $(addprefix tools/osx64/,$(BINARIES)):
-	GOOS=darwin GOARCH=amd64 go build -mod=vendor -o $@ ./extractor/cli/$(@F)
+	cd extractor; GOOS=darwin GOARCH=amd64 go build -mod=vendor -o ../$@ ./cli/$(@F)
 
 tools-win64: $(addsuffix .exe,$(addprefix tools/win64/,$(BINARIES)))
 
 .PHONY: $(addsuffix .exe,$(addprefix tools/win64/,$(BINARIES)))
 $(addsuffix .exe,$(addprefix tools/win64/,$(BINARIES))):
-	env GOOS=windows GOARCH=amd64 go build -mod=vendor -o $@ ./extractor/cli/$(basename $(@F))
+	cd extractor; env GOOS=windows GOARCH=amd64 go build -mod=vendor -o ../$@ ./cli/$(basename $(@F))
 
 .PHONY: extractor-common extractor extractor-full
 extractor-common: codeql-extractor.yml LICENSE ql/src/go.dbscheme \
