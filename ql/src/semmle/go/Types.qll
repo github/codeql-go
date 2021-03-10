@@ -16,6 +16,11 @@ class Type extends @type {
   Type getUnderlyingType() { result = this }
 
   /**
+   * Gets the element type of this type if it is a pointer type, or the type which this is defined to be if it a named type.
+   */
+  Type getBaseType() { none() }
+
+  /**
    * Gets the entity associated with this type.
    */
   TypeEntity getEntity() { type_objects(this, result) }
@@ -459,8 +464,7 @@ class StructType extends @structtype, CompositeType {
 
 /** A pointer type. */
 class PointerType extends @pointertype, CompositeType {
-  /** Gets the base type of this pointer type. */
-  Type getBaseType() { base_type(this, result) }
+  override Type getBaseType() { base_type(this, result) }
 
   override Package getPackage() { result = this.getBaseType().getPackage() }
 
@@ -610,8 +614,7 @@ class SendRecvChanType extends @sendrcvchantype, ChanType {
 
 /** A named type. */
 class NamedType extends @namedtype, CompositeType {
-  /** Gets the type which this type is defined to be. */
-  Type getBaseType() { underlying_type(this, result) }
+  override Type getBaseType() { underlying_type(this, result) }
 
   override Method getMethod(string m) {
     result = CompositeType.super.getMethod(m)
