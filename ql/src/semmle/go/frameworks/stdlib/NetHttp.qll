@@ -177,11 +177,16 @@ module NetHttp {
     RequestCall() {
       exists(string functionName |
         (
-          this.getTarget().hasQualifiedName("net/http", functionName)
-          or
-          this.getTarget().(Method).hasQualifiedName("net/http", "Client", functionName)
+          this.getTarget().hasQualifiedName("net/http", functionName) or
+          this.getTarget().(Method).hasQualifiedName("net/http", "Client", functionName) or
+          this.getTarget().(Method).hasQualifiedName("net/http", "RoundTrip", functionName)
         ) and
-        (functionName = "Get" or functionName = "Post" or functionName = "PostForm")
+        (
+          functionName = "Get" or
+          functionName = "Post" or
+          functionName = "PostForm" or
+          functionName = "RoundTrip"
+        )
       )
     }
 
