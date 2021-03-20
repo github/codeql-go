@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "CWE-079_lib",
+    srcs = [
+        "ReflectedXss.go",
+        "ReflectedXssGood.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/src/Security/CWE-079",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "CWE-079",
+    embed = [":CWE-079_lib"],
+    visibility = ["//visibility:public"],
+)

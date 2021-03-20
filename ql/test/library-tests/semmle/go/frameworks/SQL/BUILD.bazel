@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "SQL_lib",
+    srcs = [
+        "main.go",
+        "pg.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/frameworks/SQL",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/SQL/vendor/github.com/Masterminds/squirrel",
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/SQL/vendor/github.com/go-pg/pg",
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/SQL/vendor/github.com/go-pg/pg/orm",
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/SQL/vendor/github.com/go-pg/pg/v9:pg",
+    ],
+)
+
+go_binary(
+    name = "SQL",
+    embed = [":SQL_lib"],
+    visibility = ["//visibility:public"],
+)

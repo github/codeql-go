@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "consistency_lib",
+    srcs = ["test.go"],
+    importpath = "github.com/github/codeql-go/ql/test/consistency",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "consistency",
+    embed = [":consistency_lib"],
+    visibility = ["//visibility:public"],
+)

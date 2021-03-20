@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "nonexistent-test-pkg",
+    srcs = ["pkg.go"],
+    importmap = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/Packages/vendor/github.com/nonexistent-test-pkg",
+    importpath = "github.com/nonexistent-test-pkg",
+    visibility = ["//visibility:public"],
+)

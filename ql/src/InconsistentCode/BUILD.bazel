@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "InconsistentCode_lib",
+    srcs = [
+        "ConstantLengthComparison.go",
+        "ConstantLengthComparisonGood.go",
+        "InconsistentLoopOrientation.go",
+        "InconsistentLoopOrientationGood.go",
+        "LengthComparisonOffByOne.go",
+        "LengthComparisonOffByOneGood.go",
+        "MissingErrorCheck.go",
+        "MissingErrorCheckGood.go",
+        "MistypedExponentiation.go",
+        "WhitespaceContradictsPrecedence.go",
+        "WhitespaceContradictsPrecedenceGood.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/src/InconsistentCode",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "InconsistentCode",
+    embed = [":InconsistentCode_lib"],
+    visibility = ["//visibility:public"],
+)

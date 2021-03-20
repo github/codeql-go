@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "options",
+    srcs = ["stub.go"],
+    importmap = "github.com/github/codeql-go/ql/test/query-tests/Security/CWE-089/vendor/go.mongodb.org/mongo-driver/mongo/options",
+    importpath = "go.mongodb.org/mongo-driver/mongo/options",
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "Gorestful",
+    srcs = [
+        "gorestful.go",
+        "gorestful_v2.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/frameworks/HTTP/Gorestful",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/HTTP/Gorestful/vendor/github.com/emicklei/go-restful",
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/HTTP/Gorestful/vendor/github.com/emicklei/go-restful/v3:go-restful",
+    ],
+)

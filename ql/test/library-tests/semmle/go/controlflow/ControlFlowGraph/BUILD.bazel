@@ -1,0 +1,31 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "ControlFlowGraph_lib",
+    srcs = [
+        "DuplicateSwitchCase.go",
+        "exprs.go",
+        "hello.go",
+        "linux.go",
+        "main.go",
+        "nonlinux.go",
+        "noretfunctions.go",
+        "stmts.go",
+        "stmts2.go",
+        "stmts3.go",
+        "stmts4.go",
+        "stmts5.go",
+        "stmts6.go",
+        "stmts7.go",
+        "stmts8.go",
+        "tst.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/controlflow/ControlFlowGraph",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "ControlFlowGraph",
+    embed = [":ControlFlowGraph_lib"],
+    visibility = ["//visibility:public"],
+)

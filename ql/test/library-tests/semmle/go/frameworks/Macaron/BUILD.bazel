@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "Macaron_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/frameworks/Macaron",
+    visibility = ["//visibility:private"],
+    deps = ["//language-packs/go/ql/test/library-tests/semmle/go/frameworks/Macaron/vendor/gopkg.in/macaron.v1:macaron_v1"],
+)
+
+go_binary(
+    name = "Macaron",
+    embed = [":Macaron_lib"],
+    visibility = ["//visibility:public"],
+)

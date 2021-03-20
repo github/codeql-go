@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "Unsafe_lib",
+    srcs = [
+        "UnsafeUsageBad.go",
+        "UnsafeUsageOK.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/src/experimental/Unsafe",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "Unsafe",
+    embed = [":Unsafe_lib"],
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "CallGraph_lib",
+    srcs = [
+        "main.go",
+        "test.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/dataflow/CallGraph",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "CallGraph",
+    embed = [":CallGraph_lib"],
+    visibility = ["//visibility:public"],
+)

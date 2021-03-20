@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "DuplicateSwitchCase_lib",
+    srcs = [
+        "DuplicateSwitchCase.go",
+        "DuplicateSwitchCaseGood.go",
+        "funcs.go",
+        "tst.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/query-tests/RedundantCode/DuplicateSwitchCase",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "DuplicateSwitchCase",
+    embed = [":DuplicateSwitchCase_lib"],
+    visibility = ["//visibility:public"],
+)

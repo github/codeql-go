@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "pkg1",
+    srcs = [
+        "embedding.go",
+        "interfaces.go",
+        "tst.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/Types/pkg1",
+    visibility = ["//visibility:public"],
+)

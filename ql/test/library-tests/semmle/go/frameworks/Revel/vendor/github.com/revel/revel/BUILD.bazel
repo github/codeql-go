@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "revel",
+    srcs = ["stub.go"],
+    importmap = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/frameworks/Revel/vendor/github.com/revel/revel",
+    importpath = "github.com/revel/revel",
+    visibility = ["//visibility:public"],
+)

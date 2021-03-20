@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "SSA_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/dataflow/SSA",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "SSA",
+    embed = [":SSA_lib"],
+    visibility = ["//visibility:public"],
+)

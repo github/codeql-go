@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "snippets_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/github/codeql-go/ql/test/example-tests/snippets",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "snippets",
+    embed = [":snippets_lib"],
+    visibility = ["//visibility:public"],
+)
