@@ -61,26 +61,4 @@ module Csrf {
       )
     }
   }
-  // /**
-  //  * The handler of an HTTP request, viewed as a sink for Cross Site Request Forgery (CSRF) vulnerabilities.
-  //  */
-  // private class GorillaCsrf extends Sanitizer {
-  //   GorillaCsrf() {
-  //     exists(Method csrf, Method protect, int i |
-  //       protect.hasQualifiedName("gorilla/csrf", "Protect") and
-  //       protect.getResult(0) = csrf and
-  //       csrf.getParameter(0) = this.asParameter()
-  //     )
-  //   }
-  // }
-  // private class CustomCsrf extends Sanitizer {
-  //   CustomCsrf() {
-  //     exists(Method csrf, Method handler, int i |
-  //       csrf.getName().regexpMatch(["*csrf*","*xsrf*"]) and
-  //       handler.hasQualifiedName("gorilla/mux", ["Handler", "HandlerFunc"]) |
-  //       handler.getAParameter() = csrf and
-  //       handler.getACall().getTarget() = this.asExpr()
-  //     )
-  //   }
-  // }
 }
