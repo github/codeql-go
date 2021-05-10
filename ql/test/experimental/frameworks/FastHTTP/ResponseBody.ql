@@ -8,6 +8,7 @@ class HttpResponseBodyTest extends InlineExpectationsTest {
   override string getARelevantTag() { result = ["contentType", "responseBody"] }
 
   override predicate hasActualResult(string file, int line, string element, string tag, string value) {
+    file.matches("%/ResponseBody.go") and
     exists(HTTP::ResponseBody rd |
       rd.hasLocationInfo(file, line, _, _, _) and
       (

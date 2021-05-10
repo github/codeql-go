@@ -14,12 +14,21 @@ class Configuration extends TaintTracking::Configuration {
   }
 }
 
+class Link extends TaintTracking::FunctionModel {
+  Link() { hasQualifiedName(_, "link") }
+
+  override predicate hasTaintFlow(FunctionInput inp, FunctionOutput outp) {
+    inp.isParameter(0) and outp.isParameter(1)
+  }
+}
+
 class TaintTrackingTest extends InlineExpectationsTest {
   TaintTrackingTest() { this = "TaintTrackingTest" }
 
   override string getARelevantTag() { result = "taintSink" }
 
   override predicate hasActualResult(string file, int line, string element, string tag, string value) {
+    file.matches("%/TaintTracking.go") and
     tag = "taintSink" and
     exists(DataFlow::Node sink | any(Configuration c).hasFlow(_, sink) |
       element = sink.toString() and
