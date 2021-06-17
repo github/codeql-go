@@ -236,7 +236,6 @@ private ControlFlow::ConditionGuardNode getAFalsifiedGuard(DataFlowCall call) {
 /**
  * Holds if the node `n` is unreachable when the call context is `call`.
  */
-cached
 predicate isUnreachableInCall(Node n, DataFlowCall call) {
   getAFalsifiedGuard(call).dominates(n.getBasicBlock())
 }
@@ -265,3 +264,14 @@ Node getArgument(CallNode c, int i) {
 
 /** Holds if `n` should be hidden from path explanations. */
 predicate nodeIsHidden(Node n) { none() }
+
+class LambdaCallKind = Unit;
+
+/** Holds if `creation` is an expression that creates a lambda of kind `kind` for `c`. */
+predicate lambdaCreation(Node creation, LambdaCallKind kind, DataFlowCallable c) { none() }
+
+/** Holds if `call` is a lambda call of kind `kind` where `receiver` is the lambda expression. */
+predicate lambdaCall(DataFlowCall call, LambdaCallKind kind, Node receiver) { none() }
+
+/** Extra data-flow steps needed for lambda flow analysis. */
+predicate additionalLambdaFlowStep(Node nodeFrom, Node nodeTo, boolean preservesValue) { none() }
