@@ -1176,9 +1176,9 @@ abstract class BarrierGuard extends Node {
       guardingFunction(f, inp, outp, p) and
       c = f.getACall() and
       nd = inp.getNode(c) and
-      localFlow(outp.getNode(c), resNode) and
+      localFlow(pragma[only_bind_into](outp.getNode(c)), resNode) and
       p.checkOn(check, outcome, resNode) and
-      guard.ensures(check, outcome)
+      guard.ensures(pragma[only_bind_into](check), outcome)
     )
   }
 
