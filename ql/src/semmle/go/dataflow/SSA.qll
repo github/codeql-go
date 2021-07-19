@@ -187,6 +187,8 @@ class SsaExplicitDefinition extends SsaDefinition, TExplicitDef {
   ) {
     getInstruction().hasLocationInfo(filepath, startline, startcolumn, endline, endcolumn)
   }
+
+  IR::Instruction getAFirstUse() { firstUse(this, result) }
 }
 
 /** Provides a helper predicate for working with explicit SSA definitions. */
@@ -405,3 +407,5 @@ DataFlow::Node getASimilarReadNode(DataFlow::Node node) {
     result = readFields.similar().getAUse()
   )
 }
+
+IR::Instruction getAnAdjacentUse(IR::Instruction pred) { adjacentUseUse(pred, result) }
