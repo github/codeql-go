@@ -1,0 +1,20 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "extractor",
+    srcs = [
+        "extractor.go",
+        "gomodextractor.go",
+        "semaphore.go",
+    ],
+    importpath = "github.com/github/codeql-go/extractor",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//language-packs/go/extractor/dbscheme",
+        "//language-packs/go/extractor/srcarchive",
+        "//language-packs/go/extractor/trap",
+        "//language-packs/go/extractor/util",
+        "//language-packs/go/vendor/golang.org/x/mod/modfile",
+        "//language-packs/go/vendor/golang.org/x/tools/go/packages",
+    ],
+)

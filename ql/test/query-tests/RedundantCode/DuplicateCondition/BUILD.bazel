@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "DuplicateCondition_lib",
+    srcs = [
+        "DuplicateCondition.go",
+        "DuplicateConditionGood.go",
+        "funcs.go",
+        "tst.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/query-tests/RedundantCode/DuplicateCondition",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "DuplicateCondition",
+    embed = [":DuplicateCondition_lib"],
+    visibility = ["//visibility:public"],
+)

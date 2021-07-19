@@ -1,0 +1,20 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "ExprHasNoEffect_lib",
+    srcs = [
+        "ExprHasNoEffect.go",
+        "ExprHasNoEffectGood.go",
+        "main.go",
+        "tst.go",
+        "tst_nonlinux.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/query-tests/RedundantCode/ExprHasNoEffect",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "ExprHasNoEffect",
+    embed = [":ExprHasNoEffect_lib"],
+    visibility = ["//visibility:public"],
+)

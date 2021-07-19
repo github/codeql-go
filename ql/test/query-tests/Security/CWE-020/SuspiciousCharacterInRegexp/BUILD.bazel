@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "SuspiciousCharacterInRegexp_lib",
+    srcs = [
+        "SuspiciousCharacterInRegexp.go",
+        "SuspiciousCharacterInRegexpGood.go",
+        "test.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/query-tests/Security/CWE-020/SuspiciousCharacterInRegexp",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "SuspiciousCharacterInRegexp",
+    embed = [":SuspiciousCharacterInRegexp_lib"],
+    visibility = ["//visibility:public"],
+)

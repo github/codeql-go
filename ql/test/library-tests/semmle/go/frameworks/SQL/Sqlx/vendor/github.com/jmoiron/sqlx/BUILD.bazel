@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "sqlx",
+    srcs = ["stub.go"],
+    importmap = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/frameworks/SQL/Sqlx/vendor/github.com/jmoiron/sqlx",
+    importpath = "github.com/jmoiron/sqlx",
+    visibility = ["//visibility:public"],
+)

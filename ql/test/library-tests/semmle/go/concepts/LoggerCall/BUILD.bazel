@@ -1,0 +1,24 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "LoggerCall_lib",
+    srcs = [
+        "glog.go",
+        "logrus.go",
+        "main.go",
+        "stdlib.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/concepts/LoggerCall",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//language-packs/go/ql/test/library-tests/semmle/go/concepts/LoggerCall/vendor/github.com/golang/glog",
+        "//language-packs/go/ql/test/library-tests/semmle/go/concepts/LoggerCall/vendor/github.com/sirupsen/logrus",
+        "//language-packs/go/ql/test/library-tests/semmle/go/concepts/LoggerCall/vendor/k8s.io/klog",
+    ],
+)
+
+go_binary(
+    name = "LoggerCall",
+    embed = [":LoggerCall_lib"],
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "CWE-089_lib",
+    srcs = [
+        "SqlInjection.go",
+        "SqlInjectionGood.go",
+        "StringBreak.go",
+        "StringBreakGood.go",
+        "issue48.go",
+        "main.go",
+        "mongoDB.go",
+        "tst.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/query-tests/Security/CWE-089",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//language-packs/go/ql/test/query-tests/Security/CWE-089/vendor/github.com/Masterminds/squirrel",
+        "//language-packs/go/ql/test/query-tests/Security/CWE-089/vendor/go.mongodb.org/mongo-driver/bson",
+        "//language-packs/go/ql/test/query-tests/Security/CWE-089/vendor/go.mongodb.org/mongo-driver/mongo",
+        "//language-packs/go/ql/test/query-tests/Security/CWE-089/vendor/go.mongodb.org/mongo-driver/mongo/options",
+    ],
+)
+
+go_binary(
+    name = "CWE-089",
+    embed = [":CWE-089_lib"],
+    visibility = ["//visibility:public"],
+)

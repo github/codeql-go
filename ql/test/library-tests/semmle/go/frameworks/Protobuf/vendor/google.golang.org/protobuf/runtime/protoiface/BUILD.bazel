@@ -1,0 +1,10 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "protoiface",
+    srcs = ["stub.go"],
+    importmap = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/frameworks/Protobuf/vendor/google.golang.org/protobuf/runtime/protoiface",
+    importpath = "google.golang.org/protobuf/runtime/protoiface",
+    visibility = ["//visibility:public"],
+    deps = ["//language-packs/go/ql/test/library-tests/semmle/go/frameworks/Protobuf/vendor/google.golang.org/protobuf/reflect/protoreflect"],
+)

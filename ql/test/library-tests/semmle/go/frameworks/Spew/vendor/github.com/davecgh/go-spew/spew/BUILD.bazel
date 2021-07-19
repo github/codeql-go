@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "spew",
+    srcs = ["stub.go"],
+    importmap = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/frameworks/Spew/vendor/github.com/davecgh/go-spew/spew",
+    importpath = "github.com/davecgh/go-spew/spew",
+    visibility = ["//visibility:public"],
+)

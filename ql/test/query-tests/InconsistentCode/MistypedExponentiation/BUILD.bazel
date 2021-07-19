@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "MistypedExponentiation_lib",
+    srcs = [
+        "MistypedExponentiation.go",
+        "main.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/query-tests/InconsistentCode/MistypedExponentiation",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "MistypedExponentiation",
+    embed = [":MistypedExponentiation_lib"],
+    visibility = ["//visibility:public"],
+)

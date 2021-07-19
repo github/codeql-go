@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "trap",
+    srcs = [
+        "labels.go",
+        "trapwriter.go",
+        "util.go",
+    ],
+    importpath = "github.com/github/codeql-go/extractor/trap",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//language-packs/go/extractor/srcarchive",
+        "//language-packs/go/vendor/golang.org/x/tools/go/packages",
+    ],
+)
+
+go_test(
+    name = "trap_test",
+    srcs = ["trapwriter_test.go"],
+    embed = [":trap"],
+)

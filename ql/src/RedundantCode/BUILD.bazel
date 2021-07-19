@@ -1,0 +1,45 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "RedundantCode_lib",
+    srcs = [
+        "CompareIdenticalValues.go",
+        "CompareIdenticalValuesGood.go",
+        "DeadStoreOfField.go",
+        "DeadStoreOfFieldGood.go",
+        "DeadStoreOfLocalBad.go",
+        "DeadStoreOfLocalGood.go",
+        "DuplicateBranches.go",
+        "DuplicateBranchesGood.go",
+        "DuplicateCondition.go",
+        "DuplicateConditionGood.go",
+        "DuplicateSwitchCase.go",
+        "DuplicateSwitchCaseGood.go",
+        "ExprHasNoEffect.go",
+        "ExprHasNoEffectGood.go",
+        "ImpossibleInterfaceNilCheck.go",
+        "ImpossibleInterfaceNilCheckGood.go",
+        "NegativeLengthCheck.go",
+        "NegativeLengthCheckGood.go",
+        "RedundantExpr.go",
+        "RedundantExprGood.go",
+        "RedundantRecover1.go",
+        "RedundantRecover1Good.go",
+        "RedundantRecover2.go",
+        "RedundantRecover2Good.go",
+        "SelfAssignment.go",
+        "SelfAssignmentGood.go",
+        "ShiftOutOfRange.go",
+        "ShiftOutOfRangeGood.go",
+        "UnreachableStatement.go",
+        "UnreachableStatementGood.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/src/RedundantCode",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "RedundantCode",
+    embed = [":RedundantCode_lib"],
+    visibility = ["//visibility:public"],
+)

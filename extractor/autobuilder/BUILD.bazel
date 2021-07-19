@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "autobuilder",
+    srcs = ["autobuilder.go"],
+    importpath = "github.com/github/codeql-go/extractor/autobuilder",
+    visibility = ["//visibility:public"],
+    deps = ["//language-packs/go/extractor/util"],
+)

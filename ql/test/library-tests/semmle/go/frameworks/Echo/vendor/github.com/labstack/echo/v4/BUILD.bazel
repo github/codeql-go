@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "echo",
+    srcs = ["stub.go"],
+    importmap = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/frameworks/Echo/vendor/github.com/labstack/echo/v4",
+    importpath = "github.com/labstack/echo/v4",
+    visibility = ["//visibility:public"],
+)

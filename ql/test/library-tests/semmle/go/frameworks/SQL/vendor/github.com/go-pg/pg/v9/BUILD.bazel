@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "pg",
+    srcs = ["stub.go"],
+    importmap = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/frameworks/SQL/vendor/github.com/go-pg/pg/v9",
+    importpath = "github.com/go-pg/pg/v9",
+    visibility = ["//visibility:public"],
+)

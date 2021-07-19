@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "OpenUrlRedirect_lib",
+    srcs = [
+        "OpenUrlRedirect.go",
+        "OpenUrlRedirectGood.go",
+        "stdlib.go",
+        "util.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/query-tests/Security/CWE-601/OpenUrlRedirect",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "OpenUrlRedirect",
+    embed = [":OpenUrlRedirect_lib"],
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "CWE-643_lib",
+    srcs = [
+        "XPathInjection.go",
+        "tst.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/query-tests/Security/CWE-643",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//language-packs/go/ql/test/query-tests/Security/CWE-643/vendor/github.com/ChrisTrenkamp/goxpath",
+        "//language-packs/go/ql/test/query-tests/Security/CWE-643/vendor/github.com/ChrisTrenkamp/goxpath/tree",
+        "//language-packs/go/ql/test/query-tests/Security/CWE-643/vendor/github.com/antchfx/htmlquery",
+        "//language-packs/go/ql/test/query-tests/Security/CWE-643/vendor/github.com/antchfx/jsonquery",
+        "//language-packs/go/ql/test/query-tests/Security/CWE-643/vendor/github.com/antchfx/xmlquery",
+        "//language-packs/go/ql/test/query-tests/Security/CWE-643/vendor/github.com/antchfx/xpath",
+        "//language-packs/go/ql/test/query-tests/Security/CWE-643/vendor/github.com/go-xmlpath/xmlpath",
+        "//language-packs/go/ql/test/query-tests/Security/CWE-643/vendor/github.com/jbowtie/gokogiri/xml",
+        "//language-packs/go/ql/test/query-tests/Security/CWE-643/vendor/github.com/jbowtie/gokogiri/xpath",
+        "//language-packs/go/ql/test/query-tests/Security/CWE-643/vendor/github.com/santhosh-tekuri/xpathparser",
+    ],
+)
+
+go_binary(
+    name = "CWE-643",
+    embed = [":CWE-643_lib"],
+    visibility = ["//visibility:public"],
+)

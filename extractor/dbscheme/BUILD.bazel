@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "dbscheme",
+    srcs = [
+        "dbscheme.go",
+        "tables.go",
+    ],
+    importpath = "github.com/github/codeql-go/extractor/dbscheme",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//language-packs/go/extractor/trap",
+        "//language-packs/go/vendor/golang.org/x/tools/go/packages",
+    ],
+)

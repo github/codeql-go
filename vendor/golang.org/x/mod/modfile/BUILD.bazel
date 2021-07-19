@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "modfile",
+    srcs = [
+        "print.go",
+        "read.go",
+        "rule.go",
+    ],
+    importmap = "github.com/github/codeql-go/vendor/golang.org/x/mod/modfile",
+    importpath = "golang.org/x/mod/modfile",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//language-packs/go/vendor/golang.org/x/mod/internal/lazyregexp",
+        "//language-packs/go/vendor/golang.org/x/mod/module",
+    ],
+)

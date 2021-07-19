@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "label",
+    srcs = ["label.go"],
+    importmap = "github.com/github/codeql-go/vendor/golang.org/x/tools/internal/event/label",
+    importpath = "golang.org/x/tools/internal/event/label",
+    visibility = ["//language-packs/go/vendor/golang.org/x/tools:__subpackages__"],
+)

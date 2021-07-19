@@ -1,0 +1,20 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "CompareIdenticalValues_lib",
+    srcs = [
+        "CompareIdenticalValues.go",
+        "CompareIdenticalValuesGood.go",
+        "constants.go",
+        "tst.go",
+        "vp.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/query-tests/RedundantCode/CompareIdenticalValues",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "CompareIdenticalValues",
+    embed = [":CompareIdenticalValues_lib"],
+    visibility = ["//visibility:public"],
+)

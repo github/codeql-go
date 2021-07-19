@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "lazyregexp",
+    srcs = ["lazyre.go"],
+    importmap = "github.com/github/codeql-go/vendor/golang.org/x/mod/internal/lazyregexp",
+    importpath = "golang.org/x/mod/internal/lazyregexp",
+    visibility = ["//language-packs/go/vendor/golang.org/x/mod:__subpackages__"],
+)

@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "Types_lib",
+    srcs = [
+        "cyclic.go",
+        "depth.go",
+        "main.go",
+        "unknownFunction.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/Types",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "Types",
+    embed = [":Types_lib"],
+    visibility = ["//visibility:public"],
+)

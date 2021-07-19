@@ -1,0 +1,27 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "CWE-918_lib",
+    srcs = [
+        "RequestForgery.go",
+        "RequestForgeryGood.go",
+        "tst.go",
+        "util.go",
+        "websocket.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/query-tests/Security/CWE-918",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//language-packs/go/ql/test/query-tests/Security/CWE-918/vendor/github.com/gobwas/ws",
+        "//language-packs/go/ql/test/query-tests/Security/CWE-918/vendor/github.com/gorilla/websocket",
+        "//language-packs/go/ql/test/query-tests/Security/CWE-918/vendor/github.com/sacOO7/gowebsocket",
+        "//language-packs/go/ql/test/query-tests/Security/CWE-918/vendor/golang.org/x/net/websocket",
+        "//language-packs/go/ql/test/query-tests/Security/CWE-918/vendor/nhooyr.io/websocket",
+    ],
+)
+
+go_binary(
+    name = "CWE-918",
+    embed = [":CWE-918_lib"],
+    visibility = ["//visibility:public"],
+)

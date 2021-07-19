@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "CWE-798_lib",
+    srcs = ["HardcodedCredentials.go"],
+    importpath = "github.com/github/codeql-go/ql/src/Security/CWE-798",
+    visibility = ["//visibility:private"],
+    deps = ["@com_github_lib_pq//:go_default_library"],
+)
+
+go_binary(
+    name = "CWE-798",
+    embed = [":CWE-798_lib"],
+    visibility = ["//visibility:public"],
+)

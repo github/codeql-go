@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "CWE-640_lib",
+    srcs = [
+        "EmailBad.go",
+        "EmailGood.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/src/Security/CWE-640",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "CWE-640",
+    embed = [":CWE-640_lib"],
+    visibility = ["//visibility:public"],
+)

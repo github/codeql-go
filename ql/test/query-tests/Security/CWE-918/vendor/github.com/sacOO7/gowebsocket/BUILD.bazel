@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "gowebsocket",
+    srcs = ["stub.go"],
+    importmap = "github.com/github/codeql-go/ql/test/query-tests/Security/CWE-918/vendor/github.com/sacOO7/gowebsocket",
+    importpath = "github.com/sacOO7/gowebsocket",
+    visibility = ["//visibility:public"],
+)

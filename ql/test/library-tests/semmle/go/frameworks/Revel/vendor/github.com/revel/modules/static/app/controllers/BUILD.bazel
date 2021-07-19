@@ -1,0 +1,10 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "controllers",
+    srcs = ["stub.go"],
+    importmap = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/frameworks/Revel/vendor/github.com/revel/modules/static/app/controllers",
+    importpath = "github.com/revel/modules/static/app/controllers",
+    visibility = ["//visibility:public"],
+    deps = ["//language-packs/go/ql/test/library-tests/semmle/go/frameworks/Revel/vendor/github.com/revel/revel"],
+)

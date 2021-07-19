@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "PrintAst_lib",
+    srcs = [
+        "input.go",
+        "other.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/PrintAst",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "PrintAst",
+    embed = [":PrintAst_lib"],
+    visibility = ["//visibility:public"],
+)

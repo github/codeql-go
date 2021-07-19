@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "macaron_v1",
+    srcs = ["stub.go"],
+    importmap = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/frameworks/Macaron/vendor/gopkg.in/macaron.v1",
+    importpath = "gopkg.in/macaron.v1",
+    visibility = ["//visibility:public"],
+)

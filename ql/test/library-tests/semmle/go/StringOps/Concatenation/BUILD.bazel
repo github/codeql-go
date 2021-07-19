@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "Concatenation_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/StringOps/Concatenation",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "Concatenation",
+    embed = [":Concatenation_lib"],
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "CWE-807_lib",
+    srcs = [
+        "SensitiveConditionBypassBad.go",
+        "condition.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/experimental/CWE-807",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "CWE-807",
+    embed = [":CWE-807_lib"],
+    visibility = ["//visibility:public"],
+)

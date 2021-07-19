@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "Gin_lib",
+    srcs = ["Gin.go"],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/frameworks/Gin",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/Gin/vendor/github.com/gin-gonic/gin",
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/Gin/vendor/github.com/gin-gonic/gin/binding",
+    ],
+)
+
+go_binary(
+    name = "Gin",
+    embed = [":Gin_lib"],
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "SensitiveActions_lib",
+    srcs = [
+        "main.go",
+        "sensitiveactions.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/security/SensitiveActions",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "SensitiveActions",
+    embed = [":SensitiveActions_lib"],
+    visibility = ["//visibility:public"],
+)

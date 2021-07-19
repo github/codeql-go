@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "Function_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/Function",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "Function",
+    embed = [":Function_lib"],
+    visibility = ["//visibility:public"],
+)

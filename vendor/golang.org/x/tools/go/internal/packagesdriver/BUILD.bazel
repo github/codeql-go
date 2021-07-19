@@ -1,0 +1,10 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "packagesdriver",
+    srcs = ["sizes.go"],
+    importmap = "github.com/github/codeql-go/vendor/golang.org/x/tools/go/internal/packagesdriver",
+    importpath = "golang.org/x/tools/go/internal/packagesdriver",
+    visibility = ["//language-packs/go/vendor/golang.org/x/tools/go:__subpackages__"],
+    deps = ["//language-packs/go/vendor/golang.org/x/tools/internal/gocommand"],
+)

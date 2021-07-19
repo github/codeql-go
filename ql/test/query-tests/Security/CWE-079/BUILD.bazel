@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "CWE-079_lib",
+    srcs = [
+        "ReflectedXss.go",
+        "ReflectedXssGood.go",
+        "contenttype.go",
+        "tst.go",
+        "util.go",
+        "websocketXss.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/query-tests/Security/CWE-079",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//language-packs/go/ql/test/query-tests/Security/CWE-079/vendor/github.com/gorilla/websocket",
+        "//language-packs/go/ql/test/query-tests/Security/CWE-079/vendor/golang.org/x/net/websocket",
+        "//language-packs/go/ql/test/query-tests/Security/CWE-079/vendor/nhooyr.io/websocket",
+    ],
+)
+
+go_binary(
+    name = "CWE-079",
+    embed = [":CWE-079_lib"],
+    visibility = ["//visibility:public"],
+)

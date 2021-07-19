@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "CWE-190_lib",
+    srcs = [
+        "AllocationSizeOverflow.go",
+        "AllocationSizeOverflowGood.go",
+        "AllocationSizeOverflowGood2.go",
+        "array_vs_contents.go",
+        "stubs.go",
+        "tst.go",
+        "tst2.go",
+        "tst3.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/query-tests/Security/CWE-190",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "CWE-190",
+    embed = [":CWE-190_lib"],
+    visibility = ["//visibility:public"],
+)

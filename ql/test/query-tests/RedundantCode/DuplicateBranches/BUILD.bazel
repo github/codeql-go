@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "DuplicateBranches_lib",
+    srcs = [
+        "DuplicateBranches.go",
+        "DuplicateBranchesGood.go",
+        "main.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/query-tests/RedundantCode/DuplicateBranches",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "DuplicateBranches",
+    embed = [":DuplicateBranches_lib"],
+    visibility = ["//visibility:public"],
+)

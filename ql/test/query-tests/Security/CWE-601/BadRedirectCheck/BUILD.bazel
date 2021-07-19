@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "BadRedirectCheck_lib",
+    srcs = [
+        "BadRedirectCheck.go",
+        "BadRedirectCheckGood.go",
+        "cves.go",
+        "main.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/query-tests/Security/CWE-601/BadRedirectCheck",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "BadRedirectCheck",
+    embed = [":BadRedirectCheck_lib"],
+    visibility = ["//visibility:public"],
+)

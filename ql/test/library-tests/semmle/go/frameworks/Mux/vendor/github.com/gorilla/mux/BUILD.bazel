@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "mux",
+    srcs = ["stub.go"],
+    importmap = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/frameworks/Mux/vendor/github.com/gorilla/mux",
+    importpath = "github.com/gorilla/mux",
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "InconsistentLoopOrientation_lib",
+    srcs = [
+        "InconsistentLoopOrientation.go",
+        "InconsistentLoopOrientationGood.go",
+        "main.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/query-tests/InconsistentCode/InconsistentLoopOrientation",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "InconsistentLoopOrientation",
+    embed = [":InconsistentLoopOrientation_lib"],
+    visibility = ["//visibility:public"],
+)
