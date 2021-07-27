@@ -23,3 +23,9 @@ tools/osx64
 tools/win64
 tools/tokenizer.jar
 main
+
+# packaging metadata
+.codeql
+ql/src/data
+ql/src/size
+ql/src/lock
