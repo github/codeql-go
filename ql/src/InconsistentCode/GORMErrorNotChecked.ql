@@ -4,7 +4,7 @@
  *              without checking whether there was an error.
  * @kind problem
  * @problem.severity warning
- * @id turboscan/go/gorm-error-not-checked
+ * @id go/gorm-error-not-checked
  * @precision high
  */
 

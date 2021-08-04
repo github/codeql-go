@@ -5,7 +5,7 @@
  * @kind path-problem
  * @problem.severity warning
  * @precision high
- * @id turboscan/go/database-call-in-loop
+ * @id go/database-call-in-loop
  */
 
 import go
