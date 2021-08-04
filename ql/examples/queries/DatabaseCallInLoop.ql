@@ -5,7 +5,7 @@
  * @kind path-problem
  * @problem.severity warning
  * @precision high
- * @id go/database-call-in-loop
+ * @id go/examples/database-call-in-loop
  */
 
 import go
