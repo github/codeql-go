@@ -13,13 +13,13 @@ import go
 class DatabaseAccess extends CallExpr {
   DatabaseAccess() {
     this.getTarget().(Method).getReceiverBaseType().getQualifiedName() = "github.com/jinzhu/gorm.DB" and
-    (
-      // List all terminating Gorm methods
-      this.getTarget().getName() = [
-        "Find", "Take", "Last", "Scan", "Row", "Rows", "ScanRows", "Pluck", "Count", "FirstOrInit", "FindOrCreate",
-        "Update", "Updates", "UpdateColumn", "UpdateColumns", "Save", "Create", "Delete", "Exec"
+    // List all terminating Gorm methods
+    this.getTarget().getName() =
+      [
+        "Find", "Take", "Last", "Scan", "Row", "Rows", "ScanRows", "Pluck", "Count", "FirstOrInit",
+        "FindOrCreate", "Update", "Updates", "UpdateColumn", "UpdateColumns", "Save", "Create",
+        "Delete", "Exec"
       ]
-    )
   }
 }
 
@@ -80,5 +80,5 @@ query predicate edges(CallGraphNode pred, CallGraphNode succ) {
 
 from TwirpApiMethod apiMethod, LoopStmt loop, DatabaseAccess dbAccess
 where edges*(apiMethod, loop) and edges*(loop, dbAccess)
-select dbAccess, loop, dbAccess, "$@ is called in $@ and can be called from the $@ twirp endpoint", dbAccess,
-  dbAccess.toString(), loop, "a loop", apiMethod, apiMethod.getName()
+select dbAccess, loop, dbAccess, "$@ is called in $@ and can be called from the $@ twirp endpoint",
+  dbAccess, dbAccess.toString(), loop, "a loop", apiMethod, apiMethod.getName()

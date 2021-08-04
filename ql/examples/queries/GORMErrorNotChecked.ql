@@ -10,7 +10,7 @@
 
 import go
 import semmle.go.frameworks.SQL
- 
+
 from DataFlow::MethodCallNode call
 where
   exists(string name | call.getTarget().hasQualifiedName(Gorm::packagePath(), "DB", name) |
@@ -23,9 +23,10 @@ where
     succ = any(Write w).getRhs()
     or
     // get returned
- 	succ instanceof DataFlow::ResultNode
+    succ instanceof DataFlow::ResultNode
     or
     // have its `Error` field read
     exists(DataFlow::FieldReadNode fr | fr.readsField(succ, _, _, "Error"))
   )
-select call, "This call appears to interact with the database without checking whether an error was encountered."
+select call,
+  "This call appears to interact with the database without checking whether an error was encountered."
