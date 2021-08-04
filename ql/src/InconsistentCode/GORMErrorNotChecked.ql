@@ -9,13 +9,23 @@
  */
 
 import go
+import semmle.go.frameworks.SQL
  
-from CallExpr ce
-where 
-  ce.getType().(PointerType).getBaseType().getQualifiedName() = "github.com/jinzhu/gorm.DB" and
-  not exists(Assignment a | ce.getParent+() = a) and
-  not exists(ReturnStmt s | ce.getParent+() = s) and
-  not exists(SelectorExpr se | se = ce.getParent+() | se.getSelector().getName() = "Error" ) and
-  ce.getCalleeName() != "InstantSet" and
-  ce.getCalleeName() != "LogMode"
-select ce, "This call appears to interact with the database without checking whether an error was encountered."
+from DataFlow::MethodCallNode call
+where
+  exists(string name | call.getTarget().hasQualifiedName(Gorm::packagePath(), "DB", name) |
+    name != "InstantSet" and
+    name != "LogMode"
+  ) and
+  // the value from the call does not:
+  not exists(DataFlow::Node succ | TaintTracking::localTaintStep*(call, succ) |
+    // get assigned to any variables
+    succ = any(Write w).getRhs()
+    or
+    // get returned
+ 	succ instanceof DataFlow::ResultNode
+    or
+    // have its `Error` field read
+    exists(DataFlow::FieldReadNode fr | fr.readsField(succ, _, _, "Error"))
+  )
+select call, "This call appears to interact with the database without checking whether an error was encountered."
