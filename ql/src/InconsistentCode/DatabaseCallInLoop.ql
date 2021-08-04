@@ -15,25 +15,10 @@ class DatabaseAccess extends CallExpr {
     this.getTarget().(Method).getReceiverBaseType().getQualifiedName() = "github.com/jinzhu/gorm.DB" and
     (
       // List all terminating Gorm methods
-      this.getTarget().getName() = "Find" or
-      this.getTarget().getName() = "Take" or
-      this.getTarget().getName() = "Last" or
-      this.getTarget().getName() = "Scan" or
-      this.getTarget().getName() = "Row" or
-      this.getTarget().getName() = "Rows" or
-      this.getTarget().getName() = "ScanRows" or
-      this.getTarget().getName() = "Pluck" or
-      this.getTarget().getName() = "Count" or
-      this.getTarget().getName() = "FirstOrInit" or
-      this.getTarget().getName() = "FindOrCreate" or
-      this.getTarget().getName() = "Update" or
-      this.getTarget().getName() = "Updates" or
-      this.getTarget().getName() = "UpdateColumn" or
-      this.getTarget().getName() = "UpdateColumns" or
-      this.getTarget().getName() = "Save" or
-      this.getTarget().getName() = "Create" or
-      this.getTarget().getName() = "Delete" or
-      this.getTarget().getName() = "Exec"
+      this.getTarget().getName() = [
+        "Find", "Take", "Last", "Scan", "Row", "Rows", "ScanRows", "Pluck", "Count", "FirstOrInit", "FindOrCreate",
+        "Update", "Updates", "UpdateColumn", "UpdateColumns", "Save", "Create", "Delete", "Exec"
+      ]
     )
   }
 }
