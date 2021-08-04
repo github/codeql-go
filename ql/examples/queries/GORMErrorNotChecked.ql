@@ -1,6 +1,6 @@
 /**
  * @name GORM error not checked
- * @description A call that interact with the database using the GORM library
+ * @description A call that interacts with the database using the GORM library
  *              without checking whether there was an error.
  * @kind problem
  * @problem.severity warning
