@@ -12,7 +12,7 @@
  */
 
 import go
-import Pgx
+import experimental.frameworks.Pgx
 import DataFlow::PathGraph
 
 class PgxSqlInjectionConfiguration extends TaintTracking::Configuration {
@@ -20,7 +20,7 @@ class PgxSqlInjectionConfiguration extends TaintTracking::Configuration {
 
   override predicate isSource(DataFlow::Node source) { source instanceof UntrustedFlowSource }
 
-  override predicate isSink(DataFlow::Node sink) { sink instanceof Japroc::QueryString }
+  override predicate isSink(DataFlow::Node sink) { sink instanceof Pgx::QueryString }
 }
 
 from PgxSqlInjectionConfiguration cfg, DataFlow::PathNode source, DataFlow::PathNode sink

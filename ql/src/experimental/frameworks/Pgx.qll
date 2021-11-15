@@ -1,6 +1,11 @@
+/**
+ * Provides predicates and class for working with sql injection sinks
+ * from the `github.com/jackc/pgx` and `github.com/jackc/pgconn` packages.
+ */
+
 import go
 
-module Japroc {
+module Pgx {
   /** Gets the package name for Jackc. */
   string pgx3PackagePath() { result = "github.com/jackc/pgx" }
 
