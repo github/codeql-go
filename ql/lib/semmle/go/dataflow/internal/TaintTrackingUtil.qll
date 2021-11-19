@@ -4,11 +4,17 @@
 
 private import go
 
+private predicate localTaintStepPlus(DataFlow::Node src, DataFlow::Node sink) =
+  fastTC(localTaintStep/2)(src, sink)
+
 /**
  * Holds if taint can flow from `src` to `sink` in zero or more
  * local (intra-procedural) steps.
  */
-predicate localTaint(DataFlow::Node src, DataFlow::Node sink) { localTaintStep*(src, sink) }
+predicate localTaint(DataFlow::Node src, DataFlow::Node sink) {
+  src = sink or
+  localTaintStepPlus(src, sink)
+}
 
 /**
  * Holds if taint can flow from `src` to `sink` in zero or more
