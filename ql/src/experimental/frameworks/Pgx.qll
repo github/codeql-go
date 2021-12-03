@@ -9,17 +9,17 @@ module Pgx {
   /** Gets the package name for Jackc. */
   string pgx3PackagePath() { result = "github.com/jackc/pgx" }
 
-  string pgxStdlibPackagePath() { result = package(["github.com/jackc/pgx"], "stdlib") }
+  string pgxStdlibPackagePath() { result = package("github.com/jackc/pgx", "stdlib") }
 
   string pgxPackagePath() {
-    result = package(["github.com/jackc/pgx"], "") and result != pgx3PackagePath()
+    result = package("github.com/jackc/pgx", "") and result != pgx3PackagePath()
   }
 
-  string pgxAnyPackagePath() { result = package(["github.com/jackc/pgx"], "") }
+  string pgxAnyPackagePath() { result = package("github.com/jackc/pgx", "") }
 
-  string pgxPoolPackagePath() { result = package(["github.com/jackc/pgx"], "pgxpool") }
+  string pgxPoolPackagePath() { result = package("github.com/jackc/pgx", "pgxpool") }
 
-  string pgconnPackagePath() { result = package(["github.com/jackc/pgconn"], "") }
+  string pgconnPackagePath() { result = package("github.com/jackc/pgconn", "") }
 
   predicate batchQueries(string pkg, string tp, string m, int arg) {
     pkg = pgxAnyPackagePath() and
