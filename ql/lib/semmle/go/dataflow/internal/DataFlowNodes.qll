@@ -542,6 +542,9 @@ module Public {
     /** Gets the data flow node corresponding to the receiver of this call, if any. */
     Node getReceiver() { result = this.getACalleeSource().(MethodReadNode).getReceiver() }
 
+    /** Holds if this callee calls a callable that is variadic. */
+    predicate isVariadic() { this.getACalleeIncludingExternals().isVariadic() }
+
     /** Holds if this call has an ellipsis after its last argument. */
     predicate hasEllipsis() { expr.hasEllipsis() }
   }
@@ -712,6 +715,12 @@ module Public {
         or
         exists(c.(MethodCallNode).getTarget().getBody())
       )
+    }
+
+    /** Holds if this argument is to a call that has a variadic callee. */
+    predicate isVariadic() {
+      this.getCall().isVariadic() and
+      i >= this.getCall().getACalleeIncludingExternals().getType().getNumParameter() - 1
     }
 
     /**

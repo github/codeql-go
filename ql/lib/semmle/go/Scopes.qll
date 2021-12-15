@@ -620,6 +620,9 @@ class Callable extends TCallable {
     result = this.asFuncLit().getType()
   }
 
+  /** Holds if this callable is variadic. */
+  predicate isVariadic() { this.getType().isVariadic() }
+
   /** Gets the name of this callable. */
   string getName() {
     result = this.asFunction().getName() or
