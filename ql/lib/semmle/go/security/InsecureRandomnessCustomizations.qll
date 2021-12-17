@@ -37,10 +37,15 @@ module InsecureRandomness {
   }
 
   /**
-   * Gets an interface outside of the `crypto` package which is the same as an
-   * interface in the `crypto` package.
+   * Gets an interface method from outside of the `crypto` package which is the
+   * same as an interface method in the `crypto` package.
    */
-  string nonCryptoInterface() { result = ["io.Writer", "io.Reader", "sync.Mutex", "net.Listener"] }
+  Method nonCryptoInterfaceMethod() {
+    result.hasQualifiedName("io", "Writer", _) or
+    result.hasQualifiedName("io", "Reader", _) or
+    result.hasQualifiedName("sync", "Mutex") or
+    result.hasQualifiedName("net", "Listener", _)
+  }
 
   /**
    * A cryptographic algorithm.
@@ -59,7 +64,7 @@ module InsecureRandomness {
         not (pkg = "crypto/cipher" and name = ["Read", "Write"]) and
         // Some interfaces in the `crypto` package are the same as interfaces
         // elsewhere, e.g. tls.listener is the same as net.Listener
-        not fn.hasQualifiedName(nonCryptoInterface(), _) and
+        not fn.(Method).implements(nonCryptoInterfaceMethod()) and
         this = fn.getACall().getAnArgument()
       )
     }
