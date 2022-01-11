@@ -382,6 +382,19 @@ class Function extends ValueEntity, @functionobject {
     this.getFuncDecl() = result.getACallee()
   }
 
+  /**
+   * Gets a call to this function.
+   *
+   * See documentation for `getACall` for the difference between that function
+   * and this one.
+   */
+  pragma[nomagic]
+  DataFlow::CallNode getACallIncludingExternals() {
+    this = result.getTarget()
+    or
+    this = result.getACalleeIncludingExternals().asFunction()
+  }
+
   /** Gets the declaration of this function, if any. */
   FuncDecl getFuncDecl() { none() }
 
