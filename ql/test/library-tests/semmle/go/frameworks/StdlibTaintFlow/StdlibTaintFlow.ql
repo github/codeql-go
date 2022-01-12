@@ -15,13 +15,13 @@ class Link extends TaintTracking::FunctionModel {
 
 predicate isSource(DataFlow::Node source, DataFlow::CallNode call) {
   exists(Function fn | fn.hasQualifiedName(_, "newSource") |
-    call = fn.getACall() and source = call.getResult()
+    call = fn.getACallIncludingExternals() and source = call.getResult()
   )
 }
 
 predicate isSink(DataFlow::Node sink, DataFlow::CallNode call) {
   exists(Function fn | fn.hasQualifiedName(_, "sink") |
-    call = fn.getACall() and sink = call.getArgument(1)
+    call = fn.getACallIncludingExternals() and sink = call.getArgument(1)
   )
 }
 

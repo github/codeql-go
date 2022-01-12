@@ -133,7 +133,7 @@ module WebSocketRequestCall {
  */
 class WebSocketReaderAsSource extends UntrustedFlowSource::Range {
   WebSocketReaderAsSource() {
-    exists(WebSocketReader r | this = r.getAnOutput().getNode(r.getACall()))
+    exists(WebSocketReader r | this = r.getAnOutput().getNode(r.getACallIncludingExternals()))
   }
 }
 

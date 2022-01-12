@@ -149,7 +149,7 @@ module StringOps {
         slice.getLow().getIntValue() = 0 and
         (
           exists(DataFlow::CallNode len |
-            len = Builtin::len().getACall() and
+            len = Builtin::len().getACallIncludingExternals() and
             len.getArgument(0) = globalValueNumber(substring).getANode() and
             slice.getHigh() = globalValueNumber(len).getANode()
           )
@@ -319,7 +319,9 @@ module StringOps {
      * transformations that we cannot easily represent.
      */
     private class SprintfConcat extends Range instanceof Formatting::StringFormatCall {
-      SprintfConcat() { this = any(Function f | f.hasQualifiedName("fmt", "Sprintf")).getACall() }
+      SprintfConcat() {
+        this = any(Function f | f.hasQualifiedName("fmt", "Sprintf")).getACallIncludingExternals()
+      }
 
       override DataFlow::Node getOperand(int n) {
         result = Formatting::StringFormatCall.super.getOperand(n, ["%s", "%v"])

@@ -37,7 +37,7 @@ abstract class FunctionModel extends Function {
 
   /** Holds if this function model causes data to flow from `pred` to `succ` for the call `c`. */
   predicate flowStepForCall(DataFlow::Node pred, DataFlow::Node succ, DataFlow::CallNode c) {
-    c = this.getACall() and
+    c = this.getACallIncludingExternals() and
     exists(FunctionInput inp, FunctionOutput outp | this.hasDataFlow(inp, outp) |
       pred = inp.getNode(c) and
       succ = outp.getNode(c)
@@ -293,7 +293,7 @@ abstract class BarrierGuard extends Node {
     Node resNode
   ) {
     this.guardingFunction(f, inp, outp, p) and
-    c = f.getACall() and
+    c = f.getACallIncludingExternals() and
     nd = inp.getNode(c) and
     localFlow(pragma[only_bind_out](outp.getNode(c)), resNode)
   }
@@ -352,7 +352,7 @@ abstract class BarrierGuard extends Node {
         |
           ret = getUniqueOutputNode(fd, outp) and
           this.guardingFunction(f2, inp2, outp2, outpProp) and
-          c = f2.getACall() and
+          c = f2.getACallIncludingExternals() and
           arg = inp2.getNode(c) and
           (
             // See comment above ("This method's contract...") for rationale re: the inversion of

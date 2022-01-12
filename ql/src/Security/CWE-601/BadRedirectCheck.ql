@@ -46,9 +46,9 @@ predicate isCheckedForSecondSlash(SsaWithFields v) {
  */
 predicate isCleaned(DataFlow::Node nd) {
   exists(Function clean | clean.hasQualifiedName("path", "Clean") |
-    nd = clean.getACall()
+    nd = clean.getACallIncludingExternals()
     or
-    nd = clean.getACall().getArgument(0)
+    nd = clean.getACallIncludingExternals().getArgument(0)
   )
   or
   isCleaned(nd.getAPredecessor())

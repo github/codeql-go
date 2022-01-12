@@ -50,7 +50,7 @@ module AllocationSizeOverflow {
     MarshalingSource() {
       exists(MarshalingFunction marshal, DataFlow::CallNode call |
         // Binding order tweak: start with marshalling function calls then work outwards:
-        pragma[only_bind_into](call) = marshal.getACall() and
+        pragma[only_bind_into](call) = marshal.getACallIncludingExternals() and
         // rule out cases where we can tell that the result will always be small
         exists(FunctionInput inp | inp = marshal.getAnInput() | isBig(inp.getNode(call).asExpr())) and
         this = marshal.getOutput().getNode(call)
@@ -68,7 +68,7 @@ module AllocationSizeOverflow {
         read.hasQualifiedName("io/ioutil", "ReadAll") or
         read.hasQualifiedName("io/ioutil", "ReadFile")
       |
-        this = DataFlow::extractTupleElement(read.getACall(), 0)
+        this = DataFlow::extractTupleElement(read.getACallIncludingExternals(), 0)
       )
     }
   }
@@ -102,7 +102,7 @@ module AllocationSizeOverflow {
   class LengthCheck extends SanitizerGuard, DataFlow::RelationalComparisonNode {
     override predicate checks(Expr e, boolean branch) {
       exists(DataFlow::CallNode lesser | this.leq(branch, lesser, _, _) |
-        lesser = Builtin::len().getACall() and
+        lesser = Builtin::len().getACallIncludingExternals() and
         globalValueNumber(DataFlow::exprNode(e)) = globalValueNumber(lesser.getArgument(0))
       )
     }
@@ -144,7 +144,9 @@ module AllocationSizeOverflow {
    * The first or second (non-type) argument to a call to `make`, considered as an allocation size.
    */
   private class DefaultAllocationSize extends AllocationSize {
-    DefaultAllocationSize() { this = Builtin::make().getACall().getArgument([0 .. 1]) }
+    DefaultAllocationSize() {
+      this = Builtin::make().getACallIncludingExternals().getArgument([0 .. 1])
+    }
   }
 
   /** Holds if `t` is a type whose values are likely to marshal to relatively small blobs. */

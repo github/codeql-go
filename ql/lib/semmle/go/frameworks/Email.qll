@@ -32,13 +32,13 @@ module EmailData {
       // func (c *Client) Data() (io.WriteCloser, error)
       exists(Method data |
         data.hasQualifiedName("net/smtp", "Client", "Data") and
-        this.(DataFlow::SsaNode).getInit() = data.getACall().getResult(0)
+        this.(DataFlow::SsaNode).getInit() = data.getACallIncludingExternals().getResult(0)
       )
       or
       // func SendMail(addr string, a Auth, from string, to []string, msg []byte) error
       exists(Function sendMail |
         sendMail.hasQualifiedName("net/smtp", "SendMail") and
-        this = sendMail.getACall().getArgument(4)
+        this = sendMail.getACallIncludingExternals().getArgument(4)
       )
     }
   }
@@ -65,19 +65,19 @@ module EmailData {
       // func NewSingleEmail(from *Email, subject string, to *Email, plainTextContent string, htmlContent string) *SGMailV3
       exists(Function newSingleEmail |
         newSingleEmail.hasQualifiedName(sendgridMail(), "NewSingleEmail") and
-        this = newSingleEmail.getACall().getArgument([1, 3, 4])
+        this = newSingleEmail.getACallIncludingExternals().getArgument([1, 3, 4])
       )
       or
       // func NewV3MailInit(from *Email, subject string, to *Email, content ...*Content) *SGMailV3
       exists(Function newv3MailInit |
         newv3MailInit.hasQualifiedName(sendgridMail(), "NewV3MailInit") and
-        this = newv3MailInit.getACall().getArgument(any(int i | i = 1 or i >= 3))
+        this = newv3MailInit.getACallIncludingExternals().getArgument(any(int i | i = 1 or i >= 3))
       )
       or
       // func (s *SGMailV3) AddContent(c ...*Content) *SGMailV3
       exists(Method addContent |
         addContent.hasQualifiedName(sendgridMail(), "SGMailV3", "AddContent") and
-        this = addContent.getACall().getAnArgument()
+        this = addContent.getACallIncludingExternals().getAnArgument()
       )
     }
   }

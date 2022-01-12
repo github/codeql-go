@@ -17,7 +17,7 @@ from ComparisonExpr cmp, DataFlow::Node op, int ub, string d, string r
 where
   (
     exists(BuiltinFunction bf | bf = Builtin::len() or bf = Builtin::cap() |
-      op = bf.getACall() and d = "'" + bf.getName() + "'"
+      op = bf.getACallIncludingExternals() and d = "'" + bf.getName() + "'"
     )
     or
     op.getType().getUnderlyingType() instanceof UnsignedIntegerType and

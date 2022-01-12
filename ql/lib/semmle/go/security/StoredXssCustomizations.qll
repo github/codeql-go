@@ -44,7 +44,7 @@ module StoredXss {
       // the second parameter to a filepath.Walk function
       exists(DataFlow::FunctionNode f, Function walkFn | this = f.getParameter(0) |
         walkFn.hasQualifiedName("path/filepath", ["Walk", "WalkDir"]) and
-        walkFn.getACall().getArgument(1) = f.getASuccessor*()
+        walkFn.getACallIncludingExternals().getArgument(1) = f.getASuccessor*()
       )
       or
       // A call to os.FileInfo.Name

@@ -15,7 +15,7 @@ module DatabaseSql {
     Query() {
       exists(Method meth, string base, string m |
         meth.hasQualifiedName("database/sql", t, m) and
-        this = meth.getACall()
+        this = meth.getACallIncludingExternals()
       |
         t = ["DB", "Tx", "Conn", "Stmt"] and
         base = ["Exec", "Query", "QueryRow"] and
@@ -40,7 +40,7 @@ module DatabaseSql {
       exists(Method meth, string base, string t, string m, int n |
         t = ["DB", "Tx", "Conn"] and
         meth.hasQualifiedName("database/sql", t, m) and
-        this = meth.getACall().getArgument(n)
+        this = meth.getACallIncludingExternals().getArgument(n)
       |
         base = ["Exec", "Prepare", "Query", "QueryRow"] and
         (
@@ -71,7 +71,7 @@ module DatabaseSql {
           or
           meth.hasQualifiedName("database/sql/driver", "StmtQueryContext", "QueryContext")
         ) and
-        this = meth.getACall()
+        this = meth.getACallIncludingExternals()
       )
     }
 
@@ -103,7 +103,7 @@ module DatabaseSql {
           or
           meth.hasQualifiedName("database/sql/driver", "QueryerContext", "QueryContext") and n = 1
         ) and
-        this = meth.getACall().getArgument(n)
+        this = meth.getACallIncludingExternals().getArgument(n)
       )
     }
   }

@@ -95,7 +95,7 @@ module SQL {
               fn.(Method).hasQualifiedName(sq, builder, "Where")
             )
           ) and
-          this = fn.getACall().getArgument(0) and
+          this = fn.getACallIncludingExternals().getArgument(0) and
           this.getType().getUnderlyingType() instanceof StringType
         )
       }
@@ -126,7 +126,7 @@ module SQL {
             )
           )
         |
-          this = f.getACall().getArgument(arg)
+          this = f.getACallIncludingExternals().getArgument(arg)
         )
       }
     }
@@ -151,7 +151,7 @@ module SQL {
             arg = 1
           )
         |
-          this = f.getACall().getArgument(arg)
+          this = f.getACallIncludingExternals().getArgument(arg)
         )
       }
     }
@@ -183,7 +183,7 @@ module SQL {
     GormSink() {
       exists(Method meth, string package, string name |
         meth.hasQualifiedName(package, "DB", name) and
-        this = meth.getACall().getArgument(0) and
+        this = meth.getACallIncludingExternals().getArgument(0) and
         package = Gorm::packagePath() and
         name in [
             "Where", "Raw", "Order", "Not", "Or", "Select", "Table", "Group", "Having", "Joins",
@@ -198,7 +198,7 @@ module SQL {
     SqlxSink() {
       exists(Method meth, string name, int n |
         meth.hasQualifiedName(package("github.com/jmoiron/sqlx", ""), ["DB", "Tx"], name) and
-        this = meth.getACall().getArgument(n)
+        this = meth.getACallIncludingExternals().getArgument(n)
       |
         name = ["Select", "Get"] and n = 1
         or
@@ -230,7 +230,7 @@ module Xorm {
     XormSink() {
       exists(Method meth, string type, string name, int n |
         meth.hasQualifiedName(Xorm::packagePath(), type, name) and
-        this = meth.getACall().getArgument(n) and
+        this = meth.getACallIncludingExternals().getArgument(n) and
         type = ["Engine", "Session"]
       |
         name =

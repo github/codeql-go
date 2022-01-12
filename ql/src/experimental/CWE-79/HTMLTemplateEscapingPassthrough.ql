@@ -120,7 +120,7 @@ class FlowConfPassthroughTypeConversionToTemplateExecutionCall extends TaintTrac
 predicate isSinkToTemplateExec(DataFlow::Node sink, DataFlow::CallNode call) {
   exists(Method fn, string methodName |
     fn.hasQualifiedName("html/template", "Template", methodName) and
-    call = fn.getACall()
+    call = fn.getACallIncludingExternals()
   |
     methodName = "Execute" and sink = call.getArgument(1)
     or

@@ -72,7 +72,7 @@ module Couchbase {
         structName in ["Bucket", "Cluster"] and
         methodName in ["ExecuteN1qlQuery", "ExecuteAnalyticsQuery"] and
         meth.hasQualifiedName(packagePath(), structName, methodName) and
-        this = meth.getACall().getArgument(0)
+        this = meth.getACallIncludingExternals().getArgument(0)
       )
     }
   }
@@ -91,7 +91,7 @@ module Couchbase {
         structName in ["Cluster", "Scope"] and
         methodName in ["AnalyticsQuery", "Query"] and
         meth.hasQualifiedName(packagePath(), structName, methodName) and
-        this = meth.getACall().getArgument(0)
+        this = meth.getACallIncludingExternals().getArgument(0)
       )
     }
   }

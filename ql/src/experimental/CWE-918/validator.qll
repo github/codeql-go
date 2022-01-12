@@ -106,7 +106,7 @@ private class StructValidationFunction extends DataFlow::BarrierGuard, DataFlow:
             .hasQualifiedName("github.com/go-playground/validator", "Validate", "Struct") and
         validationKindKey = "validate"
       ) and
-      bindCall = bindFunction.getACall() and
+      bindCall = bindFunction.getACallIncludingExternals() and
       checked = dereference(bindCall.getAnArgument()) and
       resultErr = bindCall.getResult().getASuccessor*() and
       nilProperty().checkOn(this, safeOutcome, resultErr)
@@ -145,7 +145,7 @@ class ValidatorVarCheck extends DataFlow::BarrierGuard, DataFlow::EqualityTestNo
   ValidatorVarCheck() {
     exists(Method validatorMethod, DataFlow::Node resultErr |
       validatorMethod.hasQualifiedName("github.com/go-playground/validator", "Validate", "Var") and
-      callToValidator = validatorMethod.getACall() and
+      callToValidator = validatorMethod.getACallIncludingExternals() and
       isAlphanumericValidationKind(callToValidator.getArgument(1).getStringValue()) and
       resultErr = callToValidator.getResult().getASuccessor*() and
       nilProperty().checkOn(this, outcome, resultErr)

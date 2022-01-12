@@ -90,7 +90,7 @@ module Beego {
   private class BeegoContextSource extends UntrustedFlowSource::Range {
     BeegoContextSource() {
       exists(Method m | m.hasQualifiedName(contextPackagePath(), "Context", "GetCookie") |
-        this = m.getACall().getResult()
+        this = m.getACallIncludingExternals().getResult()
       )
     }
   }
@@ -145,7 +145,7 @@ module Beego {
 
     BeegoResponseBody() {
       exists(Method m | m.hasQualifiedName(contextPackagePath(), "BeegoOutput", methodName) |
-        call = m.getACall() and
+        call = m.getACallIncludingExternals() and
         this = call.getArgument(0)
       ) and
       methodName in ["Body", "JSON", "JSONP", "ServeFormatted", "XML", "YAML"]
@@ -178,9 +178,9 @@ module Beego {
 
     ControllerResponseBody() {
       exists(Method m | m.hasQualifiedName(packagePath(), "Controller", name) |
-        name = "CustomAbort" and this = m.getACall().getArgument(1)
+        name = "CustomAbort" and this = m.getACallIncludingExternals().getArgument(1)
         or
-        name = "SetData" and this = m.getACall().getArgument(0)
+        name = "SetData" and this = m.getACallIncludingExternals().getArgument(0)
       )
     }
 
@@ -199,9 +199,9 @@ module Beego {
 
     ContextResponseBody() {
       exists(Method m | m.hasQualifiedName(contextPackagePath(), "Context", name) |
-        name = "Abort" and this = m.getACall().getArgument(1)
+        name = "Abort" and this = m.getACallIncludingExternals().getArgument(1)
         or
-        name = "WriteString" and this = m.getACall().getArgument(0)
+        name = "WriteString" and this = m.getACallIncludingExternals().getArgument(0)
       )
     }
 
@@ -282,7 +282,7 @@ module Beego {
     FsOperations() {
       this.getTarget().hasQualifiedName(packagePath(), "Walk")
       or
-      exists(Method m | this = m.getACall() |
+      exists(Method m | this = m.getACallIncludingExternals() |
         m.hasQualifiedName(packagePath(), "FileSystem", "Open") or
         m.hasQualifiedName(packagePath(), "Controller", "SaveToFile")
       )
@@ -305,7 +305,9 @@ module Beego {
         or
         package = contextPackagePath() and className = "Context"
       ) and
-      this = any(Method m | m.hasQualifiedName(package, className, "Redirect")).getACall()
+      this =
+        any(Method m | m.hasQualifiedName(package, className, "Redirect"))
+            .getACallIncludingExternals()
     }
 
     override DataFlow::Node getUrl() {

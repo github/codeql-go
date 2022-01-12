@@ -47,7 +47,7 @@ module Glog {
   private class GlogCall extends LoggerCall::Range, DataFlow::CallNode {
     GlogFunction callee;
 
-    GlogCall() { this = callee.getACall() }
+    GlogCall() { this = callee.getACallIncludingExternals() }
 
     override DataFlow::Node getAMessageComponent() {
       result = this.getArgument(any(int i | i >= callee.getFirstPrintedArg()))

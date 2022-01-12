@@ -14,7 +14,7 @@ import go
  */
 predicate regexpFunctionChecksExpr(DataFlow::Node resultNode, Expr checked, boolean branch) {
   exists(RegexpMatchFunction matchfn, DataFlow::CallNode call |
-    matchfn.getACall() = call and
+    matchfn.getACallIncludingExternals() = call and
     resultNode = matchfn.getResult().getNode(call).getASuccessor*() and
     checked = matchfn.getValue().getNode(call).asExpr() and
     (branch = false or branch = true)

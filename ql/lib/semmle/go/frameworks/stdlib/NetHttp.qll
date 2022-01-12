@@ -126,7 +126,7 @@ module NetHttp {
     RequestBody() {
       exists(Function newRequest |
         newRequest.hasQualifiedName("net/http", "NewRequest") and
-        this = newRequest.getACall().getArgument(2)
+        this = newRequest.getACallIncludingExternals().getArgument(2)
       )
       or
       exists(Field body, Type request |
@@ -250,7 +250,7 @@ module NetHttp {
       or
       exists(Method m, string methName |
         m.hasQualifiedName("net/http", "Request", methName) and
-        this = m.getACall().getResult(0)
+        this = m.getACallIncludingExternals().getResult(0)
       |
         methName = ["Cookie", "Cookies", "MultipartReader", "PostFormValue", "Referer", "UserAgent"]
       )

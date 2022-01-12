@@ -14,5 +14,5 @@ import go
 from Method get, DataFlow::CallNode call
 where
   get.hasQualifiedName("net/http", "Header", "Get") and
-  call = get.getACall()
+  call = get.getACallIncludingExternals()
 select call

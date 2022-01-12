@@ -46,7 +46,7 @@ module CommandInjection {
       // Call whose argument list contains a "--"
       exists(DataFlow::CallNode c |
         this = c and
-        (c = Builtin::append().getACall() or c = any(SystemCommandExecution sce)) and
+        (c = Builtin::append().getACallIncludingExternals() or c = any(SystemCommandExecution sce)) and
         c.getArgument(doubleDashIndex).getStringValue() = "--"
       )
       or

@@ -11,5 +11,5 @@
 import go
 
 from DataFlow::CallNode call
-where call = Builtin::len().getACall()
+where call = Builtin::len().getACallIncludingExternals()
 select call

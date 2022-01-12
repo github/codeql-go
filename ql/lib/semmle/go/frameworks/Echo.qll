@@ -80,7 +80,7 @@ private module Echo {
   private class EchoHtmlOutputs extends HTTP::ResponseBody::Range {
     EchoHtmlOutputs() {
       exists(Method m | m.hasQualifiedName(packagePath(), "Context", ["HTML", "HTMLBlob"]) |
-        this = m.getACall().getArgument(1)
+        this = m.getACallIncludingExternals().getArgument(1)
       )
     }
 
@@ -97,7 +97,7 @@ private module Echo {
 
     EchoParameterizedOutputs() {
       exists(Method m | m.hasQualifiedName(packagePath(), "Context", ["Blob", "Stream"]) |
-        callNode = m.getACall() and this = callNode.getArgument(2)
+        callNode = m.getACallIncludingExternals() and this = callNode.getArgument(2)
       )
     }
 
@@ -112,7 +112,7 @@ private module Echo {
   private class EchoRedirectMethod extends HTTP::Redirect::Range, DataFlow::CallNode {
     EchoRedirectMethod() {
       exists(Method m | m.hasQualifiedName(packagePath(), "Context", "Redirect") |
-        this = m.getACall()
+        this = m.getACallIncludingExternals()
       )
     }
 

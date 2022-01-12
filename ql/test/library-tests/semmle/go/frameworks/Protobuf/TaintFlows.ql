@@ -5,7 +5,7 @@ class UntrustedFunction extends Function {
 }
 
 class UntrustedSource extends DataFlow::Node, UntrustedFlowSource::Range {
-  UntrustedSource() { this = any(UntrustedFunction f).getACall() }
+  UntrustedSource() { this = any(UntrustedFunction f).getACallIncludingExternals() }
 }
 
 class SinkFunction extends Function {
@@ -18,7 +18,7 @@ class TestConfig extends TaintTracking::Configuration {
   override predicate isSource(DataFlow::Node source) { source instanceof UntrustedFlowSource }
 
   override predicate isSink(DataFlow::Node sink) {
-    sink = any(SinkFunction f).getACall().getAnArgument()
+    sink = any(SinkFunction f).getACallIncludingExternals().getAnArgument()
   }
 }
 

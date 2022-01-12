@@ -36,7 +36,7 @@ DataFlow::Node getAUse(Index i) {
  * Gets a call to `len(array)`.
  */
 DataFlow::CallNode arrayLen(DataFlow::SsaNode array) {
-  result = Builtin::len().getACall() and
+  result = Builtin::len().getACallIncludingExternals() and
   result.getArgument(0) = array.getAUse()
 }
 

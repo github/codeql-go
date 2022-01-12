@@ -66,7 +66,7 @@ private class GoShCommandExecution extends SystemCommandExecution::Range, DataFl
         or
         method.hasQualifiedName(packagePath, "Session", "Exec")
       |
-        this = method.getACall()
+        this = method.getACallIncludingExternals()
       )
       or
       // Catch calls to the `Command` function:
@@ -102,7 +102,7 @@ module CryptoSsh {
         methodName = "Start"
       |
         method.hasQualifiedName(packagePath(), "Session", methodName) and
-        this = method.getACall()
+        this = method.getACallIncludingExternals()
       )
     }
 

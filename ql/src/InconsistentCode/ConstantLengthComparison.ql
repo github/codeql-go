@@ -20,7 +20,7 @@ where
   // `idx` reads `a[i]`
   idx.reads(a.getANode(), i.getARead()) and
   // `lenA` is `len(a)`
-  lenA = Builtin::len().getACall() and
+  lenA = Builtin::len().getACallIncludingExternals() and
   lenA.getArgument(0) = a.getANode() and
   // and is checked against a constant
   exists(DataFlow::Node const | exists(const.getIntValue()) |

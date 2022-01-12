@@ -24,7 +24,7 @@ module BeegoOrm {
           ] and
         if methodName.matches("%Context") then argNum = 1 else argNum = 0
       |
-        this = m.getACall().getArgument(argNum)
+        this = m.getACallIncludingExternals().getArgument(argNum)
       )
     }
   }
@@ -33,7 +33,7 @@ module BeegoOrm {
     // Note this class doesn't do any escaping, unlike the true ORM part of the package
     QueryBuilderSink() {
       exists(Method impl | impl.implements(packagePath(), "QueryBuilder", _) |
-        this = impl.getACall().getAnArgument()
+        this = impl.getACallIncludingExternals().getAnArgument()
       ) and
       this.getType().getUnderlyingType() instanceof StringType
     }
@@ -42,7 +42,7 @@ module BeegoOrm {
   private class OrmerRawSink extends SQL::QueryString::Range {
     OrmerRawSink() {
       exists(Method impl | impl.implements(packagePath(), "Ormer", "Raw") |
-        this = impl.getACall().getArgument(0)
+        this = impl.getACallIncludingExternals().getArgument(0)
       )
     }
   }
@@ -50,7 +50,7 @@ module BeegoOrm {
   private class QuerySeterFilterRawSink extends SQL::QueryString::Range {
     QuerySeterFilterRawSink() {
       exists(Method impl | impl.implements(packagePath(), "QuerySeter", "FilterRaw") |
-        this = impl.getACall().getArgument(1)
+        this = impl.getACallIncludingExternals().getArgument(1)
       )
     }
   }
@@ -58,7 +58,7 @@ module BeegoOrm {
   private class ConditionRawSink extends SQL::QueryString::Range {
     ConditionRawSink() {
       exists(Method impl | impl.implements(packagePath(), "Condition", "Raw") |
-        this = impl.getACall().getArgument(1)
+        this = impl.getACallIncludingExternals().getArgument(1)
       )
     }
   }
@@ -68,7 +68,7 @@ module BeegoOrm {
       exists(Method impl |
         impl.implements(packagePath(), "Ormer", ["Read", "ReadForUpdate", "ReadOrCreate"])
       |
-        this = FunctionOutput::parameter(0).getExitNode(impl.getACall())
+        this = FunctionOutput::parameter(0).getExitNode(impl.getACallIncludingExternals())
       )
     }
   }
@@ -79,7 +79,7 @@ module BeegoOrm {
         m.hasQualifiedName(packagePath(), ["JSONField", "JsonbField", "TextField"],
           ["RawValue", "String", "Value"])
       |
-        this = m.getACall().getResult()
+        this = m.getACallIncludingExternals().getResult()
       )
     }
   }
@@ -94,7 +94,7 @@ module BeegoOrm {
             "QueryRow", "QueryRows"
           ])
       |
-        this = FunctionOutput::parameter(0).getExitNode(impl.getACall())
+        this = FunctionOutput::parameter(0).getExitNode(impl.getACallIncludingExternals())
       )
     }
   }

@@ -36,17 +36,17 @@ module XPath {
       AntchfxXpathXPathExpressionString() {
         exists(Function f, string name | name.matches("Compile%") |
           f.hasQualifiedName(package("github.com/antchfx/xpath", ""), name) and
-          this = f.getACall().getArgument(0)
+          this = f.getACallIncludingExternals().getArgument(0)
         )
         or
         exists(Function f, string name | name.matches("MustCompile%") |
           f.hasQualifiedName(package("github.com/antchfx/xpath", ""), name) and
-          this = f.getACall().getArgument(0)
+          this = f.getACallIncludingExternals().getArgument(0)
         )
         or
         exists(Function f, string name | name.matches("Select%") |
           f.hasQualifiedName(package("github.com/antchfx/xpath", ""), name) and
-          this = f.getACall().getArgument(1)
+          this = f.getACallIncludingExternals().getArgument(1)
         )
       }
     }
@@ -59,12 +59,12 @@ module XPath {
       AntchfxHtmlqueryXPathExpressionString() {
         exists(Function f, string name | name.matches("Find%") |
           f.hasQualifiedName(package("github.com/antchfx/htmlquery", ""), name) and
-          this = f.getACall().getArgument(1)
+          this = f.getACallIncludingExternals().getArgument(1)
         )
         or
         exists(Function f, string name | name.matches("Query%") |
           f.hasQualifiedName(package("github.com/antchfx/htmlquery", ""), name) and
-          this = f.getACall().getArgument(1)
+          this = f.getACallIncludingExternals().getArgument(1)
         )
       }
     }
@@ -77,17 +77,17 @@ module XPath {
       AntchfxXmlqueryXPathExpressionString() {
         exists(Function f, string name | name.matches("Find%") |
           f.hasQualifiedName(package("github.com/antchfx/xmlquery", ""), name) and
-          this = f.getACall().getArgument(1)
+          this = f.getACallIncludingExternals().getArgument(1)
         )
         or
         exists(Function f, string name | name.matches("Query%") |
           f.hasQualifiedName(package("github.com/antchfx/xmlquery", ""), name) and
-          this = f.getACall().getArgument(1)
+          this = f.getACallIncludingExternals().getArgument(1)
         )
         or
         exists(Method m, string name | name.matches("Select%") |
           m.hasQualifiedName(package("github.com/antchfx/xmlquery", ""), "Node", name) and
-          this = m.getACall().getArgument(0)
+          this = m.getACallIncludingExternals().getArgument(0)
         )
       }
     }
@@ -100,12 +100,12 @@ module XPath {
       AntchfxJsonqueryXPathExpressionString() {
         exists(Function f, string name | name.matches("Find%") |
           f.hasQualifiedName(package("github.com/antchfx/jsonquery", ""), name) and
-          this = f.getACall().getArgument(1)
+          this = f.getACallIncludingExternals().getArgument(1)
         )
         or
         exists(Function f, string name | name.matches("Query%") |
           f.hasQualifiedName(package("github.com/antchfx/jsonquery", ""), name) and
-          this = f.getACall().getArgument(1)
+          this = f.getACallIncludingExternals().getArgument(1)
         )
       }
     }
@@ -118,12 +118,12 @@ module XPath {
       GoXmlpathXmlpathXPathExpressionString() {
         exists(Function f, string name | name.matches("Compile%") |
           f.hasQualifiedName(XmlPath::packagePath(), name) and
-          this = f.getACall().getArgument(0)
+          this = f.getACallIncludingExternals().getArgument(0)
         )
         or
         exists(Function f, string name | name.matches("MustCompile%") |
           f.hasQualifiedName(XmlPath::packagePath(), name) and
-          this = f.getACall().getArgument(0)
+          this = f.getACallIncludingExternals().getArgument(0)
         )
       }
     }
@@ -136,12 +136,12 @@ module XPath {
       ChrisTrenkampGoxpathXPathExpressionString() {
         exists(Function f, string name | name.matches("Parse%") |
           f.hasQualifiedName(package("github.com/ChrisTrenkamp/goxpath", ""), name) and
-          this = f.getACall().getArgument(0)
+          this = f.getACallIncludingExternals().getArgument(0)
         )
         or
         exists(Function f, string name | name.matches("MustParse%") |
           f.hasQualifiedName(package("github.com/ChrisTrenkamp/goxpath", ""), name) and
-          this = f.getACall().getArgument(0)
+          this = f.getACallIncludingExternals().getArgument(0)
         )
       }
     }
@@ -154,12 +154,12 @@ module XPath {
       SanthoshTekuriXpathparserXPathExpressionString() {
         exists(Function f, string name | name.matches("Parse%") |
           f.hasQualifiedName(package("github.com/santhosh-tekuri/xpathparser", ""), name) and
-          this = f.getACall().getArgument(0)
+          this = f.getACallIncludingExternals().getArgument(0)
         )
         or
         exists(Function f, string name | name.matches("MustParse%") |
           f.hasQualifiedName(package("github.com/santhosh-tekuri/xpathparser", ""), name) and
-          this = f.getACall().getArgument(0)
+          this = f.getACallIncludingExternals().getArgument(0)
         )
       }
     }
@@ -172,17 +172,17 @@ module XPath {
       JbowtieGokogiriXPathExpressionString() {
         exists(Function f, string name | name.matches("Compile%") |
           f.hasQualifiedName(package("github.com/jbowtie/gokogiri", "xpath"), name) and
-          this = f.getACall().getArgument(0)
+          this = f.getACallIncludingExternals().getArgument(0)
         )
         or
         exists(Method m, string name | name.matches("Search%") |
           m.hasQualifiedName(package("github.com/jbowtie/gokogiri", "xml"), "Node", name) and
-          this = m.getACall().getArgument(0)
+          this = m.getACallIncludingExternals().getArgument(0)
         )
         or
         exists(Method m, string name | name.matches("EvalXPath%") |
           m.hasQualifiedName(package("github.com/jbowtie/gokogiri", "xml"), "Node", name) and
-          this = m.getACall().getArgument(0)
+          this = m.getACallIncludingExternals().getArgument(0)
         )
       }
     }

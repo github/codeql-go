@@ -139,7 +139,9 @@ private module Fiber {
       // Receiver type: Ctx
       (
         // signature: func (*Ctx) Redirect(location string, status ...int)
-        this = any(Method m | m.hasQualifiedName(package, "Ctx", "Redirect")).getACall() and
+        this =
+          any(Method m | m.hasQualifiedName(package, "Ctx", "Redirect"))
+              .getACallIncludingExternals() and
         urlNode = this.getArgument(0)
       )
     }
@@ -176,7 +178,7 @@ private module Fiber {
   ) {
     exists(string methodName, Method met |
       met.hasQualifiedName(package, receiverName, methodName) and
-      headerSetterCall = met.getACall() and
+      headerSetterCall = met.getACallIncludingExternals() and
       receiverNode = headerSetterCall.getReceiver()
     |
       package = fiberPackagePath() and
@@ -223,7 +225,7 @@ private module Fiber {
   ) {
     exists(string methodName, Method met, DataFlow::CallNode bodySetterCall |
       met.hasQualifiedName(package, receiverName, methodName) and
-      bodySetterCall = met.getACall() and
+      bodySetterCall = met.getACallIncludingExternals() and
       receiverNode = bodySetterCall.getReceiver()
     |
       package = fiberPackagePath() and
@@ -266,7 +268,7 @@ private module Fiber {
   ) {
     exists(string methodName, Method met, DataFlow::CallNode bodySetterCall |
       met.hasQualifiedName(package, receiverName, methodName) and
-      bodySetterCall = met.getACall() and
+      bodySetterCall = met.getACallIncludingExternals() and
       receiverNode = bodySetterCall.getReceiver()
     |
       package = fiberPackagePath() and
@@ -309,7 +311,7 @@ private module Fiber {
     UntrustedFlowSources() {
       // Methods on types of package: github.com/gofiber/fiber@v1.14.6
       exists(string receiverName, string methodName, Method mtd, FunctionOutput out |
-        this = out.getExitNode(mtd.getACall()) and
+        this = out.getExitNode(mtd.getACallIncludingExternals()) and
         mtd.hasQualifiedName(fiberPackagePath(), receiverName, methodName)
       |
         receiverName = "Ctx" and

@@ -20,7 +20,7 @@ private module CleverGo {
     UntrustedSources() {
       // Methods on types of package: clevergo.tech/clevergo@v0.5.2
       exists(string receiverName, string methodName, Method mtd, FunctionOutput out |
-        this = out.getExitNode(mtd.getACall()) and
+        this = out.getExitNode(mtd.getACallIncludingExternals()) and
         mtd.hasQualifiedName(packagePath(), receiverName, methodName)
       |
         receiverName = "Context" and
@@ -72,7 +72,7 @@ private module CleverGo {
       or
       // Interfaces of package: clevergo.tech/clevergo@v0.5.2
       exists(string interfaceName, string methodName, Method mtd, FunctionOutput out |
-        this = out.getExitNode(mtd.getACall()) and
+        this = out.getExitNode(mtd.getACallIncludingExternals()) and
         mtd.implements(packagePath(), interfaceName, methodName)
       |
         interfaceName = "Decoder" and
@@ -184,7 +184,9 @@ private module CleverGo {
       // Receiver type: Context
       (
         // signature: func (*Context) Redirect(code int, url string) error
-        this = any(Method m | m.hasQualifiedName(package, "Context", "Redirect")).getACall() and
+        this =
+          any(Method m | m.hasQualifiedName(package, "Context", "Redirect"))
+              .getACallIncludingExternals() and
         urlNode = this.getArgument(1)
       )
     }
@@ -219,7 +221,7 @@ private module CleverGo {
   ) {
     exists(string methodName, Method met, DataFlow::CallNode bodySetterCall |
       met.hasQualifiedName(package, receiverName, methodName) and
-      bodySetterCall = met.getACall() and
+      bodySetterCall = met.getACallIncludingExternals() and
       receiverNode = bodySetterCall.getReceiver()
     |
       package = packagePath() and
@@ -327,7 +329,7 @@ private module CleverGo {
   ) {
     exists(string methodName, Method met, DataFlow::CallNode bodySetterCall |
       met.hasQualifiedName(package, receiverName, methodName) and
-      bodySetterCall = met.getACall() and
+      bodySetterCall = met.getACallIncludingExternals() and
       receiverNode = bodySetterCall.getReceiver()
     |
       package = packagePath() and
@@ -370,7 +372,7 @@ private module CleverGo {
   ) {
     exists(string methodName, Method met, DataFlow::CallNode bodySetterCall |
       met.hasQualifiedName(package, receiverName, methodName) and
-      bodySetterCall = met.getACall() and
+      bodySetterCall = met.getACallIncludingExternals() and
       receiverNode = bodySetterCall.getReceiver()
     |
       package = packagePath() and
@@ -417,7 +419,7 @@ private module CleverGo {
   ) {
     exists(string methodName, Method met |
       met.hasQualifiedName(package, receiverName, methodName) and
-      headerSetterCall = met.getACall() and
+      headerSetterCall = met.getACallIncludingExternals() and
       receiverNode = headerSetterCall.getReceiver()
     |
       package = packagePath() and
@@ -463,7 +465,7 @@ private module CleverGo {
   ) {
     exists(string methodName, Method met |
       met.hasQualifiedName(package, receiverName, methodName) and
-      setterCall = met.getACall() and
+      setterCall = met.getACallIncludingExternals() and
       receiverNode = setterCall.getReceiver()
     |
       package = packagePath() and
@@ -518,7 +520,7 @@ private module CleverGo {
   ) {
     exists(string methodName, Method met |
       met.hasQualifiedName(package, receiverName, methodName) and
-      setterCall = met.getACall() and
+      setterCall = met.getACallIncludingExternals() and
       receiverNode = setterCall.getReceiver()
     |
       package = packagePath() and

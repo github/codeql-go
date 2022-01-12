@@ -13,11 +13,11 @@ class TestConfig extends DataFlow::Configuration {
   TestConfig() { this = "testconfig" }
 
   override predicate isSource(DataFlow::Node source) {
-    source = any(SourceFunction f).getACall().getAResult()
+    source = any(SourceFunction f).getACallIncludingExternals().getAResult()
   }
 
   override predicate isSink(DataFlow::Node sink) {
-    sink = any(SinkFunction f).getACall().getAnArgument()
+    sink = any(SinkFunction f).getACallIncludingExternals().getAnArgument()
   }
 }
 

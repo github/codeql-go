@@ -21,7 +21,9 @@ module AllocationSizeOverflow {
 
     override predicate isSource(DataFlow::Node nd) { nd instanceof Source }
 
-    override predicate isSink(DataFlow::Node nd) { nd = Builtin::len().getACall().getArgument(0) }
+    override predicate isSink(DataFlow::Node nd) {
+      nd = Builtin::len().getACallIncludingExternals().getArgument(0)
+    }
 
     override predicate isSanitizerGuard(DataFlow::BarrierGuard guard) {
       guard instanceof SanitizerGuard

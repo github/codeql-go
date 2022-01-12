@@ -23,6 +23,8 @@ module K8sIoClientGo {
    * A model of `SecretInterface` as a source of secret data.
    */
   class SecretInterfaceSource extends DataFlow::Node {
-    SecretInterfaceSource() { this = any(SecretInterfaceSourceMethod g).getACall().getResult(0) }
+    SecretInterfaceSource() {
+      this = any(SecretInterfaceSourceMethod g).getACallIncludingExternals().getResult(0)
+    }
   }
 }

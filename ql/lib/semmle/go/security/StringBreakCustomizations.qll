@@ -53,7 +53,7 @@ module StringBreak {
   class JsonMarshalAsSource extends Source {
     JsonMarshalAsSource() {
       exists(MarshalingFunction jsonMarshal | jsonMarshal.getFormat() = "JSON" |
-        this = jsonMarshal.getOutput().getNode(jsonMarshal.getACall())
+        this = jsonMarshal.getOutput().getNode(jsonMarshal.getACallIncludingExternals())
       )
     }
   }
@@ -76,7 +76,7 @@ module StringBreak {
   class UnmarshalSanitizer extends Sanitizer {
     UnmarshalSanitizer() {
       exists(UnmarshalingFunction jsonUnmarshal | jsonUnmarshal.getFormat() = "JSON" |
-        this = jsonUnmarshal.getOutput().getNode(jsonUnmarshal.getACall())
+        this = jsonUnmarshal.getOutput().getNode(jsonUnmarshal.getACallIncludingExternals())
       )
     }
   }

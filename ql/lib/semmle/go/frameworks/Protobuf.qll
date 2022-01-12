@@ -69,7 +69,7 @@ module Protobuf {
   private class MarshalStateStep extends TaintTracking::AdditionalTaintStep {
     override predicate step(DataFlow::Node pred, DataFlow::Node succ) {
       exists(DataFlow::PostUpdateNode marshalInput, DataFlow::CallNode marshalStateCall |
-        marshalStateCall = marshalStateMethod().getACall() and
+        marshalStateCall = marshalStateMethod().getACallIncludingExternals() and
         // pred -> marshalInput.Message
         any(DataFlow::Write w)
             .writesField(marshalInput.getPreUpdateNode(), inputMessageField(), pred) and

@@ -195,7 +195,7 @@ abstract class FunctionModel extends Function {
 
   /** Holds if this function model causes taint to flow from `pred` to `succ` for the call `c`. */
   predicate taintStepForCall(DataFlow::Node pred, DataFlow::Node succ, DataFlow::CallNode c) {
-    c = this.getACall() and
+    c = this.getACallIncludingExternals() and
     exists(FunctionInput inp, FunctionOutput outp | this.hasTaintFlow(inp, outp) |
       pred = inp.getNode(c) and
       succ = outp.getNode(c)
@@ -392,7 +392,7 @@ predicate inputIsConstantIfOutputHasProperty(
 ) {
   exists(Function f, FunctionInput inp, FunctionOutput outp, DataFlow::CallNode call |
     functionEnsuresInputIsConstant(f, inp, outp, p) and
-    call = f.getACall() and
+    call = f.getACallIncludingExternals() and
     inputNode = inp.getNode(call) and
     DataFlow::localFlow(outp.getNode(call), outputNode)
   )

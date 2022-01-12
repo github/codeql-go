@@ -71,7 +71,7 @@ module TaintedPath {
       exists(Function f, FunctionOutput outp |
         f.hasQualifiedName("path/filepath", "Rel") and
         outp.isResult(0) and
-        this = outp.getNode(f.getACall())
+        this = outp.getNode(f.getACallIncludingExternals())
       )
     }
   }
@@ -119,7 +119,7 @@ module TaintedPath {
         p.isNil()
       |
         exists(DataFlow::Node call, DataFlow::Node res |
-          call = f.getACall() and
+          call = f.getACallIncludingExternals() and
           DataFlow::localFlow(outp.getNode(call), res)
         |
           p.checkOn(this, outcome, res) and
@@ -142,7 +142,7 @@ module TaintedPath {
     PrefixCheck() {
       exists(Function f |
         f.hasQualifiedName("strings", "HasPrefix") and
-        this = f.getACall()
+        this = f.getACallIncludingExternals()
       )
     }
 

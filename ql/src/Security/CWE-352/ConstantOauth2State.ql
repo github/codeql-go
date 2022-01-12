@@ -32,7 +32,7 @@ class ConstantStateFlowConf extends DataFlow::Configuration {
   ConstantStateFlowConf() { this = "ConstantStateFlowConf" }
 
   predicate isSink(DataFlow::Node sink, DataFlow::CallNode call) {
-    exists(AuthCodeURL m | call = m.getACall() | sink = call.getArgument(0))
+    exists(AuthCodeURL m | call = m.getACallIncludingExternals() | sink = call.getArgument(0))
   }
 
   override predicate isSource(DataFlow::Node source) {
@@ -110,7 +110,7 @@ class PrivateUrlFlowsToAuthCodeUrlCall extends DataFlow::Configuration {
   }
 
   predicate isSink(DataFlow::Node sink, DataFlow::CallNode call) {
-    exists(AuthCodeURL m | call = m.getACall() | sink = call.getReceiver())
+    exists(AuthCodeURL m | call = m.getACallIncludingExternals() | sink = call.getReceiver())
   }
 
   override predicate isSink(DataFlow::Node sink) { this.isSink(sink, _) }
@@ -139,7 +139,7 @@ class FlowToPrint extends DataFlow::Configuration {
   }
 
   override predicate isSource(DataFlow::Node source) {
-    source = any(AuthCodeURL m).getACall().getResult()
+    source = any(AuthCodeURL m).getACallIncludingExternals().getResult()
   }
 
   override predicate isSink(DataFlow::Node sink) { this.isSink(sink, _) }
@@ -165,14 +165,14 @@ DataFlow::Node getAStdinNode() {
  * instance wrapping `os.Stdin`.
  */
 DataFlow::CallNode getAScannerCall() {
-  result = any(Fmt::Scanner f).getACall()
+  result = any(Fmt::Scanner f).getACallIncludingExternals()
   or
   exists(Fmt::FScanner f |
-    result = f.getACall() and f.getReader().getNode(result) = getAStdinNode()
+    result = f.getACallIncludingExternals() and f.getReader().getNode(result) = getAStdinNode()
   )
   or
   exists(Bufio::NewScanner f |
-    result = f.getACall() and f.getReader().getNode(result) = getAStdinNode()
+    result = f.getACallIncludingExternals() and f.getReader().getNode(result) = getAStdinNode()
   )
 }
 

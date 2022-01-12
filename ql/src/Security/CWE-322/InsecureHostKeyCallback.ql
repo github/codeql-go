@@ -42,7 +42,7 @@ class HostKeyCallbackFunc extends DataFlow::Node {
 class InsecureHostKeyCallbackFunc extends HostKeyCallbackFunc {
   InsecureHostKeyCallbackFunc() {
     // Either a call to InsecureIgnoreHostKey(), which we know returns an insecure callback.
-    this = any(InsecureIgnoreHostKey f).getACall().getAResult()
+    this = any(InsecureIgnoreHostKey f).getACallIncludingExternals().getAResult()
     or
     // Or a callback function in the source code (named or anonymous) that always returns nil.
     forex(DataFlow::ResultNode returnValue |

@@ -28,7 +28,7 @@ private module GoRestfulHttp {
    * A model of go-restful's `Request` object as a source of user-controlled data.
    */
   private class GoRestfulSource extends UntrustedFlowSource::Range {
-    GoRestfulSource() { this = any(GoRestfulSourceMethod g).getACall() }
+    GoRestfulSource() { this = any(GoRestfulSourceMethod g).getACallIncludingExternals() }
   }
 
   /**

@@ -6,7 +6,7 @@ class UntrustedFunction extends Function {
 }
 
 class UntrustedSource extends DataFlow::Node, UntrustedFlowSource::Range {
-  UntrustedSource() { this = any(UntrustedFunction f).getACall() }
+  UntrustedSource() { this = any(UntrustedFunction f).getACallIncludingExternals() }
 }
 
 from CommandInjection::Configuration cfg, DataFlow::PathNode source, DataFlow::PathNode sink

@@ -120,7 +120,7 @@ module Revel {
     ControllerRenderMethods() {
       exists(Method m, string methodName, DataFlow::CallNode methodCall |
         m.hasQualifiedName(packagePath(), "Controller", methodName) and
-        methodCall = m.getACall()
+        methodCall = m.getACallIncludingExternals()
       |
         exists(int exposedArgument |
           this = methodCall.getArgument(exposedArgument) and
@@ -162,7 +162,8 @@ module Revel {
   private class RenderFileNameCall extends FileSystemAccess::Range, DataFlow::CallNode {
     RenderFileNameCall() {
       this =
-        any(Method m | m.hasQualifiedName(packagePath(), "Controller", "RenderFileName")).getACall()
+        any(Method m | m.hasQualifiedName(packagePath(), "Controller", "RenderFileName"))
+            .getACallIncludingExternals()
     }
 
     override DataFlow::Node getAPathArgument() { result = this.getArgument(0) }
@@ -177,7 +178,7 @@ module Revel {
   private class ControllerRedirectMethod extends HTTP::Redirect::Range, DataFlow::CallNode {
     ControllerRedirectMethod() {
       exists(Method m | m.hasQualifiedName(packagePath(), "Controller", "Redirect") |
-        this = m.getACall()
+        this = m.getACallIncludingExternals()
       )
     }
 

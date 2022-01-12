@@ -56,8 +56,8 @@ class StackTraceExposureConfig extends TaintTracking::Configuration {
 
   override predicate isSource(DataFlow::Node node) {
     node.(DataFlow::PostUpdateNode).getPreUpdateNode() =
-      any(StackFunction f).getACall().getArgument(0) or
-    node = any(DebugStackFunction f).getACall().getResult()
+      any(StackFunction f).getACallIncludingExternals().getArgument(0) or
+    node = any(DebugStackFunction f).getACallIncludingExternals().getResult()
   }
 
   override predicate isSink(DataFlow::Node node) { node instanceof HTTP::ResponseBody }

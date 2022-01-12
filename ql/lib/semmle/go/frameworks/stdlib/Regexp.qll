@@ -12,7 +12,7 @@ module Regexp {
     Pattern() {
       exists(Function fn | fnName.matches("Match%") or fnName.matches("%Compile%") |
         fn.hasQualifiedName("regexp", fnName) and
-        this = fn.getACall().getArgument(0)
+        this = fn.getACallIncludingExternals().getArgument(0)
       )
     }
 

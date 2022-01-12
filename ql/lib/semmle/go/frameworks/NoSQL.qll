@@ -101,7 +101,7 @@ module NoSQL {
           mongoDbCollectionMethod(methodName, n) and
           meth.hasQualifiedName(package("go.mongodb.org/mongo-driver", "mongo"), "Collection",
             methodName) and
-          this = meth.getACall().getArgument(n)
+          this = meth.getACallIncludingExternals().getArgument(n)
         )
       }
     }

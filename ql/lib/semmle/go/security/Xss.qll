@@ -97,7 +97,7 @@ module SharedXss {
   class JsonMarshalSanitizer extends Sanitizer {
     JsonMarshalSanitizer() {
       exists(MarshalingFunction mf | mf.getFormat() = "JSON" |
-        this = mf.getOutput().getNode(mf.getACall())
+        this = mf.getOutput().getNode(mf.getACallIncludingExternals())
       )
     }
   }

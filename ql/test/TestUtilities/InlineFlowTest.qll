@@ -43,7 +43,7 @@ import TestUtilities.InlineExpectationsTest
 
 private predicate defaultSource(DataFlow::Node source) {
   exists(Function fn | fn.hasQualifiedName(_, ["source", "taint"]) |
-    source = fn.getACall().getResult()
+    source = fn.getACallIncludingExternals().getResult()
   )
 }
 
@@ -53,7 +53,9 @@ class DefaultValueFlowConf extends DataFlow::Configuration {
   override predicate isSource(DataFlow::Node source) { defaultSource(source) }
 
   override predicate isSink(DataFlow::Node sink) {
-    exists(Function fn | fn.hasQualifiedName(_, "sink") | sink = fn.getACall().getAnArgument())
+    exists(Function fn | fn.hasQualifiedName(_, "sink") |
+      sink = fn.getACallIncludingExternals().getAnArgument()
+    )
   }
 
   override int fieldFlowBranchLimit() { result = 1000 }
@@ -65,7 +67,9 @@ class DefaultTaintFlowConf extends TaintTracking::Configuration {
   override predicate isSource(DataFlow::Node source) { defaultSource(source) }
 
   override predicate isSink(DataFlow::Node sink) {
-    exists(Function fn | fn.hasQualifiedName(_, "sink") | sink = fn.getACall().getAnArgument())
+    exists(Function fn | fn.hasQualifiedName(_, "sink") |
+      sink = fn.getACallIncludingExternals().getAnArgument()
+    )
   }
 
   override int fieldFlowBranchLimit() { result = 1000 }

@@ -6,11 +6,15 @@ class Configuration extends TaintTracking::Configuration {
   Configuration() { this = "test-configuration" }
 
   override predicate isSource(DataFlow::Node source) {
-    exists(Function fn | fn.hasQualifiedName(_, "source") | source = fn.getACall().getResult())
+    exists(Function fn | fn.hasQualifiedName(_, "source") |
+      source = fn.getACallIncludingExternals().getResult()
+    )
   }
 
   override predicate isSink(DataFlow::Node sink) {
-    exists(Function fn | fn.hasQualifiedName(_, "sink") | sink = fn.getACall().getAnArgument())
+    exists(Function fn | fn.hasQualifiedName(_, "sink") |
+      sink = fn.getACallIncludingExternals().getAnArgument()
+    )
   }
 }
 

@@ -13,11 +13,11 @@ class TestConfig extends TaintTracking::Configuration {
   TestConfig() { this = "testconfig" }
 
   override predicate isSource(DataFlow::Node source) {
-    source = any(SourceFunction f).getACall().getResult(0)
+    source = any(SourceFunction f).getACallIncludingExternals().getResult(0)
   }
 
   override predicate isSink(DataFlow::Node sink) {
-    sink = any(SinkFunction f).getACall().getArgument(0)
+    sink = any(SinkFunction f).getACallIncludingExternals().getArgument(0)
   }
 }
 

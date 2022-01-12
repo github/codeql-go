@@ -32,7 +32,7 @@ private class EscapeFilterCall extends LdapSanitizer {
           "gopkg.in/ldap.v3"
         ], "EscapeFilter")
     |
-      this = f.getACall()
+      this = f.getACallIncludingExternals()
     )
   }
 }
@@ -53,7 +53,7 @@ private class GoLdapSink extends LdapSink {
           "gopkg.in/ldap.v3"
         ], "NewSearchRequest")
     |
-      this = f.getACall().getArgument([0, 6, 7])
+      this = f.getACallIncludingExternals().getArgument([0, 6, 7])
     )
   }
 }
@@ -79,7 +79,7 @@ private class LdapClientSink extends LdapSink {
       m.hasQualifiedName("github.com/jtblin/go-ldap-client", "LDAPClient",
         ["Authenticate", "GetGroupsOfUser"])
     |
-      this = m.getACall().getArgument(0)
+      this = m.getACallIncludingExternals().getArgument(0)
     )
   }
 }

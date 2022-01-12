@@ -8,7 +8,9 @@ class TaintFunctionModelTest extends InlineExpectationsTest {
 
   override predicate hasActualResult(string file, int line, string element, string tag, string value) {
     tag = "ttfnmodelstep" and
-    exists(TaintTracking::FunctionModel model, DataFlow::CallNode call | call = model.getACall() |
+    exists(TaintTracking::FunctionModel model, DataFlow::CallNode call |
+      call = model.getACallIncludingExternals()
+    |
       call.hasLocationInfo(file, line, _, _, _) and
       element = call.toString() and
       value = "\"" + model.getAnInputNode(call) + " -> " + model.getAnOutputNode(call) + "\""
@@ -23,7 +25,7 @@ class MarshalerTest extends InlineExpectationsTest {
 
   override predicate hasActualResult(string file, int line, string element, string tag, string value) {
     tag = "marshaler" and
-    exists(MarshalingFunction m, DataFlow::CallNode call | call = m.getACall() |
+    exists(MarshalingFunction m, DataFlow::CallNode call | call = m.getACallIncludingExternals() |
       call.hasLocationInfo(file, line, _, _, _) and
       element = call.toString() and
       value =
@@ -40,7 +42,7 @@ class UnmarshalerTest extends InlineExpectationsTest {
 
   override predicate hasActualResult(string file, int line, string element, string tag, string value) {
     tag = "unmarshaler" and
-    exists(UnmarshalingFunction m, DataFlow::CallNode call | call = m.getACall() |
+    exists(UnmarshalingFunction m, DataFlow::CallNode call | call = m.getACallIncludingExternals() |
       call.hasLocationInfo(file, line, _, _, _) and
       element = call.toString() and
       value =

@@ -185,7 +185,7 @@ class TlsInsecureCipherSuitesFlowConfig extends TaintTracking::Configuration {
     exists(Function insecureCipherSuites |
       insecureCipherSuites.hasQualifiedName("crypto/tls", "InsecureCipherSuites")
     |
-      source = insecureCipherSuites.getACall().getResult()
+      source = insecureCipherSuites.getACallIncludingExternals().getResult()
     )
   }
 
