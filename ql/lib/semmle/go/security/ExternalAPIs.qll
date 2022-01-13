@@ -74,11 +74,11 @@ class ExternalAPIDataNode extends DataFlow::Node {
     // Not already modeled as a taint step
     not exists(DataFlow::Node next | TaintTracking::localTaintStep(this, next)) and
     // Not a call to a known safe external API
-    not call = any(SafeExternalAPIFunction f).getACall()
+    not call = any(SafeExternalAPIFunction f).getACallExcludingExternals()
   }
 
   /** Gets the called API `Function`. */
-  Function getFunction() { result.getACall() = call }
+  Function getFunction() { result.getACallExcludingExternals() = call }
 
   /** Gets the index which is passed untrusted data (where -1 indicates the receiver). */
   int getIndex() { result = i }

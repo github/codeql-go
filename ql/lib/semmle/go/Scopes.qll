@@ -367,6 +367,26 @@ class PromotedField extends Field {
 /** A built-in or declared function. */
 class Function extends ValueEntity, @functionobject {
   /**
+   * DEPRECATED: Renamed to `getACallExcludingExternals`. Consider using
+   * `getACallIncludingExternals` instead.
+   */
+  pragma[nomagic]
+  deprecated DataFlow::CallNode getACall() { result = getACallExcludingExternals() }
+
+  /**
+   * Gets a call to this function.
+   *
+   * See documentation for `getACallExcludingExternals` for the difference
+   * between that function and this one.
+   */
+  pragma[nomagic]
+  DataFlow::CallNode getACallIncludingExternals() {
+    this = result.getTarget()
+    or
+    this = result.getACalleeIncludingExternals().asFunction()
+  }
+
+  /**
    * Gets a call to this function, excluding some calls to external functions.
    *
    * This excludes calls that target this function indirectly (by calling an
@@ -376,23 +396,10 @@ class Function extends ValueEntity, @functionobject {
    * To avoid this limitation, use `getACallIncludingExternals` instead.
    */
   pragma[nomagic]
-  DataFlow::CallNode getACall() {
+  DataFlow::CallNode getACallExcludingExternals() {
     this = result.getTarget()
     or
     this.getFuncDecl() = result.getACallee()
-  }
-
-  /**
-   * Gets a call to this function.
-   *
-   * See documentation for `getACall` for the difference between that function
-   * and this one.
-   */
-  pragma[nomagic]
-  DataFlow::CallNode getACallIncludingExternals() {
-    this = result.getTarget()
-    or
-    this = result.getACalleeIncludingExternals().asFunction()
   }
 
   /** Gets the declaration of this function, if any. */
