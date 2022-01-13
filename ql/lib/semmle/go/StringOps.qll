@@ -213,7 +213,7 @@ module StringOps {
       Range f;
 
       StringFormatCall() {
-        this = f.getACall() and
+        this = f.getACallIncludingExternals() and
         fmt = this.getArgument(f.getFormatStringIndex()).getStringValue() and
         fmt.regexpMatch(getFormatComponentRegex() + "*")
       }

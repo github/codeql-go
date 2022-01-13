@@ -44,7 +44,7 @@ module Zap {
    * function is called are included.
    */
   private class ZapCall extends LoggerCall::Range, DataFlow::MethodCallNode {
-    ZapCall() { this = any(ZapFunction f).getACall() }
+    ZapCall() { this = any(ZapFunction f).getACallIncludingExternals() }
 
     override DataFlow::Node getAMessageComponent() { result = this.getAnArgument() }
   }

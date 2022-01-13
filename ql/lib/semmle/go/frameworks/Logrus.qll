@@ -33,7 +33,7 @@ module Logrus {
   }
 
   private class LogCall extends LoggerCall::Range, DataFlow::CallNode {
-    LogCall() { this = any(LogFunction f).getACall() }
+    LogCall() { this = any(LogFunction f).getACallIncludingExternals() }
 
     override DataFlow::Node getAMessageComponent() { result = this.getAnArgument() }
   }

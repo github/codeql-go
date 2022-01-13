@@ -39,7 +39,7 @@ module Spew {
   private class SpewCall extends LoggerCall::Range, DataFlow::CallNode {
     SpewFunction target;
 
-    SpewCall() { this = target.getACall() }
+    SpewCall() { this = target.getACallIncludingExternals() }
 
     override DataFlow::Node getAMessageComponent() {
       result = this.getArgument(any(int i | i >= target.getFirstPrintedArg()))
