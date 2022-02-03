@@ -92,7 +92,10 @@ module SQL {
             exists(string builder | builder.matches("%Builder") |
               fn.(Method).hasQualifiedName(sq, builder, "Prefix") or
               fn.(Method).hasQualifiedName(sq, builder, "Suffix") or
-              fn.(Method).hasQualifiedName(sq, builder, "Where")
+              fn.(Method).hasQualifiedName(sq, builder, "Where") or
+              fn.(Method).hasQualifiedName(sq, builder, "Having") or
+              fn.(Method).hasQualifiedName(sq, builder, "JoinClause") or
+              fn.(Method).hasQualifiedName(sq, builder, "OrderByClause")
             )
           ) and
           this = fn.getACall().getArgument(0) and
