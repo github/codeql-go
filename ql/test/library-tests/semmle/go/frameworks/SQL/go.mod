@@ -3,7 +3,7 @@ module semmle.go.frameworks.SQL
 go 1.13
 
 require (
-	github.com/Masterminds/squirrel v1.1.0
+	github.com/Masterminds/squirrel v1.5.2
 	github.com/go-pg/pg v8.0.6+incompatible
 	github.com/go-pg/pg/v9 v9.1.3
 	github.com/go-sql-driver/mysql v1.6.0 // indirect
