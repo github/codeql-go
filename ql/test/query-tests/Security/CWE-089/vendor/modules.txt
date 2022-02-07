@@ -1,4 +1,4 @@
-# github.com/Masterminds/squirrel v1.1.0
+# github.com/Masterminds/squirrel v1.5.2
 ## explicit
 github.com/Masterminds/squirrel
 # go.mongodb.org/mongo-driver v1.3.3
