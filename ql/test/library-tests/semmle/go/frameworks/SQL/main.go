@@ -43,10 +43,17 @@ func test(db *sql.DB, ctx context.Context) {
 }
 
 func squirrelTest(querypart string) {
+	squirrel.Select("*").From("users").Prefix(querypart)               // $ querystring=querypart
+	squirrel.Select("*").From("users").Column(querypart)               // $ querystring=querypart
+	squirrel.Select("*").From("users").From(querypart)                 // $ querystring=querypart
+	squirrel.Select("*").From("users").JoinClause(querypart)           // $ querystring=querypart
+	squirrel.Select("*").From("users").Join(querypart)                 // $ querystring=querypart
+	squirrel.Select("*").From("users").LeftJoin(querypart)             // $ querystring=querypart
+	squirrel.Select("*").From("users").RightJoin(querypart)            // $ querystring=querypart
+	squirrel.Select("*").From("users").InnerJoin(querypart)            // $ querystring=querypart
 	squirrel.Select("*").From("users").Where(squirrel.Expr(querypart)) // $ querystring=querypart
 	squirrel.Select("*").From("users").Where(querypart)                // $ querystring=querypart
 	squirrel.Select("*").From("users").Having(querypart)               // $ querystring=querypart
-	squirrel.Select("*").From("users").JoinClause(querypart)           // $ querystring=querypart
 	squirrel.Select("*").From("users").OrderByClause(querypart)        // $ querystring=querypart
 	squirrel.Select("*").From("users").Suffix(querypart)               // $ querystring=querypart
 }
