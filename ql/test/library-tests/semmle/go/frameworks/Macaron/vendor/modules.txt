@@ -1,3 +1,11 @@
-# gopkg.in/macaron.v1 v1.3.5
+# github.com/go-macaron/inject v0.0.0-20160627170012-d8a0b8677191
+github.com/go-macaron/inject
+# github.com/unknwon/com v0.0.0-20190804042917-757f69c95f3e
+github.com/unknwon/com
+# golang.org/x/crypto v0.0.0-20190701094942-4def268fd1a4
+golang.org/x/crypto/pbkdf2
+# gopkg.in/ini.v1 v1.46.0
+gopkg.in/ini.v1
+# gopkg.in/macaron.v1 v1.3.7
 ## explicit
 gopkg.in/macaron.v1
