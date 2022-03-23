@@ -1,20 +1,4 @@
-/**
- * @name Alert suppression
- * @description Generates information about alert suppressions.
- * @kind alert-suppression
- * @id go/alert-suppression
- */
-
-import go
-
-/**
- * An alert suppression comment.
- */
-class SuppressionComment extends Locatable {
-  string text;
-  string annotation;
-
-  SuppressionComment() {
+/*
     text = this.(Comment).getText() and
     // suppression comments must be single-line
     not text.matches("%\n%") and
