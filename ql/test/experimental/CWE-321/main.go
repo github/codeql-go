@@ -121,3 +121,7 @@ func BarrierGuardTest() (interface{}, error) {
 	}
 	return "", nil
 }
+
+func main() {
+	return
+}
