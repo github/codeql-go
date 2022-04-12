@@ -5,7 +5,6 @@ go 1.18
 require (
 	github.com/appleboy/gin-jwt/v2 v2.8.0
 	github.com/cristalhq/jwt/v3 v3.1.0
-	github.com/gin-gonic/gin v1.7.7
 	github.com/go-kit/kit v0.12.0
 	github.com/golang-jwt/jwt/v4 v4.4.1
 	github.com/lestrrat/go-jwx v0.9.1
@@ -16,6 +15,7 @@ require (
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
+	github.com/gin-gonic/gin v1.7.7 // indirect
 	github.com/go-kit/log v0.2.0 // indirect
 	github.com/go-logfmt/logfmt v0.5.1 // indirect
 	github.com/go-playground/locales v0.13.0 // indirect
