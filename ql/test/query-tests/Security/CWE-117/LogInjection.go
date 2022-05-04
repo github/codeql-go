@@ -11,6 +11,7 @@ package main
 //go:generate depstubber -vendor go.uber.org/zap Logger,SugaredLogger NewProduction
 
 import (
+	"bytes"
 	"fmt"
 	"log"
 	"net/http"
@@ -384,7 +385,9 @@ func handlerGood3(req *http.Request) {
 	replacer := strings.NewReplacer("\n", "", "\r", "")
 	log.Printf("user %s logged in.\n", replacer.Replace(username))
 	log.Printf("user %s logged in.\n", replacerLocal1(username))
+	log.Printf("user %s logged in.\n", replacerLocal2(username))
 	log.Printf("user %s logged in.\n", replacerGlobal1(username))
+	log.Printf("user %s logged in.\n", replacerGlobal2(username))
 }
 
 func replacerLocal1(s string) string {
@@ -392,10 +395,23 @@ func replacerLocal1(s string) string {
 	return replacer.Replace(s)
 }
 
+func replacerLocal2(s string) string {
+	replacer := strings.NewReplacer("\n", "", "\r", "")
+	buf := new(bytes.Buffer)
+	replacer.WriteString(buf, s)
+	return buf.String()
+}
+
 var globalReplacer = strings.NewReplacer("\n", "", "\r", "")
 
 func replacerGlobal1(s string) string {
 	return globalReplacer.Replace(s)
+}
+
+func replacerGlobal2(s string) string {
+	buf := new(bytes.Buffer)
+	globalReplacer.WriteString(buf, s)
+	return buf.String()
 }
 
 // GOOD: User-provided values formatted using a %q directive, which escapes newlines
