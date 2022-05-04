@@ -378,8 +378,28 @@ func handlerGood2(req *http.Request) {
 	log.Printf("user %s logged in.\n", escapedUsername)
 }
 
+// GOOD: The user-provided value is escaped before being written to the log.
+func handlerGood3(req *http.Request) {
+	username := req.URL.Query()["username"][0]
+	replacer := strings.NewReplacer("\n", "", "\r", "")
+	log.Printf("user %s logged in.\n", replacer.Replace(username))
+	log.Printf("user %s logged in.\n", replacerLocal1(username))
+	log.Printf("user %s logged in.\n", replacerGlobal1(username))
+}
+
+func replacerLocal1(s string) string {
+	replacer := strings.NewReplacer("\n", "", "\r", "")
+	return replacer.Replace(s)
+}
+
+var globalReplacer = strings.NewReplacer("\n", "", "\r", "")
+
+func replacerGlobal1(s string) string {
+	return globalReplacer.Replace(s)
+}
+
 // GOOD: User-provided values formatted using a %q directive, which escapes newlines
-func handlerGood3(req *http.Request, ctx *goproxy.ProxyCtx) {
+func handlerGood4(req *http.Request, ctx *goproxy.ProxyCtx) {
 	username := req.URL.Query()["username"][0]
 	testFlag := req.URL.Query()["testFlag"][0]
 	log.Printf("user %q logged in.\n", username)

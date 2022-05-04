@@ -61,6 +61,16 @@ module LogInjection {
   }
 
   /**
+   * A call to `strings.Replacer.Replace`, considered as a sanitizer for log
+   * injection.
+   */
+  class ReplacerReplaceSanitizer extends Sanitizer {
+    ReplacerReplaceSanitizer() {
+      this.(DataFlow::MethodCallNode).getTarget().hasQualifiedName("strings", "Replacer", "Replace")
+    }
+  }
+
+  /**
    * An argument that is formatted using the `%q` directive, considered as a sanitizer
    * for log injection.
    *
