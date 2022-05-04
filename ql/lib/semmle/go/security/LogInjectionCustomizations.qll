@@ -66,7 +66,12 @@ module LogInjection {
    */
   class ReplacerReplaceSanitizer extends Sanitizer {
     ReplacerReplaceSanitizer() {
-      this.(DataFlow::MethodCallNode).getTarget().hasQualifiedName("strings", "Replacer", "Replace")
+      exists(DataFlow::MethodCallNode call |
+        call.(DataFlow::MethodCallNode)
+            .getTarget()
+            .hasQualifiedName("strings", "Replacer", "Replace") and
+        this = call.getResult()
+      )
     }
   }
 

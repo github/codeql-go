@@ -107,9 +107,7 @@ module StringBreak {
   class StringsNewReplacerCall extends DataFlow::CallNode {
     StringsNewReplacerCall() { this.getTarget().hasQualifiedName("strings", "NewReplacer") }
 
-    DataFlow::Node getAReplacedArgument() {
-      exists(int m, int n | m = 2 * n and n = m / 2 and result = getArgument(m))
-    }
+    DataFlow::Node getAReplacedArgument() { exists(int n | n % 2 = 0 and result = getArgument(n)) }
   }
 
   class StringsNewReplacerConfiguration extends DataFlow2::Configuration {
@@ -133,10 +131,14 @@ module StringBreak {
     Quote quote;
 
     ReplacerReplaceSanitizer() {
-      exists(StringsNewReplacerConfiguration config, DataFlow::Node source, DataFlow::Node sink |
+      exists(
+        StringsNewReplacerConfiguration config, DataFlow::Node source, DataFlow::Node sink,
+        DataFlow::MethodCallNode call
+      |
         config.hasFlow(source, sink) and
-        this.getTarget().hasQualifiedName("strings", "Replacer", "Replace") and
-        sink = this.getReceiver() and
+        call.getTarget().hasQualifiedName("strings", "Replacer", "Replace") and
+        sink = call.getReceiver() and
+        this = call.getResult() and
         quote = source.(StringsNewReplacerCall).getAReplacedArgument().getStringValue()
       )
     }
