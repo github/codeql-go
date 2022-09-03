@@ -1,3 +1,0 @@
-# github.com/evanphx/json-patch/v5 v5.1.0
-## explicit
-github.com/evanphx/json-patch/v5

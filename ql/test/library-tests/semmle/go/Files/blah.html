@@ -1,4 +1,0 @@
-<head>
-</head>
-<body>
-</body>

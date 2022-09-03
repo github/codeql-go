@@ -1,3 +1,0 @@
-# github.com/github/codeql-go v1.27.0
-## explicit
-github.com/github/codeql-go

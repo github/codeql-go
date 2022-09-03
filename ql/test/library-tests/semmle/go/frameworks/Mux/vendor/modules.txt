@@ -1,3 +1,0 @@
-# github.com/gorilla/mux v1.7.4
-## explicit
-github.com/gorilla/mux
