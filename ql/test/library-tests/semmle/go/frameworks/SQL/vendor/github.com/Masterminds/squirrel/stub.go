@@ -17,7 +17,7 @@ type BaseRunner interface {
 	Query(_ string, _ ...interface{}) (*sql.Rows, error)
 }
 
-func Expr(_ string, _ ...interface{}) interface{} {
+func Expr(_ string, _ ...interface{}) Sqlizer {
 	return nil
 }
 
@@ -40,6 +40,10 @@ func (_ SelectBuilder) Column(_ interface{}, _ ...interface{}) SelectBuilder {
 }
 
 func (_ SelectBuilder) Columns(_ ...string) SelectBuilder {
+	return SelectBuilder{}
+}
+
+func (_ SelectBuilder) CrossJoin(_ string, _ ...interface{}) SelectBuilder {
 	return SelectBuilder{}
 }
 
@@ -68,6 +72,10 @@ func (_ SelectBuilder) GroupBy(_ ...string) SelectBuilder {
 }
 
 func (_ SelectBuilder) Having(_ interface{}, _ ...interface{}) SelectBuilder {
+	return SelectBuilder{}
+}
+
+func (_ SelectBuilder) InnerJoin(_ string, _ ...interface{}) SelectBuilder {
 	return SelectBuilder{}
 }
 
@@ -103,11 +111,19 @@ func (_ SelectBuilder) OrderBy(_ ...string) SelectBuilder {
 	return SelectBuilder{}
 }
 
+func (_ SelectBuilder) OrderByClause(_ interface{}, _ ...interface{}) SelectBuilder {
+	return SelectBuilder{}
+}
+
 func (_ SelectBuilder) PlaceholderFormat(_ PlaceholderFormat) SelectBuilder {
 	return SelectBuilder{}
 }
 
 func (_ SelectBuilder) Prefix(_ string, _ ...interface{}) SelectBuilder {
+	return SelectBuilder{}
+}
+
+func (_ SelectBuilder) PrefixExpr(_ Sqlizer) SelectBuilder {
 	return SelectBuilder{}
 }
 
@@ -131,6 +147,10 @@ func (_ SelectBuilder) RemoveLimit() SelectBuilder {
 	return SelectBuilder{}
 }
 
+func (_ SelectBuilder) RemoveOffset() SelectBuilder {
+	return SelectBuilder{}
+}
+
 func (_ SelectBuilder) RightJoin(_ string, _ ...interface{}) SelectBuilder {
 	return SelectBuilder{}
 }
@@ -151,10 +171,18 @@ func (_ SelectBuilder) Suffix(_ string, _ ...interface{}) SelectBuilder {
 	return SelectBuilder{}
 }
 
+func (_ SelectBuilder) SuffixExpr(_ Sqlizer) SelectBuilder {
+	return SelectBuilder{}
+}
+
 func (_ SelectBuilder) ToSql() (string, []interface{}, error) {
 	return "", nil, nil
 }
 
 func (_ SelectBuilder) Where(_ interface{}, _ ...interface{}) SelectBuilder {
 	return SelectBuilder{}
+}
+
+type Sqlizer interface {
+	ToSql() (string, []interface{}, error)
 }
