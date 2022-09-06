@@ -1,7 +1,7 @@
 # Relocation notice: `github/codeql-go` moved into `github/codeql`
 
-- Old location: The `github/codeql-go` repository
-- New location: The `github/codeql` repository, specifically https://github.com/github/codeql/tree/main/go.
+- Old location: The `github/codeql-go` repository, specifically https://github.com/github/codeql-go/releases/tag/archived
+- New location: The `github/codeql` repository, specifically https://github.com/github/codeql/tree/main/go
 - Detailed announcement: https://github.com/github/codeql-go/issues/741
 
 This repository previously contained the open-source CodeQL queries, libraries, and extractor for analyzing codebases written in the Go programming language with GitHub's CodeQL code analysis tools. These contents have been moved to the `github/codeql` repository, to live alongside similar libraries for all other programming languages supported by CodeQL.
