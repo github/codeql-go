@@ -35,10 +35,6 @@ func (_ DeleteBuilder) Limit(_ uint64) DeleteBuilder {
 	return DeleteBuilder{}
 }
 
-func (_ DeleteBuilder) MustSql() (string, []interface{}) {
-	return "", nil
-}
-
 func (_ DeleteBuilder) Offset(_ uint64) DeleteBuilder {
 	return DeleteBuilder{}
 }
@@ -55,35 +51,15 @@ func (_ DeleteBuilder) Prefix(_ string, _ ...interface{}) DeleteBuilder {
 	return DeleteBuilder{}
 }
 
-func (_ DeleteBuilder) PrefixExpr(_ Sqlizer) DeleteBuilder {
-	return DeleteBuilder{}
-}
-
 func (_ DeleteBuilder) Query() (*sql.Rows, error) {
 	return nil, nil
-}
-
-func (_ DeleteBuilder) QueryContext(_ context.Context) (*sql.Rows, error) {
-	return nil, nil
-}
-
-func (_ DeleteBuilder) QueryRowContext(_ context.Context) RowScanner {
-	return nil
 }
 
 func (_ DeleteBuilder) RunWith(_ BaseRunner) DeleteBuilder {
 	return DeleteBuilder{}
 }
 
-func (_ DeleteBuilder) ScanContext(_ context.Context, _ ...interface{}) error {
-	return nil
-}
-
 func (_ DeleteBuilder) Suffix(_ string, _ ...interface{}) DeleteBuilder {
-	return DeleteBuilder{}
-}
-
-func (_ DeleteBuilder) SuffixExpr(_ Sqlizer) DeleteBuilder {
 	return DeleteBuilder{}
 }
 
@@ -95,7 +71,7 @@ func (_ DeleteBuilder) Where(_ interface{}, _ ...interface{}) DeleteBuilder {
 	return DeleteBuilder{}
 }
 
-func Expr(_ string, _ ...interface{}) Sqlizer {
+func Expr(_ string, _ ...interface{}) interface{} {
 	return nil
 }
 
@@ -117,10 +93,6 @@ func (_ InsertBuilder) Into(_ string) InsertBuilder {
 	return InsertBuilder{}
 }
 
-func (_ InsertBuilder) MustSql() (string, []interface{}) {
-	return "", nil
-}
-
 func (_ InsertBuilder) Options(_ ...string) InsertBuilder {
 	return InsertBuilder{}
 }
@@ -130,10 +102,6 @@ func (_ InsertBuilder) PlaceholderFormat(_ PlaceholderFormat) InsertBuilder {
 }
 
 func (_ InsertBuilder) Prefix(_ string, _ ...interface{}) InsertBuilder {
-	return InsertBuilder{}
-}
-
-func (_ InsertBuilder) PrefixExpr(_ Sqlizer) InsertBuilder {
 	return InsertBuilder{}
 }
 
@@ -177,10 +145,6 @@ func (_ InsertBuilder) Suffix(_ string, _ ...interface{}) InsertBuilder {
 	return InsertBuilder{}
 }
 
-func (_ InsertBuilder) SuffixExpr(_ Sqlizer) InsertBuilder {
-	return InsertBuilder{}
-}
-
 func (_ InsertBuilder) ToSql() (string, []interface{}, error) {
 	return "", nil, nil
 }
@@ -204,10 +168,6 @@ func (_ SelectBuilder) Column(_ interface{}, _ ...interface{}) SelectBuilder {
 }
 
 func (_ SelectBuilder) Columns(_ ...string) SelectBuilder {
-	return SelectBuilder{}
-}
-
-func (_ SelectBuilder) CrossJoin(_ string, _ ...interface{}) SelectBuilder {
 	return SelectBuilder{}
 }
 
@@ -236,10 +196,6 @@ func (_ SelectBuilder) GroupBy(_ ...string) SelectBuilder {
 }
 
 func (_ SelectBuilder) Having(_ interface{}, _ ...interface{}) SelectBuilder {
-	return SelectBuilder{}
-}
-
-func (_ SelectBuilder) InnerJoin(_ string, _ ...interface{}) SelectBuilder {
 	return SelectBuilder{}
 }
 
@@ -275,19 +231,11 @@ func (_ SelectBuilder) OrderBy(_ ...string) SelectBuilder {
 	return SelectBuilder{}
 }
 
-func (_ SelectBuilder) OrderByClause(_ interface{}, _ ...interface{}) SelectBuilder {
-	return SelectBuilder{}
-}
-
 func (_ SelectBuilder) PlaceholderFormat(_ PlaceholderFormat) SelectBuilder {
 	return SelectBuilder{}
 }
 
 func (_ SelectBuilder) Prefix(_ string, _ ...interface{}) SelectBuilder {
-	return SelectBuilder{}
-}
-
-func (_ SelectBuilder) PrefixExpr(_ Sqlizer) SelectBuilder {
 	return SelectBuilder{}
 }
 
@@ -311,10 +259,6 @@ func (_ SelectBuilder) RemoveLimit() SelectBuilder {
 	return SelectBuilder{}
 }
 
-func (_ SelectBuilder) RemoveOffset() SelectBuilder {
-	return SelectBuilder{}
-}
-
 func (_ SelectBuilder) RightJoin(_ string, _ ...interface{}) SelectBuilder {
 	return SelectBuilder{}
 }
@@ -335,20 +279,12 @@ func (_ SelectBuilder) Suffix(_ string, _ ...interface{}) SelectBuilder {
 	return SelectBuilder{}
 }
 
-func (_ SelectBuilder) SuffixExpr(_ Sqlizer) SelectBuilder {
-	return SelectBuilder{}
-}
-
 func (_ SelectBuilder) ToSql() (string, []interface{}, error) {
 	return "", nil, nil
 }
 
 func (_ SelectBuilder) Where(_ interface{}, _ ...interface{}) SelectBuilder {
 	return SelectBuilder{}
-}
-
-type Sqlizer interface {
-	ToSql() (string, []interface{}, error)
 }
 
 var StatementBuilder StatementBuilderType = StatementBuilderType{}
@@ -367,10 +303,6 @@ func (_ StatementBuilderType) PlaceholderFormat(_ PlaceholderFormat) StatementBu
 	return StatementBuilderType{}
 }
 
-func (_ StatementBuilderType) Replace(_ string) InsertBuilder {
-	return InsertBuilder{}
-}
-
 func (_ StatementBuilderType) RunWith(_ BaseRunner) StatementBuilderType {
 	return StatementBuilderType{}
 }
@@ -381,10 +313,6 @@ func (_ StatementBuilderType) Select(_ ...string) SelectBuilder {
 
 func (_ StatementBuilderType) Update(_ string) UpdateBuilder {
 	return UpdateBuilder{}
-}
-
-func (_ StatementBuilderType) Where(_ interface{}, _ ...interface{}) StatementBuilderType {
-	return StatementBuilderType{}
 }
 
 type UpdateBuilder struct{}
@@ -401,10 +329,6 @@ func (_ UpdateBuilder) Limit(_ uint64) UpdateBuilder {
 	return UpdateBuilder{}
 }
 
-func (_ UpdateBuilder) MustSql() (string, []interface{}) {
-	return "", nil
-}
-
 func (_ UpdateBuilder) Offset(_ uint64) UpdateBuilder {
 	return UpdateBuilder{}
 }
@@ -418,10 +342,6 @@ func (_ UpdateBuilder) PlaceholderFormat(_ PlaceholderFormat) UpdateBuilder {
 }
 
 func (_ UpdateBuilder) Prefix(_ string, _ ...interface{}) UpdateBuilder {
-	return UpdateBuilder{}
-}
-
-func (_ UpdateBuilder) PrefixExpr(_ Sqlizer) UpdateBuilder {
 	return UpdateBuilder{}
 }
 
@@ -462,10 +382,6 @@ func (_ UpdateBuilder) SetMap(_ map[string]interface{}) UpdateBuilder {
 }
 
 func (_ UpdateBuilder) Suffix(_ string, _ ...interface{}) UpdateBuilder {
-	return UpdateBuilder{}
-}
-
-func (_ UpdateBuilder) SuffixExpr(_ Sqlizer) UpdateBuilder {
 	return UpdateBuilder{}
 }
 
