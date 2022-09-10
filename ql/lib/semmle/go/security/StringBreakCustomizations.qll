@@ -103,4 +103,69 @@ module StringBreak {
 
     override Quote getQuote() { result = quote }
   }
+
+  class StringsNewReplacerCall extends DataFlow::CallNode {
+    StringsNewReplacerCall() { this.getTarget().hasQualifiedName("strings", "NewReplacer") }
+
+    DataFlow::Node getAReplacedArgument() { exists(int n | n % 2 = 0 and result = getArgument(n)) }
+  }
+
+  class StringsNewReplacerConfiguration extends DataFlow2::Configuration {
+    StringsNewReplacerConfiguration() { this = "StringsNewReplacerConfiguration" }
+
+    override predicate isSource(DataFlow::Node source) { source instanceof StringsNewReplacerCall }
+
+    override predicate isSink(DataFlow::Node sink) {
+      exists(DataFlow::MethodCallNode call |
+        sink = call.getReceiver() and
+        call.getTarget().hasQualifiedName("strings", "Replacer", ["Replace", "WriteString"])
+      )
+    }
+  }
+
+  /**
+   * A call to `strings.Replacer.Replace`, considered as a sanitizer for unsafe
+   * quoting.
+   */
+  class ReplacerReplaceSanitizer extends DataFlow::MethodCallNode, Sanitizer {
+    Quote quote;
+
+    ReplacerReplaceSanitizer() {
+      exists(
+        StringsNewReplacerConfiguration config, DataFlow::Node source, DataFlow::Node sink,
+        DataFlow::MethodCallNode call
+      |
+        config.hasFlow(source, sink) and
+        call.getTarget().hasQualifiedName("strings", "Replacer", "Replace") and
+        sink = call.getReceiver() and
+        this = call.getResult() and
+        quote = source.(StringsNewReplacerCall).getAReplacedArgument().getStringValue()
+      )
+    }
+
+    override Quote getQuote() { result = quote }
+  }
+
+  /**
+   * A call to `strings.Replacer.WriteString`, considered as a sanitizer for
+   * unsafe quoting.
+   */
+  class ReplacerWriteStringSanitizer extends Sanitizer {
+    Quote quote;
+
+    ReplacerWriteStringSanitizer() {
+      exists(
+        StringsNewReplacerConfiguration config, DataFlow::Node source, DataFlow::Node sink,
+        DataFlow::MethodCallNode call
+      |
+        config.hasFlow(source, sink) and
+        call.getTarget().hasQualifiedName("strings", "Replacer", "WriteString") and
+        sink = call.getReceiver() and
+        this = call.getArgument(1) and
+        quote = source.(StringsNewReplacerCall).getAReplacedArgument().getStringValue()
+      )
+    }
+
+    override Quote getQuote() { result = quote }
+  }
 }
