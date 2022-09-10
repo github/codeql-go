@@ -232,6 +232,26 @@ module StringOps {
         formatDirective.charAt(1) != "%" and
         result = this.getArgument((n / 2) + f.getFirstFormattedParameterIndex())
       }
+
+      /**
+       * Returns the `tokenIdx`th token of `fmt`, where a token is a string of either 'a's or 'b's,
+       * and including this token we have seen `charsSoFar` characters of which `asSoFar` were 'a's.
+       */
+      private string statefulParse(int tokenIdx, int charsSoFar, int asSoFar) {
+        result = getComponent(tokenIdx) and
+        exists(int asThisToken, int charsPrev, int asPrev |
+          (if result.charAt(0) = "a" then asThisToken = result.length() else asThisToken = 0) and
+          (
+            // Base case:
+            tokenIdx = 0 and charsPrev = 0 and asPrev = 0
+            or
+            // Recursive case:
+            exists(this.statefulParse(tokenIdx - 1, charsPrev, asPrev))
+          ) and
+          asSoFar = asPrev + asThisToken and
+          charsSoFar = charsPrev + result.length()
+        )
+      }
     }
   }
 
