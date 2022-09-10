@@ -16,6 +16,14 @@ private import semmle.go.dataflow.ExternalFlow
 predicate containerStoreStep(Node node1, Node node2, Content c) {
   c instanceof ArrayContent and
   (
+    exists(ArgumentNode arg, ParameterNode parm, Callable fn |
+      arg = node1 and
+      parm = node2 and
+      arg.getCall().getACalleeIncludingExternals() = fn and
+      arg.isVariadic() and
+      parm.isParameterOf(fn, fn.getType().getNumParameter() - 1) = arg.getCall()
+    )
+    or
     (
       node2.getType() instanceof ArrayType or
       node2.getType() instanceof SliceType
