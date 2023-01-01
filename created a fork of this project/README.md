@@ -1,3 +1,4 @@
+created a fork of this project
 # Go analysis support for CodeQL
 
 This open-source repository contains the extractor, CodeQL libraries, and queries that power Go
