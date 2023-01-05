@@ -1,2 +1,0 @@
-| ImpossibleInterfaceNilCheck.go:9:5:9:5 | e | This value can never be nil, since it is a wrapped interface value. |
-| tst.go:10:14:10:14 | y | This value can never be nil, since it is a wrapped interface value. |

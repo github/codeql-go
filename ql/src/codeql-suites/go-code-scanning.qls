@@ -1,4 +1,0 @@
-- description: Standard Code Scanning queries for Go
-- queries: .
-- apply: code-scanning-selectors.yml
-  from: codeql/suite-helpers

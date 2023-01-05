@@ -1,3 +1,0 @@
-| unknownFunction.go:9:7:9:21 | unknownFunction | invalid type |
-| unknownFunction.go:9:7:9:23 | call to unknownFunction | invalid type |
-| unknownFunction.go:10:7:10:15 | ...+... | invalid type |

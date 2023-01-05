@@ -1,6 +1,0 @@
-# k8s.io/api v0.20.0
-## explicit
-k8s.io/api
-# k8s.io/apimachinery v0.20.0
-## explicit
-k8s.io/apimachinery
