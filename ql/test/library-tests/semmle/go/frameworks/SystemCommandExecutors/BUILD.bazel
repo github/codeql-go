@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "SystemCommandExecutors_lib",
+    srcs = ["SystemCommandExecutors.go"],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/frameworks/SystemCommandExecutors",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/SystemCommandExecutors/vendor/github.com/codeskyblue/go-sh",
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/SystemCommandExecutors/vendor/golang.org/x/crypto/ssh",
+    ],
+)
+
+go_binary(
+    name = "SystemCommandExecutors",
+    embed = [":SystemCommandExecutors_lib"],
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "Encoding",
+    srcs = ["jsoniter.go"],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/frameworks/Encoding",
+    visibility = ["//visibility:public"],
+    deps = ["//language-packs/go/ql/test/library-tests/semmle/go/frameworks/Encoding/vendor/github.com/json-iterator/go"],
+)

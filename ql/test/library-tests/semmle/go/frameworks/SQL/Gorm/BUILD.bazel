@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "Gorm",
+    srcs = ["gorm.go"],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/frameworks/SQL/Gorm",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/SQL/Gorm/vendor/github.com/jinzhu/gorm",
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/SQL/Gorm/vendor/gorm.io/gorm",
+    ],
+)

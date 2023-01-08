@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "InterProceduralDataFlow_lib",
+    srcs = [
+        "destructuring.go",
+        "dispatch.go",
+        "fields.go",
+        "main.go",
+        "pointers.go",
+        "receivers.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/dataflow/InterProceduralDataFlow",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "InterProceduralDataFlow",
+    embed = [":InterProceduralDataFlow_lib"],
+    visibility = ["//visibility:public"],
+)

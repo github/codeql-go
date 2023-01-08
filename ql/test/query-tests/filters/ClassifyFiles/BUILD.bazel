@@ -1,0 +1,24 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "ClassifyFiles_lib",
+    srcs = [
+        "ginkgo.go",
+        "hello.go",
+        "hello2.go",
+        "httptest.go",
+        "test1.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/query-tests/filters/ClassifyFiles",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//language-packs/go/ql/test/query-tests/filters/ClassifyFiles/vendor/github.com/onsi/ginkgo",
+        "//language-packs/go/ql/test/query-tests/filters/ClassifyFiles/vendor/github.com/onsi/gomega",
+    ],
+)
+
+go_binary(
+    name = "ClassifyFiles",
+    embed = [":ClassifyFiles_lib"],
+    visibility = ["//visibility:public"],
+)

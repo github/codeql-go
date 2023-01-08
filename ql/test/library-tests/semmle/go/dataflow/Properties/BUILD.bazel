@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "Properties_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/dataflow/Properties",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "Properties",
+    embed = [":Properties_lib"],
+    visibility = ["//visibility:public"],
+)

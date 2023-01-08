@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "CWE-840_lib",
+    srcs = [
+        "ConditionalBypassBad.go",
+        "ConditionalBypassGood.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/src/experimental/CWE-840",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "CWE-840",
+    embed = [":CWE-840_lib"],
+    visibility = ["//visibility:public"],
+)

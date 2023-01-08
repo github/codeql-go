@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "CWE-643_lib",
+    srcs = ["XPathInjection.go"],
+    importpath = "github.com/github/codeql-go/ql/src/Security/CWE-643",
+    visibility = ["//visibility:private"],
+    deps = [
+        "@com_github_christrenkamp_goxpath//:go_default_library",
+        "@com_github_christrenkamp_goxpath//tree:go_default_library",
+    ],
+)
+
+go_binary(
+    name = "CWE-643",
+    embed = [":CWE-643_lib"],
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "Email_lib",
+    srcs = ["mail.go"],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/frameworks/Email",
+    visibility = ["//visibility:private"],
+    deps = ["//language-packs/go/ql/test/library-tests/semmle/go/frameworks/Email/vendor/github.com/sendgrid/sendgrid-go/helpers/mail"],
+)
+
+go_binary(
+    name = "Email",
+    embed = [":Email_lib"],
+    visibility = ["//visibility:public"],
+)

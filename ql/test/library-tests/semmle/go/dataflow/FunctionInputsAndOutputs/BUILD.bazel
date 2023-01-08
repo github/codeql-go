@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "FunctionInputsAndOutputs_lib",
+    srcs = [
+        "main.go",
+        "reset.go",
+        "tst.go",
+        "tst2.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/dataflow/FunctionInputsAndOutputs",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "FunctionInputsAndOutputs",
+    embed = [":FunctionInputsAndOutputs_lib"],
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,24 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "WebSocket_lib",
+    srcs = [
+        "DialFunction.go",
+        "WebSocketReadWrite.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/frameworks/WebSocket",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/WebSocket/vendor/github.com/gobwas/ws",
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/WebSocket/vendor/github.com/gorilla/websocket",
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/WebSocket/vendor/github.com/sacOO7/gowebsocket",
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/WebSocket/vendor/golang.org/x/net/websocket",
+        "//language-packs/go/ql/test/library-tests/semmle/go/frameworks/WebSocket/vendor/nhooyr.io/websocket",
+    ],
+)
+
+go_binary(
+    name = "WebSocket",
+    embed = [":WebSocket_lib"],
+    visibility = ["//visibility:public"],
+)

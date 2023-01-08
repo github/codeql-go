@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "Regexp_lib",
+    srcs = ["stdlib.go"],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/concepts/Regexp",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "Regexp",
+    embed = [":Regexp_lib"],
+    visibility = ["//visibility:public"],
+)

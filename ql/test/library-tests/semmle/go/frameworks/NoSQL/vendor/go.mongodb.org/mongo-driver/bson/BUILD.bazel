@@ -1,0 +1,10 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "bson",
+    srcs = ["stub.go"],
+    importmap = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/frameworks/NoSQL/vendor/go.mongodb.org/mongo-driver/bson",
+    importpath = "go.mongodb.org/mongo-driver/bson",
+    visibility = ["//visibility:public"],
+    deps = ["//language-packs/go/ql/test/library-tests/semmle/go/frameworks/NoSQL/vendor/go.mongodb.org/mongo-driver/bson/primitive"],
+)

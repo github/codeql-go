@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "Scopes_lib",
+    srcs = [
+        "main.go",
+        "types.go",
+    ],
+    importpath = "github.com/github/codeql-go/ql/test/library-tests/semmle/go/Scopes",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "Scopes",
+    embed = [":Scopes_lib"],
+    visibility = ["//visibility:public"],
+)

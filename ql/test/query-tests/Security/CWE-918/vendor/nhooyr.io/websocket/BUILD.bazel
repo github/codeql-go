@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "websocket",
+    srcs = ["stub.go"],
+    importmap = "github.com/github/codeql-go/ql/test/query-tests/Security/CWE-918/vendor/nhooyr.io/websocket",
+    importpath = "nhooyr.io/websocket",
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "xmlpath",
+    srcs = ["stub.go"],
+    importmap = "github.com/github/codeql-go/ql/test/query-tests/Security/CWE-643/vendor/github.com/go-xmlpath/xmlpath",
+    importpath = "github.com/go-xmlpath/xmlpath",
+    visibility = ["//visibility:public"],
+)
